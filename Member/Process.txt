@@ -1,0 +1,6 @@
+WithEarth 로그인/회원가입 만들기 순서
+
+DB연결
+1. pom.xml에 필요한 라이브러리 등록
+2. root-context.xml 작성
+3. memberDao.xml (mapper) 만들기
