@@ -3,4 +3,18 @@ WithEarth 로그인/회원가입 만들기 순서
 DB연결
 1. pom.xml에 필요한 라이브러리 등록
 2. root-context.xml 작성
-3. memberDao.xml (mapper) 만들기
+----------------------------
+DB와 JAVA사이
+1. Member 만들기 (string 어쩌구)
+2. MemberDAO 작성 (인터페이스)
+3. memberMapper.xml (mapper) 만들기  -1)여기서 pram1 2 받는 것 이해 x
+4. MemberRegRequest 작성 (reg만의 vo) 
+-----------------------------
+VIEW와 FORM
+1. regform 페이지
+2. regview 페이지
+-----------------------------
+1. controller 페이지
+	post와 get방식
+2. Service 페이지
+	

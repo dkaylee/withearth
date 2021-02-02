@@ -3,13 +3,17 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="memberMapper">
+<mapper namespace="com.withearth.member.dao.MemberDAO">
 
 <!-- 회원가입 -->
 
-<insert id="register">
+<insert id="insertMember"
+	parameterType="com.withearth.member.domain.Member"
+	useGeneratedKeys="true"
+	keyProperty="idx"
+	>
 INSERT INTO USER (id,pw,name,photo) 
-VALUES( #{id), #{pw}, #{name}, #{photo} )
+VALUES( #{id}, #{pw}, #{name}, #{photo} )
 </insert>
 
 

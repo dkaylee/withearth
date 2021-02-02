@@ -13,8 +13,8 @@
 
 <bean id="dataSource"
 		class="com.zaxxer.hikari.HikariDataSource"
-		p:driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
-		p:jdbcUrl="jdbc:log4jdbc:mysql://localhost:3306/user?serverTimezone=UTC"
+		p:driverClassName="com.mysql.cj.jdbc.Driver"
+		p:jdbcUrl="jdbc:mysql://localhost:3306/user?serverTimezone=UTC"
 		p:username="withearth.user"
 		p:password="gaezzang!"></bean>
 	
@@ -24,7 +24,7 @@
 <bean id="sqlSessionFactory"
 			class="org.mybatis.spring.SqlSessionFactoryBean"
 			p:dataSource-ref="dataSource"
-			p:mapperLocations="classpath:com/withearth/member/dao/mapper/*.xml"
+			p:mapperLocations="classpath:com/withearth/member/mapper/*.xml"
 />
 <!--  sqlSessionTemplate -->
 <!--  Mybatis쿼리문을 수행해주는 역할, dao클래스에 직접 sqlsession객체 선언, @autowired로 의존주입하여
