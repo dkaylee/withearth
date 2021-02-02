@@ -8,33 +8,42 @@
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
 
 <script>
+	
+</script>
+
+
+<script type="text/javascript">
 	$(function() {
 		// Geolocation API에 액세스할 수 있는지를 확인
 		if (navigator.geolocation) {
 			//위치 정보를 얻기
 			navigator.geolocation.getCurrentPosition(function(pos) {
-				$('#latitude').html(pos.coords.latitude); // 위도
-				$('#longitude').html(pos.coords.longitude); // 경도
+				$('#latitude').html(pos.coords.latitude); // 위도 37
+				$('#longitude').html(pos.coords.longitude); // 경도 126
+				
+				initTmap(pos.coords.latitude, pos.coords.longitude);
+				
+				
+				
+				
 			});
 		} else {
 			alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
 		}
+		
 	});
-</script>
 
-
-<script type="text/javascript">
 	var map;
 	var marker_s, marker_e, marker_p1, marker_p2;
 	var totalMarkerArr = [];
 	var drawInfoArr = [];
 	var resultdrawArr = [];
 
-	function initTmap() {
+	function initTmap(lat, lon) {
 		// 1. 지도 띄우기
 		map = new Tmapv2.Map("map_div", {
 			//center : new Tmapv2.LatLng(37.570028, 126.989072),
-			center : new Tmapv2.LatLng('#longitude', '#latitude'),
+			center : new Tmapv2.LatLng(lat, lon),
 			width : "100%",
 			height : "400px",
 			zoom : 15,
@@ -46,7 +55,9 @@
 		// 시작
 		marker_s = new Tmapv2.Marker(
 				{
-					position : new Tmapv2.LatLng(37.56689860, 126.97871544),
+					//position : new Tmapv2.LatLng(37.56689860, 126.97871544),
+					position : new Tmapv2.LatLng(lat, lon),
+
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
 					iconSize : new Tmapv2.Size(24, 38),
 					map : map
@@ -55,6 +66,7 @@
 		// 도착
 		marker_e = new Tmapv2.Marker(
 				{
+					//position : new Tmapv2.LatLng(37.57081522, 127.00160213),
 					position : new Tmapv2.LatLng(37.57081522, 127.00160213),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
 					iconSize : new Tmapv2.Size(24, 38),
@@ -200,7 +212,7 @@
 
 
 </head>
-<body onload="initTmap();">
+<body >
 
 	<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
 	<div id="map_wrap" class="map_wrap3">
