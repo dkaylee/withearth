@@ -22,29 +22,28 @@
 				<div class="inner">
 					<header>
 						<h2>마이페이지</h2>
+						<div class="profile">
+						
+                        </div>
 					</header>
 					<div class="flex flex-4">
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic03.jpg" alt="Person 1" />
 							</div>
 							<h3><a>프로필 조회</a></h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic04.jpg" alt="Person 2" />
 							</div>							
 							<h3><a href="<c:url value="/user/point/view"/>">포인트 조회</a></h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic05.jpg" alt="Person 3" />
 							</div>
-							<h3><a>활동 현황</a></h3>
+							<h3><a>활동 현황 조회</a></h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
-								<img src="images/pic06.jpg" alt="Person 4" />
 							</div>
 							<h3><a>내가 쓴 글 조회</a></h3>
 						</div>
