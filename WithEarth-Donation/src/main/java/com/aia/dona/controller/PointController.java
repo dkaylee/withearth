@@ -1,8 +1,13 @@
 package com.aia.dona.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,14 +62,16 @@ public class PointController {
 	}
 	
 	
-	// 회원idx를 받아서 포인트 사용
+	// 회원idx를 받아서 포인트 사용 -> 교환권 발행
 	@GetMapping("/use/{idx}/{usepoint}")
 	public int useSavedPoint(
 			@PathVariable("idx") int idx,
-			@PathVariable("usepoint") int usepoint
-			) {
-		//System.out.println(usingService.usePoint(idx, usepoint));
-		return usingService.usePoint(idx, usepoint);
+			@PathVariable("usepoint") int usepoint,
+			HttpServletRequest request,
+			HttpSession session,
+			Model model
+			) throws UnsupportedEncodingException {
+		return usingService.usePoint(idx, usepoint, request, session, model);
 	}
 	
 }

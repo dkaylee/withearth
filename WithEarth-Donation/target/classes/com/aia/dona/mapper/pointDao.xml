@@ -8,17 +8,16 @@
 		<result column="saving_point" property="saving_point" />
 		<result column="saving_system" property="saving_system" />
 		<result column="saving_date" property="saving_date" />
-		<result column="pointsum" property="pointsum"/>
+		<result column="pointsum" property="pointsum" />
 		<result column="idx" property="idx" />
 	</resultMap>
 
-	<resultMap type="com.aia.dona.domain.Point" id="pointSum">	
+	<resultMap type="com.aia.dona.domain.Point" id="pointSum">
 		<result column="saving_point" property="saving_point" />
 	</resultMap>
-	
-	<select id="selectPointSum"
-	        resultType="int">
-	   select ifnull(sum(saving_point),0) from point where idx=#{idx}
+
+	<select id="selectPointSum" resultType="int">
+		select ifnull(sum(saving_point),0) from point where idx=#{idx}
 	</select>
 
 	<insert id="addTumPoint"
@@ -26,7 +25,8 @@
 		keyProperty="point_idx">
 		insert into point(saving_point, saving_system, idx,
 		tum_idx, course_idx, pointsum)
-		values(#{saving_point}, #{saving_system}, #{idx},
+		values(#{saving_point},
+		#{saving_system}, #{idx},
 		#{tum_idx},
 		#{course_idx},
 		#{pointsum})
@@ -37,26 +37,29 @@
 		keyProperty="point_idx">
 		insert into point(saving_point, saving_system, idx,
 		tum_idx, course_idx, pointsum)
-		values(#{saving_point}, #{saving_system}, #{idx},
+		values(#{saving_point},
+		#{saving_system}, #{idx},
 		#{tum_idx},
 		#{course_idx},
 		#{pointsum})
 	</insert>
 
 	<select id="selectPointList" resultMap="pointResult">
-		select * from point where idx=#{idx}
+		select * from point where
+		idx=#{idx}
 	</select>
-	
+
 	<insert id="insertUsingPoint"
-	        parameterType="com.aia.dona.domain.Point" 
-	        useGeneratedKeys="true"
-		    keyProperty="point_idx">
-	 insert into point(saving_point, saving_system, idx,
-		tum_idx, course_idx, pointsum)
+		parameterType="com.aia.dona.domain.Point" useGeneratedKeys="true"
+		keyProperty="point_idx">
+		insert into point(saving_point, saving_system, idx,
+		tum_idx, course_idx,
+		pointsum)
 		values(#{saving_point}, #{saving_system}, #{idx},
 		#{tum_idx},
 		#{course_idx},
 		#{pointsum})
 	</insert>
-
 </mapper>
+
+	
