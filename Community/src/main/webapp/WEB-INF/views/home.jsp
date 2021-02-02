@@ -13,7 +13,6 @@
     <body id="page-top">
       
        <%@ include file="/WEB-INF/views/include/header.jsp"%>
-       <%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
     </body>
     	

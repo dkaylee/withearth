@@ -9,34 +9,10 @@
 <meta charset="UTF-8">
 <title>Matzip List</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-<style>
-.table {
-	/* border: 1px solid #DDD; */
-	width: 100%;
-}
-td, th {
-	border-bottom: 1px solid #DDD;
-	text-align: center;
-	padding: 10px 0;
-}
-.nowpage {
-	font-size: 1.5em;
-	font-weight: bold;
-}
-.paging {
-	text-align: center;
-}
-div.searchBox {
-	border: 1px solid #CCC;
-	margin: 15px 0;
-	padding: 10px 20px;
-	background-color: #EEE;
-}
-</style>
+
 </head>
 <body id="page-top">
 	 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-     <%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	
      <div class="container">
      <table>
