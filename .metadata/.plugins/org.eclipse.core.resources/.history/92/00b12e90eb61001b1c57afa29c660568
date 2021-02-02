@@ -1,0 +1,13 @@
+package com.withearth.tumbler.domain;
+
+import java.sql.Timestamp;
+
+public class tumbler {
+	
+	private int tum_idx; //텀블러 idx
+	private Timestamp tum_date; // 텀블러 이용 날짜
+	private int cafe_idx; //카페 인덱스
+	private int idx; //회원 인덱스
+	
+
+}

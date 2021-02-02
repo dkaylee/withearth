@@ -1,0 +1,5 @@
+package com.withearth.tumbler.Dao;
+
+public interface TumblerDao {
+
+}

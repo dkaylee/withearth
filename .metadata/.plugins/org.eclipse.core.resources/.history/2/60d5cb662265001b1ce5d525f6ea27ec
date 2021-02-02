@@ -1,0 +1,30 @@
+package com.withearth.tumbler.service;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import com.withearth.tumbler.Dao.CafeDao;
+import com.withearth.tumbler.domain.Cafe;
+
+    
+@Service
+public class CafeService {
+	
+	private CafeDao dao;
+	
+	
+	@Autowired
+	private SqlSessionTemplate template;
+
+	public Cafe getcafe(int cafeIdx) {
+		
+		return dao.selectCafeByIdx(cafeIdx);
+	}
+	
+	
+
+}

@@ -1,0 +1,18 @@
+package com.withearth.tumbler.controller;
+
+import java.io.File;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping(value="/makeqr")
+public void codetest() throws WriterException , IOException{
+	  String url = "http://sgroom.tistory.com";
+	  int width = 150;
+	  int height = 150;
+	  
+	  String file_path = "G:"+File.separator+"qr"+File.separator;
+	  String file_name = "test.png";
+	  QRUtil.makeQR(url , width , height , file_path , file_name);
+	  
+	 } 
+

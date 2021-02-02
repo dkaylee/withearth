@@ -1,0 +1,5 @@
+package com.withearth.tumbler.domain;
+
+public class Tum_SearchParam {
+
+}

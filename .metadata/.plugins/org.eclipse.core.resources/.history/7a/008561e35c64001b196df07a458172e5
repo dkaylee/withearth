@@ -1,0 +1,41 @@
+package com.withearth.tumbler.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.withearth.tumbler.Dao.TumblerDao;
+import com.withearth.tumbler.domain.Tum_SearchParam;
+import com.withearth.tumbler.domain.Tumbler;
+
+public class TumListService{
+	
+	private TumListView getTumListView(Tum_SearchParam param) {
+		
+		TumListView tumlistView = null; // 변수 -> 초기화
+		
+		dao = template.getMapper(TumblerDao.class);
+		System.out.println("페이지번호:"+param.getP());
+		
+		int cntPerPage = 5;
+		
+		int startRow = (param.getP() -1) * cntPerPage;
+		int endRow = startRow + cntPerPage -1;
+		
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		listMap.put("index", startRow);
+		listMap.put("count", cntPerPage);
+		listMap.put("searchParam", param);
+		
+		int totalTumblerCount = dao.selectSerchTumCount(listMap);
+		System.out.println("텀블러토털카운트 " +totalTumblerCount);
+		
+		List<Tumbler> tumblerList = dao.selectTumList(listMap);
+		System.out.println(tumblerList);
+		
+		tumlistView = new TumListView = (param.getP(),totalTumblerCount,cntPerPage,tumblerList,startRow,endRow);
+		
+		
+//		retrun tumlistView;
+	}
+
+}

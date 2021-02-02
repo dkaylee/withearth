@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <select id="selectAllcafe"
+        resultType="com.withearth.tumbler.domain.CafeInfo">
+   
+     select * from cafe order by cafe_name;    
+    
+ </select>

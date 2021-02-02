@@ -1,0 +1,38 @@
+1612081685734	Rename type 'QRCodeController'
+1612081794438	Rename type 'QRCodeGenerator'
+1612081897161	Rename type 'Controller'
+1612082112725	Delete element
+1612082118695	Delete element
+1612082125550	Delete element
+1612082131934	Delete element
+1612083104324	Delete element
+1612084362578	Delete element
+1612084368895	Delete element
+1612090080490	Rename resource 'qrCodes'
+1612090389996	Delete element
+1612090402650	Rename resource 'home.jsp'
+1612090408839	Rename resource 'Indexd.jsp'
+1612091498415	Delete element
+1612092647444	Delete element
+1612093931245	Rename resource 'Index.jsp'
+1612094307814	Move file
+1612094369139	Rename resource 'makeqr'
+1612094783319	Delete element
+1612094875967	Delete element
+1612094882069	Delete element
+1612095011277	Move file
+1612095078261	Move file
+1612095160353	Rename resource 'Home.jsp'
+1612095165536	Rename resource 'idex.jsp'
+1612095170400	Rename resource 'inex.jsp'
+1612095173087	Move file
+1612095976966	Copy package
+1612095984049	Delete element
+1612096034276	Copy compilation unit
+1612097062005	Move file
+1612099425050	Rename resource 'tum_poin.jsp'
+1612099571330	Rename resource 'tumLogin.jsp'
+1612100807407	Delete element
+1612101480337	Delete element
+1612101484684	Rename resource 'tumLogin.jsp'
+1612101507427	Rename resource 'tumPointpopup.jsp'

@@ -1,0 +1,23 @@
+package com.withearth.tumbler.Dao;
+
+import com.withearth.tumbler.domain.Cafe;
+
+public interface CafeDao {
+	
+	//카페 등록
+	int insertCafe(Cafe cafe);
+	//카페 전체 수
+	int memberCountUpdate();
+	//큐알포인트 업뎃
+	int updateQRpointByIdx(int idx);
+	
+	//카페 정보 조회
+	
+	//큐알 코드 등록 
+	
+	//카페 정보 업데이트
+	
+	
+	
+
+}

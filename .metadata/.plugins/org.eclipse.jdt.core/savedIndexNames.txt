@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Users\wnfid\Documents\withearth\.metadata\.plugins\org.eclipse.jdt.core
+866279528.index

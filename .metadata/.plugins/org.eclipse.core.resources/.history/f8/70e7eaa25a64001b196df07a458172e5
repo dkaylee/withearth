@@ -1,0 +1,16 @@
+package com.withearth.tumbler.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.withearth.tumbler.service.TumListService;
+
+// 텀블리 이용리스트 컨트롤러
+@Controller
+public class TumListController {
+
+	private TumListService tumlistservice;
+	
+	@RequestMapping("/qr/tumlist")
+	
+	
+}

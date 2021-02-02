@@ -1,0 +1,89 @@
+package com.withearth.tumbler.domain;
+
+import java.util.List;
+
+public class TumListView {
+	
+	private int pageNumber; //현재 페이지 번호
+	private int totalTumblerCount; //전체 게시물의 개수 
+	private int cntPerPage;  //한 페이지에 노출할 게시물의 개수
+	private List<Tumbler> memberList; //페이지에 노출할 회원의 정보를 담는 리스트 
+	private int startRow;
+	private int endRow;
+	private int totalPageCount; //전체 페이지의 개수 
+	
+	
+	
+	
+	public TumListView(int pageNumber, int totalTumblerCount, int cntPerPage, List<Tumbler> memberList, int startRow,
+			int endRow, int totalPageCount) {
+
+		this.pageNumber = pageNumber;
+		this.totalTumblerCount = totalTumblerCount;
+		this.cntPerPage = cntPerPage;
+		this.memberList = memberList;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.totalPageCount = totalPageCount;
+	}
+	
+	
+	public int getPageNumber() {
+		return pageNumber;
+	}
+	public void setPageNumber(int pageNumber) {
+		this.pageNumber = pageNumber;
+	}
+	public int getTotalTumblerCount() {
+		return totalTumblerCount;
+	}
+	public void setTotalTumblerCount(int totalTumblerCount) {
+		this.totalTumblerCount = totalTumblerCount;
+	}
+	public int getCntPerPage() {
+		return cntPerPage;
+	}
+	public void setCntPerPage(int cntPerPage) {
+		this.cntPerPage = cntPerPage;
+	}
+	public List<Tumbler> getMemberList() {
+		return memberList;
+	}
+	public void setMemberList(List<Tumbler> memberList) {
+		this.memberList = memberList;
+	}
+	public int getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+	public int getEndRow() {
+		return endRow;
+	}
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
+	public int getTotalPageCount() {
+		return totalPageCount;
+	}
+	public void setTotalPageCount(int totalPageCount) {
+		this.totalPageCount = totalPageCount;
+	}
+
+
+	@Override
+	public String toString() {
+		return "TumListView [pageNumber=" + pageNumber + ", totalTumblerCount=" + totalTumblerCount + ", cntPerPage="
+				+ cntPerPage + ", memberList=" + memberList + ", startRow=" + startRow + ", endRow=" + endRow
+				+ ", totalPageCount=" + totalPageCount + "]";
+	}
+
+	
+		
+		
+	}
+	
+	
+
+

@@ -1,0 +1,17 @@
+package com.withearth.tumbler.service;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.withearth.tumbler.Dao.CafeDao;
+
+public class MakeQRService {
+	
+	private CafeDao dao;
+	
+	@Autowired
+	private SqlSessionTemplate template;
+	
+	public int 
+
+}

@@ -1,0 +1,13 @@
+package com.withearth.tumbler.Dao;
+
+public interface TumblerDao {
+	
+	//텀블러 인증 후 포인트 적립 로그인
+	
+	//회원 여부 확인
+	
+	//포인트 확인 
+	
+	//이용 카페 리스트 확인
+
+}
