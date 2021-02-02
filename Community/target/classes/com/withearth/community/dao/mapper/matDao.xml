@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withearth.community.matdao.MatDao">
+
+	<!-- 맛집리스트 출력 -->
+	<resultMap id="matListResult" type="com.withearth.community.domain.MatzipVo">
+		<id column="mat_idx" property="mat_idx" />
+		<result column="mat_title" property="mat_title" />
+		<result column="mat_addr" property="mat_addr" />
+		<result column="mat_wr" property="mat_wr" />
+		<result column="mat_content" property="mat_content" />
+		<result column="mat_img" property="mat_img" />
+		<result column="mat_date" property="mat_date" />
+		<result column="mat_heart" property="mat_heart" />
+		<result column="idx" property="idx" />
+	</resultMap>
+	
+	<select id="selectAllMatList"
+					parameterType="map"
+					resultMap="matListResult">
+
+		select * from Matzip
+
+	</select>
+	
+	
+
+
+
+</mapper>
