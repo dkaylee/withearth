@@ -1,7 +1,0 @@
-package com.withearth.tumbler.service;
-
-
-//인증 서비스
-public class AuthService {
-
-}

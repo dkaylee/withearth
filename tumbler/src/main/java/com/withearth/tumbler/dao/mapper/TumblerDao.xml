@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withearth.tumbler.dao.TumblerDao">
+
+
+<!--큐알 스캔 -> url 넘어가기 -->
+
+<!--텀블러 url로 로그인 할 경우 100포인트 적립  -->
+	<insert id="selectTumLogin">
+	</insert>
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

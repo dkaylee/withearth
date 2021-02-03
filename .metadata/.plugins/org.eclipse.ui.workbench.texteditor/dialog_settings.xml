@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="storeName"/>
+		<item key="selection" value="insert"/>
 		<list key="findhistory">
+			<item value="insert"/>
+			<item value="org.springframework.web.servlet.view.UrlBasedViewResolver"/>
+			<item value="zxing"/>
+			<item value="log4j-api"/>
+			<item value="log4"/>
 			<item value="storeName"/>
 			<item value="log4j"/>
 			<item value="logg"/>
 			<item value="boot"/>
-			<item value="zxing"/>
 			<item value="test"/>
 			<item value="anno"/>
 			<item value="log4-api"/>
-			<item value="log4"/>
 			<item value="runtime"/>
 			<item value="scope"/>
 			<item value="junit"/>
-			<item value="un"/>
-			<item value="comm"/>
-			<item value="jdbctest"/>
 		</list>
 		<list key="replacehistory">
 		</list>

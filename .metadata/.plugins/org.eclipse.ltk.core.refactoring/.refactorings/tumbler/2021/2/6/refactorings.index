@@ -1,8 +1,15 @@
-1612158593268	Rename type 'MainController'
-1612159184349	Rename type 'CafeInfo'
-1612159635551	Delete element
-1612159685315	Rename type 'Cafe'
-1612162206821	Delete element
-1612163493147	Rename type 'tumbler'
-1612167973443	Delete element
-1612170155358	Delete element
+1612267183888	Delete element
+1612267188471	Delete element
+1612267606607	Rename resource 'tumLogin.jsp'
+1612272251950	Delete element
+1612281123701	Rename type 'tumbler'
+1612281660437	Rename resource 'tumbler.xml'
+1612324675961	Rename resource 'qr.jsp'
+1612325946021	Delete element
+1612325955328	Delete element
+1612331313164	Delete element
+1612334183188	Rename resource 'qr'
+1612335590721	Rename resource 'tumlist.jsp'
+1612338824865	Delete element
+1612349635747	Delete element
+1612356983846	Delete element

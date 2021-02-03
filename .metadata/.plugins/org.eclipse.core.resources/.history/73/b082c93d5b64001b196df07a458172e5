@@ -1,9 +1,0 @@
-package com.withearth.tumbler.service;
-
-public class TumListService {
-	
-	private TumListView getTumListView(SearchParam param) {
-		
-	}
-
-}
