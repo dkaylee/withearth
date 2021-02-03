@@ -11,10 +11,12 @@
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
 </head>
-<body id="page-top">
+<body class="subpage">
+
 	 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
-     <div class="container">
+	<section id="main" class="wrapper">
+    <div class="table-wrapper">
      <table>
      	<tr>
         <th>idx</th>
@@ -47,8 +49,7 @@
 		</c:forEach>
 	</table>
 	 </div>
-        
-      <%@ include file="/WEB-INF/views/include/footer.jsp"%>
-
+	</section>
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>

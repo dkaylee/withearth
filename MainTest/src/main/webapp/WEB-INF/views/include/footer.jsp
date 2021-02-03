@@ -4,7 +4,6 @@
 
 <!-- Footer-->
 <footer id="footer">
-			<footer>
 				<div class="inner">
 					<div class="flex">
 						<div class="copyright">

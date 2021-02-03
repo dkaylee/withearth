@@ -32,7 +32,7 @@
 			</td>
 			</tr>
 			<tr>
-			 <th><label for="mat_title">소개</label></th>
+			 <th><label for="mat_title">소개글</label></th>
 			 <td>
 			 	<input type="text" id="mat_content" name="mat_content">
 			</td>
@@ -44,7 +44,7 @@
 			</td>
 			</tr>
 			<tr>
-			 <th><label for="mat_date">추가일</label></th>
+			 <th><label for="mat_date">작성일</label></th>
 			 <td>
 			 	<input type="text" id="mat_date" name="mat_date">
 			</td>

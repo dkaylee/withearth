@@ -7,7 +7,6 @@
         <meta charset="utf-8" />
         <title>WithEarth</title>
 		<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-
     </head>
     
     <body id="page-top">

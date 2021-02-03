@@ -5,14 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Google fonts-->
-<!-- <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" /> -->
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
  <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet">
-
-<!-- Scripts -->
-<script src="<c:url value="/js/jquery.min.js"/>"></script>
-<script src="<c:url value="/js/skel.min.js"/>"></script>
-<script src="<c:url value="/js/util.js"/>"></script>
-<script src="<c:url value="/js/main.js"/>"></script>
