@@ -1,6 +1,7 @@
 package com.withearth.member.domain;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Member {
 
@@ -69,10 +70,19 @@ public class Member {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", photo=" + photo
+		return "Member [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", photo=" + photo
 				+ ", regdate=" + regdate + ", logintype=" + logintype + ", verify=" + verify + ", code=" + code + "]";
 	}
 	
+	//date값 얻기?
+	public Date getTodate() {
+		return new Date(this.regdate.getTime());
+	}
+	
+	//로그인 정보
+	public LoginInfo toLoginInfo() {
+		return new LoginInfo(id,name,photo);
+	}
 	
 	
 	
