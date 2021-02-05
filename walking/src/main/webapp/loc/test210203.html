@@ -25,6 +25,7 @@
 							 icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
 							iconSize : new Tmapv2.Size(24, 38),
 							map : map 
+							
 						});
 					
 					// 2. API 사용요청
@@ -47,6 +48,7 @@
 							// 기존 마커 삭제
 							marker1.setMap(null);
 							
+							
 							console.log('진입2')
 							// 3.마커 찍기
 							// 검색 결과 정보가 없을 때 처리
@@ -54,14 +56,16 @@
 								$("#addresult").text(
 								"요청 데이터가 올바르지 않습니다.");
 							} else {
+								
+								
 								var lon, lat;
-								
-								
 								var resultCoordinate = resultInfo.coordinate[0];
 								if (resultCoordinate.lon.length > 0) {
 									// 구주소
 									lon = resultCoordinate.lon;
 									lat = resultCoordinate.lat;
+									
+									
 									
 									$("#sch_lat").html(lat); // 검색한 위도
 									$("#sch_lon").html(lon); // 검색한 경도
@@ -75,12 +79,14 @@
 									
 									initTmap(new_lat, new_lon);
 									
-									map.destroy();
+									
 									
 								} else { 
 									// 신주소
 									lon = resultCoordinate.newLon;
 									lat = resultCoordinate.newLat
+									
+									
 									
 									$("#sch_lat").html(lat); // 검색한 위도
 									$("#sch_lon").html(lon); // 검색한 경도
@@ -95,7 +101,7 @@
 									
 									console.log('진입3-2')
 									
-									map.destroy();
+									
 									
 								}
 							
