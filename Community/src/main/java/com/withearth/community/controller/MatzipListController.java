@@ -16,7 +16,7 @@ public class MatzipListController {
 	@RequestMapping("/comm/matlist")
 	public String getMatList(Model model) {
 		
-		model.addAttribute("matlistView", matListService.getListView());
+		model.addAttribute("matlist", matListService.getListView());
 		
 		return "comm/matlist";
 	}

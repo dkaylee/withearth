@@ -1,82 +1,86 @@
 package com.withearth.community.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
+
 
 public class MatzipVo {
 	
-	private int mat_idx;
-	private String mat_title;
-	private String mat_addr;
-	private String mat_time;
-	private String mat_num;
-	private String mat_wr;
-	private String mat_cont;
-	private String mat_img;
-	private Timestamp mat_date;
-	private int mat_heart;
+	private int matIdx;
+	private String matTitle;
+	private String matAddr;
+	private String matTime;
+	private String matNum;
+	private String matWr;
+	private String matCont;
+	private String matImg;
+	private Timestamp matDate;
+	private int matHeart;
 	private int idx;
 	
 	
-	public int getMat_idx() {
-		return mat_idx;
+	public int getMatIdx() {
+		return matIdx;
 	}
-	public void setMat_idx(int mat_idx) {
-		this.mat_idx = mat_idx;
+	public void setMatIdx(int matIdx) {
+		this.matIdx = matIdx;
 	}
-	public String getMat_title() {
-		return mat_title;
+	public String getMatTitle() {
+		return matTitle;
 	}
-	public void setMat_title(String mat_title) {
-		this.mat_title = mat_title;
+	public void setMatTitle(String matTitle) {
+		this.matTitle = matTitle;
 	}
-	public String getMat_addr() {
-		return mat_addr;
+	public String getMatAddr() {
+		return matAddr;
 	}
-	public void setMat_add(String mat_addr) {
-		this.mat_addr = mat_addr;
+	public void setMatAddr(String matAddr) {
+		this.matAddr = matAddr;
 	}
-	public String getMat_time() {
-		return mat_time;
+	public String getMatTime() {
+		return matTime;
 	}
-	public void setMat_time(String mat_time) {
-		this.mat_time = mat_time;
+	public void setMatTime(String matTime) {
+		this.matTime = matTime;
 	}
-	public String getMat_num() {
-		return mat_num;
+	public String getMatNum() {
+		return matNum;
 	}
-	public void setMat_num(String mat_num) {
-		this.mat_num = mat_num;
+	public void setMatNum(String matNum) {
+		this.matNum = matNum;
 	}
-	public String getMat_wr() {
-		return mat_wr;
+	public String getMatWr() {
+		return matWr;
 	}
-	public void setMat_wr(String mat_wr) {
-		this.mat_wr = mat_wr;
+	public void setMatWr(String matWr) {
+		this.matWr = matWr;
 	}
-	public String getMat_cont() {
-		return mat_cont;
+	public String getMatCont() {
+		return matCont;
 	}
-	public void setMat_cont(String mat_cont) {
-		this.mat_cont = mat_cont;
+	public void setMatCont(String matCont) {
+		this.matCont = matCont;
 	}
-	public String getMat_img() {
-		return mat_img;
+	
+	public String getMatImg() {
+		return matImg;
 	}
-	public void setMat_img(String mat_img) {
-		this.mat_img = mat_img;
+	public void setMatImg(String matImg) {
+		this.matImg = matImg;
 	}
-	public Timestamp getMat_date() {
-		return mat_date;
+	public Timestamp getMatDate() {
+		return matDate;
 	}
-	public void setMat_date(Timestamp mat_date) {
-		this.mat_date = mat_date;
+	public void setMatDate(Timestamp matDate) {
+		this.matDate = matDate;
 	}
-	public int getMat_heart() {
-		return mat_heart;
+	public int getMatHeart() {
+		return matHeart;
 	}
-	public void setMat_heart(int mat_heart) {
-		this.mat_heart = mat_heart;
+	public void setMatHeart(int matHeart) {
+		this.matHeart = matHeart;
 	}
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -84,14 +88,12 @@ public class MatzipVo {
 		this.idx = idx;
 	}
 	
-	
 	@Override
 	public String toString() {
-		return "MatzipVo [mat_idx=" + mat_idx + ", mat_title=" + mat_title + ", mat_addr=" + mat_addr + ", mat_time="
-				+ mat_time + ", mat_num=" + mat_num + ", mat_wr=" + mat_wr + ", mat_cont=" + mat_cont + ", mat_img="
-				+ mat_img + ", mat_date=" + mat_date + ", mat_heart=" + mat_heart + ", idx=" + idx + "]";
+		return "MatzipVo [matIdx=" + matIdx + ", matTitle=" + matTitle + ", matAddr=" + matAddr + ", matTime=" + matTime
+				+ ", matNum=" + matNum + ", matWr=" + matWr + ", matCont=" + matCont + ", matImg=" + matImg
+				+ ", matDate=" + matDate + ", matHeart=" + matHeart + ", idx=" + idx + "]";
 	}
-	
 	
 	
 	

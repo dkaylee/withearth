@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <section id="one" class="wrapper">
 				<div class="inner">
 					<div class="flex flex-3">

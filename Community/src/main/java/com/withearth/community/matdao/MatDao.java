@@ -9,4 +9,9 @@ public interface MatDao {
 	// 전체 맛집 리스트
 	List<MatzipVo> selectAllMatList();
 
+	int insertMatzip(MatzipVo matzip);
+	
+
+	
+
 }

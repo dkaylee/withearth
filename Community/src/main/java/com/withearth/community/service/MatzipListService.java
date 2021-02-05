@@ -25,16 +25,13 @@ public class MatzipListService {
 	
 		List<MatzipVo> matlist = null;
 		
-		
-		try {
 		dao = template.getMapper(MatDao.class);
 		
 		matlist = dao.selectAllMatList();
+		
 		log.info(matlist);
 		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		return matlist;
 	}
 	
