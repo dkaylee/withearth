@@ -6,44 +6,17 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
-
-<script>
-	
-</script>
-
-
 <script type="text/javascript">
-	$(function() {
-		// Geolocation API에 액세스할 수 있는지를 확인
-		if (navigator.geolocation) {
-			//위치 정보를 얻기
-			navigator.geolocation.getCurrentPosition(function(pos) {
-				$('#latitude').html(pos.coords.latitude); // 위도 37
-				$('#longitude').html(pos.coords.longitude); // 경도 126
-				
-				initTmap(pos.coords.latitude, pos.coords.longitude);
-				
-				
-				
-				
-			});
-		} else {
-			alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
-		}
-		
-	});
-
 	var map;
 	var marker_s, marker_e, marker_p1, marker_p2;
 	var totalMarkerArr = [];
 	var drawInfoArr = [];
 	var resultdrawArr = [];
 
-	function initTmap(lat, lon) {
+	function initTmap() {
 		// 1. 지도 띄우기
 		map = new Tmapv2.Map("map_div", {
-			//center : new Tmapv2.LatLng(37.570028, 126.989072),
-			center : new Tmapv2.LatLng(lat, lon),
+			center : new Tmapv2.LatLng(37.570028, 126.989072),
 			width : "100%",
 			height : "400px",
 			zoom : 15,
@@ -55,9 +28,7 @@
 		// 시작
 		marker_s = new Tmapv2.Marker(
 				{
-					//position : new Tmapv2.LatLng(37.56689860, 126.97871544),
-					position : new Tmapv2.LatLng(lat, lon),
-
+					position : new Tmapv2.LatLng(37.56689860, 126.97871544),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
 					iconSize : new Tmapv2.Size(24, 38),
 					map : map
@@ -66,7 +37,6 @@
 		// 도착
 		marker_e = new Tmapv2.Marker(
 				{
-					//position : new Tmapv2.LatLng(37.57081522, 127.00160213),
 					position : new Tmapv2.LatLng(37.57081522, 127.00160213),
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
 					iconSize : new Tmapv2.Size(24, 38),
@@ -81,8 +51,8 @@
 					async : false,
 					data : {
 						"appKey" : "l7xxa82c096d66484d37ac10b23c15a64620",
-						"startX" : "#latitude", //경도
-						"startY" : "#longitude", // 위도
+						"startX" : "126.97871544",
+						"startY" : "37.56689860",
 						"endX" : "127.00160213",
 						"endY" : "37.57081522",
 						"reqCoordType" : "WGS84GEO",
@@ -102,21 +72,23 @@
 										.toFixed(0) + "분";
 
 						$("#result").text(tDistance + tTime);
-
+						
 						//기존 그려진 라인 & 마커가 있다면 초기화
 						if (resultdrawArr.length > 0) {
 							for ( var i in resultdrawArr) {
-								resultdrawArr[i].setMap(null);
+								resultdrawArr[i]
+										.setMap(null);
 							}
 							resultdrawArr = [];
 						}
-
+						
 						drawInfoArr = [];
 
 						for ( var i in resultData) { //for문 [S]
 							var geometry = resultData[i].geometry;
 							var properties = resultData[i].properties;
 							var polyline_;
+
 
 							if (geometry.type == "LineString") {
 								for ( var j in geometry.coordinates) {
@@ -196,7 +168,7 @@
 		var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		return num.toString().replace(regexp, ',');
 	}
-
+	
 	function drawLine(arrPoint) {
 		var polyline_;
 
@@ -209,22 +181,16 @@
 		resultdrawArr.push(polyline_);
 	}
 </script>
-
-
 </head>
-<body >
-
-	<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
-	<div id="map_wrap" class="map_wrap3">
-		<div id="map_div"></div>
-	</div>
-	<div class="map_act_btn_wrap clear_box"></div>
-	<p id="result"></p>
-	<br />
-
-	<ul>
-		<li>위도:<span id="latitude"></span></li>
-		<li>경도:<span id="longitude"></span></li>
-	</ul>
+<body onload="initTmap();">
+	
+		<!-- 190430 기존 지도를 모두 이미지 처리 위해 주석 처리 S -->
+		<div id="map_wrap" class="map_wrap3">
+			<div id="map_div"></div>
+		</div>
+		<div class="map_act_btn_wrap clear_box"></div>
+		<p id="result"></p>
+		<br />
 </body>
 </html>
+		
