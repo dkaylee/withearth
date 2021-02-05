@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.withearth.member.dao.MemberDAO">
 
-<!-- 로그인할때 사용2) Member타입의 resultMap -->
+<!-- 로그인할때 사용2) Member타입의 resultMap 왜써야 하는건지 모르겠어요-->
 <resultMap id="memberResult"
 			type="com.withearth.member.domain.Member">
 	<id column="idx" property="idx"/>
