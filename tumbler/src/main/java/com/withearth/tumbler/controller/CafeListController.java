@@ -1,5 +1,7 @@
 package com.withearth.tumbler.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +16,21 @@ public class CafeListController {
 	
 	@Autowired
 	private CafelistService cafelistService;
+	
 
-	@RequestMapping("/tumblr/cafelist")
-	public String getListView(Model model) {
+	//이용 가능한 카페 리스트
+	@RequestMapping("/")
+	public String getListView(HttpServletRequest request,Model model) {
 		
-		model.addAttribute("cafelistView",cafelistService.getListView());
-		return "tumblr/cafelist";
+		System.out.println(request);
+		String result = cafelistService.getListView( request);
+		
+		model.addAttribute(result);
+		return "/tumblr/tumlist";
 	}
+	
+	
+	
+	
 	
 }

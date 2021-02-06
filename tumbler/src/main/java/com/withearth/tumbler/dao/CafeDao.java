@@ -6,9 +6,25 @@ import com.withearth.tumbler.domain.Cafe;
 
 public interface CafeDao {
 
-	Object template = null;
+	//큐알코드 생성
+	String insertQRcode(int idx);
+
+
+	
+	
+
+
+	
+
+
+
+
 
 	//카페 전체 리스트
-	List<Cafe> selectAllCafeList();
+	//List <Cafe> selectAllCafeList();
+
+
+
+	
 
 }

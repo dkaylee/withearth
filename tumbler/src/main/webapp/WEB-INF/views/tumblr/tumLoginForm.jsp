@@ -10,11 +10,12 @@
 
 	<h1>Tumbler Form</h1>
 
-	
-		id <input type="text" name="uid"> <br>
-		 pw <inpu type="password" name="pw"> <br> 
-		<input type="submit" value="로그인">
+<form>
+아이디 <input type="email" name="userid" id="userid"> </br>
+비밀번호 <input type="password" name="pw" id="pw">
 
+<input type="submit">
+</form>
 
 </body>
 </html>

@@ -40,6 +40,8 @@ public class Tumbler {
 		return "tumbler [tum_idx=" + tum_idx + ", tum_date=" + tum_date + ", cafe_idx=" + cafe_idx + ", idx=" + idx
 				+ "]";
 	}
+
+
 	
 	
 	
