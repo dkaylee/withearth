@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -550,6 +552,7 @@
 
 </head>
 <body >
+	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
 	<h2 id="addresult"></h2>
 		<br />
@@ -577,5 +580,6 @@
 		<li>경도 검색 결과: <span id="sch_lat"></span></li>
 		<li>위도 검색 결과: <span id="sch_lon"></span></li>
 	</ul>
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>

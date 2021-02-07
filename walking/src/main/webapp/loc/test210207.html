@@ -25,7 +25,6 @@
 							 icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
 							iconSize : new Tmapv2.Size(24, 38),
 							map : map 
-							
 						});
 					
 					// 2. API 사용요청
@@ -49,7 +48,6 @@
 							marker1.setMap(null);
 							
 							
-							
 							console.log('진입2')
 							// 3.마커 찍기
 							// 검색 결과 정보가 없을 때 처리
@@ -61,7 +59,6 @@
 								
 								var lon, lat;
 								var resultCoordinate = resultInfo.coordinate[0];
-									
 								if (resultCoordinate.lon.length > 0) {
 									// 구주소
 									lon = resultCoordinate.lon;
@@ -366,6 +363,9 @@
 	var resultdrawArr = [];
 	
 	function initTmap(lat, lon) {
+		
+		$('#map_div').html('');
+		
 		// 1. 지도 띄우기
 		map = new Tmapv2.Map("map_div", {
 			//center : new Tmapv2.LatLng(37.570028, 126.989072),
@@ -523,8 +523,6 @@
 								+ "message:" + request.responseText + "\n"
 								+ "error:" + error);
 					}
-					
-					
 				});
 
 	} // 경로 설정 기능
@@ -550,7 +548,6 @@
 
 </head>
 <body >
-	
 	<h2 id="addresult"></h2>
 		<br />
 		<input type="text" class="text_custom" id="fullAddr"
