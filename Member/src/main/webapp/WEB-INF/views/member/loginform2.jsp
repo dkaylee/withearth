@@ -62,9 +62,9 @@
        		 	<img src="<c:url value="/img/kakao_login_medium_wide.png"/>"/>
     		  </a>
     		   <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    		  
+    		  	<a href="javascript:logout()">임시 로그아웃</a>
               <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
- -->              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Kakao</button>
+ -->              
             </form>
           </div>
         </div>
@@ -78,73 +78,75 @@
 
 <!-- 카카오 로그인 -->
 <script type='text/javascript'>
-        //<![CDATA[
+        
         // 사용할 앱의 JavaScript 키를 설정해 주세요.
         Kakao.init('3899d49bf0d8f2c59f6f0bb935d45d34');
 
         function loginWithKakao() {
             // 로그인 창을 띄웁니다.
             Kakao.Auth.login({
+            	//이메일 프로필 필수 동의 요구
+            	scope: 'account_email,profile',
                 success: function(authObj) {
-                    alert(JSON.stringify(authObj));
-
-                    //Kakao.Auth.setAccessToken(authObj.access_token);
-
-                  /*   startWithKakao(); */
-                   /*  infoWithKakao(); */
-                    
-
+                	//성공한다면 사용자 정보 가져오기
+                	logintwo();
                 },
                 fail: function(err) {
-                    alert(JSON.stringify(err));
+                    console.log(authObj)
                 }
-            });
-             
-            
-            
-        }; //로그인창 띄우기
-        
-         function startWithKakao() {
-            Kakao.Auth.getStatusInfo(function(statusObj) {
-                if (statusObj.status == 'connected') {
-                    /* $('#custom-login-btn').css('display', 'none'); */
-                } else {
-                    $('#custom-login-btn').css('display', 'inline');
-                }
-            });
-        };
-         
-        //로그인 성공시 데이터 받기
-       /*  function infoWithKakao() {
-            // 로그인 성공시, API를 호출합니다.
-            Kakao.API.request({
-                url: '/v2/user/me',
-                success: function(res) {
-                    $('#content').html(JSON.stringify(res);
-                    JSON.stringify(res);
-               var kakaonickname = res.propertise.nickname;
-               var kakaoprofile = res.propertise.profile_image;
-               var kakaothumnail = res.propertise.thumbnail_image;
-               var kakaoemail = res.kakao_account.email;
-               
-               
-               
-                },
-                fail: function(error) {
-                    alert("오류가 발생했습니다. 다시 시도해주세요.");
-                }
-            });
-                    
-        };  */
-        
-
+            }); 
+        }; 
 </script>
 
 <script>
-        $(document).ready(function() {
-            startWithKakao();
-        });
+	function logintwo(){
+		//사용자 정보 가져오기
+		Kakao.API.request({
+		    url: '/v2/user/me',
+		    success: function(response){
+		    	console.log(response);
+		    	usingajax();
+
+		    },
+			fail: function(error){
+				console.log(error);
+			}
+		    
+		});
+	}
+
 </script>
+<script>
+	function usingajax(){
+		//ajax를 이용해 데이터 보내기
+		
+	$.ajax({
+			url : '/KakaoLogin',
+			type : 'post',
+			dataType : 'json',
+			data : JSON.stringify(response),
+			success : function(data) {
+				console.log("성공");
+			}
+		});
+
+	}
+</script>
+<script>
+	function logout(){
+		Kakao.API.request({
+			  url: '/v1/user/unlink',
+			  success: function(response) {
+			    console.log(response);
+			  },
+			  fail: function(error) {
+			    console.log(error);
+			  },
+			});
+		
+	}
+</script>
+
 
 <!-- 구글 로그인 -->
 <script>
