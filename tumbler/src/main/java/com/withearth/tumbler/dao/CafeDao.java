@@ -7,7 +7,9 @@ import com.withearth.tumbler.domain.Cafe;
 public interface CafeDao {
 
 	//큐알코드 생성
-	String insertQRcode(int idx);
+	//int insertQRcode(int qrcode);
+
+	
 
 
 	

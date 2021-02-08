@@ -6,32 +6,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>큐알 적립 후 텀블러 인증 후 리스트 내역</title>
+<title>텀블러 인증</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+<style>
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+</style>
+<script> function btn(){ 
+	       alert('카메라를 실행해주세요'); 
+	      } 
+	
+	</script>
+
+
+
 </head>
 <body class="subpage">
-Fs
+
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 	<section id="main" class="wrapper">
 
-   
-		<div>
+		<%
+			String id = request.getParameter("id");
+		%>
 
-			<h1>${uid}님100포인트 적립되었습니다.</h1>
+		<div class="tumbtn">
 
+				<button onclick="javascrpt:btn()">텀블러 인증하기 </button>
 		</div>
-	
+
 
 		<div class="head_orderlist">
 			<!-- Table -->
-			<h3>텀블러 인증 내역 </h3>
+			<h3>텀블러 인증 내역</h3>
 
-			<h4>님 </h4>
+			<h4>님</h4>
 			<div class="table-wrapper">
 				<table>
 					<thead>
-					
+
 						<tr>
 							<th>NO</th>
 							<th>적립일자</th>
@@ -40,14 +63,15 @@ Fs
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>{tumbler.idx}</td>
-							<td>{tumbler.tum_date}</td>
-							<td>{cafe.cafe_name}</td>
-							<td>100p</td>
-						</tr>
-
-					
+					    <c:forEach items="${listView}" var="tumbler" varStatus="status">
+							<tr>
+								<td>${tumbler.tum_idx}</td>
+								<td>${tumbler.tum_date}</td>
+								<td>${tumbler.cafe_name}</td>
+								<td>${tumbler.tum_point}p</td>
+							</tr>
+						</c:forEach>
+						</tbody>
 				</table>
 			</div>
 		</div>
@@ -55,39 +79,63 @@ Fs
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
 
-	<div id="map" style="width: 20%; height: 20px;"></div>
-	<p>
-		<em>지도를 움직여 주세요!</em>
-	</p>
-	<p id="result"></p>
+	<div id="map" style="width:500px;height:400px;"></div>
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script>
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf&libraries=services"></script>
+<script>
+// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
+    };  
 
-		// 마우스 드래그로 지도 이동이 완료되었을 때 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-		kakao.maps.event.addListener(map, 'dragend', function() {
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-			// 지도 중심좌표를 얻어옵니다 
-			var latlng = map.getCenter();
+// 장소 검색 객체를 생성합니다
+var ps = new kakao.maps.services.Places(); 
 
-			var message = '변경된 지도 중심좌표는 ' + latlng.getLat() + ' 이고, ';
-			message += '경도는 ' + latlng.getLng() + ' 입니다';
+// 키워드로 장소를 검색합니다
+ps.keywordSearch('starbucks', placesSearchCB); 
 
-			var resultDiv = document.getElementById('result');
-			resultDiv.innerHTML = message;
+// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+function placesSearchCB (data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
 
-		});
-	</script>
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        var bounds = new kakao.maps.LatLngBounds();
 
+        for (var i=0; i<data.length; i++) {
+            displayMarker(data[i]);    
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }       
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+    } 
+}
+
+// 지도에 마커를 표시하는 함수입니다
+function displayMarker(place) {
+    
+    // 마커를 생성하고 지도에 표시합니다
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(place.y, place.x) 
+    });
+
+    // 마커에 클릭이벤트를 등록합니다
+    kakao.maps.event.addListener(marker, 'click', function() {
+        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+        infowindow.open(map, marker);
+    });
+}
+</script>
 
 </body>
 </html>

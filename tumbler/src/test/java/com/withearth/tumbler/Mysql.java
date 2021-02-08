@@ -12,8 +12,8 @@ import lombok.extern.log4j.Log4j;
 public class Mysql {
 	
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://127.0.0.1:3306/witheqrth";
-	private static final String USER = "witheqrth";
+	private static final String URL = "jdbc:mysql://127.0.0.1:3306/withearth";
+	private static final String USER = "withearth";
 	private static final String PW = "aia";
 	
 	@Test

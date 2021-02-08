@@ -16,7 +16,7 @@
 	<!-- 데이터베이스 관련 설정 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		p:driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
-		p:jdbcUrl="jdbc:log4jdbc:mysql://localhost:3306/witheqrth?serverTimezone=UTC"
+		p:jdbcUrl="jdbc:log4jdbc:mysql://localhost:3306/withearth?serverTimezone=UTC"
 		p:username="withearth" p:password="aia" /> 
 
 	<!-- SqlSessionFactoryBean 등록 -->

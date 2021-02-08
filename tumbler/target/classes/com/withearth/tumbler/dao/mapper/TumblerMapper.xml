@@ -15,8 +15,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="idx" column="idx" />
 
 	</resultMap>
+	
+	<select id="selelctTumList" parameterType="int" resultType="com.withearth.tumbler.domain.Tumbler">
+		select tum_idx, tum_date, tumbler.cafe_idx, cafe.cafe_name , idx, tum_point 
+		from tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx where idx = #{idx}
+	</select>
+	
+	<insert id="insertTumbler" parameterType="com.withearth.tumbler.domain.Tumbler"
+		useGeneratedKeys="true"
+		keyProperty="tum_idx">
+		INSERT INTO tumbler(tum_date, cafe_idx, idx, tum_point)
+		VALUES (sysdate(), #{cafe_idx}, #{idx}, #{tum_point})
+	</insert>
 
+	<insert id="insertPoint" parameterType="com.withearth.tumbler.domain.Point"
+	useGeneratedKeys="true"
+	keyProperty="point">
+		INSERT INTO point(savint_point, saving_system, saving_date, idx, tum_idx, course_idx)
+		VALUES (#{savint_point}, #{saving_system}, sysdate(), #{idx}, #{tum_idx}, #{course_idx})
+	</insert>
 
+	
 	<!--큐알 스캔 -> url 넘어가기 -->
 
 	<!--텀블러 url로 로그인 할 경우 100포인트 적립 -->

@@ -6,30 +6,30 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="selectTumLogin"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="/tumbler/qr"/>
+			<item value="inclu"/>
+			<item value="coob"/>
+			<item value="file"/>
+			<item value="common"/>
+			<item value="파일 업로드"/>
+			<item value="zxing"/>
+			<item value="idx"/>
+			<item value="makeQrcodeService"/>
 			<item value="selectTumLogin"/>
 			<item value="insertQRcode"/>
 			<item value="getRegForm"/>
 			<item value="mari"/>
 			<item value="qrcode"/>
 			<item value="tumlist"/>
-			<item value="maven"/>
-			<item value="insert"/>
-			<item value="org.springframework.web.servlet.view.UrlBasedViewResolver"/>
-			<item value="zxing"/>
-			<item value="log4j-api"/>
-			<item value="log4"/>
-			<item value="storeName"/>
-			<item value="log4j"/>
-			<item value="logg"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="11"/>
-		<item key="DIALOG_Y_ORIGIN" value="508"/>
+		<item key="DIALOG_Y_ORIGIN" value="445"/>
 		<item key="DIALOG_WIDTH" value="393"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

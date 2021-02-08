@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>텀블러 로그인</title>
+<title>Login</title>
+<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 </head>
 <body>
 
-	<h1>Tumbler Form</h1>
 
-<form>
-아이디 <input type="email" name="userid" id="userid"> </br>
+<!-- Form -->
+								
+<h3>Login</h3>
+		
+<form method="post" action="tumlist.jsp">
+아이디 <input type="email" name="id" id="id"> </br>
 비밀번호 <input type="password" name="pw" id="pw">
 
 <input type="submit">
 </form>
 
 </body>
-</html>

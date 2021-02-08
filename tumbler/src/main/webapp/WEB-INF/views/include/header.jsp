@@ -7,6 +7,7 @@
 					<a href="<c:url value="/"/>" class="logo">WithEarth</a>
 					<nav id="nav">
 						<a href="<c:url value="/"/>">Home</a>
+						<a href="<c:url value="/member/loginform2"/>">Login</a>
 						<a href="<c:url value="/tumblr/tumlist"/>">Tumbler</a>
 						<a href="#">Walking</a>
 						<a href="#">Point</a>

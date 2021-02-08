@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!--DB와 이름 맞추기 -->
 	<resultMap id="CafeResultMap"
-	     type="com.withearth.tumbler.domain.Cafe">
+		type="com.withearth.tumbler.domain.Cafe">
 
 		<id property="cafe_idx" column="cafe_idx" />
 		<result property="cafe_name" column="cafe_name" />
@@ -16,28 +16,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="qrcode" column="qrcode" />
 
 	</resultMap>
-	
+
 	<!-- 로그인 -->
-	<select id="selectTumLogin" resultMap="CafeResultMap">
-		select * from member where id=#{param1} and pw=#{param2}
+	<select id="selectTumLogin">
+		select * from member where
+		id=#{id} and pw=#{pw}
 	</select>
-	
 
-	<insert id="insertQRcode"
-		parameterType="com.withearth.tumbler.domain.Cafe"
-		useGeneratedKeys="true" 
-		keyProperty="idx">
+	<!-- 포인트 지급 -->
+	<update id="addTumpoint">
+
+		update tumbler
+		set tum_point = tum_point + 100
+		where (select * from user where id=#{id} and pw=#{pw} )
+
+	</update>
+
+<!-- 큐알 코드 저장 -->
+	<!-- <insert id="insertQRcode" parameterType="com.withearth.tumbler.domain.Cafe" 
+		useGeneratedKeys="true" keyProperty="idx"> 
+		insert into cafe (cafe_idx,cafe_name,location,qrcode) 
+		values (
+		#{cafe_idx},#{cafe_name},#{location},#{qrcode}) 
+		</insert> -->
 		
-		insert into cafe
-
-	</insert>
-
+		
 	<!-- 카페 전체 리스트 -->
 
 
 
- <!-- (cafe_idx, cafe_name, location, qrcode, idx)
-        values(#{cafe_idx}, #{cafe_name}, #{location}, #{qrcode}, #{idx}) -->
+	<!-- (cafe_idx, cafe_name, location, qrcode, idx) values(#{cafe_idx}, #{cafe_name}, 
+		#{location}, #{qrcode}, #{idx}) -->
 
 
 
