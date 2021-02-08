@@ -7,11 +7,13 @@ public class Post { // 게시물 빈즈 객체
 	
 	private int donaIdx;  // 게시글idx
 	private String postTitle;  // 게시글 제목
-	private String postImage;  // 게시글 이미지
 	private String postContent;  // 게시글 내용
+    private PostFile files;
 	private String category;  // 카테고리
 	private Timestamp writedate;  // 게시글 작성일자
 	private int idx;  // 회원idx
+	
+	
 	
 	// getter & setter
 	public int getDonaIdx() {
@@ -26,12 +28,7 @@ public class Post { // 게시물 빈즈 객체
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
-	public String getPostImage() {
-		return postImage;
-	}
-	public void setPostImage(String postImage) {
-		this.postImage = postImage;
-	}
+
 	public String getPostContent() {
 		return postContent;
 	}
@@ -57,13 +54,22 @@ public class Post { // 게시물 빈즈 객체
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-
-	
+		
+	public PostFile getFiles() {
+		return files;
+	}
+	public void setFiles(PostFile files) {
+		this.files = files;
+	}
+	@Override
 	public String toString() {
-		return "Post [donaIdx=" + donaIdx + ", postTitle=" + postTitle + ", postImage=" + postImage + ", postContent="
-				+ postContent + ", category=" + category + ", writedate=" + writedate + ", idx=" + idx + "]";
+		return "Post [donaIdx=" + donaIdx + ", postTitle=" + postTitle + ", postContent=" + postContent + ", files="
+				+ files + ", category=" + category + ", writedate=" + writedate + ", idx=" + idx + "]";
 	}
 	
+	
+
+
 	
 	
 	

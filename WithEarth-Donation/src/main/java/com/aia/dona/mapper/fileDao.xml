@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.aia.dona.dao.FileDao">
+
+	<resultMap id="fileResult"
+		type="com.aia.dona.domain.PostFile">
+		<result column="file_idx" property="fileIdx" />
+		<result column="file_name" property="fileName" />
+		<result column="dona_idx" property="donaIdx" />
+	</resultMap>
+
+	<insert id="insertFiles"
+		parameterType="com.aia.dona.domain.PostFile">
+
+		insert into postfile(file_name, dona_idx)
+
+		values(
+
+		#{fileName}, #{donaIdx}
+
+		)
+	</insert>
+
+	<select id="selectPostImages" resultMap="fileResult">
+		select file_idx, file_name from postfile where dona_idx=#{idx};
+	</select>
+
+</mapper>

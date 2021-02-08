@@ -25,30 +25,32 @@
  			<section id="banner">
 			</section>
 			
-			<form method="post">
+			<form method="post" enctype="multipart/form-data" action="<c:url value="/rest/user/post/upload"/>">
 			<h3 class="title">무료나눔 글쓰기</h3><br>
 		<div class="row uniform">		
 			<div class="6u 12u$(xsmall)">
-				<input type="text" name="name" id="name" value="" placeholder="Name" />
+			    <input type="hidden" name="idx" id="idx" value="1"/>
+				<input type="text" name="postTitle" id="postTitle" placeholder="제목" />
+				<input multiple="multiple" type="file" name="postImage" id="postImage"/>				
 			</div>
 			<!-- Break -->
 			<div class="6u 12u$(xsmall)">
 				<div class="select-wrapper">
 					<select name="category" id="category">
 						<option value="">- Category -</option>
-						<option value="1">디지털/가전</option>
-						<option value="2">가구/인테리어</option>
-						<option value="3">유아동/유아도서</option>						
-						<option value="4">생활/가공식품</option>
-						<option value="5">스포츠/레저</option>
-						<option value="6">의류/잡화</option>
-						<option value="7">도서/티켓/음반</option>
-						<option value="8">기타 물품</option>
+						<option value="디지털/가전">디지털/가전</option>
+						<option value="가구/인테리어">가구/인테리어</option>
+						<option value="유아동/유아도서">유아동/유아도서</option>						
+						<option value="생활/가공식품">생활/가공식품</option>
+						<option value="스포츠/레저">스포츠/레저</option>
+						<option value="의류/잡화">의류/잡화</option>
+						<option value="도서/티켓/음반">도서/티켓/음반</option>
+						<option value="기타 물품">기타 물품</option>
 					</select>
 				</div>
 			</div>
 			<div class="12u$">
-				<textarea name="message" id="message"
+				<textarea name="postContent" id="postContent"
 					placeholder="Enter your message" rows="6"></textarea>
 			</div>
 			<!-- Break -->
@@ -60,7 +62,13 @@
 			</div>
 		</div>
 	</form>
-		
+	
+	
+	<script>
+	 
+	  
+	
+	</script>	
     </body>
     	
 		<%@ include file="/WEB-INF/views/include/footer.jsp"%>
