@@ -11,69 +11,59 @@
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
 
 <script type="text/javascript">
-	var now_lat;
-	var now_lon;
-	var new_lat = 37.57081522;
-	var new_lon = 127.00160213;
+	var now_lat = $('#nowLat');
+	var now_lon = $('#nowLon');
+	var new_lat = $('#newLat');
+	new_lat = 37.57081522;
+	var new_lon = $('#newLon')
+	new_lon = 127.00160213;
 
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(function() {
+		// Geolocation API에 액세스할 수 있는지를 확인
+		if (navigator.geolocation) {
+		//위치 정보를 얻기
+			navigator.geolocation.getCurrentPosition(function(pos) {
+				$('#latitude').html(pos.coords.latitude); // 위도 37
+				$('#longitude').html(pos.coords.longitude); // 경도 126
 
-						// Geolocation API에 액세스할 수 있는지를 확인
-						if (navigator.geolocation) {
-							//위치 정보를 얻기
-							navigator.geolocation.getCurrentPosition(function(
-									pos) {
-								$('#latitude').html(pos.coords.latitude); // 위도 37
-								$('#longitude').html(pos.coords.longitude); // 경도 126
+				now_lat = pos.coords.latitude;
+				now_lon = pos.coords.longitude;
+				// initTmap()에 pos.coords.latitude, pos.coords.longitude 값을 전달
 
-								now_lat = pos.coords.latitude;
-								now_lon = pos.coords.longitude;
-								// initTmap()에 pos.coords.latitude, pos.coords.longitude 값을 전달
+				console.log("현재 경도" + now_lon);
+				console.log("현재 위도" + now_lat);
+				initTmap(new_lat, new_lon, now_lat, now_lon);
 
-								console.log("현재 경도" + now_lon);
-								console.log("현재 위도" + now_lat);
-								initTmap(new_lat, new_lon, now_lat, now_lon);
+			});
+		} else {
+			alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
+		}
 
-							});
-						} else {
-							alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
-						}
+		// 주소 검색
+		var map, marker1;
 
-						// 주소 검색
-						var map, marker1;
+		$('#btn_select').click(	function() {
+			console.log('진입1');
 
-						$('#btn_select')
-								.click(
-										function() {
-											console.log('진입1');
+			// 마커 초기화
+			marker1 = new Tmapv2.Marker({
+					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
+					iconSize : new Tmapv2.Size(24, 38),
+					map : map
+			});
 
-											// 마커 초기화
-											marker1 = new Tmapv2.Marker(
-													{
-														icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
-														iconSize : new Tmapv2.Size(
-																24, 38),
-														map : map
-													});
-
-											// 2. API 사용요청
-											var fullAddr = $("#fullAddr").val();
-											$
-													.ajax({
-														method : "GET",
-														url : "https://apis.openapi.sk.com/tmap/geo/fullAddrGeo?version=1&format=json&callback=result",
-														async : false,
-														data : {
-															appKey : "l7xxa82c096d66484d37ac10b23c15a64620",
-															coordType : "WGS84GEO", // 지구 위의 위치를 나타내는 좌표 타입
-															fullAddr : fullAddr
-														// 주소 정보
-
-														},
-														success : function(
-																response) {
+			// 2. API 사용요청
+			var fullAddr = $("#fullAddr").val();
+			$.ajax({
+				method : "GET",
+				url : "https://apis.openapi.sk.com/tmap/geo/fullAddrGeo?version=1&format=json&callback=result",
+				async : false,
+				data : {
+				appKey : "l7xxa82c096d66484d37ac10b23c15a64620",
+				coordType : "WGS84GEO", // 지구 위의 위치를 나타내는 좌표 타입
+				fullAddr : fullAddr		// 주소 정보
+				},
+				success : function(response) {
 
 															var resultInfo = response.coordinateInfo; // .coordinateInfo -> 좌표 정보
 															console
@@ -482,7 +472,6 @@
 	}  */
 
 	// 시작, 도착 보행자 경로 안내
-	
 	var map;
 	var marker_s, marker_e, marker_p1, marker_p2;
 	var totalMarkerArr = [];
@@ -532,36 +521,32 @@
 				});
 
 		// 3. 경로탐색 API 사용요청
-		$
-				.ajax({
-					method : "POST",
-					url : "https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=json&callback=result",
-					async : false,
-					data : {
+		$.ajax({
+			method : "POST",
+			url : "https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=json&callback=result",
+			async : false,
+			data : {
+				appKey : "l7xxa82c096d66484d37ac10b23c15a64620",
+				startX : nowlon, // 경도
+				startY : nowlat, // 위도
+				angel : 1,
+				speed : 60,
+				endX : newlon, // 경도
+				endY : newlat, // 위도
+				reqCoordType : "WGS84GEO", // 출발지, 경유지, 목적지 좌표게 유형  / WGS84GEO(기본값) - 경위도
+				resCoordType : "EPSG3857", // 받고자 하는 응답 좌표계 유형 / WGS84GEO(기본값) - 경위도
+				startName : "출발지", // %EC%B6%9C%EB%B0%9C
+				endName : "목적지" // %EB%B3%B8%EC%82%AC
 
-						appKey : "l7xxa82c096d66484d37ac10b23c15a64620",
-						startX : nowlon, // 경도
-						startY : nowlat, // 위도
-						angel : 1,
-						speed : 60,
-						endX : newlon, // 경도
-						endY : newlat, // 위도
-						reqCoordType : "WGS84GEO", // 출발지, 경유지, 목적지 좌표게 유형  / WGS84GEO(기본값) - 경위도
-						resCoordType : "EPSG3857", // 받고자 하는 응답 좌표계 유형 / WGS84GEO(기본값) - 경위도
-						startName : "출발지", // %EC%B6%9C%EB%B0%9C
-						endName : "목적지" // %EB%B3%B8%EC%82%AC
+			},
+			success : function(response) {
+			var resultData = response.features;
 
-					},
-					success : function(response) {
-						var resultData = response.features;
-
-						//결과 출력
-						var tDistance = "총 거리 : "
-								+ ((resultData[0].properties.totalDistance) / 1000)
-										.toFixed(1) + "km,";
-						var tTime = " 총 시간 : "
-								+ ((resultData[0].properties.totalTime) / 60)
-										.toFixed(0) + "분";
+			//결과 출력
+			var tDistance=$('#tDistance')
+			tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
+			var tTime=$('#tTime')
+			tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
 
 						$("#result").text(tDistance + tTime);
 
@@ -675,6 +660,7 @@
 
 </head>
 <body>
+	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<h2 id="addresult"></h2>
 	<br />
 	<input type="text" class="text_custom" id="fullAddr" name="fullAddr"

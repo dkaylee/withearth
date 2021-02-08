@@ -25,6 +25,7 @@ public class CourseSettingService {
 		
 		Course course = setRequest.toCourse();
 		
+		// 데이터 베이스 입력
 		dao = template.getMapper(WalkingDao.class);
 		
 		//course_count -> courseCount +1 update

@@ -18,7 +18,7 @@ public class CourseSettingController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getcourseSet() {
 		
-		return "course_setting_form";
+		return "test210208";
 		
 	}
 	

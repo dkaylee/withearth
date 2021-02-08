@@ -1,16 +1,19 @@
 package com.withearth.walking.domain;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Course {
 	
 	private int course_idx;
 	private Timestamp course_date;
-	private Timestamp walking_date;
-	private int real_km;
-	private int loc_km;
-	private String start;
-	private String end;
+	private BigDecimal loc_km;
+	private BigDecimal now_lat;
+	private BigDecimal now_lon;
+	private BigDecimal new_lat;
+	private BigDecimal new_lon;
+	
+	
 	
 	// getter/setter
 	public int getCourse_idx() {
@@ -25,43 +28,47 @@ public class Course {
 	public void setCourse_date(Timestamp course_date) {
 		this.course_date = course_date;
 	}
-	public Timestamp getWalking_date() {
-		return walking_date;
-	}
-	public void setWalking_date(Timestamp walking_date) {
-		this.walking_date = walking_date;
-	}
-	public int getReal_km() {
-		return real_km;
-	}
-	public void setReal_km(int real_km) {
-		this.real_km = real_km;
-	}
-	public int getLoc_km() {
+	public BigDecimal getLoc_km() {
 		return loc_km;
 	}
-	public void setLoc_km(int loc_km) {
-		this.loc_km = loc_km;
+	public void setLoc_km(BigDecimal tDistance) {
+		this.loc_km = tDistance;
 	}
-	public String getStart() {
-		return start;
+	public BigDecimal getNow_lat() {
+		return now_lat;
 	}
-	public void setStart(String start) {
-		this.start = start;
+	public void setNow_lat(BigDecimal now_lat) {
+		this.now_lat = now_lat;
 	}
-	public String getEnd() {
-		return end;
+	public BigDecimal getNow_lon() {
+		return now_lon;
 	}
-	public void setEnd(String end) {
-		this.end = end;
+	public void setNow_lon(BigDecimal now_lon) {
+		this.now_lon = now_lon;
+	}
+	public BigDecimal getNew_lat() {
+		return new_lat;
+	}
+	public void setNew_lat(BigDecimal new_lat) {
+		this.new_lat = new_lat;
+	}
+	public BigDecimal getNew_lon() {
+		return new_lon;
+	}
+	public void setNew_lon(BigDecimal new_lon) {
+		this.new_lon = new_lon;
 	}
 	
-	// toString
+	// toString()
 	@Override
 	public String toString() {
-		return "Course [course_idx=" + course_idx + ", course_date=" + course_date + ", walking_date=" + walking_date
-				+ ", real_km=" + real_km + ", loc_km=" + loc_km + ", start=" + start + ", end=" + end + "]";
+		return "Course [course_idx=" + course_idx + ", course_date=" + course_date + ", loc_km=" + loc_km + ", now_lat="
+				+ now_lat + ", now_lon=" + now_lon + ", new_lat=" + new_lat + ", new_lon=" + new_lon + "]";
 	}
+	
+	
+	
+	
 	
 	
 	
