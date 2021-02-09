@@ -20,7 +20,7 @@ public class MemberLoginController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String loginForm() {
-		return "member/loginform2";
+		return "member/loginform";
 	}
 
 	@RequestMapping(method=RequestMethod.POST)

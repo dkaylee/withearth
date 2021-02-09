@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <!— jQuery library —>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
 <!— Popper JS —>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -74,7 +74,7 @@
 </body>
 
 <script src="<c:url value="/js/login/bootstrap.bundle.min.js"/>"></script>
-<script src="<c:url value="/js/login/jquery.slim.min.js"/>"></script>
+
 
 <!-- 카카오 로그인 -->
 <script type='text/javascript'>
@@ -103,35 +103,38 @@
 		//사용자 정보 가져오기
 		Kakao.API.request({
 		    url: '/v2/user/me',
-		    success: function(response){
-		    	console.log(response);
-		    	usingajax();
-
-		    },
-			fail: function(error){
-				console.log(error);
-			}
+		    success: function(res){
+		    	console.log(res);
+			var nick = res.properties.nickname;
+		 	var pimg = res.properties.profile_image;
+		 	var thumimg = res.properties.thumbnail_img;
+		 	var email = res.kakao_account.email;
+		 	var kakaoinfo = {"ka_name":nick,"ka_img":pimg,"ka_thum":thumimg,
+		 			"ka_email":email};
+		 	
+		 	$.ajax({
+				url : '/KakaoLogin',//컨트롤러
+				type : 'post',
+				dataType : 'JSON',
+				data : JSON.stringify(kakaoinfo),
+				success : function(data) {
+					console.log("성공");
+				},
+				error: function(error){
+					console.log(error);
+				}
+				
+		 	});//ajax
+		 	
+		    },//성공
 		    
+		    fail: function(error){
+				console.log(error);
+			}//실패
 		});
-	}
-
+	};		
 </script>
-<script>
-	function usingajax(){
-		//ajax를 이용해 데이터 보내기
-		
-	$.ajax({
-			url : '/KakaoLogin',
-			type : 'post',
-			dataType : 'json',
-			data : JSON.stringify(response),
-			success : function(data) {
-				console.log("성공");
-			}
-		});
 
-	}
-</script>
 <script>
 	function logout(){
 		Kakao.API.request({
