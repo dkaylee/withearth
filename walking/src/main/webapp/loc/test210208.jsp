@@ -6,6 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>simpleMap</title>
 
+<style>
+#eddAdd{
+	float: left;
+}
+</style>
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
@@ -150,244 +156,171 @@
 						// 온다
 
 						if (resultCoordinate.newMatchFlag.length > 0) {
-							// 새(도로명) 주소 좌표 매칭
-							// 구분 코드
-							newMatchFlag = resultCoordinate.newMatchFlag;
-							console.log('진입8');
+								// 새(도로명) 주소 좌표 매칭
+								// 구분 코드
+								newMatchFlag = resultCoordinate.newMatchFlag;
+								console.log('진입8');
+								// 시/도 명칭
+								if (resultCoordinate.city_do.length > 0) {
+								city = resultCoordinate.city_do;
+								newAddress += city+ "\n";
+	
+							}
+	
+							// 군/구 명칭
+							if (resultCoordinate.gu_gun.length > 0) {
+								gu_gun = resultCoordinate.gu_gun;
+								newAddress += gu_gun+ "\n";
+								console.log('진입9');
+							}
+	
+							// 읍면동 명칭
+							if (resultCoordinate.eup_myun.length > 0) {
+								eup_myun = resultCoordinate.eup_myun;
+								newAddress += eup_myun+ "\n";
+							} else {
+									// 출력 좌표에 해당하는
+									// 법정동 명칭
+									if (resultCoordinate.legalDong.length > 0) {
+										legalDong = resultCoordinate.legalDong;
+										newAddress += legalDong+ "\n";
+									}
+									// 출력 좌표에 해당하는
+									// 행정동 명칭
+									if (resultCoordinate.adminDong.length > 0) {
+										adminDong = resultCoordinate.adminDong;
+										newAddress += adminDong+ "\n";
+									}
+								}										
+								// 출력 좌표에 해당하는 리 명칭
+								if (resultCoordinate.ri.length > 0) {
+									ri = resultCoordinate.ri;
+									newAddress += ri+ "\n";
+								}
+								// 출력 좌표에 해당하는 지번 명칭
+								if (resultCoordinate.bunji.length > 0) {
+									bunji = resultCoordinate.bunji;
+									newAddress += bunji+ "\n";
+								}
+								// 새(도로명)주소 매칭을 한
+								// 경우, 길 이름을 반환
+								if (resultCoordinate.newRoadName.length > 0) {
+									newRoadName = resultCoordinate.newRoadName;
+									newAddress += newRoadName+ "\n";
+								}
+								// 새(도로명)주소 매칭을 한
+								// 경우, 건물 번호를 반환
+								if (resultCoordinate.newBuildingIndex.length > 0) {
+									newBuildingIndex = resultCoordinate.newBuildingIndex;
+									newAddress += newBuildingIndex+ "\n";
+								}
+								// 새(도로명)주소 매칭을 한
+								// 경우, 건물 이름를 반환
+								if (resultCoordinate.newBuildingName.length > 0) {
+									newBuildingName = resultCoordinate.newBuildingName;
+									newAddress += newBuildingName+ "\n";
+								}
+								// 새주소 건물을 매칭한 경우
+								// 새주소 건물 동을 반환
+								if (resultCoordinate.newBuildingDong.length > 0) {
+									newBuildingDong = resultCoordinate.newBuildingDong;
+									newAddress += newBuildingDong+ "\n";
+								}
+								// 검색 결과 표출
+								if (lonEntr > 0) {
+									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
+									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(중심점) : "+ lat+ ", "
+																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
+									var text = "검색결과(새주소) : "+ newAddress+ "\n "
+									$("#endAdd").html(text);
+		
+								} else {
+									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
+									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
+									var text = "검색결과(새주소) : "+ newAddress
+									$("#endAdd").html(text);
+								}
+							}
+	
+						// 구주소일 때 검색 결과 표출
+						// 구주소인 경우 newMatchFlag가
+						// 아닌 MatchFlag가 응닶값으로
+						// 온다
+						if (resultCoordinate.matchFlag.length > 0) {
+						// 매칭 구분 코드
+							matchFlag = resultCoordinate.matchFlag;
+		
 							// 시/도 명칭
 							if (resultCoordinate.city_do.length > 0) {
-							city = resultCoordinate.city_do;
-							newAddress += city+ "\n";
+								city = resultCoordinate.city_do;
+								address += city+ "\n";
+							}
+							// 군/구 명칭
+							if (resultCoordinate.gu_gun.length > 0) {
+								gu_gun = resultCoordinate.gu_gun;
+								address += gu_gun+ "\n";
+							}
+							// 읍면동 명칭
+							if (resultCoordinate.eup_myun.length > 0) {
+								eup_myun = resultCoordinate.eup_myun;
+								address += eup_myun+ "\n";
+							}
+							// 출력 좌표에 해당하는 법정동
+							// 명칭
+							if (resultCoordinate.legalDong.length > 0) {
+								legalDong = resultCoordinate.legalDong;
+								address += legalDong+ "\n";
+							}
+							// 출력 좌표에 해당하는 행정동
+							// 명칭
+							if (resultCoordinate.adminDong.length > 0) {
+								adminDong = resultCoordinate.adminDong;
+								address += adminDong+ "\n";
+							}
+							// 출력 좌표에 해당하는 리 명칭
+							if (resultCoordinate.ri.length > 0) {
+								ri = resultCoordinate.ri;
+								address += ri+ "\n";
+							}
+							// 출력 좌표에 해당하는 지번 명칭
+							if (resultCoordinate.bunji.length > 0) {
+								bunji = resultCoordinate.bunji;
+								address += bunji+ "\n";
+							}
+							// 출력 좌표에 해당하는 건물 이름
+							// 명칭
+							if (resultCoordinate.buildingName.length > 0) {
+								buildingName = resultCoordinate.buildingName;
+								address += buildingName+ "\n";
+							}
+							// 출력 좌표에 해당하는 건물 동을
+							// 명칭
+							if (resultCoordinate.buildingDong.length > 0) {
+								buildingDong = resultCoordinate.buildingDong;
+								address += buildingDong+ "\n";
+							}
+							// 검색 결과 표출
+								var new_lt;
+								var new_lo;
+								if (lonEntr > 0) {
+									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
+									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br>"	+ "위경도좌표(중심점) : "
+																+ lat+ ", "+ lon+ "</br>"+ "위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
+									var text = "검색결과(지번주소) : "+ address;
+									$("#endAdd").html(text);
+									
+		
+								} else {
+									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
+									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"
+												+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
+									var text = "검색결과(지번주소) : "+ address;
+									$("#endAdd").html(text);
+								}
+							}
+					}
 
-						}
-
-																	// 군/구 명칭
-																	if (resultCoordinate.gu_gun.length > 0) {
-																		gu_gun = resultCoordinate.gu_gun;
-																		newAddress += gu_gun
-																				+ "\n";
-																		console
-																				.log('진입9');
-																	}
-
-																	// 읍면동 명칭
-																	if (resultCoordinate.eup_myun.length > 0) {
-																		eup_myun = resultCoordinate.eup_myun;
-																		newAddress += eup_myun
-																				+ "\n";
-																	} else {
-																		// 출력 좌표에 해당하는
-																		// 법정동 명칭
-																		if (resultCoordinate.legalDong.length > 0) {
-																			legalDong = resultCoordinate.legalDong;
-																			newAddress += legalDong
-																					+ "\n";
-																		}
-																		// 출력 좌표에 해당하는
-																		// 행정동 명칭
-																		if (resultCoordinate.adminDong.length > 0) {
-																			adminDong = resultCoordinate.adminDong;
-																			newAddress += adminDong
-																					+ "\n";
-																		}
-																	}
-																	// 출력 좌표에 해당하는 리 명칭
-																	if (resultCoordinate.ri.length > 0) {
-																		ri = resultCoordinate.ri;
-																		newAddress += ri
-																				+ "\n";
-																	}
-																	// 출력 좌표에 해당하는 지번 명칭
-																	if (resultCoordinate.bunji.length > 0) {
-																		bunji = resultCoordinate.bunji;
-																		newAddress += bunji
-																				+ "\n";
-																	}
-																	// 새(도로명)주소 매칭을 한
-																	// 경우, 길 이름을 반환
-																	if (resultCoordinate.newRoadName.length > 0) {
-																		newRoadName = resultCoordinate.newRoadName;
-																		newAddress += newRoadName
-																				+ "\n";
-																	}
-																	// 새(도로명)주소 매칭을 한
-																	// 경우, 건물 번호를 반환
-																	if (resultCoordinate.newBuildingIndex.length > 0) {
-																		newBuildingIndex = resultCoordinate.newBuildingIndex;
-																		newAddress += newBuildingIndex
-																				+ "\n";
-																	}
-																	// 새(도로명)주소 매칭을 한
-																	// 경우, 건물 이름를 반환
-																	if (resultCoordinate.newBuildingName.length > 0) {
-																		newBuildingName = resultCoordinate.newBuildingName;
-																		newAddress += newBuildingName
-																				+ "\n";
-																	}
-																	// 새주소 건물을 매칭한 경우
-																	// 새주소 건물 동을 반환
-																	if (resultCoordinate.newBuildingDong.length > 0) {
-																		newBuildingDong = resultCoordinate.newBuildingDong;
-																		newAddress += newBuildingDong
-																				+ "\n";
-																	}
-																	// 검색 결과 표출
-																	if (lonEntr > 0) {
-																		var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-																		var text = "검색결과(새주소) : "
-																				+ newAddress
-																				+ ",\n 응답코드:"
-																				+ newMatchFlag
-																				+ "(상세 코드 내역은 "
-																				+ docs
-																				+ " 에서 확인)"
-																				+ "</br> 위경도좌표(중심점) : "
-																				+ lat
-																				+ ", "
-																				+ lon
-																				+ "</br>위경도좌표(입구점) : "
-																				+ latEntr
-																				+ ", "
-																				+ lonEntr;
-																		$(
-																				"#addresult")
-																				.html(
-																						text);
-
-																	} else {
-																		var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-																		var text = "검색결과(새주소) : "
-																				+ newAddress
-																				+ ",\n 응답코드:"
-																				+ newMatchFlag
-																				+ "(상세 코드 내역은 "
-																				+ docs
-																				+ " 에서 확인)"
-																				+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다.";
-																		$(
-																				"#addresult")
-																				.html(
-																						text);
-																	}
-																}
-
-																// 구주소일 때 검색 결과 표출
-																// 구주소인 경우 newMatchFlag가
-																// 아닌 MatchFlag가 응닶값으로
-																// 온다
-																if (resultCoordinate.matchFlag.length > 0) {
-																	// 매칭 구분 코드
-																	matchFlag = resultCoordinate.matchFlag;
-
-																	// 시/도 명칭
-																	if (resultCoordinate.city_do.length > 0) {
-																		city = resultCoordinate.city_do;
-																		address += city
-																				+ "\n";
-																	}
-																	// 군/구 명칭
-																	if (resultCoordinate.gu_gun.length > 0) {
-																		gu_gun = resultCoordinate.gu_gun;
-																		address += gu_gun
-																				+ "\n";
-																	}
-																	// 읍면동 명칭
-																	if (resultCoordinate.eup_myun.length > 0) {
-																		eup_myun = resultCoordinate.eup_myun;
-																		address += eup_myun
-																				+ "\n";
-																	}
-																	// 출력 좌표에 해당하는 법정동
-																	// 명칭
-																	if (resultCoordinate.legalDong.length > 0) {
-																		legalDong = resultCoordinate.legalDong;
-																		address += legalDong
-																				+ "\n";
-																	}
-																	// 출력 좌표에 해당하는 행정동
-																	// 명칭
-																	if (resultCoordinate.adminDong.length > 0) {
-																		adminDong = resultCoordinate.adminDong;
-																		address += adminDong
-																				+ "\n";
-																	}
-																	// 출력 좌표에 해당하는 리 명칭
-																	if (resultCoordinate.ri.length > 0) {
-																		ri = resultCoordinate.ri;
-																		address += ri
-																				+ "\n";
-																	}
-																	// 출력 좌표에 해당하는 지번 명칭
-																	if (resultCoordinate.bunji.length > 0) {
-																		bunji = resultCoordinate.bunji;
-																		address += bunji
-																				+ "\n";
-																	}
-																	// 출력 좌표에 해당하는 건물 이름
-																	// 명칭
-																	if (resultCoordinate.buildingName.length > 0) {
-																		buildingName = resultCoordinate.buildingName;
-																		address += buildingName
-																				+ "\n";
-																	}
-																	// 출력 좌표에 해당하는 건물 동을
-																	// 명칭
-																	if (resultCoordinate.buildingDong.length > 0) {
-																		buildingDong = resultCoordinate.buildingDong;
-																		address += buildingDong
-																				+ "\n";
-																	}
-																	// 검색 결과 표출
-																	var new_lt;
-																	var new_lo;
-																	if (lonEntr > 0) {
-																		var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
-																		var text = "검색결과(지번주소) : "
-																				+ address
-																				+ ","
-																				+ "\n"
-																				+ "응답코드:"
-																				+ matchFlag
-																				+ "(상세 코드 내역은 "
-																				+ docs
-																				+ " 에서 확인)"
-																				+ "</br>"
-																				+ "위경도좌표(중심점) : "
-																				+ lat
-																				+ ", "
-																				+ lon
-																				+ "</br>"
-																				+ "위경도좌표(입구점) : "
-																				+ latEntr
-																				+ ", "
-																				+ lonEntr;
-																		$(
-																				"#addresult")
-																				.html(
-																						text);
-
-																	} else {
-																		var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
-																		var text = "검색결과(지번주소) : "
-																				+ address
-																				+ ","
-																				+ "\n"
-																				+ "응답코드:"
-																				+ matchFlag
-																				+ "(상세 코드 내역은 "
-																				+ docs
-																				+ " 에서 확인)"
-																				+ "</br>"
-																				+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다.";
-																		$(
-																				"#addresult")
-																				.html(
-																						text);
-																	}
-																}
-															}
-
-														},
+				},
 
 														error : function(
 																request,
@@ -408,13 +341,41 @@
 																	.setCenter(new Tmapv2.LatLng(
 																			37.570028,
 																			126.986072));
-															$("#addresult")
+															$("#endAdd")
 																	.html("");
 
 														}
 													});
 										});
-					}); // ready
+		
+		$('#btn_save').click(function(){
+			console.log('test1');
+			var formData = new FormData();
+			formData.append("nowLat",$('#latitude').val()); // 현위치 위도
+			formData.append("nowLon",$('#longitude').val()); // 현위치 경도
+			formData.append("newLat",$('#sch_lat').val()); // 검색위치 위도
+			formData.append("newLon",$('#sch_lon').val()); // 검색 위치 경도
+			formData.append("tDistance",$('#tDistance').val()); // 총 거리
+			formData.append("tTime", $('#tTime').val()); 	// 총 시간
+			
+			console.log('formData: '+formData);
+					
+			$.ajax({
+				url : '/walking/course/setting',
+				type : 'post',
+				data : formData,
+				processData : false,
+				contentType : false,
+				cache : false ,
+				success : function(data){
+					console.log('데이터 전송 성공!' + data);
+				}
+			});
+			
+		
+		}); // #btn_save
+		
+}); // ready
 
 	// 현재위치 정보 불러오기
 	$(function() {
@@ -500,12 +461,12 @@
 			var resultData = response.features;
 
 			//결과 출력
-			var tDistance=$('#tDistance')
-			tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
-			var tTime=$('#tTime')
-			tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+			var tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
+			var tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
 
 						$("#result").text(tDistance + tTime);
+						$("#tDistance").text(tDistance);
+						$("#tTime").text(tTime);
 
 						//기존 그려진 라인 & 마커가 있다면 초기화
 						if (resultdrawArr.length > 0) {
@@ -612,27 +573,31 @@
 		});
 		resultdrawArr.push(polyline_);
 	}
+	
+	
 </script>
 
 
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	<h2 id="addresult"></h2>
-	<br />
-	<input type="text" class="text_custom" id="fullAddr" name="fullAddr"
+	
+	<h3>출발지:</h3><br>
+	<h3></h3>
+	<h3>목적지 </h3><input type="text" class="text_custom" id="fullAddr" name="fullAddr"
 		value="서울시 마포구 와우산로29가길 69">
-	<button id="btn_select">적용하기</button>
-
+	<button id="btn_select">설정 하기</button>
+	<h2 id="endAdd"></h2> <button id="btn_save">저장 하기</button>
+	
+	<br />
+	<br>
 	<!-- 경로 지도 -->
-	<script>
-		
-	</script>
 	<div id="map_wrap" class="map_wrap3">
 		<div id="map_div"></div>
 	</div>
 	<div class="map_act_btn_wrap clear_box"></div>
-	<p id="result"></p>
+	
+	<h2 id="result"></h2>
 	<br />
 
 	<ul>
@@ -643,6 +608,11 @@
 	<ul>
 		<li>경도 검색 결과: <span id="sch_lat"></span></li>
 		<li>위도 검색 결과: <span id="sch_lon"></span></li>
+	</ul>
+	
+	<ul>
+		<li>총 거리: <span id="tDistance"></span></li>
+		<li>총 시간: <span id="tTime"></span></li>
 	</ul>
 </body>
 </html>

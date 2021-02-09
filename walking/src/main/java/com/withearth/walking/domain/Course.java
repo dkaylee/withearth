@@ -5,16 +5,25 @@ import java.sql.Timestamp;
 
 public class Course {
 	
-	private int course_idx;
-	private Timestamp course_date;
-	private BigDecimal loc_km;
-	private BigDecimal now_lat;
-	private BigDecimal now_lon;
-	private BigDecimal new_lat;
-	private BigDecimal new_lon;
+	// DB
+	private int course_idx; // 코스 idx
+	private Timestamp course_date; // 코스 설정 일자
+	private BigDecimal loc_km; // 코스 총 거리
+	private BigDecimal now_lat; // 현위치 위도
+	private BigDecimal now_lon; // 현위치 경도
+	private BigDecimal new_lat; // 목적지 위도
+	private BigDecimal new_lon; // 목적지 경도
+	private String end_add; // 목적지 주소
+	private int total_time; // 총 소요 시간
 	
 	
 	
+	public String getEnd_add() {
+		return end_add;
+	}
+	public void setEnd_add(String end_add) {
+		this.end_add = end_add;
+	}
 	// getter/setter
 	public int getCourse_idx() {
 		return course_idx;
@@ -59,11 +68,21 @@ public class Course {
 		this.new_lon = new_lon;
 	}
 	
+	
+	
+	public int getTotal_time() {
+		return total_time;
+	}
+	public void setTotal_time(int total_time) {
+		this.total_time = total_time;
+	}
+	
 	// toString()
 	@Override
 	public String toString() {
 		return "Course [course_idx=" + course_idx + ", course_date=" + course_date + ", loc_km=" + loc_km + ", now_lat="
-				+ now_lat + ", now_lon=" + now_lon + ", new_lat=" + new_lat + ", new_lon=" + new_lon + "]";
+				+ now_lat + ", now_lon=" + now_lon + ", new_lat=" + new_lat + ", new_lon=" + new_lon + ", end_add="
+				+ end_add + ", total_time=" + total_time + "]";
 	}
 	
 	
