@@ -47,5 +47,9 @@
 	<select id="selectPostDetail" resultMap="postDetailResult">	 
       select * from donapost where dona_idx=#{idx}
 	</select>
+	
+	<select id="selectMyPostList" resultMap="postDetailResult">
+	  select * from donapost where idx=#{idx}
+	</select>
 
 </mapper>

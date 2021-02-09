@@ -67,6 +67,10 @@
 	  font-weight: bold;
 	}
 	
+	.pBtn{
+	  float : right;
+	}
+	
 	
 	</style>	
     </head>
@@ -93,15 +97,14 @@
 			</section>			
 	
 						
-	<input type="button" id="btn1" value="보기">
-	<a href="<c:url value="/main/post/upload"/>"><input type="button" value="글쓰기"/></a>	
+   <a href="<c:url value="/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="내 글 보기"></a> 
+	<a href="<c:url value="/main/post/upload"/>"><input type="button" class="pBtn" value="글쓰기"></a>	
   
   
    
    	<script>
 		$(document).ready(function() {
 
-			$('#btn1').click(function() {
 
 				$.ajax({
 
@@ -111,10 +114,8 @@
 
 						$.each(data, function(index, item) {
 													
-							//var html ='<div class="article" onClick="location.href=\'<c:url value="/rest/user/post/detail?idx='+item.donaIdx+'"/>\'">';	
 							var html ='<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 							html += '<div class="article-img">';
-							//html += '<div>'+item.donaIdx+'</div>';
 							html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
 							html += '</div>';
 							html += '<div class="article-content">';
@@ -132,8 +133,7 @@
 						console.log("에러 발생 : " + e);
 					}
 
-				})
-			});
+				});
 			
 		
 

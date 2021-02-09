@@ -24,11 +24,27 @@ public class MainViewController {
 		
 		return "post/postList";
 	}
+	
 	@RequestMapping("/main/post/detail")
 	public String goDetailView(
 			@RequestParam("idx") int donaIdx) {
 		
 		return "post/postDetailView";
 	}
+	
+	@RequestMapping("/main/post/mypost")
+	public String goUpdateView(
+			@RequestParam("idx") int donaIdx) {
+		
+		return "post/myPostList";
+	}
+	
+	@RequestMapping("/main/post/edit")
+	public String goEditForm(
+			@RequestParam("idx") int donaIdx) {
+		
+		return "post/postEditForm";
+	}
+	
 
 }

@@ -56,7 +56,7 @@
 
 .userInfo{
   float : left; 
-  width : 500px;
+  width : 200px;
 }
 
 .userId{
@@ -71,7 +71,6 @@
  margin-top : 10px;
 }
 
-
 .seperate{
  width : 750px;
  margin : 0 auto;
@@ -85,21 +84,22 @@
 }
 
 #heart{
-  float: left;
+  padding : -5px;
   width : 8px;
   font-size : 20px;
   text-align: center;
   font-weight : bold;
   color :  #A6ABAB!important; 
   background-color: white;
-  margin-top : -20px;
- 
+  margin-top : -20px; 
+  text-decoration: none !important;
+  
 }
 
  #postTitle{
   font-size : 30px;
   font-weight: bold;
-  font-color : #3D3D3D;
+  color : #3D3D3D;
 }
 
  #postCategory{
@@ -115,10 +115,21 @@
  }
  
  #heartCnt{
+  width : 100px;
+  margin-left : 30px;
+  margin-bottom : 20px;
   font-size : 13px;
   font-weight: bold;
   color : #A6ABAB; 
+  
  }
+ 
+ #heart-div{
+   margin-top : -20px;
+
+ }
+
+ 
  
  
 </style>
@@ -134,7 +145,7 @@
 	<section id="three" class="wrapper special">
 		<div class="inner">
 		
-   <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+   <div id="myCarousel" class="carousel slide" data-bs-interval="false">
 
   <!-- Indicators -->
 <!--   <ul class="carousel-indicators">
@@ -165,7 +176,6 @@
   <br>
   <hr class="seperate">
   <div class="postDetails">
-
   </div>
  </div>
 
@@ -183,15 +193,9 @@
 	<script>
 		$(document).ready(function() {
 							// 게시물 idx 받기
-							function getParameterByName(name) {
-								name = name.replace(/[\[]/, "\\[").replace(
-										/[\]]/, "\\]");
-								var regex = new RegExp("[\\?&]" + name
-										+ "=([^&#]*)"), results = regex
-										.exec(location.search);
-								return results === null ? ""
-										: decodeURIComponent(results[1]
-												.replace(/\+/g, " "));
+							function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+								var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
+								return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
 							}
 
 							var donaIdx = getParameterByName('idx');
@@ -206,7 +210,7 @@
 												 var html = '<h2 class="post" id="postTitle">'+data.postTitle+'</h2>';
 												     html+= '<h5 class="post" id="postCategory">카테고리 : '+data.category+' ∙ 작성일 : '+data.writedate+'</h5>';
 												     html+= '<p class="post" id="postContent">'+data.postContent+'</p>';
-												     html+= '<button class="post" id="heart">♡</button><h5 class="post" id="heartCnt">관심 3</h5>';
+												     html+= '<div class="post" id="heart-div"><button style="float : left;" id="heart">♡</button><div id="heartCnt">관심 3</div></div>';
 											
 												     $('.postDetails').append(html);
 												
@@ -276,6 +280,13 @@
 							    $("#myCarousel").carousel("next");
 							  });	
 							 
+							  
+							  
+							  $('#heart').click(function(){
+								  
+								  $('#heart').value = '♥';
+								  
+							  })
 							
 						});
 		

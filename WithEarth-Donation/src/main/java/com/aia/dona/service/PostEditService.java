@@ -15,24 +15,28 @@ import org.springframework.web.multipart.MultipartFile;
 import com.aia.dona.dao.FileDao;
 import com.aia.dona.dao.PostDao;
 import com.aia.dona.domain.Post;
+import com.aia.dona.domain.PostEditRequest;
 import com.aia.dona.domain.PostFile;
-import com.aia.dona.domain.RequestPost;
+import com.aia.dona.domain.PostOnly;
 
 import net.coobird.thumbnailator.Thumbnailator;
 
 @Service
-public class PostUploadService {
-
-	private PostDao dao;
-
+public class PostEditService {
+	
+	private PostDao pDao;
+	
 	private FileDao fDao;
 
 	@Autowired
 	private SqlSessionTemplate template;
-
-	public int upload(RequestPost requestPost, HttpServletRequest request, Model model) {
-
-		MultipartFile[] files = requestPost.getPostImage();
+	
+	public int editPost(
+			PostEditRequest editRequest,
+			HttpServletRequest request,
+			Model model) {
+		
+		MultipartFile[] files = editRequest.getPostImage();
 
 		File newFile = null;
 			
@@ -46,16 +50,16 @@ public class PostUploadService {
 		String newFileName = "";
 		
 		// DB에 이미지 이름 저장
-		Post post = requestPost.toPost();   
+		PostOnly post = editRequest.toPost();   
 	    
-		dao = template.getMapper(PostDao.class);
+		pDao = template.getMapper(PostDao.class);
 		
-		int result = dao.insertPost(post);
+		int result = pDao.updatePost(post);
 		
 		// 속성에 저장 -> 나중에 확인해서 출력
 		model.addAttribute("result", result);
 		
-		int donaIdx = dao.getDonaIdx();
+		int donaIdx = pDao.getDonaIdx();
 			
 
 		// 파일 배열에서 꺼내서 경로에 저장하기
@@ -93,14 +97,15 @@ public class PostUploadService {
 		
 			fDao = template.getMapper(FileDao.class);
 
-			fDao.insertFiles(postFiles);
+			//fDao.updateFiles(postFiles);
 			
-						
-		}
-		
-		System.out.println(newFileName);
-
-		return result;
+					
+		pDao = template.getMapper(PostDao.class);
+					
 	}
-
+	
+		return pDao.updatePost(editRequest);
+   
+}
+	
 }
