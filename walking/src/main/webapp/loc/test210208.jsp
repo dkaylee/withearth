@@ -348,7 +348,7 @@
 													});
 										});
 		
-		$('#btn_save').click(function(){
+		 $('#btn_save').click(function(){
 			console.log('test1');
 			var formData = new FormData();
 			formData.append("nowLat",$('#latitude').val()); // 현위치 위도
@@ -361,19 +361,21 @@
 			console.log('formData: '+formData);
 					
 			$.ajax({
-				url : '/walking/course/setting',
+				url : 'setting',
 				type : 'post',
-				data : formData,
+				data : ,
 				processData : false,
 				contentType : false,
 				cache : false ,
 				success : function(data){
 					console.log('데이터 전송 성공!' + data);
+				},error:function(request,status,error){
+				    console.log(error);
 				}
 			});
 			
 		
-		}); // #btn_save
+		}); // #btn_save 
 		
 }); // ready
 
@@ -582,37 +584,39 @@
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
-	<h3>출발지:</h3><br>
-	<h3></h3>
-	<h3>목적지 </h3><input type="text" class="text_custom" id="fullAddr" name="fullAddr"
-		value="서울시 마포구 와우산로29가길 69">
-	<button id="btn_select">설정 하기</button>
-	<h2 id="endAdd"></h2> <button id="btn_save">저장 하기</button>
+		<h3>출발지:</h3><br>
+		<h3></h3>
+		<h3>목적지 </h3><input type="text" class="text_custom" id="fullAddr" name="fullAddr"
+			value="서울시 마포구 와우산로29가길 69">
+		<button id="btn_select">설정 하기</button>
+		<h2 id="endAdd"></h2> <button id="btn_save">저장 하기</button>
+		
+		<br />
+		<br>
+		<!-- 경로 지도 -->
+		<div id="map_wrap" class="map_wrap3">
+			<div id="map_div"></div>
+		</div>
+		<div class="map_act_btn_wrap clear_box"></div>
+		
+		<h2 id="result"></h2>
+		<br />
 	
-	<br />
-	<br>
-	<!-- 경로 지도 -->
-	<div id="map_wrap" class="map_wrap3">
-		<div id="map_div"></div>
-	</div>
-	<div class="map_act_btn_wrap clear_box"></div>
+		<ul>
+			<li>경도:<span id="latitude"></span></li>
+			<li>위도:<span id="longitude"></span></li>
 	
-	<h2 id="result"></h2>
-	<br />
-
-	<ul>
-		<li>경도:<span id="latitude"></span></li>
-		<li>위도:<span id="longitude"></span></li>
-
-	</ul>
-	<ul>
-		<li>경도 검색 결과: <span id="sch_lat"></span></li>
-		<li>위도 검색 결과: <span id="sch_lon"></span></li>
-	</ul>
+		</ul>
+		<ul>
+			<li>경도 검색 결과: <span id="sch_lat"></span></li>
+			<li>위도 검색 결과: <span id="sch_lon"></span></li>
+		</ul>
+		
+		<ul>
+			<li>총 거리: <span id="tDistance"></span></li>
+			<li>총 시간: <span id="tTime"></span></li>
+		</ul>
 	
-	<ul>
-		<li>총 거리: <span id="tDistance"></span></li>
-		<li>총 시간: <span id="tTime"></span></li>
-	</ul>
+	
 </body>
 </html>

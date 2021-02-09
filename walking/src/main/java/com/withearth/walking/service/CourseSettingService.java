@@ -1,6 +1,7 @@
 package com.withearth.walking.service;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class CourseSettingService {
 	
 	
 	// 데이터베이스 저장
-	public int courseSet(CourseSettingRequest setRequest, HttpServlet request) {
+	public int courseSet(CourseSettingRequest setRequest, HttpServletRequest request) {
 		int result = 0;
 		
 		Course course = setRequest.toCourse();

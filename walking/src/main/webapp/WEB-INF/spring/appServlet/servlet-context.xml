@@ -24,7 +24,6 @@
 	<resources mapping="/fileupload/**" location="/fileupload/" />
 	<resources mapping="/loc/**" location="/loc/" />
 	<resources mapping="/include/**" location="/include/" />
-	<resources mapping="/views/**" location="/views/" />
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -50,6 +49,7 @@
 	</interceptors> -->
 
 
+	<!-- 메일 발송 -->
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com" />

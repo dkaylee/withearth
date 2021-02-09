@@ -8,7 +8,7 @@
 					<nav id="nav">
 						<a href="<c:url value="/"/>">Home</a>
 						<a href="#">Tumbler</a>
-						<a href="/loc/test210208.jsp">Walking</a>
+						<a href="#">Walking</a>
 						<a href="#">Point</a>
 						<a href="#">Donation</a>
 						<a href="<c:url value="/comm/matlist"/>">Community</a>
