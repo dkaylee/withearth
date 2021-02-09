@@ -13,8 +13,10 @@ import com.withearth.member.domain.KakaoInfo;
 public class KakaoLoginController {
 	
 	//ajax로 보낸 카카오 데이터 가져오기
+	
 	@RequestMapping(value="/member/kakaoLogin", method= {RequestMethod.POST,RequestMethod.GET})
-	public String savekao(HttpServletRequest request, KakaoInfo kinfo) {
+	public String savekao(HttpServletRequest request, 
+			@RequestBody KakaoInfo kinfo) {
 	    kinfo.setNick(request.getParameter("ka_name"));
 	    kinfo.setPimg(request.getParameter("ka_img"));
 	    kinfo.setThumimg(request.getParameter("ka_thum"));
