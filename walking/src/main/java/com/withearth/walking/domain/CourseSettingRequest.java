@@ -68,7 +68,7 @@ public class CourseSettingRequest {
 		return "CourseSettingRequest [nowLat=" + nowLat + ", nowLon=" + nowLon + ", newLat=" + newLat + ", newLon="
 				+ newLon + ", tDistance=" + tDistance + ", tTime=" + tTime + "]";
 	}
-	
+	  
 	
 	
 	

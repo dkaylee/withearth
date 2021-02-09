@@ -65,144 +65,101 @@
 				},
 				success : function(response) {
 
-															var resultInfo = response.coordinateInfo; // .coordinateInfo -> 좌표 정보
-															console
-																	.log(resultInfo);
+					var resultInfo = response.coordinateInfo; // .coordinateInfo -> 좌표 정보
+					console.log(resultInfo);
+					// 기존 마커 삭제
+					marker1.setMap(null);
 
-															// 기존 마커 삭제
-															marker1
-																	.setMap(null);
+					console.log('진입2')
+					// 3.마커 찍기
+					// 검색 결과 정보가 없을 때 처리
+					if (resultInfo.coordinate.length == 0) { // coordinate -> 좌표 정보
+						$("#addresult").text("요청 데이터가 올바르지 않습니다.");
+					} else {
+					
+						var lon, lat;
+						var resultCoordinate = resultInfo.coordinate[0];
+						if (resultCoordinate.lon.length > 0) {
+							// 구주소
+							lon = resultCoordinate.lon;
+							lat = resultCoordinate.lat;
+	
+							$("#sch_lat").html(lat); // 검색한 위도
+							$("#sch_lon").html(lon); // 검색한 경도
+	
+							var new_lat = lat;
+							var new_lon = lon;
+	
+							console.log('진입3-1')
+	
+							initTmap(new_lat,new_lon,now_lat,now_lon);
 
-															console.log('진입2')
-															// 3.마커 찍기
-															// 검색 결과 정보가 없을 때 처리
-															if (resultInfo.coordinate.length == 0) { // coordinate -> 좌표 정보
-																$("#addresult")
-																		.text(
-																				"요청 데이터가 올바르지 않습니다.");
-															} else {
+						} else {
+							// 신주소
+							lon = resultCoordinate.newLon;
+							lat = resultCoordinate.newLat
+							$("#sch_lat").html(lat); // 검색한 위도
+							$("#sch_lon").html(lon); // 검색한 경도
 
-																var lon, lat;
-																var resultCoordinate = resultInfo.coordinate[0];
-																if (resultCoordinate.lon.length > 0) {
-																	// 구주소
-																	lon = resultCoordinate.lon;
-																	lat = resultCoordinate.lat;
+							new_lat = lat;
+							new_lon = lon;
 
-																	$(
-																			"#sch_lat")
-																			.html(
-																					lat); // 검색한 위도
-																	$(
-																			"#sch_lon")
-																			.html(
-																					lon); // 검색한 경도
+							console.log("검색 위도: "+ new_lat);
+							console.log("검색 경도: "+ new_lon);
 
-																	var new_lat = lat;
-																	var new_lon = lon;
+							initTmap(new_lat,new_lon,now_lat,now_lon);
 
-																	console
-																			.log('진입3-1')
+							console.log('진입3-2')
 
-																	initTmap(
-																			new_lat,
-																			new_lon,
-																			now_lat,
-																			now_lon);
+						}
 
-																} else {
-																	// 신주소
-																	lon = resultCoordinate.newLon;
-																	lat = resultCoordinate.newLat
+						var lonEntr, latEntr;
 
-																	$(
-																			"#sch_lat")
-																			.html(
-																					lat); // 검색한 위도
-																	$(
-																			"#sch_lon")
-																			.html(
-																					lon); // 검색한 경도
+						if (resultCoordinate.lonEntr == undefined&& resultCoordinate.newLonEntr == undefined) {
+							lonEntr = 0;
+							latEntr = 0;
+							console.log('진입4-1');
+						} else {
+							if (resultCoordinate.lonEntr.length > 0) {
+								lonEntr = resultCoordinate.lonEntr;
+								latEntr = resultCoordinate.latEntr;
+								console.log('진입4-2');
+							} else {
+								lonEntr = resultCoordinate.newLonEntr;
+								latEntr = resultCoordinate.newLatEntr;
+									console.log('진입4-3');
+							}
+						}
 
-																	new_lat = lat;
-																	new_lon = lon;
+						console.log('진입5')
+						var markerPosition = new Tmapv2.LatLng(Number(lat),Number(lon));
 
-																	console
-																			.log("검색 위도: "
-																					+ new_lat);
-																	console
-																			.log("검색 경도: "
-																					+ new_lon);
+						console.log('진입6')
+						//map.setCenter(markerPosition); //21.02.05 -> 주석처리하니 에러 없음. 위경도좌표도 나옴. km, 
+						console.log('진입7');
+						// 검색 결과 표출
+						var matchFlag, newMatchFlag;
+						// 검색 결과 주소를 담을 변수
+						var address = '', newAddress = '';
+						var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
+						var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 
-																	initTmap(
-																			new_lat,
-																			new_lon,
-																			now_lat,
-																			now_lon);
+						// 새주소일 때 검색 결과 표출
+						// 새주소인 경우 matchFlag가 아닌
+						// newMatchFlag가 응답값으로
+						// 온다
 
-																	console
-																			.log('진입3-2')
+						if (resultCoordinate.newMatchFlag.length > 0) {
+							// 새(도로명) 주소 좌표 매칭
+							// 구분 코드
+							newMatchFlag = resultCoordinate.newMatchFlag;
+							console.log('진입8');
+							// 시/도 명칭
+							if (resultCoordinate.city_do.length > 0) {
+							city = resultCoordinate.city_do;
+							newAddress += city+ "\n";
 
-																}
-
-																var lonEntr, latEntr;
-
-																if (resultCoordinate.lonEntr == undefined
-																		&& resultCoordinate.newLonEntr == undefined) {
-																	lonEntr = 0;
-																	latEntr = 0;
-																	console
-																			.log('진입4-1');
-																} else {
-																	if (resultCoordinate.lonEntr.length > 0) {
-																		lonEntr = resultCoordinate.lonEntr;
-																		latEntr = resultCoordinate.latEntr;
-																		console
-																				.log('진입4-2');
-																	} else {
-																		lonEntr = resultCoordinate.newLonEntr;
-																		latEntr = resultCoordinate.newLatEntr;
-																		console
-																				.log('진입4-3');
-																	}
-																}
-
-																console
-																		.log('진입5')
-																var markerPosition = new Tmapv2.LatLng(
-																		Number(lat),
-																		Number(lon));
-
-																console
-																		.log('진입6')
-																//map.setCenter(markerPosition); //21.02.05 -> 주석처리하니 에러 없음. 위경도좌표도 나옴. km, 
-																console
-																		.log('진입7');
-																// 검색 결과 표출
-																var matchFlag, newMatchFlag;
-																// 검색 결과 주소를 담을 변수
-																var address = '', newAddress = '';
-																var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
-																var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
-
-																// 새주소일 때 검색 결과 표출
-																// 새주소인 경우 matchFlag가 아닌
-																// newMatchFlag가 응답값으로
-																// 온다
-
-																if (resultCoordinate.newMatchFlag.length > 0) {
-																	// 새(도로명) 주소 좌표 매칭
-																	// 구분 코드
-																	newMatchFlag = resultCoordinate.newMatchFlag;
-																	console
-																			.log('진입8');
-																	// 시/도 명칭
-																	if (resultCoordinate.city_do.length > 0) {
-																		city = resultCoordinate.city_do;
-																		newAddress += city
-																				+ "\n";
-
-																	}
+						}
 
 																	// 군/구 명칭
 																	if (resultCoordinate.gu_gun.length > 0) {
