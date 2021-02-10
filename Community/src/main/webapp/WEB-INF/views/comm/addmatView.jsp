@@ -20,28 +20,29 @@
 		<form method="post" enctype="multipart/form-data">
 			<div class="row uniform">
 				<div class="6u 12u$(xsmall)">
-					상호명<input type="text" name="mTitle" id="mTitle" value=""/>
+					상호명 ${regData.mTitle}
 				</div>
 				<div class="6u 12u$(xsmall)">
-					주소<input type="text" name="mAddr" id="mAddr" value=""/>
+					주소	${regData.mAddr}
 				</div>
 				<div class="6u 12u$(xsmall)">
-					시간<input type="text" name="mTime" id="mTime" value=""/>
+					시간 ${regData.mTime}
 				</div>
 				<div class="6u 12u$(xsmall)">
-					전화번호<input type="text" name="mNum" id="mNum" value=""/>
+					전화번호 ${regData.mNum}
 				</div>
 				<div class="6u$ 12u$(xsmall)">
-					소개글<input type="text" name="mCont" id="mCont" value="" />
+					소개글	${regData.mCont}
 				</div>
 				
-				
 				<div class="6u$ 12u$(xsmall)">
-					이미지첨부<input type="file" multiple="multiple" id="mImg" name="mfile" />
+					이미지첨부 <c:forEach var="uploadFile" items="${mfileList}">
+							<img alt="프로필 사진"
+								src="<c:url value="/fileupload/member/${uploadFile.newFileName}"/>">
+							</c:forEach>
 				</div>
 
 				<div class="3u$ 12u$(small)">
-					<input type="submit" value="등록하기">
 					<input type="button" value="목록">
 					<input type="button" value="글쓰기">
 				</div>

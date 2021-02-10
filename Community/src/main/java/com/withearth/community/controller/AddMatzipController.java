@@ -1,5 +1,7 @@
 package com.withearth.community.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +28,8 @@ public class AddMatzipController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String addFormView(
-			MultipartFile[] uploadFile,
 			@ModelAttribute("matData") MatAddRequest matRequest,
-			MultipartHttpServletRequest request,
+			HttpServletRequest request,
 			Model model
 			) {
 		
@@ -38,7 +39,7 @@ public class AddMatzipController {
 		model.addAttribute("result", result);
 	
 		
-		return "comm/addView";
+		return "comm/addmatView";
 	}
 	
 }

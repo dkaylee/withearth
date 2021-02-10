@@ -11,7 +11,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="mat_title" property="matTitle" />
 		<result column="mat_addr" property="matAddr" />
 		<result column="mat_time" property="matTime" />
-		<result column="mat_wr" property="matWr" />
 		<result column="mat_cont" property="matCont" />
 		<result column="mat_img" property="matImg" />
 		<result column="mat_date" property="matDate" />
@@ -25,7 +24,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="mat_title" property="matTitle" />
 		<result column="mat_addr" property="matAddr" />
 		<result column="mat_time" property="matTime" />
-		<result column="mat_wr" property="matWr" />
 		<result column="mat_cont" property="matCont" />
 		<result column="mat_img" property="matImg" />
 		<result column="mat_date" property="matDate" />
@@ -33,6 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="idx" property="idx" />
 	</resultMap>
 	
+	
+	<!-- 전체 맛집리스트 출력 -->
 	<select id="selectAllMatList"
 					parameterType="map"
 					resultMap="matListResult">
@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
-	<!-- 파일 첨부 -->
+	<!-- 맛집추가 -->
 	<insert id="insertMatzip"
 	parameterType="com.withearth.community.domain.MatzipVo"
 	useGeneratedKeys="true"
@@ -51,21 +51,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	INSERT INTO Matzip
 	
 	<if test="matImg == null">
-	(mat_title, mat_addr, mat_time, mat_cont)
+	(mat_title, mat_addr, mat_time, mat_num, mat_cont)
 	VALUES
-	(#{matTitle},#{matAddr},#{matTime},#{matCont})
+	(#{matTitle},#{matAddr},#{matTime},#{matNum},#{matCont})
 	</if>
 	
 	<if test="matImg != null">
-	(mat_title, mat_addr, mat_time, mat_cont, mat_img)
+	(mat_title, mat_addr, mat_time, mat_Num, mat_cont, mat_img)
 	VALUES
-	(#{matTitle},#{matAddr},#{matTime},#{matCont},#{matImg})
+	(#{matTitle},#{matAddr},#{matTime},#{matNum},#{matCont},#{matImg})
 	</if>
 	</insert>
 	
-	<insert id=""></insert>
+	
+	<!-- 파일 업로드 -->
+	<insert id="fileUpload" parameterType="HashMap">
+	insert into Matfile
+	(file_idx, mat_idx ,org_name, new_name, file_size)
+	VALUES
+	(#{fileIdx}, #{matIdx}, #{orgFileName}, #{newFileName}, #{fileSize})
+	
+	</insert>
 	
 	
-
+	<!--  맛집 수 업데이트 -->
+	<update id="matUpdateCnt">
+		update matzip_cnt set matzipCnt = matzipCnt + 1 
+	</update>
+	
+	<!-- 총 맛집 수 -->
+	<select id="selectTotalCount" resultType="int">
+		select count(*) from Matzip
+	</select>
 
 </mapper>

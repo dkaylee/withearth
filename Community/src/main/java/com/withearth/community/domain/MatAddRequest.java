@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class MatAddRequest {
 	
 	private int mIdx;
-	private String mWr;
 	private String mTitle;
 	private String mAddr;
 	private String mTime;
@@ -20,12 +19,7 @@ public class MatAddRequest {
 	public void setmIdx(int mIdx) {
 		this.mIdx = mIdx;
 	}
-	public String getmWr() {
-		return mWr;
-	}
-	public void setmWr(String mWr) {
-		this.mWr = mWr;
-	}
+
 	public String getmTitle() {
 		return mTitle;
 	}
@@ -78,7 +72,7 @@ public class MatAddRequest {
 	
 	@Override
 	public String toString() {
-		return "MatAddRequest [mIdx=" + mIdx + ", mWr=" + mWr + ", mTitle=" + mTitle + ", mAddr=" + mAddr + ", mTime="
+		return "MatAddRequest [mIdx=" + mIdx + ", mTitle=" + mTitle + ", mAddr=" + mAddr + ", mTime="
 				+ mTime + ", mNum=" + mNum + ", mCont=" + mCont + ", mImg=" + mImg + "]";
 	}
 	

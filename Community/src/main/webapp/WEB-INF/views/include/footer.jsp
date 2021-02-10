@@ -20,9 +20,8 @@
 				</div>
 			</footer>
 
-<!-- Scripts -->
-<script src="<c:url value="/js/jquery.min.js"/>"></script>
-<script src="<c:url value="/js/skel.min.js"/>"></script>
-<script src="<c:url value="/js/util.js"/>"></script>
-<script src="<c:url value="/js/main.js"/>"></script>
 
+<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<script  src="${pageContext.request.contextPath}/js/skel.js"></script>
+<script src="${pageContext.request.contextPath}/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/js/main.js"></script>

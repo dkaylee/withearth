@@ -12,7 +12,12 @@
 	rel="stylesheet" />
 
 <!-- Core theme CSS (includes Bootstrap)-->
+<%-- <link href="<c:url value="/css/main"/>" rel="stylesheet"> --%>
+<!-- Scripts -->
+
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet">
+
+
 
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>

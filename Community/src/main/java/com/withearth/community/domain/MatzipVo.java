@@ -11,7 +11,6 @@ public class MatzipVo {
 	private String matAddr;
 	private String matTime;
 	private String matNum;
-	private String matWr;
 	private String matCont;
 	private String matImg;
 	private Timestamp matDate;
@@ -49,12 +48,6 @@ public class MatzipVo {
 	public void setMatNum(String matNum) {
 		this.matNum = matNum;
 	}
-	public String getMatWr() {
-		return matWr;
-	}
-	public void setMatWr(String matWr) {
-		this.matWr = matWr;
-	}
 	public String getMatCont() {
 		return matCont;
 	}
@@ -91,7 +84,7 @@ public class MatzipVo {
 	@Override
 	public String toString() {
 		return "MatzipVo [matIdx=" + matIdx + ", matTitle=" + matTitle + ", matAddr=" + matAddr + ", matTime=" + matTime
-				+ ", matNum=" + matNum + ", matWr=" + matWr + ", matCont=" + matCont + ", matImg=" + matImg
+				+ ", matNum=" + matNum + ", matCont=" + matCont + ", matImg=" + matImg
 				+ ", matDate=" + matDate + ", matHeart=" + matHeart + ", idx=" + idx + "]";
 	}
 	

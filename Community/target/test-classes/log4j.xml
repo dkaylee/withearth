@@ -32,6 +32,26 @@
 		<level value="info" />
 	</logger>
 	
+	<!-- <logger name="org.springframework.jdbc">
+		<level value="DEBUG" />
+	</logger> -->
+	
+	<logger name="jdbc.audit">
+		<level value="info"/>
+	</logger>
+	
+<!-- 	<logger name="jdbc.resultset">
+		<level value="info"/>
+	</logger> -->
+	
+	<logger name="jdbc.resultsettable">
+		<level value="info"/>
+	</logger>
+	
+	<logger name="jdbc.connection">
+		<level value="info"/>
+	</logger>
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="info" />

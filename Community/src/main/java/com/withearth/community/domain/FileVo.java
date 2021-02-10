@@ -2,30 +2,30 @@ package com.withearth.community.domain;
 
 public class FileVo {
 	
-	private int fileNum;
-	private String orgName;
-	private String newName;
+	private int fileId;
+	private String orgFName;
+	private String newFName;
 	private long fileSize;
 	private int matIdx;
 	
 	
-	public int getFileNum() {
-		return fileNum;
+	public int getFileId() {
+		return fileId;
 	}
-	public void setFileNum(int fileNum) {
-		this.fileNum = fileNum;
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
 	}
-	public String getOrgName() {
-		return orgName;
+	public String getOrgFName() {
+		return orgFName;
 	}
-	public void setOrgName(String orgName) {
-		this.orgName = orgName;
+	public void setOrgFName(String orgFName) {
+		this.orgFName = orgFName;
 	}
-	public String getNewName() {
-		return newName;
+	public String getNewFName() {
+		return newFName;
 	}
-	public void setNewName(String newName) {
-		this.newName = newName;
+	public void setNewFName(String newFName) {
+		this.newFName = newFName;
 	}
 	public long getFileSize() {
 		return fileSize;
@@ -43,9 +43,11 @@ public class FileVo {
 	
 	@Override
 	public String toString() {
-		return "FileVo [fileNum=" + fileNum + ", orgName=" + orgName + ", newName=" + newName + ", fileSize=" + fileSize
-				+ ", matIdx=" + matIdx + "]";
+		return "FileVo [fileId=" + fileId + ", orgFName=" + orgFName + ", newFName=" + newFName + ", fileSize="
+				+ fileSize + ", matIdx=" + matIdx + "]";
 	}
+	
+	
 	
 	
 	

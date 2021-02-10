@@ -29,7 +29,7 @@ public class MatzipListService {
 		
 		matlist = dao.selectAllMatList();
 		
-		log.info(matlist);
+		// log.info(matlist);
 		
 		
 		return matlist;
