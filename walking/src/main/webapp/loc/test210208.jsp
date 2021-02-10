@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html" charset=utf-8">
 <title>simpleMap</title>
-
+<%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <style>
 #eddAdd{
 	float: left;
@@ -25,9 +25,6 @@
 	new_lon = 127.00160213;
 
 	$(document).ready(function() {
-		
-		
-		
 		// Geolocation API에 액세스할 수 있는지를 확인
 		if (navigator.geolocation) {
 		//위치 정보를 얻기
@@ -42,6 +39,7 @@
 				console.log("현재 경도" + now_lon);
 				console.log("현재 위도" + now_lat);
 				initTmap(new_lat, new_lon, now_lat, now_lon);
+				reverseGeo(now_lon, now_lat);
 
 			});
 		} else {
@@ -49,6 +47,8 @@
 		}
 		
 		
+
+
 
 		// 주소 검색
 		var map, marker1;
@@ -236,13 +236,13 @@
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(중심점) : "+ lat+ ", "
 																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
-									var text = "검색결과(새주소) : "+ newAddress+ "\n "
+									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
 									$("#endAdd").html(text);
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
-									var text = "검색결과(새주소) : "+ newAddress
+									var text = "검색 결과(새주소) : "+ newAddress
 									$("#endAdd").html(text);
 								}
 							}
@@ -311,7 +311,7 @@
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
 									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br>"	+ "위경도좌표(중심점) : "
 																+ lat+ ", "+ lon+ "</br>"+ "위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
-									var text = "검색결과(지번주소) : "+ address;
+									var text = "검색 결과(지번주소) : "+ address;
 									$("#endAdd").html(text);
 									
 		
@@ -319,7 +319,7 @@
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
 									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"
 												+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
-									var text = "검색결과(지번주소) : "+ address;
+									var text = "검색 결과(지번주소) : "+ address;
 									$("#endAdd").html(text);
 								}
 							}
@@ -327,66 +327,109 @@
 
 				},
 
-														error : function(
-																request,
-																status, error) {
-															console
-																	.log(request);
-															console
-																	.log("code:"
-																			+ request.status
-																			+ "\n message:"
-																			+ request.responseText
-																			+ "\n error:"
-																			+ error);
-															// 에러가 발생하면 맵을 초기화함
-															// markerStartLayer.clearMarkers();
-															// 마커초기화
-															map
-																	.setCenter(new Tmapv2.LatLng(
-																			37.570028,
-																			126.986072));
-															$("#endAdd")
-																	.html("");
+				error : function(request,status, error) {
+					console.log(request);
+					console.log("code:"+ request.status+ "\n message:"+ request.responseText+ "\n error:"+ error);
+					// 에러가 발생하면 맵을 초기화함
+					// markerStartLayer.clearMarkers();
+					// 마커초기화
+					map.setCenter(new Tmapv2.LatLng(37.570028,126.986072));
+					$("#endAdd").html("");
 
-														}
-													});
-										});
+				}
+			});
+		}); // $('#btn_select')
 		
 		/*  $('#btn_save').click(function(){
 			
 			
 					
-			$.ajax({
-				url : 'setting',
-				type : 'post',
-				data : JSON.stringify,
-				processData : false,
-				contentType : false,
-				cache : false ,
-				success : function(data){
-					console.log('데이터 전송 성공!' + data);
-				},error:function(request,status,error){
-				    console.log(error);
-				}
-			});
-			
+			 */
+			 
 		
-		}); // #btn_save  */
 		
 }); // ready
+
+	// 현재 위치 좌표 -> 주소로 변환
+	function reverseGeo(lon, lat) {
+	$.ajax({
+				method : "GET",
+				url : "https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result",
+				async : false,
+				data : {
+					"appKey" : "l7xxa82c096d66484d37ac10b23c15a64620",
+					"coordType" : "WGS84GEO",
+					"addressType" : "A10",
+					"lon" : lon,
+					"lat" : lat
+				},
+				success : function(response) {
+					// 3. json에서 주소 파싱
+					var arrResult = response.addressInfo;
+
+					//법정동 마지막 문자 
+					var lastLegal = arrResult.legalDong
+							.charAt(arrResult.legalDong.length - 1);
+
+					// 새주소
+					newRoadAddr = arrResult.city_do + ' '
+							+ arrResult.gu_gun + ' ';
+
+					if (arrResult.eup_myun == ''
+							&& (lastLegal == "읍" || lastLegal == "면")) {//읍면
+						newRoadAddr += arrResult.legalDong;
+					} else {
+						newRoadAddr += arrResult.eup_myun;
+					}
+					newRoadAddr += ' ' + arrResult.roadName + ' '
+							+ arrResult.buildingIndex;
+
+					// 새주소 법정동& 건물명 체크
+					if (arrResult.legalDong != ''
+							&& (lastLegal != "읍" && lastLegal != "면")) {//법정동과 읍면이 같은 경우
+
+						if (arrResult.buildingName != '') {//빌딩명 존재하는 경우
+							newRoadAddr += (' (' + arrResult.legalDong
+									+ ', ' + arrResult.buildingName + ') ');
+						} else {
+							newRoadAddr += (' (' + arrResult.legalDong + ')');
+						}
+					} else if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
+						newRoadAddr += (' (' + arrResult.buildingName + ') ');
+					}
+
+					// 구주소
+					jibunAddr = arrResult.city_do + ' '
+							+ arrResult.gu_gun + ' '
+							+ arrResult.legalDong + ' ' + arrResult.ri
+							+ ' ' + arrResult.bunji;
+					//구주소 빌딩명 존재
+					if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
+						jibunAddr += (' ' + arrResult.buildingName);
+					}
+
+					revresult = "현재 위치(새주소) : " + newRoadAddr + "</br>";
+					/* revresult += "지번주소 : " + jibunAddr + "</br>";
+					revresult += "위경도좌표 : " + lat + ", " + lon; */
+
+					var resultDiv = document.getElementById("revresult");
+					resultDiv.innerHTML = revresult;
+
+				},
+				error : function(request, status, error) {
+					console.log("code:" + request.status + "\n"
+							+ "message:" + request.responseText + "\n"
+							+ "error:" + error);
+				}
+			});
+
+}
 
 	// 현재위치 정보 불러오기
 	$(function() {
 
 	}); // 현재위치 정보 불러오는 기능
 
-	// 주소 검색 기능
-	/* function searchTmap(){
-		
-		
-		//ready 메소드
-	}  */
 
 	// 시작, 도착 보행자 경로 안내
 	var map;
@@ -581,12 +624,12 @@
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
-		<h3>출발지:</h3><br>
-		<h3></h3>
-		<h3>목적지 </h3><input type="text" class="text_custom" id="fullAddr" name="fullAddr"
+		<h2>출발지</h2><h3 id="revresult"></h3><br>
+		
+		<h2>목적지 </h2><input type="text" class="text_custom" id="fullAddr" name="fullAddr"
 			value="서울시 마포구 와우산로29가길 69">
 		<button id="btn_select">설정 하기</button>
-		<h2 id="endAdd"></h2> <button id="btn_save">저장 하기</button>
+		<h3 id="endAdd"></h3> <button id="btn_save">저장 하기</button>
 		
 		<br />
 		<br>

@@ -8,7 +8,6 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	<%@ include file="/WEB-INF/views/include/walking_nav.jsp"%>
 	
 	<div class="course_contents">
 		<h2>코스 설정이 완료되었습니다.</h2>

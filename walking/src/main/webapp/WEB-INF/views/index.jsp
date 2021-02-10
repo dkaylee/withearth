@@ -8,15 +8,12 @@
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/include/walking_header.jsp" %>
-	<%@ include file="/WEB-INF/views/include/walking_nav.jsp" %>
 	
 	<main class="container">
 		
 	
 	</main>
 	
-	<%@ include file="/WEB-INF/views/include/walking_footer.jsp" %>
 
 </body>
 </html>

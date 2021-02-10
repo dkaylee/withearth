@@ -8,7 +8,7 @@
 					<nav id="nav">
 						<a href="<c:url value="/"/>">Home</a>
 						<a href="#">Tumbler</a>
-						<a href="#">Walking</a>
+						<a href="<c:url value="/loc/test210208"/>">Walking</a>
 						<a href="#">Point</a>
 						<a href="#">Donation</a>
 						<a href="<c:url value="/comm/matlist"/>">Community</a>
@@ -16,3 +16,5 @@
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
 			</header>
+			
+			
