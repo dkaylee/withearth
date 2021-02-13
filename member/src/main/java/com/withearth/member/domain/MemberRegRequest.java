@@ -40,9 +40,10 @@ public class MemberRegRequest {
 		member.setId(userid);
 		member.setPw(userpw);
 		member.setName(username);
-		
+		member.setLogintype("email");
 		return member;
 	}
+	
 	@Override
 	public String toString() {
 		return "MemberRegRequest [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", userPhoto="

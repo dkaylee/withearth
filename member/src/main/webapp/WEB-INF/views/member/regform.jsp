@@ -18,6 +18,7 @@
 </head>
 <body>
 <h1>회원가입</h1>
+<!-- <form id="regForm" method="post" enctype="multipart/form-data"> -->
 <form id="regForm" method="post" enctype="multipart/form-data">
 아이디 <input type="email" id="id" name="userid">
 <div id="idCheckMsg"></div>
@@ -30,23 +31,5 @@
 <input type="submit">
 </form>
 
-<script>
-$(document).ready(function(){
-	
-	$('#id').focusout(function(){
-	var thisid = $(this).val();
-	var msg = $('idCheckMsg');
-	msg.addClass('display_block');
-	
-	if(thisid.length==0){
-		msg.removeClass('display_block');
-		msg.html('id를 넣어주세요')
-		msg.addClass('font_red')
-	}
-	
-	
-	});
-});
-</script>
 </body>
 </html>

@@ -84,5 +84,8 @@ public class MemberRegService {
 		
 		return result;
 	}
+		
+	
+	
 	
 }

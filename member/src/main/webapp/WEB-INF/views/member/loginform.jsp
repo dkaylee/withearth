@@ -77,20 +77,20 @@
 		    	console.log(res);
 			var nick = res.properties.nickname;
 		 	var pimg = res.properties.profile_image;
-		 	var thumimg = res.properties.thumbnail_img;
+		 	var thumimg = res.properties.thumbnail_image;
 		 	var email = res.kakao_account.email;
-		 	var kakaoinfo = {"ka_name":nick,"ka_img":pimg,"ka_thum":thumimg,
-		 			"ka_email":email};
+		 	var kakaoinfo = {ka_name:nick,ka_img:pimg,ka_thum:thumimg,ka_email:email};
+		 	console.log(kakaoinfo)
 		 	
 	 	 	$.ajax({
 				url : 'kakaoLogin',//컨트롤러
 				type : 'post',
-				dataType : 'json',
+				//dataType : 'json',
 				data : JSON.stringify(kakaoinfo),
 				contentType:'application/json;charset=utf-8',
 				success : function(data) {
 					console.log("성공");
-					location.href="kakaoLogin";
+					location.href="/member"; 
 				},
 				error: function(error){
 					console.log("실패");

@@ -22,7 +22,7 @@ public class MemberRegController {
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String getRegForm() {
-		return "member/regform2";
+		return "member/regform";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)	

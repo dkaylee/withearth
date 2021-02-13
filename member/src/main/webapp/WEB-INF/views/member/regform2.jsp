@@ -35,7 +35,8 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">SIGN UP</h5>
-            <form class="form-signin" id="regForm" method="post" enctype="multipart/form-data">
+       <!-- <form class="form-signin" id="regForm" method="post" enctype="multipart/form-data"> -->
+            <form class="form-signin" id="regForm">
               <div class="form-label-group">
                 <input type="email" id="inputEmail" name="userid" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputEmail">Email address</label>
@@ -72,5 +73,6 @@
 
 <script src="<c:url value="/js/login/bootstrap.bundle.min.js"/>"></script>
 <script src="<c:url value="/js/login/jquery.slim.min.js"/>"></script>
+
 
 </html>

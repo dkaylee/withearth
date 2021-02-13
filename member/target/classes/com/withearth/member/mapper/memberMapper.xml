@@ -23,8 +23,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	useGeneratedKeys="true"
 	keyProperty="idx"
 	>
-INSERT INTO USER (id,pw,name,photo) 
-VALUES( #{id}, #{pw}, #{name}, #{photo} )
+<if test="photo != null and logintype=='email'">
+INSERT INTO USER (id,pw,name,photo,logintype) 
+VALUES( #{id}, #{pw}, #{name}, #{photo}, #{logintype} )
+</if>
+<if test="photo == null and logintype=='email'">
+INSERT INTO USER (id,pw,name,logintype) 
+VALUES( #{id}, #{pw}, #{name}, #{logintype} )
+</if>
+<if test="logintype=='kakao'">
+INSERT INTO USER (id,name,photo,logintype,verify) 
+VALUES( #{id}, #{name}, #{photo}, #{logintype}, #{verify} )
+</if>
 </insert>
 
 <!-- 로그인 -->
