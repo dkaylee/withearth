@@ -3,9 +3,9 @@ package com.withearth.tumbler.domain;
 import java.sql.Timestamp;
 
 public class Point {
-	//savint_point, saving_system, saving_date, idx, tum_idx, course_idx
+	//saving_point, saving_system, saving_date, idx, tum_idx, course_idx
 	private int point; 
-	private int savint_point;
+	private int saving_point;
 	private String saving_system;
 	private Timestamp saving_date; 
 	private int idx; 
@@ -18,11 +18,11 @@ public class Point {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	public int getSavint_point() {
-		return savint_point;
+	public int getSaving_point() {
+		return saving_point;
 	}
-	public void setSavint_point(int savint_point) {
-		this.savint_point = savint_point;
+	public void setSaving_point(int saving_point) {
+		this.saving_point = saving_point;
 	}
 	public String getSaving_system() {
 		return saving_system;
@@ -56,7 +56,7 @@ public class Point {
 	}
 	@Override
 	public String toString() {
-		return "Point [point=" + point + ", savint_point=" + savint_point + ", saving_system=" + saving_system
+		return "Point [point=" + point + ", saving_point=" + saving_point + ", saving_system=" + saving_system
 				+ ", saving_date=" + saving_date + ", idx=" + idx + ", tum_idx=" + tum_idx + ", course_idx="
 				+ course_idx + "]";
 	}

@@ -7,7 +7,21 @@ public class Cafe {
 	private String cafe_name; // 카페 상호
 	private String location; // 카페 위치
 	private String qrcode; //QR코드
+	private int tum_lat; //위도
+	private int tum_lon; //경도
 	
+	public int getTum_lat() {
+		return tum_lat;
+	}
+	public void setTum_lat(int tum_lat) {
+		this.tum_lat = tum_lat;
+	}
+	public int getTum_lon() {
+		return tum_lon;
+	}
+	public void setTum_lon(int tum_lon) {
+		this.tum_lon = tum_lon;
+	}
 	public int getCafe_idx() {
 		return cafe_idx;
 	}
@@ -34,10 +48,10 @@ public class Cafe {
 	}
 	@Override
 	public String toString() {
-		return "CafeInfo [cafe_idx=" + cafe_idx + ", cafe_name=" + cafe_name + ", location=" + location + ", qrcode="
-				+ qrcode + "]";
+		return "Cafe [cafe_idx=" + cafe_idx + ", cafe_name=" + cafe_name + ", location=" + location + ", qrcode="
+				+ qrcode + ", tum_lat=" + tum_lat + ", tum_lon=" + tum_lon + "]";
 	}
-	
+
 	
 
 }

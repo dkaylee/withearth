@@ -20,6 +20,7 @@ public class TumListService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
+
 			public List<Tumbler> getTumList(int idx){	
 				
 				List<Tumbler> list = null;

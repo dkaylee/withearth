@@ -33,7 +33,7 @@ public class TumpointService {
 		Point point = new Point();
 		point.setIdx(idx);
 		point.setSaving_system("tumbler");
-		point.setSavint_point(100);
+		point.setSaving_point(100);
 		point.setTum_idx(tumbler.getTum_idx());
 		result =  dao.insertPoint(point);
 		log.info("result2: " + result+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

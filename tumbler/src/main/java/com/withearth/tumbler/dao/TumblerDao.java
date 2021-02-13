@@ -13,22 +13,16 @@ import com.withearth.tumbler.domain.Tumbler;
 @Mapper
 public interface TumblerDao {
 
-
-
 	//로그인
 	Tumbler selectTumLogin(String id, String pw);
 
-	
-	//적립 포인트
-	int updateTumPoint(int idx);
-
-
 	//회원의 텀블러 포인트 적립 내역 
-
 	List<Tumbler> selelctTumList(int idx);
 
-
+	//텀블러 이용 내역
 	int insertTumbler(Tumbler tumbler);
+	
+	//텀블러 포인트 적립
 	int insertPoint(Point point);
 	
 }

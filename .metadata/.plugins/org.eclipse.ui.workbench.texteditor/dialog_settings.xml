@@ -6,8 +6,14 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="지도 중심"/>
 		<list key="findhistory">
+			<item value="지도 중심"/>
+			<item value="여기"/>
+			<item value="이미지"/>
+			<item value="우"/>
+			<item value="현재 내위치"/>
+			<item value="savint"/>
 			<item value="/tumbler/qr"/>
 			<item value="inclu"/>
 			<item value="coob"/>
@@ -17,19 +23,13 @@
 			<item value="zxing"/>
 			<item value="idx"/>
 			<item value="makeQrcodeService"/>
-			<item value="selectTumLogin"/>
-			<item value="insertQRcode"/>
-			<item value="getRegForm"/>
-			<item value="mari"/>
-			<item value="qrcode"/>
-			<item value="tumlist"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="11"/>
-		<item key="DIALOG_Y_ORIGIN" value="445"/>
+		<item key="DIALOG_Y_ORIGIN" value="360"/>
 		<item key="DIALOG_WIDTH" value="393"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

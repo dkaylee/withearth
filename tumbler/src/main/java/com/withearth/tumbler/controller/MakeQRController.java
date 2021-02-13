@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -25,13 +24,11 @@ import com.google.zxing.client.j2se.MatrixToImageConfig;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.withearth.tumbler.dao.CafeDao;
 import com.withearth.tumbler.domain.CafeRequest;
  
 @Controller
 public class MakeQRController {
    
-	private CafeDao dao;
 
 	@Autowired
 	private SqlSessionTemplate template;
@@ -101,6 +98,6 @@ public class MakeQRController {
       
        //리턴은 사용자가 원하는 값을 리턴한다. 
        //작성자는 QRCode 파일의 이름을 넘겨주고 싶었음.
-      return "tumblr/tumlist"; 
+      return "tumbler/tumlist"; 
 	 }
  }

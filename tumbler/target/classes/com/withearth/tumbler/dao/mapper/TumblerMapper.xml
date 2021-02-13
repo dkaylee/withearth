@@ -31,8 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertPoint" parameterType="com.withearth.tumbler.domain.Point"
 	useGeneratedKeys="true"
 	keyProperty="point">
-		INSERT INTO point(savint_point, saving_system, saving_date, idx, tum_idx, course_idx)
-		VALUES (#{savint_point}, #{saving_system}, sysdate(), #{idx}, #{tum_idx}, #{course_idx})
+		INSERT INTO point(saving_point, saving_system, saving_date, idx, tum_idx, course_idx)
+		VALUES (#{saving_point}, #{saving_system}, sysdate(), #{idx}, #{tum_idx}, #{course_idx})
 	</insert>
 
 	
