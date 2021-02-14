@@ -12,4 +12,11 @@ public interface MemberDAO {
 
 //아이디 중복체크
 	int selectMemberByIdCount(String id);
+
+// idx, verify 조건으로 조회 
+	int selectMemberByIdxVerify(int index);
+	
+// 인증처리 verify='Y'
+	int updateMemberVerify(int idx, String code); 
+
 }

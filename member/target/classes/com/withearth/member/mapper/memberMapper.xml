@@ -24,12 +24,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	keyProperty="idx"
 	>
 <if test="photo != null and logintype=='email'">
-INSERT INTO USER (id,pw,name,photo,logintype) 
-VALUES( #{id}, #{pw}, #{name}, #{photo}, #{logintype} )
+INSERT INTO USER (id,pw,name,photo,logintype,code) 
+VALUES( #{id}, #{pw}, #{name}, #{photo}, #{logintype}, #{code})
 </if>
 <if test="photo == null and logintype=='email'">
-INSERT INTO USER (id,pw,name,logintype) 
-VALUES( #{id}, #{pw}, #{name}, #{logintype} )
+INSERT INTO USER (id,pw,name,logintype,code) 
+VALUES( #{id}, #{pw}, #{name}, #{logintype}, #{code} )
 </if>
 <if test="logintype=='kakao'">
 INSERT INTO USER (id,name,photo,logintype,verify) 
@@ -49,6 +49,15 @@ select * from user where id= #{param1} and pw=#{param2}
 	select count(*) from user where id = #{id}
 </select>
 
-
+<!-- 이메일 인증 -->
+	<select id="selectMemberByIdxVerify"
+					resultType="int"
+	>
+		select count(*) from user where idx=#{idx} and verify='Y'
+	</select>
+	
+	<update id="updateMemberVerify">
+		update user set verify='Y' where idx=#{param1} and code=#{param2}
+	</update>
 
 </mapper>

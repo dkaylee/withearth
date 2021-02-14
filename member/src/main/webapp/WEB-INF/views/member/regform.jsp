@@ -27,12 +27,12 @@
 <h1>회원가입</h1>
 <!-- <form id="regForm" method="post" enctype="multipart/form-data"> -->
 <form id="regForm" method="post" enctype="multipart/form-data">
-아이디 <input type="email" id="id" name="userid">
+아이디 <input type="email" id="id" name="userid" placeholder="이메일 주소" required>
 <div id="idCheckMsg"></div>
-비밀번호 <input type="password" id="pw" name="userpw">
-비밀번호 확인 <input type="password" id="pwcheck" name="pwcheck">
+비밀번호 <input type="password" id="pw" name="userpw" placeholder="영문,숫자 포함  8자 이상" required >
+비밀번호 확인 <input type="password" id="pwcheck" name="pwcheck" placeholder="비밀번호 재입력" required >
 <div id="pwCheckMsg"></div>
- 별명 <input type="text" id="name" name="username">
+ 별명 <input type="text" id="name" name="username" required >
 <div id="nameCheckMsg"></div>
 프로필 사진 <input type="file" id="photo" name="userPhoto">
 <input type="submit">
@@ -87,6 +87,16 @@
 		
 		
 	 });
+	 
+
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
  });
 </script>

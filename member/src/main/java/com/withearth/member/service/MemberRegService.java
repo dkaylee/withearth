@@ -25,7 +25,9 @@ public class MemberRegService {
 	
 	@Autowired
 	private SqlSessionTemplate template; //SqlSession을 구현하고 코드에서 SqlSession를 대체하는 역할
-	
+
+	@Autowired
+	private MailSenderService mailSenderService;
 	//파일 업로드와 db저장
 	//트랜젝션이랑 한번에 수행되어야하는 연산들은 모두 에러 없이 끝나야 하며, 
 	//만약 중간에 에러가 발생 한다면 에러 발생 이전 시점까지 작업되었던 내용은 모두 원상복구 되어야 한다.
@@ -63,7 +65,20 @@ public class MemberRegService {
 			//파일 저장
 			
 			try {
-				regRequest.getUserPhoto().transferTo(newFile);
+				//regRequest.getUserPhoto().transferTo(newFile);
+				FileOutputStream thumnail = new FileOutputStream(new File(saveDirPath, "s_"+newFileName));
+				
+				// 썸네일 저장 100X100
+				Thumbnailator.createThumbnail(
+						regRequest.getUserPhoto().getInputStream(), 
+						thumnail, 
+						50, 50);
+				
+				thumnail.close();
+				
+				
+				
+				
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
@@ -81,6 +96,10 @@ public class MemberRegService {
 		//Mapper를 사용하면 SqlSession을 직접 사용하는 형태보다 안전하게 된다
 		dao = template.getMapper(MemberDAO.class); //여기서 이해가 안감.
 		result = dao.insertMember(member);
+		
+		//메일 발송
+		int mailsendCnt = mailSenderService.send(member);
+		System.out.println("메일 발성 처리 횟수:" + mailsendCnt);
 		
 		return result;
 	}
