@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset=utf-8">
 <title>simpleMap</title>
-
+<%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <style>
 #eddAdd{
 	float: left;
@@ -25,12 +25,35 @@
 	new_lon = 127.00160213;
 
 	$(document).ready(function() {
+		
+		//시작 버튼 눌렀을 떄 일어나는 함수
+	    function startRide(){
+	
+	    	if(endPointChk==0){
+	    		alert('도착지를 지정해주세요!')
+	    	}else{
+	    		startTime();
+	    		movingLocation();
+	    		$('#startBtnArea').css("display", "none");
+		    	$('#endBtnArea').css("display", "block");
+		    	
+		    	$("#searchEndPoint").attr("disabled",true);
+		    	$("#customSwitch1").attr("disabled",true);
+		    	$("#endPoint").attr("disabled",true);
+	    	}   	
+	    }
+		
+	
+		
+		
+		
 		// Geolocation API에 액세스할 수 있는지를 확인
+		//===========현재위치 불러오기===========
 		if (navigator.geolocation) {
 		//위치 정보를 얻기
 			navigator.geolocation.getCurrentPosition(function(pos) {
-				$('#latitude').html(pos.coords.latitude); // 위도 37
-				$('#longitude').html(pos.coords.longitude); // 경도 126
+				$('#latitude').html(pos.coords.latitude); // 위도 ex)37
+				$('#longitude').html(pos.coords.longitude); // 경도 ex)126
 
 				now_lat = pos.coords.latitude;
 				now_lon = pos.coords.longitude;
@@ -38,7 +61,9 @@
 
 				console.log("현재 경도" + now_lon);
 				console.log("현재 위도" + now_lat);
+				// 경로 function으로 현재 위경도, 목적지 위경도 전송
 				initTmap(new_lat, new_lon, now_lat, now_lon);
+				// 현재 위경도 값을 좌표->주소로 변경하는 function으로 전송
 				reverseGeo(now_lon, now_lat);
 
 			});
@@ -50,13 +75,13 @@
 
 
 
-		// 주소 검색
+		// ==========목적지 검색==========
 		var map, marker1;
 
 		$('#btn_select').click(	function() {
 			console.log('진입1');
 
-			// 마커 초기화
+			// 목적지 설정 마커 초기화
 			marker1 = new Tmapv2.Marker({
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
 					iconSize : new Tmapv2.Size(24, 38),
@@ -94,10 +119,11 @@
 							// 구주소
 							lon = resultCoordinate.lon;
 							lat = resultCoordinate.lat;
-	
+							
+							// 목적지 위경도 ID 설정
 							$("#sch_lat").html(lat); // 검색한 위도
 							$("#sch_lon").html(lon); // 검색한 경도
-	
+							// 데이터 지정
 							var new_lat = lat;
 							var new_lon = lon;
 	
@@ -236,14 +262,14 @@
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(중심점) : "+ lat+ ", "
 																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
-									var text = "검색 결과(새주소) : "+ newAddress+ "\n " // 주소 출력
-									$("#endAdd").html(text); // 목적지 주소
+									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
+									$("#endAdd").html(text);
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
 									var text = "검색 결과(새주소) : "+ newAddress
-									$("#endAdd").html(text); // 목적지 주소
+									$("#endAdd").html(text);
 								}
 							}
 	
@@ -349,6 +375,7 @@
 		
 		
 }); // ready
+	
 
 	// 현재 위치 좌표 -> 주소로 변환
 	function reverseGeo(lon, lat) {
@@ -617,6 +644,8 @@
 	}
 	
 	
+	
+	
 </script>
 
 
@@ -624,10 +653,12 @@
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
-		<h2>출발지</h2><h3 id="revresult"></h3><br>
+		<h2>걷기 인증 서비스</h2>
+	
+		<h2>출발지(현재 위치)</h2><h3 id="revresult"></h3><br>
 		
 		<h2>목적지 </h2><input type="text" class="text_custom" id="fullAddr" name="fullAddr"
-			value="서울시 마포구 와우산로29가길 69">
+			value="ex)서울시 마포구 와우산로29가길 69">
 		<button id="btn_select">설정 하기</button>
 		<h3 id="endAdd"></h3> <button id="btn_save">저장 하기</button>
 		
@@ -641,6 +672,8 @@
 		
 		<h2 id="result"></h2>
 		<br />
+		
+		
 	
 		<ul>
 			<li>경도:<span id="latitude"></span></li>
@@ -656,6 +689,8 @@
 			<li>총 거리: <span id="tDistance"></span></li>
 			<li>총 시간: <span id="tTime"></span></li>
 		</ul>
+		
+		
 	
 	
 </body>
