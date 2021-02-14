@@ -9,5 +9,7 @@ public interface MemberDAO {
 //로그인
 	//member가 왜 여기 들어가니..?
 	Member selectLogin(String id, String pw);
-	
+
+//아이디 중복체크
+	int selectMemberByIdCount(String id);
 }

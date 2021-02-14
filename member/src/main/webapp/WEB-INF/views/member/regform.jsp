@@ -8,11 +8,18 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>  
 <title>Insert title here</title>
 <style>
-#idCheckMsg.display_block{
-	display: block
+
+.font_red{
+	color:red;
 }
-#idCheckMsg.font_red{
-	color: red;
+.font_blue{
+	color:blue
+}
+#idCheckMsg{
+	display:none;
+}
+#idCheckMsg.display_block{
+	display:block
 }
 </style>
 </head>
@@ -30,6 +37,59 @@
 프로필 사진 <input type="file" id="photo" name="userPhoto">
 <input type="submit">
 </form>
+
+<script>
+ $(document).ready(function(){
+	 
+	 $('#id').focusout(function(){
+		var id = $(this).val();
+		var msg = $('#idCheckMsg');
+		msg.addClass('display_block');
+		
+		if(id.length==0){
+			msg.html('id는 필수항목입니다.');
+			msg.addClass('font_red');
+		} else {
+			
+			$.ajax({
+				url: 'idcheck',
+				data: {id:id},
+				success : function(data){
+					if(data=='Y'){
+						msg.html('사용가능한 아이디 입니다.');
+						msg.removeClass('font_red');
+						msg.addClass('font_blue');
+					} else {
+						msg.html('사용불가능한 아이디입니다.');
+						msg.removeClass('font_blue');
+						msg.addClass('font_red');
+					}
+					
+				},
+				error:function(){
+					msg.html('에러');
+					msg.removeClass('font_blue');
+					msg.addClass('font_red');
+				}
+			});
+		}
+		
+		$('#id').focusin(function(){
+			
+			$(this).val('');
+			
+			var msg = $('#idCheckMsg');
+			msg.removeClass('font_red');
+			msg.removeClass('font_blue');
+			msg.removeClass('display_block');
+			
+		});
+		
+		
+	 });
+	 
+ });
+</script>
 
 </body>
 </html>

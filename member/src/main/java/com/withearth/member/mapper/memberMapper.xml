@@ -44,4 +44,11 @@ VALUES( #{id}, #{name}, #{photo}, #{logintype}, #{verify} )
 select * from user where id= #{param1} and pw=#{param2}
 </select>
 
+<!-- 아이디 중복체크 -->
+<select id="selectMemberByIdCount" resultType="int">
+	select count(*) from user where id = #{id}
+</select>
+
+
+
 </mapper>
