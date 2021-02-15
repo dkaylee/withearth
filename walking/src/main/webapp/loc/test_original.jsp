@@ -1,9 +1,9 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html" charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 <title>simpleMap</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <style>
@@ -11,11 +11,9 @@
 	float: left;
 }
 </style>
-
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
-
 <script type="text/javascript">
 	var now_lat = $('#nowLat');
 	var now_lon = $('#nowLon');
@@ -23,7 +21,6 @@
 	new_lat = 37.57081522;
 	var new_lon = $('#newLon')
 	new_lon = 127.00160213;
-
 	$(document).ready(function() {
 		
 		//시작 버튼 눌렀을 떄 일어나는 함수
@@ -54,40 +51,31 @@
 			navigator.geolocation.getCurrentPosition(function(pos) {
 				$('#latitude').html(pos.coords.latitude); // 위도 ex)37
 				$('#longitude').html(pos.coords.longitude); // 경도 ex)126
-
 				now_lat = pos.coords.latitude;
 				now_lon = pos.coords.longitude;
 				// initTmap()에 pos.coords.latitude, pos.coords.longitude 값을 전달
-
 				console.log("현재 경도" + now_lon);
 				console.log("현재 위도" + now_lat);
 				// 경로 function으로 현재 위경도, 목적지 위경도 전송
 				initTmap(new_lat, new_lon, now_lat, now_lon);
 				// 현재 위경도 값을 좌표->주소로 변경하는 function으로 전송
 				reverseGeo(now_lon, now_lat);
-
 			});
 		} else {
 			alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
 		}
 		
 		
-
-
-
 		// ==========목적지 검색==========
 		var map, marker1;
-
 		$('#btn_select').click(	function() {
 			console.log('진입1');
-
 			// 목적지 설정 마커 초기화
 			marker1 = new Tmapv2.Marker({
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
 					iconSize : new Tmapv2.Size(24, 38),
 					map : map
 			});
-
 			// 2. API 사용요청
 			var fullAddr = $("#fullAddr").val();
 			$.ajax({
@@ -100,12 +88,10 @@
 				fullAddr : fullAddr		// 주소 정보
 				},
 				success : function(response) {
-
 					var resultInfo = response.coordinateInfo; // .coordinateInfo -> 좌표 정보
 					console.log(resultInfo);
 					// 기존 마커 삭제
 					marker1.setMap(null);
-
 					console.log('진입2')
 					// 3.마커 찍기
 					// 검색 결과 정보가 없을 때 처리
@@ -130,28 +116,20 @@
 							console.log('진입3-1')
 	
 							initTmap(new_lat,new_lon,now_lat,now_lon);
-
 						} else {
 							// 신주소
 							lon = resultCoordinate.newLon;
 							lat = resultCoordinate.newLat
 							$("#sch_lat").html(lat); // 검색한 위도
 							$("#sch_lon").html(lon); // 검색한 경도
-
 							new_lat = lat;
 							new_lon = lon;
-
 							console.log("검색 위도: "+ new_lat);
 							console.log("검색 경도: "+ new_lon);
-
 							initTmap(new_lat,new_lon,now_lat,now_lon);
-
 							console.log('진입3-2')
-
 						}
-
 						var lonEntr, latEntr;
-
 						if (resultCoordinate.lonEntr == undefined&& resultCoordinate.newLonEntr == undefined) {
 							lonEntr = 0;
 							latEntr = 0;
@@ -167,10 +145,8 @@
 									console.log('진입4-3');
 							}
 						}
-
 						console.log('진입5')
 						var markerPosition = new Tmapv2.LatLng(Number(lat),Number(lon));
-
 						console.log('진입6')
 						//map.setCenter(markerPosition); //21.02.05 -> 주석처리하니 에러 없음. 위경도좌표도 나옴. km, 
 						console.log('진입7');
@@ -180,12 +156,10 @@
 						var address = '', newAddress = '';
 						var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 						var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
-
 						// 새주소일 때 검색 결과 표출
 						// 새주소인 경우 matchFlag가 아닌
 						// newMatchFlag가 응답값으로
 						// 온다
-
 						if (resultCoordinate.newMatchFlag.length > 0) {
 								// 새(도로명) 주소 좌표 매칭
 								// 구분 코드

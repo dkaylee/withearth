@@ -204,7 +204,7 @@
         
       //*******************************************현재 나의 위치를 찾고, 그 위치를 startPoint로 등록******************************************************
         function getStartPoint() {
-            remove("markerStartPointLayer");
+            markerStartPointLayer.setMap(null);
             //*****************현재 나의 위치를 얻어오기***************************
             if ("geolocation" in navigator) {
                 // GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -285,7 +285,7 @@
       //데이터 로드가 섬공적으로 완료 되었을 때 발생하는 함수입니다.
         function onCompleteTData(e) {
         	console.log(e);
-            remove("markersLayer");
+            markersLayer.setMap(null);
             markersLayer.setVisibility(true);
             //return 받은 xml에서 'searchPoiInfo pois poi'가 존재하는지 확인합니다.
             if (jQuery(this.responseXML).find("searchPoiInfo pois poi").text() != '') {
@@ -308,7 +308,7 @@
             function setEndPoint(lon, lat) {
             	
                 //기존에 등록했던 endPointMarker 삭제
-                remove("markerEndPointLayer");      
+               markerEndPointLayer.setMap(null);      
                 
                 var endPoint = new Tmapv2.LonLat(lon, lat);
                 
@@ -337,7 +337,7 @@
             	$("#customSwitch1").attr("checked", false);
     			
                 //기존 endPoint로 지정했던 마커를 삭제한다.
-                remove("markerEndPointLayer");
+                markerEndPointLayer.setMap(null);
                 //기존 루트레이어는 안보이게 처리
                 routeLayer.setVisibility(false);
                 var endPoint = $('#endPoint').val();
