@@ -11,19 +11,24 @@
 	<style>
 	
 	#banner{
-	  margin-bottom : -100px;
+	  margin-bottom : -200px;
+	}
+	
+	#subTitle{
+	 font-weight : bold;
+	 color : #737373;
+	
 	}
 	
 	.article{	
-	 width : 500px;
-	 height : 250px;	 
-	 padding : 20px;
+	 width : 250px;
+	 height : 320px;	 
+	 padding : 15px;
 	 
 	 text-align : center;
 	 margin-bottom : 30px;
-	 border : 1px solid #EEE;
-	 background-color: #EEE;
-	 border-radius: 10px;
+	/*  border : 5px solid #EEE; */
+	 border-radius: 20px;
 	}
 	
 	.article-img{		
@@ -33,27 +38,22 @@
 	}
 	
 	.img{
-	width : 200px;
+	 margin-left : 4px;
+	 width : 200px;
 	 height :200px;
-	border-radius: 10px;
-	}
-	
-	.article-content{
-	  float : left;
-	  	  
-	  margin-left : 8px;
+	 border-radius: 10px;
+	 border : 1px solid #EEE;
 	}
 	
 	.article-title{
-	  float : left;
-	  width : 250px;
-	  	 	  
+	  width : 200px;	  	 	
 	  white-space: nowrap;  
 	  overflow: hidden;
 	  text-overflow: ellipsis;
 	  
 	  text-align: left;
-	  font-size : 23px;
+	  font-size : 20px;
+	  color : #02060D;
 	}
 	
 	.article-heart{
@@ -61,14 +61,25 @@
 	font-size : 15px;
 	
 	}
-	
 	.title{
 	  font-size : 50px;
-	  font-weight: bold;
-	}
-	
+	  font-weight: bold;	  
+	 color : #404040;
+	}	
 	.pBtn{
 	  float : right;
+	}
+	.searchForm{
+	 overflow : hidden;
+	 text-align: left;
+	}
+	
+	#searchType{
+	 width : 120px;
+	}
+	
+	.search-unit{
+	  float : left;
 	}
 	
 	
@@ -85,15 +96,37 @@
 		<section id="three" class="wrapper special">
 				<div class="inner">
 					<header class="align-center">
-						<div class="title">나눔장</div>
-						<p> 환경을 위해 나눔에 동참해보세요! </p>
+						<div class="title">나눔장터</div>
+						<h3 id="subTitle"> 환경을 위해 나눔에 동참해보세요! </h3>
 					</header>
-			
-					<div class="flex flex-2" id="wrapContent" >				   						
-						 
-				   </div>
-							   
-				   </div>
+			    <form class="searchForm" action="<c:url value="/rest/user/post/list"/>">
+			    <div class="search-unit">
+					<select id="searchType" name="searchType">
+					<option value="">검색타입  ⌵ </option>
+						<option value="idx">아이디</option>
+						<option value="postTitle">제목</option>
+						<option value="both">아이디+제목</option>
+					</select>
+					</div>
+					<div class="search-unit">
+					<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력해주세요."> 
+					</div>
+					<div class="search-unit">
+					 <input type="button" id="searchBtn" value="검색">
+					 </div>
+				</form>
+				 	<div class="flex flex-2" id="wrapContent" >				
+					   	
+					   	
+					
+					   						
+				  </div>						   	
+			    <div class="paging">
+				     
+			    </div>
+	         
+				   </div>				
+		
 			</section>			
 	
 						
@@ -103,39 +136,59 @@
   
    
    	<script>
-		$(document).ready(function() {
+    // 뷰컨트롤러 통해 페이지 번호 받기
+	function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
+	return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
 
+    var p = getParameterByName('p');
+    console.log(p);
 
-				$.ajax({
-
-					url : "http://localhost:8080/dona/rest/user/post/list",
-					type : 'GET',
-					success : function(data) {
-
-						$.each(data, function(index, item) {
-													
-							var html ='<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
-							html += '<div class="article-img">';
-							html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-							html += '</div>';
-							html += '<div class="article-content">';
-							html += '<div class="article-title">';
-							html += item.postTitle+'</div>';
-							html += '<div class="article-heart">';
-							html += '관심 3</div>';
-							html += '</div></div>';
-							
-							$('#wrapContent').append(html);
-					  	
-						})
-					},
-					error : function(e) {
-						console.log("에러 발생 : " + e);
-					}
-
-				});
-			
+  	
+		$(document).ready(function() {		
 		
+					
+				$.ajax({
+					  url : 'http://localhost:8080/dona/rest/user/post/list?p='+ p,
+					  type : 'GET',
+					  success : function(data){				
+						 console.log(data);	
+						 
+						 var list = $(data.postList);
+						 console.log(list);
+						            
+						 $.each(list, function(index, item){
+							 
+							 var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
+								html += '<div class="article-img">';
+								html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+								html += '</div>';
+								html += '<div class="article-content">';
+								html += '<div class="article-title">';
+								html += item.postTitle+'</div>';
+								html += '<div class="article-heart">';
+								html += '관심 3</div>';
+								html += '</div></div>'
+																
+								$('#wrapContent').append(html);										 
+							 
+						 });
+						   // 페이징 처리
+							 if (data.totalPostCount>0){
+								 console.log('totalPageCount :' + data.totalPageCount);
+								for(var i=1; i <= data.totalPageCount; i++){				
+									 var html2 =' [ <a href="<c:url value="/main/list"/>?p='+i+'">'+i+'</a> ] ';																		
+									 $('.paging').append(html2);
+								}										 
+							 };		
+																    	
+						  },error : function(request, status, error) {
+								console.log("에러 발생 : code = " +request.status + "message =" + request.responseText + "error : " + error);
+							}
+				});
+      
+				
 
 		});
    </script>	

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aia.dona.dao.FileDao;
 import com.aia.dona.dao.PostDao;
@@ -35,10 +36,10 @@ public class PostEditService {
 			PostEditRequest editRequest,
 			HttpServletRequest request,
 			Model model) {
-		
+									
 		MultipartFile[] files = editRequest.getPostImage();
-
-		File newFile = null;
+											
+		//File newFile = null;
 			
 		// 시스템 저장경로
 		String path = "/fileupload/post";
@@ -48,26 +49,36 @@ public class PostEditService {
 		String fileName = "";
 
 		String newFileName = "";
-		
-		// DB에 이미지 이름 저장
-		PostOnly post = editRequest.toPost();   
-	    
-		pDao = template.getMapper(PostDao.class);
-		
+						
+		// DB에 수정한 게시물 저장
+		PostOnly post = editRequest.toPost();   	    
+		pDao = template.getMapper(PostDao.class);		
 		int result = pDao.updatePost(post);
 		
 		// 속성에 저장 -> 나중에 확인해서 출력
 		model.addAttribute("result", result);
-		
-		int donaIdx = pDao.getDonaIdx();
+											
+	    fDao = template.getMapper(FileDao.class);
+	    
+	    // 기존 이미지 삭제처리	
+	   if(editRequest.getDeleteImage() != null) {								
 			
-
+			for(int i=0; i <editRequest.getDeleteImage().length; i++) {		
+				
+				// DB 파일 테이블에서 삭제한 파일명과 같은 행 삭제처리
+				fDao.deleteBeforeImage(editRequest.getDeleteImage()[i]);
+				// 디렉토리에서 삭제
+				new File(saveDirPath, editRequest.getDeleteImage()[i]).delete();
+				new File(saveDirPath, "s_"+editRequest.getDeleteImage()[i]).delete();
+			}	
+	   }	
+	    if(editRequest.getPostImage() != null) {	
 		// 파일 배열에서 꺼내서 경로에 저장하기
-		for (MultipartFile mp : files) {
+		for (MultipartFile mp : files) {				
 
 			fileName = mp.getOriginalFilename(); // 파일 이름
-						
-			//System.out.println("fileName : " + fileName);
+			
+			System.out.println(fileName);						
 
 			newFileName = System.currentTimeMillis() + fileName;
 			
@@ -89,23 +100,20 @@ public class PostEditService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-					
+																
 			// 파일명과 게시물Idx DB에 저장
 			PostFile postFiles = new PostFile();
 			postFiles.setFileName(newFileName);
-			postFiles.setDonaIdx(donaIdx);
-		
-			fDao = template.getMapper(FileDao.class);
-
-			//fDao.updateFiles(postFiles);
+			postFiles.setDonaIdx(editRequest.getDonaIdx());
 			
-					
-		pDao = template.getMapper(PostDao.class);
-					
-	}
-	
-		return pDao.updatePost(editRequest);
+			fDao.insertUpdateFiles(postFiles);
+											
+	    }
+		} 
+				
+		
+		return result;
    
-}
+   }
 	
 }

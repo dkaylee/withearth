@@ -98,17 +98,31 @@
 	</section>
 
 
-	<a href="<c:url value="/main/post/update"/>"><input type="button"
-		class="pBtn" id="updateBtn" value="수정/삭제"></a>
-	<a href="<c:url value="/main/post/upload"/>"><input type="button"
-		class="pBtn" value="글쓰기" /></a>
-
-
-
 	<script>
-		$(document).ready(function() {
+	
+	function deletePost(idx){
+		
+		console.log('테스트1');
+		 var delConfirm = confirm('정말 삭제하시겠습니까?');
+		 
+		 if(delConfirm){
+			  $.ajax({
+				 
+				 url : "http://localhost:8080/dona/rest/user/post/delete?idx="+ idx,
+				 type : 'GET',
+				 success : function(data){					 
+					 location.reload();				 
+					 console.log(idx+'번 게시물 삭제완료!');
+				 }
+				 
+			 });		
+		 }		
+	};
 
-			// 게시물 idx 받기
+	
+		$(document).ready(function() {
+		
+			// 뷰컨트롤러 통해서 게시물 idx 받기
 			function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 				var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
 				return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
@@ -116,8 +130,7 @@
 			
 			var idx = getParameterByName('idx');
 			
-				$.ajax({
-
+				$.ajax({					
 					url : "http://localhost:8080/dona/rest/user/post/mypost?idx=" + idx,
 					type : 'GET',
 					success : function(data) {
@@ -125,15 +138,15 @@
 						$.each(data, function(index, item) {
 													
 							       var html = '<tr>';	
-							           html += '<td>'+item.idx+'</td>';
+							           html += '<td>'+(index+1)+'</td>';
 							           html += '<td>'+item.postTitle+'</td>';
 							           html += '<td>'+item.category+'</td>';
 							           html += '<td>'+item.writedate+'</td>';					                               
 							           html += '<td><input type="button" value="수정" onClick="location.href=\'<c:url value="/main/post/edit?idx='+item.donaIdx+'"/>\'">';
-							           html += '<input type="button" value="삭제"></td>';
+							           html += '<input type="button" value="삭제" onclick="deletePost('+item.donaIdx+');"></td>';
 							           html += '</tr>';
 																						
-						        	$('.tBody').append(html);
+						        	$('.tBody').append(html);						        
 					  	
 						})
 					},
@@ -142,10 +155,11 @@
 					}
 
 				});
-			
+				
+														
+		});
 		
 
-		});
    </script>
 </body>
 

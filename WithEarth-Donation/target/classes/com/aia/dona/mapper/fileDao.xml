@@ -17,15 +17,22 @@
 
 		insert into postfile(file_name, dona_idx)
 
-		values(
-
-		#{fileName}, #{donaIdx}
-
-		)
+		values(#{fileName}, #{donaIdx})
 	</insert>
 
 	<select id="selectPostImages" resultMap="fileResult">
-		select file_idx, file_name from postfile where dona_idx=#{idx};
+		select file_idx, file_name from postfile where dona_idx=#{idx}
 	</select>
-
+	
+	<delete id="deleteBeforeImage">
+	 delete from postfile where file_name=#{deleteImage}
+	</delete>
+	
+	<insert id="insertUpdateFiles" parameterType="com.aia.dona.domain.PostFile">
+	  insert into postfile(file_name, dona_idx) values(#{fileName}, #{donaIdx})
+	</insert>
+	
+	<delete id="deletePostFile">
+	 delete from postfile where dona_idx=#{donaIdx}
+	</delete>
 </mapper>

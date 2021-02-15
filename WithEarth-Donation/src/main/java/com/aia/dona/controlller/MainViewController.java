@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainViewController {
 	
 	@RequestMapping("/main/list")
-	public String goMainForm() {
+	public String goMainForm(
+			@RequestParam(value="p", defaultValue ="1") int p){
 		
 		return "post/donaMain";
 	}
@@ -45,6 +46,6 @@ public class MainViewController {
 		
 		return "post/postEditForm";
 	}
-	
+
 
 }

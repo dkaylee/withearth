@@ -13,14 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aia.dona.domain.Post;
 import com.aia.dona.domain.PostEditRequest;
 import com.aia.dona.domain.PostFile;
+import com.aia.dona.domain.PostListView;
 import com.aia.dona.domain.PostOnly;
 import com.aia.dona.domain.RequestPost;
+import com.aia.dona.service.PostDeleteService;
+import com.aia.dona.service.PostEditService;
 import com.aia.dona.service.PostListService;
 import com.aia.dona.service.PostMyPostListService;
 import com.aia.dona.service.PostUploadService;
+
 
 @RestController
 @RequestMapping("/rest/user/post")
@@ -32,25 +35,33 @@ public class PostController {
 	private PostListService listService;
 	@Autowired
 	private PostMyPostListService myPostService;
+	@Autowired
+	private PostEditService editService;
+	@Autowired
+	private PostDeleteService deleteService;
 	
 	// 게시물을 업로드
 	@PostMapping("/upload")
 	@ResponseBody
 	public int uploadPost(
-			 RequestPost requestPost,
+			RequestPost requestPost,
 			HttpServletRequest request,
 			Model model) {				
-			
+				
 		return uploadService.upload(requestPost, request, model);
 	}
 	
 	// 게시물 리스트 출력
 	@GetMapping("/list")
-	public List<Post> getPostList() {
+	public PostListView getPostList(	
+			@RequestParam(value="p", defaultValue = "1") int page,
+			Model model) {
 		
-		return 	listService.getList();
+		//model.addAttribute("listView", listService.getList(page));
+		
+		return listService.getList(page);
 	}
-	
+		
 	// 게시물 하나 출력
 	@GetMapping("/detail")
 	public PostOnly getPostDetail(
@@ -87,9 +98,16 @@ public class PostController {
 			PostEditRequest editRequest,
 			HttpServletRequest request,
 			Model model
-			) {					
+			) {		
+			
+		return editService.editPost(editRequest, request, model);
+	}
 	
-		return 1;
+	@GetMapping("/delete")
+	public int deletePost(
+			@RequestParam("idx") int donaIdx) {
+		
+		return deleteService.postDelete(donaIdx);
 	}
 
 }

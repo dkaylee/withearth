@@ -33,8 +33,12 @@ public class PostUploadService {
 	public int upload(RequestPost requestPost, HttpServletRequest request, Model model) {
 
 		MultipartFile[] files = requestPost.getPostImage();
+		
+		for(int i=0;i<files.length;i++) {
+			System.out.println(files[i]);
+		}
 
-		File newFile = null;
+		//File newFile = null;
 			
 		// 시스템 저장경로
 		String path = "/fileupload/post";
@@ -96,9 +100,7 @@ public class PostUploadService {
 			fDao.insertFiles(postFiles);
 			
 						
-		}
-		
-		System.out.println(newFileName);
+		}		
 
 		return result;
 	}

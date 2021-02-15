@@ -30,7 +30,7 @@
 	    <result column="dona_idx" property="donaIdx"/>
 	</resultMap>
 
-	<insert id="insertPost" parameterType="com.aia.dona.domain.Post"
+	<insert id="insertPost" parameterType="com.aia.dona.domain.PostOnly"
 		useGeneratedKeys="true" keyProperty="donaIdx">
 		insert into donapost(dona_title, dona_content, dona_category, idx)
 		values(#{postTitle}, #{postContent}, #{category}, #{idx})
@@ -40,9 +40,10 @@
 	  SELECT LAST_INSERT_ID();
 	</select>
 
-	<select id="selectPostList" resultMap="postResult">
-	SELECT * FROM donapost p left join postfile f on p.dona_idx=f.dona_idx	
-	</select>
+ <select id="selectPostList" resultMap="postResult" parameterType="Map">
+	select * from donapost p inner join postfile f on p.dona_idx=f.dona_idx
+  where file_idx in (select min(file_idx) from postfile f group by dona_idx) limit #{startRow},#{cntPerPage}
+	</select> 
 	
 	<select id="selectPostDetail" resultMap="postDetailResult">	 
       select * from donapost where dona_idx=#{idx}
@@ -51,5 +52,48 @@
 	<select id="selectMyPostList" resultMap="postDetailResult">
 	  select * from donapost where idx=#{idx}
 	</select>
-
+	
+	<update id="updatePost" parameterType="com.aia.dona.domain.PostOnly">
+	 update donapost set dona_title=#{postTitle}, dona_content=#{postContent}, dona_category=#{category}, dona_idx=#{donaIdx}
+	 where dona_idx=#{donaIdx}
+	</update>
+	
+	<delete id="deleteOnePost">
+	  delete from donapost where dona_idx=#{donaIdx}
+	</delete>
+	
+	<select id="selectPostCount" resultType="int" parameterType="Map">
+	  select count(*) from donapost
+	  
+<!-- 	  <where>
+	  <if test="searchType == 'idx'">
+	      idx like concat('%',#{keyword},'%')
+	  </if>
+	  <if test="searchType == 'postTitle'">
+	      dona_title like concat('%',#{keyword},'%')
+	  </if>
+	   <if test="searchType == 'both'">
+	   idx like concat('%',#{keyword},'%') or dona_title like concat('%',#{keyword}, '%')
+	  </if>
+	  </where> -->
+	</select> 
+	
+	<!-- <select id="selectPostList" parameterType="Map" resultMap="postResult">
+	
+	 SELECT * FROM donapost p left join postfile f on p.dona_idx=f.dona_idx	
+	 
+	 <where>
+	  <if test="searchType == 'idx'">
+	      idx like concat('%',#{keyword},'%')
+	  </if>
+	  <if test="searchType == 'postTitle'">
+	      dona_title like concat('%',#{keyword}, '%')
+	  </if>
+	   <if test="searchType == 'both'">
+	   idx like concat('%',#{keyword},'%') or dona_title like concat('%',#{searchParam.keyword}, '%')
+	  </if>
+	 </where>
+	 
+	  limit #{startRow},#{cntPerPage}
+	</select> -->
 </mapper>

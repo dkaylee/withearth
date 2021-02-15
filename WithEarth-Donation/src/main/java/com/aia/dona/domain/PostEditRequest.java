@@ -10,7 +10,7 @@ public class PostEditRequest {
 	private String postTitle;  // 게시글 제목
 	private String category;  // 카테고리
 	private String postContent;  // 게시글 내용
-	private String oldPostImage;  // 기존 이미지
+	private String deleteImage[];  // 삭제할 기존 이미지
 	private MultipartFile postImage[];  // 게시글 이미지
 	private int donaIdx;
 	
@@ -38,12 +38,6 @@ public class PostEditRequest {
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-	public String getOldPostImage() {
-		return oldPostImage;
-	}
-	public void setOldPostImage(String oldPostImage) {
-		this.oldPostImage = oldPostImage;
-	}
 	public MultipartFile[] getPostImage() {
 		return postImage;
 	}
@@ -55,8 +49,13 @@ public class PostEditRequest {
 	}
 	public void setDonaIdx(int donaIdx) {
 		this.donaIdx = donaIdx;
+	}		
+	public String[] getDeleteImage() {
+		return deleteImage;
 	}
-	
+	public void setDeleteImage(String[] deleteImage) {
+		this.deleteImage = deleteImage;
+	}
 	// editRequest -> post
 	public PostOnly toPost() {
 		PostOnly post = new PostOnly();
@@ -72,11 +71,15 @@ public class PostEditRequest {
 	@Override
 	public String toString() {
 		return "PostEditRequest [idx=" + idx + ", postTitle=" + postTitle + ", category=" + category + ", postContent="
-				+ postContent + ", oldPostImage=" + oldPostImage + ", postImage=" + Arrays.toString(postImage)
-				+ ", donaIdx=" + donaIdx + "]";
+				+ postContent + ", deleteImage=" + Arrays.toString(deleteImage) + ", postImage="
+				+ Arrays.toString(postImage) + ", donaIdx=" + donaIdx + "]";
 	}
 	
-    
+
+	
+
+	
+
 	
 	
 	
