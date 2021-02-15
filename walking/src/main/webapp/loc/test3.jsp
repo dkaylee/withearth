@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -11,25 +12,11 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <!-- Bootstrap CSS & JS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="<c:url value='/assets/css/layout.css'/>">
-
-<!--Tmap API-->
-<script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=6d5877dc-c348-457f-a25d-46b11bcd07a9"></script>
-
-<!--폰트어썸 아이콘  -->
-<script src="https://kit.fontawesome.com/ff137eb685.js" crossorigin="anonymous"></script>
-
-<!--폰트  -->
-<link href="https://fonts.googleapis.com/css?family=Anton|Exo&display=swap" rel="stylesheet">
+<script
+	src="https://apis.openapi.sk.com/Tmapv2/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
+</head>
 
 <title>바로 시작하기</title>
 
@@ -82,7 +69,7 @@ font-family: 'Exo', sans-serif;
 		<hr>
 
 		<div style="margin-bottom: 20px;">
-			<div>
+			<div><
 			<i class="fas fa-flag-checkered"> 도착지점</i>
 			<input type="text" id="endPoint" style="width: 180px; margin-left: 10px" placeholder="예)명동역"> 
 			<button type="button" id="searchEndPoint" style="margin-top: -3px"  class="btn btn-primary btn-sm" onclick="searchPOIEnd()"><i class="fas fa-search-location"> 검색</i></button>
@@ -212,19 +199,19 @@ font-family: 'Exo', sans-serif;
         // 1. 지도 띄우기
         function initTmap() {
             // map 생성
-            // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
-            map = new Tmap.Map({
+            // Tmapv2.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
+            map = new Tmapv2.Map({
                 div: 'map_div', // map을 표시해줄 div
                 width: '100%', // map의 width 설정
                 height: '400px' // map의 height 설정
             });
             
-            DrawLine.vectorLayer2 = new Tmap.Layer.Vector('TmapVectorLayer');
-            seoulBikeLayer = new Tmap.Layer.Markers();
-            routeLayer = new Tmap.Layer.Vector("route"); // 루트를 표시하는 백터 레이어 생성
-            markerStartPointLayer = new Tmap.Layer.Markers();
-            markerEndPointLayer = new Tmap.Layer.Markers();
-            markersLayer = new Tmap.Layer.Markers();
+            DrawLine.vectorLayer2 = new Tmapv2.Layer.Vector('Tmapv2VectorLayer');
+            seoulBikeLayer = new Tmapv2.Layer.Markers();
+            routeLayer = new Tmapv2.Layer.Vector("route"); // 루트를 표시하는 백터 레이어 생성
+            markerStartPointLayer = new Tmapv2.Layer.Markers();
+            markerEndPointLayer = new Tmapv2.Layer.Markers();
+            markersLayer = new Tmapv2.Layer.Markers();
             
             map.addLayer(markerStartPointLayer);
             map.addLayer(markerEndPointLayer);
@@ -246,16 +233,16 @@ font-family: 'Exo', sans-serif;
                     // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
                     var lat = position.coords.latitude;
                     var lon = position.coords.longitude;
-                    var PR_3857 = new Tmap.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
-                    var PR_4326 = new Tmap.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326        
-                    var lonlat = new Tmap.LonLat(lon, lat).transform(PR_4326, PR_3857);
-                    var size = new Tmap.Size(24, 38);
-                    var offset = new Tmap.Pixel(-(size.w / 2), -(size.h));
-                    var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_i.png />', size, offset);
-                    var marker = new Tmap.Marker(lonlat, icon);
+                    var PR_3857 = new Tmapv2.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
+                    var PR_4326 = new Tmapv2.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326        
+                    var lonlat = new Tmapv2.LonLat(lon, lat).transform(PR_4326, PR_3857);
+                    var size = new Tmapv2.Size(24, 38);
+                    var offset = new Tmapv2.Pixel(-(size.w / 2), -(size.h));
+                    var icon = new Tmapv2.IconHtml('<img src=http://Tmapv2apis.sktelecom.com/upload/Tmapv2/marker/pin_r_m_i.png />', size, offset);
+                    var marker = new Tmapv2.Marker(lonlat, icon);
                     markerStartPointLayer.addMarker(marker);
                     map.setCenter(lonlat); // geolocation으로 얻어온 좌표로 지도의 중심을 설정합니다.
-                    var startPoint = new Tmap.LonLat(lon, lat).transform(PR_4326, PR_3857);
+                    var startPoint = new Tmapv2.LonLat(lon, lat).transform(PR_4326, PR_3857);
                     direct.startPoint = startPoint;
                 }, function(error) {
                 	alert(error);
@@ -267,10 +254,10 @@ font-family: 'Exo', sans-serif;
         //검색 시에 마커를 찍는 함수입니다.
         function addMarker(options) {
         	
-            var size = new Tmap.Size(12, 19); //아이콘 크기입니다.
-            var offset = new Tmap.Pixel(-(size.w / 2), -size.h); //아이콘 중심점입니다.
-            var icon = new Tmap.Icon("http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_s_simple.png", size, offset); //마커 아이콘입니다.
-            var markers = new Tmap.Markers(options.lonlat, icon); //마커를 생성합니다.
+            var size = new Tmapv2.Size(12, 19); //아이콘 크기입니다.
+            var offset = new Tmapv2.Pixel(-(size.w / 2), -size.h); //아이콘 중심점입니다.
+            var icon = new Tmapv2.Icon("http://Tmapv2apis.sktelecom.com/upload/Tmapv2/marker/pin_b_s_simple.png", size, offset); //마커 아이콘입니다.
+            var markers = new Tmapv2.Markers(options.lonlat, icon); //마커를 생성합니다.
             markersLayer.addMarker(markers); //레이어에 마커를 추가합니다.
             var lon = options.lonlat.lon;
             var lat = options.lonlat.lat;
@@ -289,7 +276,7 @@ font-family: 'Exo', sans-serif;
                 "</span>" +
                 "</div>" +
                 "</div>";
-            var popup = new Tmap.Popup("p1", options.lonlat, new Tmap.Size(250, 70), content, true);
+            var popup = new Tmapv2.Popup("p1", options.lonlat, new Tmapv2.Size(250, 70), content, true);
             popup.setBorder("1px solid #8d8d8d"); //popup border 조절                         
             map.addPopup(popup); //map에 popup 추가
             popup.hide();
@@ -329,7 +316,7 @@ font-family: 'Exo', sans-serif;
                     var lat = jQuery(this).find("frontLat").text(); //lat 값을 추출 합니다.
 					var options = {
                             name: name, //마커의 라벨 옵션 설정
-                            lonlat: new Tmap.LonLat(lon, lat), //마커의 좌표 옵션 지정
+                            lonlat: new Tmapv2.LonLat(lon, lat), //마커의 좌표 옵션 지정
                             touched: 0
                        };
 			         addMarker(options); //위에서 만들어 놓은 마커를 등록하는 함수 실행합니다.
@@ -343,7 +330,7 @@ font-family: 'Exo', sans-serif;
             //기존에 등록했던 endPointMarker 삭제
             markerEndPointLayer.clearMarkers();      
             
-            var endPoint = new Tmap.LonLat(lon, lat);
+            var endPoint = new Tmapv2.LonLat(lon, lat);
             
             console.log(":::::::::::::::" + endPoint);
             
@@ -353,10 +340,10 @@ font-family: 'Exo', sans-serif;
             //도착지 선택 버튼을 눌렀을 때, markersEndLayer 감추기
             markersLayer.setVisibility(false);
             map.addLayer(markerEndPointLayer); //map에 마커 레이어 추가
-            var size = new Tmap.Size(24, 38); //아이콘 크기 설정
-            var offset = new Tmap.Pixel(-(size.w / 2), -size.h); //아이콘 중심점 설정
-            var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_g.png />', size, offset); //마커 아이콘 설정
-            var marker_e = new Tmap.Marker(endPoint, icon); //설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
+            var size = new Tmapv2.Size(24, 38); //아이콘 크기 설정
+            var offset = new Tmapv2.Pixel(-(size.w / 2), -size.h); //아이콘 중심점 설정
+            var icon = new Tmapv2.IconHtml('<img src=http://Tmapv2apis.sktelecom.com/upload/Tmapv2/marker/pin_r_m_g.png />', size, offset); //마커 아이콘 설정
+            var marker_e = new Tmapv2.Marker(endPoint, icon); //설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
             markerEndPointLayer.addMarker(marker_e); //마커 레이어에 마커 추가
             
             endPointChk = 1;
@@ -378,7 +365,7 @@ font-family: 'Exo', sans-serif;
             if (endPoint == "") {
                 alert("도착지를 입력하세요!");
             } else {
-                tdata = new Tmap.TData(); //REST API 에서 제공되는 경로, 교통정보, POI 데이터를 쉽게 처리할 수 있는 클래스입니다.
+                tdata = new Tmapv2.TData(); //REST API 에서 제공되는 경로, 교통정보, POI 데이터를 쉽게 처리할 수 있는 클래스입니다.
                 tdata.events.register("onComplete", tdata, onCompleteTData); //데이터 로드가 성공적으로 완료되었을 때 발생하는 이벤트입니다.
                 var center = map.getCenter(); //map의 중심 좌표 값을 받아 옵니다.
                 //POI 검색 데이터를 콜백 함수를 통해 XML로 리턴
@@ -401,22 +388,22 @@ font-family: 'Exo', sans-serif;
             var endY = direct.endPoint.lat;  
             
             //********************direct에 저장된 좌표값을 경로찾기 ajax에 맞는 좌표값으로 변경************************
-            var pr_3857 = new Tmap.Projection("EPSG:3857");
-            var pr_4326 = new Tmap.Projection("EPSG:4326");
-            var startPointLonLat = new Tmap.LonLat(startX, startY).transform(pr_3857, pr_4326);
-            var endPointLonLat = new Tmap.LonLat(endX, endY).transform(pr_3857, pr_4326);
+            var pr_3857 = new Tmapv2.Projection("EPSG:3857");
+            var pr_4326 = new Tmapv2.Projection("EPSG:4326");
+            var startPointLonLat = new Tmapv2.LonLat(startX, startY).transform(pr_3857, pr_4326);
+            var endPointLonLat = new Tmapv2.LonLat(endX, endY).transform(pr_3857, pr_4326);
             var headers = {};
-            headers["appKey"] = "6d5877dc-c348-457f-a25d-46b11bcd07a9"; //실행을 위한 키 입니다. 발급받으신 AppKey(서버키)를 입력하세요.
+            headers["appKey"] = "l7xxa82c096d66484d37ac10b23c15a64620"; //실행을 위한 키 입니다. 발급받으신 AppKey(서버키)를 입력하세요.
             $.ajax({
                 method: "POST",
                 headers: headers,
-                url: "https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=xml", //보행자 경로안내 api 요청 url입니다.
+                url: "https://apis.openapi.sk.com/Tmapv2/routes/pedestrian?version=1&format=xml", //보행자 경로안내 api 요청 url입니다.
                 async: false,
                 data: {
                     //출발지 위경도 좌표입니다.
                     startX: startPointLonLat.lon.toString(),
                     startY: startPointLonLat.lat.toString(),
-                    //목적지 위경도 좌표입니다.
+                    //목적지 위경도 좌표입니다.ㅁ
                     endX: endPointLonLat.lon.toString(),
                     endY: endPointLonLat.lat.toString(),
                     //출발지, 경유지, 목적지 좌표계 유형을 지정합니다.
@@ -438,7 +425,7 @@ font-family: 'Exo', sans-serif;
                     xmlDoc = $.parseXML(prtclString),
                         $xml = $(xmlDoc),
                         $intRate = $xml.find("Document");
-                    prtcl = new Tmap.Format.KML({
+                    prtcl = new Tmapv2.Format.KML({
                         extractStyles: true,
                         extractAttributes: true
                     }).read(prtcl); //데이터(prtcl)를 읽고, 벡터 도형(feature) 목록을 리턴합니다.
@@ -449,7 +436,7 @@ font-family: 'Exo', sans-serif;
                         var style = {};
                         switch (e.feature.attributes.styleUrl) {
                             case "#pointStyle":
-                                style.externalGraphic = "http://topopen.tmap.co.kr/imgs/point.png"; //렌더링 포인트에 사용될 외부 이미지 파일의 url입니다.
+                                style.externalGraphic = "http://topopen.Tmapv2.co.kr/imgs/point.png"; //렌더링 포인트에 사용될 외부 이미지 파일의 url입니다.
                                 style.graphicHeight = 16; //외부 이미지 파일의 크기 설정을 위한 픽셀 높이입니다.
                                 style.graphicOpacity = 1; //외부 이미지 파일의 투명도 (0-1)입니다.
                                 style.graphicWidth = 16; //외부 이미지 파일의 크기 설정을 위한 픽셀 폭입니다.
@@ -475,17 +462,17 @@ font-family: 'Exo', sans-serif;
         function reverseGeo(lon, lat) {
             var result;
             //좌표계 변환
-            var lonlat = new Tmap.LonLat(lon, lat);
-            lonlat = lonlat.transform(new Tmap.Projection("EPSG:3857"), new Tmap.Projection("EPSG:4326"));
+            var lonlat = new Tmapv2.LonLat(lon, lat);
+            lonlat = lonlat.transform(new Tmapv2.Projection("EPSG:3857"), new Tmapv2.Projection("EPSG:4326"));
             $.ajax({
                 method: "GET",
-                url: "https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result", // ReverseGeocoding api 요청 url입니다.
+                url: "https://apis.openapi.sk.com/Tmapv2/geo/reversegeocoding?version=1&format=json&callback=result", // ReverseGeocoding api 요청 url입니다.
                 async: false,
                 data: {
                     "coordType": "WGS84GEO", //지구 위의 위치를 나타내는 좌표 타입
                     "lon": lonlat.lon,
                     "lat": lonlat.lat,
-                    "appKey": "6d5877dc-c348-457f-a25d-46b11bcd07a9", //실행을 위한 키 입니다. 발급받으신 AppKey(서버키)를 입력하세요.
+                    "appKey": "l7xxa82c096d66484d37ac10b23c15a64620", //실행을 위한 키 입니다. 발급받으신 AppKey(서버키)를 입력하세요.
                 },
                 //데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
                 success: function(response) {
@@ -646,12 +633,12 @@ font-family: 'Exo', sans-serif;
         
         /**********************************내 주변 반경 1km 내에 따릉이가 있는지 구하는 서비스*******************************************/
         function seoulBikeAroundMe(lon, lat, stationName, parkingBikeTotCnt){
-        	var pr_3857 = new Tmap.Projection("EPSG:3857");
-            var pr_4326 = new Tmap.Projection("EPSG:4326");
+        	var pr_3857 = new Tmapv2.Projection("EPSG:3857");
+            var pr_4326 = new Tmapv2.Projection("EPSG:4326");
              
         	var startX = direct.startPoint.lon;
             var startY = direct.startPoint.lat;
-            var startPoint = new Tmap.LonLat(startX, startY).transform(pr_3857, pr_4326);
+            var startPoint = new Tmapv2.LonLat(startX, startY).transform(pr_3857, pr_4326);
             
             var startLon = startPoint.lon;
             var startLat = startPoint.lat;
@@ -660,14 +647,14 @@ font-family: 'Exo', sans-serif;
            
             if(distance <= 0.01){ //거리가 약 반경 1km 내의 따릉이만 표시
             	
-            	var pr_3857 = new Tmap.Projection("EPSG:3857");
-                var pr_4326 = new Tmap.Projection("EPSG:4326");
-                var bikePointLonLat = new Tmap.LonLat(lon, lat).transform(pr_4326, pr_3857);
+            	var pr_3857 = new Tmapv2.Projection("EPSG:3857");
+                var pr_4326 = new Tmapv2.Projection("EPSG:4326");
+                var bikePointLonLat = new Tmapv2.LonLat(lon, lat).transform(pr_4326, pr_3857);
                 
-                var size = new Tmap.Size(12, 19); //아이콘 크기입니다.
-                var offset = new Tmap.Pixel(-(size.w / 2), -size.h); //아이콘 중심점입니다.
-                var icon = new Tmap.Icon("http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_s_simple.png", size, offset); //마커 아이콘입니다.
-                var markers = new Tmap.Markers(bikePointLonLat, icon); //마커를 생성합니다.
+                var size = new Tmapv2.Size(12, 19); //아이콘 크기입니다.
+                var offset = new Tmapv2.Pixel(-(size.w / 2), -size.h); //아이콘 중심점입니다.
+                var icon = new Tmapv2.Icon("http://Tmapv2apis.sktelecom.com/upload/Tmapv2/marker/pin_b_s_simple.png", size, offset); //마커 아이콘입니다.
+                var markers = new Tmapv2.Markers(bikePointLonLat, icon); //마커를 생성합니다.
                 
                 seoulBikeLayer.addMarker(markers); //레이어에 마커를 추가합니다.
                 
@@ -684,7 +671,7 @@ font-family: 'Exo', sans-serif;
 		                      "</div>"+
 		                      "</div>";
                 	
-                var popup = new Tmap.Popup("p1", bikePointLonLat, new Tmap.Size(120, 50), content, true);
+                var popup = new Tmapv2.Popup("p1", bikePointLonLat, new Tmapv2.Size(120, 50), content, true);
                 popup.setBorder("1px solid #8d8d8d"); //popup border 조절
                 popup.autoSize = true; //popup 사이즈 자동 조절		                         
                 map.addPopup(popup); //map에 popup 추가
@@ -817,10 +804,10 @@ font-family: 'Exo', sans-serif;
        
                     var lat = position.coords.latitude;
                     var lon = position.coords.longitude;
-                    var PR_3857 = new Tmap.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
-                    var PR_4326 = new Tmap.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326        
+                    var PR_3857 = new Tmapv2.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
+                    var PR_4326 = new Tmapv2.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326        
                     
-                    var endPoint = new Tmap.LonLat(lon, lat).transform(PR_4326, PR_3857);
+                    var endPoint = new Tmapv2.LonLat(lon, lat).transform(PR_4326, PR_3857);
                     
                     myCourse.endPoint = endPoint;
                     
@@ -854,7 +841,7 @@ font-family: 'Exo', sans-serif;
                 }
                 pointString += DrawLine.arrPoint[i] + ',' + DrawLine.arrPoint[i + 1]; // ex) 127.925710,37.557086|127.954464,37.556542
                 cntPointString++; // 포인트 스트링 개수 카운트
-                var coord = new Tmap.LonLat(DrawLine.arrPoint[i], DrawLine.arrPoint[i + 1]).transform("EPSG:4326", "EPSG:3857");
+                var coord = new Tmapv2.LonLat(DrawLine.arrPoint[i], DrawLine.arrPoint[i + 1]).transform("EPSG:4326", "EPSG:3857");
                 if (cntPointString == DrawLine.SPLIT_VALUE || (i + 2) >= cntAllPoint) {
                     // 포인트 개수가 제한 수에 도달했다면 || 반복문의 마지막 항목 이라면 할 작업 
                     // 0. LoadApi 요청
@@ -893,41 +880,41 @@ font-family: 'Exo', sans-serif;
                                 }
                                 // 2. 라인으로 그려질 소스 포인트 리스트 만들기
                                 if (objSourceLocation) {
-                                    arrPointForMarker.push(new Tmap.Geometry.Point(objSourceLocation.longitude, objSourceLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
+                                    arrPointForMarker.push(new Tmapv2.Geometry.Point(objSourceLocation.longitude, objSourceLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
                                 }
                                 // 3-1. 라인으로 그려질 매칭 포인트 리스트 만들기
                                 // 한번에 모든 좌표를 요청하면 문제가 없겠지만 100개 이상의 좌표를 여러번 나눠서 요청해야할 경우 요청과 요청 사이의 매칭된 링크가 어긋날 수 있다.
                                 // 이를 보정하기 위해 이전 요청 좌표의 일부(버퍼)를 함깨 요청하고 매 요청의 곂치는 부분의 결과를 (버퍼사이즈/2 만큼)덜 그림으로써 좀더 매끄러운 결과를 얻을 수 있다.
                                 if (arrPointForLine.length == 0 && DrawLine.lastMatchedLocation) {
                                     // 이전 요청의 마지막 매칭좌표가 존재한다면 현재 매칭 좌표라인의 맨 앞에 추가 ( 이전 요청 라인과 이어지게 하기 위함 )
-                                    arrPointForLine.push(new Tmap.Geometry.Point(DrawLine.lastMatchedLocation.longitude, DrawLine.lastMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
+                                    arrPointForLine.push(new Tmapv2.Geometry.Point(DrawLine.lastMatchedLocation.longitude, DrawLine.lastMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
                                     arrPointForCalDistance.push(DrawLine.lastMatchedLocation); // 거리 계산을 위해 저장
                                     DrawLine.lastMatchedLocation = null;
                                 }
                                 if (cntAllPoint / 2 <= DrawLine.SPLIT_VALUE) {
                                     // 1) 처음이자 마지막 요청이라면(전체 요청 좌표개수가 분할요청 기준보다 적다면) => 매칭된 좌표를 모두 라인으로 그림
                                     if (objMatchedLocation) {
-                                        arrPointForLine.push(new Tmap.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
+                                        arrPointForLine.push(new Tmapv2.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
                                         arrPointForCalDistance.push(objMatchedLocation); // 거리 계산을 위해 저장
                                     }
                                 } else if (DrawLine.cntReqApi == 1) {
                                     // 2) 처음 요청이면서 이후에 요청이 있을 예정이라면 => 뒤쪽좌표 중 버퍼의 절반 만큼 그리지 않음
                                     if (objMatchedLocation && lastSourceIndex < (cntPointString - (DrawLine.CNT_BUFF / 2))) {
-                                        arrPointForLine.push(new Tmap.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
+                                        arrPointForLine.push(new Tmapv2.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
                                         DrawLine.lastMatchedLocation = objMatchedLocation; // 이후 API 요청결과와 라인을 이어가기 위해 마지막 포인트 저장
                                         arrPointForCalDistance.push(objMatchedLocation); // 거리 계산을 위해 저장
                                     }
                                 } else if (DrawLine.cntReqApi > 1 && (i + 2) >= cntAllPoint) {
                                     // 3) 처음이 아니면서 마지막 API 요청이라면 => 앞쪽좌표 중 버퍼의 절반 만큼 그리지 않음
                                     if (objMatchedLocation && lastSourceIndex >= (DrawLine.CNT_BUFF / 2)) {
-                                        arrPointForLine.push(new Tmap.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
+                                        arrPointForLine.push(new Tmapv2.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
                                         DrawLine.lastMatchedLocation = objMatchedLocation; // 이후 API 요청결과와 라인을 이어가기 위해 마지막 포인트 저장
                                         arrPointForCalDistance.push(objMatchedLocation); // 거리 계산을 위해 저장
                                     }
                                 } else if (DrawLine.cntReqApi > 1) {
                                     // 4) 처음이 아니면서 이후에 API 요청이 있을 예정이라면 => 앞쪽좌표 중 버퍼의 절반, 뒤쪽좌표 중 버퍼의 절반 만큼 그리지 않음
                                     if (objMatchedLocation && lastSourceIndex >= (DrawLine.CNT_BUFF / 2) && lastSourceIndex < (cntPointString - (DrawLine.CNT_BUFF / 2))) {
-                                        arrPointForLine.push(new Tmap.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
+                                        arrPointForLine.push(new Tmapv2.Geometry.Point(objMatchedLocation.longitude, objMatchedLocation.latitude).transform("EPSG:4326", "EPSG:3857")); // 좌표변환
                                         DrawLine.lastMatchedLocation = objMatchedLocation; // 이후 API 요청결과와 라인을 이어가기 위해 마지막 포인트 저장
                                         arrPointForCalDistance.push(objMatchedLocation); // 거리 계산을 위해 저장
                                     }
@@ -938,13 +925,13 @@ font-family: 'Exo', sans-serif;
                             // 마커를 추가합니다.
                             var lat = DrawLine.arrPoint[DrawLine.arrPoint.length-1];
                     		var lon = DrawLine.arrPoint[DrawLine.arrPoint.length-2];
-                    		var PR_3857 = new Tmap.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
-                    		var PR_4326 = new Tmap.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326        
-                    		var lonlat = new Tmap.LonLat(lon, lat).transform(PR_4326, PR_3857);
-                    		var size = new Tmap.Size(24, 38);
-                    		var offset = new Tmap.Pixel(-(size.w / 2), -(size.h));
-                    		var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_e.png />', size, offset);
-                    		var marker = new Tmap.Marker(lonlat, icon);
+                    		var PR_3857 = new Tmapv2.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
+                    		var PR_4326 = new Tmapv2.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326        
+                    		var lonlat = new Tmapv2.LonLat(lon, lat).transform(PR_4326, PR_3857);
+                    		var size = new Tmapv2.Size(24, 38);
+                    		var offset = new Tmapv2.Pixel(-(size.w / 2), -(size.h));
+                    		var icon = new Tmapv2.IconHtml('<img src=http://Tmapv2apis.sktelecom.com/upload/Tmapv2/marker/pin_b_m_e.png />', size, offset);
+                    		var marker = new Tmapv2.Marker(lonlat, icon);
                     		
                     		markerEndPointLayer.addMarker(marker);
                             DrawLine.drawLine(arrPointForLine);
@@ -981,8 +968,8 @@ font-family: 'Exo', sans-serif;
                 strokeWidth: 6,
                 strokeColor: "#0000FF"
             };
-            lineString = new Tmap.Geometry.LineString(pointList); // 라인 스트링 생성
-            lineFeature = new Tmap.Feature.Vector(lineString, null, lineStyle); // 백터 생성
+            lineString = new Tmapv2.Geometry.LineString(pointList); // 라인 스트링 생성
+            lineFeature = new Tmapv2.Feature.Vector(lineString, null, lineStyle); // 백터 생성
             DrawLine.vectorLayer2.addFeatures([lineFeature]); // 백터를 백터 레이어에 추가
             
         }
@@ -990,7 +977,7 @@ font-family: 'Exo', sans-serif;
          * 로드 매칭 API 요청
          */
         DrawLine.reqLoadApi = function(pointString, callback) {
-            var url = 'https://apis.openapi.sk.com/tmap/road/matchToRoads?version=1&appKey=6d5877dc-c348-457f-a25d-46b11bcd07a9'; // 이동한 도로 찾기 api 요청 url입니다.
+            var url = 'https://apis.openapi.sk.com/Tmapv2/road/matchToRoads?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620'; // 이동한 도로 찾기 api 요청 url입니다.
             $.ajax({
                 type: 'POST',
                 contentType: "application/x-www-form-urlencoded",
@@ -1059,10 +1046,10 @@ font-family: 'Exo', sans-serif;
                     DrawLine.arrPoint.push(lon);
                     DrawLine.arrPoint.push(lat);
                     
-                    var PR_3857 = new Tmap.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
-                    var PR_4326 = new Tmap.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326   
+                    var PR_3857 = new Tmapv2.Projection("EPSG:3857"); // Google Mercator 좌표계인 EPSG:3857
+                    var PR_4326 = new Tmapv2.Projection("EPSG:4326"); // WGS84 GEO 좌표계인 EPSG:4326   
                     
-                    lonlat = new Tmap.LonLat(lon, lat).transform(PR_4326, PR_3857);
+                    lonlat = new Tmapv2.LonLat(lon, lat).transform(PR_4326, PR_3857);
                     distance = Math.sqrt(Math.pow((lonlat.lon-myLon),2) + Math.pow((lonlat.lat-myLat),2));
                     realDistance = distance.toFixed(3);
                     
