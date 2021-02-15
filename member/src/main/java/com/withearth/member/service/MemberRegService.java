@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.withearth.member.Util.AES256Util;
+import com.withearth.member.Util.Sha256;
 import com.withearth.member.dao.MemberDAO;
 import com.withearth.member.domain.Member;
 import com.withearth.member.domain.MemberRegRequest;
@@ -28,6 +31,22 @@ public class MemberRegService {
 
 	@Autowired
 	private MailSenderService mailSenderService;
+	
+	/*
+	@Autowired
+	private Sha256 sha256;
+	
+	@Autowired
+	private AES256Util aes256Util;
+	
+	@Autowired
+	private BCryptPasswordEncoder cryptPasswordEncoder; 
+	*/
+	
+	
+	
+	
+	
 	//파일 업로드와 db저장
 	//트랜젝션이랑 한번에 수행되어야하는 연산들은 모두 에러 없이 끝나야 하며, 
 	//만약 중간에 에러가 발생 한다면 에러 발생 이전 시점까지 작업되었던 내용은 모두 원상복구 되어야 한다.
@@ -86,7 +105,7 @@ public class MemberRegService {
 			
 		}//if끝
 		
-		
+		//데이터 저장
 		Member member = regRequest.toMember();
 		if(newFileName !=null) {
 			member.setPhoto(newFileName); //새롭게 만든 파일 이름을 member에 photo이름으로 들여보냄
@@ -99,9 +118,19 @@ public class MemberRegService {
 		
 		//메일 발송
 		int mailsendCnt = mailSenderService.send(member);
-		System.out.println("메일 발성 처리 횟수:" + mailsendCnt);
+		System.out.println("메일 발송 처리 횟수:" + mailsendCnt);
 		
 		return result;
+		
+		
+		//암호화
+		
+		
+		
+		
+		
+		
+		
 	}
 		
 	

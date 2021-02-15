@@ -35,13 +35,86 @@
  별명 <input type="text" id="name" name="username" required >
 <div id="nameCheckMsg"></div>
 프로필 사진 <input type="file" id="photo" name="userPhoto">
-<input type="submit">
 </form>
+<input type="submit" id="btnReg">
 
 <script>
  $(document).ready(function(){
+	 //회원가입 버튼 클릭시,
+	 $('#btnReg').click(function(){
+		
+		 //유효성 검사용
+		 //정규식 
+		 var pwCheck = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/; //6~20미만 최소 1개의 숫자 혹은 특수문자 포함
+		 var emailCheck = /^([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; 
+		 
+		 if($('#id').val() == ""){
+			 alert("아이디를 입력하세요.");
+			 $('#id').focus();
+			 return false;
+	  	 }  else if (emailCheck.test($('#id').val())!=true){
+			 alert("잘못된 이메일 형식입니다. 다시 확인해주세요.")
+			 $('#id').focus();
+			 return false;  
+		 } else if (pwCheck.test($('#pw').val())!=true){
+			 alert("비밀번호는 6~20자, 최소 1개의 숫자 혹은 특수문자를 포함해야합니다. ");
+			 return false;
+		 } else if ($('#pw').val()==""){
+			 alert("비밀번호를 입력하세요.");
+			 return false;
+		 } else if ($('#pw').val()!=$('#pwcheck').val()){
+			 alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+			 return false;
+		 } else if ($('#name').val()==""){
+			 alert("닉네임을 입력하세요.");
+			 return false;
+		 } else {
+		 
+		 
+		 
+		 
+		 //회원 가입용
+			var photoFile = $('#photo');
+			var file1 = photoFile[0].files[0];
+			console.log(file1); 
+			
+			var formData = new FormData();
+			formData.append("userid",$('#id').val());
+			formData.append("userpw",$('#pw').val());
+			formData.append("username",$('#name').val());
+			formData.append("userPhoto",file1);	
+			
+		
+		$.ajax({
+			url: '/member/member/reg',
+			type: 'post',
+			data: formData,
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			cache: false,
+			success: function(data){
+				alert("회원가입이 완료되었습니다.");
+				location.href="/member"; 
+				console.log(data);
+			},
+			error: function(error){
+				console.log("실패");
+				console.log(error);
+			}	
+		});
+		
+		
+		
+		}
+		
+	 });
 	 
+	 
+	 
+	 //유효성 검사
 	 $('#id').focusout(function(){
+		 
 		var id = $(this).val();
 		var msg = $('#idCheckMsg');
 		msg.addClass('display_block');
@@ -87,15 +160,6 @@
 		
 		
 	 });
-	 
-
-	 }
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 	 
  });
