@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="지도 중심"/>
+		<item key="selection" value="getTumList"/>
 		<list key="findhistory">
+			<item value="메ㅡ"/>
+			<item value="ㅡ메"/>
+			<item value="getTumList"/>
+			<item value="위도"/>
 			<item value="지도 중심"/>
 			<item value="여기"/>
 			<item value="이미지"/>
@@ -19,10 +23,6 @@
 			<item value="coob"/>
 			<item value="file"/>
 			<item value="common"/>
-			<item value="파일 업로드"/>
-			<item value="zxing"/>
-			<item value="idx"/>
-			<item value="makeQrcodeService"/>
 		</list>
 		<list key="replacehistory">
 		</list>

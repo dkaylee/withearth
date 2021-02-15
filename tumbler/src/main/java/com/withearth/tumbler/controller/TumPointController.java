@@ -23,6 +23,7 @@ public class TumpointController {
 	private TumListService tumlistService;
 	
 		
+	//포인트 적립
 //	/tumbler/qr/"+cafe_idx
 	@GetMapping("{cafe_idx}")
 	public String getTumList (Model model, HttpServletRequest request, @PathVariable("cafe_idx") int cafe_idx) {

@@ -13,6 +13,14 @@
 <style>
 
 
+#map{
+    width: 350px;
+    height: 350px;
+    float: right;
+    margin-right: 200px;
+
+}
+
 /* 모달 창 */
 
 #maodel_btnx{
@@ -127,7 +135,7 @@ h1 {
 
 
 
-	<div id="map" style="width: 350px; height: 350px; float:right; margin-right= 100px;"></div>
+	<div id="map" style="width: 350px; height: 350px; "></div>
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 	<script>
 		$(function() {
@@ -307,6 +315,6 @@ h1 {
 </script>
 
 
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+
 </body>
 </html>

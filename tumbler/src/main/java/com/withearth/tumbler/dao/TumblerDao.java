@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.withearth.tumbler.domain.Member;
 import com.withearth.tumbler.domain.Point;
 import com.withearth.tumbler.domain.Tumbler;
 
@@ -24,5 +23,12 @@ public interface TumblerDao {
 	
 	//텀블러 포인트 적립
 	int insertPoint(Point point);
+
+	// 전체 게시글 개수
+	int selectTotalCount();
+
+	//적립 리스트(페이지 번호에 맞는)
+	List<Tumbler> selectTumpointList(int startRow, int cntPerPage);
+
 	
 }

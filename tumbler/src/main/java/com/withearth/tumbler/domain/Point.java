@@ -11,7 +11,6 @@ public class Point {
 	private int idx; 
 	private int tum_idx;
 	private int course_idx;
-	
 	public int getPoint() {
 		return point;
 	}
@@ -60,5 +59,8 @@ public class Point {
 				+ ", saving_date=" + saving_date + ", idx=" + idx + ", tum_idx=" + tum_idx + ", course_idx="
 				+ course_idx + "]";
 	}
+
+	
+	
 		
 }

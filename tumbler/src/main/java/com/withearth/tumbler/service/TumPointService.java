@@ -1,7 +1,5 @@
 package com.withearth.tumbler.service;
 
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +19,9 @@ public class TumpointService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public int registerTumblerPoint(int cafe_idx, int idx){
+	public int registerTumblerPoint(int cafeidx, int idx){
 		Tumbler tumbler = new Tumbler();
-		tumbler.setCafe_idx(cafe_idx);
+		tumbler.setCafe_idx(cafeidx);
 		tumbler.setIdx(idx);
 		tumbler.setTum_point(100);
 		dao = template.getMapper(TumblerDao.class);

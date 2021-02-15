@@ -5,27 +5,27 @@ import java.sql.Timestamp;
 public class TumInfo {
 	
 	private String idx;
-	private Timestamp tumdate;
-	private String cafename;
+	private Timestamp tum_date;
+	private String cafe_name;
 	private String location;
-	private int tumpoint;
+	private int tum_point;
 	public String getIdx() {
 		return idx;
 	}
 	public void setIdx(String idx) {
 		this.idx = idx;
 	}
-	public Timestamp getTumdate() {
-		return tumdate;
+	public Timestamp getTum_date() {
+		return tum_date;
 	}
-	public void setTumdate(Timestamp tumdate) {
-		this.tumdate = tumdate;
+	public void setTum_date(Timestamp tum_date) {
+		this.tum_date = tum_date;
 	}
-	public String getCafename() {
-		return cafename;
+	public String getCafe_name() {
+		return cafe_name;
 	}
-	public void setCafename(String cafename) {
-		this.cafename = cafename;
+	public void setCafe_name(String cafe_name) {
+		this.cafe_name = cafe_name;
 	}
 	public String getLocation() {
 		return location;
@@ -33,24 +33,18 @@ public class TumInfo {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public int getTumpoint() {
-		return tumpoint;
+	public int getTum_point() {
+		return tum_point;
 	}
-	public void setTumpoint(int tumpoint) {
-		this.tumpoint = tumpoint;
+	public void setTum_point(int tum_point) {
+		this.tum_point = tum_point;
 	}
-	
-	public TumInfo toTumInfo() {
-		return new TumInfo();
-	}
-	
-	
-	
 	@Override
 	public String toString() {
-		return "TumInfo [idx=" + idx + ", tumdate=" + tumdate + ", cafename=" + cafename + ", location=" + location
-				+ ", tumpoint=" + tumpoint + "]";
+		return "TumInfo [idx=" + idx + ", tum_date=" + tum_date + ", cafe_name=" + cafe_name + ", location=" + location
+				+ ", tum_point=" + tum_point + "]";
 	}
+	
 	
 	
 
