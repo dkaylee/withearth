@@ -16,32 +16,31 @@ import com.withearth.walking.service.CourseSettingService;
 public class CourseSettingController {
 
 	@Autowired
-	private CourseSettingService courseService;
+	private CourseSettingService courseSetService;
 	
 	// 코스 설정 페이지
-	@RequestMapping(value="/course/setting", method = RequestMethod.GET)
+	@RequestMapping(value="/loc/walkingservice", method = RequestMethod.GET )
 	public String getcourseSet() {
 		
-		return "test210208";
+		return "/loc/walkingservice";
 		
 	}
 	
 	// 코스 설정 후 완료 안내 페이지
-	@RequestMapping(method = RequestMethod.POST)
-	public String courseSet(
-			@ModelAttribute("courseData") CourseSettingRequest setRequest,
+	@RequestMapping(value="/loc/walkingservice", method = RequestMethod.POST)
+	public String courseSetView(
+			CourseSettingRequest setRequest,
 			HttpServletRequest request,
 			Model model
 			) {
 		
 		System.out.println(setRequest);
 		
-		int result = courseService.courseSet(setRequest, request);
+		int result = courseSetService.courseSet(setRequest, request);
 		
 		model.addAttribute("result", result);
 		
-		
-		return "course_setting_view";
+		return "/loc/course_setting_view";
 	}
 	
 }

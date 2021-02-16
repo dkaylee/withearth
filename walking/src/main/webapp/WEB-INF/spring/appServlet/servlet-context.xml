@@ -21,7 +21,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
-	<resources mapping="/loc/**" location="/loc/" />
+	<resources mapping="/fileupload/**" location="/fileupload/" />
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -37,9 +37,6 @@
 	<!-- <tx:annotation-driven /> -->
 		<tx:annotation-driven
 		transaction-manager="transactionManager" />
-
-
-
 
 
 	<context:component-scan

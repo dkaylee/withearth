@@ -7,9 +7,7 @@
 <title>simpleMap</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <style>
-#eddAdd{
-	float: left;
-}
+
 </style>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
@@ -22,17 +20,7 @@
 	var new_lon = $('#newLon');
 	new_lon = 127.00160213;
 	
-	
-	
-	
 	$(document).ready(function() {
-		
-		
-		
-	
-		
-		
-		
 		// Geolocation API에 액세스할 수 있는지를 확인
 		//===========현재위치 불러오기===========
 		if (navigator.geolocation) {
