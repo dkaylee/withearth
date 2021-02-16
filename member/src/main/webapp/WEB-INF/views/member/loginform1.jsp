@@ -31,7 +31,6 @@
 
 </body>
 
-
 <script>
 $(document).ready(function(){
 	 //로그인 버튼 클릭시,
@@ -47,48 +46,121 @@ $(document).ready(function(){
 					 $('#id').focus();
 					 return false;
 				} else {
-					//로그인 클릭
-					var formData = new FormData();
-					formData.append("userid",$('#userid').val());
-					formData.append("pw",$('#pw').val());
-				$.ajax({
-					url: '/member/member/login',
-					type: 'post',
-					data: formData,
-					enctype: 'multipart/form-data',
-					processData: false,
-					contentType: false,
-					cache: false,
-					success: function(data){
-						alert("로그인 되었습니다.");
-						location.href="/member"; 
-						console.log(data);
-					},
-					error: function(error){
-						console.log("실패");
-						console.log(error);
-					}	
-				});
-					
+						var id = $('#userid').val();
+						var pw = $('#pw').val();
+						$.ajax({
+							url: 'idpwverifycheck',
+							data: {id:id,pw:pw},
+							success : function(data2){
+								console.log(data2);
+								if(data2=='N'){
+									alert("인증되지 않은 회원입니다. 인증메일을 확인해주세요.");
+									 return false;
+								} else {
+									//로그인 클릭
+									var formData = new FormData();
+									formData.append("userid",$('#userid').val());
+									formData.append("pw",$('#pw').val());
+									$.ajax({
+									url: '/member/member/login',
+									type: 'post',
+									data: formData,
+									enctype: 'multipart/form-data',
+									processData: false,
+									contentType: false,
+									cache: false,
+									success: function(data){
+										alert("로그인 되었습니다.");
+										location.href="/member"; 
+										console.log(data);
+									},
+									error: function(error){
+										console.log("실패");
+										console.log(error);
+									}
+								});
+								}
+							}
+						});
+					}
+			}
+		});
+	 });	
+	});	 
+</script>
+
+<!-- 보수공사 필요
+<script>
+$(document).ready(function(){
+
+	var oneok = 'f';
+	var twook = 'f';
+	
+	 //로그인 버튼 클릭시,
+	 $('#btnlog').click(function(){ 
+		var id = $('#userid').val();
+		var pw = $('#pw').val();
+		$.ajax({
+			url: 'idpwcheck',
+			data: {id:id,pw:pw},
+			success : function(data){
+				if(data=='N'){
+					alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+					 $('#id').focus();
+					 return false;
+				} else {
+					oneok = 't';	
+				}
+			}//success
+		});
+
+		$.ajax({
+			url: 'idpwverifycheck',
+			data: {id:id,pw:pw},
+			success : function(data2){
+				console.log(data2);
+				console.log(oneok);
+				if(data2=='N'){
+					alert("인증되지 않은 회원입니다. 인증메일을 확인해주세요.");
+					 return false;
+				} else {
+					twook = 't';	
 				}
 			},
-			error:function(error){
-				console.log(error);
+			error : function(error){
+				console.log(error);	
 			}
 		});
 		
-	
-	
+		if(oneok=='t' && twook=='t'){
+		var formData = new FormData();
+		formData.append("userid",$('#userid').val());
+		formData.append("pw",$('#pw').val());
 		
-		
-		
-		
-		
-	});
-});
+		$.ajax({
+			url: '/member/member/login',
+			type: 'post',
+			data: formData,
+			enctype: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			cache: false,
+			success: function(data){
+				alert("로그인 되었습니다.");
+				location.href="/member"; 
+				console.log(data);
+			},
+			error: function(error){
+				console.log("실패");
+				console.log(error);
+			}	
+		}); //ajax
+	   }
+	 });//click								
+}); //ready
 </script>
 
-
+ -->
 
 
 

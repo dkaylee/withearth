@@ -19,5 +19,7 @@ public interface MemberDAO {
 	
 // 인증처리 verify='Y'
 	int updateMemberVerify(int idx, String code); 
-
+	
+//아이디 비밀번호+인증처리N
+	int selectMemberByIdPwVerifyCount(String id,String pw);
 }

@@ -68,7 +68,7 @@
 		 
 		 
 		 
-		 //회원 가입용
+		 //회원 가입
 			var photoFile = $('#photo');
 			var file1 = photoFile[0].files[0];
 			console.log(file1); 

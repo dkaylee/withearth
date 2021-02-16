@@ -37,6 +37,7 @@ public class MemberLoginService {
 		
 		//member가 null이 아닐 경우,
 		if(member!=null) {
+			if(member.getVerify()=='Y') {
 			//현재 세션의 속성에 LoginInfo 인스턴스를 저장..?
 			request.getSession().setAttribute("loginInfo", member.toLoginInfo());
 			loginCheck = true;
@@ -54,13 +55,17 @@ public class MemberLoginService {
 				response.addCookie(c);
 			}
 		}
+		} else {
+			loginCheck = true;
+			request.setAttribute("msg", "인증되지 않은 이메일입니다. 인증 후 로그인 해주세요.");
+		}
 		
 		return loginCheck;
-		
-	}
 	
 	
 	
 	
 	
+	
+}
 }
