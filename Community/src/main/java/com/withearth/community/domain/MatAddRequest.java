@@ -11,7 +11,7 @@ public class MatAddRequest {
 	private String mTime;
 	private String mNum;
 	private String mCont;
-	private MultipartFile mImg;
+	private String mImg;
 	
 	public int getmIdx() {
 		return mIdx;
@@ -50,11 +50,11 @@ public class MatAddRequest {
 	public void setmCont(String mCont) {
 		this.mCont = mCont;
 	}
-	public MultipartFile getmImg() {
+	public String getmImg() {
 		return mImg;
 	}
-	public void setmImg(MultipartFile mImg) {
-		this.mImg = mImg;
+	public void setmImg(String newFName) {
+		this.mImg = newFName;
 	}
 	
 	public MatzipVo toMatzip() {

@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.withearth.community.dao.MatDao;
 import com.withearth.community.domain.MatAddRequest;
 import com.withearth.community.domain.MatzipVo;
-import com.withearth.community.matdao.MatDao;
 
 import lombok.extern.log4j.Log4j;
 
@@ -23,7 +23,6 @@ public class AddMatzipService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-
 	@Transactional
 	public int addMatzip(
 			MatAddRequest matRequest, 

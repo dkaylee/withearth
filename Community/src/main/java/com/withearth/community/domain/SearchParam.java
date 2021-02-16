@@ -1,4 +1,4 @@
-package com.withearth.community.domain;
+ package com.withearth.community.domain;
 
 public class SearchParam {
 

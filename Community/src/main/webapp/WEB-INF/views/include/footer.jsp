@@ -21,7 +21,7 @@
 			</footer>
 
 
-<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
-<script  src="${pageContext.request.contextPath}/js/skel.js"></script>
-<script src="${pageContext.request.contextPath}/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
+<script src="<c:url value="/resources/js/jquery.js"/>"></script>
+<script  src="<c:url value="/resources/js/skel.js"/>"></script>
+<script src="<c:url value="/resources/js/util.js"/>"></script>
+<script src="<c:url value="/resources/js/main.js"/>"></script>

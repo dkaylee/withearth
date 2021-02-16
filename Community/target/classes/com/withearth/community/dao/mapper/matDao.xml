@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.withearth.community.matdao.MatDao">
+<mapper namespace="com.withearth.community.dao.MatDao">
 	
 	<!-- 맛집리스트 출력 -->
 	<resultMap id="matResult" type="com.withearth.community.domain.MatzipVo">
@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="mat_title" property="matTitle" />
 		<result column="mat_addr" property="matAddr" />
 		<result column="mat_time" property="matTime" />
+		<result column="mat_num" property="matNum" />
 		<result column="mat_cont" property="matCont" />
 		<result column="mat_img" property="matImg" />
 		<result column="mat_date" property="matDate" />
@@ -24,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="mat_title" property="matTitle" />
 		<result column="mat_addr" property="matAddr" />
 		<result column="mat_time" property="matTime" />
+		<result column="mat_num" property="matNum" />
 		<result column="mat_cont" property="matCont" />
 		<result column="mat_img" property="matImg" />
 		<result column="mat_date" property="matDate" />
@@ -65,13 +67,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 파일 업로드 -->
-	<insert id="fileUpload" parameterType="HashMap">
+	<insert id="fileUpload" parameterType="com.withearth.community.domain.FileVo">
 	insert into Matfile
 	(file_idx, mat_idx ,org_name, new_name, file_size)
 	VALUES
 	(#{fileIdx}, #{matIdx}, #{orgFileName}, #{newFileName}, #{fileSize})
-	
 	</insert>
+	
+	<!-- 파일 삭제 -->
+	<delete id="fileDelete" parameterType="com.withearth.community.domain.FileVo">
+	delete from Matfile where file_idx = #{fileIdx}
+	</delete>
+	
+	<!-- 파일 찾기 -->
+	<select id="findByMatId">
+	select * from Matfile where mat_idx = #{matIdx}
+	</select>
 	
 	
 	<!--  맛집 수 업데이트 -->
@@ -83,5 +94,82 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from Matzip
 	</select>
+	
+	<!-- 게시물 조회 - 디테일 뷰 -->
+	<select id="selectMatByIdx" resultMap="matListResult">
+	
+		select * from Matzip where idx=#{no}
+	
+	</select>
+	
+	<!-- 게시물 리스트 검색 -->
+	<select id="selectMatList"
+			parameterType="map"
+			resultMap="matListResult">
+			
+	select * from Matzip
+	
+	<where>
+		<if test="searchParam != null">
+			<!-- <if test="searchParam.searchType == 'name'">
+				<include refid="searchName"/>
+			</if>
+			<if test="searchParam.searchType == 'loc'">
+				<include refid="searchLoc"/>
+			</if>
+			<if test="searchParam.searchType == 'food'">
+				<include refid="searchFood"/>
+			</if> -->
+			<if test="searchParam.searchType == 'all'">
+				<include refid="searchName"/>
+				<include refid="searchLoc"/>
+				<include refid="searchFood"/>
+			</if>
+			
+		</if>
+	</where>
+	
+		limit #{index}, #{count}
+		
+	</select>
+	
+	
+	<!-- 맛집 카운트 -->
+	<select id="selectSearchMatzipCount" 
+	        parameterType="com.withearth.community.domain.SearchParam"
+	        resultType="int">
+	        
+		select count(*) from Matzip
+		
+		<where>
+			<!-- <if test="searchParam.searchType == 'name'">
+				  <include refid="searchName"/>
+			</if>
+			<if test="searchParam.searchType == 'loc'">
+				 <include refid="searchLoc"/>
+			</if> -->
+			<if test="searchParam.searchType == 'all'">
+			  <include refid="searchName"/>
+			  <include refid="searchLoc"/>
+			  <include refid="searchFood"/>
+			</if>
+		</where>
+	</select>
+	
+	
+	<!-- sql keyword -->
+	<sql id="searchName">
+		or mat_title like concat('%',#{searchParam.keyword},'%')
+	</sql>
+	<sql id="searchLoc">
+	  	or mat_addr like concat('%',#{searchParam.keyword},'%')
+	</sql>
+	<sql id="searchFood">
+	  	or mat_cont like concat('%',#{searchParam.keyword},'%')
+	</sql>
+	
+	
+	
+	
 
 </mapper>

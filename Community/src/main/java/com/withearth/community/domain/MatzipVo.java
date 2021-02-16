@@ -17,6 +17,8 @@ public class MatzipVo {
 	private int matHeart;
 	private int idx;
 	
+	private List<FileVo> fileList;
+	
 	
 	public int getMatIdx() {
 		return matIdx;

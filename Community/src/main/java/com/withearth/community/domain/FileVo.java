@@ -2,17 +2,17 @@ package com.withearth.community.domain;
 
 public class FileVo {
 	
-	private int fileId;
+	private String fileId;
 	private String orgFName;
 	private String newFName;
 	private long fileSize;
 	private int matIdx;
 	
 	
-	public int getFileId() {
+	public String getFileId() {
 		return fileId;
 	}
-	public void setFileId(int fileId) {
+	public void setFileId(String fileId) {
 		this.fileId = fileId;
 	}
 	public String getOrgFName() {
@@ -39,7 +39,6 @@ public class FileVo {
 	public void setMatIdx(int matIdx) {
 		this.matIdx = matIdx;
 	}
-	
 	
 	@Override
 	public String toString() {

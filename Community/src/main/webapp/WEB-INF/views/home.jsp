@@ -13,6 +13,7 @@
       
        <%@ include file="/WEB-INF/views/include/header.jsp"%>
        
+       
        <!-- Banner -->
 			<section id="banner">
 				<h1>Welcome to WithEarth</h1>
