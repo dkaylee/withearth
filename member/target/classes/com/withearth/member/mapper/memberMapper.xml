@@ -49,6 +49,11 @@ select * from user where id= #{param1} and pw=#{param2}
 	select count(*) from user where id = #{id}
 </select>
 
+<!-- 아이디 패스워드 일치여부확인 -->
+<select id="selectMemberByIdPwCount" resultType="int">
+	select count(*) from user where id= #{param1} and pw=#{param2}
+</select>
+
 <!-- 이메일 인증 -->
 	<select id="selectMemberByIdxVerify"
 					resultType="int"

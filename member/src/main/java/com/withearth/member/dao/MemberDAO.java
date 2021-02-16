@@ -12,7 +12,8 @@ public interface MemberDAO {
 
 //아이디 중복체크
 	int selectMemberByIdCount(String id);
-
+//아이디 비밀번호 일치여부
+	int selectMemberByIdPwCount(String id,String pw);
 // idx, verify 조건으로 조회 
 	int selectMemberByIdxVerify(int index);
 	

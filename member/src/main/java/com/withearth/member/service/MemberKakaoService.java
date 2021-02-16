@@ -1,5 +1,7 @@
 package com.withearth.member.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,7 @@ public class MemberKakaoService {
 	private SqlSessionTemplate template;
 	
 	@Transactional
-	public int memberReg(KakaoInfo kakaoinfo) {
+	public int memberReg(KakaoInfo kakaoinfo,HttpServletRequest request) {
 		int result = 0;
 		
 		Member member = kakaoinfo.toMemeberfromkakao();

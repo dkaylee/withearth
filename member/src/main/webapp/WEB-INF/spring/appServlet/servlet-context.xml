@@ -31,6 +31,16 @@
 	<!-- 파일업로드를 위한 MultipartResolver 등록 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></beans:bean>
+		
+		
+	<!-- 인터셉터 등록 : login 체크 -->	
+	<interceptors>
+		<interceptor>
+			<mapping path="/mypage/**" />
+			<beans:bean
+				class="com.withearth.member.intercepter.AuthCheckIntercepter" />
+		</interceptor>
+	</interceptors>
 	
 	<!-- 메일을 보내기 위함 -->
 	<beans:bean id="mailSender"

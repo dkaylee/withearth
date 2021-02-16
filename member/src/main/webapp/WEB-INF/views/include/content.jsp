@@ -19,8 +19,13 @@
 							</header>
 							<p>WITHEARTH에 로그인 하기</p>
 							<footer>
-								<a href="<c:url value="/member/login"/>" class="button special">LOGIN</a>
-							</footer>
+						<c:if test="${loginInfo eq null}">
+							<a href="<c:url value="/member/login"/>" class="button special">LOGIN</a>
+						</c:if>
+						<c:if test="${loginInfo ne null}">
+						<a href="<c:url value="/member/logout"/>" class="button special">LOGOUT</a>
+						</c:if>
+				</footer>
 						</article>
 						<article>
 							<header>

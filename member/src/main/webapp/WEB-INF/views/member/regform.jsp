@@ -36,17 +36,12 @@
 <div id="nameCheckMsg"></div>
 프로필 사진 <input type="file" id="photo" name="userPhoto">
 </form>
-<input type="submit" id="btnReg">
+<input type="submit" id="btnReg" disabled="true">
 
 <script>
  $(document).ready(function(){
 	 //회원가입 버튼 클릭시,
-	 $('#btnReg').click(function(){
-		
-		 //유효성 검사용
-		 //정규식 
-		 var pwCheck = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/; //6~20미만 최소 1개의 숫자 혹은 특수문자 포함
-		 var emailCheck = /^([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; 
+	 $('#btnReg').click(function(){ 
 		 
 		 if($('#id').val() == ""){
 			 alert("아이디를 입력하세요.");
@@ -113,6 +108,13 @@
 	 
 	 
 	 //유효성 검사
+	 
+	  //유효성 검사용
+		 //정규식 
+		 var pwCheck = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/; //6~20미만 최소 1개의 숫자 혹은 특수문자 포함
+		 var emailCheck = /^([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; 
+	 
+	 
 	 $('#id').focusout(function(){
 		 
 		var id = $(this).val();
@@ -132,10 +134,12 @@
 						msg.html('사용가능한 아이디 입니다.');
 						msg.removeClass('font_red');
 						msg.addClass('font_blue');
+						$('#btnReg').attr("disabled", false);
 					} else {
 						msg.html('사용불가능한 아이디입니다.');
 						msg.removeClass('font_blue');
 						msg.addClass('font_red');
+						$('#btnReg').attr("disabled", true);
 					}
 					
 				},

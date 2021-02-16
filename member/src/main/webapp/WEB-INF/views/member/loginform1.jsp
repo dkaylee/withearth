@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <!--카카오 로그인-->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -20,26 +19,12 @@
 		<h3>Login</h3>
 		
 		<form method="post">
-			<div class="row uniform">
-				<div class="6u 12u$(xsmall)">
-					<input type="email" name="userid" id="userid" placeholder="Email">
-				</div>
-				<div class="6u$ 12u$(xsmall)">
-					<input type="password" name="pw" id="pw" placeholder="Password">
-				</div>
-				
-				<div class="6u 12u$(small)">
-					<input type="checkbox" name="chk" id="chk" value="on" value="remember-me">
-					<label for="copy">Remember Email</label>
-				</div>
-				<!-- Break -->
-				<div class="12u$">
-					<ul class="actions">
-						<li><input type="submit" id="btnlog"value="Login" /></li>
-					</ul>
-				</div>
-			</div>
+			<input type="email" name="userid" id="userid" placeholder="Email">
+			<input type="password" name="pw" id="pw" placeholder="Password">
+			<input type="checkbox" name="chk" id="chk" value="on" value="remember-me">
+			<label for="copy">Remember Email</label>
 		</form>
+			<input type="submit" id="btnlog"value="Login" />
 		<a id="custom-login-btn" href="javascript:loginWithKakao()" style="">
   		 	<img src="<c:url value="/img/kakao_login_medium_wide.png"/>"/></a>
     	<a href="javascript:logout()">임시 로그아웃</a>	  
@@ -49,7 +34,7 @@
 
 <script>
 $(document).ready(function(){
-	 //회원가입 버튼 클릭시,
+	 //로그인 버튼 클릭시,
 	 $('#btnlog').click(function(){ 
 		var id = $('#userid').val();
 		var pw = $('#pw').val();
@@ -62,16 +47,45 @@ $(document).ready(function(){
 					 $('#id').focus();
 					 return false;
 				} else {
-					location.href="/member"; 
+					//로그인 클릭
+					var formData = new FormData();
+					formData.append("userid",$('#userid').val());
+					formData.append("pw",$('#pw').val());
+				$.ajax({
+					url: '/member/member/login',
+					type: 'post',
+					data: formData,
+					enctype: 'multipart/form-data',
+					processData: false,
+					contentType: false,
+					cache: false,
+					success: function(data){
+						alert("로그인 되었습니다.");
+						location.href="/member"; 
+						console.log(data);
+					},
+					error: function(error){
+						console.log("실패");
+						console.log(error);
+					}	
+				});
+					
 				}
-				
 			},
 			error:function(error){
 				console.log(error);
 			}
 		});
-		});
-	}
+		
+	
+	
+		
+		
+		
+		
+		
+	});
+});
 </script>
 
 
