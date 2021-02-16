@@ -96,9 +96,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 게시물 조회 - 디테일 뷰 -->
-	<select id="selectMatByIdx" resultMap="matListResult">
+	<select id="selectMatByIdx" resultMap="matListResult" >
 	
-		select * from Matzip where idx=#{no}
+		select * from Matzip where mat_idx = #{matIdx}
 	
 	</select>
 	

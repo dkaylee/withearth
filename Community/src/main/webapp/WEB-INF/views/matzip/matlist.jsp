@@ -85,13 +85,16 @@
 
 
 
-	<section id="three" class="wrapper">
+	<section id="three" class="wrapper special">
 	
-		<a href="<c:url value="/matzip/addmatForm"/>" class="button special">새로운 맛집 등록</a>
+		
 		<div class="inner">
 			<header class="align-center">
 				<h2>비건 맛집</h2>
+				<p>채식주의자들을 위한 맛집을 탐색합니다.</p>
 			</header>
+			
+			<a href="<c:url value="/matzip/addmatForm"/>" class="button special">새로운 맛집 등록</a>
 
 			<div>
 				<form id="searchForm">
@@ -115,7 +118,8 @@
 							<img src="<c:url value="/fileupload/matzip/s_${matzip.matImg}}"/>"/>
 						</div>
 						<header>
-							<h3><a href="<c:url value="/matzip/detailView?idx=${matzip.matIdx}"/>">${matzip.matTitle}</a></h3>
+							<h3><a href="<c:url value="/matzip/matDetailView?matIdx=${matzip.matIdx}"/>">${matzip.matTitle}</a></h3>
+							<%-- <h3><a href='matDetailView?matIdx=${matzip.matIdx}'>${matzip.matTitle}</a></h3> --%>
 						</header>
 						<p>${matzip.matNum}</p>
 						<p><fmt:formatDate value="${matzip.matDate}" pattern="yyyy.MM.dd." /></p>

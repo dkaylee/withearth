@@ -43,7 +43,7 @@
 	</logger> -->
 	
 	<logger name="jdbc.resultsettable">
-		<level value="info"/>
+		<level value="debug"/>
 	</logger>
 	
 	<logger name="jdbc.connection">

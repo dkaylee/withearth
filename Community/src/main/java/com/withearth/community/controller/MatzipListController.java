@@ -19,7 +19,7 @@ public class MatzipListController {
 			Model model,
 			SearchParam param) {
 		
-		System.out.println(param);
+		System.out.println("search param: "+param);
 		
 		model.addAttribute("list", matListService.getListView());
 		model.addAttribute("matlist", matListService.getListView(param));
