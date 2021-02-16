@@ -187,6 +187,7 @@
 				scrollwheel : true
 			});
             
+            
             DrawLine.vectorLayer2 = new Tmap.Layer.Vector('TmapVectorLayer');
             routeLayer = new Tmapv2.Layer.Vector("route"); // 루트를 표시하는 백터 레이어 생성
             markerStartPointLayer = new Tmapv2.Layer.Markers();

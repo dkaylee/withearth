@@ -19,26 +19,15 @@
 	var now_lon = $('#nowLon');
 	var new_lat = $('#newLat');
 	new_lat = 37.57081522;
-	var new_lon = $('#newLon')
+	var new_lon = $('#newLon');
 	new_lon = 127.00160213;
+	
+	
+	
+	
 	$(document).ready(function() {
 		
-		//시작 버튼 눌렀을 떄 일어나는 함수
-	    function startRide(){
-	
-	    	if(endPointChk==0){
-	    		alert('도착지를 지정해주세요!')
-	    	}else{
-	    		startTime();
-	    		movingLocation();
-	    		$('#startBtnArea').css("display", "none");
-		    	$('#endBtnArea').css("display", "block");
-		    	
-		    	$("#searchEndPoint").attr("disabled",true);
-		    	$("#customSwitch1").attr("disabled",true);
-		    	$("#endPoint").attr("disabled",true);
-	    	}   	
-	    }
+		
 		
 	
 		
@@ -353,6 +342,12 @@
 }); // ready
 	
 
+	
+		
+	    	
+     
+	
+
 	// 현재 위치 좌표 -> 주소로 변환
 	function reverseGeo(lon, lat) {
 	$.ajax({
@@ -619,6 +614,21 @@
 		resultdrawArr.push(polyline_);
 	}
 	
+	//시작 버튼 눌렀을 떄 일어나는 함수
+    function startWalk(){
+    	
+    	
+		$('#startBtn').click(function(){
+			console.log('스타트1');
+			startTime();
+			if(new_lat==37.57081522&&new_lon==127.00160213){
+	    		alert('기본값으로 목적지를 설정합니다.(주소: 종로5가역)');
+	    	}else{
+	    		console.log('걷기를 시작합니다.');
+	    	}   	
+		});// startBtn
+	}// startWalk
+	
 	var distance;
 	function arrChk(nowlat, nowlon, arrlat, arrlon){
 		$("#arriveBtn").click(function(){
@@ -641,8 +651,9 @@
 							//console.log(response);
 
 							distance = response.distanceInfo.distance;
-
-							$("#result").text("두점의 직선거리 : " + distance + "m");
+		
+							$("#arrresult").text("두점의 직선거리 : " + distance + "m");
+							console.log('두점의 직선거리'+distance + 'm');
 						},
 						error : function(request, status, error) {
 							console.log("code:" + request.status + "\n"
@@ -651,13 +662,33 @@
 						}
 					}); //ajax
 					
-					if(distance <= 0.005){ // 거리가 약 반경 0.5km 내의 있을 경우
-						console.log('도착했습니다.');
+					if(distance <= 100){ // 거리가 약 반경 100m 내의 있을 경우
+						alert('도착하셨습니까?');
+						
+					// 모달
 					} else{
 						console.log('목적지에 도착하지 않았습니다.');
 					}
 		});
 	} // arriveBtn
+	
+	/*******************************타임워치********************************************/
+ 	var timeElapsed = 0;
+	var myTimer = 0;
+	function startTime() {
+	    myTimer = setInterval(function(){
+	        timeElapsed += 1;
+	         document.getElementById("time").innerText = timeElapsed;
+	    }, 1000) ;
+	}
+	function stopTime() {
+	    clearInterval(myTimer);
+	}
+	function resetTime() {
+	   timeElapsed = 0;
+	   clearInterval(myTimer);
+	   document.getElementById("time").innerHTML = timeElapsed;
+	}
 	
 	
 	
@@ -676,6 +707,10 @@
 		<h2>목적지 </h2><input type="text" class="text_custom" id="fullAddr" name="fullAddr"
 			value="서울시 마포구 와우산로29가길 69">
 		<button id="btn_select">설정 하기</button>
+		<button id="startBtn">시작 하기</button>
+		<div>Seconds: <span id="time"></span></div>
+		<input type="button" id="stopTimer" value="Stop Timer"  onclick="stopTime();"><br/>
+        <input type="button" id="resetTimer" value="Reset Timer"  onclick="resetTime();"><br/>
 		<h3 id="endAdd"></h3> <button id="btn_save">저장 하기</button>
 		<button id="arriveBtn">도착</button>
 		
@@ -689,22 +724,10 @@
 		
 		<h2 id="result"></h2>
 		<br />
-		
-		
-	
+		<!-- 타임워치  -->
 		<ul>
-			<li>경도:<span id="latitude"></span></li>
-			<li>위도:<span id="longitude"></span></li>
-	
-		</ul>
-		<ul>
-			<li>경도 검색 결과: <span id="sch_lat"></span></li>
-			<li>위도 검색 결과: <span id="sch_lon"></span></li>
-		</ul>
-		
-		<ul>
-			<li>총 거리: <span id="tDistance"></span></li>
-			<li>총 시간: <span id="tTime"></span></li>
+			<li>예상 거리: <span id="tDistance"></span></li>
+			<li>예상 시간: <span id="tTime"></span></li>
 		</ul>
 		
 		
