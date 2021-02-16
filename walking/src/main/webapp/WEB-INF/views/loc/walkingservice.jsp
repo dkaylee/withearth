@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,34 +9,18 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
-	  <script src="https://code.jquery.com/jquery-latest.js"></script>
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 <style>
 #fullAddr{
 	float: left;
 }
- /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-    
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
-        }
+
+#map_div{
+	width: 500px;
+	border: 2px;
+}
+
+
 
 
 
@@ -43,12 +28,18 @@
 
 
 <script type="text/javascript">
+
+//저장 버튼 
+
+
+
 	var now_lat = $('#nowLat');
 	var now_lon = $('#nowLon');
 	var new_lat = $('#newLat');
 	new_lat = 37.57081522;
 	var new_lon = $('#newLon');
 	new_lon = 127.00160213;
+	var newAddress='';
 	
 	$(document).ready(function() {
 		// Geolocation API에 액세스할 수 있는지를 확인
@@ -75,6 +66,7 @@
 		
 		// ==========목적지 검색==========
 		var map, marker1;
+		
 		$('#btn_select').click(	function() {
 			console.log('진입1');
 			// 목적지 설정 마커 초기화
@@ -162,7 +154,7 @@
 						// 검색 결과 표출
 						var matchFlag, newMatchFlag;
 						// 검색 결과 주소를 담을 변수
-						var address = '', newAddress = '';
+						var address = '';
 						var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 						var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 						// 새주소일 때 검색 결과 표출
@@ -246,12 +238,16 @@
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(중심점) : "+ lat+ ", "
 																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
 									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
+									console.log('newaddress'+newAddress);
+									saveData(newAddress); // saveData로 데이터 전송
 									$("#endAdd").html(text);
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
 									var text = "검색 결과(새주소) : "+ newAddress
+									console.log('newaddress'+newAddress);
+									saveData(newAddress); // saveData로 데이터 전송
 									$("#endAdd").html(text);
 								}
 							}
@@ -321,6 +317,8 @@
 									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br>"	+ "위경도좌표(중심점) : "
 																+ lat+ ", "+ lon+ "</br>"+ "위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
 									var text = "검색 결과(지번주소) : "+ address;
+									console.log('address'+address);
+									saveData(address); // saveData로 데이터 전송
 									$("#endAdd").html(text);
 									
 		
@@ -329,6 +327,8 @@
 									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"
 												+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
 									var text = "검색 결과(지번주소) : "+ address;
+									console.log('address'+address);
+									saveData(address); // saveData로 데이터 전송
 									$("#endAdd").html(text);
 								}
 							}
@@ -359,7 +359,7 @@
 		
 }); // ready
 	
-
+	
 	
 		
 	    	
@@ -367,6 +367,7 @@
 	
 
 	// 현재 위치 좌표 -> 주소로 변환
+	var revresult;
 	function reverseGeo(lon, lat) {
 	$.ajax({
 				method : "GET",
@@ -429,6 +430,7 @@
 					revresult += "위경도좌표 : " + lat + ", " + lon; */
 
 					var resultDiv = document.getElementById("startAdd");
+					
 					resultDiv.innerHTML = revresult;
 
 				},
@@ -441,10 +443,6 @@
 
 }
 
-	// 현재위치 정보 불러오기
-	$(function() {
-
-	}); // 현재위치 정보 불러오는 기능
 
 
 	// 시작, 도착 보행자 경로 안내
@@ -453,6 +451,7 @@
 	var totalMarkerArr = [];
 	var drawInfoArr = [];
 	var resultdrawArr = [];
+	var tDistance, tTime;
 
 	function initTmap(newlat, newlon, nowlat, nowlon) {
 		console.log(newlat);
@@ -519,8 +518,8 @@
 			var resultData = response.features;
 
 			//결과 출력
-			var tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
-			var tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+			tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
+			tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
 
 						$("#result").text(tDistance + tTime);
 						$("#tDistance").text(tDistance);
@@ -634,24 +633,23 @@
 	
 	//시작 버튼 눌렀을 떄 일어나는 함수
     function startWalk(){
-    	
-    	
-		$('#startBtn').click(function(){
+		
 			console.log('스타트1');
-			startTime();
+			startTime(); 
 			if(new_lat==37.57081522&&new_lon==127.00160213){
-	    		alert('기본값으로 목적지를 설정합니다.(주소: 종로5가역)');
+	    		alert('기본값으로 목적지를 설정합니다.(목적지: 종로5가역)');
 	    	}else{
 	    		console.log('걷기를 시작합니다.');
 	    	}   	
-		});// startBtn
+		
 	}// startWalk
 	
 
-	
+	// 목적지 부근 도착
 	var distance;
+	var confirm_test = null;
 	function arrChk(nowlat, nowlon, arrlat, arrlon){
-		$("#arriveBtn").click(function(){
+		$("#arriveBtn").click(function(){ 
 			console.log('도착1');
 			// 3. 직선거리 계산  API 사용요청
 			$.ajax({
@@ -674,6 +672,8 @@
 		
 							$("#arrresult").text("두점의 직선거리 : " + distance + "m");
 							console.log('두점의 직선거리'+distance + 'm');
+							
+							
 						},
 						error : function(request, status, error) {
 							console.log("code:" + request.status + "\n"
@@ -683,40 +683,100 @@
 					}); //ajax
 					
 					if(distance <= 100){ // 거리가 약 반경 100m 내의 있을 경우
-						alert('도착하셨습니까?');
-						$('#myModal').show();
+						stop();
+					
+						confirm_test = confirm("목적지 부근입니다. 서비스를 종료하시겠습니까?");
+						if(confirm_test==true){
+							
+							// 확인 버튼 클릭시 이벤트 발생 -> 모달창 생성, 스톱워치 중단
+							
+							console.log('목적지 도착');
+						}else{
+							// 되돌아가기 
+						}
 					
 						
 					// 모달
 					} else{
-						console.log('목적지에 도착하지 않았습니다.');
+						alert('목적지에 도착하지 않았습니다. 위치를 다시 한번 확인해주세요.');
 					}
-		});
+		 }); 
 	} // arriveBtn
 	
+	function saveData(address){
+		console.log('저장 1');	
+	
+		$.ajax({
+			url: 'http://localhost:8080/walking/course/loc/walkingservice',
+			type: 'post',
+			data: {
+				tDistance: tDistance, // 이동 거리
+				tTime: tTime, // 소요 시간
+				startAdd: revresult, // 출발지 주소
+				endAdd: address  // 목적지 주소
+				
+			}, 
+			success: function(data){
+				alert('저장 성공');
+			}
+		
+		});
+
+	} // saveData
+	
 	// Modal 닫기
-	function close_pop(flag){
-		$('#myModal').hide();
-	}
 	
 	/*******************************타임워치********************************************/
- 	var timeElapsed = 0;
-	var myTimer = 0;
-	function startTime() {
-	    myTimer = setInterval(function(){
-	        timeElapsed += 1;
-	         document.getElementById("time").innerText = timeElapsed;
-	    }, 1000) ;
-	}
-	function stopTime() {
-	    clearInterval(myTimer);
-	}
-	function resetTime() {
-	   timeElapsed = 0;
-	   clearInterval(myTimer);
-	   document.getElementById("time").innerHTML = timeElapsed;
-	}
+	var h = 0;
+    var m = 0;
+    var s = 0;
+	var timetime;
+    var exTime;
+    
+    function calcTime() {
+        s = parseInt(s);
+        m = parseInt(m);
+        h = parseInt(h);
+        
+        s += 1;
+        if (s == 60) {
+            m += 1;
+            s = 1;
+        }
+        if (m == 60) {
+            h += 1;
+            m = 1;
+        }                  
+    }
+    
+    function addZeros(num, digit) { // 자릿수 맞춰주기
+        var zero = '';
+        num = num.toString();
+        if (num.length < digit) {
+            for (i = 0; i < digit - num.length; i++) {
+                zero += '0';
+            }
+        }
+        return zero + num;
+    }
+    
+    var hour, minute, second;
+    
+    function startTime(){
+        calcTime();
+        hour = addZeros(h, 2);
+        minute = addZeros(m, 2);
+        second = addZeros(s, 2);           
+        timetime = setTimeout("startTime()", 1000);  
+        $('#clock').html(hour + ' : ' + minute + ' : ' + second);            
+    }
+    function stop(){
+    	clearTimeout(timetime);
+    	exTime = ((h*360) + (m*60) + s) / 60;
+    	exTime = exTime.toFixed(2);
+    }
 	
+    
 	
 	
 	
@@ -728,31 +788,36 @@
 	
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
-		<h2 style="margin:50px 20px 20px 20px;">걷기 인증 서비스</h2>
+		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
 	
-		<h2 >출발지(현재 위치)</h2><h3 id="startAdd"></h3><br>
+		<h2 style="margin: 20px;">출발지(현재 위치)</h2><h3 id="startAdd"></h3><br>
 		
-		<h2>목적지(ex.서울시 마포구 와우산로29가길 69) </h2><input type="text" style="width:300px; margin: 20px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
+		<h2 style="margin: 20px;">목적지(ex.서울시 마포구 와우산로29가길 69) </h2><input type="text" style="width:300px; margin: 20px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
 			value="서울시 마포구 와우산로29가길 69">
 		<button id="btn_select">설정 하기</button>
-		<button id="startBtn">시작 하기</button>
+		<button id="startBtn" onclick="startWalk()">시작 하기</button> <br>
 		<div>Seconds: <span id="time"></span></div>
 		<input type="button" id="stopTimer" value="Stop Timer"  onclick="stopTime();"><br/>
         <input type="button" id="resetTimer" value="Reset Timer"  onclick="resetTime();"><br/>
-		<h3 id="endAdd"></h3> <button id="btn_save">저장 하기</button>
+		<h3 id="endAdd"></h3> 
 		<button id="arriveBtn">도착</button>
+		<button id="saveBtn" onclick="saveData()">저장</button>
+		
 		
 		<br />
 		<br>
 		<!-- 경로 지도 -->
 		<div id="map_wrap"  class="map_wrap3">
-			<div id="map_div" ></div>
+			<div id="map_div" style="width: 500px; border=3px;" ></div>
 		</div>
 		<div class="map_act_btn_wrap clear_box"></div>
 		
 		<h2 id="result"></h2>
 		<br />
 		<!-- 타임워치  -->
+		<div id="clock" class="contents">
+        </div>
+        
 		<ul>
 			<li>예상 거리: <span id="tDistance"></span></li>
 			<li>예상 시간: <span id="tTime"></span></li>
@@ -760,19 +825,9 @@
 		
  
       <!-- Modal content -->
-      <div class="modal-content">
-                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">공지</span></b></span></p>
-                <p style="text-align: center; line-height: 1.5;"><br />여기에 내용</p>
-                <p><br /></p>
-            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
-                <span class="pop_bt" style="font-size: 13pt;" >
-                     닫기
-                </span>
-            </div>
-      </div>
  
     </div>
-        <!--End Modal-->
+
 
 
 	

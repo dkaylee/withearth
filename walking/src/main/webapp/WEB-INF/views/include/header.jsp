@@ -9,7 +9,7 @@
 					<nav id="nav">
 						<a href="<c:url value="/"/>">Home</a>
 						<a href="#">Tumbler</a>
-						<a href="<c:url value="/loc/walkingservice"/>">Walking</a>
+						<a href="<c:url value="/course/loc/walkingservice"/>">Walking</a>
 						<a href="#">Point</a>
 						<a href="#">Donation</a>
 						<a href="<c:url value="/comm/matlist"/>">Community</a>

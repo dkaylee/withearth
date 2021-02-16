@@ -13,13 +13,14 @@ import com.withearth.walking.domain.CourseSettingRequest;
 import com.withearth.walking.service.CourseSettingService;
 
 @Controller
+@RequestMapping("/course")
 public class CourseSettingController {
 
 	@Autowired
 	private CourseSettingService courseSetService;
 	
 	// 코스 설정 페이지
-	@RequestMapping(value="/loc/walkingservice", method = RequestMethod.GET )
+	@RequestMapping(value="/loc/walkingservice", method = RequestMethod.GET)
 	public String getcourseSet() {
 		
 		return "/loc/walkingservice";
