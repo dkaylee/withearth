@@ -10,6 +10,7 @@
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
+
 <style>
 #fullAddr{
 	float: left;
@@ -20,17 +21,21 @@
 	border: 2px;
 }
 
-
-
-
-
 </style>
 
 
 <script type="text/javascript">
 
 //저장 버튼 
-
+	$('#startWalking').on('click', function(){
+	    	location.href="startWalk"
+	    });
+	    
+	    $('#walkingGuide').on('click', function(){
+	    	location.href="walkingGuide"
+	    });
+	    
+	   
 
 
 	var now_lat = $('#nowLat');
@@ -780,10 +785,13 @@
     	clearTimeout(timetime);
     	exTime = ((h*360) + (m*60) + s) / 60;
     	exTime = exTime.toFixed(2);
-    }
+    } // 타임워치 -끝-
 	
+    // myCourse로 이동
+	function moveMyCourse(){
+    	location.href="courselist.jsp";	
     
-	
+    }
 	
 	
 </script>
@@ -791,13 +799,18 @@
 
 </head>
 <body>
-	
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
-		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
-	
-		<h2 style="margin: 20px;">출발지(현재 위치)</h2><h3 id="startAdd"></h3><br>
+		<div class="row mb-md-5">
+			<div class="list-group list-group-horizontal col-md-4 col-sm-12 mx-auto text-center" id="myList" role="tablist">
+				<a class="list-group-item list-group-item-action active" id="startWalking" data-toggle="list" href="#" role="tab">바로 시작</a> 
+				<a class="list-group-item list-group-item-action" id="walkingGuide" data-toggle="list" href="#" role="tab">라이딩 가이드</a> 
+				<a href="javascript:moveMyCourse()">나의 코스</a>
+			</div>
+		</div>
 		
+		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
+		<h2 style="margin: 20px;">출발지(현재 위치)</h2><h3 id="startAdd"></h3><br>
 		<h2 style="margin: 20px;">목적지(ex.서울시 마포구 와우산로29가길 69) </h2><input type="text" style="width:300px; margin: 20px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
 			value="서울시 마포구 와우산로29가길 69">
 		<button id="btn_select">설정 하기</button>

@@ -29,21 +29,21 @@ public interface WalkingDao {
 	int selectSearchCourseCount(Map<String, Object> listMap);
 
 	// 코스 정보 삭제
-	int deleteCourseByIdx(int idx);
+	int deleteCourseByIdx(int course_idx);
 
 	// 코스 정보 조회 : idx로 조회
-	Course selectCourseByIdx(int idx);
+	Course selectCourseByIdx(int course_idx);
 
 	// 코스 정보 update
 	int updateCourse(Course Course);
 
 	// id 존재 유무 확인
-	int selectCourseByIdCount(String id);
+	//int selectCourseByIdCount(String id);
 
 	// idx, verify 조건으로 조회
-	int selectCourseByIdxVerify(int index);
+	//int selectCourseByIdxVerify(int index);
 
 	// 인증처리 verify = 'Y'
-	int updateCourseVerify(int idx, String code);
+	//int updateCourseVerify(int idx, String code);
 
 }
