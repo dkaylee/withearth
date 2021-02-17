@@ -17,14 +17,19 @@ public class TumListController {
 	private TumListService tumlistService;
 
 	
-	@RequestMapping("/tumbler/tumlist1")
-	public String tumList(Model model, HttpServletRequest request) {
-		
-	int idx = 1;
-       model.addAttribute("listView", tumlistService.getTumList(idx));
-		
-		return "tumbler/tumlist1";
-	}
+	
+	  @RequestMapping("/tumbler/tumlist1") 
+	  public String tumList(Model model,  HttpServletRequest request) {
+	  
+	  int idx = 1; 
+	  
+	  model.addAttribute("listView", tumlistService.getTumList(idx));
+	  
+	  return "tumbler/tumlist1";
+	  
+	  }
+	
+	
 
 	//포인트 내역 출력
 	@RequestMapping("/tumbler/tumlist")  
@@ -36,7 +41,7 @@ public class TumListController {
 		//System.out.println(listView);
            
 		// 로그인 합친후 세션에서 회원idx를 가지고 와야함.
-		// HttpSession session = request.getSession();
+		 //HttpSession session = request.getSession();
 		// int idx = (int) session.getAttribute("idx");
 
 		int idx = 1;

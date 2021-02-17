@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</resultMap>
 	
-	<!-- 	<resultMap type="com.withearth.tumbler.domain.Tumbler"
+	 	<resultMap type="com.withearth.tumbler.domain.Tumbler"
 		id="TumblerListResult">
 
 		<id property="tum_idx" column="tum_idx" />
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="cafe_name" column="cafe_name" />
 		<result property="idx" column="idx" />
 
-	</resultMap>  -->
+	</resultMap>  
 	
 	
 	
@@ -63,15 +63,15 @@ select count(*) from tumbler;
         resultMap="TumblerResultMap"
    >
 
-select * from tumbler limit #{param1}, #{param2}
+<!-- select * from tumbler limit #{param1}, #{param2} -->
+     select 
+		   tum_idx, tum_date, tumbler.cafe_idx, cafe.cafe_name , idx, tum_point 
+		from 
+		    tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx 
+		limit #{param1}, #{param2}
 
 </select>
 	
-	<!--큐알 스캔 -> url 넘어가기 -->
-
-	<!--텀블러 url로 로그인 할 경우 100포인트 적립 -->
-	<!-- <insert id="selectTumLogin">
-	</insert> -->
 
 
 

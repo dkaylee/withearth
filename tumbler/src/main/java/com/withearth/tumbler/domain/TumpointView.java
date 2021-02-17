@@ -27,6 +27,7 @@ public class TumpointView {
 	}
 	
 
+
 	private void calTotalPageCount() {
 		
 		totalPageCount = totalTpointCount/cntPerPage;

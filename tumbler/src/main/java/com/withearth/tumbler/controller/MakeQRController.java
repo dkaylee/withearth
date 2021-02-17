@@ -60,7 +60,7 @@ public class MakeQRController {
        // 링크로 할 URL주소 
        //String url = "http://localhost:8080/tumbler/qr/tumLogin"+storeName; 
       
-     String url = "http://192.168.219.106:8080/tumbler/qr/"+cafe_idx;
+     String url = "http://192.168.219.106:8080/qr/"+cafe_idx;
 
     System.out.println(url);
       
@@ -97,7 +97,7 @@ public class MakeQRController {
        ImageIO.write(bufferedImage, "png",temp); 
       
        //리턴은 사용자가 원하는 값을 리턴한다. 
-       //작성자는 QRCode 파일의 이름을 넘겨주고 싶었음.
+ 
       return "tumbler/tumlist"; 
 	 }
  }

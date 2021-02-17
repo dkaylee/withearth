@@ -7,8 +7,8 @@ public class Cafe {
 	private String cafe_name; // 카페 상호
 	private String location; // 카페 위치
 	private String qrcode; //QR코드
-	private int tumLat; //위도
-	private int tumLon; //경도
+	private int cafe_lat; //위도
+	private int cafe_lon; //경도
 	public int getCafe_idx() {
 		return cafe_idx;
 	}
@@ -33,23 +33,24 @@ public class Cafe {
 	public void setQrcode(String qrcode) {
 		this.qrcode = qrcode;
 	}
-	public int getTumLat() {
-		return tumLat;
+	public int getCafe_lat() {
+		return cafe_lat;
 	}
-	public void setTumLat(int tumLat) {
-		this.tumLat = tumLat;
+	public void setCafe_lat(int cafe_lat) {
+		this.cafe_lat = cafe_lat;
 	}
-	public int getTumLon() {
-		return tumLon;
+	public int getCafe_lon() {
+		return cafe_lon;
 	}
-	public void setTumLon(int tumLon) {
-		this.tumLon = tumLon;
+	public void setCafe_lon(int cafe_lon) {
+		this.cafe_lon = cafe_lon;
 	}
 	@Override
 	public String toString() {
 		return "Cafe [cafe_idx=" + cafe_idx + ", cafe_name=" + cafe_name + ", location=" + location + ", qrcode="
-				+ qrcode + ", tumLat=" + tumLat + ", tumLon=" + tumLon + "]";
+				+ qrcode + ", cafe_lat=" + cafe_lat + ", cafe_lon=" + cafe_lon + "]";
 	}
+	
 	
 	
 

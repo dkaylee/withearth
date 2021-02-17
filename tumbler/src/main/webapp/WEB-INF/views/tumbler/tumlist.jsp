@@ -5,12 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
- <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="jquery.bootpag.min.js"></script>
-    <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
-    
-    
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="jquery.bootpag.min.js"></script>
+<script src="/resources/js/bootstrap.js"></script>
+<script
+	src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+
+
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 
 <meta charset="UTF-8">
@@ -19,11 +22,9 @@
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
 <style>
-
-.nowpage{
-   font-size: 1.5em;
-   font-weight:bold;
- 
+.nowpage {
+	font-size: 1.5em;
+	font-weight: bold;
 }
 </style>
 
@@ -41,7 +42,7 @@
 			<!-- Table -->
 			<h3>텀블러 인증 내역</h3>
 
-			<h4>님</h4>
+			
 			<div class="table-wrapper">
 				<table>
 					<thead>
@@ -54,43 +55,51 @@
 						</tr>
 					</thead>
 					<tbody calss="tbody">
-						 <c:forEach items="${listView.tumlist}" var="tumbler" varStatus="status">
+						<c:forEach items="${listView.tumlist}" var="tumbler"
+							varStatus="status">
 							<tr>
 								<td>${tumbler.tum_idx}</td>
-								<td>${tumbler.tum_date}</td>
+								<td><fmt:formatDate value="${tumbler.tum_date}"
+									pattern="yyyy.MM.dd" /></td>
 								<td>${tumbler.cafe_name}</td>
 								<td>${tumbler.tum_point}p</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				</div>
-				
-			 	<div class="paging">
-				  <c:if test="${listView.totalTpointCount>0}">
-				  <c:forEach begin="1" end="${listView.totalPageCount}" var="num">
-				    [<a href="<c:url value="/tumbler/tumlist"/>?p=${num}"
-				         class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 
-				  </c:forEach>
-				  </c:if> 
-				</div> 
-			
-			
-			
-			
-		</div>
-		
-	</section>
-	
-	
+			</div>
 
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+			<%-- <div class="paging">
+				<c:if test="${listView.totalTpointCount>0}">
+					<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
+				    [<a href="<c:url value="/tumbler/tumlist"/>?p=${num}"
+							class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 
+				  </c:forEach>
+				</c:if>
+			</div> --%>
+
+			<nav aria-label="..." style="text-align: center;"> 
+			<ul class="pagination"> 
+			<c:if test="${listView.totalTpointCount>0}">
+					<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
+				    [<a href="<c:url value="/tumbler/tumlist"/>?p=${num}"
+							class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 
+				  </c:forEach>
+				</c:if>
+			 </ul> 
+			 </nav>
+
+
+		</div>
+
+	</section>
+
+
+
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>
 
 <script>
-
-
-
-
+	
 </script>
