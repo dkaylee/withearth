@@ -27,17 +27,19 @@ public class CourseSettingService {
 		int result = 0;
 		
 		Course course = setRequest.toCourse();
+		System.out.println(course);
 		
 		try {
 			// 데이터 베이스 입력
 			dao = template.getMapper(WalkingDao.class);
 			
 			//course_count -> courseCount +1 update
-			dao.courseCountUpdate();
+			//dao.courseCountUpdate();
 			
 			// 코스 DB insert
-			result = dao.insertCourse();
+			result = dao.insertCourse(course);
 			
+			System.out.println("course"+course);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -39,7 +39,7 @@
 	new_lat = 37.57081522;
 	var new_lon = $('#newLon');
 	new_lon = 127.00160213;
-	var newAddress='';
+	var newAddress=''; // 전역 변수로 사용
 	
 	$(document).ready(function() {
 		// Geolocation API에 액세스할 수 있는지를 확인
@@ -239,7 +239,6 @@
 																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
 									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
 									console.log('newaddress'+newAddress);
-									saveData(newAddress); // saveData로 데이터 전송
 									$("#endAdd").html(text);
 		
 								} else {
@@ -247,7 +246,6 @@
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
 									var text = "검색 결과(새주소) : "+ newAddress
 									console.log('newaddress'+newAddress);
-									saveData(newAddress); // saveData로 데이터 전송
 									$("#endAdd").html(text);
 								}
 							}
@@ -318,7 +316,7 @@
 																+ lat+ ", "+ lon+ "</br>"+ "위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
 									var text = "검색 결과(지번주소) : "+ address;
 									console.log('address'+address);
-									saveData(address); // saveData로 데이터 전송
+									newAddress = address;	// newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
 									
 		
@@ -328,7 +326,7 @@
 												+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
 									var text = "검색 결과(지번주소) : "+ address;
 									console.log('address'+address);
-									saveData(address); // saveData로 데이터 전송
+									newAddress = address; // newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
 								}
 							}
@@ -703,13 +701,13 @@
 		 }); 
 	} // arriveBtn
 	
-	function saveData(address){
+	function saveData(){
 		console.log('저장 1');	
 		
 		console.log('tdis', tDistance);
 		console.log('time', tTime);
 		console.log('startadd', revresult)
-		console.log('endadd - '+address);
+		console.log('endadd - '+newAddress);
 		$.ajax({
 			url: 'http://localhost:8080/walking/course/loc/walkingservice',
 			type: 'post',
@@ -717,7 +715,7 @@
 				tdistance: tDistance, // 이동 거리
 				ttime: tTime, // 소요 시간
 				startAdd: revresult, // 출발지 주소
-				endAdd: address  // 목적지 주소 
+				endAdd: newAddress  // 목적지 주소 -> newAddress를 전역 변수로 저장해서 값을 불러온다.
 				
 				
 			}, 

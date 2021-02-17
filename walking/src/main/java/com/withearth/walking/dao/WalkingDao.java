@@ -9,11 +9,11 @@ import com.withearth.walking.domain.Course;
 
 public interface WalkingDao {
 
-	// 코스 등록
-	int insertCourse();
+	// 코스 등록 ->	()를 빈 칸으로 두면 loc_km등 데이터 값을 못 불러온다.
+	int insertCourse(Course course);
 	
 	// 전체 회원의 수
-	int courseCountUpdate();
+	//int courseCountUpdate();
 
 	// 코스의 총 개수
 	int selectTotalCount();

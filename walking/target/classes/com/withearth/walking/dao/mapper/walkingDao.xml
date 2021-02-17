@@ -32,9 +32,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			useGeneratedKeys="true"
 			keyProperty="course_idx">
 		
-		insert into sys.course( loc_km, walking_time, start_point, end_point) values(#{loc_km}, #{walking_time}, #{start_point}, #{end_point} )	
+		insert into course( loc_km, walking_time, start_point, end_point) values(#{loc_km}, #{walking_time}, #{start_point}, #{end_point} )	
 	
 	</insert>
+	
+	<!-- course_count update -->
+	<!-- <update id="courseCountUpdate">
+		update course_count set coursecount = coursecount+1 
+	</update> -->
 	
 	<!--  -->
 	<select id="selectCourseList" parameterType="map" resultMap="courseListResult">
