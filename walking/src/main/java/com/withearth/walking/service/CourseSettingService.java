@@ -33,7 +33,7 @@ public class CourseSettingService {
 			dao = template.getMapper(WalkingDao.class);
 			
 			//course_count -> courseCount +1 update
-			dao.selectTotalCount();
+			dao.courseCountUpdate();
 			
 			// 코스 DB insert
 			result = dao.insertCourse();

@@ -11,7 +11,9 @@ public interface WalkingDao {
 
 	// 코스 등록
 	int insertCourse();
-
+	
+	// 전체 회원의 수
+	int courseCountUpdate();
 
 	// 코스의 총 개수
 	int selectTotalCount();
