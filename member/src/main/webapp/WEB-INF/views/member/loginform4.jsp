@@ -42,7 +42,8 @@
 		</form>
 		<a id="custom-login-btn" href="javascript:loginWithKakao()" style="">
   		 	<img src="<c:url value="/img/kakao_login_medium_wide.png"/>"/></a>
-    	<a href="javascript:logout()">임시 로그아웃</a>	  
+    	<a href="javascript:logout()">임시 로그아웃</a>
+    	<a href="<c:url value="/member/findpwform"/>">비밀번호 찾기</a> 
 
 </body>
 

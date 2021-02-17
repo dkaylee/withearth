@@ -10,7 +10,7 @@ public interface MemberDAO {
 	//member가 왜 여기 들어가니..?
 	Member selectLogin(String id, String pw);
 
-//아이디 중복체크
+//아이디 중복체크 & 이메일 보내기
 	int selectMemberByIdCount(String id);
 //아이디 비밀번호 일치여부
 	int selectMemberByIdPwCount(String id,String pw);

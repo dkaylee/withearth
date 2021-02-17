@@ -13,7 +13,7 @@ public class KakaoInfo {
 	
 	public Member toMemeberfromkakao() {
 		Member member = new Member();
-		member.setId(ka_name);
+		member.setId(ka_email);
 		member.setName(ka_name);
 		member.setLogintype("kakao");
 		member.setPhoto(ka_thum);

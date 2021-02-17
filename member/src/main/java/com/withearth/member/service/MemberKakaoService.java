@@ -20,10 +20,10 @@ public class MemberKakaoService {
 	private SqlSessionTemplate template;
 	
 	@Transactional
-	public int memberReg(KakaoInfo kakaoinfo,HttpServletRequest request) {
+	public int memberReg(KakaoInfo kinfo,HttpServletRequest request) {
 		int result = 0;
 		
-		Member member = kakaoinfo.toMemeberfromkakao();
+		Member member = kinfo.toMemeberfromkakao();
 		//db입력
 		dao = template.getMapper(MemberDAO.class);
 		//db insert

@@ -71,14 +71,16 @@
 		 //회원 가입
 			var photoFile = $('#photo');
 			var file1 = photoFile[0].files[0];
-			console.log(file1); 
+			console.log(typeof(file1)); 
 			
 			var formData = new FormData();
 			formData.append("userid",$('#id').val());
 			formData.append("userpw",$('#pw').val());
 			formData.append("username",$('#name').val());
-			formData.append("userPhoto",file1);	
 			
+			if(typeof(file1) != 'undefined'){
+			formData.append("userPhoto",file1);	
+			}
 		
 		$.ajax({
 			url: '/member/member/reg',

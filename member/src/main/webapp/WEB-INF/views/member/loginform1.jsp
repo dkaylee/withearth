@@ -27,7 +27,8 @@
 			<input type="submit" id="btnlog"value="Login" />
 		<a id="custom-login-btn" href="javascript:loginWithKakao()" style="">
   		 	<img src="<c:url value="/img/kakao_login_medium_wide.png"/>"/></a>
-    	<a href="javascript:logout()">임시 로그아웃</a>	  
+    	<a href="javascript:logout()">임시 로그아웃</a><br>
+    	<a href="<c:url value="/member/findpwform"/>">비밀번호 찾기</a> 
 
 </body>
 
@@ -89,84 +90,6 @@ $(document).ready(function(){
 	});	 
 </script>
 
-<!-- 보수공사 필요
-<script>
-$(document).ready(function(){
-
-	var oneok = 'f';
-	var twook = 'f';
-	
-	 //로그인 버튼 클릭시,
-	 $('#btnlog').click(function(){ 
-		var id = $('#userid').val();
-		var pw = $('#pw').val();
-		$.ajax({
-			url: 'idpwcheck',
-			data: {id:id,pw:pw},
-			success : function(data){
-				if(data=='N'){
-					alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-					 $('#id').focus();
-					 return false;
-				} else {
-					oneok = 't';	
-				}
-			}//success
-		});
-
-		$.ajax({
-			url: 'idpwverifycheck',
-			data: {id:id,pw:pw},
-			success : function(data2){
-				console.log(data2);
-				console.log(oneok);
-				if(data2=='N'){
-					alert("인증되지 않은 회원입니다. 인증메일을 확인해주세요.");
-					 return false;
-				} else {
-					twook = 't';	
-				}
-			},
-			error : function(error){
-				console.log(error);	
-			}
-		});
-		
-		if(oneok=='t' && twook=='t'){
-		var formData = new FormData();
-		formData.append("userid",$('#userid').val());
-		formData.append("pw",$('#pw').val());
-		
-		$.ajax({
-			url: '/member/member/login',
-			type: 'post',
-			data: formData,
-			enctype: 'multipart/form-data',
-			processData: false,
-			contentType: false,
-			cache: false,
-			success: function(data){
-				alert("로그인 되었습니다.");
-				location.href="/member"; 
-				console.log(data);
-			},
-			error: function(error){
-				console.log("실패");
-				console.log(error);
-			}	
-		}); //ajax
-	   }
-	 });//click								
-}); //ready
-</script>
-
- -->
-
-
-
-
-
-
 
 <!-- 카카오 로그인 -->
 <script type='text/javascript'>
@@ -210,9 +133,11 @@ $(document).ready(function(){
 				//dataType : 'json',
 				data : JSON.stringify(kakaoinfo),
 				contentType:'application/json;charset=utf-8',
-				success : function(data) {
+				success : function(check) {
 					console.log("성공");
-					location.href="/member"; 
+					alert("가입이 완료되었습니다.")
+					location.href="/member";
+					
 				},
 				error: function(error){
 					console.log("실패");
