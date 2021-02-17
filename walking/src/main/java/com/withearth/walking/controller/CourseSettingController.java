@@ -27,21 +27,22 @@ public class CourseSettingController {
 		
 	}
 	
-	// 코스 설정 후 완료 안내 페이지
-	@RequestMapping(value="/loc/walkingservice", method = RequestMethod.POST)
-	public String courseSetView(
-			CourseSettingRequest setRequest,
-			HttpServletRequest request,
-			Model model
-			) {
-		
-		System.out.println(setRequest);
-		
-		int result = courseSetService.courseSet(setRequest, request);
-		
-		model.addAttribute("result", result);
-		
-		return "/loc/course_setting_view";
-	}
 	
+	  // 코스 설정 후 완료 안내 페이지
+	  
+	  @RequestMapping(value="/loc/walkingservice", method = RequestMethod.POST)
+	  public String courseSetView( 
+			  CourseSettingRequest setRequest,
+			  HttpServletRequest request, 
+			  Model model ) {
+	  
+		  System.out.println(setRequest);
+		  
+		  int result = courseSetService.courseSet(setRequest, request);
+		  
+		  model.addAttribute("result", result);
+		  
+		  return "/loc/course_setting_view"; 
+	  }
+	 
 }

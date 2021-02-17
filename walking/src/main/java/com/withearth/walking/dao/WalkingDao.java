@@ -3,15 +3,15 @@ package com.withearth.walking.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.withearth.walking.domain.Course;
 
 public interface WalkingDao {
 
 	// 코스 등록
-	int insertCourse(Course course);
+	int insertCourse();
 
-	// 전체 코스의 수
-	int CourseCountUpdate();
 
 	// 코스의 총 개수
 	int selectTotalCount();

@@ -8,8 +8,8 @@ public class Course {
 	// DB
 	private int course_idx; // 코스 idx
 	private Timestamp course_date; // 코스 생성 일자
-	private int loc_km; // 코스 총 거리
-	private int walking_time;// 소요 시간
+	private float loc_km; // 코스 총 거리
+	private long walking_time;// 소요 시간
 	private String start_point;// 출발지
 	private String end_point;// 목적지
 	
@@ -26,16 +26,16 @@ public class Course {
 	public void setCourse_date(Timestamp course_date) {
 		this.course_date = course_date;
 	}
-	public int getLoc_km() {
+	public float getLoc_km() {
 		return loc_km;
 	}
-	public void setLoc_km(int loc_km) {
+	public void setLoc_km(float loc_km) {
 		this.loc_km = loc_km;
 	}
-	public int getWalking_time() {
+	public long getWalking_time() {
 		return walking_time;
 	}
-	public void setWalking_time(int walking_time) {
+	public void setWalking_time(long walking_time) {
 		this.walking_time = walking_time;
 	}
 	public String getStart_point() {

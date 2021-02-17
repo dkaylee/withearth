@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 <title>simpleMap</title>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
@@ -169,68 +169,68 @@
 								// 시/도 명칭
 								if (resultCoordinate.city_do.length > 0) {
 								city = resultCoordinate.city_do;
-								newAddress += city+ "\n";
+								newAddress += city+ " ";
 	
 							}
 	
 							// 군/구 명칭
 							if (resultCoordinate.gu_gun.length > 0) {
 								gu_gun = resultCoordinate.gu_gun;
-								newAddress += gu_gun+ "\n";
+								newAddress += gu_gun+ " ";
 								console.log('진입9');
 							}
 	
 							// 읍면동 명칭
 							if (resultCoordinate.eup_myun.length > 0) {
 								eup_myun = resultCoordinate.eup_myun;
-								newAddress += eup_myun+ "\n";
+								newAddress += eup_myun+ " ";
 							} else {
 									// 출력 좌표에 해당하는
 									// 법정동 명칭
 									if (resultCoordinate.legalDong.length > 0) {
 										legalDong = resultCoordinate.legalDong;
-										newAddress += legalDong+ "\n";
+										newAddress += legalDong+ " ";
 									}
 									// 출력 좌표에 해당하는
 									// 행정동 명칭
 									if (resultCoordinate.adminDong.length > 0) {
 										adminDong = resultCoordinate.adminDong;
-										newAddress += adminDong+ "\n";
+										newAddress += adminDong+ " ";
 									}
 								}										
 								// 출력 좌표에 해당하는 리 명칭
 								if (resultCoordinate.ri.length > 0) {
 									ri = resultCoordinate.ri;
-									newAddress += ri+ "\n";
+									newAddress += ri+ " ";
 								}
 								// 출력 좌표에 해당하는 지번 명칭
 								if (resultCoordinate.bunji.length > 0) {
 									bunji = resultCoordinate.bunji;
-									newAddress += bunji+ "\n";
+									newAddress += bunji+ " ";
 								}
 								// 새(도로명)주소 매칭을 한
 								// 경우, 길 이름을 반환
 								if (resultCoordinate.newRoadName.length > 0) {
 									newRoadName = resultCoordinate.newRoadName;
-									newAddress += newRoadName+ "\n";
+									newAddress += newRoadName+ " ";
 								}
 								// 새(도로명)주소 매칭을 한
 								// 경우, 건물 번호를 반환
 								if (resultCoordinate.newBuildingIndex.length > 0) {
 									newBuildingIndex = resultCoordinate.newBuildingIndex;
-									newAddress += newBuildingIndex+ "\n";
+									newAddress += newBuildingIndex+ " ";
 								}
 								// 새(도로명)주소 매칭을 한
 								// 경우, 건물 이름를 반환
 								if (resultCoordinate.newBuildingName.length > 0) {
 									newBuildingName = resultCoordinate.newBuildingName;
-									newAddress += newBuildingName+ "\n";
+									newAddress += newBuildingName+ " ";
 								}
 								// 새주소 건물을 매칭한 경우
 								// 새주소 건물 동을 반환
 								if (resultCoordinate.newBuildingDong.length > 0) {
 									newBuildingDong = resultCoordinate.newBuildingDong;
-									newAddress += newBuildingDong+ "\n";
+									newAddress += newBuildingDong+ " ";
 								}
 								// 검색 결과 표출
 								if (lonEntr > 0) {
@@ -263,51 +263,51 @@
 							// 시/도 명칭
 							if (resultCoordinate.city_do.length > 0) {
 								city = resultCoordinate.city_do;
-								address += city+ "\n";
+								address += city+ " ";
 							}
 							// 군/구 명칭
 							if (resultCoordinate.gu_gun.length > 0) {
 								gu_gun = resultCoordinate.gu_gun;
-								address += gu_gun+ "\n";
+								address += gu_gun+ " ";
 							}
 							// 읍면동 명칭
 							if (resultCoordinate.eup_myun.length > 0) {
 								eup_myun = resultCoordinate.eup_myun;
-								address += eup_myun+ "\n";
+								address += eup_myun+ " ";
 							}
 							// 출력 좌표에 해당하는 법정동
 							// 명칭
 							if (resultCoordinate.legalDong.length > 0) {
 								legalDong = resultCoordinate.legalDong;
-								address += legalDong+ "\n";
+								address += legalDong+ " ";
 							}
 							// 출력 좌표에 해당하는 행정동
 							// 명칭
 							if (resultCoordinate.adminDong.length > 0) {
 								adminDong = resultCoordinate.adminDong;
-								address += adminDong+ "\n";
+								address += adminDong+ " ";
 							}
 							// 출력 좌표에 해당하는 리 명칭
 							if (resultCoordinate.ri.length > 0) {
 								ri = resultCoordinate.ri;
-								address += ri+ "\n";
+								address += ri+ " ";
 							}
 							// 출력 좌표에 해당하는 지번 명칭
 							if (resultCoordinate.bunji.length > 0) {
 								bunji = resultCoordinate.bunji;
-								address += bunji+ "\n";
+								address += bunji+ " ";
 							}
 							// 출력 좌표에 해당하는 건물 이름
 							// 명칭
 							if (resultCoordinate.buildingName.length > 0) {
 								buildingName = resultCoordinate.buildingName;
-								address += buildingName+ "\n";
+								address += buildingName+ " ";
 							}
 							// 출력 좌표에 해당하는 건물 동을
 							// 명칭
 							if (resultCoordinate.buildingDong.length > 0) {
 								buildingDong = resultCoordinate.buildingDong;
-								address += buildingDong+ "\n";
+								address += buildingDong+ " ";
 							}
 							// 검색 결과 표출
 								var new_lt;
@@ -425,7 +425,7 @@
 						jibunAddr += (' ' + arrResult.buildingName);
 					}
 
-					revresult = "현재 위치(새주소) : " + newRoadAddr + "</br>";
+					revresult =  newRoadAddr;
 					/* revresult += "지번주소 : " + jibunAddr + "</br>";
 					revresult += "위경도좌표 : " + lat + ", " + lon; */
 
@@ -518,10 +518,10 @@
 			var resultData = response.features;
 
 			//결과 출력
-			tDistance = "총 거리 : "+ ((resultData[0].properties.totalDistance) / 1000).toFixed(1) + "km,";
-			tTime = " 총 시간 : "+ ((resultData[0].properties.totalTime) / 60).toFixed(0) + "분";
+			tDistance =  ((resultData[0].properties.totalDistance) / 1000).toFixed(1) ;
+			tTime =  ((resultData[0].properties.totalTime) / 60).toFixed(0) ;
 
-						$("#result").text(tDistance + tTime);
+						$("#result").text("총 거리 : "+tDistance+ "km," + "//  총 시간 : "+tTime+ "분");
 						$("#tDistance").text(tDistance);
 						$("#tTime").text(tTime);
 
@@ -705,21 +705,29 @@
 	
 	function saveData(address){
 		console.log('저장 1');	
-	
+		
+		console.log('tdis', tDistance);
+		console.log('time', tTime);
+		console.log('startadd', revresult)
+		console.log('endadd - '+address);
 		$.ajax({
 			url: 'http://localhost:8080/walking/course/loc/walkingservice',
 			type: 'post',
 			data: {
-				tDistance: tDistance, // 이동 거리
-				tTime: tTime, // 소요 시간
+				tdistance: tDistance, // 이동 거리
+				ttime: tTime, // 소요 시간
 				startAdd: revresult, // 출발지 주소
-				endAdd: address  // 목적지 주소
+				endAdd: address  // 목적지 주소 
+				
 				
 			}, 
 			success: function(data){
 				alert('저장 성공');
+			},
+			error: function(error){
+				console.log(error)
 			}
-		
+			
 		});
 
 	} // saveData
@@ -818,10 +826,7 @@
 		<div id="clock" class="contents">
         </div>
         
-		<ul>
-			<li>예상 거리: <span id="tDistance"></span></li>
-			<li>예상 시간: <span id="tTime"></span></li>
-		</ul>
+		
 		
  
       <!-- Modal content -->
