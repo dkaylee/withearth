@@ -5,41 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
-<form>
-	이메일 : <input type="text">
+<form method="post">
+	이메일 : <input type="text" id ="id" name="id">
 </form>
-	<input type="submit">
+	<input type="submit" id="findbtn">
 </body>
 <script>
 $(document).ready(function(){
-	 //회원가입 버튼 클릭시,
-	 $('#btnReg').click(function(){ 
+	//비밀번호 찾기 버튼 클릭시, 
+	$('#findbtn').click(function(){ 
+		var id = $('#id').val();
+	 
 		$.ajax({
-				url: 'idcheck',
-				data: {id:id},
-				success : function(data){
-					if(data=='Y'){
-						msg.html('사용가능한 아이디 입니다.');
-						msg.removeClass('font_red');
-						msg.addClass('font_blue');
-						$('#btnReg').attr("disabled", false);
-					} else {
-						msg.html('사용불가능한 아이디입니다.');
-						msg.removeClass('font_blue');
-						msg.addClass('font_red');
-						$('#btnReg').attr("disabled", true);
-					}
-					
-				},
-				error:function(){
-					msg.html('에러');
-					msg.removeClass('font_blue');
-					msg.addClass('font_red');
-				}
-			});
+			url: '/member/member/findpw',
+			type: 'post',
+			data: {id:id},
+			success : function(data){
+				console.log("됐다")
+			},
+			error:function(){
+				console.log("안됐다")
+			}
+		});
 	});
 });
-</script>		
+</script>
 </html>

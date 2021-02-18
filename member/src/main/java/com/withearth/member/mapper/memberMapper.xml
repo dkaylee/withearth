@@ -68,5 +68,12 @@ select * from user where id= #{param1} and pw=#{param2}
 	<update id="updateMemberVerify">
 		update user set verify='Y' where idx=#{param1} and code=#{param2}
 	</update>
+	
+<!-- 임시 비밀번호 설정 -->	
+<update id="updateMembertemporaryPW"
+		parameterType="com.withearth.member.domain.TemporaryPw">
+		update user set pw=#{tpw} where id=#{id}
+</update>
+
 
 </mapper>

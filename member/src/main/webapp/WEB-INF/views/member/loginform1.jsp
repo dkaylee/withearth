@@ -9,6 +9,7 @@
 <!--카카오 로그인-->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="/js/login/naveridlogin_js_sdk_2.0.2.js"></script>
 
 </head>
 <body>
@@ -27,9 +28,9 @@
 			<input type="submit" id="btnlog"value="Login" />
 		<a id="custom-login-btn" href="javascript:loginWithKakao()" style="">
   		 	<img src="<c:url value="/img/kakao_login_medium_wide.png"/>"/></a>
+  		<a id="naverIdLogin_loginButton" href="#"><img src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.1" height="60"></a>
     	<a href="javascript:logout()">임시 로그아웃</a><br>
-    	<a href="<c:url value="/member/findpwform"/>">비밀번호 찾기</a> 
-
+    	<a href="<c:url value="/member/findpw"/>">비밀번호 찾기</a> 
 </body>
 
 <script>
@@ -62,6 +63,7 @@ $(document).ready(function(){
 									var formData = new FormData();
 									formData.append("userid",$('#userid').val());
 									formData.append("pw",$('#pw').val());
+									
 									$.ajax({
 									url: '/member/member/login',
 									type: 'post',
@@ -103,6 +105,7 @@ $(document).ready(function(){
             	//이메일 프로필 필수 동의 요구
             	scope: 'account_email,profile',
                 success: function(authObj) {
+                	console.log(authObj) //토큰
                 	//성공한다면 사용자 정보 가져오기
                 	logintwo();
                 },
@@ -111,11 +114,9 @@ $(document).ready(function(){
                 }
             }); 
         }; 
-</script>
-
-<script>
+        
 	function logintwo(){
-		//사용자 정보 가져오기
+		//사용자 정보 저장하기 api
 		Kakao.API.request({
 		    url: '/v2/user/me',
 		    success: function(res){
@@ -136,7 +137,7 @@ $(document).ready(function(){
 				success : function(check) {
 					console.log("성공");
 					alert("가입이 완료되었습니다.")
-					location.href="/member";
+					//location.href="/member";
 					
 				},
 				error: function(error){
@@ -154,6 +155,7 @@ $(document).ready(function(){
 		});
 	};		
 </script>
+
 
 <script>
 	function logout(){

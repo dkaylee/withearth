@@ -1,6 +1,7 @@
 package com.withearth.member.dao;
 
 import com.withearth.member.domain.Member;
+import com.withearth.member.domain.TemporaryPw;
 
 public interface MemberDAO {
 //회원가입
@@ -22,4 +23,7 @@ public interface MemberDAO {
 	
 //아이디 비밀번호+인증처리N
 	int selectMemberByIdPwVerifyCount(String id,String pw);
+	
+// 임시비밀번호로 변경
+	int updateMembertemporaryPW(TemporaryPw tempw);
 }
