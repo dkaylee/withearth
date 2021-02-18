@@ -1,6 +1,6 @@
 package com.withearth.tumbler.domain;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
 
 public class CafeRequest {
 	
@@ -9,8 +9,29 @@ public class CafeRequest {
 	private String location; // 카페 위치
 	private int cafe_lat; //위도
 	private int cafe_lon; //경도
+	private List<Cafe> cafeList;
 	
 	
+
+	
+	
+	
+
+
+	public CafeRequest(int cafe_idx, String cafe_name, String location, int cafe_lat, int cafe_lon) {
+		
+		this.cafe_idx = cafe_idx;
+		this.cafe_name = cafe_name;
+		this.location = location;
+		this.cafe_lat = cafe_lat;
+		this.cafe_lon = cafe_lon;
+	}
+	
+	public CafeRequest(List<Cafe> cafeList) {
+		
+		this.cafeList = cafeList;
+	}
+
 	public int getCafe_idx() {
 		return cafe_idx;
 	}
@@ -30,9 +51,7 @@ public class CafeRequest {
 		this.location = location;
 	}
 
-	
-	
-	
+
 	public int getCafe_lat() {
 		return cafe_lat;
 	}
@@ -58,11 +77,25 @@ public class CafeRequest {
 		return cafe;
 	}
 	
+	
+	
+	public List<Cafe> getCafeList() {
+		return cafeList;
+	}
+
+	public void setCafeList(List<Cafe> cafeList) {
+		this.cafeList = cafeList;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "CafeRequest [cafe_idx=" + cafe_idx + ", cafe_name=" + cafe_name + ", location=" + location
-				+ ", cafe_lat=" + cafe_lat + ", cafe_lon=" + cafe_lon + "]";
+				+ ", cafe_lat=" + cafe_lat + ", cafe_lon=" + cafe_lon + ", cafeList=" + cafeList + "]";
 	}
+
+	
+	
 	
 	
 	

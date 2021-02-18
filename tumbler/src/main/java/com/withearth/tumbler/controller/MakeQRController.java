@@ -51,7 +51,7 @@ public class MakeQRController {
   	}  
       
 
-      int cafe_idx = 6;
+      int cafe_idx = 7;
       
  
       

@@ -11,4 +11,6 @@ public interface CafeDao {
   List<Cafe> selectCafeList();
 
 
+
+
 }

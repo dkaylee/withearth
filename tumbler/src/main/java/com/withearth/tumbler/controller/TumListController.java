@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.withearth.tumbler.service.CafeListSerivce;
 import com.withearth.tumbler.service.TumListService;
 
 @Controller
@@ -15,7 +16,6 @@ public class TumListController {
 	
 	@Autowired
 	private TumListService tumlistService;
-
 	
 	
 	  @RequestMapping("/tumbler/tumlist1") 

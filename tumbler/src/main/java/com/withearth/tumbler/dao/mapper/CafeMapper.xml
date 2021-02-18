@@ -19,8 +19,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</resultMap>
 
+	<resultMap id="CafeListMap"
+		type="com.withearth.tumbler.domain.Cafe">
+		<id property="cafe_idx" column="cafe_idx" />
+		<result property="cafe_name" column="cafe_name" />
+		<result property="location" column="location" />
+		<result property="cafe_lon" column="cafe_lon" />
+		<result property="cafe_lat" column="cafe_lat" />
+	</resultMap>
+
 	<!-- 로그인 -->
-	<select id="selectTumLogin">
+	<select id="selectTumLogin" resultMap="CafeListMap">
 		select * from member where
 		id=#{id} and pw=#{pw}
 	</select>
@@ -34,14 +43,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select * from user where id=#{id} and pw=#{pw} )
 
 	</update>
-	
-	<!--매장 조회  -->
+
+	<!--매장 조회 -->
 	<select id="selectCafeList" resultMap="CafeResultMap">
-	
-	select * from cafe
-	
+
+		select * from cafe
+
 	</select>
-	
+
 
 	<!-- 큐알 코드 저장 -->
 	<!-- <insert id="insertQRcode" parameterType="com.withearth.tumbler.domain.Cafe" 

@@ -39,7 +39,7 @@ public class TumListService {
 			int endRow = startRow + cntPerPage - 1;
 
 			List<Tumbler> tumlist = dao.selectTumpointList(startRow, cntPerPage);
-			System.out.println("텀블러리스트!!!!!!!!!!!" + tumlist);
+			//System.out.println("텀블러리스트!!!!!!!!!!!" + tumlist);
 
 			listView = new TumpointView(pageNumber, totalTpointCount, cntPerPage, tumlist, startRow, endRow);
 

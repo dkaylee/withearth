@@ -38,7 +38,8 @@
 	margin: 10px 0 30px 10px;
 	padding: 5px;
 	overflow-y: auto;
-	background: rgba(255, 255, 255, 0.7);
+	/* background: rgba(255, 255, 255, 0.7); */
+	background:white;
 	z-index: 1;
 	font-size: 12px;
 	border-radius: 10px;
@@ -266,7 +267,7 @@ h1 {
 
 			<div id="menu_wrap" class="bg_white">
 				<div class="option">
-					<div>
+					<div class="store_input" id="storename_div" style="display:;">
 						<form onsubmit="searchPlaces(); return false;">
 							매장명 : <input type="text" value="스타벅스 " id="keyword" size="15">
 							<!--    매장명 : <input type="text"  id="keyword" size="15">  -->
@@ -276,14 +277,17 @@ h1 {
 				</div>
 				<hr>
 				<ul id="placesList">
-				
+
+					<c:forEach items="${list}" var="cafe" varStatus="status">
 						<li><a>
 								<dl>
 									<dt>${cafe.cafe_name}</dt>
 									<dd>${cafe.location}</dd>
 								</dl>
 						</a></li>
-				
+
+					</c:forEach>
+
 				</ul>
 				<div id="pagination"></div>
 			</div>
@@ -294,18 +298,49 @@ h1 {
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf&libraries=services"></script>
 
 	<script>
+	
+	
+/* 	var theme_map = new Array;
+	var theme_info = new Array;
+	var theme_store = new Array;
+	var theme_lat = new Array;
+	var coord_array = new Array; */
+	
+
+
+		
+		
 		// 마커를 담을 배열입니다
 		// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 2
-		// 지도의 확대 레벨 
-		};
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
 
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+//지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+//장소 검색 객체를 생성합니다
+//var ps = new kakao.maps.services.Places();  
+
+// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+
+//키워드로 장소를 검색합니다
+//searchPlaces();
+ 
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+//주소
+var addressArray=[];
+
+//지도에 표시될 마크
+var markers = [];
+    
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 		if (navigator.geolocation) {
 
 			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -329,8 +364,7 @@ h1 {
 			displayMarker(locPosition, message);
 
 		}
-
-		// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+ 	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 		function displayMarker(locPosition, message) {
 
 			// 마커를 생성합니다
@@ -344,6 +378,7 @@ h1 {
 
 			// 인포윈도우를 생성합니다
 			var infowindow = new kakao.maps.InfoWindow({
+				zIndex:1,
 				content : iwContent,
 				removable : iwRemoveable
 			});
@@ -352,12 +387,37 @@ h1 {
 			infowindow.open(map, marker);
 
 			// 지도 중심좌표를 접속위치로 변경합니다
-			map.setCenter(locPosition);
-			console.log(locPosition);
-			console.log("위도 lat:" + locPosition.La);
-			console.log("경도 lon:" + locPosition.Ma);
+			map.setCenter(locPosition);			
 
-		}
+		}   
+    
+// 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다 
+var points = [
+    
+    new kakao.maps.LatLng(37.569918, 126.984528), //종각
+    new kakao.maps.LatLng(37.570553, 126.990206), //종로3가
+    new kakao.maps.LatLng(37.571229, 126.976287) //광화문R
+];
+
+// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+var bounds = new kakao.maps.LatLngBounds();    
+
+var i, marker;
+for (i = 0; i < points.length; i++) {
+    // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
+    marker =     new kakao.maps.Marker({ position : points[i] });
+    marker.setMap(map);
+    
+    // LatLngBounds 객체에 좌표를 추가합니다
+    bounds.extend(points[i]);
+}
+
+function setBounds() {
+    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+    map.setBounds(bounds);
+}
+		
 		
 		/*모달창  */
 	
