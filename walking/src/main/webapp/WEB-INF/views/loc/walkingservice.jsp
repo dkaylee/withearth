@@ -9,8 +9,16 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+
+<!-- modal 부트스트랩 -->	
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 	
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 
@@ -23,6 +31,10 @@
 	width: 500px;
 	border: 2px;
 }
+
+
+
+
 
 </style>
 
@@ -236,6 +248,7 @@
 									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
+									$("#modalEnd").html(newAddress);
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
@@ -243,6 +256,7 @@
 									var text = "검색 결과(새주소) : "+ newAddress
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
+									$("#modalEnd").html(newAddress);
 								}
 							}
 	
@@ -314,6 +328,7 @@
 									console.log('address'+address);
 									newAddress = address;	// newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
+									$("#modalEnd").html(newAddress);
 									
 		
 								} else {
@@ -324,6 +339,7 @@
 									console.log('address'+address);
 									newAddress = address; // newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
+									$("#modalEnd").html(newAddress);
 								}
 							}
 					}
@@ -427,7 +443,7 @@
 					var resultDiv = document.getElementById("startAdd");
 					
 					resultDiv.innerHTML = revresult;
-
+					$("#start_Add").html(revresult);
 				},
 				error : function(request, status, error) {
 					console.log("code:" + request.status + "\n"
@@ -517,8 +533,8 @@
 			tTime =  ((resultData[0].properties.totalTime) / 60).toFixed(0) ;
 
 						$("#result").text("총 거리 : "+tDistance+ "km," + "//  총 시간 : "+tTime+ "분");
-						$("#tDistance").text(tDistance);
-						$("#tTime").text(tTime);
+						$("#tDistance").text(tDistance+$("#tDistance").text());
+						$("#tTime").text(tTime+$("#tTime").text());
 
 						//기존 그려진 라인 & 마커가 있다면 초기화
 						if (resultdrawArr.length > 0) {
@@ -682,8 +698,10 @@
 					
 						confirm_test = confirm("목적지 부근입니다. 서비스를 종료하시겠습니까?");
 						if(confirm_test==true){
-							
-							// 확인 버튼 클릭시 이벤트 발생 -> 모달창 생성, 스톱워치 중단
+							//$('#testBtn').click(function(e){
+								//e.preventDefault();
+								$('#testModal').modal("show");
+							//});
 							
 							console.log('목적지 도착');
 						}else{
@@ -719,6 +737,7 @@
 			}, 
 			success: function(data){
 				alert('저장 성공');
+				$('#testModal').modal("hide");
 			},
 			error: function(error){
 				console.log(error)
@@ -783,7 +802,10 @@
     	exTime = exTime.toFixed(2);
     } // 타임워치 -끝-
 	
+    /*******************************모달창 기능********************************************/
     
+
+
 	
 	
 </script>
@@ -795,7 +817,7 @@
 		
 		<div class="menu">	
 			<c:url value="/loc/courselist" var="courseList"/>
-			<a href="${courseList}"">걷기 인증 서비스 시작</a>
+			<a href="${courseList}">걷기 인증 서비스 시작</a>
 			<c:url value="/loc/courselist" var="courseList"/>
 			<a href="${courseList}"">걷기 인증 서비스 안내</a>		 
 			<c:url value="/loc/courselist" var="courseList"/>
@@ -803,17 +825,18 @@
 		</div>
 		
 		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
-		<h2 style="margin: 20px;">출발지(현재 위치)</h2><h3 id="startAdd"></h3><br>
+		<h2 style="margin: 20px;">출발지(현재 위치)</h2><h3 id="start_Add"></h3><br>
 		<h2 style="margin: 20px;">목적지(ex.서울시 마포구 와우산로29가길 69) </h2><input type="text" style="width:300px; margin: 20px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
 			value="서울시 마포구 와우산로29가길 69">
 		<button id="btn_select">설정 하기</button>
-		<button id="startBtn" onclick="startWalk()">시작 하기</button> <br>
+		<button id="startBtn" onclick="startWalk()">시작 하기</button><button id="arriveBtn">도착</button><br>
+		<h3 id="endAdd"></h3>
 		<div>Seconds: <span id="time"></span></div>
 		<input type="button" id="stopTimer" value="Stop Timer"  onclick="stopTime();"><br/>
         <input type="button" id="resetTimer" value="Reset Timer"  onclick="resetTime();"><br/>
-		<h3 id="endAdd"></h3> 
-		<button id="arriveBtn">도착</button>
-		<button id="saveBtn" onclick="saveData()">저장</button>
+		 
+		
+		
 		
 		
 		<br />
@@ -829,13 +852,39 @@
 		<!-- 타임워치  -->
 		<div id="clock" class="contents">
         </div>
-        
+
+
+
+
+	<!-- Modal content -->
+	<!-- <button id="testBtn" class="btn">모달 테스트</button> -->
+  <!-- 회원가입 확인 Modal-->
+	<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">코스 완주 성공!</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					출발지<br><h3 id="start_Add"></h3>
+					목적지<br><h3 id="modalEnd"></h3>
+					이동 거리<h3 id="tDistance"> km</h3>
+					소요 시간<h3 id="tTime"> 분</h3>
+					
+				</div>
+				<div class="modal-footer">
+					<button class="btn" id="saveBtn" type="button" onclick="saveData()">저장</button>
+					<button class="btn" type="button" data-dismiss="modal">아니요</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
 		
-		
- 
-      <!-- Modal content -->
- 
-    </div>
+	</script>
 
 
 

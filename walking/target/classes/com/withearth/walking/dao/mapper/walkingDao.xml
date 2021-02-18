@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.withearth.walking.dao.WalkingDao">
 
-	<!-- Course Type의 resultMap -->
+	<!-- Course Type의 resultMap #resultMap id 주의!!!(대소문자 구분할 것) -->
 	<resultMap id="courseResult" type="com.withearth.walking.domain.Course"  >
 		<id column="course_idx" property="course_idx"/>
 		<result column="course_date" property="course_date"/>
