@@ -15,18 +15,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="end_point" property="end_point"/>
 	</resultMap>
 
+
 	<!-- 코스 리스트 -->
-	<resultMap id="courseListResult" type="com.withearth.walking.domain.Course" >
+	<!-- <resultMap id="courseListResult" type="com.withearth.walking.domain.Course" >
 		<id column="course_idx" property="course_idx"/>
 		<result column="course_date" property="course_date"/>
 		<result column="loc_km" property="loc_km"/>
 		<result column="walking_time" property="walking_time"/>
 		<result column="start_point" property="start_point"/>
 		<result column="end_point" property="end_point"/>
-	</resultMap>
+	</resultMap> -->
 	
 	
-	<!-- 나의 코스 저장 -->
+	<!-- 1. 코스 등록 -->
 	<insert id="insertCourse"
 			parameterType="com.withearth.walking.domain.Course"
 			useGeneratedKeys="true"
@@ -36,24 +37,115 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
-	<!-- course_count update -->
-	<!-- <update id="courseCountUpdate">
-		update course_count set coursecount = coursecount+1 
-	</update> -->
 	
-	<!--  -->
-	<select id="selectCourseList" parameterType="map" resultMap="courseListResult">
-		select * from course
-	</select>
-
-	<!-- 코스의 총 개수-->
+	<!-- 2. 전체 회원의 수 -->
+	<update id="courseCountUpdate">
+		update course_count set coursecount = coursecount+1 
+	</update>
+	
+	
+	<!-- 3. 코스의 총 개수-->
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from course
 	</select>
-
-	<!-- 코스 삭제 -->
+	
+	
+	<!-- 4. 코스 리스트 v-->
+	<select id="selectCourseList" parameterType="map" resultMap="courseResult"> 
+		select * from course
+		
+		<where>
+			<if test="searchParam != null">
+				<if test="searchParam.searchType == 'date'">
+					  <include refid="searchDate"/>
+				</if>
+				
+				<if test="searchParam.searchType == 'end'">
+					 <include refid="searchEnd"/>
+				</if>
+				
+				<if test="searchParam.searchType == 'both'">
+					 <include refid="searchDate"/>
+					 <include refid="searchEnd"/>
+				</if>
+			</if>
+		</where>
+		
+		limit #{index}, #{count}
+		
+	</select>
+	
+	
+	<!-- 5. Rest API - GET v -->
+	<select id="selectAllCourseList" resultMap="courseResult">
+		select * from course
+	</select>
+	
+	
+	<!-- 6. 검색한 회원의 수 -->
+	<select id="selectSearchCourseCount" 
+			parameterType="com.withearth.walking.domain.SearchParam"
+	        resultType="int" >
+	        
+		select count(*) from course
+		
+		<!-- where idx>0  -->
+		
+		<where>
+			<if test="searchParam.searchType == 'date'">
+				  <include refid="searchDate"/>
+			</if>
+			
+			<if test="searchParam.searchType == 'end'">
+				 <include refid="searchEnd"/>
+			</if>
+			
+			<if test="searchParam.searchType == 'both'">
+				 <include refid="searchDate"/>
+				 <include refid="searchEnd"/>
+			</if>
+		</where>
+	
+	</select>
+	
+	
+	<!--  저장 일자로 검색 -->
+	<sql id="searchDate">
+		or course_date like	concat('%',#{searchParam.keyword},'%')
+	</sql>
+	
+	
+	<!-- 목적지로 검색 -->
+	<sql id="searchEnd">
+	  or end_point like	concat('%',#{searchParam.keyword},'%')
+	</sql>
+	
+	
+	<!-- 7. 코스 정보 삭제 -->
 	<delete id="deleteCourseByIdx">
 		delete from course where course_idx=#{course_idx}
 	</delete>
+	
+	
+	<!-- 8. 코스 정보 조회: idx로 조회 v -->
+	<select id="selectCourseByIdx" resultMap="courseResult">
+		select * from course where course_idx=#{no}
+	</select>
+	
+	
+	<!-- 9. idx, verify 조건으로 조회 -->
+	<select id="selectCourseByIdxVerify" resultType="int" >
+		select count(*) from course where course_idx=#{course_idx} and verify='Y'
+	</select>
+	
+	
+
+	
+	
+	
+
+	
+	
+	
 	
 </mapper>

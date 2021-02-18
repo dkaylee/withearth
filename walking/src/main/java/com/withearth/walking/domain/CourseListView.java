@@ -15,7 +15,7 @@ public class CourseListView {
 	// 생성자 생성
 	public CourseListView(int pageNumber, int totalCourseCount, int cntPerPage, List<Course> courseList, int startRow,
 			int endRow) {
-		super();
+
 		this.pageNumber = pageNumber;
 		this.totalCourseCount = totalCourseCount;
 		this.cntPerPage = cntPerPage;

@@ -22,6 +22,7 @@ public class CourseListController {
 		System.out.println(param);
 		
 		model.addAttribute("listView", listService.getListView(param));
+		//model.addAttribute("courseCnt", listService.getCourseTotalCount());
 		
 		return "/loc/courselist";
 	}

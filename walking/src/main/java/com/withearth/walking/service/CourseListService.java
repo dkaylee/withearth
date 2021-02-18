@@ -19,6 +19,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class CourseListService {
 	
+	
 	private WalkingDao dao;
 	
 	@Autowired
@@ -38,46 +39,50 @@ public class CourseListService {
 			int cntPerPage = 5;
 			
 			int startRow = (param.getP() - 1) * cntPerPage;
-			int endRow = startRow + cntPerPage -1;
-			
+			int endRow = startRow + cntPerPage - 1;
+
 			Map<String, Object> listMap = new HashMap<String, Object>();
 			listMap.put("index", startRow);
 			listMap.put("count", cntPerPage);
 			listMap.put("searchParam", param);
-			
+
+			// int totalCourseCount = dao.selectTotalCount();
 			int totalCourseCount = dao.selectSearchCourseCount(listMap);
-			System.out.println("courseTotalCount: " + totalCourseCount);
-			
+			System.out.println("courseTotalCount : " + totalCourseCount);
+
 			List<Course> courseList = dao.selectCourseList(listMap);
 			System.out.println(courseList);
-			
+
 			listView = new CourseListView(param.getP(), totalCourseCount, cntPerPage, courseList, startRow, endRow);
+
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return listView;
-	}
-	
-	public List<Course> getListVeiw(){
-		List<Course> list = null;
-		
-		try {
-			
-			// MemberDao 구현체 생성 
-			dao = template.getMapper(WalkingDao.class);
-			
-			list = dao.selectAllCourseList();
-			System.out.println(list);
-			log.info(list);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return listView;
+		
 	}
 	
+	public List<Course> getListView() {
+
+		List<Course> list = null;
+
+		try {
+			// MemberDao 구현체 생성
+			dao = template.getMapper(WalkingDao.class);
+
+			list = dao.selectAllCourseList();
+			System.out.println(list);
+			log.info(list);
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 	
 	
 	

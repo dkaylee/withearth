@@ -9,6 +9,9 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+	
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 
 <style>
@@ -26,18 +29,6 @@
 
 <script type="text/javascript">
 
-//저장 버튼 
-	$('#startWalking').on('click', function(){
-	    	location.href="startWalk"
-	    });
-	    
-	    $('#walkingGuide').on('click', function(){
-	    	location.href="walkingGuide"
-	    });
-	    
-	   
-
-
 	var now_lat = $('#nowLat');
 	var now_lon = $('#nowLon');
 	var new_lat = $('#newLat');
@@ -48,7 +39,7 @@
 	
 	$(document).ready(function() {
 		// Geolocation API에 액세스할 수 있는지를 확인
-		//===========현재위치 불러오기===========
+		/*******************************현재 위치 불러오는 기능********************************************/
 		if (navigator.geolocation) {
 		//위치 정보를 얻기
 			navigator.geolocation.getCurrentPosition(function(pos) {
@@ -69,7 +60,7 @@
 		}
 		
 		
-		// ==========목적지 검색==========
+		/*******************************목적지 검색 기능(newAddress(목적지 주소))********************************************/
 		var map, marker1;
 		
 		$('#btn_select').click(	function() {
@@ -369,7 +360,7 @@
      
 	
 
-	// 현재 위치 좌표 -> 주소로 변환
+	/*******************************현재 위치 좌표 -> 주소로 변환 기능(revresult(출발지 주소))********************************************/
 	var revresult;
 	function reverseGeo(lon, lat) {
 	$.ajax({
@@ -427,7 +418,8 @@
 					if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
 						jibunAddr += (' ' + arrResult.buildingName);
 					}
-
+					
+					// revresult -> 출발지 주소 데이터
 					revresult =  newRoadAddr;
 					/* revresult += "지번주소 : " + jibunAddr + "</br>";
 					revresult += "위경도좌표 : " + lat + ", " + lon; */
@@ -448,7 +440,7 @@
 
 
 
-	// 시작, 도착 보행자 경로 안내
+	/*******************************보행자 경로 안내 기능(marker_s(출발지 마커), marker_e(목적지 마커), tDistance(이동거리), tTime(소요시간))********************************************/
 	var map;
 	var marker_s, marker_e, marker_p1, marker_p2;
 	var totalMarkerArr = [];
@@ -648,7 +640,7 @@
 	}// startWalk
 	
 
-	// 목적지 부근 도착
+	/*******************************목적지 도착 기능********************************************/
 	var distance;
 	var confirm_test = null;
 	function arrChk(nowlat, nowlon, arrlat, arrlon){
@@ -706,6 +698,7 @@
 		 }); 
 	} // arriveBtn
 	
+	/*******************************데이터 저장 기능********************************************/
 	function saveData(){
 		console.log('저장 1');	
 		
@@ -737,7 +730,7 @@
 	
 	// Modal 닫기
 	
-	/*******************************타임워치********************************************/
+	/*******************************스톱워치 기능********************************************/
 	var h = 0;
     var m = 0;
     var s = 0;
@@ -773,6 +766,7 @@
     
     var hour, minute, second;
     
+    /*****스톱워치 시작 기능*****/
     function startTime(){
         calcTime();
         hour = addZeros(h, 2);
@@ -781,17 +775,15 @@
         timetime = setTimeout("startTime()", 1000);  
         $('#clock').html(hour + ' : ' + minute + ' : ' + second);            
     }
+    
+    /*****스톱워치 정지 기능*****/
     function stop(){
     	clearTimeout(timetime);
     	exTime = ((h*360) + (m*60) + s) / 60;
     	exTime = exTime.toFixed(2);
     } // 타임워치 -끝-
 	
-    // myCourse로 이동
-	function moveMyCourse(){
-    	location.href="courselist.jsp";	
     
-    }
 	
 	
 </script>
@@ -801,12 +793,13 @@
 <body>
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
-		<div class="row mb-md-5">
-			<div class="list-group list-group-horizontal col-md-4 col-sm-12 mx-auto text-center" id="myList" role="tablist">
-				<a class="list-group-item list-group-item-action active" id="startWalking" data-toggle="list" href="#" role="tab">바로 시작</a> 
-				<a class="list-group-item list-group-item-action" id="walkingGuide" data-toggle="list" href="#" role="tab">라이딩 가이드</a> 
-				<a href="javascript:moveMyCourse()">나의 코스</a>
-			</div>
+		<div class="menu">	
+			<c:url value="/loc/courselist" var="courseList"/>
+			<a href="${courseList}"">걷기 인증 서비스 시작</a>
+			<c:url value="/loc/courselist" var="courseList"/>
+			<a href="${courseList}"">걷기 인증 서비스 안내</a>		 
+			<c:url value="/loc/courselist" var="courseList"/>
+			<a href="${courseList}"">나의 코스</a>
 		</div>
 		
 		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
