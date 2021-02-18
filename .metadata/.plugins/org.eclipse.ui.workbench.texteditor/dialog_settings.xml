@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="placesList"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="mvc:annotation"/>
 			<item value="placesList"/>
 			<item value="80"/>
 			<item value="80%"/>
@@ -22,7 +23,6 @@
 			<item value="input"/>
 			<item value="keyword"/>
 			<item value="스타벅스"/>
-			<item value="map"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

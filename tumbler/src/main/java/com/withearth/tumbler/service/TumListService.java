@@ -50,16 +50,15 @@ public class TumListService {
 		return listView;
 	}
 
-	public List<Tumbler> getTumList(int idx) {
-
+	public List<Tumbler> getTumList(int idx){	
+		
 		List<Tumbler> list = null;
-
+		
 		dao = template.getMapper(TumblerDao.class);
-
-		list = dao.selelctTumList(idx);
-		System.out.println("매장명나옴:" + list);
+		
+		list =  dao.selelctTumList(idx);
 		log.info(list);
-
+		
 		return list;
 	}
 

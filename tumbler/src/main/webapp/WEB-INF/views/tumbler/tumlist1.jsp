@@ -315,7 +315,7 @@ h1 {
 				lon = position.coords.longitude; // 경도
 
 				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-				message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+				message = '<div style="padding:5px;">내위치!!!!!!</div>'; // 인포윈도우에 표시될 내용입니다
 
 				// 마커와 인포윈도우를 표시합니다
 				displayMarker(locPosition, message);
@@ -358,6 +358,25 @@ h1 {
 			console.log("경도 lon:" + locPosition.Ma);
 
 		}
+		
+		/*모달창  */
+	
+		//필요한 엘리먼트들을 선택한다.
+		const openButton = document.getElementById("open");
+		const modal = document.querySelector(".modal");
+		const overlay = modal.querySelector(".md_overlay");
+		const closeButton = modal.querySelector("button");
+		//동작함수
+		const openModal = () => {
+			modal.classList.remove("hidden");
+		}
+		const closeModal = () => {
+			modal.classList.add("hidden");
+		}
+		//클릭 이벤트
+		openButton.addEventListener("click", openModal);
+		closeButton.addEventListener("click", closeModal);
+	
 	</script>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

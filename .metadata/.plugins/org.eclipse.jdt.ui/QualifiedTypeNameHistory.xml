@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.time.LocalDate"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumLoginRequest"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.TumLoginService"/>
@@ -10,7 +9,6 @@
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.MakQRcodeService"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
 <fullyQualifiedTypeName name="java.io.File"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.sun.corba.se.pept.transport.Connection"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.TumPointService"/>
 <fullyQualifiedTypeName name="java.sql.Timestamp"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.CafeRequest"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Cafe"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

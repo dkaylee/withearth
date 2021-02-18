@@ -17,29 +17,29 @@ public class CafeListSerivce {
 
 	private CafeDao dao;
 	
-	@Autowired
-	private SqlSessionTemplate template; 
-	
-	public List<Cafe> cafeView () {
-		
-		List<Cafe> list = null; // 변수 만들어서 초기화
-		
-		
-		try {
-		dao = template.getMapper(CafeDao.class);
-		
-		
-		list =dao.selectCafeList();
-		//System.out.println("카페리스트"+list);
-		//log.info(list);
-		
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list ;
-
-	}
+//	@Autowired
+//	private SqlSessionTemplate template; 
+//	
+//	public List<Cafe> cafeView () {
+//		
+//		List<Cafe> list = null; // 변수 만들어서 초기화
+//		
+//		
+//		try {
+//		dao = template.getMapper(CafeDao.class);
+//		
+//		
+//		list =dao.selectCafeList();
+//		//System.out.println("카페리스트"+list);
+//		//log.info(list);
+//		
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return list ;
+//
+//	}
 	
 	
 	
