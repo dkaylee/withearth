@@ -69,13 +69,16 @@
 		var map, marker1;
 		
 		$('#btn_select').click(	function() {
-			console.log('진입1');
+			// 목적지 초기화 
+			newAddress='';
+			
 			// 목적지 설정 마커 초기화
 			marker1 = new Tmapv2.Marker({
 					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
 					iconSize : new Tmapv2.Size(24, 38),
 					map : map
 			});
+			
 			// 2. API 사용요청
 			var fullAddr = $("#fullAddr").val();
 			$.ajax({
@@ -242,7 +245,7 @@
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
-									$("#modalEnd").html(newAddress);
+									$("#modalEnd").html(newAddress+" ");
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
@@ -251,7 +254,7 @@
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
-									$("#modalEnd").html(newAddress);
+									$("#modalEnd").html(newAddress+" ");
 								}
 							}
 	
@@ -324,7 +327,7 @@
 									newAddress = address;	// newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
-									$("#modalEnd").html(newAddress);
+									$("#modalEnd").html(newAddress+" ");
 									
 		
 								} else {
@@ -336,7 +339,7 @@
 									newAddress = address; // newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
-									$("#modalEnd").html(newAddress);
+									$("#modalEnd").html(newAddress+" ");
 								}
 							}
 					}
@@ -379,15 +382,12 @@
 					success : function(response) {
 						// 3. json에서 주소 파싱
 						var arrResult = response.addressInfo;
-
 						//법정동 마지막 문자 
 						var lastLegal = arrResult.legalDong
 								.charAt(arrResult.legalDong.length - 1);
-
 						// 새주소
 						newRoadAddr = arrResult.city_do + ' '
 								+ arrResult.gu_gun + ' ';
-
 						if (arrResult.eup_myun == ''
 								&& (lastLegal == "읍" || lastLegal == "면")) {//읍면
 							newRoadAddr += arrResult.legalDong;
@@ -396,11 +396,9 @@
 						}
 						newRoadAddr += ' ' + arrResult.roadName + ' '
 								+ arrResult.buildingIndex;
-
 						// 새주소 법정동& 건물명 체크
 						if (arrResult.legalDong != ''
 								&& (lastLegal != "읍" && lastLegal != "면")) {//법정동과 읍면이 같은 경우
-
 							if (arrResult.buildingName != '') {//빌딩명 존재하는 경우
 								newRoadAddr += (' (' + arrResult.legalDong
 										+ ', ' + arrResult.buildingName + ') ');
@@ -410,7 +408,6 @@
 						} else if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
 							newRoadAddr += (' (' + arrResult.buildingName + ') ');
 						}
-
 						// 구주소
 						jibunAddr = arrResult.city_do + ' '
 								+ arrResult.gu_gun + ' '
@@ -420,11 +417,8 @@
 						if (arrResult.buildingName != '') {//빌딩명만 존재하는 경우
 							jibunAddr += (' ' + arrResult.buildingName);
 						}
-						console.log('lon', lon, 'lat', lat);
-						
 						
 						revresult =  newRoadAddr;
-						console.log('revresult: ' + revresult);
 						//result += "지번주소 : " + jibunAddr + "</br>";
 						//result += "위경도좌표 : " + lat + ", " + lon;
 						$("#revresult").html(revresult);
@@ -433,7 +427,6 @@
 						
 						var resultDiv = document.getElementById("revresult");
 						resultDiv.innerHTML = revresult;
-						console.log('resultDiv: ' + resultDiv);
 						
 					},
 					error : function(request, status, error) {
@@ -442,7 +435,6 @@
 								+ "error:" + error);
 					}
 				});
-
 	}
 	/*******************************보행자 경로 안내 기능(marker_s(출발지 마커), marker_e(목적지 마커), tDistance(이동거리), aTime(소요시간))********************************************/
 	var map;
@@ -719,8 +711,10 @@
     /*****스톱워치 시작 기능*****/
     function startTime(){
        
-    	if(!new_lat==37.57081522&&new_lon==127.00160213){
-    		alert('스톱워치를 시작합니다.');
+    	//if(new_lat==37.57081522&&new_lon==127.00160213){
+    	//	alert('목적지 설정 후 다시 시도해주세요.');
+    		
+    	//} else{
     		calcTime();
 	        hour = addZeros(h, 2);
 	        minute = addZeros(m, 2);
@@ -731,12 +725,7 @@
 	        
 	        walkTime = hour + minute + second;
 	        modalwTime = hour + ":" + minute + ":" +second + " ";
-	        console.log(walkTime);
-	    	console.log(modalwTime);
-    		
-    	} else{
-    		alert('목적지 설정 후 다시 시도해주세요.');
-    	}
+    	//}
     	
     }
     
@@ -811,26 +800,24 @@
 		<!--  -->
 		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
 		<h4 style="margin: 20px;">출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3>
-		<h4 style="margin: 20px;">목적지 (ex.서울시 마포구 와우산로29가길 69) </h4><input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
+		<h4 style="margin: 20px;">목적지 (ex.서울시 마포구 와우산로29가길 69) </h4>
+		<input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
 			value="서울시 마포구 와우산로29가길 69">
 		<button id="btn_select">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px"></h3>
 		<button id="startBtn" onclick="startTime()">시작 하기</button> <button id="arriveBtn">도착</button><br>
-		
-		<div>Seconds: <span id="time"></span></div>
-		<input type="button" id="stopTimer" value="Stop Timer"  onclick="stopTime();"><br/>
-        <input type="button" id="resetTimer" value="Reset Timer"  onclick="resetTime();"><br/>
-		 
 		<br>
+		
 		<!-- 예상 이동 거리, 도보 시간  출력-->
 		<h2 id="result" style="float: right"></h2>
 		
-		<!-- 타임워치  -->
-		<div id="clock" class="contents">
-        </div>
+		<!-- 타임워치 시작 버튼  -->
+		<div id="clock" class="contents"></div>
+		<!-- 타입워치 정지 버튼 -->
+		<input type="button" id="stopTimer" value="Stop Timer"  onclick="stop();"><br/>
 		
 		<!-- 경로 지도 -->
 		<div id="map_wrap"  class="map_wrap3">
-			<div id="map_div" style="width: 500px; border=3px;" ></div>
+			<div id="map_div" style="width: 500px;" ></div>
 		</div>
 		<div class="map_act_btn_wrap clear_box"></div>
 		<br />
@@ -865,9 +852,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		
-	</script>
+	
 
 
 
