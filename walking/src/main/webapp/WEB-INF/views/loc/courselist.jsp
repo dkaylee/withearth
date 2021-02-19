@@ -43,8 +43,8 @@ div.searchBox {
 	width: 300px;
 }
 
-.navUl{
-	
+ul, li{
+	list-sytle: none;
 }
 </style>
 </head>
@@ -81,8 +81,9 @@ div.searchBox {
 						<th>저장 일자</th>
 						<th>출발지</th>
 						<th>목적지</th>
-						<th>이동 거리</th>
-						<th>소요시간</th>
+						<th>이동 거리(km)</th>
+						<!-- <th>예상 시간(분)</th> -->
+						<th>소요 시간</th>
 						<th>Manage</th>
 					</tr>
 
@@ -93,8 +94,9 @@ div.searchBox {
 									pattern="yyyy.MM.dd." /></td>
 							<td>${course.start_point}</td>
 							<td>${course.end_point}</td>
-							<td>${course.loc_km}km</td>
-							<td>${course.walking_time}분</td>
+							<td>${course.loc_km} km</td>
+							<%-- <td>${course.about_time} 분</td> --%>
+							<td>${course.walking_time}</td>
 							<%--<td><a href="<c:url value="/course/edit?idx=${course.course_idx}"/>">수정</a> --%> 
 						    <td><a href="javascript:deleteCourse(${course.course_idx});">삭제</a></td>
 						</tr>
@@ -105,11 +107,11 @@ div.searchBox {
 
 			</div>
 			
-			<nav class="listNav">
-				<ul class="listUl">
+			<nav class="listNav" >
+				<ul class="listUl" >
 					<c:if test="${listView.totalCourseCount>0}">
 						<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
-							<li class="page-item" ${listView.pageNumber eq num ? 'active' : '' }><a class="page-link" href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}">${num}"></a></li>
+							<li class="page-item"  ${listView.pageNumber eq num ? 'active' : '' }><a class="page-link" href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}" ></a></li>
 						</c:forEach>
 					</c:if>
 					

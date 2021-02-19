@@ -241,6 +241,7 @@
 									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
+									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
 									$("#modalEnd").html(newAddress);
 		
 								} else {
@@ -249,6 +250,7 @@
 									var text = "검색 결과(새주소) : "+ newAddress
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
+									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
 									$("#modalEnd").html(newAddress);
 								}
 							}
@@ -321,6 +323,7 @@
 									console.log('address'+address);
 									newAddress = address;	// newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
+									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
 									$("#modalEnd").html(newAddress);
 									
 		
@@ -332,6 +335,7 @@
 									console.log('address'+address);
 									newAddress = address; // newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
+									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
 									$("#modalEnd").html(newAddress);
 								}
 							}
@@ -348,13 +352,6 @@
 				}
 			});
 		}); // $('#btn_select')
-		
-		/*  $('#btn_save').click(function(){
-			
-			
-					
-			 */
-			 
 		
 		
 }); // ready
@@ -431,6 +428,7 @@
 						//result += "지번주소 : " + jibunAddr + "</br>";
 						//result += "위경도좌표 : " + lat + ", " + lon;
 						$("#revresult").html(revresult);
+						/* modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 */
 						$("#modalrevresult").html(revresult + " ");
 						
 						var resultDiv = document.getElementById("revresult");
@@ -446,13 +444,13 @@
 				});
 
 	}
-	/*******************************보행자 경로 안내 기능(marker_s(출발지 마커), marker_e(목적지 마커), tDistance(이동거리), tTime(소요시간))********************************************/
+	/*******************************보행자 경로 안내 기능(marker_s(출발지 마커), marker_e(목적지 마커), tDistance(이동거리), aTime(소요시간))********************************************/
 	var map;
 	var marker_s, marker_e, marker_p1, marker_p2;
 	var totalMarkerArr = [];
 	var drawInfoArr = [];
 	var resultdrawArr = [];
-	var tDistance, tTime;
+	var tDistance, aTime;
 	function initTmap(newlat, newlon, nowlat, nowlon) {
 		console.log(newlat);
 		console.log(newlon);
@@ -511,13 +509,13 @@
 			var resultData = response.features;
 			//결과 출력
 			tDistance =  ((resultData[0].properties.totalDistance) / 1000).toFixed(1) ;
-			tTime =  ((resultData[0].properties.totalTime) / 60).toFixed(0) ;
-			$("#result").text("총 거리 : "+tDistance+ "km," + "//  총 시간 : "+tTime+ "분");
+			aTime =  ((resultData[0].properties.totalTime) / 60).toFixed(0) ;
+			$("#result").text("총 "+tDistance+ " km," + " 약 : "+aTime+ " 분");
 			$("#tDistance").html(tDistance);
-			$("#tTime").html(tTime);
-			// modal에 사용될 id
+			$("#aTime").html(aTime);
+			// modal에 사용될 id // modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
 			$("#modalDistance").html(tDistance+ "km");
-			$("#modalTime").html(tTime+"분");
+			//$("#modalTime").html(tTime+"분");
 			
 			//기존 그려진 라인 & 마커가 있다면 초기화
 			if (resultdrawArr.length > 0) {
@@ -613,17 +611,14 @@
 	}
 	
 	//시작 버튼 눌렀을 떄 일어나는 함수
-    function startWalk(){
-		
-			console.log('스타트1');
-			startTime(); 
-			if(new_lat==37.57081522&&new_lon==127.00160213){
+    //function startWalk(){
+		//	startTime(); 
+			/* if(new_lat==37.57081522&&new_lon==127.00160213){
 	    		alert('기본값으로 목적지를 설정합니다.(목적지: 종로5가역)');
 	    	}else{
 	    		console.log('걷기를 시작합니다.');
-	    	}   	
-		
-	}// startWalk
+	    	}  */  			
+	//}// startWalk
 	
 	/*******************************목적지 도착 기능********************************************/
 	var distance;
@@ -683,32 +678,6 @@
 		 }); 
 	} // arriveBtn
 	
-	/*******************************데이터 저장 기능********************************************/
-	function saveData(){
-		$.ajax({
-			url: 'http://localhost:8080/walking/course/loc/walkingservice',
-			type: 'post',
-			data: {
-				tdistance: tDistance, // 이동 거리
-				ttime: tTime, // 소요 시간
-				startAdd: revresult, // 출발지 주소
-				endAdd: newAddress  // 목적지 주소 -> newAddress를 전역 변수로 저장해서 값을 불러온다.
-				
-				
-			}, 
-			success: function(data){
-				alert('저장 성공');
-				$('#testModal').modal("hide");
-			},
-			error: function(error){
-				console.log(error)
-			}
-			
-		});
-	} // saveData
-	
-	// Modal 닫기
-	
 	/*******************************스톱워치 기능********************************************/
 	var h = 0;
     var m = 0;
@@ -744,23 +713,79 @@
     }
     
     var hour, minute, second;
+    var walkTime;  // 소요 시간
+    var modalwTime; // 모달 전용 소요 시간 
     
     /*****스톱워치 시작 기능*****/
     function startTime(){
-        calcTime();
-        hour = addZeros(h, 2);
-        minute = addZeros(m, 2);
-        second = addZeros(s, 2);           
-        timetime = setTimeout("startTime()", 1000);  
-        $('#clock').html(hour + ' : ' + minute + ' : ' + second);            
+       
+    	if(!new_lat==37.57081522&&new_lon==127.00160213){
+    		alert('스톱워치를 시작합니다.');
+    		calcTime();
+	        hour = addZeros(h, 2);
+	        minute = addZeros(m, 2);
+	        second = addZeros(s, 2);           
+	        timetime = setTimeout("startTime()", 1000);  
+	        
+	        $('#clock').html(hour + ' : ' + minute + ' : ' + second);    
+	        
+	        walkTime = hour + minute + second;
+	        modalwTime = hour + ":" + minute + ":" +second + " ";
+	        console.log(walkTime);
+	    	console.log(modalwTime);
+    		
+    	} else{
+    		alert('목적지 설정 후 다시 시도해주세요.');
+    	}
+    	
     }
     
     /*****스톱워치 정지 기능*****/
+    
+    var tTime;
     function stop(){
     	clearTimeout(timetime);
     	exTime = ((h*360) + (m*60) + s) / 60;
     	exTime = exTime.toFixed(2);
+    	
+    	console.log(walkTime);
+    	console.log(modalwTime);
+    	
+    	tTime = walkTime;
+    	console.log('tTime', tTime);
+    	
+    	$('#modalTime').html(modalwTime);
+    	
     } // 타임워치 -끝-
+	
+	
+	/*******************************데이터 저장 기능********************************************/
+	function saveData(){
+		$.ajax({
+			url: 'http://localhost:8080/walking/course/loc/walkingservice',
+			type: 'post',
+			data: {
+				tdistance: tDistance, 	// 이동 거리
+				atime: aTime, 			// 예상 시간
+				startAdd: revresult, 	// 출발지 주소
+				endAdd: newAddress,  	// 목적지 주소 -> newAddress를 전역 변수로 저장해서 값을 불러온다.
+				ttime: tTime			// 소요 시간
+				
+			}, 
+			success: function(data){
+				alert('코스 저장을 성공했습니다.');
+				$('#testModal').modal("hide");
+			},
+			error: function(error){
+				console.log(error)
+				console.log('저장 실패');
+			}
+			
+		});
+	} // saveData
+	
+	// Modal 닫기
+	
 	
     /*******************************모달창 기능********************************************/
     
@@ -774,7 +799,7 @@
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
 		<!-- nav 메뉴 이동 시 사용 -->
-		<div class="menu">	
+		<div class="menu" >	
 			<c:url value="/loc/courselist" var="courseList"/>
 			<a href="${courseList}">걷기 인증 서비스 시작</a>
 			<c:url value="/loc/courselist" var="courseList"/>
@@ -785,31 +810,31 @@
 		
 		<!--  -->
 		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
-		<h2 style="margin: 20px;">출발지(현재 위치)</h2><h3 id="revresult" style="margin: 20px"></h3><br>
-		<h2 style="margin: 20px;">목적지(ex.서울시 마포구 와우산로29가길 69) </h2><input type="text" style="width:300px; margin: 20px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
+		<h4 style="margin: 20px;">출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3>
+		<h4 style="margin: 20px;">목적지 (ex.서울시 마포구 와우산로29가길 69) </h4><input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
 			value="서울시 마포구 와우산로29가길 69">
-		<button id="btn_select">설정 하기</button> <h3 id="endAdd"></h3>
-		<button id="startBtn" onclick="startWalk()">시작 하기</button><button id="arriveBtn">도착</button><br>
+		<button id="btn_select">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px"></h3>
+		<button id="startBtn" onclick="startTime()">시작 하기</button> <button id="arriveBtn">도착</button><br>
 		
-		<!-- <div>Seconds: <span id="time"></span></div>
+		<div>Seconds: <span id="time"></span></div>
 		<input type="button" id="stopTimer" value="Stop Timer"  onclick="stopTime();"><br/>
-        <input type="button" id="resetTimer" value="Reset Timer"  onclick="resetTime();"><br/> -->
+        <input type="button" id="resetTimer" value="Reset Timer"  onclick="resetTime();"><br/>
 		 
 		<br>
 		<!-- 예상 이동 거리, 도보 시간  출력-->
-		<h2 id="result"></h2>
+		<h2 id="result" style="float: right"></h2>
+		
+		<!-- 타임워치  -->
+		<div id="clock" class="contents">
+        </div>
 		
 		<!-- 경로 지도 -->
 		<div id="map_wrap"  class="map_wrap3">
 			<div id="map_div" style="width: 500px; border=3px;" ></div>
 		</div>
 		<div class="map_act_btn_wrap clear_box"></div>
-		
-		
 		<br />
-		<!-- 타임워치  -->
-		<div id="clock" class="contents">
-        </div>
+		
 
 
 
@@ -821,12 +846,12 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title" id="exampleModalLabel">코스 완주 성공!</h1>
+					<h2 class="modal-title" id="exampleModalLabel">코스 완주 성공!</h2>
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">X</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
 					출발지<br><h3 id="modalrevresult"></h3>
 					목적지<br><h3 id="modalEnd"></h3>
 					이동 거리<br><h3 id="modalDistance"> </h3>

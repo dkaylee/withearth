@@ -1,19 +1,18 @@
 package com.withearth.walking.domain;
 
+import java.sql.Time;
+
 public class CourseSettingRequest {
-	
+
 	// beans 객체
-	
+
 	private float tdistance; // 총 거리
-	private long ttime; 	// 소요 시간
-	private String startAdd;// 출발지 주소
-	private String endAdd;		// 목적지 주소
-	
+	private long atime; // 예상 시간
+	private String startAdd; // 출발지 주소
+	private String endAdd; // 목적지 주소
+	private long ttime; // 소요 시간
+
 	// getter/setter
-	
-	
-	
-	
 	public float getTdistance() {
 		return tdistance;
 	}
@@ -22,12 +21,12 @@ public class CourseSettingRequest {
 		this.tdistance = tdistance;
 	}
 
-	public long getTtime() {
-		return ttime;
+	public long getAtime() {
+		return atime;
 	}
 
-	public void setTtime(long ttime) {
-		this.ttime = ttime;
+	public void setAtime(long atime) {
+		this.atime = atime;
 	}
 
 	public String getStartAdd() {
@@ -46,31 +45,31 @@ public class CourseSettingRequest {
 		this.endAdd = endAdd;
 	}
 
+	public long getTtime() {
+		return ttime;
+	}
+
+	public void setTtime(long ttime) {
+		this.ttime = ttime;
+	}
+
 	// method 생성
-		public Course toCourse() {
-			Course course = new Course();
-			course.setLoc_km(tdistance);
-			course.setWalking_time(ttime);
-			course.setStart_point(startAdd);
-			course.setEnd_point(endAdd);
-			
-			return course;
-		}
-	
-	//toString
+	public Course toCourse() {
+		Course course = new Course();
+		course.setLoc_km(tdistance);
+		course.setAbout_time(atime);
+		course.setStart_point(startAdd);
+		course.setEnd_point(endAdd);
+		course.setWalking_time(new Time(ttime));
+
+		return course;
+	}
+
+	// toString
 	@Override
 	public String toString() {
-		return "CourseSettingRequest [tdistance=" + tdistance + ", ttime=" + ttime + ", startAdd=" + startAdd
-				+ ", endAdd=" + endAdd + "]";
+		return "CourseSettingRequest [tdistance=" + tdistance + ", atime=" + atime + ", startAdd=" + startAdd
+				+ ", endAdd=" + endAdd + ", ttime=" + ttime + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
