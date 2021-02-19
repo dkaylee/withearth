@@ -89,7 +89,8 @@ ul, li{
 
 					<c:forEach items="${listView.courseList}" var="course">
 						<tr>
-							<td>${course.course_idx}</td>
+							<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
+							<td><c:forEach begin="1" end="">1</c:forEach></td>
 							<td><fmt:formatDate value="${course.course_date}"
 									pattern="yyyy.MM.dd." /></td>
 							<td>${course.start_point}</td>
@@ -111,7 +112,11 @@ ul, li{
 				<ul class="listUl" >
 					<c:if test="${listView.totalCourseCount>0}">
 						<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
-							<li class="page-item"  ${listView.pageNumber eq num ? 'active' : '' }><a class="page-link" href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}" ></a></li>
+							<li class="page-item"  ${listView.pageNumber eq num ? 'active' : '' }>
+								<a class="page-link" 
+								href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}" >
+								</a>
+							</li>
 						</c:forEach>
 					</c:if>
 					

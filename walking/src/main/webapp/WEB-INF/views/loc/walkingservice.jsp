@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-<title>simpleMap</title>
+<title>Walking Service</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
@@ -725,6 +725,8 @@
 	        
 	        walkTime = hour + minute + second;
 	        modalwTime = hour + ":" + minute + ":" +second + " ";
+	        
+	       console.log('walkTime: ',walkTime);
     	//}
     	
     }
@@ -737,10 +739,8 @@
     	exTime = ((h*360) + (m*60) + s) / 60;
     	exTime = exTime.toFixed(2);
     	
-    	console.log(walkTime);
-    	console.log(modalwTime);
     	
-    	tTime = walkTime;
+    	tTime = modalwTime;
     	console.log('tTime', tTime);
     	
     	$('#modalTime').html(modalwTime);

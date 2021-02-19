@@ -6,11 +6,11 @@ public class CourseSettingRequest {
 
 	// beans 객체
 
-	private float tdistance; // 총 거리
-	private long atime; // 예상 시간
-	private String startAdd; // 출발지 주소
-	private String endAdd; // 목적지 주소
-	private long ttime; // 소요 시간
+	private float tdistance; 	// 총 거리
+	private long atime; 		// 예상 시간
+	private String startAdd; 	// 출발지 주소
+	private String endAdd; 		// 목적지 주소
+	private String ttime; 		// 소요 시간 -> String으로 처리, 시간계산이 필요하다면 Time으로 처리
 
 	// getter/setter
 	public float getTdistance() {
@@ -45,11 +45,11 @@ public class CourseSettingRequest {
 		this.endAdd = endAdd;
 	}
 
-	public long getTtime() {
+	public String getTtime() {
 		return ttime;
 	}
 
-	public void setTtime(long ttime) {
+	public void setTtime(String ttime) {
 		this.ttime = ttime;
 	}
 
@@ -60,7 +60,7 @@ public class CourseSettingRequest {
 		course.setAbout_time(atime);
 		course.setStart_point(startAdd);
 		course.setEnd_point(endAdd);
-		course.setWalking_time(new Time(ttime));
+		course.setWalking_time(ttime);
 
 		return course;
 	}

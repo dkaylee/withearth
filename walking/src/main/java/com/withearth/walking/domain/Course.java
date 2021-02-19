@@ -12,7 +12,7 @@ public class Course {
 	private long about_time;// 예상 도보 시간
 	private String start_point;// 출발지
 	private String end_point;// 목적지
-	private Time walking_time; // 소요 시간
+	private String walking_time; // 소요 시간 -> String으로 처리, 시간계산이 필요하다면 Time으로 처리
 	
 	// getter/setter
 	
@@ -64,11 +64,11 @@ public class Course {
 		this.end_point = end_point;
 	}
 
-	public Time getWalking_time() {
+	public String getWalking_time() {
 		return walking_time;
 	}
 
-	public void setWalking_time(Time walking_time) {
+	public void setWalking_time(String walking_time) {
 		this.walking_time = walking_time;
 	}
 
