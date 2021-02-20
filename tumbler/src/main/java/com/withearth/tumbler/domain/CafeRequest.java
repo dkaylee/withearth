@@ -3,7 +3,7 @@ package com.withearth.tumbler.domain;
 import java.util.List;
 
 public class CafeRequest {
-	
+	/*
 	private int cafe_idx;
 	private String cafe_name; // 카페 상호
 	private String location; // 카페 위치
@@ -95,7 +95,7 @@ public class CafeRequest {
 	}
 
 	
-	
+	*/
 	
 	
 	

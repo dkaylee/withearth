@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumLoginRequest"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.service.TumLoginService"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.domain.LoginInfo"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.Member"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.dao.CafeDao"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.MakQRcodeService"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
 <fullyQualifiedTypeName name="java.io.File"/>
@@ -16,10 +10,8 @@
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartHttpServletRequest"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.CafelistService"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.TumLoginSerivce"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Tumbler"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.MemberLoginService"/>
 <fullyQualifiedTypeName name="com.withearth.member.domain.MemberRegRequest"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.member.service.MemberRegService"/>
@@ -33,8 +25,6 @@
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.TumpointService"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Point"/>
 <fullyQualifiedTypeName name="lombok.extern.log4j.Log4j2"/>
 <fullyQualifiedTypeName name="lombok.extern.log4j.Log4j"/>
@@ -42,7 +32,6 @@
 <fullyQualifiedTypeName name="com.withearth.tumbler.dao.Criteria"/>
 <fullyQualifiedTypeName name="com.sun.javafx.collections.MappingChange.Map"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Criteria"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
@@ -51,13 +40,24 @@
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.NewsCriteria"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.TumListService"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumInfo"/>
-<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
 <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumpointView"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.SearchParam"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.domain.CafeRequest"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Cafe"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="com.withearth.tumbler.dao.CafeDao"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+<fullyQualifiedTypeName name="com.withearth.tumbler.domain.CafeRequest"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
 </qualifiedTypeNameHistroy>

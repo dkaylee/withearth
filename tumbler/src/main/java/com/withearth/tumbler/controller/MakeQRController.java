@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -28,10 +30,7 @@ import com.withearth.tumbler.domain.CafeRequest;
  
 @Controller
 public class MakeQRController {
-   
-
-	@Autowired
-	private SqlSessionTemplate template;
+   	
 
 
 	 @RequestMapping("/qr/{cafe_idx}") 
@@ -51,13 +50,14 @@ public class MakeQRController {
   	}  
       
 
-      int cafe_idx = 7;
+      int cafe_idx = 13;
       
  
       
       
        // 링크로 할 URL주소 
-       String url = "http://localhost:8080/tumbler/qr/"+cafe_idx;
+       //String url = "http://localhost:8080/tumbler/saving/"+cafe_idx;
+       String url = "http://192.168.219.1:8080/tumbler/saving/"+cafe_idx;
       //String url = "http://192.168.219.106:8080/qr/"+cafe_idx;
      //String url = "http://192.168.219.1:8080/tumbler/qr/"+cafe_idx;
      
@@ -93,7 +93,15 @@ public class MakeQRController {
   	
       //리턴은 사용자가 원하는 값을 리턴한다. 
       //작성자는 QRCode 파일의 이름을 넘겨주고 싶었음.
- 
+      
+      
+
       return "tumbler/tumlist"; 
+      
 	 }
+	 
+	 
+	
+	 
+	 
  }

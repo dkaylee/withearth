@@ -1,5 +1,7 @@
 package com.withearth.tumbler.domain;
 
+import java.math.BigDecimal;
+
 //카페테이블
 public class Cafe {
 	
@@ -7,8 +9,10 @@ public class Cafe {
 	private String cafe_name; // 카페 상호
 	private String location; // 카페 위치
 	private String qrcode; //QR코드
-	private int cafe_lat; //위도
-	private int cafe_lon; //경도
+	private BigDecimal cafe_lat; //위도
+	private BigDecimal cafe_lon; //경도
+	
+	
 	public int getCafe_idx() {
 		return cafe_idx;
 	}
@@ -33,16 +37,16 @@ public class Cafe {
 	public void setQrcode(String qrcode) {
 		this.qrcode = qrcode;
 	}
-	public int getCafe_lat() {
+	public BigDecimal getCafe_lat() {
 		return cafe_lat;
 	}
-	public void setCafe_lat(int cafe_lat) {
+	public void setCafe_lat(BigDecimal cafe_lat) {
 		this.cafe_lat = cafe_lat;
 	}
-	public int getCafe_lon() {
+	public BigDecimal getCafe_lon() {
 		return cafe_lon;
 	}
-	public void setCafe_lon(int cafe_lon) {
+	public void setCafe_lon(BigDecimal cafe_lon) {
 		this.cafe_lon = cafe_lon;
 	}
 	@Override

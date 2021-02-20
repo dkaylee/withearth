@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from cafe
 
 	</select>
-
+	
 
 	<!-- 큐알 코드 저장 -->
 	<!-- <insert id="insertQRcode" parameterType="com.withearth.tumbler.domain.Cafe" 

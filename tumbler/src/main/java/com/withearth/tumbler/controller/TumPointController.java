@@ -25,7 +25,8 @@ public class TumpointController {
 		
 	//포인트 적립
 //	/tumbler/qr/"+cafe_idx
-	@GetMapping("{cafe_idx}")
+	@GetMapping("/qr/{cafe_idx}")
+	//@GetMapping("{cafe_idx}")
 	public String getTumList (Model model, HttpServletRequest request, @PathVariable("cafe_idx") int cafe_idx) {
 		// 로그인 합친후 세션에서 회원idx를 가지고 와야함.
 		// HttpSession session = request.getSession();
@@ -33,9 +34,10 @@ public class TumpointController {
 		int idx = 1; 
 		int result = tumpointService.registerTumblerPoint(cafe_idx, idx);
 		model.addAttribute("listView", tumlistService.getTumList(idx));
-		
+		System.out.println("적립!!!!"+result);
 		return "tumbler/tumlist";
 	}
+	
 
 
 }
