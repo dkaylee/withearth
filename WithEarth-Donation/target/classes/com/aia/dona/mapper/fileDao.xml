@@ -25,7 +25,7 @@
 	</select>
 	
 	<delete id="deleteBeforeImage">
-	 delete from postfile where file_name=#{deleteImage}
+	 delete from postfile where file_name=#{beforeImage}
 	</delete>
 	
 	<insert id="insertUpdateFiles" parameterType="com.aia.dona.domain.PostFile">

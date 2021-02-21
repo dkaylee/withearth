@@ -7,14 +7,15 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.aia.dona.dao.FileDao;
+import com.aia.dona.dao.HeartDao;
 import com.aia.dona.dao.PostDao;
 import com.aia.dona.domain.Post;
 import com.aia.dona.domain.PostFile;
 import com.aia.dona.domain.PostListView;
 import com.aia.dona.domain.PostOnly;
+import com.aia.dona.domain.SearchParam;
 
 @Service
 public class PostListService {
@@ -22,6 +23,8 @@ public class PostListService {
 	private PostDao dao;
 	
 	private FileDao fDao;
+	
+	private HeartDao hDao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -45,6 +48,7 @@ public class PostListService {
 		Map<String, Object> listMap = new HashMap<String, Object>();
 		listMap.put("startRow", startRow );
 		listMap.put("cntPerPage", cntPerPage);
+		//listMap.put("searchParam", page);
 		
 		int totalPostCount = dao.selectPostCount(listMap);
 						
@@ -52,13 +56,47 @@ public class PostListService {
 		System.out.println("PostList :"+ postList);
 		
 		listView = new PostListView(page, totalPostCount, cntPerPage, postList, startRow, endRow);
-		
-		
+				
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return listView;
 	}
+	
+	  // 검색한 게시물 리스트를 구하는 메서드
+		public PostListView getSearchList(int page, String searchType, String keyword) {		
+			
+			PostListView listView = null;
+			
+			try {			
+				
+			dao = template.getMapper(PostDao.class);
+			
+			System.out.println("pageNumber :" + page);
+
+			int cntPerPage = 8;
+
+			int startRow = (page - 1) * cntPerPage;
+			int endRow = startRow + cntPerPage - 1;
+
+			Map<String, Object> listMap = new HashMap<String, Object>();
+			listMap.put("startRow", startRow );
+			listMap.put("cntPerPage", cntPerPage);
+			listMap.put("searchType", searchType);
+			listMap.put("keyword", keyword);
+			
+			int totalPostCount = dao.selectSearchPostCount(listMap);
+							
+			List<Post> postList = dao.selectSearchPostList(listMap);
+			System.out.println("PostList :"+ postList);
+			
+			listView = new PostListView(page, totalPostCount, cntPerPage, postList, startRow, endRow);
+					
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			return listView;
+		}
 
 	// 한개의 게시물을 구하는 메서드
 	public PostOnly getDetail(int idx) {

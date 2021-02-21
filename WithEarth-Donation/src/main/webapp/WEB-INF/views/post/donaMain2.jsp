@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" charset="utf-8" content="target-densitydpi=device-dpi, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width" />
+        <meta charset="utf-8" />
         <title>WithEarth</title>
 		<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -39,12 +39,10 @@
 	
 	.img{
 	 margin-left : 4px;
-	 width : 230px;
-	 height :190px;
-	 image-rendering : auto;
+	 width : 200px;
+	 height :200px;
 	 border-radius: 10px;
 	 border : 1px solid #EEE;
-
 	}
 	
 	.article-title{
@@ -116,11 +114,13 @@
 					<input type="text" name="keyword" id="keyword" placeholder="검색어를 입력해주세요."> 
 					</div>
 					<div class="search-unit">
-					 <input type="button" id="searchBtn" value="검색">
+					 <input type="submit" id="searchBtn" value="검색">
 					 </div>
 				</form>
 				 	<div class="flex flex-2" id="wrapContent" >				
-					   					   							   						
+					   	
+					   	
+							   						
 				  </div>						   	
 			    <div class="paging">
 				     
@@ -146,68 +146,17 @@
     
     var p = getParameterByName('p');
     console.log(p); 
+  	
+   var searchType = '<c:out value="${param.searchType}"/>';
     
-   // var searchType = getParameterByName('searchType');
-   //var keyword = getParameterByName('keyword');
-   
-    
-    
-    function goPage(i){
-    	
-    	$('#wrapContent').empty();
-		  $('.paging').empty();
-		
-		var searchType = $('#searchType').val();
-		var keyword = $('#keyword').val();
-		
-		$.ajax({
-			url : 'http://localhost:8080/dona/rest/user/post/list/search',
-			type : 'GET',
-			data : 'p='+ i + '&searchType=' +searchType + '&keyword='+keyword,
-			success : function(data){
-				console.log(data);
-				var list = $(data.postList);
-				console.log(list);
-				
-				$.each(list, function(index, item){
-																													
-					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
-						html += '<input type="hidden" value="'+item.donaIdx+'">';
-					  html += '<div class="article-img">';
-						html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-						html += '</div>';
-						html += '<div class="article-content">';
-						html += '<div class="article-title">';
-						html += item.postTitle+'</div>';
-						html += '<div class="article-heart">';							
-						html += '관심 '+item.heartCnt+'</div>';
-						html += '</div></div>'			
-														
-						$('#wrapContent').append(html);		 
-																																				
-				 });
-										
-				   // 페이징 처리
-					 if (data.totalPostCount>0){
-						 console.log('totalPageCount :' + data.totalPageCount);
-						for(var i=1; i <= data.totalPageCount; i++){				
-							//var html2 =' [ <a href="<c:url value="/main/list/search"/>?p='+i+'&searchType='+searchType+'&keyword='+keyword+'">'+i+'</a> ] ';				
-							var html2 =' [ <a href="javascript:void(0);" onclick="javascript:goPage('+i+');">'+i+'</a> ] ';				
-							$('.paging').append(html2);
-						}										 
-					 };	
-			}, error : function(e){
-				console.log(e);
-			}
-		});
-    }
-     
-    
+   var keyword = '<c:out value="${param.keyword}"/>';
+
+  
+      
 		$(document).ready(function() {	
-			
-			// 처음 리스트 로딩 시 불러올 데이터
+									
 				$.ajax({
-					  url : 'http://localhost:8080/dona/rest/user/post/list?p='+ p,
+					  url : 'http://localhost:8080/dona/rest/user/post/list?p='+ 1 +'&searchType='+searchType+'&keyword='+ keyword,
 					  type : 'GET',
 					  async : false,
 					  success : function(data){				
@@ -238,7 +187,8 @@
 							 if (data.totalPostCount>0){
 								 console.log('totalPageCount :' + data.totalPageCount);
 								for(var i=1; i <= data.totalPageCount; i++){				
-									var html2 =' [ <a href="<c:url value="/main/list"/>?p='+i+'">'+i+'</a> ] ';				
+									var html2 =' [ <a href="<c:url value="/rest/user/post/list"/>?p='+i+'&searchType='+searchType+'&keyword='+keyword+'">'+i+'</a> ] ';				
+									 //var html2 =' [ <a href="javascript:void(0);" onclick="page('+i+');">'+i+'</a> ] ';	
 									 $('.paging').append(html2);
 								}										 
 							 };								 																							    	
@@ -247,61 +197,9 @@
 							}
 				});
 				
-				// 검색 시 불러올 데이터
-				$('#searchBtn').click(function(){
-					
-					$('#wrapContent').empty();
-					$('.paging').empty();
-					
-					var searchType = $('#searchType').val();
-					var keyword = $('#keyword').val();
-					
-					$.ajax({
-						url : 'http://localhost:8080/dona/rest/user/post/list/search',
-						type : 'GET',
-						data : 'p='+ p + '&searchType=' +searchType + '&keyword='+keyword,
-						success : function(data){
-							console.log(data);
-							var list = $(data.postList);
-							console.log(list);
-							
-							$.each(list, function(index, item){
-																																
-								  var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
-									html += '<input type="hidden" value="'+item.donaIdx+'">';
-								  html += '<div class="article-img">';
-									html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-									html += '</div>';
-									html += '<div class="article-content">';
-									html += '<div class="article-title">';
-									html += item.postTitle+'</div>';
-									html += '<div class="article-heart">';							
-									html += '관심 '+item.heartCnt+'</div>';
-									html += '</div></div>'			
-																	
-									$('#wrapContent').append(html);		 
-																																							
-							 });
-													
-							   // 페이징 처리
-								 if (data.totalPostCount>0){
-									 console.log('totalPageCount :' + data.totalPageCount);
-									for(var i=1; i <= data.totalPageCount; i++){				
-										//var html2 =' [ <a href="<c:url value="/main/list/search"/>?p='+i+'&searchType='+searchType+'&keyword='+keyword+'">'+i+'</a> ] ';				
-										var html2 =' [ <a href="javascript:void(0);" onclick="javascript:goPage('+i+');">'+i+'</a> ] ';				
-										$('.paging').append(html2);
-									}										 
-								 };	
-						}, error : function(e){
-							console.log(e);
-						}
-					});
-					
-				});
 				
 				
 				
-			
 				});
 				
 				

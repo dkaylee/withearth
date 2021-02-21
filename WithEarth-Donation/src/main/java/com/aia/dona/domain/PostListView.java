@@ -16,6 +16,7 @@ public class PostListView {
 	private int totalPageCount; // 전체 페이지의 개수
 	
 	
+
 	public PostListView(int pageNumber, int totalPostCount, int cntPerPage, List<Post> postList, int startRow,
 			int endRow) {
 		this.pageNumber = pageNumber;
@@ -76,8 +77,9 @@ public class PostListView {
 	public String toString() {
 		return "PostListView [postList=" + postList + ", pageNumber=" + pageNumber + ", totalPostCount="
 				+ totalPostCount + ", cntPerPage=" + cntPerPage + ", startRow=" + startRow + ", endRow=" + endRow
-				+ ", totalPageCount=" + totalPageCount + "]";
+				+ ", totalPageCount=" + totalPageCount +"]";
 	}
+
 
 
 

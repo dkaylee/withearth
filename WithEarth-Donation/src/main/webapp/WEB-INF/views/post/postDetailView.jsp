@@ -84,16 +84,15 @@
 }
 
 #heart{
-  padding : -5px;
+  padding : 5px;
   width : 8px;
   font-size : 20px;
   text-align: center;
   font-weight : bold;
-  color :  #A6ABAB!important; 
+  color :  red; 
   background-color: white;
-  margin-top : -20px; 
-  text-decoration: none !important;
-  
+  margin-top : -10px; 
+  text-decoration: none !important;  
 }
 
  #postTitle{
@@ -115,21 +114,26 @@
  }
  
  #heartCnt{
-  width : 100px;
-  margin-left : 30px;
-  margin-bottom : 20px;
+  width : 70px;
+  margin-left : 10px;
   font-size : 13px;
   font-weight: bold;
   color : #A6ABAB; 
-  
+  line-height: 50px;
  }
  
  #heart-div{
-   margin-top : -20px;
+   margin-top : -30px;
 
  }
-
  
+ .icon img{
+ display:inline-block;
+ vertical-align:middle; 
+ 
+ }
+  
+
  
  
 </style>
@@ -177,6 +181,20 @@
   <hr class="seperate">
   <div class="postDetails">
   </div>
+  
+  <div class="post" id="heart-div">
+ <c:choose>
+  <c:when test="${idx ne null}">   <!-- 회원 번호가 null이 아닐 때(세션값 받아서 확인하기)-->
+   <span class="icon"> <a href='javascript: click_heart();'><img width="25px" src='<c:url value="/image/unlike.png" />' id='like_img'></a></span>
+  </c:when>
+  <c:otherwise>
+     <span class="icon"><a href='javascript: login_need();'><img width="25px" src='<c:url value="/image/unlike.png"/>'></a></span>
+  </c:otherwise>
+</c:choose>
+  
+  <span style="float : left;" id="heart"></span><span id="heartCnt"></span> <br>
+  <div id="chatBtn"></div>
+  </div>
  </div>
 
 </div>
@@ -191,40 +209,99 @@
 
 
 	<script>
-		$(document).ready(function() {
+ 
 							// 게시물 idx 받기
 							function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 								var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
 								return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
-							}
-
-							var donaIdx = getParameterByName('idx');
+							};
 							
+              // 게시물 idx
+							var donaIdx = getParameterByName('idx');
+							// 회원 idx
+							var idx = '<c:out value="${idx}"/>';	
+																						
+							// 좋아요 클릭 시 처리
+			         function click_heart(){																		 
+								console.log('게시물IDX : '+ donaIdx + ', idx : '+ idx);	
+								
+								$.ajax({
+									url : 'http://localhost:8080/dona/rest/user/heart',
+									type : 'GET',
+									data : 'donaIdx=' + donaIdx + '&idx=' + idx,
+									success : function(data){
+										console.log(data);
+								 		if(data.userCnt == 0){
+											like_img = '<c:url value="/image/unlike.png"/>';
+										} else{
+											like_img = '<c:url value="/image/like.png"/>';
+										}
+										
+										$('#like_img').attr('src', like_img); 
+										$('#heartCnt').html(data.allHeartCnt);
+																				
+									}, error : function(request, status, error){
+										alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+									}
+									
+								});															
+			         };
+		        
+			       // 좋아요 페이지 기본 노출값 처리						
+						$.ajax({
+							url : 'http://localhost:8080/dona/rest/user/heart/list',
+							type : 'GET',						
+							data : 'donaIdx=' + donaIdx + '&idx=' + idx,
+							success : function(data){
+								console.log(data);
+						 		if(data.userCnt == 0){
+									like_img = '<c:url value="/image/unlike.png"/>';
+								} else{
+									like_img = '<c:url value="/image/like.png"/>';
+								}
+								
+								$('#like_img').attr('src', like_img); 
+								$('#heartCnt').html(data.allHeartCnt);
+								
+							}, error : function(request, status, error){
+								alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+							}
+							
+						});
+
+
+													
 							// 컨트롤러로 값 넘기기 (회원 게시물 데이터 받기)
 							$.ajax({
 										url : "http://localhost:8080/dona/rest/user/post/detail?idx="+ donaIdx,
 										type : 'GET',
+										asycn : false,
 										success : function(data) {
-									
-												    console.log(data.postTitle);
+                       //console.log(data.postTitle);
 												 var html = '<h2 class="post" id="postTitle">'+data.postTitle+'</h2>';
 												     html+= '<h5 class="post" id="postCategory">카테고리 : '+data.category+' ∙ 작성일 : '+data.writedate+'</h5>';
 												     html+= '<p class="post" id="postContent">'+data.postContent+'</p>';
-												     html+= '<div class="post" id="heart-div"><button style="float : left;" id="heart">♡</button><div id="heartCnt">관심 3</div></div>';
-											
-												     $('.postDetails').append(html);
-												
-																	
+																					
+												     $('.postDetails').append(html);				
+												     
+												     // 채팅으로 이동 (파라미터 넘기기)
+														var cHtml = '<input type="button" name="cBtn" value="작성자와 채팅하기">';
+														chatBtn.onclick=function(){
+															child = window.open("<c:url value='/post/chat?donaIdx="+donaIdx+"&oid="+data.idx+"&uid="+idx+"'/>","child","width=330,height=600");										
+														};
+																
+														$('#chatBtn').append(cHtml);
 										},
 										error : function(e) {
 											console.log(e);
 										}
-									});
+									});						
+				
 
 							// 컨트롤러로 값 넘기기 (회원 게시물 이미지 데이터 받기)
 							$.ajax({
 										url : "http://localhost:8080/dona/rest/user/post/detail/image?idx="+ donaIdx,
-										type : 'GET',
+										type : 'GET',										
 										success : function(data) {		
 											
 											var firstImg = $(data).first();
@@ -253,9 +330,10 @@
 										error : function(e) {
 											console.log(e);
 										}
-									})
-									
-
+									});
+							
+			
+															
 							 // Activate Carousel
 							  $("#myCarousel").carousel();
 							  $("#myCarousel").carousel({interval : false});
@@ -280,15 +358,8 @@
 							    $("#myCarousel").carousel("next");
 							  });	
 							 
-							  
-							  
-							  $('#heart').click(function(){
-								  
-								  $('#heart').value = '♥';
-								  
-							  })
+			
 							
-						});
 		
 		
 	</script>

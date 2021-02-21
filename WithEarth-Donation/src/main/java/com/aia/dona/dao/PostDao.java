@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.aia.dona.domain.Post;
-import com.aia.dona.domain.PostListView;
 import com.aia.dona.domain.PostOnly;
 
 public interface PostDao {
@@ -22,10 +21,15 @@ public interface PostDao {
 	int updatePost(PostOnly post);
 	// 게시물을 삭제하는 메서드
 	int deleteOnePost(int donaIdx);
-	// 검색한 게시물의 수를 구하는 메서드
+	// 게시물의 수를 구하는 메서드
 	int selectPostCount(Map<String, Object> listMap);
-	// 검색한 게시물 정보를 구하는 메서드
+	// 페이지에 따른 게시물리스트를 구하는 메서드
 	List<Post> selectPostList(Map<String, Object> listMap);
+	// 검색한 게시물 정보를 구하는 메서드
+	List<Post> selectSearchPostList(Map<String, Object> listMap);
+	// 검색한 게시물의 수를 구하는 메서드
+	int selectSearchPostCount(Map<String, Object> listMap);
+	
 	
 	
 

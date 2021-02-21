@@ -18,6 +18,7 @@ import com.aia.dona.domain.PostFile;
 import com.aia.dona.domain.PostListView;
 import com.aia.dona.domain.PostOnly;
 import com.aia.dona.domain.RequestPost;
+import com.aia.dona.domain.SearchParam;
 import com.aia.dona.service.PostDeleteService;
 import com.aia.dona.service.PostEditService;
 import com.aia.dona.service.PostListService;
@@ -54,13 +55,22 @@ public class PostController {
 	// 게시물 리스트 출력
 	@GetMapping("/list")
 	public PostListView getPostList(	
-			@RequestParam(value="p", defaultValue = "1") int page,
-			Model model) {
-		
-		//model.addAttribute("listView", listService.getList(page));
-		
+			@RequestParam(value="p", defaultValue = "1") int page			
+		      ) {
+						
 		return listService.getList(page);
-	}
+	};
+	
+	// 검색한 게시물 출력
+	@GetMapping("/list/search")
+	public PostListView getSearchList(	
+			@RequestParam(value="p", defaultValue = "1") int page,
+			@RequestParam("searchType") String searchType,
+			@RequestParam("keyword") String keyword
+		      ) {
+	   System.out.println(page+" : "+searchType+" : "+ keyword);		
+		return listService.getSearchList(page, searchType, keyword);
+	};
 		
 	// 게시물 하나 출력
 	@GetMapping("/detail")

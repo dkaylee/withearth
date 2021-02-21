@@ -12,9 +12,10 @@ public class Post { // 게시물 빈즈 객체
 	private String category;  // 카테고리
 	private Timestamp writedate;  // 게시글 작성일자
 	private int idx;  // 회원idx
+	private int heartCnt;
 	
 	
-	
+
 	// getter & setter
 	public int getDonaIdx() {
 		return donaIdx;
@@ -61,11 +62,22 @@ public class Post { // 게시물 빈즈 객체
 	public void setFiles(PostFile files) {
 		this.files = files;
 	}
+		
+	public int getHeartCnt() {
+		return heartCnt;
+	}
+	public void setHeartCnt(int heartCnt) {
+		this.heartCnt = heartCnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "Post [donaIdx=" + donaIdx + ", postTitle=" + postTitle + ", postContent=" + postContent + ", files="
-				+ files + ", category=" + category + ", writedate=" + writedate + ", idx=" + idx + "]";
+				+ files + ", category=" + category + ", writedate=" + writedate + ", idx=" + idx + ", heartCnt="
+				+ heartCnt + "]";
 	}
+	
+
 	
 	
 

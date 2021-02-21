@@ -21,6 +21,7 @@
 		<result column="dona_category" property="category" />
 		<result column="dona_writedate" property="writedate" />				
 		<result column="idx" property="idx" />
+		<result column="heart_cnt" property="heartCnt"/>
 		<collection property="files" resultMap="fileResult"/>	
 	</resultMap> 	
 	
@@ -28,7 +29,7 @@
 	   <result column="file_idx" property="fileIdx"/>
 	   <result column="file_name" property="fileName"/>
 	    <result column="dona_idx" property="donaIdx"/>
-	</resultMap>
+	</resultMap> 
 
 	<insert id="insertPost" parameterType="com.aia.dona.domain.PostOnly"
 		useGeneratedKeys="true" keyProperty="donaIdx">
@@ -41,9 +42,13 @@
 	</select>
 
  <select id="selectPostList" resultMap="postResult" parameterType="Map">
-	select * from donapost p inner join postfile f on p.dona_idx=f.dona_idx
-  where file_idx in (select min(file_idx) from postfile f group by dona_idx) limit #{startRow},#{cntPerPage}
-	</select> 
+select p.dona_idx, p.dona_title, p.dona_content, p.dona_category, p.dona_writedate, p.idx, f.file_idx, f.file_name,
+(select count(idx) from withearth.donaheart h where p.dona_idx=h.dona_idx) as heart_cnt
+from withearth.donapost p
+left join withearth.postfile f on p.dona_idx=f.dona_idx
+where file_idx in (select min(file_idx) from withearth.postfile f group by dona_idx) 
+limit #{startRow},#{cntPerPage}
+	</select>  
 	
 	<select id="selectPostDetail" resultMap="postDetailResult">	 
       select * from donapost where dona_idx=#{idx}
@@ -62,38 +67,49 @@
 	  delete from donapost where dona_idx=#{donaIdx}
 	</delete>
 	
-	<select id="selectPostCount" resultType="int" parameterType="Map">
+	
+	<select id="selectPostCount" resultType="int">
 	  select count(*) from donapost
-	  
-<!-- 	  <where>
-	  <if test="searchType == 'idx'">
-	      idx like concat('%',#{keyword},'%')
-	  </if>
-	  <if test="searchType == 'postTitle'">
-	      dona_title like concat('%',#{keyword},'%')
-	  </if>
-	   <if test="searchType == 'both'">
-	   idx like concat('%',#{keyword},'%') or dona_title like concat('%',#{keyword}, '%')
-	  </if>
-	  </where> -->
 	</select> 
 	
-	<!-- <select id="selectPostList" parameterType="Map" resultMap="postResult">
-	
-	 SELECT * FROM donapost p left join postfile f on p.dona_idx=f.dona_idx	
-	 
-	 <where>
-	  <if test="searchType == 'idx'">
+	<select id="selectSearchPostCount" resultType="int" parameterType="Map">
+	select count(*) from donapost
+	  <where>
+	    <if test="searchType != null">
+	     <if test="searchType == 'idx'">
 	      idx like concat('%',#{keyword},'%')
+	     </if>
+	     <if test="searchType == 'postTitle'">
+	      dona_title like concat('%',#{keyword},'%')
+	     </if>
+	      <if test="searchType == 'both'">
+	      idx like concat('%',#{keyword},'%') or  dona_title like concat('%',#{keyword},'%')
+	     </if>
+	    </if>
+	  </where> 
+	</select>
+	
+	
+	 <select id="selectSearchPostList" parameterType="Map" resultMap="postResult">
+	
+select p.dona_idx, p.dona_title, p.dona_content, p.dona_category, p.dona_writedate, p.idx, f.file_idx, f.file_name,
+(select count(idx) from withearth.donaheart h where p.dona_idx=h.dona_idx) as heart_cnt
+from withearth.donapost p
+left join withearth.postfile f on p.dona_idx=f.dona_idx
+<where> 
+ 	   <if test="searchType == 'idx'">
+	      idx like concat('%',#{keyword}, '%')
 	  </if>
-	  <if test="searchType == 'postTitle'">
-	      dona_title like concat('%',#{keyword}, '%')
+	   <if test="searchType == 'postTitle'">
+	   dona_title like concat('%',#{keyword},'%')
 	  </if>
-	   <if test="searchType == 'both'">
-	   idx like concat('%',#{keyword},'%') or dona_title like concat('%',#{searchParam.keyword}, '%')
+	  <if test="searchType == 'both'">
+	   idx like concat('%',#{keyword},'%') or  dona_title like concat('%',#{keyword},'%')
 	  </if>
+	  and file_idx in (select min(file_idx) from withearth.postfile f group by dona_idx)
 	 </where>
-	 
-	  limit #{startRow},#{cntPerPage}
-	</select> -->
+limit #{startRow},#{cntPerPage}	  	  
+	</select> 
+	
+	
 </mapper>

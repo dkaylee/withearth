@@ -54,22 +54,24 @@ public class PostEditService {
 		PostOnly post = editRequest.toPost();   	    
 		pDao = template.getMapper(PostDao.class);		
 		int result = pDao.updatePost(post);
-		
-		// 속성에 저장 -> 나중에 확인해서 출력
-		model.addAttribute("result", result);
-											
+														
 	    fDao = template.getMapper(FileDao.class);
 	    
 	    // 기존 이미지 삭제처리	
-	   if(editRequest.getDeleteImage() != null) {								
-			
+	   if(editRequest.getDeleteImage() != null) {		
+		   		
 			for(int i=0; i <editRequest.getDeleteImage().length; i++) {		
+								
+				String[] array = editRequest.getDeleteImage()[i].split(",");
 				
-				// DB 파일 테이블에서 삭제한 파일명과 같은 행 삭제처리
-				fDao.deleteBeforeImage(editRequest.getDeleteImage()[i]);
-				// 디렉토리에서 삭제
-				new File(saveDirPath, editRequest.getDeleteImage()[i]).delete();
-				new File(saveDirPath, "s_"+editRequest.getDeleteImage()[i]).delete();
+				for(int j=0; j<array.length;j++) {
+					System.out.println(array[i]);
+					// DB 파일 테이블에서 삭제한 파일명과 같은 행 삭제처리
+					fDao.deleteBeforeImage(array[i]);
+					// 디렉토리에서 삭제
+					new File(saveDirPath, array[i]).delete();
+					new File(saveDirPath, "s_"+array[i]).delete();					
+				}								
 			}	
 	   }	
 	    if(editRequest.getPostImage() != null) {	

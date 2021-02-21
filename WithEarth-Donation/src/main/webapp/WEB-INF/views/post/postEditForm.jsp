@@ -215,7 +215,11 @@
 				processData: false,
 				contentType: false,
 				success : function(data){
-		 		 console.log(data);
+		 		 console.log(data);		 		
+         if(data==1){
+        	 alert('수정이 완료되었습니다.');
+        	 history.back();
+         }  
 				},error: function(e){
 					console.log(e);
 				}
