@@ -135,56 +135,32 @@ $(document).ready(function(){
 		 	var kakaoinfo = {ka_name:nick,ka_img:pimg,ka_thum:thumimg,ka_email:email};
 		 	console.log(kakaoinfo)
 		 	
-		 	//아이디 저장 유무 확인
-		 	$.ajax({
-				url: 'kakaoidcheck',
-				data: {id:email},
-				success : function(data){
-					if(data=='Y'){
-						console.log("이미 존재하는 회원이므로 세션등록")
-						//세션 로그인 url			
-						$.ajax({
-						url: '/member/member/kakaoLogin',
-						type: 'post',
-						data: {id:email},
-						success: function(data){
-							alert("로그인 되었습니다.");
-							location.href="/member"; 
-							console.log(data);
-						}
-						});
-						
-						
-						
-						
-					} else {
+	 	 	$.ajax({
+				url : 'kakaoLogin',//컨트롤러
+				type : 'post',
+				//dataType : 'json',
+				data : JSON.stringify(kakaoinfo),
+				contentType:'application/json;charset=utf-8',
+				success : function(check) {
+					console.log("성공");
+					alert("가입이 완료되었습니다.")
+					//location.href="/member";
 					
-				 	 	$.ajax({
-							url : 'kakaoReg',//컨트롤러
-							type : 'post',
-							//dataType : 'json',
-							data : JSON.stringify(kakaoinfo),
-							contentType:'application/json;charset=utf-8',
-							success : function(check) {
-								console.log("성공");
-								alert("가입이 완료되었습니다.")
-								//location.href="/member";
-								
-							},
-							error: function(error){
-								console.log("실패");
-								console.log(error);
-							} 
-				 	 	}); //두번쨰 ajax
-				 	 } //else
-				}, //1번째 ajax success
+				},
 				error: function(error){
+					console.log("실패");
 					console.log(error);
-				}
-		 	});//1번째 ajax
-		 	}// api 성공
-		}); //api request 닫기
-	};	//함수 닫기	
+				} 
+				
+		 	});//ajax
+		 	
+		    },//성공
+		    
+		    fail: function(error){
+				console.log(error);
+			}//실패
+		});
+	};		
 </script>
 
 

@@ -1,36 +1,38 @@
 package com.withearth.member.login.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.withearth.member.domain.KakaoInfo;
-import com.withearth.member.service.MemberKakaoService;
-//실험용
+import com.withearth.member.service.KakaoLoginService;
 
 @RestController
 public class KakaoLoginController {
-	
-	@Autowired 
-	private MemberKakaoService kakaoService;
-	
-	// ajax로 보낸 카카오 데이터 가져오기
-	
-	@PostMapping(value = "/member/kakaoLogin")
-	//@ResponseBody
-	public int savekao(@RequestBody KakaoInfo kinfo,
-			HttpServletRequest request, Model model
-			) {
-		int check=1;
-		System.out.println(kinfo);
-		int result1 = kakaoService.memberReg(kinfo,request);
-		model.addAttribute("result", result1);
-	//	return kakaoService.memberReg(kinfo,request); 이렇게 쓰면 중복된다!
-		return check;
-	}	 
 
+	@Autowired
+	KakaoLoginService kakaoLoginService;
+	
+	//카카오 로그인 세션정보 저장
+	@PostMapping(value = "/member/kakaoLogin")
+	public String login(
+			HttpServletRequest request,
+			HttpServletResponse response, //여기서 헷갈리네
+			Model model
+			) {
+		model.addAttribute("loginCheck", kakaoLoginService.login(request, response));
+		System.out.println(kakaoLoginService.login(request, response));
+		System.out.println(request.getParameter("id"));
+		return "member/loginview";
+	}
+	
+	
+	
+	
+	
+	
+	
 }

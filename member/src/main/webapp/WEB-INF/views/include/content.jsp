@@ -33,7 +33,7 @@
 							</header>
 							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
 							<footer>
-								<a href="#" class="button special">More</a>
+								<a href="<c:url value="/useronly/testfile"/>" class="button special">회원전용 테스트 페이지</a>
 							</footer>
 						</article>
 					</div>

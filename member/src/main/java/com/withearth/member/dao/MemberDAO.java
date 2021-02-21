@@ -26,4 +26,10 @@ public interface MemberDAO {
 	
 // 임시비밀번호로 변경
 	int updateMembertemporaryPW(TemporaryPw tempw);
+	
+// 카카오 아이디+type("카카오") 가입 여부 체크
+	int kakaoRegCheckCount(String id);
+
+// 카카오 로그인
+	Member kakaoSelectLogin(String id);
 }

@@ -16,7 +16,8 @@
 <script>
 $(document).ready(function(){
 	//비밀번호 찾기 버튼 클릭시, 
-	$('#findbtn').click(function(){ 
+	$('#findbtn').click(function(){ 			
+		
 		var id = $('#id').val();
 	 
 		$.ajax({
@@ -24,7 +25,9 @@ $(document).ready(function(){
 			type: 'post',
 			data: {id:id},
 			success : function(data){
-				console.log("됐다")
+				console.log("됐다");
+				alert("메일이 발송되었습니다.");
+				location.href="/member"; 
 			},
 			error:function(){
 				console.log("안됐다")
