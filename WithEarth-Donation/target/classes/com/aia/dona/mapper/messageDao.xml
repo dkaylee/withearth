@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.aia.dona.dao.MessageDao">
+
+<resultMap type="com.aia.dona.domain.Message" id="messageResult">
+<result column="user_idx" property="userIdx"/>
+<result column="owner_idx" property="ownerIdx"/>
+<result column="dona_idx" property="donaIdx"/>
+<result column="chat_writetime" property="chatWritetime"/>
+<result column="chat_message" property="chatMessage"/>
+</resultMap>
+
+
+
+  <insert id="insertChatMsg" parameterType="com.aia.dona.domain.Message">
+  
+  insert into chat(chat_message, chat_writetime, user_idx, owner_idx, dona_idx)
+  values(#{chatMessage}, #{chatWritetime}, #{userIdx}, #{ownerIdx}, #{donaIdx});
+  
+  </insert>
+  
+  <select id="selectBeforChat" resultMap="messageResult">
+  
+  select * from chat where user_idx=#{param1} and owner_idx=#{param2} and dona_idx=#{param3}
+  
+  </select>
+
+   
+</mapper>
