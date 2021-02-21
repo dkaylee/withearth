@@ -209,15 +209,28 @@ $(document).ready(function(){
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
+        var g_nam = profile.getName();
+ 		var g_img =profile.getImageUrl();
+        var g_email = profile.getEmail();
+		var gmaiinfo = {g_name=g_nam, g_img=g_photo, g_email=g_id};
+		
+		$.ajax({
+			url : 'googleReg',//컨트롤러
+			type : 'post',
+			//dataType : 'json',
+			data : JSON.stringify(gmaiinfo),
+			contentType:'application/json;charset=utf-8',
+			success : function(check) {
+				console.log("성공");
+				alert("가입이 완료되었습니다.")
+				//location.href="/member";
+				
+			},
+			error: function(error){
+				console.log("실패");
+				console.log(error);
+		});
+		
       }
  </script>
 </html>
