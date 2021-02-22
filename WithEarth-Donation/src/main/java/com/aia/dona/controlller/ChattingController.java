@@ -22,15 +22,13 @@ public class ChattingController {
 	
 	@GetMapping("/check")
 	public List<Message> checkBeforeChat(
-			@RequestParam("uid") int uid,
-			@RequestParam("oid") int oid,
-			@RequestParam("donaIdx") int donaIdx
+			@RequestParam("donaIdx") int donaIdx,
+			@RequestParam("rid") int roomIdx
 			) {
 
 			
-		return checkService.checkUser(uid, oid, donaIdx);			
+		return checkService.checkUser(donaIdx, roomIdx);			
 	}
-	
 	
 	
 

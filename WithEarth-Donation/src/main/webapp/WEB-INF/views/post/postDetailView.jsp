@@ -207,9 +207,9 @@
 		value="글쓰기" /></a>
 
 
-
-	<script>
- 
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> 
+<script>
+	
 							// 게시물 idx 받기
 							function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 								var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
@@ -282,12 +282,15 @@
 												     html+= '<h5 class="post" id="postCategory">카테고리 : '+data.category+' ∙ 작성일 : '+data.writedate+'</h5>';
 												     html+= '<p class="post" id="postContent">'+data.postContent+'</p>';
 																					
-												     $('.postDetails').append(html);				
-												     
+												     $('.postDetails').append(html);			
+												     									  													     
 												     // 채팅으로 이동 (파라미터 넘기기)
 														var cHtml = '<input type="button" name="cBtn" value="작성자와 채팅하기">';
 														chatBtn.onclick=function(){
-															child = window.open("<c:url value='/post/chat?donaIdx="+donaIdx+"&oid="+data.idx+"&uid="+idx+"'/>","child","width=330,height=600");										
+														// 방번호 랜덤하게 생성해서 넘기기 (1~100까지)
+														var roomIdx = Math.floor(Math.random()*100)+1;
+															
+															child1 = window.open("<c:url value='/post/chat?donaIdx="+donaIdx+"&uid="+idx+"&to="+data.idx+"&rid="+roomIdx+"'/>","child1","width=330,height=600");										
 														};
 																
 														$('#chatBtn').append(cHtml);

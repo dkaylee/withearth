@@ -1,7 +1,5 @@
 package com.aia.dona.service;
 
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,20 +8,21 @@ import com.aia.dona.dao.MessageDao;
 import com.aia.dona.domain.Message;
 
 @Service
-public class ChatUserCheckService {
+public class ChatRoomIdCheckService {
 	
 	MessageDao dao;
 	
 	@Autowired
 	SqlSessionTemplate template;
 	
-	public List<Message> checkUser(int donaIdx, int roomIdx) {
-		System.out.println(donaIdx +":"+ roomIdx);
+	
+	public int checkRoomIdx(Message msg) {
+		
 		dao = template.getMapper(MessageDao.class);
 		
-		System.out.println(dao.selectBeforChat(donaIdx, roomIdx));
-		return dao.selectBeforChat(donaIdx, roomIdx);
-			
+		return dao.checkRoomIdx(msg);
+		
 	}
+
 
 }

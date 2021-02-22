@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" charset="utf-8" content="target-densitydpi=device-dpi, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width" />
+        <meta name="viewport" charset="utf-8"/>
         <title>WithEarth</title>
 		<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -69,9 +69,15 @@
 	 color : #404040;
 	}	
 	.pBtn{
-	  float : right;
+	  float : right;	 
 	}
-	.searchForm{
+	
+	#updateBtn{
+	 border-radius: 25px !important;
+	 width : 60px;
+	}
+	.searchForm {
+	 margin-left : 730px;
 	 overflow : hidden;
 	 text-align: left;
 	}
@@ -84,9 +90,16 @@
 	  float : left;
 	}
 	
+	.floating { 
+	position: fixed;
+	right: 50%;
+	top: 280px; 
+	margin-right: -720px; 
+	text-align:center; 
+	width: 120px; 
+	}
 	
-	
-	
+
 	</style>	
     </head>
     
@@ -127,31 +140,63 @@
 			    </div>
 	         
 				   </div>				
-		
+	<div class="notice"></div>		
+	<div class="floating">	
+	 <a href="<c:url value="/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="My"></a>
+	<a href="<c:url value="/main/post/upload"/>"><img src="<c:url value="/image/write3.png"/>" class="pBtn" width="50px;"><br></a>  	
+  </div>	
 			</section>			
-	
-						
-   <a href="<c:url value="/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="내 글 보기"></a> 
-	<a href="<c:url value="/main/post/upload"/>"><input type="button" class="pBtn" value="글쓰기"></a>	
+
   
-  
-   
-   	<script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>  
+<script>
+
     // 페이지 번호 받기
  	function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+ 	
 	var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
+	
 	return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
   }
-
     
     var p = getParameterByName('p');
     console.log(p); 
-    
-   // var searchType = getParameterByName('searchType');
-   //var keyword = getParameterByName('keyword');
    
-    
-    
+       // 채팅 알림
+       // 웹소켓을 지정한 url로 연결한다.
+				var sock = new SockJS("<c:url value="/chat"/>");
+					
+				//데이터가 나한테 전달되었을 때 자동으로 실행되는 function
+				sock.onmessage = onMessage;
+
+				//데이터를 끊고싶을때 실행하는 메소드
+				sock.onclose = onClose;
+				
+				// 대화를 요청한 상대에게서 받은 메시지				
+				function onMessage(evt) { 
+					console.log(evt.data);
+					var data = evt.data; // 전달 받은 데이터				
+					
+					msgData = JSON.parse(data);
+					
+				var html = '<h4>'+msgData.userIdx+'님으로부터의 메세지가 도착했습니다.</h4>';
+				    //html +='<a href="<c:url value="/post/chat?donaIdx='+msgData.donaIdx+'&uid='+msgData.to+'&to='+msgData.userIdx+'&rid='+msgData.roomIdx+'"/>"><input type="button" value="보기"></a>';
+				    html += '<input type="button" onclick="goChatRoom();" value="보기">';				    			 
+				  		    
+				$('.notice').append(html);
+				
+				}
+								
+			function goChatRoom(){
+				child2 = window.open('<c:url value="/post/chat?donaIdx='+msgData.donaIdx+'&uid='+msgData.to+'&to='+msgData.userIdx+'&rid='+msgData.roomIdx+'"/>',"child2","width=330,height=600");
+		   }	
+			
+		// 연결 종료
+				function onClose(evt) {
+					console.log(evt);
+				}
+			
+		// 검색 시 페이지 번호를 받아서 이동하는 메서드		
     function goPage(i){
     	
     	$('#wrapContent').empty();
@@ -204,7 +249,7 @@
      
     
 		$(document).ready(function() {	
-			
+					
 			// 처음 리스트 로딩 시 불러올 데이터
 				$.ajax({
 					  url : 'http://localhost:8080/dona/rest/user/post/list?p='+ p,
@@ -298,13 +343,8 @@
 					});
 					
 				});
-				
-				
-				
 			
-				});
-				
-				
+			});
 		
    </script>	
     </body>

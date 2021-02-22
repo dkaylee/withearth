@@ -7,7 +7,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="chatHandler" class="com.aia.dona.handler.EchoHandler"/>
+	<bean id="chatHandler" class="com.aia.dona.handler.ChatHandler"/>
 	
 	<!-- 웹소켓 핸들러 설정 등록 -> 웹소켓 생성을 위한 handshake-interceptors 등록 -->
 	<websocket:handlers>
@@ -16,6 +16,5 @@
 			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
 		</websocket:handshake-interceptors>
 		<websocket:sockjs/>
-	</websocket:handlers>
-	
+	</websocket:handlers>	
 </beans>

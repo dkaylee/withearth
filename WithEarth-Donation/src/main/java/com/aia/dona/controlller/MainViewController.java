@@ -3,6 +3,7 @@ package com.aia.dona.controlller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,16 +11,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aia.dona.domain.Message;
-import com.aia.dona.domain.Message;
+import com.aia.dona.service.ChatRoomIdCheckService;
 
 @Controller
 public class MainViewController {
 	
+	@Autowired
+	ChatRoomIdCheckService roomChkService;
+
+	
 	@RequestMapping("/main/list")
 	public String goListForm(
-			@RequestParam(value="p", defaultValue ="1") int p
-		
+			@RequestParam(value="p", defaultValue ="1") int p,
+			HttpSession session
 			) {
+		session.setAttribute("user", 1);
 		
 		return "post/donaMain";
 	}
@@ -72,26 +78,36 @@ public class MainViewController {
 	@RequestMapping("/post/chat")
 	public ModelAndView getChatInfo(
 			@RequestParam("donaIdx") int donaIdx,
-			@RequestParam("oid") int oid,
 			@RequestParam("uid") int uid,
+			@RequestParam("to") int to,
+			@RequestParam("rid") int rid,
 			HttpSession session,
 			ModelAndView mv
 			) {	
 		
-		
-		
-		mv.setViewName("post/chat/chatView");
-		mv.addObject("donaIdx", donaIdx);
-		mv.addObject("oid", oid);
-		mv.addObject("uid", uid);
-		
-		session.setAttribute("user", uid);
-		
 		Message msg = new Message();
 		msg.setDonaIdx(donaIdx);
-		msg.setOwnerIdx(oid);
 		msg.setUserIdx(uid);
-				
+		msg.setTo(to);
+		
+		int result = roomChkService.checkRoomIdx(msg);
+		
+		if(result==0) {
+			msg.setRoomIdx(msg.getRoomIdx());
+			System.out.println(msg.getRoomIdx());
+			mv.addObject("rid", rid);
+		} else {
+			msg.setRoomIdx(result);
+			mv.addObject("rid", msg.getRoomIdx());
+		}
+			
+		mv.setViewName("post/chat/chatView");
+		mv.addObject("donaIdx", donaIdx);
+		mv.addObject("uid", uid);
+		mv.addObject("to", to);
+		
+		
+		session.setAttribute("user", uid);
 
 		return mv;
 	}

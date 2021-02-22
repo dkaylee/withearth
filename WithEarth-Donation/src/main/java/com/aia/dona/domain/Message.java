@@ -4,8 +4,9 @@ package com.aia.dona.domain;
 public class Message {
 
 	private int userIdx;
-	private int ownerIdx;
+	private int roomIdx;
 	private int donaIdx;
+	private int to;
 	private String chatWritetime;
 	private String chatMessage;
 
@@ -18,23 +19,30 @@ public class Message {
 
 	public void setUserIdx(int userIdx) {
 		this.userIdx = userIdx;
+	}	
+
+	public int getRoomIdx() {
+		return roomIdx;
 	}
 
-	public int getOwnerIdx() {
-		return ownerIdx;
-	}
-
-	public void setOwnerIdx(int ownerIdx) {
-		this.ownerIdx = ownerIdx;
+	public void setRoomIdx(int roomIdx) {
+		this.roomIdx = roomIdx;
 	}
 
 	public int getDonaIdx() {
 		return donaIdx;
 	}
 
-
 	public void setDonaIdx(int donaIdx) {
 		this.donaIdx = donaIdx;
+	}
+		
+	public int getTo() {
+		return to;
+	}
+
+	public void setTo(int to) {
+		this.to = to;
 	}
 
 	public String getChatWritetime() {
@@ -55,12 +63,12 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [userIdx=" + userIdx + ", ownerIdx=" + ownerIdx + ", donaIdx=" + donaIdx + ", chatWritetime="
-				+ chatWritetime + ", chatMessage=" + chatMessage + "]";
+		return "Message [userIdx=" + userIdx + ", roomIdx=" + roomIdx + ", donaIdx=" + donaIdx + ", to=" + to
+				+ ", chatWritetime=" + chatWritetime + ", chatMessage=" + chatMessage + "]";
 	}
 
 
-
+	
 
 
 

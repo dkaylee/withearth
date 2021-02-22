@@ -17,16 +17,20 @@
 
   <insert id="insertChatMsg" parameterType="com.aia.dona.domain.Message">
   
-  insert into chat(chat_message, chat_writetime, user_idx, owner_idx, dona_idx)
-  values(#{chatMessage}, #{chatWritetime}, #{userIdx}, #{ownerIdx}, #{donaIdx});
+  insert into chat(chat_message, chat_writetime, user_idx, room_idx, dona_idx, chat_to)
+  values(#{chatMessage}, #{chatWritetime}, #{userIdx}, #{roomIdx}, #{donaIdx}, #{to});
   
   </insert>
   
   <select id="selectBeforChat" resultMap="messageResult">
   
-  select * from chat where user_idx=#{param1} and owner_idx=#{param2} and dona_idx=#{param3}
+  select * from chat where dona_idx=#{param1} and room_idx=#{param2}
+  </select>
+  
+  <select id="checkRoomIdx" resultType="int">
+  
+  select ifnull(min(room_idx),0) from chat where user_idx=#{userIdx} and dona_idx=#{donaIdx} and chat_to=#{to}
   
   </select>
-
-   
+  
 </mapper>

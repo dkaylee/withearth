@@ -12,7 +12,7 @@
 #banner {
 	margin-bottom: -100px;
 }
-
+   
 .article {
 	width: 500px;
 	height: 250px;
@@ -64,6 +64,10 @@
 .pBtn {
 	float: right;
 }
+
+tr>th{
+  text-align: center;
+}
 </style>
 </head>
 
@@ -79,7 +83,7 @@
 				<div class="title">내가 쓴 글</div>
 			</header>
 
-			<div class="table-wrapper"></div>
+			<div class="table-wrapper">
 			<table>
 				<thead>
 					<tr>
@@ -94,6 +98,7 @@
 				
 				</tbody>
 			</table>
+			</div>
 		</div>
 	</section>
 

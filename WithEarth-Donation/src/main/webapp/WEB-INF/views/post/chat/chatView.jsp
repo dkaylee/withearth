@@ -28,10 +28,11 @@
 <script type="text/javascript">
 
   var donaIdx = '<c:out value="${donaIdx}"/>';
-  var oid = '<c:out value="${oid}"/>';
   var uid = '<c:out value="${uid}"/>';
+  var to = '<c:out value="${to}"/>';
+  var roomIdx = '<c:out value="${rid}"/>';
   
-  console.log(donaIdx +':'+ oid +':'+ uid);
+  console.log(donaIdx +':'+ uid +':'+ to +':' + roomIdx);
   
 	//웸소켓을 지정한 url로 연결한다.
 	var sock = new SockJS("<c:url value="/chat"/>");
@@ -45,28 +46,26 @@
 	
 	$(document).ready(function() {
 		
-		// 대화상대 보여주기
-	  if(oid != uid){
-		var target = '대화상대 :' +oid;
-		$('.user-container').append(target);
-	  } 
 		
 	 //기존 대화가 있다면 불러오기
 		$.ajax({
 			
 			url : 'http://localhost:8080/dona/rest/user/post/chat/check',
 			type : 'GET',
-			data : 'uid=' + uid + '&oid=' + oid +'&donaIdx=' + donaIdx,
+			data : 'donaIdx=' + donaIdx +'&rid=' + roomIdx,
 			success : function(data){
+				
+				var headHtml = '대화상대 : '+to;
+				$('.user-container').append(headHtml);
 															
 			$.each(data, function(index, item){       	
-			if (item.userIdx != item.ownerIdx) {
+			if (item.userIdx != to ) {
 			  
 				var printHTML = "<div class='well text_right'>";
 				printHTML += "<div class='alert alert-info'>";
 				printHTML += "<strong>"+item.chatWritetime+"[" + item.userIdx + "] -> " + item.chatMessage + "</strong>";
 				printHTML += "</div>";
-				printHTML += "</div>";
+				printHTML += "</div>";				
 
 				$('.chatting-list').append(printHTML);
 			} else {
@@ -78,16 +77,20 @@
 								
 				$('.chatting-list').append(printHTML);
 			
-			}	        	
-        });
-				
+			}	   
+			
+      });
+			
+			 var footHtml = '------------------이전 대화------------------';
+			    $('.chatting-list').append(footHtml);
+										 				
 			},error : function(e){
 				console.log(e);
 			}
 			
 		});
 		
-		
+	 		
 		// 접속했다는 메세지 추가하기
 		$("#send-button").click(function() {
 			console.log('send message...');
@@ -119,12 +122,14 @@
 	  }
 		
 		
-		function sendMessage() {
+		function sendMessage() {						
+			
 			/*소켓으로 메세지 보내기*/	
 			  var msg = {		
 					userIdx: uid,
-					ownerIdx : oid,
-					donaIdx : donaIdx,
+					donaIdx : donaIdx,	
+					to : to,
+					roomIdx : roomIdx,
 					chatWritetime : nowTime,
 					chatMessage : $(".chatting-input").val()	
 			}; 
