@@ -33,7 +33,7 @@ public class MakeQRController {
    	
 
 
-	 @RequestMapping("/qr/{cafe_idx}") 
+	 @RequestMapping("/tumbler/{cafe_idx}") 
 	public String makeqr(HttpServletRequest request, 
 			HttpSession session,
 			Model model,
@@ -50,16 +50,15 @@ public class MakeQRController {
   	}  
       
 
-      int cafe_idx = 13;
+      int cafe_idx = 20;
       
  
       
       
        // 링크로 할 URL주소 
-       //String url = "http://localhost:8080/tumbler/saving/"+cafe_idx;
-       String url = "http://192.168.219.1:8080/tumbler/saving/"+cafe_idx;
+       String url = "http://localhost:8080/tumbler/"+cafe_idx;
       //String url = "http://192.168.219.106:8080/qr/"+cafe_idx;
-     //String url = "http://192.168.219.1:8080/tumbler/qr/"+cafe_idx;
+
      
 
     System.out.println(url);
@@ -96,7 +95,7 @@ public class MakeQRController {
       
       
 
-      return "tumbler/tumlist"; 
+      return "tumbler/saving"; 
       
 	 }
 	 

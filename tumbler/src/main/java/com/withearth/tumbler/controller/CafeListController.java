@@ -3,9 +3,12 @@ package com.withearth.tumbler.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,10 +55,21 @@ public class CafeListController {
 	*/
 	
 	/*
-	@GetMapping 			
-	public List<Cafe> cafeList(){
-		              
+	 	@GetMapping
+	@CrossOrigin
+	public List<Cafe> cafeList(HttpSession session, Cafe cafe, ModelMap model){
+		
 		return cafelistSerivce.cafeView();
 	}
-*/
+	 */
+	
+	@GetMapping
+	@CrossOrigin
+	public List<Cafe> cafeList(ModelMap model){
+		
+		return cafelistSerivce.cafeView();
+	}
+	
+	
+
 }

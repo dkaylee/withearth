@@ -41,7 +41,7 @@
       
 		<div class="head_orderlist">
 			<!-- Table -->
-			<h3>텀블러 인증 내역!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h3>
+			<h3>텀블러 인증 내역</h3>
 
 			
 			<div class="table-wrapper">

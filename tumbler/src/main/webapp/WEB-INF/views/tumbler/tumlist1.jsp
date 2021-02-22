@@ -108,14 +108,9 @@
 	color: #777;
 }
 
-/* #map {
-	 width: 400px;
-    height: 400px; 
-	float: right;
-	margin: -400px 100px;
-} */
 
-/* .contents{
+/*
+ .contents{
   
   padding: 0 4% 0 4%;
 } */
@@ -392,7 +387,7 @@ var markers = [];
 
 		}   
     
-// 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다 
+// 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다
 /*  var positions  = [
 	 {
 	 
@@ -410,8 +405,8 @@ var markers = [];
  }
 	 
 	 
-];  */
-
+];  
+ */
 
 
  //var positions=[];
@@ -458,37 +453,23 @@ var markers = [];
 		
 		
 	}); */
+	
+
+	
   $(document).ready(function(){
   $.ajax({
-		url:'http://localhost:8080/tumbler/tumlist1',
+		url:'/tumbler',
 		type:'GET',
-		dataType:"json",
+		dataType:"javascript",
+
+		
 		success:function(data){
 			console.log(data);
 			alert(data);
 			alert(JSON.stringify(data));
-			
-			$.each(data, function(index, item){
-				var html ='<li>';
-				html+='<a>';
-				html+='<dl>';
-				html+='<dt>${cafe.cafe_name}</dt>';
-				html+='<dd>${cafe.location}</dd>';
-				html+='<dd id="cafelat">${cafe.cafe_lat}</dd>';
-				html+='<dd id="cafelon">${cafe.cafe_lon}</dd>';
-				html+='</dl>';
-				html+='</a>';
-				html+='</li>';
-				
-				$('#placesList').append(html);
-				
-			});
-			
+
 			},
 	
-			
-			
-		},
 			  
 
 		error : function(e){

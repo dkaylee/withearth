@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="jac"/>
+		<item key="selection" value="modal_btn"/>
 		<list key="findhistory">
+			<item value="modal_btn"/>
+			<item value="적립"/>
 			<item value="jac"/>
 			<item value="jacson"/>
 			<item value="jack"/>
@@ -21,8 +23,6 @@
 			<item value="markers"/>
 			<item value="markers.push(marker)"/>
 			<item value="points"/>
-			<item value="registerTumblerPoint"/>
-			<item value="placesSearchCB"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -30,9 +30,9 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="91"/>
+		<item key="DIALOG_X_ORIGIN" value="138"/>
 		<item key="DIALOG_Y_ORIGIN" value="508"/>
-		<item key="DIALOG_WIDTH" value="393"/>
+		<item key="DIALOG_WIDTH" value="394"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>

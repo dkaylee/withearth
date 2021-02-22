@@ -47,6 +47,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--매장 조회 -->
 	<select id="selectCafeList" resultMap="CafeResultMap">
 
+		select cafe_name, location,cafe_lat,cafe_lon from cafe
+
+	</select>
+	
+	<!--매장 정보 -->
+	<select id="selectCafeInfo" resultMap="CafeResultMap">
+
 		select * from cafe
 
 	</select>
