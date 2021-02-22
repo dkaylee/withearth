@@ -4,6 +4,7 @@
 
 <!-- Footer-->
 <footer id="footer">
+
 			<footer>
 				<div class="inner">
 					<div class="flex">
@@ -22,6 +23,7 @@
 			</footer>
 
 		<!-- Scripts -->
+			
 			<script src="<c:url value="/js/jquery.min.js"/>"></script>
 			<script src="<c:url value="/js/skel.min.js"/>"></script>
 			<script src="<c:url value="/js/util.js"/>"></script>

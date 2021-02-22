@@ -1710,7 +1710,7 @@ color
 
 	code {
 		background: rgba(144, 144, 144, 0.075);
-		border-radius: 0;
+		border-radius: 5px;
 		border: solid 1px #dbdbdb;
 		font-family: "Courier New", monospace;
 		font-size: 0.9em;
@@ -2004,7 +2004,7 @@ color
 		-ms-appearance: none;
 		appearance: none;
 		background: rgba(144, 144, 144, 0.075);
-		border-radius: 0;
+		border-radius: 5px;
 		border: none;
 		border: solid 1px #dbdbdb;
 		color: inherit;
@@ -2118,7 +2118,7 @@ color
 			input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
 				background: rgba(144, 144, 144, 0.075);
-				border-radius: 0;
+				border-radius: 5px;
 				border: solid 1px #dbdbdb;
 				content: '';
 				display: inline-block;
@@ -2146,7 +2146,7 @@ color
 		}
 
 	input[type="checkbox"] + label:before {
-		border-radius: 0;
+		border-radius: 5px;
 	}
 
 	input[type="radio"] + label:before {
@@ -2194,7 +2194,7 @@ color
 
 		.box.alt {
 			border: 0;
-			border-radius: 0;
+			border-radius: 5px;
 			padding: 0;
 		}
 
@@ -2551,8 +2551,8 @@ color
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		background-color: #5a5a5a;
-		border-radius: 0;
-		border: 0;
+		border-radius: 5px;
+		border: 1px;
 		color: #ffffff !important;
 		cursor: pointer;
 		display: inline-block;

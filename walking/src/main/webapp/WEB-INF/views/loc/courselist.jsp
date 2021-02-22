@@ -9,10 +9,12 @@
 <title>코스 리스트</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <style>
-.table {
-	/* border: 1px solid #DDD; */
-	width: 100%;
+
+.container{	
+	margin-left: 15%;
+	margin-right: 5%;	
 }
+
 td, th {
 	border-bottom: 1px solid #DDD;
 	text-align: center;
@@ -26,48 +28,78 @@ td, th {
 }
 div.searchBox {
 	border: 1px solid #CCC;
-	margin: 15px 0;
+	margin: 0 20px;
 	padding: 10px 20px;
 	background-color: #EEE;
-}
-
-.container{
-	margin: 100px 50px;
+	float: left;
+	vertical-align: middle;
 }
 
 #searchType{
 	width: 200px;
+	margin: 0 20px;
+	float: left;
 }
 
 #keyword{
 	width: 300px;
+	margin-left: 1%;
+	float: left;
 }
 
-ul, li{
-	list-sytle: none;
+#searchBtn{margin-left: 1%;}
+
+#totalCourseCount{
+	float: right;
 }
 
+h3{
+	margin: 0;
+	float: left;
+}
+
+#nav{
+	margin-left: 50%;
+}
+
+#nav>li{
+	list-style: none;
+	float:left;
+	text-align: center;
+}
+
+#nav>li>a{
+	text-decoration: none;
+	font-size: 1.5em;
+	color: #d4e0ef;
+}
+
+#nav>li>a:hover{
+	
+	font-size: 1.5em;
+	color: #5385c1;
+	
+}
 
 </style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-
-
+	
+	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
+	
 	<main class="container">
-				<h1 class="listHeader">Course</h1>
-
-
+		<h2 style="margin:50px 0; font-weight: bolder;">나의 코스</h2>
 		<div class="searcontents">
 			<div class="searcontent">
 				<!-- <div class="searchBox"> -->
-				<form>
-					검색 타입 <select name="searchType" id="searchType">
+				<form><h3>검색 타입</h3>  
+					<select name="searchType" id="searchType">
 						<option value="date">저장 일자</option>
 						<option value="end">목적지</option>
 						<option value="both">설정일자+목적지</option>
-					</select> 검색 키워드 <input type="text" name="keyword" id="keyword"> <input
-						type="submit" value="검색">
+					</select> <h3>검색 키워드</h3> <input type="text" name="keyword" id="keyword"> <input
+						type="submit" value="검색" id="searchBtn">
 				</form>
 				<!-- 	</div> -->
 			</div>
@@ -76,7 +108,7 @@ ul, li{
 
 		<div class="contents">
 			<h3 class="listinfo">코스 리스트</h3>
-			<h4>전체 회원의 수: ${courseCnt} 개</h4>
+			<h4 id="totalCourseCount">전체 코스 개수:  ${courseCnt} 개</h4>
 			<div class="content">
 				<table class="listTable">
 					<tr>
@@ -97,7 +129,7 @@ ul, li{
 								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.course_date}"
-										pattern="yyyy.MM.dd." /></td>
+										pattern="yyyy.MM.dd  HH:mm:ss" /></td>
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
 								<td>${course.loc_km} km</td>
@@ -111,40 +143,21 @@ ul, li{
 
 				</table>
 
-
-			</div>
-			
-			<nav class="listNav" >
-				<ul class="listUl" >
+				<ul  id="nav">
 					<c:if test="${listView.totalCourseCount>0}">
 						<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
 							<li class="page-item"  ${listView.pageNumber eq num ? 'active' : '' }>
 								<a class="page-link" 
-								href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}" >
+								href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}
 								</a>
 							</li>
 						</c:forEach>
 					</c:if>
-					
-				
 				</ul>
+
+			</div>
 			
-			</nav>
-
-
-
-
-
-<%-- 			<div class="paging">
-				<c:if test="${listView.totalMemberCount>0}">
-					<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
-				[ <a
-							href="<c:url value="/member/list"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}"
-							class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 				
-				</c:forEach>
-				</c:if>
-			</div> --%>
-
+				
 
 		</div>
 	</main>

@@ -23,18 +23,68 @@
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 
 <style>
-#fullAddr{
-	
+
+
+.mainPage{	
+	margin-left: 15%;
+	margin-right: 15%;
 }
-#map_div{
-	width: 500px;
-	border: 2px;
+
+#mainInfo{
+	float: left;
+	margin:50px 0;
+	font-weight: bolder;
 }
+
+#startBtn{float: left; margin-top: 4%; margin-left: 5%;}
+
+#arriveBtn{float: left; margin-top: 4%; margin-left: 1%;}
+
+#startInfo{
+	clear:left;
+	margin: 20px;
+	font-weight: bolder;
+ }
+ 
+ #endInfo{
+ 	margin: 20px;
+ 	font-weight: bolder;
+ }
+
+#fullAddr{float: left; margin: 0;}
+
+#btn_select{
+	margin-top: 2.5%;
+	float: left;
+}
+
+#endAdd{clear: left;}
+
+#clock{
+	font-size: larger;
+	float: left;
+	margin-left: 20px;
+}
+
+#restart{
+	float: left;
+	margin-left: 20px;
+	display: none;
+}
+
+#stopTimer{
+	float: left;
+	margin-left: 20px;
+	margin-top: 0;
+	display: none;
+}
+
 </style>
 
 
 <script type="text/javascript">
-
+	
+	//jQuery.noConflict(); -> 부트스트랩 모달 충돌 방지
 	
 
 	var now_lat = $('#nowLat');
@@ -98,7 +148,6 @@
 					console.log(resultInfo);
 					// 기존 마커 삭제
 					marker1.setMap(null);
-					console.log('진입2')
 					// 3.마커 찍기
 					// 검색 결과 정보가 없을 때 처리
 					if (resultInfo.coordinate.length == 0) { // coordinate -> 좌표 정보
@@ -119,7 +168,6 @@
 							var new_lat = lat;
 							var new_lon = lon;
 	
-							console.log('진입3-1')
 	
 							initTmap(new_lat,new_lon,now_lat,now_lon);
 							arrChk(new_lat,new_lon,now_lat,now_lon);
@@ -135,29 +183,22 @@
 							console.log("검색 경도: "+ new_lon);
 							initTmap(new_lat,new_lon,now_lat,now_lon);
 							arrChk(new_lat,new_lon,now_lat,now_lon);
-							console.log('진입3-2')
 						}
 						var lonEntr, latEntr;
 						if (resultCoordinate.lonEntr == undefined&& resultCoordinate.newLonEntr == undefined) {
 							lonEntr = 0;
 							latEntr = 0;
-							console.log('진입4-1');
 						} else {
 							if (resultCoordinate.lonEntr.length > 0) {
 								lonEntr = resultCoordinate.lonEntr;
 								latEntr = resultCoordinate.latEntr;
-								console.log('진입4-2');
 							} else {
 								lonEntr = resultCoordinate.newLonEntr;
 								latEntr = resultCoordinate.newLatEntr;
-									console.log('진입4-3');
 							}
 						}
-						console.log('진입5')
 						var markerPosition = new Tmapv2.LatLng(Number(lat),Number(lon));
-						console.log('진입6')
 						//map.setCenter(markerPosition); //21.02.05 -> 주석처리하니 에러 없음. 위경도좌표도 나옴. km, 
-						console.log('진입7');
 						// 검색 결과 표출
 						var matchFlag, newMatchFlag;
 						// 검색 결과 주소를 담을 변수
@@ -172,7 +213,6 @@
 								// 새(도로명) 주소 좌표 매칭
 								// 구분 코드
 								newMatchFlag = resultCoordinate.newMatchFlag;
-								console.log('진입8');
 								// 시/도 명칭
 								if (resultCoordinate.city_do.length > 0) {
 								city = resultCoordinate.city_do;
@@ -184,7 +224,6 @@
 							if (resultCoordinate.gu_gun.length > 0) {
 								gu_gun = resultCoordinate.gu_gun;
 								newAddress += gu_gun+ " ";
-								console.log('진입9');
 							}
 	
 							// 읍면동 명칭
@@ -713,9 +752,10 @@
     
     /*****스톱워치 시작 기능*****/
     function startTime(){
-       
+   		 $('#restart').show();
+      	 $('#stopTimer').show();
     	//if(new_lat==37.57081522&&new_lon==127.00160213){
-    	//	alert('목적지 설정 후 다시 시도해주세요.');
+    	//	alert('목적지가 기본값으로 설정되어있습니다. 다시 시도해주세요.');
     		
     	//} else{
     		calcTime();
@@ -729,7 +769,6 @@
 	        walkTime = hour + minute + second;
 	        modalwTime = hour + ":" + minute + ":" +second + " ";
 	        
-	       console.log('walkTime: ',walkTime);
     	//}
     	
     }
@@ -790,42 +829,46 @@
 <body>
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
-		<!-- nav 메뉴 이동 시 사용 -->
-		<div class="menu" >	
-			<c:url value="/loc/courselist" var="courseList"/>
-			<a href="${courseList}">걷기 인증 서비스 시작</a>
-			<c:url value="/loc/courselist" var="courseList"/>
-			<a href="${courseList}"">걷기 인증 서비스 안내</a>		 
-			<c:url value="/loc/courselist" var="courseList"/>
-			<a href="${courseList}"">나의 코스</a>
+		<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+		
+		
+		
+		<div class="mainPage">
+			
+			
+			<!--  -->
+			<h2 style="" id="mainInfo">걷기 인증 서비스</h2> 
+			<button id="startBtn" onclick="startTime()">시작 하기</button>
+			<button id="arriveBtn">도착</button><br>
+			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3><br>
+			<h4 id="endInfo">◇ 목적지 (ex.서울시 마포구 와우산로29가길 69) </h4>
+			<input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
+				value="서울특별시 종로구 종로5가">
+			<button id="btn_select">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px font-weight: bolder;"></h3>
+			
+			<br>
+			
+			
+			
+			<!-- 타임워치  -->
+			<h3 id="clock" class="contents"></h3>
+			<!-- 타임워치 정지 버튼 -->
+			<button id="restart" onclick="startTime();">다시 시작</button>
+			<button id="stopTimer" onclick="stop();">일시 정지</button>
+			
+			<!-- 예상 이동 거리, 도보 시간  출력-->
+			<h3 id="result" style="float: right"></h3>
+			
+			<!-- 경로 지도 -->
+			<br>
+			<div id="map_wrap"  class="map_wrap3">
+				<div id="map_div" style="width: 600px" ></div>
+			</div>
+			<div class="map_act_btn_wrap clear_box"></div>
+			<br />
+			
+			<br>
 		</div>
-		
-		<!--  -->
-		<h2 style="margin:100px 20px 20px 20px;">걷기 인증 서비스</h2>
-		<h4 style="margin: 20px;">출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3>
-		<h4 style="margin: 20px;">목적지 (ex.서울시 마포구 와우산로29가길 69) </h4>
-		<input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
-			value="서울시 마포구 와우산로29가길 69">
-		<button id="btn_select">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px"></h3>
-		<button id="startBtn" onclick="startTime()">시작 하기</button> <button id="arriveBtn">도착</button><br>
-		<br>
-		
-		<!-- 예상 이동 거리, 도보 시간  출력-->
-		<h2 id="result" style="float: right"></h2>
-		
-		<!-- 타임워치 시작 버튼  -->
-		<div id="clock" class="contents"></div>
-		<!-- 타입워치 정지 버튼 -->
-		<input type="button" id="stopTimer" value="Stop Timer"  onclick="stop();"><br/>
-		
-		<!-- 경로 지도 -->
-		<div id="map_wrap"  class="map_wrap3">
-			<div id="map_div"  ></div>
-		</div>
-		<div class="map_act_btn_wrap clear_box"></div>
-		<br />
-		
-
 
 
 
@@ -854,10 +897,38 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 	
+	
+	
 	<!-- 21.02.22: footer 추가 시 modal하고 충돌 발생 -->
-	<%-- <%@ include file="/WEB-INF/views/include/footer.jsp"%> --%>
+	
+	
+	<footer id="footer">
+
+			<footer>
+				<div class="inner">
+					<div class="flex">
+						<div class="copyright">
+							&copy; <a href="#">EarthWith</a>.
+						</div>
+						<ul class="icons">
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+							<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+							<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			
+			<script src="<c:url value="/js/skel.min.js"/>"></script>
+			<script src="<c:url value="/js/util.js"/>"></script>
+			<script src="<c:url value="/js/main.js"/>"></script>
 
 	
 	
