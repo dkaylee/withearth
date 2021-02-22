@@ -26,11 +26,17 @@ import com.google.zxing.client.j2se.MatrixToImageConfig;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.withearth.tumbler.dao.CafeDao;
+import com.withearth.tumbler.domain.Cafe;
 import com.withearth.tumbler.domain.CafeRequest;
  
 @Controller
 public class MakeQRController {
    	
+	private CafeDao dao;
+	
+	@Autowired
+	private SqlSessionTemplate template;
 
 
 	 @RequestMapping("/tumbler/{cafe_idx}") 
@@ -93,9 +99,15 @@ public class MakeQRController {
       //리턴은 사용자가 원하는 값을 리턴한다. 
       //작성자는 QRCode 파일의 이름을 넘겨주고 싶었음.
       
+      Cafe cafe = new Cafe();
+      cafe.setQrcode(fileName);
+      
+      model.addAttribute("cafe",cafe);
+      dao = template.getMapper(CafeDao.class);
+      
       
 
-      return "tumbler/saving"; 
+      return "dao.insertQrcode();"; 
       
 	 }
 	 

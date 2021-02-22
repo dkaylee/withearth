@@ -108,7 +108,6 @@
 	color: #777;
 }
 
-
 /*
  .contents{
   
@@ -373,7 +372,7 @@ var markers = [];
 			
 			// 인포윈도우를 마커위에 표시합니다 
 			infowindow.open(map, marker);
-			infowindow.setContent(content);
+			//infowindow.setContent(content);
 
 			// 지도 중심좌표를 접속위치로 변경합니다
 			map.setCenter(locPosition);		
@@ -454,19 +453,28 @@ var markers = [];
 		
 	}); */
 	
-
+	 $(document).ready(function(){
+		 console.log(ststdsfsdf);
+	 
+$.get("map",function(data){
 	
-  $(document).ready(function(){
-  $.ajax({
-		url:'/tumbler',
-		type:'GET',
-		dataType:"javascript",
-
+		console.log(data);
 		
+	});
+})
+	
+ /*  $(document).ready(function(){
+  $.ajax({
+		url:'http://localhost:8080/tumbler/tumlist1',
+		type:'GET',
+		dataType:"json",
+		data:JSON.stringify(data),
+		data:"cafe_name"+cafe_name,
 		success:function(data){
 			console.log(data);
 			alert(data);
 			alert(JSON.stringify(data));
+			
 
 			},
 	
@@ -480,7 +488,7 @@ var markers = [];
 	
 });  
 	
-
+ */
 
 // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 var bounds = new kakao.maps.LatLngBounds();    

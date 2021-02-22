@@ -10,10 +10,13 @@ public interface CafeDao {
 
 
 //카페리스트
-  List<Cafe> selectCafeList();
+ List<Cafe> selectCafeList();
 
-  //지도 리스트 
-List<Cafe> selectCafeInfo();
+  //위도 경도  리스트 
+List<Cafe> selectLaglng();
+
+
+int insertQrcode();
 
 
 

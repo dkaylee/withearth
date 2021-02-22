@@ -55,6 +55,7 @@ public class Cafe {
 				+ qrcode + ", cafe_lat=" + cafe_lat + ", cafe_lon=" + cafe_lon + "]";
 	}
 	
+
 	
 	
 

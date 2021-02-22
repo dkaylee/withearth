@@ -50,32 +50,18 @@ public class CafeListSerivce {
 	}
 
 	
-//	public List<Cafe> cafelistView() {
-//
-//		List<Cafe> cafeinfo = null; // 변수 만들어서 초기화
-//		dao = template.getMapper(CafeDao.class);
-//		cafeinfo = dao.selectCafeInfo();
-//		 System.out.println("카페정보!!!!!!!"+cafeinfo);
-//		 log.info(cafeinfo);
-//
-//		return cafeinfo;
-//
-//	}
 
+	public List<Cafe> cafeInfo() {
 
-	/*
-	 * public List<Cafe> cafeView () {
-	 * 
-	 * List<Cafe> list = null; // 변수 만들어서 초기화
-	 * 
-	 * dao = template.getMapper(CafeDao.class);
-	 * 
-	 * list =dao.selectCafeList(); System.out.println("카페리스트"+list);
-	 * //log.info(list);
-	 * 
-	 * return list ;
-	 * 
-	 * }
-	 */
+		List<Cafe> list = null; // 변수 만들어서 초기화
+		dao = template.getMapper(CafeDao.class);
+		list = dao.selectLaglng();
+		System.out.println("카페좌표!!!!!"+list);
+		 log.info(list);
+
+		return list;
+
+	}
+
 
 }

@@ -27,6 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="cafe_lon" column="cafe_lon" />
 		<result property="cafe_lat" column="cafe_lat" />
 	</resultMap>
+	<resultMap id="CafeInfoMap"
+		type="com.withearth.tumbler.domain.Cafe">
+		<id property="cafe_idx" column="cafe_idx" />
+		<result property="cafe_name" column="cafe_name" />
+		<result property="location" column="location" />
+		<result property="cafe_lon" column="cafe_lon" />
+		<result property="cafe_lat" column="cafe_lat" />
+	</resultMap>
 
 	<!-- 로그인 -->
 	<select id="selectTumLogin" resultMap="CafeListMap">
@@ -47,22 +55,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--매장 조회 -->
 	<select id="selectCafeList" resultMap="CafeResultMap">
 
-		select cafe_name, location,cafe_lat,cafe_lon from cafe
-
-	</select>
-	
-	<!--매장 정보 -->
-	<select id="selectCafeInfo" resultMap="CafeResultMap">
-
 		select * from cafe
 
 	</select>
-	
+
+
+	<!--매장 위도 경도 -->
+	<select id="selectLaglng" resultMap="CafeInfoMap">
+		select cafe_lat, cafe_lon, cafe_name ,location
+		from cafe 
+
+		<!-- select cafe_lat, cafe_lon, cafe_name ,location from cafe where cafe_idx 
+			Like #{cafe_idx} -->
+
+
+	</select>
+
 
 	<!-- 큐알 코드 저장 -->
-	<!-- <insert id="insertQRcode" parameterType="com.withearth.tumbler.domain.Cafe" 
-		useGeneratedKeys="true" keyProperty="idx"> insert into cafe (cafe_idx,cafe_name,location,qrcode) 
-		values ( #{cafe_idx},#{cafe_name},#{location},#{qrcode}) </insert> -->
+	<insert id="insertQRcode"
+		parameterType="com.withearth.tumbler.domain.Cafe"
+		useGeneratedKeys="true" keyProperty="idx">
+		insert into cafe (cafe_idx,cafe_name,location,qrcode)
+		values ( #{cafe_idx},#{cafe_name},#{location},#{qrcode})
+	</insert>
 
 
 	<!-- 카페 전체 리스트 -->
