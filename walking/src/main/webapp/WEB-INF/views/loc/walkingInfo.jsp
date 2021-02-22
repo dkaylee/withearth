@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,11 @@
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
 	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
+	
+	<div>
+		<h3>서비스 안내 페이지 입니다.</h3>
+		
+	</div>
 	
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	
