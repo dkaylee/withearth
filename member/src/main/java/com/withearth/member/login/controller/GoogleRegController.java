@@ -13,7 +13,7 @@ import com.withearth.member.service.MemberGoogleService;
 
 
 @RestController
-public class GoogleRegController2 {
+public class GoogleRegController {
 	
 	@Autowired 
 	private MemberGoogleService googleService;

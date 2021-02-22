@@ -36,6 +36,15 @@
 								<a href="<c:url value="/useronly/testfile"/>" class="button special">회원전용 테스트 페이지</a>
 							</footer>
 						</article>
+						<article>
+							<header>
+								<h3>Libero purus magna sapien<br /> sed ullamcorper</h3>
+							</header>
+							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
+							<footer>
+								<a href="<c:url value="/member/loginuser"/>" class="button special">회원리스트 테스트 페이지</a>
+							</footer>
+						</article>
 					</div>
 				</div>
 			</section>

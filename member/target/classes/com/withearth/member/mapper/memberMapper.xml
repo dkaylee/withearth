@@ -35,6 +35,10 @@ VALUES( #{id}, #{pw}, #{name}, #{logintype}, #{code} )
 INSERT INTO USER (id,name,photo,logintype,verify) 
 VALUES( #{id}, #{name}, #{photo}, #{logintype}, #{verify} )
 </if>
+<if test="logintype=='google'">
+INSERT INTO USER (id,name,photo,logintype,verify) 
+VALUES( #{id}, #{name}, #{photo}, #{logintype}, #{verify} )
+</if>
 </insert>
 
 <!-- 로그인 -->
@@ -84,6 +88,22 @@ select * from user where id= #{param1} and pw=#{param2}
 <!-- 카카오 로그인 인증 -->
 <select id="kakaoSelectLogin" resultMap="memberResult"> 
 		select * from user where id=#{id}
+</select>
+
+<!-- 구글 이메일 중복 인증 -->
+<select id="googleRegCheckCount"
+					resultType="int">
+		select count(*) from user where id=#{id} and logintype='google'
+</select>
+
+<!-- 구글 로그인 인증 -->
+<select id="googleSelectLogin" resultMap="memberResult"> 
+		select * from user where id=#{id}
+</select>
+
+<select id="emailUserCheckCount"
+					resultType="int">
+		select count(*) from user where id=#{id} and logintype='email'
 </select>
 
 </mapper>

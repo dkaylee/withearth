@@ -32,4 +32,14 @@ public interface MemberDAO {
 
 // 카카오 로그인
 	Member kakaoSelectLogin(String id);
+	
+// 구글 아이디+type("구글") 가입 여부 체크
+	int googleRegCheckCount(String id);	
+	
+// 구글 로그인
+	Member googleSelectLogin(String id);	
+	
+	
+// email 유저만 id pw찾기 이용 가능 
+	int emailUserCheckCount(String id);		
 }
