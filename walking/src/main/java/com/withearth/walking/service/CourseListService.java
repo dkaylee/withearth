@@ -83,6 +83,12 @@ public class CourseListService {
 
 		return list;
 	}
+
+	public int getCourseTotalCount() {
+		
+		dao = template.getMapper(WalkingDao.class);
+		return dao.selectTotalCount();
+	}
 	
 	
 	

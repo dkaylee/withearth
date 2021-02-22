@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class Course {
 	
-	// DB
+	// DB (타입 주의 - 타입 오류 시 400 에러 발생)
 	private int course_idx; // 코스 idx
 	private Timestamp course_date; // 코스 생성 일자
 	private float loc_km; // 코스 총 거리

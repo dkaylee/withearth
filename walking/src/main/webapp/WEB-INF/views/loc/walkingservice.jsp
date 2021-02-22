@@ -34,6 +34,9 @@
 
 
 <script type="text/javascript">
+
+	
+
 	var now_lat = $('#nowLat');
 	var now_lon = $('#nowLon');
 	var new_lat = $('#newLat');
@@ -817,7 +820,7 @@
 		
 		<!-- 경로 지도 -->
 		<div id="map_wrap"  class="map_wrap3">
-			<div id="map_div" style="width: 500px;" ></div>
+			<div id="map_div"  ></div>
 		</div>
 		<div class="map_act_btn_wrap clear_box"></div>
 		<br />
@@ -853,8 +856,8 @@
 		</div>
 	</div>
 	
-
-
+	<!-- 21.02.22: footer 추가 시 modal하고 충돌 발생 -->
+	<%-- <%@ include file="/WEB-INF/views/include/footer.jsp"%> --%>
 
 	
 	

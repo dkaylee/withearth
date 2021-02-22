@@ -46,6 +46,8 @@ div.searchBox {
 ul, li{
 	list-sytle: none;
 }
+
+
 </style>
 </head>
 <body>
@@ -74,6 +76,7 @@ ul, li{
 
 		<div class="contents">
 			<h3 class="listinfo">코스 리스트</h3>
+			<h4>전체 회원의 수: ${courseCnt} 개</h4>
 			<div class="content">
 				<table class="listTable">
 					<tr>
@@ -84,23 +87,26 @@ ul, li{
 						<th>이동 거리(km)</th>
 						<!-- <th>예상 시간(분)</th> -->
 						<th>소요 시간</th>
+						
 						<th>Manage</th>
 					</tr>
 
 					<c:forEach items="${listView.courseList}" var="course">
-						<tr>
-							<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
-							<td><c:forEach begin="1" end="">1</c:forEach></td>
-							<td><fmt:formatDate value="${course.course_date}"
-									pattern="yyyy.MM.dd." /></td>
-							<td>${course.start_point}</td>
-							<td>${course.end_point}</td>
-							<td>${course.loc_km} km</td>
-							<%-- <td>${course.about_time} 분</td> --%>
-							<td>${course.walking_time}</td>
-							<%--<td><a href="<c:url value="/course/edit?idx=${course.course_idx}"/>">수정</a> --%> 
-						    <td><a href="javascript:deleteCourse(${course.course_idx});">삭제</a></td>
-						</tr>
+						<c:set var="i" value="${i+1}"/>
+							<tr >
+								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
+								<td>${i}</td>
+								<td><fmt:formatDate value="${course.course_date}"
+										pattern="yyyy.MM.dd." /></td>
+								<td>${course.start_point}</td>
+								<td>${course.end_point}</td>
+								<td>${course.loc_km} km</td>
+								<%-- <td>${course.about_time} 분</td> --%>
+								<td>${course.walking_time}</td>
+								
+								<%--<td><a href="<c:url value="/course/edit?idx=${course.course_idx}"/>">수정</a> --%> 
+							    <td><a href="javascript:deleteCourse(${course.course_idx});">삭제</a></td>
+							</tr>
 					</c:forEach>
 
 				</table>

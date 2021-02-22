@@ -4,8 +4,7 @@ import java.sql.Time;
 
 public class CourseSettingRequest {
 
-	// beans 객체
-
+	// beans 객체 (타입 주의 - 타입 오류 시 400 에러 발생)
 	private float tdistance; 	// 총 거리
 	private long atime; 		// 예상 시간
 	private String startAdd; 	// 출발지 주소
