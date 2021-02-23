@@ -46,11 +46,13 @@ public class MatzipListService {
 		listMap.put("count", cntPerPage);
 		listMap.put("searchParam", param);
 		
+		System.out.println("show ListMap= "+listMap);
+		
 		int totalMatzipCount = dao.selectSearchMatzipCount(listMap);
 		System.out.println("matzipTotalCount : "+totalMatzipCount);
 		
 		List<MatzipVo> matzipList = dao.selectMatList(listMap);
-		System.out.println(matzipList);
+		System.out.println("matziplist>>>" + matzipList);
 		
 		matlist = new MatListView(param.getP(), totalMatzipCount, cntPerPage, matzipList, startRow, endRow);
 		
@@ -63,6 +65,7 @@ public class MatzipListService {
 	}
 	
 	public List<MatzipVo> getListView(){
+		
 		List<MatzipVo> list = null;
 		
 		try {

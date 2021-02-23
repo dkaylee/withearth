@@ -1,11 +1,11 @@
 package com.withearth.community.domain;
 
-
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class MatAddRequest {
+public class MatEditRequest {
 	
 	private int mIdx;
 	private String mTitle;
@@ -13,15 +13,13 @@ public class MatAddRequest {
 	private String mTime;
 	private String mNum;
 	private String mCont;
-	private List<MultipartFile> mImg;
-	
+	private List<HashMap<String, Object>> mImg;
 	public int getmIdx() {
 		return mIdx;
 	}
 	public void setmIdx(int mIdx) {
 		this.mIdx = mIdx;
 	}
-
 	public String getmTitle() {
 		return mTitle;
 	}
@@ -52,13 +50,13 @@ public class MatAddRequest {
 	public void setmCont(String mCont) {
 		this.mCont = mCont;
 	}
-	public List<MultipartFile> getmImg() {
+	public List<HashMap<String, Object>> getmImg() {
 		return mImg;
 	}
-	
-	public void setmImg(List<MultipartFile> mImg) {
+	public void setmImg(List<HashMap<String, Object>> mImg) {
 		this.mImg = mImg;
 	}
+	
 	public MatzipVo toMatzip() {
 		
 		MatzipVo matzip = new MatzipVo();
@@ -74,12 +72,10 @@ public class MatAddRequest {
 	
 	@Override
 	public String toString() {
-		return "MatAddRequest [mIdx=" + mIdx + ", mTitle=" + mTitle + ", mAddr=" + mAddr + ", mTime="
-				+ mTime + ", mNum=" + mNum + ", mCont=" + mCont + ", mImg=" + mImg + "]";
+		return "MatEditRequest [mIdx=" + mIdx + ", mTitle=" + mTitle + ", mAddr=" + mAddr + ", mTime=" + mTime
+				+ ", mNum=" + mNum + ", mCont=" + mCont + ", mImg=" + mImg + "]";
 	}
 	
 	
-	
-	
-	
+
 }

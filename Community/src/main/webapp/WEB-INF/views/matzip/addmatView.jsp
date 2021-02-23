@@ -38,12 +38,11 @@
 					소개글 ${matReq.mCont}
 				</div>
 				
+				<c:forEach items="${matReq.mImg}" var="upload">
 				<div class="6u$ 12u$(xsmall)">
-					이미지첨부 <c:forEach items="${fileList}" var="upload">
-							<img alt="프로필 사진"
-								src="<c:url value="/fileupload/matzip/${upload.newFName}"/>">
-							</c:forEach>
-				</div>
+					<img src="<c:url value="/fileupload/matzip/${matReq.mImg}"/>">
+				</div> 
+				</c:forEach>
 
 				<div class="3u$ 12u$(small)">
 					<input type="button" value="목록"><input type="button" value="글쓰기">

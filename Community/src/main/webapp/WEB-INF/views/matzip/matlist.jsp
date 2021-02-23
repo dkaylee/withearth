@@ -81,9 +81,6 @@
 		}
 	</script>
 
-	
-
-
 
 	<section id="three" class="wrapper special">
 	
@@ -115,7 +112,7 @@
 				<div class="flex flex-2">
 					<article>
 						<div class="image fit">
-							<img src="<c:url value="/fileupload/matzip/s_${matzip.matImg}}"/>"/>
+							 <img src="<c:url value="/fileupload/matzip/s_${matzip.matImg}}"/>"/>
 						</div>
 						<header>
 							<h3><a href="<c:url value="/matzip/matDetailView?matIdx=${matzip.matIdx}"/>">${matzip.matTitle}</a></h3>
@@ -157,6 +154,8 @@
 			searchForm.submit();
 		});
 	</script> -->
+	
+	
 
 
 

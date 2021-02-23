@@ -1,5 +1,6 @@
 package com.withearth.community.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,20 +28,28 @@ public interface MatDao {
 	List<MatzipVo> selectMatList(Map<String, Object> param);
 	
 	// 파일 업로드
-//	void fileUpload(Map<String, Object> map) throws Exception;
-	int fileUpload(FileVo file);
+	// void fileUpload(Map<String, Object> map) throws Exception;
+	int fileUpload(Map<String, Object> hm);
 	
 	// 파일 삭제
-	int fileDelete(String newFName);
+	int fileDelete(int fileIdx);
 	
-	// 파일 리스트 게시물 번호로 찾기
-	public List<FileVo> findByMatId(MatzipVo matIdx);
+	// 파일 수정
+	int updateFile(Map<String, Object> map) ;
+	
+	// 파일 조회
+	List<Map<String, Object>> selectFileList(Map<String, Object> map);
 
 	// 게시물 조회 - 디테일뷰 
 	MatzipVo selectMatByIdx(int matIdx);
 	
-	// 파일 조회
-//	List<Map<String, Object>> selectFileList(int matIdx) throws Exception;
+	// 게시물 삭제
+	int deleteMatzipByIdx(int matIdx);
+
+	// 게시물 수정
+	int updateMatzip(MatzipVo matzip);
+	
+	
 	
 	
 	

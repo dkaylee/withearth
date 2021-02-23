@@ -10,21 +10,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.withearth.community.service.DetailViewService;
 
 @Controller
-//@RequestMapping(value="/matzip/getDetailView")
 public class MatzipDetailController {
 
 	@Autowired
-	DetailViewService detailService;
+	private DetailViewService detailService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/matzip/matDetailView", method = RequestMethod.GET)
 	public String getMatDetail(
 			@RequestParam("matIdx") int matIdx,
 			Model model
 			) {
 		
 		model.addAttribute("matzip", detailService.getMatzip(matIdx));
+//		model.addAttribute("uploadFileList", detailService.getImage(matIdx));
 		
 		System.out.println("matzip>>" + detailService.getMatzip(matIdx));
+//		System.out.println("filelist>>" + detailService.getImage(matIdx));
 		
 		return "/matzip/matDetailView";
 	}
