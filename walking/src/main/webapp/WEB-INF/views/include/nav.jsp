@@ -4,6 +4,19 @@
 <style type="text/css">
 /* 상단 버튼 css */
 
+a{
+	text-decoration:none;
+	color:#5385c1;
+}
+
+a:hover{
+	text-decoration:none;
+	color:white;
+}
+
+a:visited{
+
+}
 
 
 #moveBtn {
@@ -34,14 +47,14 @@
 	<!-- nav 메뉴 이동 시 사용 -->
 	<nav class="menu">
 	
-		<button id="moveBtn" class="button special" onclick = "location.href = 'http://localhost:8080/walking/course/loc/walkingservice'">
-			서비스 시작
+		<button id="moveBtn" class="button special" >
+			<a href="<c:url value="/course/loc/walkingservice"/>">서비스 시작</a>
 		</button>
-		<button id="moveBtn" class="button special" onclick="location.href = 'http://localhost:8080/walking/loc/walkingInfo'">	
-			서비스 안내		
+		<button id="moveBtn" class="button special">	
+			<a href="<c:url value="/loc/walkingInfo"/>">서비스 안내</a>
 		</button>
-		<button id="moveBtn" class="button special" onclick = "location.href = 'http://localhost:8080/walking/loc/courselist'">
-			나의 코스
+		<button id="moveBtn" class="button special" >
+			<a href="<c:url value="/loc/courselist"/>">나의 코스</a>
 		</button>
 		
 	</nav>
