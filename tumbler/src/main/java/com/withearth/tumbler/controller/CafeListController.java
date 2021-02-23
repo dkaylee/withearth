@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.withearth.tumbler.domain.Cafe;
@@ -58,28 +56,43 @@ public class CafeListController {
 	
 	*/
 	
-	/*
-	@GetMapping("map")
-	@ResponseBody 
-	public Map<Integer, Cafe> cafeInfo(){
-		 Map<Integer, Cafe> cafeMap = new HashMap<Integer, Cafe>();
-		 
-		 for(Cafe cafe : cafelistSerivce.cafeInfo()) {
-			 cafeMap.put(cafe.getCafe_idx(),cafe);
-			
-		 }
 
-		 
-		return cafeMap;
-	} */
+//	@GetMapping
+//	public Map<Integer, Cafe> cafeInfo(){
+//		 Map<Integer, Cafe> cafeMap = new HashMap<Integer, Cafe>();
+//		 
+//		 for(Cafe cafe : cafelistSerivce.cafeInfo()) {
+//			 cafeMap.put(cafe.getCafe_idx(),cafe);
+//			 
+//			 System.out.println("cafeMAP!!!!"+cafeMap);
+//			
+//		 }
+//
+//		 
+//		return cafeMap;
+//	} 
 	
 	@GetMapping("map")
-	@CrossOrigin
 	public List<Cafe> cafeList(){
 		
-		return cafelistSerivce.cafeView();
+		return cafelistSerivce.cafeInfo();
 	}
 	 
+//	@RequestMapping(value = "Map", method = RequestMethod.GET)
+//	public Map<String, Object> cafeInfo() {
+//
+//		Map<String, Object> map = new HashMap<String, Object>();
+//
+//		// 서비스에서 주소를 가져오는 메소드 호출
+//		List<Cafe> address = cafelistSerivce.cafeInfo();
+//
+//		map.put("address", address);
+//
+//
+//
+//		return map;
+//
+//	}
 	
 	/*
 	@GetMapping("/tumbler")

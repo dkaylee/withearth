@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.withearth.tumbler.dao.CafeDao;
 import com.withearth.tumbler.domain.Cafe;
+import com.withearth.tumbler.domain.CafeRequest;
 
 import lombok.extern.log4j.Log4j;
 
@@ -16,6 +17,7 @@ import lombok.extern.log4j.Log4j;
 public class CafeListSerivce {
 
 	private CafeDao dao;
+	private CafeRequest cdao;
 
 	@Autowired
 	private SqlSessionTemplate template;
@@ -56,8 +58,8 @@ public class CafeListSerivce {
 		List<Cafe> list = null; // 변수 만들어서 초기화
 		dao = template.getMapper(CafeDao.class);
 		list = dao.selectLaglng();
-		System.out.println("카페좌표!!!!!"+list);
-		 log.info(list);
+		//System.out.println("카페좌표!!!!!"+list);
+		// log.info(list);
 
 		return list;
 

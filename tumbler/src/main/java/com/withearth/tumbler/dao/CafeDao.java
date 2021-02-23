@@ -13,7 +13,7 @@ public interface CafeDao {
  List<Cafe> selectCafeList();
 
   //위도 경도  리스트 
-List<Cafe> selectLaglng();
+  List<Cafe> selectLaglng();
 
 
 int insertQrcode();
