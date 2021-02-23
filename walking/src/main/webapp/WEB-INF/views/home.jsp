@@ -8,6 +8,8 @@
         <title>WithEarth</title>
 		<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
+
+
     </head>
     
     <body id="page-top">
@@ -15,10 +17,11 @@
        <%@ include file="/WEB-INF/views/include/header.jsp"%>
        
        <!-- Banner -->
-			<section id="banner">
+		<section id="banner">
 				<h1>Welcome to WithEarth</h1>
 				<p>북극곰을 지키자!</p>
-			</section>
+		</section>
+
 		
 		<%@ include file="/WEB-INF/views/include/content.jsp"%>
 

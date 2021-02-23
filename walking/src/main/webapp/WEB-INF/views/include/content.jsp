@@ -4,34 +4,38 @@
 <section id="one" class="wrapper">
 				<div class="inner">
 					<div class="flex flex-3">
+						<!-- 메인: 바로가기 서비스 -> 텀블러 인증 서비스 안내 및 이동 -->
 						<article>
 							<header>
-								<h3>Magna tempus sed amet<br /> aliquam veroeros</h3>
+								<h3>텀블러 사용 인증하기<br /> </h3>
 							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
+							<p>지정된 카페에서 텀블러 사용 인증 후 포인트를 적립받는 서비스입니다.</p>
 							<footer>
 								<a href="#" class="button special">More</a>
 							</footer>
 						</article>
+						<!-- 메인: 바로가기 서비스 -> 걷기 인증 서비스 안내 및 이동 -->
 						<article>
 							<header>
-								<h3>Interdum lorem pulvinar<br /> adipiscing vitae</h3>
+								<h3>도보 인증 서비스<br /></h3>
 							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
+							<p>목적지 설정 후 도보로 목적지까지 이동하면 포인트를 적립받는 서비스입니다.</p>
+							<footer>
+							
+								<a href="<c:url value="/course/loc/walkingservice"/>" class="button special">More</a>
+							</footer>
+						</article>
+						<!-- 메인: 바로가기 서비스 -> 기부하기 안내 및 이동 -->
+						<article>
+							<header>
+								<h3>기부하기<br /> </h3>
+							</header>
+							<p>사용하지 않는 물건 또는 음식들을 서로 공유하고 포인트를 적립받는 서비스입니다.</p>
 							<footer>
 								<a href="#" class="button special">More</a>
 							</footer>
 						</article>
-						<article>
-							<header>
-								<h3>Libero purus magna sapien<br /> sed ullamcorper</h3>
-							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
-					</div>
+						
 				</div>
 			</section>
 
@@ -39,8 +43,8 @@
 			<section id="two" class="wrapper style1 special">
 				<div class="inner">
 					<header>
-						<h2>Ipsum Feugiat</h2>
-						<p>Semper suscipit posuere apede</p>
+						<h2>비건 레시피 랭킹</h2>
+						<p>인기 레시피를 참고해보세요!</p>
 					</header>
 					<div class="flex flex-4">
 						<div class="box person">

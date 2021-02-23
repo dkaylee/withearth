@@ -29,7 +29,7 @@
 		<img alt="serviceInfo3" src="<c:url value="/img/serviceInfo3.png"/>" style="width: 1000px;">
 		
 		<br>
-		<h3>올바른 걷기 방법</h3>
+		
 		
 	</div>
 	

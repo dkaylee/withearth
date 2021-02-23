@@ -36,7 +36,7 @@ div.searchBox {
 }
 
 #searchType{
-	width: 200px;
+	width: 320px;
 	margin: 0 20px;
 	float: left;
 }
@@ -95,9 +95,9 @@ h3{
 				<!-- <div class="searchBox"> -->
 				<form><h3>검색 타입</h3>  
 					<select name="searchType" id="searchType">
-						<option value="date">저장 일자</option>
+						<option value="both">저장일자(ex.YYYY-MM-DD) + 목적지</option>
+						<option value="date">저장 일자(ex.YYYY-MM-DD)</option>
 						<option value="end">목적지</option>
-						<option value="both">설정일자+목적지</option>
 					</select> <h3>검색 키워드</h3> <input type="text" name="keyword" id="keyword"> <input
 						type="submit" value="검색" id="searchBtn">
 				</form>
@@ -129,7 +129,7 @@ h3{
 								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.course_date}"
-										pattern="yyyy.MM.dd  HH:mm:ss" /></td>
+										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
 								<td>${course.loc_km} km</td>

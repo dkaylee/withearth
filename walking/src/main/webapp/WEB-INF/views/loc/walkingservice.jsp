@@ -40,7 +40,7 @@
 
 #arriveBtn{float: left; margin-top: 4%; margin-left: 1%;}
 
-#InfoBtn{float: right; margin-top: 2%;}
+#InfoBtn{float: right; margin-top: 2%; margin-right: 5%;}
 
 #startInfo{
 	clear:left;
@@ -843,14 +843,14 @@
 			
 			<!--  -->
 			<h2 style="" id="mainInfo">걷기 인증 서비스</h2> 
-			<button id="startBtn" onclick="startTime()">시작 하기</button>
-			<button id="arriveBtn">도착</button><br>
-			<button id="InfoBtn" onclick="infoModal()" >올바르게 걷는 방법</button>
+			<button id="startBtn" class="button special" onclick="startTime()">시작 하기</button>
+			<button id="arriveBtn" class="button special">도착</button><br>
+			<button id="InfoBtn" class="button special" onclick="infoModal()" >올바르게 걷는 방법</button>
 			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3><br>
 			<h4 id="endInfo">◇ 목적지 (ex.서울시 마포구 와우산로29가길 69) </h4>
 			<input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
 				value="서울특별시 종로구 종로5가">
-			<button id="btn_select">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px font-weight: bolder;"></h3>
+			<button id="btn_select" class="button special">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px font-weight: bolder;"></h3>
 			
 			<br>
 			

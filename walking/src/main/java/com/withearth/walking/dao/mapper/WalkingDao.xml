@@ -112,6 +112,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!--  저장 일자로 검색 -->
+	<!-- <sql id="searchDate">
+		or course_date like	concat('%',#{searchParam.keyword},'%')
+	</sql> -->
+	
 	<sql id="searchDate">
 		or course_date like	concat('%',#{searchParam.keyword},'%')
 	</sql>
