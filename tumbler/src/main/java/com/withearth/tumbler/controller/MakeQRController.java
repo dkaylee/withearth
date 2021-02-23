@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -27,16 +25,16 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.withearth.tumbler.dao.CafeDao;
-import com.withearth.tumbler.domain.Cafe;
 import com.withearth.tumbler.domain.CafeRequest;
  
 @Controller
 public class MakeQRController {
    	
-	private CafeDao dao;
-	
-	@Autowired
-	private SqlSessionTemplate template;
+	/*
+	 * private CafeDao dao;
+	 * 
+	 * @Autowired private SqlSessionTemplate template;
+	 */
 
 
 	 @RequestMapping("/tumbler/{cafe_idx}") 
@@ -48,6 +46,7 @@ public class MakeQRController {
 		
       String root = request.getSession().getServletContext().getRealPath("resources"); //현재 서비스가 돌아가고 있는 서블릿 경로의 resources 폴더 찾기
       String savePath = root + "\\qrCodes\\"; // 파일 경로
+      System.out.println("경로!!!!!!!!!!!!!!"+root);
       
     //파일 경로가 없으면 생성하기
   	File file = new File(savePath); 
@@ -56,13 +55,14 @@ public class MakeQRController {
   	}  
       
 
-      int cafe_idx = 20;
+      int cafe_idx = 21;
       
  
       
       
        // 링크로 할 URL주소 
-       String url = "http://localhost:8080/tumbler/"+cafe_idx;
+       //String url = "http://localhost:8080/tumbler/"+cafe_idx;
+       String url = "http://192.168.0.1:8080/tumbler/"+cafe_idx;
       //String url = "http://192.168.219.106:8080/qr/"+cafe_idx;
 
      
@@ -95,19 +95,21 @@ public class MakeQRController {
       
       // ImageIO를 사용하여 파일쓰기 
       ImageIO.write(bufferedImage, "png",temp); 
+      
+      System.out.println("이름@@@@@@@@@@@@@@@@@"+temp);
   	
       //리턴은 사용자가 원하는 값을 리턴한다. 
       //작성자는 QRCode 파일의 이름을 넘겨주고 싶었음.
       
-      Cafe cafe = new Cafe();
-      cafe.setQrcode(fileName);
-      
-      model.addAttribute("cafe",cafe);
-      dao = template.getMapper(CafeDao.class);
+//      Cafe cafe = new Cafe();
+//      cafe.setQrcode(fileName);
+//      
+//      model.addAttribute("cafe",cafe);
+//      dao = template.getMapper(CafeDao.class);
       
       
 
-      return "dao.insertQrcode();"; 
+      return "tumbler/saving"; 
       
 	 }
 	 
