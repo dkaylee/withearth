@@ -10,6 +10,7 @@ import javax.mail.internet.MimeMessage.RecipientType;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.withearth.member.dao.MemberDAO;
@@ -24,7 +25,9 @@ public class FindPwService {
 	
 	@Autowired
 	private JavaMailSender sender;
-
+	
+	@Autowired
+	private BCryptPasswordEncoder cryptPasswordEncoder; 
 
 	public int changepw(TemporaryPw tempw){
 		int result=0;
@@ -58,6 +61,11 @@ public class FindPwService {
 		//임시 비밀번호 지정		
 		
 		dao = template.getMapper(MemberDAO.class);
+		
+		//여기서 암호화
+		String beforepw = tempw.getTpw();
+		String afterpw = cryptPasswordEncoder.encode(beforepw);
+		tempw.setTpw(afterpw);
 		result = dao.updateMembertemporaryPW(tempw);
 		return result;
 	}

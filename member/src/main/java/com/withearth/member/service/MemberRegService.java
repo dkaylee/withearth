@@ -38,10 +38,10 @@ public class MemberRegService {
 	
 	@Autowired
 	private AES256Util aes256Util;
-	
+	*/
 	@Autowired
 	private BCryptPasswordEncoder cryptPasswordEncoder; 
-	*/
+	
 	
 	
 	
@@ -106,7 +106,13 @@ public class MemberRegService {
 		}//if끝
 		
 		//데이터 저장
+		//암호화부터 
+		String beforepw = regRequest.getUserpw();
+		String afterpw = cryptPasswordEncoder.encode(beforepw);
+		regRequest.setUserpw(afterpw);
+		
 		Member member = regRequest.toMember();
+	
 		if(newFileName !=null) {
 			member.setPhoto(newFileName); //새롭게 만든 파일 이름을 member에 photo이름으로 들여보냄
 		}

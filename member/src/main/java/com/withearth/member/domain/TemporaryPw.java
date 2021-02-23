@@ -1,7 +1,7 @@
 package com.withearth.member.domain;
 
 public class TemporaryPw {
-
+	
 	private String id;
 	private String tpw;
 	
@@ -21,7 +21,6 @@ public class TemporaryPw {
 	public void setTpw(String tpw) {
 		this.tpw = tpw;
 	}
-
 	
 	private void getrandomint() {
 		String randompw = "";

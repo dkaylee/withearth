@@ -41,8 +41,9 @@ $(document).ready(function(){
 						alert("메일이 발송되었습니다.");
 						location.href="/member"; 
 					},
-					error:function(){
-						console.log("안됐다")
+					error:function(error){
+						console.log("안됐다");
+						console.log(error);
 					}
 				});
 		}

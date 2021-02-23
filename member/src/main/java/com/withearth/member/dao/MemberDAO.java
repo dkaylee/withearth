@@ -9,7 +9,7 @@ public interface MemberDAO {
 
 //로그인
 	//member가 왜 여기 들어가니..?
-	Member selectLogin(String id, String pw);
+	Member selectLogin(String id);
 
 //아이디 중복체크 & 이메일 보내기
 	int selectMemberByIdCount(String id);
@@ -39,7 +39,9 @@ public interface MemberDAO {
 // 구글 로그인
 	Member googleSelectLogin(String id);	
 	
-	
 // email 유저만 id pw찾기 이용 가능 
 	int emailUserCheckCount(String id);		
+
+// 암호화된 비밀번호 로그인 시키기
+	Member compareSecretpw(String id);
 }

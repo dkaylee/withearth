@@ -64,7 +64,28 @@ $(document).ready(function(){
 								console.log(data2);
 								if(data2=='N'){
 									alert("인증되지 않은 회원입니다. 인증메일을 확인해주세요.");
-									 return false;
+									//로그인 미인증 회원은 로그인은 되는데, 회원메뉴를 접근 못하게 하고싶음 
+								/* 	var formData = new FormData();
+									formData.append("userid",$('#userid').val());
+									formData.append("pw",$('#pw').val());
+									$.ajax({
+										url: '/member/member/login',
+										type: 'post',
+										data: formData,
+										enctype: 'multipart/form-data',
+										processData: false,
+										contentType: false,
+										cache: false,
+										success: function(data){
+											alert("로그인 되었습니다.");
+											location.href="/member"; 
+											console.log(data);
+										},
+										error: function(error){
+											console.log("실패");
+											console.log(error);
+										}
+									}); */
 								} else {
 									//로그인 클릭
 									var formData = new FormData();
