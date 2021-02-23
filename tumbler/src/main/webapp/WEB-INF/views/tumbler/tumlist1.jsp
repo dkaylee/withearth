@@ -366,10 +366,7 @@ var markers = [];
 				removable : iwRemoveable
 			});
 
-			
-		
-			
-			
+	
 			// 인포윈도우를 마커위에 표시합니다 
 			infowindow.open(map, marker);
 			//infowindow.setContent(content);
@@ -386,114 +383,116 @@ var markers = [];
 
 		}   
     
-// 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다
-/*  var positions  = [
-	 {
-	 
-	 title:'종각',
-	 latlng: new kakao.maps.LatLng(37.569918, 126.984528)//종각
-		 
- },
- {
-	 title:'종로3가',
-	 latlng:new kakao.maps.LatLng(37.570553, 126.990206) //종로3가
- },
- {
-	 title:'광화문R',
-	 latlng:new kakao.maps.LatLng(37.571229, 126.976287) //광화문R
- }
-	 
-	 
-];  
- */
 
-
- var positions=[];
-/* 
-  $.getJSON("http://localhost:8080/tumbler/tumlist1",function(data)){
-	
-	var positions=[];
-	
-	$.each(data, function(key, val){
-		positions.push("")
-	}
-}
-   */
  
- /* $(document).ready(function(){
-		
-		$.ajax({
-			url : 'http://localhost:8080/tumbler/tumlist1',
-			type : 'GET',
-			dataType:"json",
-			success : function(data){
-				console.log(data);
-				alert(data);
-				alert(JSON.stringify(data));
-				
-				var positions=[];
-				
-				$.each(data, function(index, item){
-					
-					for(var i =0; i< data.lenght; i++){
-						alert(i);
-					
-						
-					   });
-				})
-				
-			},
+var positions = []; //마커 좌표를 담을 배열 
 
-			error : function(e){
-				console.log("에러발생!! : ", e);
-			}
-		});
+	var cafeinfo = $.ajax({
+	type:"GET",
+	url:"http://localhost:8080/tumbler/tumlist1/map",
+	data:{
 		
-		
-		
-	}); */
+		cafe_name:"${cafe.cafe_name}",
+		cafe_lat:"${cafe.cafe_lat}",
+		cafe_lon:"${cafe.cafe_lon}",
+		location:"${cafe.location}"
 	
-/* 	 $(document).ready(function(){
-		 console.log(star);
-	 
-$.get("map",function(data){
+	},
+error : function(error) {
+	console.log("error");
+},
+success : function(positions) {
+	console.log(positions);
+	//alert(data);
+	alert(JSON.stringify(positions));
+    console.log(positions[0].cafe_name, positions[0].cafe_lat,positions[0].cafe_lon);
+	console.log("success");
 	
-		console.log(data);
+	},
+
+
+
+});
+
+	cafeinfo.done(successFunction);
+	cafeinfo.error(errorFunction);
+	
+	
+	function successFunction(positions){
+		console.log('json 데이터 받기 확인');
+   	 	//console.log(positions);
+   	 	console.log("첫번째거: "+positions[0].cafe_name)
+   	 	
+ /*   	 	for (i = 0; i < positions.length; i++) {
+   	 		
+   	 		var cafe_name = positions[i].cafe_name;
+   	 		var cafe_lat= positions[i].cafe_lat;
+   	 		var cafe_lon = positions[i].cafe_lon;
+   	 		
+   	 		//console.log(cafe_lon);
+   	 		var positions =[{	
+   	 			title: 'positions[i].cafe_name',
+   	 		    latlng:new kakao.maps.LatLng(positions[i].cafe_lon, positions[i].cafe_lat)
+   	 		}]
+   	 		
+   	 		
+   	 		
+   	 	} */
+   	 	
+   	 var positions= [];
+   	 for (i = 0; i < positions.length; i++) {
+		 
+			positions.push({ 
+		         content : positions[i].cafe_name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		         latlng: new kakao.maps.LatLng(positions[i].cafe_lat, positions[i].cafe_lon)
+		         
+		    
+		    });
+   	
+   	 	Positions.push(new kakao.maps.LatLng(positionsLat, positionsLng));
+   	 	}
+	
 		
-	});
-}) */
-
-var positions = [];
-
-
- 		$.ajax({
+	function errorFunction(request,status,error){
+		console.log("오류확인");
+		console.log(error);
+	}
+ 
+ 
+ 		/* $.ajax({
 			type:"GET",
 			url:"http://localhost:8080/tumbler/tumlist1/map",
 			data:{
-				cafe_idx:"${Cafe.cafe_idx}",
-				cafe_name:"${cafe_name}",
-				cafe_lat:"${cafe_lat}",
-				cafe_lon:"${cafe_lon}",
-				location:"${location}"
+				
+				cafe_name:"${cafe.cafe_name}",
+				cafe_lat:"${cafe.cafe_lat}",
+				cafe_lon:"${cafe.cafe_lon}",
+				location:"${cafe.location}"
 			
 			},
 		error : function(error) {
 			console.log("error");
 		},
-		success : function(data) {
-			console.log(data);
-			alert(data);
-			alert(JSON.stringify(data));
+		success : function(positions) {
+			console.log(positions);
+			//alert(data);
+			alert(JSON.stringify(positions));
+		    console.log(positions[0].cafe_name, positions[0].cafe_lat);
 			console.log("success");
 			
-			for (i = 0; i < data.length; i++) {
-			    // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-			    marker = new kakao.maps.Marker({ 
-			    	 position: data[i].latlng, // 마커를 표시할 위치
-			         title : data[i].title // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+			for (i = 0; i < positions.length; i++) {
+				 
+				positions.push({ 
+			         content : positions[i].cafe_name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+			         latlng: new kakao.maps.LatLng(positions[i].cafe_lat, positions[i].cafe_lon)
+			         
 			    
 			    });
-			    
+				
+				 marker.setMap(map);
+				    
+				    // LatLngBounds 객체에 좌표를 추가합니다
+				 bounds.extend(positions[i]);
 			}
 
 
@@ -501,7 +500,7 @@ var positions = [];
 		async: false
 		
 		});
-		
+		  */
 		
 	
 	
