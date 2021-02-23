@@ -11,8 +11,8 @@
 <style>
 
 .container{	
-	margin-left: 15%;
-	margin-right: 5%;	
+	margin-left: 1%;
+	margin-right: 1%;	
 }
 
 td, th {
@@ -28,26 +28,28 @@ td, th {
 }
 div.searchBox {
 	border: 1px solid #CCC;
-	margin: 0 20px;
-	padding: 10px 20px;
+	margin: 0;
+	
 	background-color: #EEE;
-	float: left;
+	
 	vertical-align: middle;
 }
 
-#searchType{
-	width: 320px;
-	margin: 0 20px;
+/* 검색 타입 */
+#searchType{ 
+	width: 100%;
+	margin-bottom: 2%;
 	float: left;
 }
 
+/* 검색 키워드 */
 #keyword{
-	width: 300px;
-	margin-left: 1%;
+	width: 60%;
+	
 	float: left;
 }
 
-#searchBtn{margin-left: 1%;}
+#searchBtn{width: 20%;float: left; overflow: hidden; margin-left: 1%;}
 
 #totalCourseCount{
 	float: right;
@@ -81,6 +83,10 @@ h3{
 	
 }
 
+.contents{
+	width:100%;
+}
+
 </style>
 </head>
 <body>
@@ -89,17 +95,18 @@ h3{
 	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 	
 	<main class="container">
-		<h2 style="margin:50px 0; font-weight: bolder;">나의 코스</h2>
+		<h2 style="margin:20px 0; font-weight: bolder;">나의 코스</h2>
 		<div class="searcontents">
 			<div class="searcontent">
 				<!-- <div class="searchBox"> -->
-				<form><h3>검색 타입</h3>  
+				<form><h4>◇ 검색 타입</h4>  
 					<select name="searchType" id="searchType">
 						<option value="both">저장일자(ex.YYYY-MM-DD) + 목적지</option>
 						<option value="date">저장 일자(ex.YYYY-MM-DD)</option>
 						<option value="end">목적지</option>
-					</select> <h3>검색 키워드</h3> <input type="text" name="keyword" id="keyword"> <input
-						type="submit" value="검색" id="searchBtn">
+					</select> <h4>◇ 검색 키워드</h4> 
+					<input type="text" name="keyword" id="keyword">
+					<input	type="submit" value="검색" id="searchBtn">
 				</form>
 				<!-- 	</div> -->
 			</div>
@@ -107,7 +114,7 @@ h3{
 
 
 		<div class="contents">
-			<h3 class="listinfo">코스 리스트</h3>
+			<h3 class="listinfo" style="clear:none;">코스 리스트</h3>
 			<h4 id="totalCourseCount">전체 코스 개수:  ${courseCnt} 개</h4>
 			<div class="content">
 				<table class="listTable">

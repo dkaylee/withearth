@@ -9,6 +9,8 @@
 #moveBtn {
 	color: #5385c1;
 	background-color: #d4e0ef;
+	margin-bottom: 1%;
+	
 }
 
 #moveBtn:hover {
@@ -19,23 +21,26 @@
 
 
 .menu{
-	margin-top: 10%;
-	margin-left: 15%;
+	margin-top: 25%;
+	margin-left: 1%;
+	margin-right: 1%;
 	
 	margin-bottom: 0;
 }
+
+
 
 </style>
 	<!-- nav 메뉴 이동 시 사용 -->
 	<nav class="menu">
 	
-		<button id="moveBtn" onclick = "location.href = 'http://localhost:8080/walking/course/loc/walkingservice'">
-			걷기 인증 서비스 시작
+		<button id="moveBtn" class="button special" onclick = "location.href = 'http://localhost:8080/walking/course/loc/walkingservice'">
+			서비스 시작
 		</button>
-		<button id="moveBtn" onclick="location.href = 'http://localhost:8080/walking/loc/walkingInfo'">	
+		<button id="moveBtn" class="button special" onclick="location.href = 'http://localhost:8080/walking/loc/walkingInfo'">	
 			서비스 안내		
 		</button>
-		<button id="moveBtn" onclick = "location.href = 'http://localhost:8080/walking/loc/courselist'">
+		<button id="moveBtn" class="button special" onclick = "location.href = 'http://localhost:8080/walking/loc/courselist'">
 			나의 코스
 		</button>
 		

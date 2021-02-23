@@ -26,8 +26,9 @@
 
 
 .mainPage{	
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-top: 5%;
+	margin-left: 1%;
+	margin-right: 1%;
 }
 
 #mainInfo{
@@ -36,49 +37,62 @@
 	font-weight: bolder;
 }
 
-#startBtn{float: left; margin-top: 4%; margin-left: 5%;}
+#startBtn{margin-bottom: 1%; width: 48%; }
 
-#arriveBtn{float: left; margin-top: 4%; margin-left: 1%;}
+#arriveBtn{margin-bottom: 1%;  width: 48%; margin-left: 2%; margin-right: 0;}
 
-#InfoBtn{float: right; margin-top: 2%; margin-right: 5%;}
+#InfoBtn{margin-bottom: 1%; }
 
 #startInfo{
 	clear:left;
-	margin: 20px;
+	margin: 0 20px;
 	font-weight: bolder;
  }
  
  #endInfo{
- 	margin: 20px;
+ 	margin: 0 20px;
  	font-weight: bolder;
  }
 
-#fullAddr{float: left; margin: 0;}
+#fullAddr{margin-top: 3%; margin-left: 2%; width: 72%; float: left; overfloat: hidden;}
 
 #btn_select{
-	margin-top: 2%;
-	float: left;
+	margin-top: 3%;
+	margin-left: 2%;
+	overflow: hidden;
+	width: 22%;
+	
 }
 
-#endAdd{clear: left;}
+#endAdd{margin-bottom: 10%;}
 
 #clock{
+	margin-top: 10%;
 	font-size: larger;
-	float: left;
-	margin-left: 20px;
+	text-align: center;
+	width: 100%;
 }
 
 #restart{
-	float: left;
-	margin-left: 20px;
+	margin-bottom: 1%;
+	width: 48%; margin-left: 1%;
 	display: none;
 }
 
 #stopTimer{
-	float: left;
-	margin-left: 20px;
-	margin-top: 0;
+	margin-bottom: 1%;
+	width: 48%; margin-right: 1%;
 	display: none;
+}
+
+#saveBtn{
+	margin-bottom: 1%;
+	width: 48%; margin-left: 1%;
+}
+
+#modalChk{
+	margin-bottom: 1%;
+	width: 48%; margin-left: 1%;
 }
 
 </style>
@@ -285,7 +299,7 @@
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(중심점) : "+ lat+ ", "
 																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
-									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
+									var text = "검색 결과(새주소) "+" \n "+ newAddress+ "\n "
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
@@ -294,7 +308,7 @@
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
 									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
-									var text = "검색 결과(새주소) : "+ newAddress
+									var text = "검색 결과(새주소): "+" \n " + newAddress
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
@@ -366,7 +380,7 @@
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
 									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br>"	+ "위경도좌표(중심점) : "
 																+ lat+ ", "+ lon+ "</br>"+ "위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
-									var text = "검색 결과(지번주소) : "+ address;
+									var text = "검색 결과(지번주소) \n"+"\n"+ address;
 									console.log('address'+address);
 									newAddress = address;	// newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
@@ -378,7 +392,7 @@
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
 									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"
 												+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
-									var text = "검색 결과(지번주소) : "+ address;
+									var text = "검색 결과(지번주소)"+" \n "+ address;
 									console.log('address'+address);
 									newAddress = address; // newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
@@ -843,14 +857,16 @@
 			
 			<!--  -->
 			<h2 style="" id="mainInfo">걷기 인증 서비스</h2> 
+			
+			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h4 id="revresult" style="margin: 10px 30px"></h4><br>
+			<h4 id="endInfo">◇ 목적지 <br />(ex.서울시 마포구 와우산로29가길 69) </h4>
+			<input type="text"   class="text_custom" id="fullAddr" name="fullAddr"
+				value="서울특별시 종로구 종로5가"><button id="btn_select" class="button special" >설정 하기</button> 
+			<h4 id="endAdd" style="margin: 10px 30px;"></h4>
+			
 			<button id="startBtn" class="button special" onclick="startTime()">시작 하기</button>
 			<button id="arriveBtn" class="button special">도착</button><br>
 			<button id="InfoBtn" class="button special" onclick="infoModal()" >올바르게 걷는 방법</button>
-			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3><br>
-			<h4 id="endInfo">◇ 목적지 (ex.서울시 마포구 와우산로29가길 69) </h4>
-			<input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
-				value="서울특별시 종로구 종로5가">
-			<button id="btn_select" class="button special">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px font-weight: bolder;"></h3>
 			
 			<br>
 			
@@ -859,14 +875,13 @@
 			<!-- 타임워치  -->
 			<h3 id="clock" class="contents"></h3>
 			<!-- 타임워치 정지 버튼 -->
-			<button id="restart" onclick="startTime();">다시 시작</button>
-			<button id="stopTimer" onclick="stop();">일시 정지</button>
+			<button id="restart" class="button special" onclick="startTime();">다시 시작</button>
+			<button id="stopTimer" class="button special" onclick="stop();">일시 정지</button>
 			
 			<!-- 예상 이동 거리, 도보 시간  출력-->
 			<h3 id="result" style="float: right"></h3>
 			
-			<!-- 경로 지도 -->
-			<br>
+			<!-- 경로 지도 -->			
 			<div id="map_wrap"  class="map_wrap3">
 				<div id="map_div" style="width: 600px" ></div>
 			</div>
@@ -880,7 +895,7 @@
 
 	<!-- Modal content -->
 	<!-- <button id="testBtn" class="btn">모달 테스트</button> -->
-  <!-- 회원가입 확인 Modal-->
+  <!-- 완주 확인 Modal-->
 	<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -898,15 +913,42 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button class="btn" id="saveBtn" type="button" onclick="saveData()">저장</button>
-					<button class="btn" type="button" data-dismiss="modal">확인</button>
+					<button class="button special" id="saveBtn" type="button" onclick="saveData()">저장</button>
+					<button class="button special" type="button" data-dismiss="modal" id="modalChk">확인</button>
 				</div>
 			</div>
 		</div>
 		
 	</div>
 	
-	
+	<!-- 올바른 걷기 자세 안내 Modal-->
+ 
+	<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel">올바르게 걷는 방법</h2>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
+					<h3 style="font-weight: bolder;">운동 순서</h3>
+					<h4>1. 배에 힘을 주고 등을 곧게 편다. 발을 내딛으면서 바깥쪽이 먼저 바닥에 닿도록 해야 몸이 받는 충격을 최대한 흡수할 수 있다.</h4>
+					<h4>2. 발바닥이 마지막으로 지면에 닿는 순간 가볍게 바닥을 밀어 힘들이지 않고 속도를 낸다. 체중은 발뒤꿈치 바깥쪽을 시작으로 발 가장자리에서 엄지발가락 쪽으로 이동시킨다.</h4>
+					<h4>3. 몸의 중심이 앞으로 이동했으면 다른 쪽 발을 내딛을 수 있도록 발뒤꿈치를 들어준다. 팔은 자연스럽게 앞뒤로 흔들고 팔의 움직임과 함께 어깨를 자연스럽게 좌우로 돌린다.</h4>
+					<img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 100%;">
+					
+					<h6>출처: [네이버 지식백과] 걷기 [walking] (유산소운동 바로 알기, 최대혁, 국민체육진흥공단 체육과학연구원)</h6>
+					
+				</div>
+				<div class="modal-footer">
+					<button class="btn" type="button" data-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 	
 	
 	<!-- 21.02.22: footer 추가 시 modal하고 충돌 발생 -->
@@ -938,33 +980,6 @@
 			<script src="<c:url value="/js/main.js"/>"></script>
 
 	
-	<!-- 올바른 걷기 자세 안내 Modal-->
- 
-	<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">올바르게 걷는 방법</h2>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">X</span>
-					</button>
-				</div>
-				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
-					<h3 style="font-weight: bolder;">운동 순서</h3>
-					<h4>1. 배에 힘을 주고 등을 곧게 편다. 발을 내딛으면서 바깥쪽이 먼저 바닥에 닿도록 해야 몸이 받는 충격을 최대한 흡수할 수 있다.</h4>
-					<h4>2. 발바닥이 마지막으로 지면에 닿는 순간 가볍게 바닥을 밀어 힘들이지 않고 속도를 낸다. 체중은 발뒤꿈치 바깥쪽을 시작으로 발 가장자리에서 엄지발가락 쪽으로 이동시킨다.</h4>
-					<h4>3. 몸의 중심이 앞으로 이동했으면 다른 쪽 발을 내딛을 수 있도록 발뒤꿈치를 들어준다. 팔은 자연스럽게 앞뒤로 흔들고 팔의 움직임과 함께 어깨를 자연스럽게 좌우로 돌린다.</h4>
-					<img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 500px;">
-					
-					<h6>출처: [네이버 지식백과] 걷기 [walking] (유산소운동 바로 알기, 최대혁, 국민체육진흥공단 체육과학연구원)</h6>
-					
-				</div>
-				<div class="modal-footer">
-					<button class="btn" type="button" data-dismiss="modal">확인</button>
-				</div>
-			</div>
-		</div>
-		
-	</div>
+	
 </body>
 </html>

@@ -10,8 +10,9 @@
 
 <style>
 .contents{
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-top: 5%;
+	margin-left: 1%;
+	margin-right: 1%;
 }
 
 
@@ -24,9 +25,9 @@
 	
 	<div class="contents">
 		<h3>서비스 안내 페이지 입니다.</h3>
-		<img alt="serviceInfo1" src="<c:url value="/img/serviceInfo1.png"/>" style="width: 1000px;">
-		<img alt="serviceInfo2" src="<c:url value="/img/serviceInfo2.png"/>" style="width: 1000px;">
-		<img alt="serviceInfo3" src="<c:url value="/img/serviceInfo3.png"/>" style="width: 1000px;">
+		<img alt="serviceInfo1" src="<c:url value="/img/serviceInfo1.png"/>" style="width: 100%;">
+		<img alt="serviceInfo2" src="<c:url value="/img/serviceInfo2.png"/>" style="width: 100%;">
+		<img alt="serviceInfo3" src="<c:url value="/img/serviceInfo3.png"/>" style="width: 100%;">
 		
 		<br>
 		
