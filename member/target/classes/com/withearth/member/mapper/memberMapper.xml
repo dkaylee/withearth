@@ -112,4 +112,9 @@ select * from user where id= #{param1}
 		select * from user where id=#{id}
 </select>
 
+<!-- 혹시 탈퇴한 회원이세요? -->
+<select id="leaveuserselect" resultType="int">
+		select count(*) from user where id=#{id} and verify='D'
+</select>
+
 </mapper>

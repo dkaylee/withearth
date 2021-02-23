@@ -44,4 +44,8 @@ public interface MemberDAO {
 
 // 암호화된 비밀번호 로그인 시키기
 	Member compareSecretpw(String id);
+
+// 탈퇴한 회원 찾기
+	int leaveuserselect(String id);
+
 }

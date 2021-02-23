@@ -46,6 +46,17 @@ $(document).ready(function(){
 	 $('#btnlog').click(function(){ 
 		var id = $('#userid').val();
 		var pw = $('#pw').val();
+		
+		$.ajax({
+			url:'leaveidcheck',
+			data: {id:id},
+			success: function(data){
+			if(data=='Y'){
+				alert("탈퇴한 회원입니다.");	
+				return false;
+			}else{
+		
+		
 		$.ajax({
 			url: 'idpwcheck',
 			data: {id:id,pw:pw},
@@ -114,6 +125,9 @@ $(document).ready(function(){
 							}
 						});
 					}
+			}
+		});
+			}
 			}
 		});
 	 });	
