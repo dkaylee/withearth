@@ -11,6 +11,7 @@
 <style>
 
 .container{	
+	margin-top: 5%;
 	margin-left: 1%;
 	margin-right: 1%;	
 }
@@ -44,12 +45,12 @@ div.searchBox {
 
 /* 검색 키워드 */
 #keyword{
-	width: 60%;
+	width: 75%;
 	
 	float: left;
 }
 
-#searchBtn{width: 20%;float: left; overflow: hidden; margin-left: 1%;}
+#searchBtn{width: 24%;float: left; overflow: hidden; margin-left: 1%;}
 
 #totalCourseCount{
 	float: right;
@@ -84,7 +85,7 @@ h3{
 }
 
 .contents{
-	width:100%;
+	margin-top: 10%;
 }
 
 </style>
