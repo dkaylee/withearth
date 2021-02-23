@@ -7,14 +7,29 @@
 <meta charset="UTF-8">
 <title>서비스 안내</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
+
+<style>
+.contents{
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+
+</style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
 	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 	
-	<div>
+	<div class="contents">
 		<h3>서비스 안내 페이지 입니다.</h3>
+		<img alt="serviceInfo1" src="<c:url value="/img/serviceInfo1.png"/>" style="width: 1000px;">
+		<img alt="serviceInfo2" src="<c:url value="/img/serviceInfo2.png"/>" style="width: 1000px;">
+		<img alt="serviceInfo3" src="<c:url value="/img/serviceInfo3.png"/>" style="width: 1000px;">
+		
+		<br>
+		<h3>올바른 걷기 방법</h3>
 		
 	</div>
 	

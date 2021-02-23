@@ -40,6 +40,8 @@
 
 #arriveBtn{float: left; margin-top: 4%; margin-left: 1%;}
 
+#InfoBtn{float: right; margin-top: 2%;}
+
 #startInfo{
 	clear:left;
 	margin: 20px;
@@ -54,7 +56,7 @@
 #fullAddr{float: left; margin: 0;}
 
 #btn_select{
-	margin-top: 2.5%;
+	margin-top: 2%;
 	float: left;
 }
 
@@ -819,6 +821,9 @@
 	
 	
     /*******************************모달창 기능********************************************/
+    function infoModal(){
+    	$('#InfoModal').modal("show");
+	}
     
 	
 	
@@ -840,6 +845,7 @@
 			<h2 style="" id="mainInfo">걷기 인증 서비스</h2> 
 			<button id="startBtn" onclick="startTime()">시작 하기</button>
 			<button id="arriveBtn">도착</button><br>
+			<button id="InfoBtn" onclick="infoModal()" >올바르게 걷는 방법</button>
 			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3><br>
 			<h4 id="endInfo">◇ 목적지 (ex.서울시 마포구 와우산로29가길 69) </h4>
 			<input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
@@ -893,12 +899,13 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn" id="saveBtn" type="button" onclick="saveData()">저장</button>
-					<button class="btn" type="button" data-dismiss="modal">아니요</button>
+					<button class="btn" type="button" data-dismiss="modal">확인</button>
 				</div>
 			</div>
 		</div>
 		
 	</div>
+	
 	
 	
 	
@@ -931,6 +938,33 @@
 			<script src="<c:url value="/js/main.js"/>"></script>
 
 	
-	
+	<!-- 올바른 걷기 자세 안내 Modal-->
+ 
+	<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel">올바르게 걷는 방법</h2>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
+					<h3 style="font-weight: bolder;">운동 순서</h3>
+					<h4>1. 배에 힘을 주고 등을 곧게 편다. 발을 내딛으면서 바깥쪽이 먼저 바닥에 닿도록 해야 몸이 받는 충격을 최대한 흡수할 수 있다.</h4>
+					<h4>2. 발바닥이 마지막으로 지면에 닿는 순간 가볍게 바닥을 밀어 힘들이지 않고 속도를 낸다. 체중은 발뒤꿈치 바깥쪽을 시작으로 발 가장자리에서 엄지발가락 쪽으로 이동시킨다.</h4>
+					<h4>3. 몸의 중심이 앞으로 이동했으면 다른 쪽 발을 내딛을 수 있도록 발뒤꿈치를 들어준다. 팔은 자연스럽게 앞뒤로 흔들고 팔의 움직임과 함께 어깨를 자연스럽게 좌우로 돌린다.</h4>
+					<img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 500px;">
+					
+					<h6>출처: [네이버 지식백과] 걷기 [walking] (유산소운동 바로 알기, 최대혁, 국민체육진흥공단 체육과학연구원)</h6>
+					
+				</div>
+				<div class="modal-footer">
+					<button class="btn" type="button" data-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </body>
 </html>

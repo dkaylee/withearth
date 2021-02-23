@@ -32,8 +32,8 @@
 		<button id="moveBtn" onclick = "location.href = 'http://localhost:8080/walking/course/loc/walkingservice'">
 			걷기 인증 서비스 시작
 		</button>
-		<button id="moveBtn">			
-			<a href="<c:url value="/loc/walkingInfo"/>">걷기 운동 서비스 안내</a>
+		<button id="moveBtn" onclick="location.href = 'http://localhost:8080/walking/loc/walkingInfo'">	
+			서비스 안내		
 		</button>
 		<button id="moveBtn" onclick = "location.href = 'http://localhost:8080/walking/loc/courselist'">
 			나의 코스
