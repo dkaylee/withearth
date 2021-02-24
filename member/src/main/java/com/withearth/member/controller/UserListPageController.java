@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class OnlyMemberPageController {
+public class UserListPageController {
 
-	@GetMapping(value="/member/useronly/testfile")
+	@GetMapping(value="/member/loginuser")
 	public String onlymember() {
-		return "/useronly/testfile";
+		return "/member/loginuserlist";
 	}
 }

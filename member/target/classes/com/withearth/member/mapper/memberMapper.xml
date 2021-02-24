@@ -39,6 +39,10 @@ VALUES( #{id}, #{name}, #{photo}, #{logintype}, #{verify} )
 INSERT INTO USER (id,name,photo,logintype,verify) 
 VALUES( #{id}, #{name}, #{photo}, #{logintype}, #{verify} )
 </if>
+<if test="logintype=='naver'">
+INSERT INTO USER (id,name,photo,logintype,verify) 
+VALUES( #{id}, #{name}, #{photo}, #{logintype}, #{verify} )
+</if>
 </insert>
 
 <!-- 로그인 -->
@@ -115,6 +119,17 @@ select * from user where id= #{param1}
 <!-- 혹시 탈퇴한 회원이세요? -->
 <select id="leaveuserselect" resultType="int">
 		select count(*) from user where id=#{id} and verify='D'
+</select>
+
+<!-- 네이버 이메일 중복 인증 -->
+<select id="naverRegCheckCount"
+					resultType="int">
+		select count(*) from user where id=#{id} and logintype='naver'
+</select>
+
+<!-- 네이버 로그인 인증 -->
+<select id="naverSelectLogin" resultMap="memberResult"> 
+		select * from user where id=#{id}
 </select>
 
 </mapper>

@@ -12,6 +12,7 @@
 						<a href="#">Point</a>
 						<a href="#">Donation</a>
 						<a href="<c:url value="/comm/matlist"/>">Community</a>
+						<a href="#">login</a>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>

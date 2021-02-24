@@ -47,5 +47,10 @@ public interface MemberDAO {
 
 // 탈퇴한 회원 찾기
 	int leaveuserselect(String id);
-
+	
+// 네이버 아이디+type("네이버") 가입 여부 체크
+	int naverRegCheckCount(String id);	
+	
+// 네이버 로그인
+	Member naverSelectLogin(String id);		
 }
