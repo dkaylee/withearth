@@ -4,23 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<c:url value="/css/style.css?ver=1"/>" />
 <meta charset="UTF-8">
 <title>With Earth</title>
-<style>
-	.text_right {
-		text-align: right;
-	}
-	
-	.text_left {
-		text-align: left;
-	}
-	.chattingBox {
-		padding : 15px;
-		border : 1px solid #AAA;
-		margin: 10px 0;
-	}
-</style>
-<link rel="stylesheet" href="<c:url value="/css/style.css"/>" />
 <script
 	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript"
@@ -46,7 +32,7 @@
 	
 	$(document).ready(function() {
 		
-		
+						
 	 //기존 대화가 있다면 불러오기
 		$.ajax({
 			
@@ -54,34 +40,37 @@
 			type : 'GET',
 			data : 'donaIdx=' + donaIdx +'&rid=' + roomIdx,
 			success : function(data){
-				
-				var headHtml = '대화상대 : '+to;
+				// 대화 상대 출력
+				var headHtml = '<h3 class="targetUser">대화상대 : '+to+'</h3>';
 				$('.user-container').append(headHtml);
-															
-			$.each(data, function(index, item){       	
+				// 이전 대화 내용 출력											
+			$.each(data, function(index, item){ 
+				// 자신이 보낸 대화
 			if (item.userIdx != to ) {
 			  
 				var printHTML = "<div class='well text_right'>";
 				printHTML += "<div class='alert alert-info'>";
-				printHTML += "<strong>"+item.chatWritetime+"[" + item.userIdx + "] -> " + item.chatMessage + "</strong>";
+				printHTML += "<strong>"+item.chatWritetime+"[" + item.userIdx + "]<span class=\"right-text\">"+item.chatMessage+"</span></strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";				
-
-				$('.chatting-list').append(printHTML);
+				
+				$('.chatting-list').append(printHTML);	
+				// 상대방이 보낸 대화
 			} else {
 				var printHTML = "<div class='well text_left'>";
 				printHTML += "<div class='alert alert-warning'>";
-				printHTML += "<strong>"+item.chatWritetime+"[" + item.userIdx + "] -> " + item.chatMessage + "</strong>";
+				printHTML += "<strong><span class=\"left-text\">"+item.chatMessage+"</span>"+item.chatWritetime+"["+ item.userIdx+"]</strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";
-								
+							
 				$('.chatting-list').append(printHTML);
-			
+			//	$('.left-text').attr('size', $('.left-text').value.length+8);
+				
 			}	   
 			
       });
 			
-			 var footHtml = '------------------이전 대화------------------';
+			 var footHtml = '<div class="hr-seperate">이전 대화</div>';
 			    $('.chatting-list').append(footHtml);
 										 				
 			},error : function(e){
@@ -90,7 +79,8 @@
 			
 		});
 		
-	 		
+	 
+			  	 		
 		// 접속했다는 메세지 추가하기
 		$("#send-button").click(function() {
 			console.log('send message...');
@@ -100,9 +90,16 @@
 			$('.chatting-input').focus();
 			
 			return false;			
-		});
+		});				
 	});
-		
+	
+	  function pressEnter(){
+	      sendMessage();
+				
+				$('.chatting-input').val('');
+				$('.chatting-input').focus();
+	  };
+			
 		$(function(){			
 		});
 		
@@ -167,21 +164,22 @@
 			  
 				var printHTML = "<div class='well text_right'>";
 				printHTML += "<div class='alert alert-info'>";
-				printHTML += "<strong>"+msgData.chatWritetime+"[" + msgData.userIdx + "] -> " + msgData.chatMessage + "</strong>";
+				printHTML += "<strong>"+msgData.chatWritetime+"[" + msgData.userIdx + "]<span class=\"right-text\">"+msgData.chatMessage+"</span></strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";
-
-				$('.chatting-list').append(printHTML);
+				
+				$('.chatting-list').append(printHTML);				
+				
 			} else {
 			
 				var printHTML = "<div class='well text_left'>";
 				printHTML += "<div class='alert alert-warning'>";
-				printHTML += "<strong>"+msgData.chatWritetime+"[" + msgData.userIdx + "] -> " + msgData.chatMessage + "</strong>";
+				printHTML += "<strong><span class=\"left-text\">"+msgData.chatMessage+"</span>"+msgData.chatWritetime+"["+ msgData.userIdx+"]</strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";
 								
-				$('.chatting-list').append(printHTML);					
-				
+				$('.chatting-list').append(printHTML);
+								
 			}
 
 			console.log('chatting data: ' + data);
@@ -203,16 +201,17 @@
 		<div class="user-container">
 
 		</div>
+		<hr>
 		<div class="display-container">
 			<ul class="chatting-list">
 
 			</ul>
 		</div>
 		<div class="input-container">
-			<span> <input type="text" class="chatting-input">
-			<input type="button" id="send-button" class="send-button" value="전송">
-				<input type="hidden" value="${user}" id="sessionUserid"> 유저 : ${user}
-			</span>
+			<div> <input type="text" class="chatting-input" placeholder=" 메세지를 입력하세요." onKeypress="javascript:if(event.keyCode==13){pressEnter()}">
+			<img src="<c:url value="/image/send.png"/>" id="send-button" width="20px"/>
+		  <input type="hidden" value="${user}" id="sessionUserid">
+			</div>
 		</div>
 	</div>
 </body>

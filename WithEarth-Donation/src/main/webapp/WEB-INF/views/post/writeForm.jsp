@@ -12,9 +12,48 @@
 <style>
 .title {
 	text-align: center;
-	font-size: 30px;
+	font-size: 35px;
 	font-weight: bold;
+	color : #737373;
 }
+
+.writeForm{
+ margin : 0 280px !important;
+}
+
+#galleryIcon{
+ padding-top : 8px; 
+ margin-bottom : -12px;
+ cursor:pointer;
+ border-radius : 5px;
+}
+
+#galleryIcon:active{
+ box-shadow: 1px 1px 0 #DDD;
+ position: relative; 
+ top:2px;
+}
+
+
+.display_none{
+  display : none;
+}
+
+.display_block{
+ display : block;
+}
+
+.imageList{
+  width : 700px;
+  float : left;
+  margin-top : 15px;
+}
+
+.uploadFileBtn{
+  width : 50px;
+}
+
+
 </style>
 </head>
 
@@ -23,16 +62,19 @@
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 	<section id="banner"></section>
-
+ <div class="writeForm">
 	<form method="post" enctype="multipart/form-data" id="uploadForm">
 		<h3 class="title">무료나눔 글쓰기</h3>
 		<br>
 		<div class="row uniform">
 			<div class="6u 12u$(xsmall)">
 				<input type="hidden" name="idx" id="idx" value="1" /> 
-				<input type="text" name="postTitle" id="postTitle" placeholder="제목" /> 
-				<div class="imageList"></div>
-				<input multiple="multiple" type="file" id="postImage" />
+				<input type="text" name="postTitle" id="postTitle" placeholder="제목" /> 		
+				<div class="imageList"></div>		
+				<div class="uploadFileBtn" onclick="document.all.file.click()">
+				<img src="<c:url value="/image/photo2.png"/>" width="50px" id="galleryIcon">
+				<input multiple="multiple" type="file" id="postImage" name="file" style="display:none"/>				
+				</div>
 			</div>
 			<!-- Break -->
 			<div class="6u 12u$(xsmall)">
@@ -57,13 +99,13 @@
 			<!-- Break -->
 			<div class="12u$">
 				<ul class="actions">
-					<li><input type="button" value="Send Message" onclick="javascript:actionForm();" /></li>
-					<li><input type="reset" value="Reset" class="alt" /></li>
+					<li><input type="button" value="업로드" onclick="javascript:actionForm(); history.go(-1);" /></li>
+					<li><input type="reset" onClick="window.location.reload()" value="취소" class="alt" /></li>
 				</ul>
 			</div>
 		</div>
 	</form>
-
+</div>
 	<script>
 	
 	var image_list = [];
@@ -128,6 +170,11 @@
 			$(document).ready(function() {
 
 				$('#postImage').on("change", handleImgFileSelect);
+				//$('.uploadFileBtn').on("click", handleImgFileSelect)
+				
+				/* $('.uploadFileBtn').click(function(){
+					  $(this).addClass('display_none');
+				}); */
 
 			});
 
@@ -160,6 +207,8 @@
 								index++;
 
 								$('.imageList').append(img_html);
+								var target = $('.imageList');
+								$('.uploadFileBtn').prepend(target);
 
 							}
 							reader.readAsDataURL(f);

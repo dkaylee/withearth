@@ -2,6 +2,7 @@ package com.aia.point.domain;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Coupon {
 	
@@ -11,7 +12,8 @@ public class Coupon {
 	private Timestamp historyDate;  // 쿠폰 사용, 소멸날
 	private int minusPoint;  // 차감 포인트
 	private int idx;  // 회원idx
-
+    private String availability; // 사용여부
+    
 	public int getCouponIdx() {
 		return couponIdx;
 	}
@@ -31,8 +33,10 @@ public class Coupon {
 		this.couponHistory = couponHistory;
 	}
 	public String getHistoryDate() {
+		Date d = new Date(historyDate.getTime());
+		System.out.println(d);
 		SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
-		return date.format(historyDate);
+		return date.format(d);
 	}
 	public void setHistoryDate(Timestamp historyDate) {
 		this.historyDate = historyDate;
@@ -49,13 +53,23 @@ public class Coupon {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
+			
+	public String getAvailability() {
+		return availability;
+	}
+	public void setAvailability(String availability) {
+		this.availability = availability;
+	}
 	
 	@Override
 	public String toString() {
 		return "Coupon [couponIdx=" + couponIdx + ", couponQr=" + couponQr + ", couponHistory=" + couponHistory
-				+ ", historyDate=" + historyDate + ", minusPoint=" + minusPoint + ", idx=" + idx + "]";
+				+ ", historyDate=" + historyDate + ", minusPoint=" + minusPoint + ", idx=" + idx + ", availability="
+				+ availability + "]";
 	}
 
+	
+	
 
 	
 	

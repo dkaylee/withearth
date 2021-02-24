@@ -16,7 +16,7 @@ html, body{
 }
 
 .user-container{
-    background-color: #a9bdce;
+    background-color:#F2F2F2 ;
     text-align: center;
     flex :1;
     display: flex;
@@ -25,21 +25,17 @@ html, body{
     padding : 0.5rem;
 }
 
-
-/* .user-container label{
-    font-size: 14px;
-    margin-right: 1rem;  
+.targetUser{
+	margin : 0 auto;
+	text-align: center;
 }
 
-.user-container input{
-    border-radius: 3px;
-    border : none;
-    height : 100%;
-} */
-
+.beforeChat{
+	font-size : 10px;
+}
 .display-container{
     flex : 12;
-    background: #b2c7d9;
+    background: #F2F2F2;
     overflow-y: scroll;
 }
 
@@ -50,24 +46,25 @@ html, body{
     align-items: stretch;
 }
 
-.input-container span{
+.input-container div{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding : 0.3rem;
-    width : 100%
+    width : 100%;
+    background-color : #EEE; 
 }
 
 .chatting-input{
     font-size: 12px;
     height : 100%;
     flex : 8;
-    border : none;
+    border-color: #EEE;
+    border-radius: 10px;
 }
 
 .send-button{
     flex: 1;
-    background: #ffeb33;
     border : none;
     height : 100%;
     border-radius: 3px;
@@ -118,10 +115,72 @@ html, body{
     flex-direction: row-reverse;
 }
 
-.sent .message{
-    background : #ffeb33;
+.alert-info{
+  background: #F2F2F2;
 }
 
-.received .message{
-    background: #fff;
+.alert-warning{
+  background: #F2F2F2;
+}
+
+.text_right {
+		text-align: right;		
+}	
+.text_left {
+		text-align: left;
+}
+
+.right-text {	
+	font-size : 13px;
+	border-radius: 8px 0 8px 8px;
+	height : 30px;	
+	margin-right : 10px;
+	margin-left : 5px;	
+	border : thin;
+	background-color: #F2AE72;
+	padding : 7px;
+	margin-bottom : 10px;
+}
+
+.left-text{
+	font-size : 13px;
+	border-radius: 0 8px 8px 8px;
+	height : 30px;
+	margin-left : 10px;
+	margin-right : 5px;	
+	border : thin;
+	background-color: #DDD;
+  padding : 7px;
+	margin-bottom : 10px;
+}
+
+.chattingBox {
+		padding : 15px;
+		border : 1px solid #AAA;
+		margin: 10px 0;
+}
+
+strong{
+	font-size : 11px;
+}
+
+
+.hr-seperate{
+	  display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    font-size: 12px;
+    margin: 8px 0px;
+}
+
+.hr-seperate::before,
+.hr-seperate::after{
+	 content: "";
+   flex-grow: 1;
+   background: rgba(0, 0, 0, 0.35);
+   height: 1px;
+   font-size: 0px;
+   line-height: 0px;
+   margin: 0px 16px;
 }

@@ -20,7 +20,7 @@ public class CouponListService {
 	public List<Coupon> getList(int idx) {
 		
 		dao = template.getMapper(CouponDao.class);
-		
+		System.out.println(dao.selectCouponList(idx));
 		return dao.selectCouponList(idx);
 		
 	}

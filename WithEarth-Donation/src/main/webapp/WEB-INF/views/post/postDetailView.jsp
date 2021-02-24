@@ -45,7 +45,7 @@
 
 
 #postImages{
-  width : 70%;
+  width : 65%;
   border-radius: 20px 20px;
 } 
 
@@ -111,6 +111,7 @@
   font-size : 18px;
   font-weight: bold;
   color : #3D3D3D; 
+  white-space: pre-line;
  }
  
  #heartCnt{
@@ -131,6 +132,12 @@
  display:inline-block;
  vertical-align:middle; 
  
+ }
+ 
+ #chatBtn{
+  margin-right : 60px;
+  text-align : right;
+  border-radius: 10px;
  }
   
 
@@ -200,11 +207,6 @@
 </div>
   
 	</section>
-
-
-	<input type="button" id="btn1" value="보기">
-	<a href="<c:url value="/main/post/upload"/>"><input type="button"
-		value="글쓰기" /></a>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> 
@@ -285,7 +287,7 @@
 												     $('.postDetails').append(html);			
 												     									  													     
 												     // 채팅으로 이동 (파라미터 넘기기)
-														var cHtml = '<input type="button" name="cBtn" value="작성자와 채팅하기">';
+														var cHtml = '<input type="button" name="cBtn" id="chatBtn" value="작성자와 채팅하기">';
 														chatBtn.onclick=function(){
 														// 방번호 랜덤하게 생성해서 넘기기 (1~100까지)
 														var roomIdx = Math.floor(Math.random()*100)+1;

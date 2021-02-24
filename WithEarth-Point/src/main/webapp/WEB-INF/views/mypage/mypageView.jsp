@@ -3,11 +3,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>WithEarth</title>
-		<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+ <head>
+<meta charset="utf-8" />
+<title>WithEarth</title>
+<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+<style>
+ .person{
+   background-color: white !important;
+   border-radius: 20px !important;
+ }
+ 
+ h3{
+  color : #404040 !important; 
+  font-weight: bold;
+ }
+ 
+ .round{
+  cursor:pointer !important;
+ }
 
+</style>
     </head>
     
     <body id="page-top">
@@ -24,26 +39,32 @@
 						<h2>마이페이지</h2>
 						<div class="profile">
 						
-                        </div>
+            </div>
 					</header>
 					<div class="flex flex-4">
 						<div class="box person">
 							<div class="image round">
+							<img src="<c:url value="/images/profile.png"/>" alt="mypage-pic1">
 							</div>
 							<h3><a>프로필 조회</a></h3>
 						</div>
-						<div class="box person">
+						<div class="box person">				 	
 							<div class="image round">
-							</div>							
+							<a href="<c:url value="/user/point/view"/>">
+							<img src="<c:url value="/images/mypoint.png"/>" alt="mypage-pic2">
+							</a>
+						  </div>													
 							<h3><a href="<c:url value="/user/point/view"/>">포인트 조회</a></h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
+							<img src="<c:url value="/images/myactivity.png"/>" alt="mypage-pic3">
 							</div>
 							<h3><a>활동 현황 조회</a></h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
+							<img src="<c:url value="/images/mypost.png"/>" alt="mypage-pic4">
 							</div>
 							<h3><a>내가 쓴 글 조회</a></h3>
 						</div>

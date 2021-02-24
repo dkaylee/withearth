@@ -12,24 +12,40 @@
     <result column="minus_point" property="minusPoint"/>
     <result column="idx" property="idx"/>
    </resultMap> 
+   
+    <resultMap type="com.aia.point.domain.Coupon" id="couponChk">
+    <result column="availability" property="availability"/>
+    </resultMap>
   
   <select id="selectCouponList"
           resultMap="couponResult">
-    select * from coupon where idx=#{idx}
+    select * from coupon where idx=#{idx} order by history_date desc;
   </select>
+
+  <select id="getNextCouponIdx" resultType="int">
+  select max(coupon_idx)+1 from coupon
+  </select>
+  
+  <update id="transUsedCoupon" parameterType="com.aia.point.domain.Coupon">
+     update coupon set availability="N",coupon_history="교환권 사용"  where idx=#{param1} and coupon_idx=#{param2}
+  </update>
   
   <insert id="insertCoupon"
           parameterType="com.aia.point.domain.Coupon"
           useGeneratedKeys="true"
           keyProperty="couponIdx">
-   insert into coupon(coupon_idx, coupon_qr, coupon_history, minus_point, idx)
-   values(#{couponIdx}, #{couponQr}, #{couponHistory}, #{minusPoint}, #{idx})
+   insert into coupon(coupon_idx, coupon_qr, coupon_history, minus_point, idx, availability)
+   values(#{couponIdx}, #{couponQr}, #{couponHistory}, #{minusPoint}, #{idx}, #{availability})
   </insert>
   
   <delete id="deleteCoupon"
           parameterType="com.aia.point.domain.Coupon">
     delete from coupon where idx=#{param1} and coupon_idx=#{param2}
   </delete>
+  
+  <select id="checkUseOrNot" resultType="int">
+    select ifnull(count(*),0) from coupon where coupon_idx=#{couponIdx} and availability like concat('%',"Y",'%')
+  </select>
  
  
  </mapper>

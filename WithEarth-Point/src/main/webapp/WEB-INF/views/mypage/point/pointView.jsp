@@ -5,16 +5,18 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>WithEarth</title>
-		<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<head>
+<meta charset="utf-8" />
+<title>WithEarth</title>
+<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <style>
 
 .findPoint{
+  font-weight : bold;
   float : left;
   font-size: 35px;
+  margin-botton : 10px;
 }
 
  #nowP{
@@ -65,14 +67,6 @@
   border-radius : 10px 10px;
  }
  
- .display_block{
-    display : block;
- }
- 
- .display_none{
-   display : none;
- }
- 
  .layer-wrap{  
     display : none;
     position: fixed;
@@ -110,27 +104,34 @@
     margin: 10px 0 20px;
     padding-top: 10px;
     border-top: 1px solid #DDD;
-    text-align: right;   
+    text-align: center;   
 }
 a.btn-layerClose {
     display: inline-block;
-    height: 25px;
+    height: 30px;
     padding: 0 14px 0;
-    border: 1px solid #304a8a;
-    background-color: #3f5a9d;
-    font-size: 13px;
+    border: 1px solid #3571B5;
+    background-color: #3571B5;
+    font-size: 16px;
     color: #fff;
     line-height: 25px;
-     text-decoration: none;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 .table-wrapper{
-  margin-top : 10px;
+  margin : 30px 80px; 
+}
+
+.overflow_scroll{
+  overflow: scroll;
+   height : 500px; 
 }
 
  #wrapTable3{
- text-align: center;
-  display : none; 
+  text-align: center;
+  display : none;
+  overflow: visible;
 }
 
  .presentList{
@@ -141,25 +142,76 @@ a.btn-layerClose {
  .wrapList{
    float :right;
    margin-right : 300px;
+   font-size : 20px;
  }
  
  .ableList{
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
+  color : #737373;
  }
  
  .showPoint{
    margin-left : 10px;
+   margin-right : -10px;
    padding : 1px 2px;
    background-color : #EEE;
    border-radius: 5px 5px;
    float : right;
+   font-size : 20px;
+   font-weight: bold;
  }
  
  #trans-btn{
   padding : -5px;
  }
+ #footer{
+  margin-top: 100px !important;
+ }
  
+ #nPoint1{
+  margin-right : 310px;
+  color : #5385c1;
+  font-weight: bold;
+  font-size : 25px;
+ }
+ 
+ #nPoint2{
+ font-size : 25px;
+  margin-right : 20px;
+  font-weight: bold;
+ }
+ 
+ .showNeedPoint{
+   float : right;
+ }
+ 
+ .point-wrap{
+  overflow: hidden;
+ }
+ 
+ #trans-title{
+   font-size : 35px;
+   font-weight: bold;
+ }
+ 
+ #trans-content{
+    font-size : 17px;
+    font-weight: bold;
+    color : #73706C;
+ }
+ 
+ #trans-notice{
+   font-size : 13px;
+   color : #BF2A37;
+   font-weight: bold;
+ }
+ 
+ .notUsed{
+  font-weight: bold;
+  font-size : 16px;
+  color : #3571B5;
+ }
  
 </style>
     </head>
@@ -192,21 +244,20 @@ a.btn-layerClose {
 				</div>
 				<div class="table-wrapper" id="wrapTable2">
 				</div>
-				<div class="table-wrapper" id="wrapTable3">
-				
-				   <div class="presentList">
-				   <div class="ableList">교환 가능한 선물 리스트</div>
-				   <div class="wrapList">교환 가능 포인트</div>				    
-				  </div>		
-				  	  				   			
-				   <a><img src="images/pic01.jpg" alt="Pic 01"/></a>
-                   <a><img src="images/pic02.jpg" alt="Pic 02" /></a>
-                   <a><img src="images/pic03.jpg" alt="Pic 03" /></a>
-                   <br>	                  
-                   <div>필요포인트<div class="showPoint"></div></div>
-                   <input type="button" id="trans-btn" value="교환">	
-                   	
+				<div class="table-wrapper" id="wrapTable3">		
+								
+				  <div class="presentList">  
+			    <div class="ableList">2월의 교환 가능 Gift</div>
+			    <div class="wrapList">교환 가능 포인트</div>		    
+			    </div>	
+			    <a><img src="<c:url value="/images/tumblr.png"/>" alt="Pic 01"/></a>
+			    <br>	
+			    <br>   			                   
+			    <div class="point-wrap"><div class="showNeedPoint" id="nPoint1">200P</div><div class="showNeedPoint" id="nPoint2">필요 포인트</div>
+			    <div class="showPoint"></div></div>	
+			    <input type="button" id="trans-btn" value="교환">		    			    	   						                    	
 				</div>
+				
 			
 	<div id="layer" class="layer-wrap">
     <div class="pop-layer">
@@ -214,14 +265,15 @@ a.btn-layerClose {
             <div class="pop-conts">
                 <!--content //-->
                 <p class="ctxt mb20">
-                   <h3>포인트 선물 교환</h3>
-                   <h4>이 선물로 교환하시겠습니까?</h4>
-                   <h5>(교환 후 취소가 불가합니다.)</h5>
-                   <img src="images/pic01.jpg" alt="Pic 01" />
+                   <h3 id="trans-title">포인트 선물 교환</h3>
+                   <img src="<c:url value="/images/tumblr.png"/>" alt="Pic 01" height="100px"/>
+                   <br>
+                   <h4 id="trans-content">이 선물로 교환하시겠습니까?</h4>
+                   <h5 id="trans-notice">( * 교환 후 취소가 불가합니다. )</h5>                   
                 </p>
                 <div class="btn-r">
                     <a href="<c:url value="/user/point/view"/>" class="btn-layerClose">취소</a>
-                    <a href="<c:url value="/user/point/view"/>" class="btn-layerClose">확인</a>
+                    <a href="javascript:void(0);" onclick="usePoint();" class="btn-layerClose">확인</a>
                 </div>
                 <!--// content-->
             </div>
@@ -230,11 +282,29 @@ a.btn-layerClose {
 </div>
 					
 	<script>
+	
+	// 포인트 선물 교환 -> 포인트 소멸 -> 교환권 생성
+	function usePoint(){
+		
+	$.ajax({
+		 url : 'http://localhost:8080/point/rest/user/point/use/'+ 1 + '/' + 200,
+		 type : 'GET',
+		 success : function(data){
+			 console.log(data);
+			 location.reload();
+		 }, error : function(e){
+			 console.log(e);
+		 }
+	});
+		
+	}
+	
+	
   $(document).ready(function(){
 	  
 	  // 팝업창 보이게 하기
-	  $('#btn3').click(function(){
-		//  $('.layer-wrap').css('display', 'block');	
+	  $('#trans-btn').click(function(){
+		  $('.layer-wrap').css('display', 'block');	
 		  $('.table-wrapper').css('display', 'block');
 		  		  
 	  });
@@ -244,7 +314,7 @@ a.btn-layerClose {
 		  $('.layer-wrap').css('display', 'none');	
 	  })
 	  
-	  
+	  	  	 	  
 	  // ajax로 현재 보유 보인트 출력
 	  $.ajax({
 			 url : 'http://localhost:8080/point/rest/user/point/list/1',
@@ -264,7 +334,7 @@ a.btn-layerClose {
 	                    $('#nowP').append(html);	
 	                   
 	                    // 포인트 선물 교환 시 노출
-	                   var html2 = '<h4 class="showPoint">'+item.pointsum+'p</h4>'; 
+	                   var html2 = '<h4 class="showPoint">'+item.pointsum+' p</h4>'; 
 	                    $('.wrapList').append(html2);
 					})
 									
@@ -277,16 +347,16 @@ a.btn-layerClose {
 	  // 버튼 이벤트와 ajax: 포인트 내역 출력
 	 $('#btn1').click(function(){
 		 
-		 $('#wrapTable1').empty();
-		 		 
+		 $('.dataTable1').empty();
+		 		 		 
 		 var table1 = $('#wrapTable1');
-		  table1.removeClass('display_none');
-		 
-		 var table1 = $('#wrapTable1');
-		 table1.addClass('display_block');
+		 table1.css('display','block');
+		 table1.addClass('overflow_scroll');
 		
 		  var table2 = $('#wrapTable2');
-		  table2.addClass('display_none');
+		  table2.css('display','none');
+		  var table3 = $('#wrapTable3');
+		  table3.css('display','none');
 			  			 			  			  		  			  		 	
 	  $.ajax({
 		 url : 'http://localhost:8080/point/rest/user/point/list/1',
@@ -295,7 +365,7 @@ a.btn-layerClose {
 			 console.log(data);
 			// alert(JSON.stringify(data));
 			
-			 var html = '<table>';
+			 var html = '<table class="dataTable1">';
 			    html += '<thead>';
 			    html += '<tr>';
 			    html += '<th>No.</th>';			   
@@ -334,16 +404,16 @@ a.btn-layerClose {
 	  // 버튼 이벤트와 ajax : 보유 쿠폰 내역 출력
 	  $('#btn2').click(function(){
 		  
-		  $('#wrapTable2').empty();
-		 
-		  var table2 = $('#wrapTable2');
-		  table2.removeClass('display_none');
+		  $('.dataTable1').empty();
 		  
-		  var table2 = $('#wrapTable2');
-		  table2.addClass('display_block');
-		  
+			var table2 = $('#wrapTable2');
+			table2.css('display','block');
+			table2.addClass('overflow_scroll');
+		  		 		  	  
 		  var table1 = $('#wrapTable1');
-		  table1.addClass('display_none');
+		  table1.css('display','none');
+		  var table3 = $('#wrapTable3');
+		  table3.css('display','none');
 		  		 	
 		  $.ajax({
 			 url : 'http://localhost:8080/point/rest/user/coupon/list/1',
@@ -352,13 +422,14 @@ a.btn-layerClose {
 				 console.log(data);
 				// alert(JSON.stringify(data));
 				
-				 var html = '<table>';
+				 var html = '<table class="dataTable1">';
 			    html += '<thead>';
 			    html += '<tr>';
 			    html += '<th>No.</th>';
 		        html += '<th>교환권QR</th>';
 			    html += '<th>내역</th>';
 			    html += '<th>발급일자</th>';
+			    html += '<th>사용여부</th>';
 			    html += '</tr>';
 			    html += '</thead>';
 			    html += '<tbody id="tbody2">';
@@ -372,11 +443,19 @@ a.btn-layerClose {
 	                    html+= '<td> '+(index+1) +'</td>';
 	                    html+= '<td><img alt="QrImage" width="100px" src="<c:url value="/resources/coupon/'+item.couponQr+'png"/>"></td>';
 	                    html+= '<td> '+ item.couponHistory+'</td>';
-	                    html+= '<td>'+item.historyDate+'</td>';	                    
+	                    html+= '<td>'+item.historyDate+'</td>';
+	                     if(item.availability=="Y"){
+	                    	html +='<td class="notUsed">미사용</td>';
+	                     }else{
+	                    	 html += '<td><img alt="QrImage" width="90px" src="<c:url value="/images/usedcoupon.png"/>"></td>';
+	                     }             
+	                    
 	                    html+= '</tr>';
 	                    
+	                    
 	                    $('#tbody2').append(html);
-				})
+				});
+								  
 			 },
 			 error : function(e){
 				 console.log("에러 발생 : "+e);
@@ -385,8 +464,20 @@ a.btn-layerClose {
 		  
 		  });
 	  
+	    // 버튼 이벤트와 포인트 선물 교환 페이지 로드
+	    $('#btn3').click(function(){
+    	  	    	
+	    	var table1 = $('#wrapTable1');
+			  table1.css('display','none');
+			  var table2 = $('#wrapTable2');
+			  table2.css('display','none');
+	    	     	 		  	
+			  var table3 = $('#wrapTable3');
+			  table3.css('display','block');
 
-	  
+	      });
+		  
+	  	      
 	  
   });  
 </script>		

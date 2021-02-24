@@ -10,14 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aia.point.domain.CoursePoint;
 import com.aia.point.domain.Point;
-import com.aia.point.domain.TumblrPoint;
 import com.aia.point.service.PointListService;
 import com.aia.point.service.PointSaveService;
 import com.aia.point.service.PointUsingService;
@@ -43,22 +39,24 @@ public class PointController {
 	}
 	
 	// 회원idx, 텀블러idx를 받아서 포인트 저장
-	@PostMapping("/tum")
+	@GetMapping("/tum/{idx}/{tIdx}")
 	public String saveTumPoint(
-			@RequestBody TumblrPoint tumPoint) {	
+			@PathVariable("idx") int idx,
+			@PathVariable("tIdx") int tIdx){	
 		
           //System.out.println(saveService.userTumPoint(tumPoint));
           
-		return saveService.userTumPoint(tumPoint)==0?"N":"Y";
+		return saveService.userTumPoint(idx, tIdx)==0?"N":"Y";
 	}
 	
 	// 회원idx, 코스idx를 받아서 포인트 저장
-	@PostMapping("/course")
+	@GetMapping("/course/{idx}/{cIdx}")
 	public String saveCoursePoint(
-			@RequestBody CoursePoint curPoint
+			@PathVariable("idx") int idx,
+			@PathVariable("cIdx") int cIdx
 			) {
 		 //System.out.println(saveService.userCoursePoint(curPoint));
-		return saveService.userCoursePoint(curPoint)==0?"N":"Y";
+		return saveService.userCoursePoint(idx, cIdx)==0?"N":"Y";
 	}
 	
 	
