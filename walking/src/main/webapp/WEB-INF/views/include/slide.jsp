@@ -225,7 +225,7 @@
 		</div>
 
 		<!-- Next and previous buttons -->
-		<a class="prev" onclick="moveSlides(-1)">&#10094;</a> <a class="next"
+		<!-- <a class="prev" onclick="moveSlides(-1)">&#10094;</a> --> <a class="next"
 			onclick="moveSlides(1)">&#10095;</a>
 	</div>
 	<br />
