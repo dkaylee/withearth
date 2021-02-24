@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -206,8 +205,7 @@ h1 {
 
 		<div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-			<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러
-				이용내역</button>
+			<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button>
 		</div>
 
 		<div class="modal hidden">
@@ -256,21 +254,21 @@ h1 {
 
 	<div class="contents">
 		<div class="map_wrap">
-			<div id="map"
-				style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+			<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
 			<div id="menu_wrap" class="bg_white">
 				<div class="option">
 					<div class="store_input" id="storename_div" style="display:;">
 						<form onsubmit="searchPlaces(); return false;">
 							매장명 : <input type="text" value="스타벅스 " id="keyword" size="15">
-							<!--    매장명 : <input type="text"  id="keyword" size="15">  -->
 							<button type="submit">검색하기</button>
 						</form>
 					</div>
 				</div>
 				<hr>
 				<ul id="placesList">
+				<div id="pagination"></div>
+				
 
 					<c:forEach items="${list}" var="cafe" varStatus="status">
 						<li><a>
@@ -290,122 +288,153 @@ h1 {
 		</div>
 	</div>
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf&libraries=services"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf&libraries=services"></script>
 
 	<script>
-
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
+	
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
-
+	
+	/* 좌표 가져오기 */
+	$(document).ready(function(){
 		
-		/* 좌표 가져오기 */
- $.ajax({
-	type:"GET",
-	url:"http://localhost:8080/tumbler/tumlist1/map",
-	data:{
-		
-		cafe_name:"${cafe.cafe_name}",
-		cafe_lat:"${cafe.cafe_lat}",
-		cafe_lon:"${cafe.cafe_lon}",
-		location:"${cafe.location}"
-	
-	},
-	
-error : function(error) {
-	console.log("error");
-	
-},
+		 var cafeinfo = $.ajax({
+				type:"GET",
+				url:"http://localhost:8080/tumbler/tumlist1/map",
+				data:{
+			
+				cafe_name:"${cafe.cafe_name}",
+				cafe_lat:"${cafe.cafe_lat}",
+				cafe_lon:"${cafe.cafe_lon}",
+				location:"${cafe.location}"
+			
+			    },
+			    
+			    error : function(error) {
+			    	console.log("error");
+			    	
+			    },
 
-success : function(positions) {
-	//console.log(positions);
-	//alert(data);
-	alert(JSON.stringify(positions));
-	console.log("success");
-	
-	var cafeinfo = JSON.stringify(positions);
-	console.log("cafeinfo!!!!!"+cafeinfo);
-	//console.log(positions);
-	},
+			    success : function(positions) {
+			    	//console.log(positions);
+			    	//alert(data);
+			    	//alert(JSON.stringify(positions));
+			    	console.log("success");
+			    	
+			    	var cafeinfo = JSON.stringify(positions);
+			    	
+			    	//console.log("cafeinfo!!!!!"+cafeinfo);
+			    	//console.log(positions);
 
+			    	//console.log(cafeinfo);
+			    	  
+			    	},
 
+		});
 
-});
-
-//cafeinfo.done(successFunction);
-//cafeinfo.error(errorFunction);
-
-function successFunction(cafeinfo){
-		//console.log('json 데이터 받기 확인');
-   	 	//console.log(positions);
-   	 	console.log("첫번째거: "+cafeinfo[0].cafe_name);
-
-   	 var positionsarr = [];
-   	 for (i = 0; i < positions.length; i++) {
-   		 
-   		 var cafename = positions[i].cafe_name;
-   		 var cafelat = positions[i].cafe_lat;
-   		 var cafelon = positions[i].cafe_lon;
-   		 var location = positions[i].location;
-   		 
+			 cafeinfo.done(successFunction);
+			//cafeinfo.error(errorFunction);
+			
+			
+			//마커 생성
+			var cafemarkers = [];
+			//카페 좌표 배열
+			var cafelatlon = [];
+			//카페 이름 배열
+			var namearr=[];
+			//카페 좌표
+			var  latlng;
+			
+		    function successFunction(positions){
 		 
-   		 var latlng = new kakao.maps.LatLng(cafelon, cafelat);
-   		 
-   	    positionsarr.push(latlng);
-   		
-   	      console.log(location);
-   		 //console.log(cafename);
-   		 //console.log(positionsarr);
-   		 //console.log(latlng) 
-   		 
-   		 
-   		 var marker = new kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: latlng // 마커의 위도
-        
-    });
+		   	 for (i = 0; i < positions.length; i++) {
+		   		
+		   			var title = positions[i].cafe_name;
+			        var latlng = new kakao.maps.LatLng(positions[i].cafe_lat,positions[i].cafe_lon);
+		   		    //console.log(title);
+		   			//console.log(latlng);
+		   			
+		   			cafelatlon.push(latlng);
+		   			namearr.push(title);
+		   			
+		   		//console.log(namearr);
+		   			
+		   		// 마커를 생성합니다
+			   	    var cafemarkers = new kakao.maps.Marker({
+			   	    	 map: map, // 마커를 표시할 지도
+			   	         position: latlng // 마커의 위치 
+			   	         
+			   	            	        
+			   	        });
+			   	// 마커에 표시할 인포윈도우를 생성합니다 
+			   	    var infowindow = new kakao.maps.InfoWindow({
+			   	    	title: title // 인포윈도우에 표시할 내용
+			   	    });
+			   	
+			   	
+			   	
+			   	
+			   	// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+			   	    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+			   	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+			   	    kakao.maps.event.addListener(cafemarkers, 'mouseover', makeOverListener(map, cafemarkers, infowindow));
+			   	    kakao.maps.event.addListener(cafemarkers, 'mouseout', makeOutListener(infowindow));
+	  
+		 
+		    }
+		   	    
+		   	                    
+		   	   // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+		       function makeOverListener(map, cafemarkers, infowindow) {
+		   	     return function() {
+		   	        infowindow.open(map, cafemarkers);
+		   	     };
+		      }
 
-    // 마커에 표시할 인포윈도우를 생성합니다 
-    var infowindow = new kakao.maps.InfoWindow({
-        content: positions[i].content // 인포윈도우에 표시할 내용
-    });
+		   	   // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+		   	   function makeOutListener(infowindow) {
+		   	      return function() {
+		   	         infowindow.close();
+		   	       };
+		   	    }            
+		  
+			  function errorFunction(request,status,error){
+				console.log("오류확인");
+				console.log(error);
+			} 
+		 
+			}
+	})
 
-  
-	function errorFunction(request,status,error){
-		console.log("오류확인");
-		console.log(error);
-	} 
- 
-	}
-	}	
+
 	
+       
+
+
+	//지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	//장소 검색 객체를 생성합니다
+	var ps = new kakao.maps.services.Places();  
+
+	// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 
 
-//지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	//키워드로 장소를 검색합니다
+	//searchPlaces();
+	 
+	//주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
 
-//장소 검색 객체를 생성합니다
-//var ps = new kakao.maps.services.Places();  
-
-// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+	//지도에 표시될 마크
+	var markers = [];
 
 
-
-//키워드로 장소를 검색합니다
-//searchPlaces();
- 
-//주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-//지도에 표시될 마크
-var markers = [];
-    
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 		if (navigator.geolocation) {
 
@@ -485,6 +514,11 @@ var markers = [];
 		openButton.addEventListener("click", openModal);
 		closeButton.addEventListener("click", closeModal);
 	
+	
+	
+
+
+
 	</script>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="마커"/>
+		<item key="selection" value="positions.length"/>
 		<list key="findhistory">
-			<item value="마커"/>
-			<item value="마커생성"/>
-			<item value="for"/>
+			<item value="positions.length"/>
+			<item value="console.log(positionsarr);"/>
+			<item value="cafeinfo.done(successFunction);"/>
+			<item value="카페"/>
+			<item value="marker.setMap(map);"/>
+			<item value="title"/>
+			<item value="bound"/>
 			<item value="marker"/>
-			<item value="setPosition"/>
-			<item value="getLat"/>
-			<item value="content"/>
-			<item value="CafeInfoMap"/>
-			<item value="la"/>
-			<item value="display"/>
-			<item value="배열의 좌표"/>
-			<item value="points"/>
-			<item value="point"/>
-			<item value="modal_btn"/>
-			<item value="적립"/>
+			<item value="map.setCenter(locPosition);&#x09;&#x09;"/>
+			<item value="markers"/>
+			<item value="// 마커를 생성합니다"/>
+			<item value="var map"/>
+			<item value="dddddds"/>
+			<item value="mapsLatLng"/>
+			<item value="errorFunction"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -30,7 +30,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="-1194"/>
+		<item key="DIALOG_X_ORIGIN" value="-43"/>
 		<item key="DIALOG_Y_ORIGIN" value="297"/>
 		<item key="DIALOG_WIDTH" value="778"/>
 		<item key="DIALOG_HEIGHT" value="827"/>
