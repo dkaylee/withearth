@@ -11,8 +11,8 @@
 <style>
 .contents{
 	margin-top: 5%;
-	margin-left: 1%;
-	margin-right: 1%;
+	margin-left: 2%;
+	margin-right: 2%;
 }
 
 

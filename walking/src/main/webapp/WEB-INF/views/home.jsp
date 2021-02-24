@@ -18,8 +18,7 @@
        
        <!-- Banner -->
 		<section id="banner">
-				<h1>Welcome to WithEarth</h1>
-				<p>북극곰을 지키자!</p>
+				<%@ include file="/WEB-INF/views/include/slide.jsp"%>
 		</section>
 
 		

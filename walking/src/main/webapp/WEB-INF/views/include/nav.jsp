@@ -35,8 +35,8 @@ a:visited{
 
 .menu{
 	margin-top: 25%;
-	margin-left: 1%;
-	margin-right: 1%;
+	margin-left: 2%;
+	margin-right: 2%;
 	
 	margin-bottom: 0;
 }

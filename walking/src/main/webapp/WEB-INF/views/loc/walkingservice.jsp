@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +27,8 @@
 
 .mainPage{	
 	margin-top: 5%;
-	margin-left: 1%;
-	margin-right: 1%;
+	margin-left: 2%;
+	margin-right: 2%;
 }
 
 #mainInfo{
@@ -37,9 +37,9 @@
 	font-weight: bolder;
 }
 
-#startBtn{margin-bottom: 1%; width: 48%; }
+#startBtn{margin-bottom: 1%; width: 47%; }
 
-#arriveBtn{margin-bottom: 1%;  width: 48%; margin-left: 2%; margin-right: 0;}
+#arriveBtn{margin-bottom: 1%;  width: 48%; margin-left: 3%; margin-right: 0;}
 
 #InfoBtn{margin-bottom: 1%; }
 
@@ -54,13 +54,13 @@
  	font-weight: bolder;
  }
 
-#fullAddr{margin-top: 3%; margin-left: 2%; width: 72%; float: left; overfloat: hidden;}
+#fullAddr{margin-top: 3%; margin-left: 1%; width: 72%; float: left; overfloat: hidden;}
 
 #btn_select{
 	margin-top: 3%;
-	margin-left: 2%;
+	margin-left: 1%;
 	overflow: hidden;
-	width: 22%;
+	width: 24%;
 	
 }
 
@@ -75,24 +75,24 @@
 
 #restart{
 	margin-bottom: 1%;
-	width: 48%; margin-left: 1%;
+	width: 47%; margin-left: 1%;
 	display: none;
 }
 
 #stopTimer{
 	margin-bottom: 1%;
-	width: 48%; margin-right: 1%;
+	width: 47%; margin-right: 1%;
 	display: none;
 }
 
 #saveBtn{
 	margin-bottom: 1%;
-	width: 48%; margin-left: 1%;
+	width: 47%; margin-left: 1%;
 }
 
 #modalChk{
 	margin-bottom: 1%;
-	width: 48%; margin-left: 1%;
+	width: 47%; margin-left: 1%;
 }
 
 </style>
@@ -809,7 +809,7 @@
 	/*******************************데이터 저장 기능********************************************/
 	function saveData(){
 		$.ajax({
-			url: 'http://localhost:8080/walking/course/loc/walkingservice',
+			url: '<c:url value="/course/loc/walkingservice"/>',
 			type: 'post',
 			data: {
 				tdistance: tDistance, 	// 이동 거리
@@ -973,7 +973,7 @@
 				</div>
 			</footer>
 
-		<!-- Scripts -->
+		<!-- footer Scripts -->
 			
 			<script src="<c:url value="/js/skel.min.js"/>"></script>
 			<script src="<c:url value="/js/util.js"/>"></script>

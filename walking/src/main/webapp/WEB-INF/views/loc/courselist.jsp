@@ -12,8 +12,8 @@
 
 .container{	
 	margin-top: 5%;
-	margin-left: 1%;
-	margin-right: 1%;	
+	margin-left: 2%;
+	margin-right: 2%;	
 }
 
 td, th {
@@ -50,7 +50,7 @@ div.searchBox {
 	float: left;
 }
 
-#searchBtn{width: 24%;float: left; overflow: hidden; margin-left: 1%;}
+#searchBtn{width: 23%;float: left; overflow: hidden; margin-left: 1%;}
 
 #totalCourseCount{
 	float: right;

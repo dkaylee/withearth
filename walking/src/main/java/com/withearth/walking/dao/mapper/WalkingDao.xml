@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			useGeneratedKeys="true"
 			keyProperty="course_idx">
 		
-		insert into course( loc_km, about_time, start_point, end_point, walking_time) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time})	
+		insert into walkingservice.walking( loc_km, about_time, start_point, end_point, walking_time) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time})	
 	
 	</insert>
 	
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 4. 코스 리스트 v-->
 	<select id="selectCourseList" parameterType="map" resultMap="courseResult"> 
-		select * from course
+		select * from walkingservice.walking
 		
 		<where>
 			<if test="searchParam != null">
@@ -80,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 5. Rest API - GET v -->
 	<select id="selectAllCourseList" resultMap="courseResult">
-		select * from course
+		select * from walkingservice.walking
 	</select>
 	
 	
@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			parameterType="com.withearth.walking.domain.SearchParam"
 	        resultType="int" >
 	        
-		select count(*) from course
+		select count(*) from walkingservice.walking
 		
 		<!-- where idx>0  -->
 		
@@ -141,7 +141,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 9. idx, verify 조건으로 조회 -->
 	<select id="selectCourseByIdxVerify" resultType="int" >
-		select count(*) from course where course_idx=#{course_idx} and verify='Y'
+		select count(*) from walkingservice.walking where course_idx=#{course_idx} and verify='Y'
 	</select>
 	
 	
