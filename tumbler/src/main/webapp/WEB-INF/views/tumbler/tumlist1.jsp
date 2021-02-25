@@ -10,6 +10,21 @@
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
 <style>
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    .info .link {color: #5085BB;}
+
 .map_wrap, .map_wrap * {
 	margin: 0;
 	padding: 0;
@@ -267,21 +282,19 @@ h1 {
 				</div>
 				<hr>
 				<ul id="placesList">
-				<div id="pagination"></div>
-				
 
 					<c:forEach items="${list}" var="cafe" varStatus="status">
 						<li><a>
 								<dl>
 									<dt>${cafe.cafe_name}</dt>
 									<dd>${cafe.location}</dd>
-									<dd id="cafelat">${cafe.cafe_lat}</dd>
+								    <dd id="cafelat">${cafe.cafe_lat}</dd>
 									<dd id="cafelon">${cafe.cafe_lon}</dd>
 								</dl>
 						</a></li>
 
 					</c:forEach>
-
+	
 				</ul>
 				<div id="pagination"></div>
 			</div>
@@ -345,6 +358,8 @@ h1 {
 			var cafelatlon = [];
 			//카페 이름 배열
 			var namearr=[];
+			//카페 주소 배열
+			var cafeAdd=[];
 			//카페 좌표
 			var  latlng;
 			
@@ -352,13 +367,16 @@ h1 {
 		 
 		   	 for (i = 0; i < positions.length; i++) {
 		   		
-		   			var title = positions[i].cafe_name;
+		   			var content = positions[i].cafe_name;
 			        var latlng = new kakao.maps.LatLng(positions[i].cafe_lat,positions[i].cafe_lon);
+			        var addr = positions[i].location;
+			        //console.log(addr);
 		   		    //console.log(title);
 		   			//console.log(latlng);
 		   			
 		   			cafelatlon.push(latlng);
-		   			namearr.push(title);
+		   			namearr.push(content);
+		   			cafeAdd.push(addr);
 		   			
 		   		//console.log(namearr);
 		   			
@@ -366,47 +384,104 @@ h1 {
 			   	    var cafemarkers = new kakao.maps.Marker({
 			   	    	 map: map, // 마커를 표시할 지도
 			   	         position: latlng // 마커의 위치 
-			   	         
-			   	            	        
+        
 			   	        });
+		   		
+		   		
+		   		
+		   		
 			   	// 마커에 표시할 인포윈도우를 생성합니다 
-			   	    var infowindow = new kakao.maps.InfoWindow({
-			   	    	title: title // 인포윈도우에 표시할 내용
-			   	    });
+			   	    /*  var infowindow = new kakao.maps.InfoWindow({
+			   	    	content: content // 인포윈도우에 표시할 내용
+			   	    }); */ 
+			   	// 커스텀 오버레이에 표시할 컨텐츠 입니다
+			   	// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+			   	// 별도의 이벤트 메소드를 제공하지 않습니다 
+			   	 var content = '<div class="wrap">' + 
+			   	            '    <div class="info">' + 
+			   	            '        <div class="title">' + 
+			   	                               content    + 
+			   	            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+			   	            '        </div>' + 
+			   	            '        <div class="body">' + 
+			   	            '            <div class="img">' +
+			   	            '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+			   	            '           </div>' + 
+			   	         
+			   	            '            <div class="desc">' + 
+			   	            '                <div class="ellipsis">'+addr+'</div>' + 
+			   	          
+			   	            '        </div>' + 
+			   	            '    </div>' +    
+			   	            '</div>'; 
+			   	      // 마커 위에 커스텀오버레이를 표시합니다
+			   	      // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+			   	      positions.forEach(function(pos) {
+			   	      var overlay = new kakao.maps.CustomOverlay({
+			   	          content: content,
+			   	          map: map,
+			   	          position: cafemarkers.getPosition()       
+			   	      });
+			   	      
+			   	     var content = document.createElement('div');
+
+			   	     
+			   	  
+			   	     var closeBtn = document.createElement('button');
+			         closeBtn.appendChild(document.createTextNode('닫기'));
+			         closeBtn.onclick = function() { customOverlay.setMap(null); };
+			         content.appendChild(closeBtn);
+
+			         overlay.setContent(content);
+			         overlay.setMap(map);
+			         
+			       });
+
+			   	      /* // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+			   	      kakao.maps.event.addListener(cafemarkers, 'click', function() {
+			   	    	 
+			   	          overlay.setMap(map);
+			   	      });
+			   	      
+			   	      
+			   	      // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+			   	      function closeOverlay() {
+			   	       overlay.setMap(null);     
+			   	   }
 			   	
 			   	
 			   	
 			   	
-			   	// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+			   	     // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 			   	    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 			   	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-			   	    kakao.maps.event.addListener(cafemarkers, 'mouseover', makeOverListener(map, cafemarkers, infowindow));
-			   	    kakao.maps.event.addListener(cafemarkers, 'mouseout', makeOutListener(infowindow));
+			   	    kakao.maps.event.addListener(cafemarkers, 'mouseover', makeOverListener(map, cafemarkers, overlay));
+			   	    kakao.maps.event.addListener(cafemarkers, 'mouseout', makeOutListener(overlay));
 	  
-		 
+		  */
 		    }
 		   	    
 		   	                    
 		   	   // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-		       function makeOverListener(map, cafemarkers, infowindow) {
+		        /* function makeOverListener(map, cafemarkers, overlay) {
 		   	     return function() {
-		   	        infowindow.open(map, cafemarkers);
+		   	    	overlay.open(map, cafemarkers);
 		   	     };
 		      }
 
 		   	   // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-		   	   function makeOutListener(infowindow) {
+		   	   function makeOutListener(overlay) {
 		   	      return function() {
-		   	         infowindow.close();
+		   	    	overlay.close();
 		   	       };
-		   	    }            
+		   	    } */            
 		  
 			  function errorFunction(request,status,error){
 				console.log("오류확인");
 				console.log(error);
-			} 
+			}  
 		 
-			}
+		}
 	})
 
 

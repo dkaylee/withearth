@@ -25,6 +25,7 @@
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/fonts/**" location="/fonts/" />
+	<resources mapping="/img/**" location="/img/" />
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -35,6 +36,18 @@
 		<beans:property name="suffix" value=".jsp" />
 
 	</beans:bean>
+	
+		<!-- Redis -->
+	<!-- <beans:bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+							p:usePool="true"
+							p:hostName="localhost"
+							p:port="6379"	
+	/>
+	<beans:bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+							p:connectionFactory-ref="jedisConnFactory"
+	/> -->
+	
+	
 
 
 	<!--어노테이션 설정을 도와준다 -->

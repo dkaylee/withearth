@@ -68,7 +68,7 @@ select count(*) from tumbler;
 		   tum_idx, tum_date, tumbler.cafe_idx, cafe.cafe_name , idx, tum_point 
 		from 
 		    tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx 
-		limit #{param1}, #{param2}
+		limit #{param1}, #{param2};
 
 </select>
 	

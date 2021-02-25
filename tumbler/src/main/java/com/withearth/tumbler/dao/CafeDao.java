@@ -9,14 +9,14 @@ public interface CafeDao {
 
 
 
-//카페리스트
- List<Cafe> selectCafeList();
+  //카페리스트
+  List<Cafe> selectCafeList();
 
   //위도 경도  리스트 
   List<Cafe> selectLaglng();
 
-
-int insertQrcode();
+  //큐알코드
+  String insertQRcode(Cafe cafe);
 
 
 

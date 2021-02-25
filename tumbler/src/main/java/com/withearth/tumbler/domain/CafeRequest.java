@@ -10,7 +10,8 @@ public class CafeRequest {
 	private String location; // 카페 위치
 	private BigDecimal cafe_lat; //위도
 	private BigDecimal cafe_lon; //경도
-
+	
+	
 
 	public int getCafe_idx() {
 		return cafe_idx;

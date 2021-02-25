@@ -2,7 +2,6 @@ INDEX VERSION 1.4+C:\Users\wnfid\Documents\withearth\.metadata\.plugins\org.ecli
 866279528.index
 2032948521.index
 1837490681.index
-2268462102.index
 3108822964.index
 2268462102.index
 1387565447.index

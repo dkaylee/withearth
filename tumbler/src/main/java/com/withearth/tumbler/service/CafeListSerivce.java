@@ -38,18 +38,21 @@ public class CafeListSerivce {
 
 	}
 	*/
+	
 
+	
 	public List<Cafe> cafeView() {
 
-		List<Cafe> list = null; // 변수 만들어서 초기화
+		List<Cafe> cafelist = null; // 변수 만들어서 초기화
 		dao = template.getMapper(CafeDao.class);
-		list = dao.selectCafeList();
+		cafelist = dao.selectCafeList();
 		// System.out.println("카페리스트"+list);
 		// log.info(list);
 
-		return list;
+		return cafelist;
 
 	}
+
 
 	
 

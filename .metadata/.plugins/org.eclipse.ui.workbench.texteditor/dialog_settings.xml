@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="positions.length"/>
+		<item key="selection" value="selectTumpointList"/>
 		<list key="findhistory">
-			<item value="positions.length"/>
-			<item value="console.log(positionsarr);"/>
-			<item value="cafeinfo.done(successFunction);"/>
-			<item value="카페"/>
-			<item value="marker.setMap(map);"/>
-			<item value="title"/>
-			<item value="bound"/>
-			<item value="marker"/>
-			<item value="map.setCenter(locPosition);&#x09;&#x09;"/>
-			<item value="markers"/>
-			<item value="// 마커를 생성합니다"/>
-			<item value="var map"/>
-			<item value="dddddds"/>
-			<item value="mapsLatLng"/>
-			<item value="errorFunction"/>
+			<item value="selectTumpointList"/>
+			<item value="font"/>
+			<item value="modal_btn"/>
+			<item value="&lt;img alt=&quot;point2&quot; src=&quot;&lt;c:url value=&quot;/img/point2.png&quot;/&gt;&quot; style=&quot;width: 25%;&quot;&gt;"/>
+			<item value="closeBtn"/>
+			<item value="button"/>
+			<item value="infowindow"/>
+			<item value="makeOverListener"/>
+			<item value="mouseover"/>
+			<item value="click"/>
+			<item value="Element"/>
+			<item value="Div"/>
+			<item value="HTML"/>
+			<item value="HTMLDivElement"/>
+			<item value="content"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -30,8 +30,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="-43"/>
-		<item key="DIALOG_Y_ORIGIN" value="297"/>
+		<item key="DIALOG_X_ORIGIN" value="768"/>
+		<item key="DIALOG_Y_ORIGIN" value="686"/>
 		<item key="DIALOG_WIDTH" value="778"/>
 		<item key="DIALOG_HEIGHT" value="827"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

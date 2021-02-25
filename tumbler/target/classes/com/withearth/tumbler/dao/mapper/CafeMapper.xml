@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		type="com.withearth.tumbler.domain.Cafe">
 
 		<id property="cafe_idx" column="cafe_idx" />
+		<result property="idx" column="idx" />
 		<result property="cafe_name" column="cafe_name" />
 		<result property="location" column="location" />
 		<result property="cafe_lon" column="cafe_lon" />
