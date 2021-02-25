@@ -107,7 +107,7 @@ h3{
 						<option value="end">목적지</option>
 					</select> <h4>◇ 검색 키워드</h4> 
 					<input type="text" name="keyword" id="keyword">
-					<input	type="submit" value="검색" id="searchBtn">
+					<input	type="submit" value="검색" id="searchBtn" class="button special">
 				</form>
 				<!-- 	</div> -->
 			</div>
@@ -137,9 +137,7 @@ h3{
 								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.courseDate}"
-										pattern="yyyy-MM-dd  HH:mm:ss" />
-										${course.courseDate}
-										</td>
+										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
 								
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
