@@ -12,8 +12,9 @@
 	<!-- dataSource 등록 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		p:driverClassName="com.mysql.cj.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://openproject.cspymqrfgzev.ap-northeast-2.rds.amazonaws.com"
-		p:username="aia" p:password="aia" />
+		p:jdbcUrl="jdbc:mysql://openproject.cspymqrfgzev.ap-northeast-2.rds.amazonaws.com/open?serverTimezone=UTC"
+		p:username="aia" p:password="aia"
+		 />
 
 	<!-- JdbcTemplate 클래스 등록 -->
 	<bean id="jdbcTemplate"

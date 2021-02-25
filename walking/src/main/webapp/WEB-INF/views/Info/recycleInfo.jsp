@@ -84,10 +84,11 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">종이류, 종이팩</h2>
+					
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">X</span>
 					</button>
+					<h2 class="modal-title" id="exampleModalLabel">종이류, 종이팩</h2>
 				</div>
 				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
 					<img alt="walkingInfo1" src="<c:url value="/img/paper.jpg"/>" style="width: 100%;">
@@ -107,10 +108,11 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">금속캔, 고철</h2>
+					
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">X</span>
 					</button>
+					<h2 class="modal-title" id="exampleModalLabel">금속캔, 고철</h2>
 				</div>
 				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
 					<img alt="walkingInfo1" src="<c:url value="/img/can.jpg"/>" style="width: 100%;">
@@ -130,10 +132,11 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">유리병류</h2>
+					
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">X</span>
 					</button>
+					<h2 class="modal-title" id="exampleModalLabel">유리병류</h2>
 				</div>
 				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
 					<img alt="glass" src="<c:url value="/img/glass.jpg"/>" style="width: 100%;">
@@ -153,10 +156,11 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">플라스틱</h2>
+					
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">X</span>
 					</button>
+					<h2 class="modal-title" id="exampleModalLabel">플라스틱</h2>
 				</div>
 				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
 					<img alt="pet" src="<c:url value="/img/pet.jpg"/>" style="width: 100%;">
@@ -176,10 +180,11 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">플라스틱</h2>
+					
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">X</span>
 					</button>
+					<h2 class="modal-title" id="exampleModalLabel">비닐류</h2>
 				</div>
 				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
 					<img alt="vinyl" src="<c:url value="/img/vinyl.jpg"/>" style="width: 100%;">
@@ -199,10 +204,11 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">스티로폼(발포함성수지)</h2>
+					
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">X</span>
 					</button>
+					<h2 class="modal-title" id="exampleModalLabel">스티로폼(발포함성수지)</h2>
 				</div>
 				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
 					<img alt="Styrofoam" src="<c:url value="/img/Styrofoam.jpg"/>" style="width: 100%;">

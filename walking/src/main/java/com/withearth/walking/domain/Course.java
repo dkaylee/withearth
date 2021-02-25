@@ -1,6 +1,7 @@
 package com.withearth.walking.domain;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 public class Course {
@@ -26,6 +27,10 @@ public class Course {
 
 	public Timestamp getCourse_date() {
 		return course_date;
+	}
+	
+	public Date getCourseDate() {
+		return new Date(course_date.getTime());
 	}
 
 	public void setCourse_date(Timestamp course_date) {

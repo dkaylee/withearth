@@ -54,11 +54,11 @@
  	font-weight: bolder;
  }
 
-#fullAddr{margin-top: 3%; margin-left: 1%; width: 72%; float: left; overfloat: hidden;}
+#fullAddr{margin-top: 3%; margin-left: 0%; width: 72%; float: left; overfloat: hidden;}
 
 #btn_select{
 	margin-top: 3%;
-	margin-left: 1%;
+	margin-left: 3%;
 	overflow: hidden;
 	width: 24%;
 	
@@ -940,7 +940,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button class="btn" type="button" data-dismiss="modal">확인</button>
+					<button class="button special" type="button" data-dismiss="modal">확인</button>
 				</div>
 			</div>
 		</div>

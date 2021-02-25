@@ -5,6 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.withearth.walking.dao.WalkingDao">
 
+	<!-- 21.02.25: table을 AWS-RDS-AIA open.walking으로 설정  -->
+
 	<!-- Course Type의 resultMap #resultMap id 주의!!!(대소문자 구분할 것) -->
 	<resultMap id="courseResult" type="com.withearth.walking.domain.Course"  >
 		<id column="course_idx" property="course_idx"/>

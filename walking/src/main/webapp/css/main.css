@@ -51,6 +51,9 @@ color
 		-webkit-text-size-adjust: none;
 	}
 
+	th{
+		text-align: center;
+	}
 	
 
 /* Box Model */
