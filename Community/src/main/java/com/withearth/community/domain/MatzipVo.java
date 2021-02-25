@@ -17,6 +17,7 @@ public class MatzipVo {
 	private int matHeart;
 	private int idx;
 	
+	private List<FileVo> fileList;
 	
 	public int getMatIdx() {
 		return matIdx;
@@ -81,12 +82,21 @@ public class MatzipVo {
 		this.idx = idx;
 	}
 	
+	public List<FileVo> getFileList() {
+		return fileList;
+	}
+	public void setFileList(List<FileVo> fileList) {
+		this.fileList = fileList;
+	}
+	
 	@Override
 	public String toString() {
 		return "MatzipVo [matIdx=" + matIdx + ", matTitle=" + matTitle + ", matAddr=" + matAddr + ", matTime=" + matTime
-				+ ", matNum=" + matNum + ", matCont=" + matCont + ", matImg=" + matImg
-				+ ", matDate=" + matDate + ", matHeart=" + matHeart + ", idx=" + idx + "]";
+				+ ", matNum=" + matNum + ", matCont=" + matCont + ", matImg=" + matImg + ", matDate=" + matDate
+				+ ", matHeart=" + matHeart + ", idx=" + idx + ", fileList=" + fileList + "]";
 	}
+	
+	
 	
 	
 	

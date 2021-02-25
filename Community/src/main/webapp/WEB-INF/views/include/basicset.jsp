@@ -15,11 +15,12 @@
 <%-- <link href="<c:url value="/css/main"/>" rel="stylesheet"> --%>
 <!-- Scripts -->
 
+
 <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
 

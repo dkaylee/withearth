@@ -52,6 +52,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<!-- ajax를 위한 부분 맛집info 출력 -->
+	<select id="seletAddrInfo" parameterType="map" resultMap="matListResult">
+	
+	select mat_idx, mat_title, mat_addr from Matzip;
+	
+	</select>
+	
 	<!-- 맛집추가 -->
 	<insert id="insertMatzip"
 	parameterType="com.withearth.community.domain.MatzipVo"
@@ -76,12 +83,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 파일 업로드 -->
-	<insert id="fileUpload" parameterType="com.withearth.community.domain.FileVo"
+	<insert id="fileUpload" parameterType="HashMap"
 	useGeneratedKeys="true" keyProperty="fileIdx">
 	insert into Matfile
-	(file_idx, org_name, new_name, file_size, mat_idx )
+	(org_name, new_name, file_size, mat_idx )
 	VALUES
-	(#{fileIdx}, #{orgFName}, #{newFName}, #{fileSize}, #{matIdx})
+	(#{orgFName}, #{newFName}, #{fileSize}, #{matIdx})
 	</insert>
 	
 	<!-- 파일 삭제 -->
@@ -90,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!-- 파일 찾기 -->
-	<select id="selectFileList" resultMap="fileList">
+	<select id="selectFileList" resultType="com.withearth.community.domain.FileVo">
 		select * from Matfile where mat_idx = #{matIdx}
 	</select>
 	
@@ -103,6 +110,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		mat_idx = ${matIdx}
 		where file_Idx = #{fileIdx}
 	</update>
+	
+	
 	
 	
 	<!--  맛집 수 업데이트 -->

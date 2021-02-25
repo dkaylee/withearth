@@ -35,7 +35,7 @@ public class MatzipListService {
 		
 		System.out.println("pageNum: " + param.getP());
 		
-		int cntPerPage = 5;
+		int cntPerPage = 10;
 		
 		int startRow = (param.getP() -1) * cntPerPage;
 		int endRow = startRow + cntPerPage - 1;
@@ -78,9 +78,20 @@ public class MatzipListService {
 		}
 		return list;
 	}
+	
+	public List<MatzipVo> getMapInfo(){
 		
-	
-	
-	
+		List<MatzipVo> mapInfo = null;
+		
+		try {
+		dao = template.getMapper(MatDao.class);
+		
+		mapInfo = dao.seletAddrInfo();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mapInfo;
+	}
 	
 }

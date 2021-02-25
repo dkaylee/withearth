@@ -34,6 +34,7 @@ public class AddMatzipService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
+	// 파일업로드
 	@Transactional
 	public int addMatzip(
 			MatAddRequest matRequest,
@@ -41,12 +42,12 @@ public class AddMatzipService {
 		
 		int result = 0;
 		
-		
 		File newFile = null;
 		String newFName = null;
 		
 		// 넘어온 파일을 리스트로 저장
 		List<MultipartFile> mf = mprq.getFiles("mImg");
+		
 		
 		if(mf.size() == 1 && mf.get(0).getOriginalFilename().equals("")) {
 			
@@ -58,6 +59,8 @@ public class AddMatzipService {
 				
 				// 시스템 실제 경로
 				String saveDirPath = mprq.getSession().getServletContext().getRealPath(uploadPath);
+				
+				System.out.println("!!!!!!!!!!!!!!!!!!!!"+saveDirPath);
 				
 				// 파일 중복명 처리위한 uuid
 				String uuid = UUID.randomUUID().toString();
@@ -72,35 +75,66 @@ public class AddMatzipService {
 				long fileSize = mf.get(i).getSize();
 				
 				// 저장될 파일 경로
-				newFile = new File(saveDirPath + newFName);
-				
+				newFile = new File(saveDirPath, newFName);
 
 				System.out.println("orgName : "+orgFName);
 				System.out.println("newFName : "+newFName);
 				System.out.println("filesize : "+fileSize);
+				
+//				try {
+//					
+//					mf.get(i).transferTo(newFile);
+//					
+//				} catch (IllegalStateException | IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				
+//				 HashMap<String, Object> hm = new HashMap<>();
+//				 hm.put("orgFName ", orgFName);
+//				 hm.put("newFName ", newFName);
+//				 hm.put("fileSize ", fileSize);
+//				 
+//				 System.out.println("file hashmap : " + hm); 
+//				 
+//				 dao = template.getMapper(MatDao.class);
+//				 dao.fileUpload(hm);
+				 
 
 				// 파일 저장 응답값
 					try {
-						mf.get(i).transferTo(newFile);
 						
-						Map<String, Object> hm = new HashMap<>();
-						hm.put("orgFName ", orgFName);
-						hm.put("newFName ", newFName);
-						hm.put("fileSize ", fileSize);
+						FileOutputStream thumnail = new FileOutputStream(new File(saveDirPath, "s_"+ newFName));
 						
-						System.out.println("file hashmap : "+hm); 
+						// 썸네일 저장 100X100
+						Thumbnailator.createThumbnail(
+								mf.get(i).getInputStream(), 
+								thumnail, 
+								50, 50);
 						
-						// 데이터 베이스 입력
-						dao = template.getMapper(MatDao.class);
+						thumnail.close();
 						
-						dao.fileUpload(hm);
+						;
+
 						
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
 					}
-				
+					
+					HashMap<String, Object> hm = new HashMap<>();
+					 hm.put("orgName ", orgFName);
+					 hm.put("newName ", newFName);
+					 hm.put("fileSize ", fileSize);
+					 
+					 System.out.println("file hashmap : " + hm); 
+					 
+					 
+					 dao = template.getMapper(MatDao.class);
+					 dao.fileUpload(hm);
+					
 			}
 		}
+		
 		
 		MatzipVo matzip = matRequest.toMatzip();
 		

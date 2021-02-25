@@ -59,6 +59,7 @@ public class MatAddRequest {
 	public void setmImg(List<MultipartFile> mImg) {
 		this.mImg = mImg;
 	}
+	
 	public MatzipVo toMatzip() {
 		
 		MatzipVo matzip = new MatzipVo();

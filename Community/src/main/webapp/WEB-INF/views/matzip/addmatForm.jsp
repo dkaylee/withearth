@@ -29,7 +29,7 @@
 	function goMatlist(){
 		location.href = "/matzip/matlist";
 	}
-	
+	/* 파일업로드 미리보기 */
 	$(document).ready(
 		    function() {
 		        // 태그에 onchange를 부여한다.
@@ -81,12 +81,15 @@
 				<div class="6u 12u$(xsmall)">
 					상호명<input type="text" name="mTitle" id="mTitle" value=""/>
 				</div>
+				
 				<div class="6u 12u$(xsmall)">
 					주소<input type="text" name="mAddr" id="mAddr" value=""/>
 				</div>
+				
 				<div class="6u 12u$(xsmall)">
 					시간<input type="text" name="mTime" id="mTime" value=""/>
 				</div>
+				
 				<div class="6u 12u$(xsmall)">
 					전화번호<input type="text" name="mNum" id="mNum" value=""/>
 				</div>

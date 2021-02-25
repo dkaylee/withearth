@@ -18,7 +18,10 @@
 	
 		<%-- <span class="image fit" style="width: 1480px; height: 200px;"><img src="${matzip.matImg}"></span> --%>
 		
+		<img src="<c:url value="/fileupload/matzip/${matzip.matImg}"/>"/>
+		
 		<div class="inner">
+		
 			<header class="align-center">
 				<h2>${matzip.matTitle}</h2>
 				<p>${matzip.matCont}</p>
@@ -29,11 +32,13 @@
 				<p>${matzip.matHeart}</p>
 				
 				
-				<c:forEach items="${uploadFileList}" var="upload">
+				
+				
+				<%-- <c:forEach items="${uploadFileList}" var="upload">
 				<div class="6u$ 12u$(xsmall)">
 					<img src="<c:url value="/fileupload/matzip/${uploadFileList.newFName}"/>">
 				</div> 
-				</c:forEach>
+				</c:forEach> --%>
 				
 			</header>
 		</div>
