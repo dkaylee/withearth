@@ -5,8 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, 
+  maximum-scale=1.0, minimum-scale=1.0">
 <title>Login</title>
 
+<!-- 부트스트랩 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <!--카카오 로그인-->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -16,30 +21,41 @@
  <meta name="google-signin-client_id" content="1062510835529-vrqcivq464jhn25nhdghd3ij957430it.apps.googleusercontent.com">
 <!-- 네이버 로그인 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-
+<!-- css -->
+<link href="<c:url value="/css/login.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="first_container">
+<div class="second_container" style="border:1px solid black">
+	<div class="main_img">
+	<img src="<c:url value="/img/earth.jpg"/>" class="rounded mx-auto d-block" alt="지구" >
+	</div>
+	<div class="mb-3">
+	  <input type="email" class="form-control" id="userid" placeholder="이메일 주소" name="userid" value="${cookie.uid.value}">
+	  <input type="password" class="form-control" id="pw" placeholder="비밀번호" name="pw" >
+	</div>
+		<button type="submit" class="btn btn-secondary" id="btnlog"value="Login">로그인</button> <br>
+	<div class="a-tag">
+	<a href="<c:url value="/member/findpw"/>" class="text-center">비밀번호 찾기</a> 
+	<a href="<c:url value="/member/reg"/>" class="text-center">회원가입</a> <br>
+	</div>
+	<h2 class="login_sns_title">SNS계정으로 간편 로그인/회원가입</h2>
+  	<a class="g-signin2" data-width="208.07px" data-height="45px" onclick="onSignIn();"></a>
+	<a id="custom-login-btn" href="javascript:loginWithKakao()" style="">
+	<img src="<c:url value="/img/kakao_login_medium_narrow.png"/>"/></a>
+  	<div id="naverIdLogin"></div>
 
-
-<!-- Form -->
-								
-		<h3>Login</h3>
-		
-		<form method="post">
-			<input type="email" name="userid" id="userid" value="${cookie.uid.value}" placeholder="Email">
-			<input type="password" name="pw" id="pw" placeholder="Password">
-			<input type="checkbox" name="chk" id="chk" value="on" value="remember-me" ${cookie.uid ne null? 'checked' : '' }>
-			<label for="copy">Remember Email</label>
-		</form>
-			<input type="submit" id="btnlog"value="Login" />
-		<a id="custom-login-btn" href="javascript:loginWithKakao()" style="">
-  		 	<img src="<c:url value="/img/kakao_login_medium_wide.png"/>"/></a>
-  		  <div id="naverIdLogin"></div>
-  		<a class="g-signin2" onclick="onSignIn();"></a>
-     
-    	<a href="javascript:logout()">임시 로그아웃</a><br>
-    	<a href="<c:url value="/member/findpw"/>">비밀번호 찾기</a> 
+</div>
+</div>
 </body>
+
+
+
+
+
+
+
+
 
 <script>
 $(document).ready(function(){
@@ -307,7 +323,7 @@ function onSignIn() {
 			clientId: "m2atJuSTPKnWvaMTDlAu",
 			callbackUrl: "http://localhost:8080/member/member/callback",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
-			loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+			loginButton: {color: "green", type: 3, height: 45} /* 로그인 버튼의 타입을 지정 */
 		}
 	);
 	

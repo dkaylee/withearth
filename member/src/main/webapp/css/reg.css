@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+body {
+background : #F2F2F2;
+}
+.first_container {
+	width:100%;
+	height:100%;
+}
+.second_container {
+/*     width: 100%;
+    max-width: 360px;
+    padding: 40px 30px;
+    position:absoulte;
+    top:50%;
+    left:50%; */
+    position : absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 320px;
+    height:650px;
+	margin-left:-160px;
+    margin-top:-325px;
+    padding: 40px 30px;
+    text-align: center;
+}
+.mb-3>input{
+	margin:1px 1px;
+	width: 100%;
+	height: 45px;	
+}
+
+#btnReg{
+	margin-top:15px;
+	width: 100%;
+	height: 50px;
+	
+}
