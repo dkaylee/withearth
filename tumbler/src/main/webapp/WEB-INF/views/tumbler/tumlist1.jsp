@@ -271,7 +271,7 @@ h1 {
 		<div class="map_wrap">
 			<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
-			<div id="menu_wrap" class="bg_white">
+<%-- 			<div id="menu_wrap" class="bg_white">
 				<div class="option">
 					<div class="store_input" id="storename_div" style="display:;">
 						<form onsubmit="searchPlaces(); return false;">
@@ -297,7 +297,7 @@ h1 {
 	
 				</ul>
 				<div id="pagination"></div>
-			</div>
+			</div> --%>
 		</div>
 	</div>
 
@@ -306,14 +306,13 @@ h1 {
 	<script>
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	mapOption = { 
+	    mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 	
 	/* 좌표 가져오기 */
-	$(document).ready(function(){
-		
+
 		 var cafeinfo = $.ajax({
 				type:"GET",
 				url:"http://localhost:8080/tumbler/tumlist1/map",
@@ -416,7 +415,14 @@ h1 {
 			   	            '</div>'; 
 			   	      // 마커 위에 커스텀오버레이를 표시합니다
 			   	      // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-			   	      positions.forEach(function(pos) {
+			   	      var overlay = new kakao.maps.CustomOverlay({
+			   	          content: content,
+			   	          map: map,
+			   	          position: cafemarkers.getPosition(),
+			   	          
+			   	      });
+			   	      
+			   	      /* positions.forEach(function(pos) {
 			   	      var overlay = new kakao.maps.CustomOverlay({
 			   	          content: content,
 			   	          map: map,
@@ -435,9 +441,13 @@ h1 {
 			         overlay.setContent(content);
 			         overlay.setMap(map);
 			         
-			       });
+			       });  */
+			       
+			       //
+			           
+			       
 
-			   	      /* // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+			   	       // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 			   	      kakao.maps.event.addListener(cafemarkers, 'click', function() {
 			   	    	 
 			   	          overlay.setMap(map);
@@ -455,15 +465,15 @@ h1 {
 			   	     // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 			   	    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 			   	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-			   	    kakao.maps.event.addListener(cafemarkers, 'mouseover', makeOverListener(map, cafemarkers, overlay));
-			   	    kakao.maps.event.addListener(cafemarkers, 'mouseout', makeOutListener(overlay));
+			   	    /* kakao.maps.event.addListener(cafemarkers, 'mouseover', makeOverListener(map, cafemarkers, overlay));
+			   	    kakao.maps.event.addListener(cafemarkers, 'mouseout', makeOutListener(overlay)); */
 	  
-		  */
+		  
 		    }
 		   	    
 		   	                    
 		   	   // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-		        /* function makeOverListener(map, cafemarkers, overlay) {
+		        /*  function makeOverListener(map, cafemarkers, overlay) {
 		   	     return function() {
 		   	    	overlay.open(map, cafemarkers);
 		   	     };
@@ -474,7 +484,9 @@ h1 {
 		   	      return function() {
 		   	    	overlay.close();
 		   	       };
-		   	    } */            
+		   	    }     */       
+		   	    
+
 		  
 			  function errorFunction(request,status,error){
 				console.log("오류확인");
@@ -482,7 +494,12 @@ h1 {
 			}  
 		 
 		}
-	})
+		    
+		    function overley(positions){
+		    	console.log(latlng);
+		    	
+		    }
+
 
 
 	
