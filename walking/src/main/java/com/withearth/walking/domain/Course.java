@@ -1,7 +1,7 @@
 package com.withearth.walking.domain;
 
-import java.sql.Time;
 import java.sql.Timestamp;
+
 
 public class Course {
 	

@@ -114,28 +114,23 @@
 					<!-- <img src="https://cdn.pixabay.com/photo/2014/04/02/10/56/recycling-304974_960_720.png" alt="Pic 01" /> -->
 				</div>
 				<header>
-					<h3>재활용 한 눈에 보기</h3>
+					<h3>분리배출 한 눈에 보기</h3>
 				</header>
-				<p>Praesent dapibus, neque id cursus faucibus, tortor neque
-					egestas augue, eu vulputate magna eros eu erat. Aliquam erat
-					volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem
-					ipsum.</p>
+				<p>분리배출에 필요한 4가지, 종류별로 분리배출을 하는 방법을 확인할 수있습니다.</p>
 				<footer>
 					<a href="<c:url value="/Info/recycleInfo"/>" class="button special">More</a>
 				</footer>
 			</article>
 			<article>
 				<div class="image fit">
-					<img src="images/pic02.jpg" alt="Pic 02" />
+					<!-- <img src="images/pic02.jpg" alt="Pic 02" /> -->
 				</div>
 				<header>
-					<h3>Fusce pellentesque tempus</h3>
+					<h3>환경부로 더 많은 소식 보러가기</h3>
 				</header>
-				<p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet,
-					sagittis vel, euismod vel, velit. Pellentesque egestas sem.
-					Suspendisse commodo ullamcorper magna non comodo sodales tempus.</p>
+				<p>2021년 달라진 제도, 그림자료, 보도/설명 등 다양한 환경 관련 소식을 볼 수 있습니다.</p>
 				<footer>
-					<a href="#" class="button special">More</a>
+					<a href="http://me.go.kr/home/web/main.do" class="button special">More</a>
 				</footer>
 			</article>
 		</div>
@@ -144,7 +139,7 @@
 
 <!-- Form -->
 
-<h3>Form</h3>
+<!-- <h3>Form</h3>
 
 <form method="post" action="#">
 	<div class="row uniform">
@@ -155,7 +150,7 @@
 			<input type="email" name="email" id="email" value=""
 				placeholder="Email" />
 		</div>
-		<!-- Break -->
+		Break
 		<div class="12u$">
 			<div class="select-wrapper">
 				<select name="category" id="category">
@@ -167,7 +162,7 @@
 				</select>
 			</div>
 		</div>
-		<!-- Break -->
+		Break
 		<div class="4u 12u$(small)">
 			<input type="radio" id="priority-low" name="priority" checked>
 			<label for="priority-low">Low Priority</label>
@@ -180,7 +175,7 @@
 			<input type="radio" id="priority-high" name="priority"> <label
 				for="priority-high">High Priority</label>
 		</div>
-		<!-- Break -->
+		Break
 		<div class="6u 12u$(small)">
 			<input type="checkbox" id="copy" name="copy"> <label
 				for="copy">Email me a copy of this message</label>
@@ -189,12 +184,12 @@
 			<input type="checkbox" id="human" name="human" checked> <label
 				for="human">I am a human and not a robot</label>
 		</div>
-		<!-- Break -->
+		Break
 		<div class="12u$">
 			<textarea name="message" id="message"
 				placeholder="Enter your message" rows="6"></textarea>
 		</div>
-		<!-- Break -->
+		Break
 		<div class="12u$">
 			<ul class="actions">
 				<li><input type="submit" value="Send Message" /></li>
@@ -219,7 +214,7 @@
 </form>
 </section>
 
-<!-- Table -->
+Table
 <h3>Table</h3>
 
 <h4>Default</h4>
@@ -266,4 +261,4 @@
 			</tr>
 		</tfoot>
 	</table>
-</div>
+</div> -->

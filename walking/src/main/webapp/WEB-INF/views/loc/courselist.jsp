@@ -138,6 +138,7 @@ h3{
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.course_date}"
 										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
+								
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
 								<td>${course.loc_km} km</td>

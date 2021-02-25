@@ -22,7 +22,7 @@
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <style>
 	.recontents{
-		margin-top: 15%;
+		margin-top: 10%;
 		margin-left: 5%;
 		margin-right: 1%;
 		float: left;
@@ -35,9 +35,7 @@
 		border-radius: 20px;
 	}
 	
-	footer{
-		clear: none;
-	}
+	
 	
 	h2, h3{
 		font-weight: bolder;
@@ -47,7 +45,6 @@
 <body>
  <%@ include file="/WEB-INF/views/include/header.jsp"%>
  	<!----------------------------------------View -------------------------------------------------->
- 	
  	
  	
  	
@@ -79,7 +76,6 @@
 		<!-- <button class="button special" onclick="styrofoamModal()">스티로폼(발포합성수지)</button> -->
 		<img alt="recycle1" src="<c:url value="/img/cat6.jpg"/>" onclick="styrofoamModal()" >
 	</div>
-	
 	
 	
 	<!---------------------------------------- Modal -------------------------------------------------->

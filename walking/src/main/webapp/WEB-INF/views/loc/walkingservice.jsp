@@ -103,13 +103,13 @@
 	//jQuery.noConflict(); -> 부트스트랩 모달 충돌 방지
 	
 
-	var now_lat = $('#nowLat');
-	var now_lon = $('#nowLon');
-	var new_lat = $('#newLat');
-	new_lat = 37.57081522;
-	var new_lon = $('#newLon');
-	new_lon = 127.00160213;
-	var newAddress=''; // 전역 변수로 사용
+	var now_lat = $('#nowLat'); 	// 현재 위치 위도
+	var now_lon = $('#nowLon'); 	// 현재 위치 경도
+	var new_lat = $('#newLat'); 	// 목적지 위치 위도
+	var new_lon = $('#newLon'); 	// 목적지 위치 경도
+	new_lat = 37.57081522;			// 목적지 위도 기본값
+	new_lon = 127.00160213;			// 목적지 경도 기본값
+	var newAddress=''; 				// 목적지 주소
 	
 	$(document).ready(function() {
 		// Geolocation API에 액세스할 수 있는지를 확인
@@ -117,16 +117,19 @@
 		if (navigator.geolocation) {
 		//위치 정보를 얻기
 			navigator.geolocation.getCurrentPosition(function(pos) {
-				$('#latitude').html(pos.coords.latitude); // 위도 ex)37
-				$('#longitude').html(pos.coords.longitude); // 경도 ex)126
+				$('#latitude').html(pos.coords.latitude); 		// 위도 ex)37.xxx -> ssl 사용 -> ssl 등록(aws)
+				$('#longitude').html(pos.coords.longitude); 	// 경도 ex)126.xxx
 				now_lat = pos.coords.latitude;
 				now_lon = pos.coords.longitude;
+				
 				// initTmap()에 pos.coords.latitude, pos.coords.longitude 값을 전달
 				console.log("현재 경도" + now_lon);
 				console.log("현재 위도" + now_lat);
+				
 				// 경로 function으로 현재 위경도, 목적지 위경도 전송
 				initTmap(new_lat, new_lon, now_lat, now_lon);
-				// 현재 위경도 값을 좌표->주소로 변경하는 function으로 전송
+				
+				// 현재 위경도 값을 좌표 -> 주소로 변경하는 function으로 전송
 				reverseGeo(now_lon, now_lat);
 			});
 		} else {
@@ -138,6 +141,7 @@
 		var map, marker1;
 		
 		$('#btn_select').click(	function() {
+			
 			// 목적지 초기화 
 			newAddress='';
 			
@@ -173,7 +177,8 @@
 						var lon, lat;
 						var resultCoordinate = resultInfo.coordinate[0];
 						if (resultCoordinate.lon.length > 0) {
-							// 구주소
+							
+							
 							lon = resultCoordinate.lon;
 							lat = resultCoordinate.lat;
 							
@@ -185,8 +190,8 @@
 							var new_lon = lon;
 	
 	
-							initTmap(new_lat,new_lon,now_lat,now_lon);
-							arrChk(new_lat,new_lon,now_lat,now_lon);
+							initTmap(new_lat,new_lon,now_lat,now_lon);		// 보행자 경로 안내 지도 function
+							arrChk(new_lat,new_lon,now_lat,now_lon);		// 도착버튼 function
 						} else {
 							// 신주소
 							lon = resultCoordinate.newLon;
@@ -297,8 +302,6 @@
 								// 검색 결과 표출
 								if (lonEntr > 0) {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(중심점) : "+ lat+ ", "
-																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
 									var text = "검색 결과(새주소) "+" \n "+ newAddress+ "\n "
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
@@ -307,7 +310,6 @@
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
 									var text = "검색 결과(새주소): "+" \n " + newAddress
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
@@ -378,8 +380,6 @@
 								var new_lo;
 								if (lonEntr > 0) {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
-									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br>"	+ "위경도좌표(중심점) : "
-																+ lat+ ", "+ lon+ "</br>"+ "위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
 									var text = "검색 결과(지번주소) \n"+"\n"+ address;
 									console.log('address'+address);
 									newAddress = address;	// newAddress에 값을  저장해서 데이터 전송
@@ -390,8 +390,6 @@
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
-									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"
-												+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
 									var text = "검색 결과(지번주소)"+" \n "+ address;
 									console.log('address'+address);
 									newAddress = address; // newAddress에 값을  저장해서 데이터 전송
@@ -502,10 +500,10 @@
 	var resultdrawArr = [];
 	var tDistance, aTime;
 	function initTmap(newlat, newlon, nowlat, nowlon) {
-		console.log(newlat);
-		console.log(newlon);
-		console.log(nowlat);
-		console.log(nowlon);
+		console.log('목적지 위도: '+newlat);
+		console.log('목적지 경도: '+newlon);
+		console.log('출발지(현재위치) 위도:'+nowlat);
+		console.log('출발지(현재위치) 경도: '+nowlon);
 		// 21.02.07 추가
 		$('#map_div').html('');
 		// 1. 지도 띄우기
@@ -548,12 +546,12 @@
 				startY : nowlat, // 위도
 				angel : 1,
 				speed : 60,
-				endX : newlon, // 경도
-				endY : newlat, // 위도
-				reqCoordType : "WGS84GEO", // 출발지, 경유지, 목적지 좌표게 유형  / WGS84GEO(기본값) - 경위도
-				resCoordType : "EPSG3857", // 받고자 하는 응답 좌표계 유형 / WGS84GEO(기본값) - 경위도
-				startName : "출발지", // %EC%B6%9C%EB%B0%9C
-				endName : "목적지" // %EB%B3%B8%EC%82%AC
+				endX : newlon, 	// 경도
+				endY : newlat, 	// 위도
+				reqCoordType : "WGS84GEO", 	// 출발지, 경유지, 목적지 좌표계 유형  - WGS84GEO(기본값) - 경위도
+				resCoordType : "EPSG3857", 	// 지구 위의 위치를 나타내는 좌표 타입  - Google Mercator
+				startName : "출발지", 		// %EC%B6%9C%EB%B0%9C
+				endName : "목적지" 			// %EB%B3%B8%EC%82%AC
 			},
 			success : function(response) {
 			var resultData = response.features;
@@ -565,7 +563,6 @@
 			$("#aTime").html(aTime);
 			// modal에 사용될 id // modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
 			$("#modalDistance").html(tDistance+ "km");
-			//$("#modalTime").html(tTime+"분");
 			
 			//기존 그려진 라인 & 마커가 있다면 초기화
 			if (resultdrawArr.length > 0) {

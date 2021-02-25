@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			useGeneratedKeys="true"
 			keyProperty="course_idx">
 		
-		insert into walkingservice.walking( loc_km, about_time, start_point, end_point, walking_time) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time})	
+		insert into open.walking( loc_km, about_time, start_point, end_point, walking_time) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time})	
 	
 	</insert>
 	
@@ -48,13 +48,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 3. 코스의 총 개수-->
 	<select id="selectTotalCount" resultType="int">
-		select count(*) from course
+		select count(*) from open.walking
 	</select>
 	
 	
 	<!-- 4. 코스 리스트 v-->
 	<select id="selectCourseList" parameterType="map" resultMap="courseResult"> 
-		select * from walkingservice.walking
+		select * from open.walking
 		
 		<where>
 			<if test="searchParam != null">
@@ -80,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 5. Rest API - GET v -->
 	<select id="selectAllCourseList" resultMap="courseResult">
-		select * from walkingservice.walking
+		select * from open.walking
 	</select>
 	
 	
@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			parameterType="com.withearth.walking.domain.SearchParam"
 	        resultType="int" >
 	        
-		select count(*) from walkingservice.walking
+		select count(*) from open.walking
 		
 		<!-- where idx>0  -->
 		
@@ -129,19 +129,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 7. 코스 정보 삭제 -->
 	<delete id="deleteCourseByIdx">
-		delete from course where course_idx=#{course_idx}
+		delete from open.walking where course_idx=#{course_idx}
 	</delete>
 	
 	
 	<!-- 8. 코스 정보 조회: idx로 조회 v -->
 	<select id="selectCourseByIdx" resultMap="courseResult">
-		select * from course where course_idx=#{no}
+		select * from open.walking where course_idx=#{no}
 	</select>
 	
 	
 	<!-- 9. idx, verify 조건으로 조회 -->
 	<select id="selectCourseByIdxVerify" resultType="int" >
-		select count(*) from walkingservice.walking where course_idx=#{course_idx} and verify='Y'
+		select count(*) from open.walking where course_idx=#{course_idx} and verify='Y'
 	</select>
 	
 	
