@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="selectTumpointList"/>
+		<item key="selection" value="mark.png"/>
 		<list key="findhistory">
-			<item value="selectTumpointList"/>
-			<item value="font"/>
-			<item value="modal_btn"/>
-			<item value="&lt;img alt=&quot;point2&quot; src=&quot;&lt;c:url value=&quot;/img/point2.png&quot;/&gt;&quot; style=&quot;width: 25%;&quot;&gt;"/>
-			<item value="closeBtn"/>
-			<item value="button"/>
-			<item value="infowindow"/>
-			<item value="makeOverListener"/>
-			<item value="mouseover"/>
-			<item value="click"/>
-			<item value="Element"/>
-			<item value="Div"/>
-			<item value="HTML"/>
-			<item value="HTMLDivElement"/>
+			<item value="mark.png"/>
+			<item value="이용"/>
+			<item value="이용가능"/>
+			<item value="img"/>
+			<item value="imageSrc "/>
+			<item value="imp"/>
+			<item value="ell"/>
+			<item value="wrap"/>
 			<item value="content"/>
+			<item value="eli"/>
+			<item value="title"/>
+			<item value=".info.title"/>
+			<item value=".wrap"/>
+			<item value="127.03817660000001"/>
+			<item value="ton"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -30,8 +30,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="768"/>
-		<item key="DIALOG_Y_ORIGIN" value="686"/>
+		<item key="DIALOG_X_ORIGIN" value="1049"/>
+		<item key="DIALOG_Y_ORIGIN" value="575"/>
 		<item key="DIALOG_WIDTH" value="778"/>
 		<item key="DIALOG_HEIGHT" value="827"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

@@ -26,7 +26,12 @@
 	font-size: 1.5em;
 	font-weight: bold;
 }
+#addpoint{
+    margin: 30px 0px 30px;
+	display: block;
+	text-align: center;
 
+}
 #point {
 	margin: auto;
 	display: block;
@@ -47,16 +52,9 @@
 	margin: 0 auto;
 } 
 
-button {
-	all: unset;
-	background-color: #6B90BF;
-	color: white;
-	padding: 30px 100px;
-	margin: 50px 10px;
-	border-radius: 6px;
-	cursor: pointer;
-	width:20px;
-	height:10px;
+.button special {
+	width: 200px;
+    height: 50px;
 	
 }
 </style>
@@ -74,20 +72,24 @@ button {
 
 		<div class="head_orderlist">
 			<!-- Table -->
+			<div id = "addpoint">
 			<div id="point">
-				<%-- <img alt="point2" src="<c:url value="/img/point2.png"/>" style="width: 25%;"> --%>
-				<img src="/img/point2.png" style="width: 25%;">
+			 <img alt="point2" src="<c:url value="/img/point2.jpg"/>" style="width: 35%;">
+				<!-- <img src="/img/point2.png" style="width: 25%;"> -->
 			</div>
 
 			<div id="card">
 
-				<h3 style="text-align: center">100point 적립되었습니다</h3>
+				<h3 style="text-align: center">100point 적립되었습니다.</h3>
 			</div>
-
+             </div>
 
 			<div id="modal_btn">
-				<button id="open"onclick="location.href='/'"> 메인화면</button>
-				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button>
+				<!-- <button id="open"onclick="location.href='#'"></button>
+				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
+				<a href="#" class="button special" >메인 화면</a>
+				<a href="/tumbler/tumlist" class="button special">텀블러 조회</a>
+			</div>
 			</div>
 
 

@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.zxing.WriterException;
 import com.withearth.tumbler.dao.CafeDao;
 import com.withearth.tumbler.domain.CafeRequest;
+import com.withearth.tumbler.service.MakeQRService;
  
-@Controller
+@RestController
+@RequestMapping("/rest/tumbler/saving")
 public class MakeQRController {
    	
 	
@@ -27,10 +30,13 @@ public class MakeQRController {
 	  
 	 @Autowired 
 	 private SqlSessionTemplate template;
+	 @Autowired 
+	 private MakeQRService makeqrService;
+	 
 	 
 
 
-	 @RequestMapping("/tumbler/{idx}/{cafe_idx}") 
+	 @GetMapping("/tumbler/{idx}/{cafe_idx}") 
 	public String makeqr(HttpServletRequest request, 
 			HttpSession session,
 			Model model,
@@ -41,7 +47,7 @@ public class MakeQRController {
 		 
 		 	
 
-      return "tumbler/saving"; 
+      return makeqrService.make(idx,cafeIdx,request, session,model); 
       
 	 }
 	 

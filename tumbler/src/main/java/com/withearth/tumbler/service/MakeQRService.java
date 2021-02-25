@@ -41,11 +41,11 @@ public class MakeQRService {
 
 
 	 
-	public String make(int idx, int cafeidx,HttpServletRequest request, 
+	public String make(int idx, int cafeIdx,HttpServletRequest request, 
 			HttpSession session,
 			Model model) throws WriterException, IOException{
 		 
-		   Cafe cafe = new Cafe();
+		
 		
 		  String root = request.getSession().getServletContext().getRealPath("resources"); //현재 서비스가 돌아가고 있는 서블릿 경로의 resources 폴더 찾기
 	      String savePath = root + "\\qrCodes\\"; // 파일 경로
@@ -58,7 +58,7 @@ public class MakeQRService {
 	    	}  
 
       
-	    	int cafe_idx = 21;
+	    	int cafe_idx = 25;
 	    	
 
       
@@ -100,17 +100,17 @@ public class MakeQRService {
 	        //리턴은 사용자가 원하는 값을 리턴한다. 
 	        //작성자는 QRCode 파일의 이름을 넘겨주고 싶었음.
 	        
-//	        Cafe cafe = new Cafe();
-//	        cafe.setQrcode(fileName);
-//	        cafe.setIdx(idx);
-//	        
-//	        model.addAttribute("cafe",cafe);
-//	        dao = template.getMapper(CafeDao.class);
-//	        String result =  dao.insertQRcode(cafe);
+	        Cafe cafe = new Cafe();
+	        cafe.setQrcode(fileName);
+	        cafe.setIdx(idx);
+	        
+	        model.addAttribute("cafe",cafe);
+	        dao = template.getMapper(CafeDao.class);
+	        String result =  dao.insertQRcode(cafe);
 	        
 	        
 
-	        return "tumbler/saving";
+	        return result;
 	        
 	  	 }
 	  	 

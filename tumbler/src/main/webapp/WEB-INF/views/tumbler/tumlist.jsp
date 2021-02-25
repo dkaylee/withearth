@@ -26,6 +26,14 @@
 	font-size: 1.5em;
 	font-weight: bold;
 }
+
+p{
+    text-align: center;
+    font-size: 35px;
+
+
+
+}
 </style>
 
 
@@ -41,7 +49,7 @@
       
 		<div class="head_orderlist">
 			<!-- Table -->
-			<h3>텀블러 인증 내역</h3>
+			<p>텀블러 인증 내역</p>
 
 			
 			<div class="table-wrapper">

@@ -15,7 +15,7 @@ public interface CafeDao {
   //위도 경도  리스트 
   List<Cafe> selectLaglng();
 
-  //큐알코드
+  //큐알코드 저장
   String insertQRcode(Cafe cafe);
 
 
