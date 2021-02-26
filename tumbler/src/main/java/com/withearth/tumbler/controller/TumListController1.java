@@ -10,14 +10,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withearth.tumbler.service.CafeListSerivce;
 import com.withearth.tumbler.service.TumListService;
-
+/*
 @Controller
-public class TumListController {
+public class TumListController1 {
 	
 	@Autowired
 	private TumListService tumlistService;
 	
-
+	
+	  @RequestMapping("/tumbler/tumlist1") 
+	  public String tumList(Model model,  HttpServletRequest request) {
+	  
+	  int idx = 1; 
+	  
+	  model.addAttribute("listView", tumlistService.getTumList(idx));
+	  
+	  return "tumbler/tumlist1";
+	  
+	  }
+	
+	
 
 	//포인트 내역 출력
 		@RequestMapping("/tumbler/tumlist")  
@@ -44,3 +56,5 @@ public class TumListController {
 	
 
 }
+
+*/

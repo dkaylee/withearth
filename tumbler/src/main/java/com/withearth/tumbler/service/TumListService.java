@@ -2,9 +2,12 @@ package com.withearth.tumbler.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.withearth.tumbler.dao.TumblerDao;
 import com.withearth.tumbler.domain.Tumbler;
@@ -56,10 +59,10 @@ public class TumListService {
 		
 		dao = template.getMapper(TumblerDao.class);
 		
-		list =  dao.selelctTumList(idx);
-		log.info(list);
+		//list =  dao.selelctTumList(idx);
+		//log.info(list);
 		
-		return list;
+		return dao.selelctTumList(idx);
 	}
 
 }

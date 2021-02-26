@@ -41,14 +41,14 @@ public class MakeQRService {
 
 
 	 
-	public String make(int idx, int cafeIdx,HttpServletRequest request, 
+	public String makeqr(int idx, int cafeIdx,HttpServletRequest request, 
 			HttpSession session,
 			Model model) throws WriterException, IOException{
 		 
 		
 		
 		  String root = request.getSession().getServletContext().getRealPath("resources"); //현재 서비스가 돌아가고 있는 서블릿 경로의 resources 폴더 찾기
-	      String savePath = root + "\\qrCodes\\"; // 파일 경로
+	      String savePath = root + "\\qrCodes\\";; // 파일 경로
 	      
 	      
 	      //파일 경로가 없으면 생성하기
@@ -56,6 +56,8 @@ public class MakeQRService {
 	    	if(!file.exists()) { 
 	       	 	file.mkdirs(); 
 	    	}  
+	    	
+	    	System.out.println("파일경로!!!!:file");
 
       
 	    	int cafe_idx = 25;

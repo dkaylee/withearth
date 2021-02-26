@@ -320,7 +320,7 @@ h1 {
 	//$(document).ready(function(){
 		 var cafeinfo = $.ajax({
 				type:"GET",
-				url:"http://localhost:8080/tumbler/tumlist1/map",
+				url:"http://localhost:8080/rest/tumbler/tumlist1/map",
 				data:{
 				cafe_name:"${cafe.cafe_name}",
 				cafe_lat:"${cafe.cafe_lat}",

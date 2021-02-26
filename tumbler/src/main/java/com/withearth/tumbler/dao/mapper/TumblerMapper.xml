@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   tum_idx, tum_date, tumbler.cafe_idx, cafe.cafe_name , idx, tum_point 
 		from 
 		    tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx 
-		where idx = #{idx} ORDER BY tum_idx DESC;
+		where idx = #{idx} ORDER BY #{tum_idx} DESC;
 	</select>
 	
 	<insert id="insertTumbler" parameterType="com.withearth.tumbler.domain.Tumbler"

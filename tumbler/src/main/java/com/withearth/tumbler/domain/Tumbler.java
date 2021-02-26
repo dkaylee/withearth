@@ -2,9 +2,13 @@ package com.withearth.tumbler.domain;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+
 public class Tumbler {
 	
 	private int tum_idx; //텀블러 idx
+	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
 	private Timestamp tum_date; // 텀블러 이용 날짜
 	private int cafe_idx; //카페 인덱스
 	private String cafe_name; 

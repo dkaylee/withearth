@@ -22,24 +22,6 @@ public class CafeListSerivce {
 	@Autowired
 	private SqlSessionTemplate template;
 
-	/*
-	public CafeRequest cafelistView() {
-
-		CafeRequest cafelistView = null;
-
-		dao = template.getMapper(CafeDao.class);
-
-		List<Cafe> cafeList = dao.selectCafeList();
-		// System.out.println("cafeList!!!!!!"+cafeList);
-
-		cafelistView = new CafeRequest(cafeList);
-
-		return cafelistView;
-
-	}
-	*/
-	
-
 	
 	public List<Cafe> cafeView() {
 

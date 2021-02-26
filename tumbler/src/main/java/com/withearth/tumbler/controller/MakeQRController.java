@@ -47,7 +47,7 @@ public class MakeQRController {
 		 
 		 	
 
-      return makeqrService.make(idx,cafeIdx,request, session,model); 
+      return makeqrService.makeqr(idx,cafeIdx,request, session,model); 
       
 	 }
 	 

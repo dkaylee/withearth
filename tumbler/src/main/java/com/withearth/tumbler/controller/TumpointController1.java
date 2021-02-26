@@ -14,7 +14,8 @@ import com.withearth.tumbler.service.TumpointService;
 
 
 @Controller
-public class TumpointController {
+@RequestMapping("tumbler")
+public class TumpointController1 {
 	@Autowired
 	private TumpointService tumpointService;
 	@Autowired
@@ -24,8 +25,7 @@ public class TumpointController {
 	//포인트 적립
 //	/tumbler/qr/"+cafe_idx
 	//@GetMapping("/qr/{cafe_idx}")
-	//@GetMapping("/{cafe_idx}")
-	@RequestMapping("tumbler/cafe_idx")
+	@GetMapping("/{cafe_idx}")
 	public String getTumList (Model model, 
 			                  HttpServletRequest request, 
 			                  @PathVariable("cafe_idx") int cafe_idx
