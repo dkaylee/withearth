@@ -42,9 +42,12 @@ public class PostUploadService {
 			
 		// 시스템 저장경로
 		String path = "/fileupload/post";
+		
 		// 웹 경로
 		String saveDirPath = request.getSession().getServletContext().getRealPath(path);
-
+		
+        System.out.println(saveDirPath);
+        
 		String fileName = "";
 
 		String newFileName = "";

@@ -21,4 +21,9 @@ public class MypageViewController {
 		return "mypage/point/usedCouponView";		
 	}
 
+	@RequestMapping("/user/point/view")
+	public String goPointView() {
+		
+		return "mypage/point/pointView";
+	}
 }

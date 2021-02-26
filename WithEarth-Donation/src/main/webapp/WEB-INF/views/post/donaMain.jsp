@@ -334,7 +334,7 @@
 				
 			// 처음 리스트 로딩 시 불러올 데이터
 				$.ajax({
-					  url : 'http://localhost:8080/dona/rest/user/post/list?p='+ p,
+					  url : 'http://localhost:8080/dona/rest/user/post/list?p=' + p,
 					  type : 'GET',
 					  async : false,
 					  success : function(data){				
