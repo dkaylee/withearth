@@ -54,7 +54,7 @@
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 
-	<div id="map" style="width: 1480px; height: 450px;"></div>
+	<div id="map" style="width: 100%; height: 450px;"></div>
 	
 	<!-- 카카오 api -->
 	<script type="text/javascript"
@@ -65,38 +65,47 @@
 	</script>
 	
 	
-	<!-- 데이터 불러오기 -->
-	<script>
 	
-	$(document).ready(function(){	
+	<script>
+	<!-- 데이터 불러오기 -->
+		var mat = [];
 		
 		$.ajax({
 				url : "http://localhost:8080/community/matzip/matlist/totalinfo",
 				type : "GET",
 				async: false,
 				success : function(data) {
-					console.log(data);
-					var matziplist = JSON.stringify(data);
-					console.log(matziplist);
 					
-					
+					mat = data;
 					
 				},
 				error : function(){
 					alert("데이터 못 불러옴^^");
 				}
 			});	
-		})
 		
-		
+		console.log(mat[0].matAddr);
 	
-	</script>
+	// 배열 객체 분리
+	var mtitle = [];
+	var maddr = [];
+	var mnum = [];
+		
+			
+	for(var i=0; i<mat.length; i++){
+		mtitle.push(mat[i].matTitle);
+		maddr.push(mat[i].matAddr);
+		mnum.push(mat[i].matNumber);
+		}
+		
+		console.log(mtitle);
+		console.log(maddr);
+		console.log(maddr[1]);
 	
 	
 
 	<!-- 맛집 지도 -->
-	<script>
-	// 위도 경도 구하기 (카카오맵)
+	// 내위치의 위도 경도 구하기 (카카오맵)
  	var latitude;
 	var longitude;
 
@@ -108,7 +117,6 @@
 					var longitude = position.coords.longitude;
 					
 					getMarkers(latitude, longitude);
-
 					//getMyloc(latitude, longitude);
 
 				}, function(error) {
@@ -123,7 +131,7 @@
 			}
 		}
 		
-		// 나의 위치 구하기
+		/* // 나의 위치 구하기
 		function getMyloc(latitude, longitude) {
 			var container = document.getElementById('map');
 			var options = {
@@ -131,54 +139,83 @@
 				level : 3
 			};
 			var map = new kakao.maps.Map(container, options);
-		}
+		} */
 		
-		
+
 		function getMarkers(latitude, longitude){
+			
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
 		        center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
+		        level: 4 // 지도의 확대 레벨
 		    };  
 			
 			// 지도를 생성합니다    
-			var map = new kakao.maps.Map(mapContainer, mapOption); 
+			var map = new kakao.maps.Map(mapContainer, mapOption); 	
 	
-			// 주소-좌표 변환 객체를 생성합니다
-			var geocoder = new kakao.maps.services.Geocoder();
+			for(var i=0; i<mat.length; i++){
+			
+				// 주소-좌표 변환 객체를 생성합니다
+				var geocoder = new kakao.maps.services.Geocoder();
+			
+				// 주소로 좌표를 검색합니다
+				geocoder.addressSearch(mat[i].matAddr, function(result, status) {
 	
-			// 주소로 좌표를 검색합니다
-			geocoder.addressSearch('서울 중구 동호로24길 7-6 불광산사 지하2층', function(result, status) {
+		    	// 정상적으로 검색이 완료됐으면 
+		     	if (status === kakao.maps.services.Status.OK) {
 	
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === kakao.maps.services.Status.OK) {
-	
-		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new kakao.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-	
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+			        	var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+			        
+			        	var positons = [ 
+			        	{
+			        		content: '<div>'+mat[i].matTitle+'<div>',
+			        	 	latlng: coords
+			        	}
+			        	];
 		        
-		        /* for( var i = 0; i < matloc.length; i++){
-		        var infowindow = new kakao.maps.InfoWindow({
-		            //content: '<div style="width:150px;text-align:center;padding:6px 0;">한과채</div>'
-		           	content : '<div style="width:80px;text-align:center;">'+matTtitle[i]+'</div>'
-		        });
-		        }
-		        
-		        infowindow.open(map, marker); */
+		        	for(var i=0; i<positions.length; i++) {
 	
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        // map.setCenter(coords);
+					        // 결과값으로 받은 위치를 마커로 표시합니다
+					        var marker = new kakao.maps.Marker({
+					            map: map,
+					            position: positions[i].latlng
+					        });
+					        
+					     	// 마커에 표시할 인포윈도우를 생성합니다 
+					        var infowindow = new kakao.maps.InfoWindow({
+					            content: positions[i].content // 인포윈도우에 표시할 내용
+		        			});
+		     	
+		     	// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+		        // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+		        // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+		        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+		        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		        
+		        		}
 		   	 		} 
 				}); 
+			}
+			
+		// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+		function makeOutListener(infowindow) {
+		    return function() {
+		        infowindow.close();
+		    };
 		}
 		
-		getLocation();
+		// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+		function makeOutListener(infowindow) {
+		    return function() {
+		        infowindow.close();
+		    };
+		}
+		
+			getLocation();
+		}
+		
+			getLocation();
+		/* getLocation(); */
 		
 		
 		

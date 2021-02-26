@@ -19,7 +19,7 @@ public class MatzipListController {
 	@Autowired
 	private MatzipListService matListService;
 	
-	@RequestMapping(value = "/matzip/matlist/paramInfo")
+	@RequestMapping(value = "/matzip/matlist/listInfo")
 	public MatListView getMatList(
 			Model model,
 			SearchParam param) {
