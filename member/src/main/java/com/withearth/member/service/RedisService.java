@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.stereotype.Service;
 
 import com.withearth.member.domain.LoginInfo;
 
+@Service
 public class RedisService {
 	//private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -31,14 +33,14 @@ public class RedisService {
 
 		
 		redisTemplate.setKeySerializer(new StringRedisSerializer()); //키값
-		redisTemplate.setValueSerializer(new StringRedisSerializer()); /밸류값
+		redisTemplate.setValueSerializer(new StringRedisSerializer()); //밸류값
 		
 		String key = session.getId(); //sessionid
 
 		Map<String, Object> mapMemberInfo = new HashMap<String, Object>();
-		mapMemberInfo.put("memberId", loginInfo.getMemberid());
-		mapMemberInfo.put("memberName", loginInfo.getMembername());
-		mapMemberInfo.put("memberPhoto", loginInfo.getMemberphoto());
+		mapMemberInfo.put("memberId", loginInfo.getId());
+		mapMemberInfo.put("memberName", loginInfo.getName());
+		mapMemberInfo.put("memberPhoto", loginInfo.getPhoto());
 		redisTemplate.opsForHash().putAll(key, mapMemberInfo);
 		//login info를 map형태로 저장
 	}
@@ -51,7 +53,7 @@ public class RedisService {
 
 	public LoginInfo getUserInformation(String sessionId) {	//이코드는 각각의 어플리케이션에 있어야해!!!!!
 
-		logger.debug("> getUserInformation", TAG);
+		//logger.debug("> getUserInformation", TAG);
 
 		String key = sessionId;
 
@@ -60,9 +62,9 @@ public class RedisService {
 				(String) redisTemplate.opsForHash().get(key, "memberName"), 
 				(String) redisTemplate.opsForHash().get(key, "memberPhoto"));
 
-		logger.debug("> userId       : {}", result.getMemberid(), TAG);
-		logger.debug("> userPassword : {}", result.getMembername(), TAG);
-		logger.debug("> phoneNumber  : {}", result.getMemberphoto(), TAG);
+		//logger.debug("> userId       : {}", result.getId(), TAG);
+		//logger.debug("> userPassword : {}", result.getName(), TAG);
+		//logger.debug("> phoneNumber  : {}", result.getPhoto(), TAG);
 
 		return result;
 

@@ -121,7 +121,7 @@ $(document).ready(function(){
 									formData.append("pw",$('#pw').val());
 									
 									$.ajax({
-									url: '/member/member/login',
+									url: 'login',
 									type: 'post',
 									data: formData,
 									enctype: 'multipart/form-data',
@@ -130,7 +130,7 @@ $(document).ready(function(){
 									cache: false,
 									success: function(data){
 										alert("로그인 되었습니다.");
-										location.href="/member"; 
+										location.href="http://ec2-3-35-4-198.ap-northeast-2.compute.amazonaws.com:8080/member"; 
 										console.log(data);
 									},
 									error: function(error){

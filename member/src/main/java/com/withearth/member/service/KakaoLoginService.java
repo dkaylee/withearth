@@ -18,6 +18,9 @@ public class KakaoLoginService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
+	@Autowired
+	private RedisService redisService;
+	
 	public boolean login(
 			HttpServletRequest request,
 			HttpServletResponse response
@@ -35,6 +38,7 @@ public class KakaoLoginService {
 		if(member!=null) {
 			//현재 세션의 속성에 LoginInfo 인스턴스를 저장..?
 			request.getSession().setAttribute("loginInfo", member.toLoginInfo());
+			redisService.setUserInformation(member.toLoginInfo(), request.getSession());
 			loginCheck = true;
 			}
 		
