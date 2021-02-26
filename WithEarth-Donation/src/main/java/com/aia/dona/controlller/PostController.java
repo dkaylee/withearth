@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,7 @@ import com.aia.dona.service.PostEditService;
 import com.aia.dona.service.PostListService;
 import com.aia.dona.service.PostMyPostListService;
 import com.aia.dona.service.PostUploadService;
+import com.aia.dona.service.RedisService;
 
 
 @RestController
@@ -42,6 +44,19 @@ public class PostController {
 	private PostEditService editService;
 	@Autowired
 	private PostDeleteService deleteService;
+	@Autowired
+	private RedisService redis;
+	
+	
+	@GetMapping("/session/{session}")
+	public String getSession(
+			@PathVariable("session") String sessionid) {
+	
+		System.out.println("redis :"+sessionid);
+		//redis.getUserInformation(sessionid);
+		System.out.println(redis.getUserInformation(sessionid));		
+		return sessionid;
+	}
 	
 	// 게시물을 업로드
 	@PostMapping("/upload")
@@ -49,8 +64,8 @@ public class PostController {
 	public int uploadPost(
 			RequestPost requestPost,
 			HttpServletRequest request,
-			Model model) {				
-				
+			Model model) {			
+								
 		return uploadService.upload(requestPost, request, model);
 	}
 	
@@ -59,7 +74,7 @@ public class PostController {
 	public PostListView getPostList(	
 			@RequestParam(value="p", defaultValue = "1") int page			
 		      ) {
-						
+								
 		return listService.getList(page);
 	};
 	
