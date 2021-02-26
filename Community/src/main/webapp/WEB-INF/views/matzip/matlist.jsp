@@ -79,8 +79,6 @@
 					console.log(data);
 					mat = data.matzipList;
 					
-					console.log(mat.param);
-					
 					$.each(mat, function(index, item){
 						var html = "";
 						html += '<div class="image fit" id="thumb">';
@@ -100,14 +98,14 @@
 						console.log(html);
 					});
 					
-					/* if(mat.totalMatzipCount>0){
+					 if(mat.totalMatzipCount>0){
 						for(var i=0; i < mat.totalPageCount; i++){
 						var html = "";
-						html += '<a href="http://localhost:8080/community/matzip/matlist/?p=>'+i+'&searchType='++'<a>';
+						html += '<a href="http://localhost:8080/community/matzip/matlist/?p=>'+i+'&searchType='+param.keyword+'<a>';
 						
 						
 						}	
-					} */
+					}
 					
 					
 				},
