@@ -75,14 +75,15 @@
 
 #restart{
 	margin-bottom: 1%;
-	width: 47%; margin-left: 1%;
+	width: 48%;
 	display: none;
 }
 
 #stopTimer{
 	margin-bottom: 1%;
-	width: 47%; margin-right: 1%;
+	width: 49%;
 	display: none;
+	 margin-left: 1%;
 }
 
 #saveBtn{
@@ -966,7 +967,7 @@
 		<br/>
 	</div>
 	
-	<!-- 21.02.22: footer 추가 시 modal하고 충돌 발생 -->
+	
 	
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 

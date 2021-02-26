@@ -1,5 +1,7 @@
 package com.withearth.walking.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -23,6 +25,7 @@ public class CourseSettingService {
 	//@Transactional
 	public int courseSet(CourseSettingRequest setRequest, HttpServletRequest request) {
 		int result = 0;
+		int point = 0;
 		
 		Course course = setRequest.toCourse();
 		System.out.println(course);
@@ -46,5 +49,11 @@ public class CourseSettingService {
 		return result;
 	}
 	
+	// point 적립을 위한 course_idx, loc_km 전달
+	public List<Course> pointCourse(){
+		dao = template.getMapper(WalkingDao.class);
+		
+		return dao.pointCourse();
+	}
 	
 }

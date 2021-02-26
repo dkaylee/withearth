@@ -16,11 +16,17 @@
 	margin-right: 15%;	
 }
 
-td, th {
+td{
 	border-bottom: 1px solid #DDD;
 	text-align: center;
 	padding: 10px 0;
-}
+} 
+
+th{
+	border-bottom: 1px solid #DDD;
+	text-align: center;
+	padding: 10px 0;
+} 
 .nowpage {
 	font-size: 1.5em;
 }
@@ -121,7 +127,7 @@ h3{
 				<table class="listTable">
 					<tr>
 						<th>idx</th>
-						<th>저장 일자</th>
+						<th style="margin-left: 10px;">저장 일자</th>
 						<th>출발지</th>
 						<th>목적지</th>
 						<th>이동 거리(km)</th>

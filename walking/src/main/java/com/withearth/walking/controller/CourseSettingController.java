@@ -1,14 +1,16 @@
 package com.withearth.walking.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.withearth.walking.domain.Course;
 import com.withearth.walking.domain.CourseSettingRequest;
 import com.withearth.walking.service.CourseSettingService;
 
@@ -41,6 +43,11 @@ public class CourseSettingController {
 		  int result = courseSetService.courseSet(setRequest, request);
 		  
 		  model.addAttribute("result", result);
+		  
+		  
+		  List<Course> presult = courseSetService.pointCourse();
+		  model.addAttribute("pointresult", presult);
+		  System.out.println("포인트 결과: " + presult);
 		  
 		  return "/loc/course_setting_view"; 
 	  }

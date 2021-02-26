@@ -13,7 +13,7 @@ public interface WalkingDao {
 	int insertCourse(Course course);
 	
 	// 1-2. 포인트 전달을 위한 idx, 이동 거리 불러오기
-	int moveCourse(Course course);
+	List<Course> pointCourse();
 	
 	// 2. 전체 회원의 수
 	int courseCountUpdate();
