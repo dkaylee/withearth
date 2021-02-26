@@ -183,6 +183,9 @@ h3{
 				location.href = '<c:url value="/loc/coursedelete?course_idx="/>' + course_idx;
 			} // /op/member/delete?idx
 		}
+	
+
+		
 	</script>
 
 

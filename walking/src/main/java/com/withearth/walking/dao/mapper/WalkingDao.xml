@@ -18,6 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="walking_time" property="walking_time"/>
 		
 	</resultMap>
+	
+	<resultMap id="coursePointResult" type="com.withearth.walking.domain.Course"  >
+		<id column="course_idx" property="course_idx"/>
+		<result column="loc_km" property="loc_km"/>
+	</resultMap>
 
 
 	<!-- 코스 리스트 -->
@@ -40,6 +45,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into open.walking( loc_km, about_time, start_point, end_point, walking_time) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time})	
 	
 	</insert>
+	
+	<!-- 1-2. 코스 idx, loc_km 조회 -->
+	<select id="moveCourse" resultMap="coursePointResult">
+		select course_idx, loc_km from open.walking order by course_date desc limit 1
+	</select>
+	
 	
 	
 	<!-- 2. 전체 회원의 수 -->

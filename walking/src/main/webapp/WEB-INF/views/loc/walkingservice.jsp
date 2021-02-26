@@ -557,6 +557,7 @@
 			var resultData = response.features;
 			//결과 출력
 			tDistance =  ((resultData[0].properties.totalDistance) / 1000).toFixed(1) ;
+			console.log('test: ' + tDistance);
 			aTime =  ((resultData[0].properties.totalTime) / 60).toFixed(0) ;
 			$("#result").text("총 "+tDistance+ " km," + " 약 : "+aTime+ " 분");
 			$("#tDistance").html(tDistance);
@@ -640,8 +641,11 @@
 								+ "message:" + request.responseText + "\n"
 								+ "error:" + error);
 					}
+					
 				});
+		
 	} // 경로 설정 기능
+	
 	function addComma(num) {
 		var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		return num.toString().replace(regexp, ',');
@@ -709,7 +713,7 @@
 						if(confirm_test==true){
 							//$('#testBtn').click(function(e){
 								//e.preventDefault();
-								$('#testModal').modal("show");
+								$('#testModal').modal('show');
 							//});
 							
 							console.log('목적지 도착');
@@ -801,10 +805,10 @@
     	$('#modalTime').html(modalwTime);
     	
     } // 타임워치 -끝-
-	
-	
+    
 	/*******************************데이터 저장 기능********************************************/
 	function saveData(){
+		
 		$.ajax({
 			url: '<c:url value="/course/loc/walkingservice"/>',
 			type: 'post',
@@ -828,17 +832,17 @@
 		});
 	} // saveData
 	
-	// Modal 닫기
+	
 	
 	
     /*******************************모달창 기능********************************************/
     
-    var myModal = document.getElementById('myModal')
-	var myInput = document.getElementById('myInput')
+    var myModal = document.getElementById('myModal');
+	var myInput = document.getElementById('myInput');
 
-	myModal.addEventListener('shown.bs.modal', function () {
+	/* myModal.addEventListener('shown.bs.modal', function () {
 	  myInput.focus()
-	})
+	}) */
     
     function infoModal(){
     	$('#InfoModal').modal('show');
@@ -901,7 +905,7 @@
 	<!-- Modal content -->
 	<!-- <button id="testBtn" class="btn">모달 테스트</button> -->
   <!-- 완주 확인 Modal-->
-	<!-- <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	 <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -924,35 +928,11 @@
 			</div>
 		</div>
 		
-	</div> -->
+	</div> 
 	
 	<!-- 올바른 걷기 자세 안내 Modal-->
  
-	<!-- paper Modal -->
-		<div class="modal fade" id="paperModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h2 class="modal-title" id="exampleModalLabel">종이류, 종이팩</h2>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-		      	출발지<br><h3 id="modalrevresult"></h3>
-				목적지<br><h3 id="modalEnd"></h3>
-				이동 거리<br><h3 id="modalDistance"> </h3>
-				소요 시간<br><h3 id="modalTime"></h3>
-		        <img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 100%;">
-				<h6>출처: [네이버 지식백과] 걷기 [walking] (유산소운동 바로 알기, 최대혁, 국민체육진흥공단 체육과학연구원)</h6>
-		      </div>
-		      <div class="modal-footer">
-		        <button class="button special" id="saveBtn" type="button" onclick="saveData()">저장</button>
-				<button class="button special" type="button" data-dismiss="modal" id="modalChk">확인</button>
-		      </div>
-		    </div>
-		  </div>
-		</div> <!-- paper Modal 끝 -->
+	
 		
 	</div>
 	

@@ -12,6 +12,9 @@ public interface WalkingDao {
 	// 1. 코스 등록 ->	()를 빈 칸으로 두면 loc_km등 데이터 값을 못 불러온다.
 	int insertCourse(Course course);
 	
+	// 1-2. 포인트 전달을 위한 idx, 이동 거리 불러오기
+	int moveCourse(Course course);
+	
 	// 2. 전체 회원의 수
 	int courseCountUpdate();
 
