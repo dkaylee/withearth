@@ -27,8 +27,8 @@
 
 .mainPage{	
 	margin-top: 5%;
-	margin-left: 2%;
-	margin-right: 2%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 #mainInfo{
@@ -37,9 +37,9 @@
 	font-weight: bolder;
 }
 
-#startBtn{margin-bottom: 1%; width: 47%; }
+#startBtn{margin-bottom: 1%; width: 49%;  }
 
-#arriveBtn{margin-bottom: 1%;  width: 48%; margin-left: 3%; margin-right: 0;}
+#arriveBtn{margin-bottom: 1%;  width: 49%;  margin-left: 1%;}
 
 #InfoBtn{margin-bottom: 1%; }
 
@@ -54,13 +54,13 @@
  	font-weight: bolder;
  }
 
-#fullAddr{margin-top: 3%; margin-left: 0%; width: 72%; float: left; overfloat: hidden;}
+#fullAddr{margin-top: 3%; margin-left: 0%; width: 75%; float: left; overfloat: hidden;}
 
 #btn_select{
 	margin-top: 3%;
 	margin-left: 3%;
 	overflow: hidden;
-	width: 24%;
+	width: 22%;
 	
 }
 
@@ -832,8 +832,16 @@
 	
 	
     /*******************************모달창 기능********************************************/
+    
+    var myModal = document.getElementById('myModal')
+	var myInput = document.getElementById('myInput')
+
+	myModal.addEventListener('shown.bs.modal', function () {
+	  myInput.focus()
+	})
+    
     function infoModal(){
-    	$('#InfoModal').modal("show");
+    	$('#InfoModal').modal('show');
 	}
     
 	
@@ -858,7 +866,7 @@
 			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h4 id="revresult" style="margin: 10px 30px"></h4><br>
 			<h4 id="endInfo">◇ 목적지 <br />(ex.서울시 마포구 와우산로29가길 69) </h4>
 			<input type="text"   class="text_custom" id="fullAddr" name="fullAddr"
-				value="서울특별시 종로구 종로5가"><button id="btn_select" class="button special" >설정 하기</button> 
+				value="서울특별시 종로구 종로5가"><button id="btn_select" class="button special" >설정</button> 
 			<h4 id="endAdd" style="margin: 10px 30px;"></h4>
 			
 			<button id="startBtn" class="button special" onclick="startTime()">시작 하기</button>
@@ -893,7 +901,7 @@
 	<!-- Modal content -->
 	<!-- <button id="testBtn" class="btn">모달 테스트</button> -->
   <!-- 완주 확인 Modal-->
-	<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -902,7 +910,7 @@
 						<span aria-hidden="true">X</span>
 					</button>
 				</div>
-				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
+				<div class="modal-body"> modal id 값을 따로 만들어서 조회
 					출발지<br><h3 id="modalrevresult"></h3>
 					목적지<br><h3 id="modalEnd"></h3>
 					이동 거리<br><h3 id="modalDistance"> </h3>
@@ -916,40 +924,69 @@
 			</div>
 		</div>
 		
-	</div>
+	</div> -->
 	
 	<!-- 올바른 걷기 자세 안내 Modal-->
  
-	<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">올바르게 걷는 방법</h2>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">X</span>
-					</button>
-				</div>
-				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
-					<h3 style="font-weight: bolder;">운동 순서</h3>
+	<!-- paper Modal -->
+		<div class="modal fade" id="paperModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h2 class="modal-title" id="exampleModalLabel">종이류, 종이팩</h2>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	출발지<br><h3 id="modalrevresult"></h3>
+				목적지<br><h3 id="modalEnd"></h3>
+				이동 거리<br><h3 id="modalDistance"> </h3>
+				소요 시간<br><h3 id="modalTime"></h3>
+		        <img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 100%;">
+				<h6>출처: [네이버 지식백과] 걷기 [walking] (유산소운동 바로 알기, 최대혁, 국민체육진흥공단 체육과학연구원)</h6>
+		      </div>
+		      <div class="modal-footer">
+		        <button class="button special" id="saveBtn" type="button" onclick="saveData()">저장</button>
+				<button class="button special" type="button" data-dismiss="modal" id="modalChk">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div> <!-- paper Modal 끝 -->
+		
+	</div>
+	
+	<!-- InfoModal -->
+		<div class="modal fade" id="InfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h2 class="modal-title" id="exampleModalLabel">종이류, 종이팩</h2>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <h3 style="font-weight: bolder;">운동 순서</h3>
 					<h4>1. 배에 힘을 주고 등을 곧게 편다. 발을 내딛으면서 바깥쪽이 먼저 바닥에 닿도록 해야 몸이 받는 충격을 최대한 흡수할 수 있다.</h4>
 					<h4>2. 발바닥이 마지막으로 지면에 닿는 순간 가볍게 바닥을 밀어 힘들이지 않고 속도를 낸다. 체중은 발뒤꿈치 바깥쪽을 시작으로 발 가장자리에서 엄지발가락 쪽으로 이동시킨다.</h4>
 					<h4>3. 몸의 중심이 앞으로 이동했으면 다른 쪽 발을 내딛을 수 있도록 발뒤꿈치를 들어준다. 팔은 자연스럽게 앞뒤로 흔들고 팔의 움직임과 함께 어깨를 자연스럽게 좌우로 돌린다.</h4>
 					<img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 100%;">
 					
 					<h6>출처: [네이버 지식백과] 걷기 [walking] (유산소운동 바로 알기, 최대혁, 국민체육진흥공단 체육과학연구원)</h6>
-					
-				</div>
-				<div class="modal-footer">
-					<button class="button special" type="button" data-dismiss="modal">확인</button>
-				</div>
-			</div>
-		</div>
-		
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="button special" data-dismiss="modal">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div> <!-- InfoModal 끝 -->
+	
+	<div> <!-- footer와 본문 사이 간격 조정 -->
+		<br/>
 	</div>
 	
-	
 	<!-- 21.02.22: footer 추가 시 modal하고 충돌 발생 -->
-	
 	
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 

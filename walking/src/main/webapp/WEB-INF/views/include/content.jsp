@@ -118,7 +118,7 @@
 				</header>
 				<p>분리배출에 필요한 4가지, 종류별로 분리배출을 하는 방법을 확인할 수있습니다.</p>
 				<footer>
-					<a href="<c:url value="/Info/recycleInfo"/>" class="button special">More</a>
+					<a href="<c:url value="/Info/recycleInfo2"/>" class="button special">More</a>
 				</footer>
 			</article>
 			<article>

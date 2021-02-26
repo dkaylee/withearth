@@ -12,8 +12,8 @@
 
 .container{	
 	margin-top: 5%;
-	margin-left: 2%;
-	margin-right: 2%;	
+	margin-left: 15%;
+	margin-right: 15%;	
 }
 
 td, th {
