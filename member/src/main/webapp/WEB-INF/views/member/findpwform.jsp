@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, 
+  maximum-scale=1.0, minimum-scale=1.0">
 <title>Insert title here</title>
 
 <!-- 부트스트랩 -->
@@ -20,11 +23,12 @@
 
 
 <div class="first_container">
-<div class="second_container" style="border:1px solid black">
+<div class="second_container">
 	<div class="mb-3">
+	<p id="text1" class="text-center">비밀번호 찾기</p>
 	  <input type="email" class="form-control" id ="id" name="id" placeholder="이메일 주소" >
 	</div>
-	<button type="submit" class="btn btn-secondary" id="findbtn" value="findbtn"></button>
+	<button type="submit" class="btn btn-secondary" id="findbtn" value="findbtn">비밀번호 찾기</button>
 </div>
 </div>
 </body>
@@ -53,7 +57,7 @@ $(document).ready(function(){
 					data: {id:id},
 					success : function(data){
 						console.log("됐다");
-						alert("메일이 발송되었습니다.");
+						alert("메일로 임시비밀번호가 발송되었습니다.");
 						location.href="/member"; 
 					},
 					error:function(error){

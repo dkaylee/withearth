@@ -58,7 +58,6 @@ public class MemberLoginService {
 				request.getSession().setAttribute("loginInfo", member.toLoginInfo());
 				redisService.setUserInformation(member.toLoginInfo(), request.getSession());
 				loginCheck = true;
-				
 				//쿠키처리
 				if(chk!=null && chk.equals("on")) {
 					//쿠키 생성

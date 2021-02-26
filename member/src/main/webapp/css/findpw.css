@@ -7,66 +7,24 @@ background : #F2F2F2;
 	height:100%;
 }
 .second_container {
+   	border: 1px solid rgb(225,225,225);
     position : absolute;
     top: 50%;
     left: 50%;
     width: 100%;
     max-width: 320px;
-    height:600px;
+    height:250px;
 	margin-left:-160px;
-    margin-top:-300px;
+    margin-top:-125px;
     padding: 40px 30px;
     text-align: center;
+     border-radius: 3px;
 }
-#btnlog{
+#findbtn{
 	width: 100%;
 	height: 50px;
-}
-#custom-login-btn > img{
-	width: 208.07px;
-	height: 45px;	
-	margin: 5px;
-}
-#userid{
-	width: 100%;
-	height: 50px;
-	margin: 0 0 0 0;
-}
-#pw{
-	width: 100%;
-	height: 50px;
-	margin: 0 0 0 0;
 }
 
-a {
-	padding: 0px;
-	color: inherit;
-    text-decoration: none;
-    margin: 10px;
- 
-}
-.a-tag{
-    text-align: center;	
-}
-.login_sns_title{
-	margin:10px 0 0;
-	font-size: 12px;
-	text-align: center;	
-}
-.main_img{
-	width:100%;
-	padding:5px;
-}
-.main_img>img{
-	width:100%;
-}
-.login_sns_title{
-	padding:3px;
-}
-
-.abcRioButton.abcRioButtonLightBlue {
-	margin: 0 auto;
-}
-.a-tag{
-	margin:5px;
+#text1{
+	font-size: 20px;
 }

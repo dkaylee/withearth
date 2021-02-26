@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-background : #F2F2F2;
+background : #F0F0F0;
 }
 .first_container {
 	width:100%;
@@ -13,6 +13,7 @@ background : #F2F2F2;
     position:absoulte;
     top:50%;
     left:50%; */
+   	border: 1px solid rgb(225,225,225);
     position : absolute;
     top: 50%;
     left: 50%;
@@ -23,6 +24,7 @@ background : #F2F2F2;
     margin-top:-300px;
     padding: 40px 30px;
     text-align: center;
+     border-radius: 3px;
 }
 #btnlog{
 	width: 100%;
@@ -33,6 +35,8 @@ background : #F2F2F2;
 	height: 45px;	
 	margin: 5px;
 }
+
+
 #userid{
 	width: 100%;
 	height: 50px;
@@ -48,7 +52,7 @@ a {
 	padding: 0px;
 	color: inherit;
     text-decoration: none;
-    margin: 10px;
+    margin: 0px;
  
 }
 .a-tag{
@@ -67,7 +71,7 @@ a {
 	width:100%;
 }
 .login_sns_title{
-	padding:3px;
+	padding:10px;
 }
 
 .abcRioButton.abcRioButtonLightBlue {
@@ -75,4 +79,7 @@ a {
 }
 .a-tag{
 	margin:5px;
+}
+.a-tag >a{
+	margin: 10px;
 }

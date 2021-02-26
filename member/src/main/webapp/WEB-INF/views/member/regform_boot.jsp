@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,14 +33,14 @@
 <body>
 
 <div class="first_container">
-<div class="second_container" style="border:1px solid black">
-	<p class="text-center">간편하게 가입하고<br>다양한 서비스를 이용하세요.</p>
+<div class="second_container">
+	<p id="text1" class="text-center">간편하게 가입하고<br>다양한 서비스를 이용하세요.</p>
 	<div class="mb-3">
 	 <label for="exampleFormControlInput1" class="form-label">이메일</label>
 	 <div id="idCheckMsg"></div>
 	  <input type="email" class="form-control" id="id" name="userid" placeholder="이메일 주소" required>
 	 <label for="exampleFormControlInput1" class="form-label">비밀번호</label>
-	 <label for="exampleFormControlInput1" class="form-label">비밀번호는 6~20자리, 숫자 또는 특수 문자를 포함하세요</label>
+	 <label id="pwment" for="exampleFormControlInput1" class="form-label">비밀번호는 6~20자리, <br> 숫자 또는 특수 문자를 포함하세요</label>
 	  <div id="pwCheckMsg"></div>
 	  <input type="password" class="form-control" id="pw" placeholder="비밀번호" required>
 	  <input type="password" class="form-control" id="pwcheck" placeholder="비밀번호 확인" name="pwcheck" required>
@@ -153,7 +154,7 @@
 						msg.addClass('font_blue');
 						$('#btnReg').attr("disabled", false);
 					} else {
-						msg.html('사용불가능한 아이디입니다.');
+						msg.html('이미 사용중인 아이디 입니다.');
 						msg.removeClass('font_blue');
 						msg.addClass('font_red');
 						$('#btnReg').attr("disabled", true);

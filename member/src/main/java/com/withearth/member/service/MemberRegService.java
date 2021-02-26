@@ -122,9 +122,10 @@ public class MemberRegService {
 		dao = template.getMapper(MemberDAO.class); //여기서 이해가 안감.
 		result = dao.insertMember(member);
 		
-		//메일 발송
-		int mailsendCnt = mailSenderService.send(member);
-		System.out.println("메일 발송 처리 횟수:" + mailsendCnt);
+		/*
+		 * //메일 발송 int mailsendCnt = mailSenderService.send(member);
+		 * System.out.println("메일 발송 처리 횟수:" + mailsendCnt);
+		 */
 		
 		return result;
 		

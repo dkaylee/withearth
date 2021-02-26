@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="first_container">
-<div class="second_container" style="border:1px solid black">
+<div class="second_container">
 	<div class="main_img">
 	<img src="<c:url value="/img/earth.jpg"/>" class="rounded mx-auto d-block" alt="지구" >
 	</div>
@@ -336,12 +336,6 @@ function onSignIn() {
 			var n_email = naverLogin.user.getEmail();
 			var n_name = naverLogin.user.getNickName();
 			var n_img = naverLogin.user.getProfileImage();
-			
-		/* 	if(typeof(n_profileImage) != 'undefined'){
-				var n_img = naverLogin.user.getProfileImage();
-			} else {
-				var n_img = "2.jpg"
-			} */
 			
 			var naverinfo = {n_name:n_name, n_img:n_img, n_email:n_email};
 			//가입
