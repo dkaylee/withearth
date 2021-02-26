@@ -21,7 +21,6 @@ public class DetailViewService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-
 	public MatzipVo getMatzip(int matIdx) {
 		
 		dao = template.getMapper(MatDao.class);

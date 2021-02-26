@@ -32,11 +32,11 @@ public class MatzipListController {
 		return matListService.getListView(param);
 	}
 	
-	@RequestMapping(value = "/matzip/matlist/totalinfo")
-	public List<MatzipVo> getListView(){
-		
-		return matListService.getListView();
-	}
+//	@RequestMapping(value = "/matzip/matlist/totalinfo")
+//	public List<MatzipVo> getListView(){
+//		
+//		return matListService.getListView();
+//	}
 	
 	
 }
