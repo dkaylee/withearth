@@ -38,7 +38,7 @@ public class CourseSettingService {
 			//dao.courseCountUpdate();
 			
 			// 코스 DB insert
-			result = dao.insertCourse(course);
+			result = dao.insertCourse(course); 
 			
 			System.out.println("course"+course);
 		} catch(Exception e) {
@@ -46,14 +46,15 @@ public class CourseSettingService {
 		}
 		
 		
-		return result;
+		return course.getCourse_idx(); // result -> course.getCourse_idx() -> return 의미 다시 잘 찾아보기...
 	}
 	
 	// point 적립을 위한 course_idx, loc_km 전달
-	public List<Course> pointCourse(){
-		dao = template.getMapper(WalkingDao.class);
-		
-		return dao.pointCourse();
-	}
+	/*
+	 * public List<Course> pointCourse(){ dao =
+	 * template.getMapper(WalkingDao.class);
+	 * 
+	 * return dao.pointCourse(); }
+	 */
 	
 }

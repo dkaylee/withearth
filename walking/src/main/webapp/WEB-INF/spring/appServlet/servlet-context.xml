@@ -47,6 +47,16 @@
 		</interceptor>
 	</interceptors>
 
+	<!-- Redis -->
+	<!-- p:hostName - redis의 주소가 아마존 일 경우 아마존 웹 서비스 주소가 들어가야한다. -->
+	<beans:bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+							p:usePool="true"
+							p:hostName="localhost" 
+							p:port="6379" />
+	<!-- id="redisTemplate" - redis에 데이터를 추가하고 저장하고 가져오는 메소드  -->
+	<beans:bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+							p:connectionFactory-ref="jedisConnFactory"/>
+
 	<!-- @Transactional 애노테이션 활성화 설정 -->
 	<!-- <tx:annotation-driven /> -->
 		<tx:annotation-driven
