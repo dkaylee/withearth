@@ -206,7 +206,7 @@
 	    
 	    <div class="floating">	
 	      <a href="<c:url value="/member/dona/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="My"></a>
-	      <a href="<c:url value="/member/dona/main/post/upload"/>"><img src="<c:url value="/image/write1.png"/>" class="pBtn" id="writeFormBtn" width="50px;"><br></a>  	
+	      <a href="<c:url value="/member/dona/main/post/upload"/>"><img src="<c:url value="/img/dona/write1.png"/>" class="pBtn" id="writeFormBtn" width="50px;"><br></a>  	
       </div>	
 	</section>			
 
@@ -247,7 +247,7 @@
 			
 				  $('.notice').css('display', 'block');					  		  
 			  							
-			var html = '<h4 class="noticeMsg"><img src="<c:url value="/image/notice.png"/>" width="20px">';
+			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="20px">';
 			    html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
 			    html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
 			    html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
@@ -329,9 +329,11 @@
 		});
     }
      
-    var session = '<c:out value="${cookie.JSESSIONID.value}"/>';
-		$(document).ready(function() {	
-			
+		
+/*     
+       // 세션 어케 받지??	
+       var session = '<c:out value="${cookie.JSESSIONID.value}"/>';
+				
 			$.ajax({
 				url : 'http://192.168.0.45:8080/dona/rest/user/post/session/'+ session,
 				type : 'GET',
@@ -342,17 +344,18 @@
 				}
 				
 			})
-			
-			
-				
+ */		
+			 
+	$(document).ready(function() {	
+		
 			// 처음 리스트 로딩 시 불러올 데이터
 				$.ajax({
-					  url : 'http://192.168.0.45:8080/dona/rest/user/post/list?p=' + p,
+					  url : 'http://localhost:8080/dona/rest/user/post/list?p=' + p,
 					  type : 'GET',
 					  async : false,
 					  success : function(data){				
 						console.log(data);	
-						 						 						 
+						 						 						  
 						var list = $(data.postList);
 						console.log(list);
 						
@@ -361,14 +364,15 @@
 							  var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 								html += '<input type="hidden" value="'+item.donaIdx+'">';
 							  html += '<div class="article-img">';
-								html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+								//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+								html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
 								html += '</div>';
 								html += '<div class="article-content">';
 								html += '<div class="article-title">';
 								html += item.postTitle+'</div>';
 								html += '<div class="article-heart">';							
 								html += '관심 '+item.heartCnt+'</div>';
-								html += '</div>${cookie.JSESSIONID.value}</div>'			
+								//html += '</div>${cookie.JSESSIONID.value}</div>'			
 																
 								$('#wrapContent').append(html);		 
 																																						
