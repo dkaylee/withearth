@@ -834,7 +834,7 @@
 <body>
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
-		<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+		<%-- <%@ include file="/WEB-INF/views/include/nav.jsp"%> --%>
 		
 		
 		

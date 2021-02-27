@@ -20,7 +20,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
-	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
+<%-- 	<%@ include file="/WEB-INF/views/include/nav.jsp" %> --%>
 	
 	<div class="contents">
 		<h3>서비스 안내 페이지 입니다.</h3>

@@ -72,7 +72,7 @@
 				<input type="text" name="postTitle" id="postTitle" placeholder="제목" /> 		
 				<div class="imageList"></div>		
 				<div class="uploadFileBtn" onclick="document.all.file.click()">
-				<img src="<c:url value="/image/photo2.png"/>" width="50px" id="galleryIcon">
+				<img src="<c:url value="/img/dona/photo2.png"/>" width="50px" id="galleryIcon">
 				<input multiple="multiple" type="file" id="postImage" name="file" style="display:none"/>				
 				</div>
 			</div>

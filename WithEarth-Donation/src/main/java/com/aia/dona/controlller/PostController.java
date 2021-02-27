@@ -47,9 +47,9 @@ public class PostController {
 	@Autowired
 	private RedisService redis;
 	
-	
+	// 세션받기?
 	@GetMapping("/session/{session}")
-	public String getSession(
+	public String getSession(			
 			@PathVariable("session") String sessionid) {
 	
 		System.out.println("redis :"+sessionid);
