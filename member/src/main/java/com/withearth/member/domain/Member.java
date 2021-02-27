@@ -109,7 +109,7 @@ public class Member {
 	
 	//로그인 정보
 	public LoginInfo toLoginInfo() {
-		return new LoginInfo(id,name,photo);
+		return new LoginInfo(idx,id,name,photo);
 	}
 	
 	

@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aia.dona.domain.Message;
-import com.aia.dona.service.ChatRoomIdCheckService;
+import com.withearth.member.dona.domain.Message;
+import com.withearth.member.dona.service.ChatRoomIdCheckService;
 
 @Controller
 public class MainViewController {
 	
-//	@Autowired
-	//ChatRoomIdCheckService roomChkService;
+	@Autowired
+	ChatRoomIdCheckService roomChkService;
 
 	
 	@RequestMapping("/main/list")
@@ -27,7 +27,7 @@ public class MainViewController {
 			) {
 		session.setAttribute("user", 1);
 		
-		return "post/donaMain";
+		return "dona/post/donaMain";
 	}
 	
 	@RequestMapping("/main/list/search")
@@ -38,7 +38,7 @@ public class MainViewController {
 		
 			) {
 		
-		return "post/donaMain";
+		return "dona/post/donaMain";
 	}
 	
 	@RequestMapping("/member/dona/main/post/upload")
@@ -58,7 +58,7 @@ public class MainViewController {
 	   session.setAttribute("idx", 3);
 	   System.out.println(session);
 	   
-		return "post/postDetailView";
+		return "dona/post/postDetailView";
 	}
 		
 	@RequestMapping("/member/dona/main/post/mypost")
@@ -72,7 +72,7 @@ public class MainViewController {
 	public String goEditForm(
 			@RequestParam("idx") int donaIdx) {
 		
-		return "post/postEditForm";
+		return "dona/post/postEditForm";
 	}
 	
 	@RequestMapping("/post/chat")

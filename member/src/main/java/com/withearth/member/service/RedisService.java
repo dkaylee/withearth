@@ -1,3 +1,4 @@
+/*
 package com.withearth.member.service;
 
 import java.util.HashMap;
@@ -20,13 +21,13 @@ public class RedisService {
 
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate; //key / object타입 redis는 list,map구조를 그대로 저장할수 있다.
-
+*/
 	/**
 	 * Redis 에 사용자 정보를 등록한다.
 	 * 
 	 * @param LoginInfo
 	 */
-
+/*
 	public void setUserInformation(LoginInfo loginInfo, HttpSession session ) { //로그인 하게 되면 redis에 저장하게 됨.
 
 		//logger.debug("> setUserInformation", TAG);
@@ -38,6 +39,7 @@ public class RedisService {
 		String key = session.getId(); //sessionid
 
 		Map<String, Object> mapMemberInfo = new HashMap<String, Object>();
+		mapMemberInfo.put("memberIdx", loginInfo.getIdx());
 		mapMemberInfo.put("memberId", loginInfo.getId());
 		mapMemberInfo.put("memberName", loginInfo.getName());
 		mapMemberInfo.put("memberPhoto", loginInfo.getPhoto());
@@ -50,7 +52,7 @@ public class RedisService {
 	 * @param loginInfo
 	 * @return
 	 */
-
+/*
 	public LoginInfo getUserInformation(String sessionId) {	//이코드는 각각의 어플리케이션에 있어야해!!!!!
 
 		//logger.debug("> getUserInformation", TAG);
@@ -58,6 +60,7 @@ public class RedisService {
 		String key = sessionId;
 
 		LoginInfo result = new LoginInfo(
+				(String) redisTemplate.opsForHash().get(key, "memberIdx"), 	
 				(String) redisTemplate.opsForHash().get(key, "memberId"), 
 				(String) redisTemplate.opsForHash().get(key, "memberName"), 
 				(String) redisTemplate.opsForHash().get(key, "memberPhoto"));
@@ -70,3 +73,4 @@ public class RedisService {
 
 	}
 }
+*/

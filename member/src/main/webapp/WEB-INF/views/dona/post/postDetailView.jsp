@@ -192,10 +192,10 @@
   <div class="post" id="heart-div">
  <c:choose>
   <c:when test="${idx ne null}">   <!-- 회원 번호가 null이 아닐 때(세션값 받아서 확인하기)-->
-   <span class="icon"> <a href='javascript: click_heart();'><img width="25px" src='<c:url value="/image/unlike.png" />' id='like_img'></a></span>
+   <span class="icon"> <a href='javascript: click_heart();'><img width="25px" src='<c:url value="/img/dona/unlike.png" />' id='like_img'></a></span>
   </c:when>
   <c:otherwise>
-     <span class="icon"><a href='javascript: login_need();'><img width="25px" src='<c:url value="/image/unlike.png"/>'></a></span>
+     <span class="icon"><a href='javascript: login_need();'><img width="25px" src='<c:url value="/img/dona/unlike.png"/>'></a></span>
   </c:otherwise>
 </c:choose>
   
@@ -234,9 +234,9 @@
 									success : function(data){
 										console.log(data);
 								 		if(data.userCnt == 0){
-											like_img = '<c:url value="/image/unlike.png"/>';
+											like_img = '<c:url value="/img/dona/unlike.png"/>';
 										} else{
-											like_img = '<c:url value="/image/like.png"/>';
+											like_img = '<c:url value="/img/dona/like.png"/>';
 										}
 										
 										$('#like_img').attr('src', like_img); 
@@ -257,9 +257,9 @@
 							success : function(data){
 								console.log(data);
 						 		if(data.userCnt == 0){
-									like_img = '<c:url value="/image/unlike.png"/>';
+									like_img = '<c:url value="/img/dona/unlike.png"/>';
 								} else{
-									like_img = '<c:url value="/image/like.png"/>';
+									like_img = '<c:url value="/img/dona/like.png"/>';
 								}
 								
 								$('#like_img').attr('src', like_img); 
@@ -315,8 +315,9 @@
                             console.log(firstImg);
                             
 												var html = '<div class="carousel-item active">'; 
-													  html +='<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; "alt="postImages">';										
-                            html +='</div>';
+												   // html +='<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; "alt="postImages">';										
+                                                   html += '<img src="http://localhost:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; "alt="postImages">';	
+												   html +='</div>';
 												  $('.carousel-inner').append(html);
 											 })	
 											 
