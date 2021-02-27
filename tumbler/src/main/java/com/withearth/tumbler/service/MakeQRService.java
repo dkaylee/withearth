@@ -57,18 +57,18 @@ public class MakeQRService {
 	       	 	file.mkdirs(); 
 	    	}  
 	    	
-	    	System.out.println("파일경로!!!!:file");
+	    	
 
       
-	    	int cafe_idx = 25;
+	    	int cafe_idx = 1;
 	    	
 
       
 	    	// 링크로 할 URL주소 
 	       // String url = "http://localhost:8080/tumbleridx/"+idx+"/"+cafe_idx;
-	    	String url = "http://localhost:8080/tumbler/"+cafe_idx;
+	    	//String url = "http://localhost:8080/tumbler/"+cafe_idx;
 	    	//String url = "http://localhost:8080/tumbler/qr/"+cafe_idx;
-	        //String url = "http://192.168.0.1:8080/tumbler/"+cafe_idx;
+	        String url = "http://192.168.0.1:8080/tumbler/"+cafe_idx;
 	       //String url = "http://192.168.219.106:8080/qr/"+cafe_idx;
       
 	        //링크 생성값
@@ -104,7 +104,7 @@ public class MakeQRService {
 	        
 	        Cafe cafe = new Cafe();
 	        cafe.setQrcode(fileName);
-	        cafe.setIdx(idx);
+	        cafe.setCafe_idx(cafe_idx);
 	        
 	        model.addAttribute("cafe",cafe);
 	        dao = template.getMapper(CafeDao.class);

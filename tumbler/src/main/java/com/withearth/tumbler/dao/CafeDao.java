@@ -16,13 +16,5 @@ public interface CafeDao {
   List<Cafe> selectLaglng();
 
   //큐알코드 저장
-  String insertQRcode(Cafe cafe);
-
-
-
-
-
-
-
-
+String insertQRcode(Cafe cafe);
 }

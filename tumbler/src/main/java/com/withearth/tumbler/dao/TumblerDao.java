@@ -1,6 +1,7 @@
 package com.withearth.tumbler.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,8 @@ public interface TumblerDao {
 
 	//적립 리스트(페이지 번호에 맞는)
 	List<Tumbler> selectTumpointList(int startRow, int cntPerPage);
+
+	
 
 	
 

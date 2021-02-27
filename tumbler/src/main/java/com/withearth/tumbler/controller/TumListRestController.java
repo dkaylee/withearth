@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import com.withearth.tumbler.service.TumListService;
 
 @RestController
 @RequestMapping("/tumbler/tumlist/rest")
+@CrossOrigin
 public class TumListRestController {
 	
 	@Autowired
@@ -29,7 +31,7 @@ public class TumListRestController {
 	  public List<Tumbler> tumList(@PathVariable("idx") int idx, Model model,  HttpServletRequest request) {
 	  
 	
-	 // model.addAttribute("listView", tumlistService.getTumList(idx));
+	 model.addAttribute("listView", tumlistService.getTumList(idx));
 	  
 	  return tumlistService.getTumList(idx);
 	  

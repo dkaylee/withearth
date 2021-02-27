@@ -1,6 +1,8 @@
 package com.withearth.tumbler.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,6 +42,13 @@ public class TumListService {
 
 			int startRow = (pageNumber - 1) * cntPerPage;
 			int endRow = startRow + cntPerPage - 1;
+			
+			Map<String, Object> listMap = new HashMap<String, Object>();
+			listMap.put("index", startRow);
+			listMap.put("count", cntPerPage);
+			//listMap.put("searchParam", param);
+			
+	
 
 			List<Tumbler> tumlist = dao.selectTumpointList(startRow, cntPerPage);
 			//System.out.println("텀블러리스트!!!!!!!!!!!" + tumlist);

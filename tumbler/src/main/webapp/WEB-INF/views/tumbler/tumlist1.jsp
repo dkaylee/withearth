@@ -187,6 +187,9 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow:hidden;
+	outline:0;
+	z-index:1050;
 }
 
 .md_overlay {
@@ -197,7 +200,8 @@ button {
 }
 
 .md_content {
-	width: 40%;
+	width: 36%;
+	font-size:25px;
 	position: relative;
 	padding: 50px 100px;
 	background-color: white;
@@ -218,9 +222,14 @@ h1 {
 
 .modal_text {
 	padding: 50px;
+	font-size: 30px;
 }
 
-.mapinfo_store{ 
+section.wrapper, article.wrapper {
+    padding: 3em 0;
+}
+
+#mapinfo_store{ 
  
 	padding: 5px;
 	font-size: 30px;
@@ -229,12 +238,8 @@ h1 {
     line-height: 1.5;
     margin: 0 0 1em 0;
     text-align: center;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
    
-
-
-
-
-
 }
 </style>
 
@@ -263,11 +268,9 @@ h1 {
 
 				<button id=maodel_btnx>X</button>
 			</div>
-		</div>
+		
 
-		<hr>
 
-		<p id="mapinfo_store">텀블러 적립 매장</p>
 
 
 
@@ -293,7 +296,11 @@ h1 {
 		</div> -->
 
 
+</div>
 
+		<hr>
+
+		<p id="mapinfo_store">텀블러 적립 매장</p>
 
 
 	</section>
@@ -564,10 +571,10 @@ h1 {
 				    lon = position.coords.longitude; // 경도
 
 				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-				message = '<div style="padding:5px;">내위치!!!!!!</div>'; // 인포윈도우에 표시될 내용입니다
+				iwContent  = '<div style="padding:5px;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
 
 				// 마커와 인포윈도우를 표시합니다
-				displayMarker(locPosition, message);
+				displayMarker(locPosition, iwContent );
 
 			});
 
@@ -575,11 +582,11 @@ h1 {
 
 			var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
 
-			displayMarker(locPosition, message);
+			displayMarker(locPosition, iwContent );
 
 		}
  	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-		function displayMarker(locPosition, message) {
+		function displayMarker(locPosition, iwContent ) {
 			  
 			//d이미지 마커
 	   		 var imageSrc = '/img/mark1.png', // 마커이미지의 주소입니다    
@@ -596,7 +603,7 @@ h1 {
 				image: markerImage // 마커이미지 설정 
 			});
 
-			var iwContent = message, // 인포윈도우에 표시할 내용
+			var iwContent = iwContent , // 인포윈도우에 표시할 내용
 			iwRemoveable = true;
 
 			// 인포윈도우를 생성합니다
@@ -605,6 +612,8 @@ h1 {
 				content : iwContent,
 				removable : iwRemoveable
 			});
+			
+			
 
 	
 			// 인포윈도우를 마커위에 표시합니다 
@@ -614,6 +623,19 @@ h1 {
 			// 지도 중심좌표를 접속위치로 변경합니다
 			map.setCenter(locPosition);		
 			markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+			
+			// 마커에 마우스오버 이벤트를 등록합니다
+			kakao.maps.event.addListener(marker, 'mouseover', function() {
+			  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+			    infowindow.open(map, marker);
+			});
+
+			// 마커에 마우스아웃 이벤트를 등록합니다
+			kakao.maps.event.addListener(marker, 'mouseout', function() {
+			    // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+			    infowindow.close();
+			});
+			
 			
 			
 			console.log(locPosition);

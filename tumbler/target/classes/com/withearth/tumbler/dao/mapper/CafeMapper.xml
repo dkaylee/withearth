@@ -79,8 +79,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertQRcode"
 		parameterType="com.withearth.tumbler.domain.Cafe"
 		useGeneratedKeys="true" keyProperty="idx">
-		insert into cafe (cafe_idx,cafe_name,location,qrcode)
-		values ( #{cafe_idx},#{cafe_name},#{location},#{qrcode})
+		 insert into cafe (cafe_idx,qrcode)
+		values ( #{cafe_idx},#{qrcode})
+		<!-- update withearth.cafe set (qrcode) = #{qrcode} where (cafe_idx) = ${cafe_idx}; -->
 	</insert>
 
 
