@@ -9,7 +9,7 @@
 						<a href="<c:url value="/"/>">Home</a>
 						<a href="#">Tumbler</a>
 						<a href="#">Walking</a>
-						<a href="#">Point</a>
+						<a href="<c:url value="/user/mypage/view"/>">Point</a>
 						<a href="<c:url value="/member/dona/main"/>">Donation</a>
 						<a href="<c:url value="/comm/matlist"/>">Community</a>
 						<a href="#">login</a>
