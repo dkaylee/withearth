@@ -10,6 +10,6 @@
 <body>
 로그인 한 사람만 이용 가능한 페이지
 ${loginInfo}
-${cookie.JSESSIONID.value}
+<%-- ${cookie.JSESSIONID.value} --%>
 </body>
 </html>
