@@ -63,8 +63,8 @@
 							<h3><a>활동 현황 조회</a></h3>
 						</div>
 						<div class="box person">
-							<div class="image round">
-							<a href="<c:url value="/dona/main/post/mypost?idx=1"/>">
+							<div class="image round">							
+							<a href="<c:url value="/dona/main/post/mypost?idx=${loginInfo.idx}"/>">
 							<img src="<c:url value="/img/point/mypost.png"/>" alt="mypage-pic4">
 							</a>
 							</div>

@@ -180,9 +180,10 @@
   
 </div>
  <div class="wrap-profile">
-  <div><img alt="프로필 사진" width="50px" height="50px" class="profile" ></div>
+ <!-- 회원 idx로 회원 정보를 받아오는 ajax 필요함! -->
+  <div><img alt="프로필 사진" width="50px" height="50px" class="profile"></div>
   <div class="userInfo">
-  <div class="userId">회원 아이디</div>
+  <div class="userId"></div>
   </div>
   <br>
   <hr class="seperate">
