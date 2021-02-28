@@ -205,8 +205,8 @@
 	    <div class="notice"></div>		
 	    
 	    <div class="floating">	
-	      <a href="<c:url value="/member/dona/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="My"></a>
-	      <a href="<c:url value="/member/dona/main/post/upload"/>"><img src="<c:url value="/img/dona/write1.png"/>" class="pBtn" id="writeFormBtn" width="50px;"><br></a>  	
+	      <a href="<c:url value="/dona/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="My"></a>
+	      <a href="<c:url value="/dona/main/post/upload"/>"><img src="<c:url value="/img/dona/write1.png"/>" class="pBtn" id="writeFormBtn" width="50px;"><br></a>  	
       </div>	
 	</section>			
 
@@ -293,10 +293,11 @@
 				
 				$.each(list, function(index, item){
 																													
-					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
+					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 						html += '<input type="hidden" value="'+item.donaIdx+'">';
 					  html += '<div class="article-img">';
-						html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+						//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';
+						html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';			
 						html += '</div>';
 						html += '<div class="article-content">';
 						html += '<div class="article-title">';
@@ -361,7 +362,7 @@
 						
 						$.each(list, function(index, item){
 																														
-							  var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
+							  var html =	'<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 								html += '<input type="hidden" value="'+item.donaIdx+'">';
 							  html += '<div class="article-img">';
 								//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
@@ -383,7 +384,7 @@
 								 console.log('totalPageCount :' + data.totalPageCount);
 								 							
 								for(var i=1; i <= data.totalPageCount; i++){	
-								  	var html2 = '<li class="page-item"><a class="page-link" href="<c:url value="/main/list"/>?p='+i+'">'+i+'</a></li>';
+								  	var html2 = '<li class="page-item"><a class="page-link" href="<c:url value="/dona/main/list"/>?p='+i+'">'+i+'</a></li>';
 									  	//var html2 =' [ <a href="<c:url value="/main/list"/>?p='+i+'">'+i+'</a> ] ';													
 								  	$('.pagination').append(html2);
 								}												 
@@ -413,10 +414,11 @@
 							
 							$.each(list, function(index, item){
 																																
-								  var html ='<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
+								  var html ='<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 									html += '<input type="hidden" value="'+item.donaIdx+'">';
-								  html += '<div class="article-img">';
-									html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+								    html += '<div class="article-img">';
+									//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+									html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
 									html += '</div>';
 									html += '<div class="article-content">';
 									html += '<div class="article-title">';

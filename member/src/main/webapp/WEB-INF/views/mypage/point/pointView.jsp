@@ -250,7 +250,7 @@ a.btn-layerClose {
 			    <div class="ableList">2월의 교환 가능 Gift</div>
 			    <div class="wrapList">교환 가능 포인트</div>		    
 			    </div>	
-			    <a><img src="<c:url value="/images/tumblr.png"/>" alt="Pic 01"/></a>
+			    <a><img src="<c:url value="/img/point/tumblr.png"/>" alt="Pic 01"/></a>
 			    <br>	
 			    <br>   			                   
 			    <div class="point-wrap"><div class="showNeedPoint" id="nPoint1">200P</div><div class="showNeedPoint" id="nPoint2">필요 포인트</div>
@@ -266,7 +266,7 @@ a.btn-layerClose {
                 <!--content //-->
                 <p class="ctxt mb20">
                    <h3 id="trans-title">포인트 선물 교환</h3>
-                   <img src="<c:url value="/images/tumblr.png"/>" alt="Pic 01" height="100px"/>
+                   <img src="<c:url value="/img/point/tumblr.png"/>" alt="Pic 01" height="100px"/>
                    <br>
                    <h4 id="trans-content">이 선물로 교환하시겠습니까?</h4>
                    <h5 id="trans-notice">( * 교환 후 취소가 불가합니다. )</h5>                   
@@ -441,13 +441,15 @@ a.btn-layerClose {
 				$.each(data, function(index, item){
 					var html = '<tr>';
 	                    html+= '<td> '+(index+1) +'</td>';
-	                    html+= '<td><img alt="QrImage" width="100px" src="<c:url value="/resources/coupon/'+item.couponQr+'png"/>"></td>';
+	                   // html+= '<td><img alt="QrImage" width="100px" src="<c:url value="/resources/coupon/'+item.couponQr+'png"/>"></td>';
+	                   html+= '<td><img alt="QrImage" width="100px" src="http://localhost:8080/point/resources/coupon/'+item.couponQr+'png"></td>';
 	                    html+= '<td> '+ item.couponHistory+'</td>';
 	                    html+= '<td>'+item.historyDate+'</td>';
 	                     if(item.availability=="Y"){
 	                    	html +='<td class="notUsed">미사용</td>';
 	                     }else{
-	                    	 html += '<td><img alt="QrImage" width="90px" src="<c:url value="/images/usedcoupon.png"/>"></td>';
+	                    	 html += '<td><img alt="QrImage" width="90px" src="<c:url value="/img/point/usedcoupon.png"/>"></td>';
+	                                  
 	                     }             
 	                    
 	                    html+= '</tr>';

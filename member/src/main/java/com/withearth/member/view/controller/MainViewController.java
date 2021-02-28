@@ -20,7 +20,7 @@ public class MainViewController {
 	ChatRoomIdCheckService roomChkService;
 
 	
-	@RequestMapping("/main/list")
+	@RequestMapping("/dona/main/list")
 	public String goListForm(
 			@RequestParam(value="p", defaultValue ="1") int p,
 			HttpSession session
@@ -30,7 +30,7 @@ public class MainViewController {
 		return "dona/post/donaMain";
 	}
 	
-	@RequestMapping("/main/list/search")
+	@RequestMapping("/dona/main/list/search")
 	public String goListSearchForm(
 			@RequestParam(value="p", defaultValue ="1") int p,
 			@RequestParam("searchType") String searchType,
@@ -41,14 +41,14 @@ public class MainViewController {
 		return "dona/post/donaMain";
 	}
 	
-	@RequestMapping("/member/dona/main/post/upload")
+	@RequestMapping("/dona/main/post/upload")
 	public String goWrtieForm() {
 		
 		return "dona/post/writeForm";
 	}
 	
 	
-	@RequestMapping("/main/post/detail")
+	@RequestMapping("/dona/main/post/detail")
 	public String goDetailView(
 			@RequestParam("idx") int donaIdx,
 			HttpServletRequest request,
@@ -61,14 +61,14 @@ public class MainViewController {
 		return "dona/post/postDetailView";
 	}
 		
-	@RequestMapping("/member/dona/main/post/mypost")
+	@RequestMapping("/dona/main/post/mypost")
 	public String goUpdateView(
 			@RequestParam("idx") int donaIdx) {
 		
 		return "dona/post/myPostList";
 	}
 	
-	@RequestMapping("/main/post/edit")
+	@RequestMapping("/dona/main/post/edit")
 	public String goEditForm(
 			@RequestParam("idx") int donaIdx) {
 		

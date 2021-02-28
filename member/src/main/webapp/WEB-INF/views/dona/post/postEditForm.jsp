@@ -24,6 +24,10 @@
   color : #D91828;
   font-weight: bold;
 }
+
+#editForm{
+ margin : 0 280px !important;
+}
 </style>
 </head>
 
@@ -43,9 +47,8 @@
 			<!-- Break -->
 			<div class="12u$">
 				<ul class="actions">
-					<li><input type="submit" value="Send Message" /></li>
-					<li><a href="javascript:" onclick="javascript:actionForm();">업로드</a></li>
-					<li><input type="reset" id="test" value="Reset" class="alt" /></li>
+					<li><input type="button" value="저장" onclick="javascript:actionForm();"/></li>				
+					<li><input type="reset" id="test" value="취소" class="alt" /></li>
 				</ul>
 			</div>
 		</div>
@@ -124,8 +127,9 @@
 
 																var html2 = '<div class="p-images">';
 																//html2 += '<input type="hidden" name="oldPostImage" id="oldPostImage" value="'+item.fileName+'">';
-															  html2 += '<a href="javascript:void(0);" onclick=\"deleteOldImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
-																html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" style=\"width:100px; height:100px;\" id="post-images" alt="postImages"></a>';
+															    html2 += '<a href="javascript:void(0);" onclick=\"deleteOldImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
+																//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" style=\"width:100px; height:100px;\" id="post-images" alt="postImages"></a>';
+																html2 += '<img style=\"width:100px; height:100px;\" id="post-images" alt="postImages"src="http://localhost:8080/dona/fileupload/post/'+item.fileName+'">';	
 																html2 += '</div>';
 																
 																oldImage_list.push(item.fileName);

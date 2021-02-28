@@ -22,8 +22,15 @@
     select * from coupon where idx=#{idx} order by history_date desc;
   </select>
 
+  <!-- <select id="getNextCouponIdx" resultType="int">
+  select ifnull(max(coupon_idx)+1 from coupon
+  </select> -->
+  
   <select id="getNextCouponIdx" resultType="int">
-  select max(coupon_idx)+1 from coupon
+  SELECT AUTO_INCREMENT
+  FROM information_schema.TABLES
+  WHERE TABLE_SCHEMA = "withearth"
+  AND TABLE_NAME = "coupon"
   </select>
   
   <update id="transUsedCoupon" parameterType="com.aia.point.domain.Coupon">

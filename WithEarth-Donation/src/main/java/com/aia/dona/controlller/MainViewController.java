@@ -63,7 +63,7 @@ public class MainViewController {
 		
 	@RequestMapping("/main/post/mypost")
 	public String goUpdateView(
-			@RequestParam("idx") int donaIdx) {
+			@RequestParam("idx") int idx) {
 		
 		return "post/myPostList";
 	}
