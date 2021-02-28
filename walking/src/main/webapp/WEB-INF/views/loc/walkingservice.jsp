@@ -832,7 +832,7 @@
 					url: '<c:url value="/course/{idx}/{cIdx}"/>', // 포인트를 받을 controller 주소 입력 
 					type: 'post',
 					data:{
-						courseIdx: data,
+						course_Idx: data,
 						course_km: tDistance
 					
 					},
