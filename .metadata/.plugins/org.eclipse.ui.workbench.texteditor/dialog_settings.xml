@@ -9,6 +9,9 @@
 		<item key="selection" value="selectTumpointList"/>
 		<list key="findhistory">
 			<item value="selectTumpointList"/>
+			<item value="selectList"/>
+			<item value="page"/>
+			<item value="selelctTumList"/>
 			<item value="img"/>
 			<item value="alert"/>
 			<item value="paging"/>
@@ -20,9 +23,6 @@
 			<item value="imageSrc "/>
 			<item value="imp"/>
 			<item value="ell"/>
-			<item value="wrap"/>
-			<item value="content"/>
-			<item value="eli"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

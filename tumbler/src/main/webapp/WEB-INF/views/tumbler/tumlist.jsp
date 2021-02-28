@@ -122,7 +122,7 @@ p{
 
 									success : function(data) {
 										console.log(data);
-										//alert(JSON.stringify(data));
+										alert(JSON.stringify(data));
 
 										var html = '<table>';
 										html += '<thead>';
@@ -156,7 +156,7 @@ p{
 										if (data.totalTpointCount > 0) {
 
 											var pHtml = '<ul class="pagination"></ul>';
-											$('.paging').append(pHtml2)
+											$('.paging').append(pHtml)
 											console.log('totalTpointCount :'+ data.tumlistTotalcount);
 
 											for (var i = 1; i <= data.totalPageCount; i++) {

@@ -46,12 +46,13 @@ public class TumListService {
 			Map<String, Object> listMap = new HashMap<String, Object>();
 			listMap.put("index", startRow);
 			listMap.put("count", cntPerPage);
+			
 			//listMap.put("searchParam", param);
 			
 	
 
-			List<Tumbler> tumlist = dao.selectTumpointList(startRow, cntPerPage);
-			//System.out.println("텀블러리스트!!!!!!!!!!!" + tumlist);
+			List<Tumbler> tumlist = dao.selectTumpointList(listMap);
+			System.out.println("텀블러리스트!!!!!!!!!!!" + tumlist);
 
 			listView = new TumpointView(pageNumber, totalTpointCount, cntPerPage, tumlist, startRow, endRow);
 

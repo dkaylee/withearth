@@ -9,6 +9,7 @@ public class TumInfo {
 	private String cafe_name;
 	private String location;
 	private int tum_point;
+	
 	public String getIdx() {
 		return idx;
 	}

@@ -29,7 +29,7 @@ public interface TumblerDao {
 	int selectTotalCount();
 
 	//적립 리스트(페이지 번호에 맞는)
-	List<Tumbler> selectTumpointList(int startRow, int cntPerPage);
+	List<Tumbler> selectTumpointList(Map<String, Object> listMap);
 
 	
 

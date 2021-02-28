@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.withearth.tumbler.service.TumLoginSerivce"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.domain.Tumbler"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.MemberLoginService"/>
 <fullyQualifiedTypeName name="com.withearth.member.domain.MemberRegRequest"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.member.service.MemberRegService"/>
@@ -27,7 +25,6 @@
 <fullyQualifiedTypeName name="com.withearth.tumbler.service.TumListService"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumInfo"/>
 <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumpointView"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
@@ -51,7 +48,6 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonFormat"/>
 <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes"/>
@@ -60,4 +56,8 @@
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.SearchParam"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+<fullyQualifiedTypeName name="com.withearth.tumbler.domain.Tumbler"/>
+<fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumpointView"/>
 </qualifiedTypeNameHistroy>

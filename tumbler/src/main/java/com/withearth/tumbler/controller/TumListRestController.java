@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.withearth.tumbler.domain.Tumbler;
+import com.withearth.tumbler.domain.TumpointView;
 import com.withearth.tumbler.service.CafeListSerivce;
 import com.withearth.tumbler.service.TumListService;
 
@@ -28,12 +29,13 @@ public class TumListRestController {
 	
 	  //포인트 정보 가져오기
 	  @GetMapping("/{idx}")
-	  public List<Tumbler> tumList(@PathVariable("idx") int idx, Model model,  HttpServletRequest request) {
+	  public TumpointView tumList(@PathVariable("idx") int idx,@RequestParam(value="p",defaultValue="1") int page, Model model,  HttpServletRequest request) {
 	  
 	
 	 model.addAttribute("listView", tumlistService.getTumList(idx));
 	  
-	  return tumlistService.getTumList(idx);
+	  return tumlistService.getTumListView(page);
+	  // return tumlistService.getTumList(idx);
 	  
 	  }
 	

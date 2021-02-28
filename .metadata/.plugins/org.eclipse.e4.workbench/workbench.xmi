@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_LVUD0HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_LVUD0XEKEeuy_Z-PqpBgdg" bindingContexts="_LVXvLnEKEeuy_Z-PqpBgdg">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumblerDao.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;TumblerMapper.xml&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SearchParam.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/SearchParam.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/SearchParam.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointView.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/TumpointView.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/TumpointView.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListService.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/service/TumListService.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/service/TumListService.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist1.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist1.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist1.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListRestController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointRestController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumpointRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumpointRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListController1.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListController1.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListController1.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CafeListRestController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/CafeListRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/CafeListRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist3.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist3.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist3.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist2.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist2.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist2.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;CafeMapper.xml&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/mapper/CafeMapper.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/mapper/CafeMapper.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;MakeQRService.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/service/MakeQRService.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/service/MakeQRService.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CafeDao.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/CafeDao.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/CafeDao.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;MakeQRController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/MakeQRController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/MakeQRController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointController1.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController1.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController1.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Tumbler.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/Tumbler.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/Tumbler.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointView.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/TumpointView.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/TumpointView.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointController1.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController1.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController1.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;MakeQRController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/MakeQRController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/MakeQRController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListController1.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListController1.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListController1.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumblerDao.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumblerDaoIterface.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDaoIterface.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDaoIterface.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListService.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/service/TumListService.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/service/TumListService.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListRestController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumInfo.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/TumInfo.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/TumInfo.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlistView.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlistView.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlistView.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist1.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist1.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist1.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;TumblerMapper.xml&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointRestController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumpointRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumpointRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumpointController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumpointController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SearchParam.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/SearchParam.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/SearchParam.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CafeListRestController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/CafeListRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/CafeListRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist3.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist3.jsp&quot;>&#xD;&#xA;&lt;persistable path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist3.jsp&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_LVUD0XEKEeuy_Z-PqpBgdg" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_LVUD0nEKEeuy_Z-PqpBgdg" label="%trimmedwindow.label.eclipseSDK" x="-3243" y="208" width="2799" height="1236">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_LVUD0XEKEeuy_Z-PqpBgdg" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_LVUD0nEKEeuy_Z-PqpBgdg" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="2799" height="1236">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
@@ -93,10 +93,11 @@
           <tags>persp.actionSet:org.eclipse.debug.ui.breakpointActionSet</tags>
           <tags>persp.newWizSC:org.eclipse.m2e.core.wizards.Maven2ProjectWizard</tags>
           <tags>persp.showIn:org.eclipse.tm.terminal.view.ui.TerminalsView</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_LVUD1XEKEeuy_Z-PqpBgdg" selectedElement="_LVUD3nEKEeuy_Z-PqpBgdg" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_LVUD1XEKEeuy_Z-PqpBgdg" selectedElement="_LVUD1nEKEeuy_Z-PqpBgdg" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_LVUD1nEKEeuy_Z-PqpBgdg" containerData="2370" selectedElement="_LVUD13EKEeuy_Z-PqpBgdg">
               <children xsi:type="basic:PartStack" xmi:id="_LVUD13EKEeuy_Z-PqpBgdg" elementId="left" containerData="7650" selectedElement="_LVUD2HEKEeuy_Z-PqpBgdg">
                 <tags>active</tags>
+                <tags>noFocus</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_LVUD2HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_LVV56nEKEeuy_Z-PqpBgdg" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:Java</tags>
@@ -121,56 +122,8 @@
                 </children>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_LVUD3nEKEeuy_Z-PqpBgdg" containerData="7630" selectedElement="_LVUD33EKEeuy_Z-PqpBgdg" horizontal="true">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_LVUD33EKEeuy_Z-PqpBgdg" containerData="5976" selectedElement="_LVUD4XEKEeuy_Z-PqpBgdg">
-                <children xsi:type="advanced:Placeholder" xmi:id="_LVUD4HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.editorss" containerData="7026" ref="_LVV5qHEKEeuy_Z-PqpBgdg"/>
-                <children xsi:type="basic:PartStack" xmi:id="_LVUD4XEKEeuy_Z-PqpBgdg" elementId="bottom" containerData="2974" selectedElement="_LVUD4nEKEeuy_Z-PqpBgdg">
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD4nEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.console.ConsoleView" ref="_LVWgdXEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:General</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD43EKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.ProgressView" ref="_LVWgi3EKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:General</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD5HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.AllMarkersView" toBeRendered="false" ref="_LVWgmHEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:General</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD5XEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.TaskList" toBeRendered="false" ref="_LVWgmXEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:General</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD5nEKEeuy_Z-PqpBgdg" elementId="org.eclipse.jdt.ui.JavadocView" toBeRendered="false" ref="_LVWgmnEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:Java</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD53EKEeuy_Z-PqpBgdg" elementId="org.eclipse.jdt.ui.SourceView" toBeRendered="false" ref="_LVWgm3EKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:Java</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD6HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.search.ui.views.SearchView" toBeRendered="false" ref="_LVWgnHEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:General</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD6XEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_LVWgnXEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:General</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD6nEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.PropertySheet" toBeRendered="false" ref="_LVWgnnEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:General</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD63EKEeuy_Z-PqpBgdg" elementId="com.springsource.sts.ide.metadata.ui.RequestMappingView" toBeRendered="false" ref="_LVWgn3EKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:Spring</tags>
-                  </children>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_LVUD7HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.wst.server.ui.ServersView" ref="_LVWgWXEKEeuy_Z-PqpBgdg" closeable="true">
-                    <tags>View</tags>
-                    <tags>categoryTag:Server</tags>
-                  </children>
-                </children>
-              </children>
+            <children xsi:type="basic:PartSashContainer" xmi:id="_LVUD3nEKEeuy_Z-PqpBgdg" containerData="7630" selectedElement="_LVUD4HEKEeuy_Z-PqpBgdg" horizontal="true">
+              <children xsi:type="advanced:Placeholder" xmi:id="_LVUD4HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.editorss" containerData="5976" ref="_LVV5qHEKEeuy_Z-PqpBgdg"/>
               <children xsi:type="basic:PartSashContainer" xmi:id="_LVUD7nEKEeuy_Z-PqpBgdg" visible="false" containerData="4024" selectedElement="_LVUD73EKEeuy_Z-PqpBgdg">
                 <children xsi:type="basic:PartStack" xmi:id="_LVUD73EKEeuy_Z-PqpBgdg" elementId="middleright" visible="false" containerData="5000" selectedElement="_LVUD8HEKEeuy_Z-PqpBgdg">
                   <tags>Minimized</tags>
@@ -273,7 +226,7 @@
                   <tags>View</tags>
                   <tags>categoryTag:Git</tags>
                 </children>
-                <children xsi:type="advanced:Placeholder" xmi:id="_LVUq5HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.PropertySheet" ref="_LVWgnnEKEeuy_Z-PqpBgdg" closeable="true">
+                <children xsi:type="advanced:Placeholder" xmi:id="_LVUq5HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.PropertySheet" toBeRendered="false" ref="_LVWgnnEKEeuy_Z-PqpBgdg" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:General</tags>
                 </children>
@@ -315,44 +268,109 @@
       <tags>View</tags>
       <tags>categoryTag:Help</tags>
     </sharedElements>
-    <sharedElements xsi:type="advanced:Area" xmi:id="_LVV5qHEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.editorss" selectedElement="_6BO7YHj1Eeukltcfy8PQmQ">
-      <children xsi:type="basic:PartSashContainer" xmi:id="_6BO7YHj1Eeukltcfy8PQmQ" selectedElement="_pA880XfaEeu4d5ZljMgpIA" horizontal="true">
-        <children xsi:type="basic:PartStack" xmi:id="_pA880XfaEeu4d5ZljMgpIA" elementId="PartStack@61d98b43" containerData="5000" selectedElement="_6t6PoHj_Eeukltcfy8PQmQ">
-          <children xsi:type="basic:Part" xmi:id="_6t6PoHj_Eeukltcfy8PQmQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="tumlist.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist.jsp&quot; partName=&quot;tumlist.jsp&quot; title=&quot;tumlist.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1813&quot; selectionTopPixel=&quot;1959&quot;/>&#xD;&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>removeOnHide</tags>
-            <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
+    <sharedElements xsi:type="advanced:Area" xmi:id="_LVV5qHEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.editorss" selectedElement="_Wsrw8HmrEeu-pJ_gBERJcg">
+      <children xsi:type="basic:PartSashContainer" xmi:id="_Wsrw8HmrEeu-pJ_gBERJcg" selectedElement="_6BO7YHj1Eeukltcfy8PQmQ">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_6BO7YHj1Eeukltcfy8PQmQ" containerData="6769" selectedElement="_qhoiIHmrEeu-pJ_gBERJcg" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_qhoiIHmrEeu-pJ_gBERJcg" containerData="5000" selectedElement="_qhoiIXmrEeu-pJ_gBERJcg" horizontal="true">
+            <children xsi:type="basic:PartStack" xmi:id="_pA880XfaEeu4d5ZljMgpIA" elementId="PartStack@61d98b43" containerData="6589" selectedElement="_IbW9YHnMEeu-pJ_gBERJcg">
+              <children xsi:type="basic:Part" xmi:id="_6t6PoHj_Eeukltcfy8PQmQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="tumlist.jsp" iconURI="platform:/plugin/org.eclipse.jst.jsp.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
+                <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jst.jsp.core.jspsource.source&quot; name=&quot;tumlist.jsp&quot; partName=&quot;tumlist.jsp&quot; title=&quot;tumlist.jsp&quot; tooltip=&quot;tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/webapp/WEB-INF/views/tumbler/tumlist.jsp&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3788&quot; selectionTopPixel=&quot;4974&quot;/>&#xD;&#xA;&lt;/editor>"/>
+                <tags>Editor</tags>
+                <tags>removeOnHide</tags>
+                <tags>org.eclipse.jst.jsp.core.jspsource.source</tags>
+              </children>
+              <children xsi:type="basic:Part" xmi:id="_36GYEHmrEeu-pJ_gBERJcg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumblerMapper.xml" iconURI="platform:/plugin/org.eclipse.wst.xml.ui/icons/xmldoc.gif" closeable="true">
+                <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;TumblerMapper.xml&quot; partName=&quot;TumblerMapper.xml&quot; title=&quot;TumblerMapper.xml&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;835&quot; selectionTopPixel=&quot;396&quot;/>&#xD;&#xA;&lt;/editor>"/>
+                <tags>Editor</tags>
+                <tags>removeOnHide</tags>
+                <tags>org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart</tags>
+              </children>
+              <children xsi:type="basic:Part" xmi:id="_IbW9YHnMEeu-pJ_gBERJcg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumListRestController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+                <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListRestController.java&quot; partName=&quot;TumListRestController.java&quot; title=&quot;TumListRestController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListRestController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListRestController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;555&quot; selectionOffset=&quot;856&quot; selectionTopPixel=&quot;420&quot;/>&#xD;&#xA;&lt;/editor>"/>
+                <tags>Editor</tags>
+                <tags>removeOnHide</tags>
+                <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+              </children>
+              <children xsi:type="basic:Part" xmi:id="_ppyL8HneEeu-pJ_gBERJcg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Tumbler.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+                <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;Tumbler.java&quot; partName=&quot;Tumbler.java&quot; title=&quot;Tumbler.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/Tumbler.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/Tumbler.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;7&quot; selectionOffset=&quot;214&quot; selectionTopPixel=&quot;132&quot;/>&#xD;&#xA;&lt;/editor>"/>
+                <tags>Editor</tags>
+                <tags>removeOnHide</tags>
+                <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+              </children>
+            </children>
+            <children xsi:type="basic:PartStack" xmi:id="_qhoiIXmrEeu-pJ_gBERJcg" elementId="PartStack@48979c1f" containerData="3411" selectedElement="_qDzlkHnKEeu-pJ_gBERJcg">
+              <children xsi:type="basic:Part" xmi:id="_qDzlkHnKEeu-pJ_gBERJcg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumListService.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+                <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListService.java&quot; partName=&quot;TumListService.java&quot; title=&quot;TumListService.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/service/TumListService.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/service/TumListService.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;1883&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+                <tags>Editor</tags>
+                <tags>removeOnHide</tags>
+                <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+              </children>
+              <children xsi:type="basic:Part" xmi:id="_hHMxwHncEeu-pJ_gBERJcg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumblerDao.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+                <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumblerDao.java&quot; partName=&quot;TumblerDao.java&quot; title=&quot;TumblerDao.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;18&quot; selectionOffset=&quot;648&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+                <tags>Editor</tags>
+                <tags>removeOnHide</tags>
+                <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+              </children>
+              <children xsi:type="basic:Part" xmi:id="_wJuVwHncEeu-pJ_gBERJcg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumListController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+                <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListController.java&quot; partName=&quot;TumListController.java&quot; title=&quot;TumListController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;397&quot; selectionLength=&quot;51&quot; selectionOffset=&quot;676&quot; selectionTopPixel=&quot;297&quot;/>&#xD;&#xA;&lt;/editor>"/>
+                <tags>Editor</tags>
+                <tags>removeOnHide</tags>
+                <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+              </children>
+            </children>
           </children>
-          <children xsi:type="basic:Part" xmi:id="_ADsokHkAEeukltcfy8PQmQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumListController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumListController.java&quot; partName=&quot;TumListController.java&quot; title=&quot;TumListController.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/controller/TumListController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;791&quot; selectionTopPixel=&quot;321&quot;/>&#xD;&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>removeOnHide</tags>
-            <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_DAV_4HkAEeukltcfy8PQmQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumblerMapper.xml" iconURI="platform:/plugin/org.eclipse.wst.xml.ui/icons/xmldoc.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;TumblerMapper.xml&quot; partName=&quot;TumblerMapper.xml&quot; title=&quot;TumblerMapper.xml&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/mapper/TumblerMapper.xml&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1868&quot; selectionTopPixel=&quot;1878&quot;/>&#xD;&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>removeOnHide</tags>
-            <tags>org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart</tags>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_F6FNIHkAEeukltcfy8PQmQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SearchParam.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SearchParam.java&quot; partName=&quot;SearchParam.java&quot; title=&quot;SearchParam.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/domain/SearchParam.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/domain/SearchParam.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>removeOnHide</tags>
-            <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_HIObQHkAEeukltcfy8PQmQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="TumblerDao.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;TumblerDao.java&quot; partName=&quot;TumblerDao.java&quot; title=&quot;TumblerDao.java&quot; tooltip=&quot;tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/tumbler/src/main/java/com/withearth/tumbler/dao/TumblerDao.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;608&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>removeOnHide</tags>
-            <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <children xsi:type="basic:PartStack" xmi:id="_6BO7YXj1Eeukltcfy8PQmQ" elementId="PartStack@5ab57821" toBeRendered="false" containerData="5000">
+            <children xsi:type="advanced:Placeholder" xmi:id="_LVUD7XEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.ProblemView" toBeRendered="false" ref="_LVWgknEKEeuy_Z-PqpBgdg" closeable="true">
+              <tags>View</tags>
+              <tags>categoryTag:General</tags>
+            </children>
           </children>
         </children>
-        <children xsi:type="basic:PartStack" xmi:id="_6BO7YXj1Eeukltcfy8PQmQ" elementId="PartStack@5ab57821" toBeRendered="false" containerData="5000">
-          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD7XEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.ProblemView" toBeRendered="false" ref="_LVWgknEKEeuy_Z-PqpBgdg" closeable="true">
+        <children xsi:type="basic:PartStack" xmi:id="_LVUD4XEKEeuy_Z-PqpBgdg" elementId="bottom" containerData="3231" selectedElement="_LVUD7HEKEeuy_Z-PqpBgdg">
+          <tags>MinimizedByZoom</tags>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD4nEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.console.ConsoleView" ref="_LVWgdXEKEeuy_Z-PqpBgdg" closeable="true">
             <tags>View</tags>
             <tags>categoryTag:General</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD43EKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.ProgressView" ref="_LVWgi3EKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:General</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD5HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.AllMarkersView" toBeRendered="false" ref="_LVWgmHEKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:General</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD5XEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.TaskList" toBeRendered="false" ref="_LVWgmXEKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:General</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD5nEKEeuy_Z-PqpBgdg" elementId="org.eclipse.jdt.ui.JavadocView" toBeRendered="false" ref="_LVWgmnEKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:Java</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD53EKEeuy_Z-PqpBgdg" elementId="org.eclipse.jdt.ui.SourceView" toBeRendered="false" ref="_LVWgm3EKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:Java</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD6HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.search.ui.views.SearchView" toBeRendered="false" ref="_LVWgnHEKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:General</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD6XEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_LVWgnXEKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:General</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD6nEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.PropertySheet" toBeRendered="false" ref="_LVWgnnEKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:General</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD63EKEeuy_Z-PqpBgdg" elementId="com.springsource.sts.ide.metadata.ui.RequestMappingView" toBeRendered="false" ref="_LVWgn3EKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:Spring</tags>
+          </children>
+          <children xsi:type="advanced:Placeholder" xmi:id="_LVUD7HEKEeuy_Z-PqpBgdg" elementId="org.eclipse.wst.server.ui.ServersView" ref="_LVWgWXEKEeuy_Z-PqpBgdg" closeable="true">
+            <tags>View</tags>
+            <tags>categoryTag:Server</tags>
           </children>
         </children>
       </children>
@@ -405,7 +423,7 @@
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_LVWgZnEKEeuy_Z-PqpBgdg" elementId="org.eclipse.wst.server.ui.ServersView" visible="false"/>
+      <toolbar xmi:id="_LVWgZnEKEeuy_Z-PqpBgdg" elementId="org.eclipse.wst.server.ui.ServersView"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_LVWgbnEKEeuy_Z-PqpBgdg" elementId="org.springframework.ide.eclipse.ui.navigator.springExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Spring Explorer" iconURI="platform:/plugin/org.springframework.ide.eclipse.ui/icons/full/obj16/spring_explorer_obj.gif" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.springframework.ide.eclipse.ui.navigator.SpringNavigator"/>
@@ -443,11 +461,12 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>highlighted</tags>
       <menus xmi:id="_LVWgdnEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_LVWgeHEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.console.ConsoleView"/>
+      <toolbar xmi:id="_LVWgeHEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.console.ConsoleView" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_LVWgi3EKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.views.ProgressView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Progress" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/pview.png" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.progress.ProgressView"/>
@@ -600,7 +619,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_LVWg1XEKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_HrH6UHi7Eeukltcfy8PQmQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_LVcAL3EKEeuy_Z-PqpBgdg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FW5WYHmWEeu-pJ_gBERJcg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_LVcAL3EKEeuy_Z-PqpBgdg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_LVWg4nEKEeuy_Z-PqpBgdg" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -622,7 +641,7 @@
       <children xsi:type="menu:ToolBar" xmi:id="_LVXHMXEKEeuy_Z-PqpBgdg" elementId="org.eclipse.search.searchActionSet">
         <tags>Draggable</tags>
       </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_LVXHN3EKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.edit.text.actionSet.presentation" visible="false">
+      <children xsi:type="menu:ToolBar" xmi:id="_LVXHN3EKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.edit.text.actionSet.presentation">
         <tags>Draggable</tags>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_LVXHQnEKEeuy_Z-PqpBgdg" elementId="org.eclipse.wst.server.ui.internal.webbrowser.actionSet">
@@ -634,7 +653,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_LVXHR3EKEeuy_Z-PqpBgdg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_HrRrVHi7Eeukltcfy8PQmQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_LVb_3HEKEeuy_Z-PqpBgdg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FW5WbXmWEeu-pJ_gBERJcg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_LVb_3HEKEeuy_Z-PqpBgdg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_LVXHVHEKEeuy_Z-PqpBgdg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
