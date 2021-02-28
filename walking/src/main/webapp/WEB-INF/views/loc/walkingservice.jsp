@@ -824,19 +824,21 @@
 			success: function(data){
 				
 				
-				//q반환되는 데이터:idx
+				//반환되는 데이터:idx
 				console.log('data',data);
+			    console.log('tdistance', tDistance)
 			    // idx+이동거리 ->   ajax -> 포인트적립으로 이동
 				$.ajax({
-					url: '',
+					url: '<c:url value="/course/{idx}/{cIdx}"/>', // 포인트를 받을 controller 주소 입력 
 					type: 'post',
 					data:{
 						courseIdx: data,
 						course_km: tDistance
+					
 					},
 					success: function(data){
-						alert('포인트 적립이 완료되었습니다.');
-						console.log(data);
+						alert('데이터 전송을 완료했습니다.');
+						console.log('pdata',data);
 					},
 					error: function(error){
 						console.log(error);
