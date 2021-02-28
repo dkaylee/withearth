@@ -130,7 +130,7 @@ $(document).ready(function(){
 									cache: false,
 									success: function(data){
 										alert("로그인 되었습니다.");
-										location.href="http://ec2-3-35-4-198.ap-northeast-2.compute.amazonaws.com:8080/member"; 
+										location.href="/member"; 
 										console.log(data);
 									},
 									error: function(error){

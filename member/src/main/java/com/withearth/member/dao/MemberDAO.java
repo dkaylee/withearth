@@ -53,4 +53,11 @@ public interface MemberDAO {
 	
 // 네이버 로그인
 	Member naverSelectLogin(String id);		
+	
+// 회원정보 수정 (파일)
+	int updatePhoto(Member member);
+// 회원정보 수정 (별명)
+	int updateName(Member member);
+// 회원정보 수정 (비밀번호)
+	int updatePw(Member member);		
 }

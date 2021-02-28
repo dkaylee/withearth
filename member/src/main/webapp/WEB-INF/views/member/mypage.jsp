@@ -5,35 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
+	 <label>이메일</label>
+	  <input type="email" id="id" name="id"  value="${loginInfo.id}" readonly>
 	 <label>비밀번호</label>
 	 <label>비밀번호는 6~20자리, 숫자 또는 특수 문자를 포함하세요</label>
 	  <input  type="password" id="pw" name="pw"  placeholder="비밀번호">
 	  <input type="password" id="pwcheck" placeholder="비밀번호 확인" name="pwcheck">
 	 <label>별명</label> 
-	  <input type="text" id="name" name="username" placeholder="별명" required>
+	  <input type="text" id="name" name="username" placeholder="별명" value="${loginInfo.name}" required>
 	  <label>프로필 사진</label>
+	  <input type="text" id="oldphoto" name="odluserPhoto" value="${loginInfo.photo}" readonly>
 	  <input type="file" id="photo" name="userPhoto">
+	  <input type="submit" id="btnEdit">
 </body>
 
 <script>
-		var photoFile = $('#photo');
-		var file1 = photoFile[0].files[0];
-		console.log(typeof(file1)); 
+$(document).ready(function(){
+	var	photo = $('#photo');
+	var file1 = photo[0].files[0];
+	var formData = new FormData();
+	 //회원가입 버튼 클릭시,
+	 $('#btnEdit').click(function(){ 
 		
-		var formData = new FormData();
-		formData.append("userid",$('#id').val());
-		formData.append("userpw",$('#pw').val());
-		formData.append("username",$('#name').val());
-		
-		if(typeof(file1) != 'undefined'){
-		formData.append("userPhoto",file1);	
-		}
 		
 		$.ajax({
-		url: '/member/member/reg',
+		url: '/member/member/mypage',
 		type: 'post',
 		data: formData,
 		enctype: 'multipart/form-data',
@@ -41,16 +41,17 @@
 		contentType: false,
 		cache: false,
 		success: function(data){
-			alert("회원가입이 완료되었습니다.");
-			location.href="/member"; 
+			alert("성공");
 			console.log(data);
 		},
 		error: function(error){
 			console.log("실패");
 			console.log(error);
 		}	
+		
 		});
-
+	 });
+});
 
 </script>
 </html>
