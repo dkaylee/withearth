@@ -42,7 +42,16 @@
 							</header>
 							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
 							<footer>
-								<a href="<c:url value="/member/loginuser"/>" class="button special">회원리스트 테스트 페이지</a>
+								<a href="<c:url value="/member/mypage"/>" class="button special">마이페이지</a>
+							</footer>
+						</article>
+						<article>
+							<header>
+								<h3>Libero purus magna sapien<br /> sed ullamcorper</h3>
+							</header>
+							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
+							<footer>
+								<a href="<c:url value="/member/ajaxTest"/>" class="button special">ajax로 로그인 정보 보내기 test page</a>
 							</footer>
 						</article>
 					</div>
