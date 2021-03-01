@@ -8984,3 +8984,9 @@ org.xml.sax.SAXParseException; lineNumber: 20; columnNumber: 27; The prefix "mvc
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-01 20:19:59.568
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-01 20:24:45.106
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-01 20:24:45.113
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!

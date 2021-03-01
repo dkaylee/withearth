@@ -79,7 +79,7 @@ select count(*) from tumbler
            cafe.cafe_name , 
            idx, 
            tum_point,
-           (select count(idx)  from tumbler where tumbler.cafe_idx = cafe.cafe_idx) 
+           (select count(*)  from tumbler,cafe where tumbler.cafe_idx = cafe.cafe_idx) 
            from 
            tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx
            where idx 
