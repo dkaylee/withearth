@@ -8,7 +8,6 @@ public interface MemberDAO {
 	int insertMember(Member member);
 
 //로그인
-	//member가 왜 여기 들어가니..?
 	Member selectLogin(String id);
 
 //아이디 중복체크 & 이메일 보내기
@@ -59,5 +58,10 @@ public interface MemberDAO {
 // 회원정보 수정 (별명)
 	int updateName(Member member);
 // 회원정보 수정 (비밀번호)
-	int updatePw(Member member);		
+	int updatePw(Member member);	
+	
+//로그인
+	Member selectLoginIdx(int idx);	
+	
+	
 }
