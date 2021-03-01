@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aia.point.dao.PointDao">
+
+	<resultMap id="pointResult" type="com.aia.point.domain.Point">
+		<result column="saving_point" property="saving_point" />
+		<result column="saving_system" property="saving_system" />
+		<result column="saving_date" property="saving_date" />
+		<result column="pointsum" property="pointsum" />
+		<result column="idx" property="idx" />
+	</resultMap>
+
+	<resultMap type="com.aia.point.domain.Point" id="pointSum">
+		<result column="saving_point" property="saving_point" />
+	</resultMap>
+
+	<select id="selectPointSum" resultType="int">
+		select ifnull(sum(saving_point),0) from point where idx=#{idx} 
+	</select>
+
+	<insert id="addTumPoint"
+		parameterType="com.aia.point.domain.Point" useGeneratedKeys="true"
+		keyProperty="point_idx">
+		insert into point(saving_point, saving_system, idx,
+		tum_idx, course_idx, pointsum)
+		values(#{saving_point},
+		#{saving_system}, #{idx},
+		#{tum_idx},
+		#{course_idx},
+		#{pointsum})
+	</insert>
+
+	<insert id="addCoursePoint"
+		parameterType="com.aia.point.domain.Point" useGeneratedKeys="true"
+		keyProperty="point_idx">
+		insert into point(saving_point, saving_system, idx,
+		tum_idx, course_idx, pointsum)
+		values(#{saving_point},
+		#{saving_system}, #{idx},
+		#{tum_idx},
+		#{course_idx},
+		#{pointsum})
+	</insert>
+
+	<select id="selectPointList" resultMap="pointResult">
+		select * from point where idx=#{idx} 
+	</select>
+
+	<insert id="insertUsingPoint"
+		parameterType="com.aia.point.domain.Point" useGeneratedKeys="true"
+		keyProperty="point_idx">
+		insert into point(saving_point, saving_system, idx,
+		tum_idx, course_idx,
+		pointsum)
+		values(#{saving_point}, #{saving_system}, #{idx},
+		#{tum_idx},
+		#{course_idx},
+		#{pointsum})
+	</insert>
+</mapper>
+
+	
