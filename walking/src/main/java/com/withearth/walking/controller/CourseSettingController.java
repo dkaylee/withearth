@@ -53,7 +53,7 @@ public class CourseSettingController {
 			 * presult);
 			 */
 		  
-		  return String.valueOf(result) ;  // 문자열로 반환 -> 기능 의미 찾아보기
+		  return String.valueOf(result) ;  // 문자열로 반환 
 	  }
 	 
 }
