@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!--
+	Root Context는 Web Application의 Business/Persistence Layer를 위한 Context설정 
+	즉, 데이터의 조회 및 처리, Database에 관한 Bean들에 대한 설정이 주를 이루게 됩니다
+	Service, Repository(DAO), DB등 비즈니스 로직과 관련된 설정을 해줍니다. -->
+
+<bean id="dataSource"
+		class="com.zaxxer.hikari.HikariDataSource"
+		p:driverClassName="com.mysql.cj.jdbc.Driver"
+		p:jdbcUrl="jdbc:mysql://openproject.cqt58ayj4ipx.ap-northeast-2.rds.amazonaws.com:3306/open?serverTimezone=UTC"
+		p:username="aia"
+		p:password="aia"></bean>
+	
+<!-- SqlSessionFactoryBean 등록 -->
+<!-- 이 객체가 DataSource를 참조하여 MyBatis와 Mysql 서버를 연동시켜준다-->
+<!-- 마이바티스 XML파일이 매퍼 클래스와 동일한 클래스패스에 있지 않은 경우 mapperlocations 설정 -->
+<bean id="sqlSessionFactory"
+			class="org.mybatis.spring.SqlSessionFactoryBean"
+			p:dataSource-ref="dataSource"
+			p:mapperLocations="classpath:com/withearth/member/mapper/*.xml"
+/>
+<!--  sqlSessionTemplate -->
+<!--  Mybatis쿼리문을 수행해주는 역할, dao클래스에 직접 sqlsession객체 선언, @autowired로 의존주입하여
+	 쿼리문을 수행하는 방식 -->
+<bean id="sqlSessionTemplate"
+			class="org.mybatis.spring.SqlSessionTemplate"
+>
+	<constructor-arg ref="sqlSessionFactory"/>
+</bean>
+
+</beans>
