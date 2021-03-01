@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 <title>Walking Service</title>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
 
@@ -882,7 +882,7 @@
 <body>
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
-		<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+		<%@ include file="/WEB-INF/views/include/course_nav.jsp" %>
 		
 		
 		

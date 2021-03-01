@@ -99,7 +99,7 @@ h3{
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
-	<%@ include file="/WEB-INF/views/include/nav.jsp" %>
+	<%@ include file="/WEB-INF/views/include/course_nav.jsp" %>
 	
 	<main class="container">
 		<h2 style="margin:20px 0; font-weight: bolder;">나의 코스</h2>

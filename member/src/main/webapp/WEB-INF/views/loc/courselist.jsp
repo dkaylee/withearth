@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -11,15 +11,22 @@
 <style>
 
 .container{	
+	margin-top: 5%;
 	margin-left: 15%;
-	margin-right: 5%;	
+	margin-right: 15%;	
 }
 
-td, th {
+td{
 	border-bottom: 1px solid #DDD;
 	text-align: center;
 	padding: 10px 0;
-}
+} 
+
+th{
+	border-bottom: 1px solid #DDD;
+	text-align: center;
+	padding: 10px 0;
+} 
 .nowpage {
 	font-size: 1.5em;
 }
@@ -28,26 +35,28 @@ td, th {
 }
 div.searchBox {
 	border: 1px solid #CCC;
-	margin: 0 20px;
-	padding: 10px 20px;
+	margin: 0;
+	
 	background-color: #EEE;
-	float: left;
+	
 	vertical-align: middle;
 }
 
-#searchType{
-	width: 320px;
-	margin: 0 20px;
+/* 검색 타입 */
+#searchType{ 
+	width: 100%;
+	margin-bottom: 2%;
 	float: left;
 }
 
+/* 검색 키워드 */
 #keyword{
-	width: 300px;
-	margin-left: 1%;
+	width: 75%;
+	
 	float: left;
 }
 
-#searchBtn{margin-left: 1%;}
+#searchBtn{width: 23%;float: left; overflow: hidden; margin-left: 1%;}
 
 #totalCourseCount{
 	float: right;
@@ -81,25 +90,30 @@ h3{
 	
 }
 
+.contents{
+	margin-top: 10%;
+}
+
 </style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
-<%-- 	<%@ include file="/WEB-INF/views/include/nav.jsp" %> --%>
+	<%@ include file="/WEB-INF/views/include/course_nav.jsp" %>
 	
 	<main class="container">
-		<h2 style="margin:50px 0; font-weight: bolder;">나의 코스</h2>
+		<h2 style="margin:20px 0; font-weight: bolder;">나의 코스</h2>
 		<div class="searcontents">
 			<div class="searcontent">
 				<!-- <div class="searchBox"> -->
-				<form><h3>검색 타입</h3>  
+				<form><h4>◇ 검색 타입</h4>  
 					<select name="searchType" id="searchType">
 						<option value="both">저장일자(ex.YYYY-MM-DD) + 목적지</option>
 						<option value="date">저장 일자(ex.YYYY-MM-DD)</option>
 						<option value="end">목적지</option>
-					</select> <h3>검색 키워드</h3> <input type="text" name="keyword" id="keyword"> <input
-						type="submit" value="검색" id="searchBtn">
+					</select> <h4>◇ 검색 키워드</h4> 
+					<input type="text" name="keyword" id="keyword">
+					<input	type="submit" value="검색" id="searchBtn" class="button special">
 				</form>
 				<!-- 	</div> -->
 			</div>
@@ -107,13 +121,13 @@ h3{
 
 
 		<div class="contents">
-			<h3 class="listinfo">코스 리스트</h3>
+			<h3 class="listinfo" style="clear:none;">코스 리스트</h3>
 			<h4 id="totalCourseCount">전체 코스 개수:  ${courseCnt} 개</h4>
 			<div class="content">
 				<table class="listTable">
 					<tr>
 						<th>idx</th>
-						<th>저장 일자</th>
+						<th style="margin-left: 10px;">저장 일자</th>
 						<th>출발지</th>
 						<th>목적지</th>
 						<th>이동 거리(km)</th>
@@ -128,8 +142,9 @@ h3{
 							<tr >
 								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
 								<td>${i}</td>
-								<td><fmt:formatDate value="${course.course_date}"
+								<td><fmt:formatDate value="${course.courseDate}"
 										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
+								
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
 								<td>${course.loc_km} km</td>
@@ -174,6 +189,9 @@ h3{
 				location.href = '<c:url value="/loc/coursedelete?course_idx="/>' + course_idx;
 			} // /op/member/delete?idx
 		}
+	
+
+		
 	</script>
 
 
