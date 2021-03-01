@@ -41,8 +41,8 @@ public class TumListService {
 			int endRow = startRow + cntPerPage - 1;
 			
 		    Map<String, Object> listMap = new HashMap<String, Object>();
-			listMap.put("index", startRow);
-			listMap.put("count", cntPerPage);
+			listMap.put("startRow", startRow);
+			listMap.put("cntPerPage", cntPerPage);
 			
 			
 			int totalTpointCount = dao.selectTotalCount(listMap);

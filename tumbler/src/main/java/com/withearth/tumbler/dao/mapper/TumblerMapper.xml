@@ -84,7 +84,7 @@ select count(*) from tumbler
            tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx
            where idx 
            ORDER BY tum_idx DESC
-           limit #{index}, #{count} 
+           limit #{startRow}, #{cntPerPage} 
            
           
 		
