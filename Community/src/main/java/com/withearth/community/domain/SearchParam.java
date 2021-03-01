@@ -17,6 +17,7 @@ public class SearchParam {
 		
 	}
 
+	
 	public SearchParam() {
 		this.p=1;
 	}

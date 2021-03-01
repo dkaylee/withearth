@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withearth.community.service.MatzipDeleteService;
@@ -14,15 +15,13 @@ public class MatzipDeleteController {
 	@Autowired
 	private MatzipDeleteService deleteService;
 	
-	@RequestMapping(value = "/matzip/delete")
-	public String deleteMatzip(
+	@RequestMapping(value = "/matzip/delete", method=RequestMethod.POST)
+	public int deleteMatzip(
 			@RequestParam("matIdx") int matIdx,
 			Model model) {
 		
 		
-		model.addAttribute("result", deleteService.deleteMatzip(matIdx));
-		
-		return "matzip/deletemat";
+		return deleteService.deleteMatzip(matIdx);
 	}
 	
 	

@@ -8,12 +8,12 @@ public class FileVo {
 	private long fileSize;
 	private int matIdx;
 	
-	public FileVo(String orgFName, String newFName, long fileSize, int matIdx) {
-		this.orgFName = orgFName;
-		this.newFName = newFName;
-		this.fileSize = fileSize;
-		this.matIdx=matIdx;
-	}
+//	public FileVo(String orgFName, String newFName, long fileSize, int matIdx) {
+//		this.orgFName = orgFName;
+//		this.newFName = newFName;
+//		this.fileSize = fileSize;
+//		this.matIdx=matIdx;
+//	}
 	
 	public int getFileIdx() {
 		return fileIdx;

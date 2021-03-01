@@ -28,7 +28,7 @@ public interface MatDao {
 	List<MatzipVo> selectMatList(Map<String, Object> param);
 	
 	// 게시물 조회 - 디테일뷰 
-		MatzipVo selectMatByIdx(int matIdx);
+	MatzipVo selectMatByIdx(int matIdx);
 		
 	// 게시물 삭제
 	int deleteMatzipByIdx(int matIdx);
@@ -40,8 +40,8 @@ public interface MatDao {
 	
 	// 파일 업로드
 	// void fileUpload(Map<String, Object> map) throws Exception;
-	int fileUpload(HashMap<String, Object> hm);
-	
+	int fileUpload(FileVo file);
+	    
 	// 파일 삭제
 	int fileDelete(int fileIdx);
 	
@@ -51,7 +51,7 @@ public interface MatDao {
 	// 파일 조회
 	List<FileVo> selectFileList(int matIdx);
 
-	// ajax사용시 맛잡map을 위한 Info
+	
 	List<MatzipVo> seletAddrInfo();
 
 	

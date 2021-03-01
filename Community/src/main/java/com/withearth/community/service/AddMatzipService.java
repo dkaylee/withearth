@@ -3,9 +3,8 @@ package com.withearth.community.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 
@@ -40,27 +39,54 @@ public class AddMatzipService {
 			MatAddRequest matRequest,
 			MultipartHttpServletRequest mprq) {
 		
+		
+		
 		int result = 0;
 		
+		
+		MatzipVo matzip = matRequest.toMatzip();
+//		if(newFName != null) {
+//			matzip.setFileList(fileList);
+//		}
+		
+		// 데이터 베이스 입력
+		dao = template.getMapper(MatDao.class);
+		
+		// 게시물 카운트
+		dao.matUpdateCnt();
+		
+		// 맛집 DB insert
+		result = dao.insertMatzip(matzip);
+		
+		
+		// 다중파일 업로드
 		File newFile = null;
+		
 		String newFName = null;
 		
+
 		// 넘어온 파일을 리스트로 저장
 		List<MultipartFile> mf = mprq.getFiles("mImg");
 		
+		// 업로드 파일 리스트를 담을 비어있는 리스트
+		List<FileVo> fileList = new ArrayList<>();
 		
+		int matIdx = matRequest.getmIdx();
+
 		if(mf.size() == 1 && mf.get(0).getOriginalFilename().equals("")) {
 			
 		} else {
+			
 			for(int i = 0; i < mf.size(); i++) {
 				
+			
 				// 웹경로
 				String uploadPath = "/fileupload/matzip/";
 				
 				// 시스템 실제 경로
 				String saveDirPath = mprq.getSession().getServletContext().getRealPath(uploadPath);
 				
-				System.out.println("!!!!!!!!!!!!!!!!!!!!"+saveDirPath);
+				System.out.println("시스템실제경로:"+saveDirPath);
 				
 				// 파일 중복명 처리위한 uuid
 				String uuid = UUID.randomUUID().toString();
@@ -76,6 +102,8 @@ public class AddMatzipService {
 				
 				// 저장될 파일 경로
 				newFile = new File(saveDirPath, newFName);
+				
+				System.out.println("파일 저장 경로" + newFile);
 
 				System.out.println("orgName : "+orgFName);
 				System.out.println("newFName : "+newFName);
@@ -104,49 +132,57 @@ public class AddMatzipService {
 				// 파일 저장 응답값
 					try {
 						
-						FileOutputStream thumnail = new FileOutputStream(new File(saveDirPath, "s_"+ newFName));
+						FileOutputStream thumnail = new FileOutputStream(new File(saveDirPath, newFName));
 						
 						// 썸네일 저장 100X100
 						Thumbnailator.createThumbnail(
 								mf.get(i).getInputStream(), 
 								thumnail, 
-								50, 50);
+								450, 450);
 						
 						thumnail.close();
-						
-						;
 
 						
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
 					}
 					
-					HashMap<String, Object> hm = new HashMap<>();
-					 hm.put("orgName ", orgFName);
-					 hm.put("newName ", newFName);
-					 hm.put("fileSize ", fileSize);
+//					HashMap<String, Object> hm = new HashMap<>();
+//					hm.put("orgName ", orgFName);
+//					hm.put("newName ", newFName);
+//					hm.put("fileSize ", fileSize);
 					 
-					 System.out.println("file hashmap : " + hm); 
+					FileVo file = new FileVo();
+					
+					file.setMatIdx(matIdx);
+					file.setOrgFName(orgFName);
+					file.setNewFName(newFName);
+					file.setFileSize(fileSize);
 					 
+					fileList.add(file);
+					 
+					 System.out.println("file file info : " + fileList); 
 					 
 					 dao = template.getMapper(MatDao.class);
-					 dao.fileUpload(hm);
+					 dao.fileUpload(file);
 					
 			}
 		}
 		
 		
-		MatzipVo matzip = matRequest.toMatzip();
-		
-		// 데이터 베이스 입력
-		dao = template.getMapper(MatDao.class);
-		
-		// 게시물 카운트
-		dao.matUpdateCnt();
-		
-		// 맛집 DB insert
-		result = dao.insertMatzip(matzip);
-		
+//		MatzipVo matzip = matRequest.toMatzip();
+////		if(newFName != null) {
+////			matzip.setFileList(fileList);
+////		}
+//		
+//		// 데이터 베이스 입력
+//		dao = template.getMapper(MatDao.class);
+//		
+//		// 게시물 카운트
+//		dao.matUpdateCnt();
+//		
+//		// 맛집 DB insert
+//		result = dao.insertMatzip(matzip);
 		
 		
 		return result;

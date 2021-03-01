@@ -56,7 +56,7 @@
 	
 	if(editmsg) {
 		$.ajax({
-			url : "/matzip/editmat",
+			url : "http://localhost:8080/community/matzip/editmat?matIdx=${matzip.matIdx}",
 			data : $("#editForm").serialize(),
 			dataType:"JSON",
 			cache : false,
@@ -64,7 +64,7 @@
 			type : "POST",
 			success : function(obj) {
 				console.log(obj);
-			};
+			},
 			error : function(xhr, status, error){}
 		
 		});
@@ -151,6 +151,7 @@
 	</section>
 	
 	<script>
+	
 	/* 맛집 목록이동 */
 	function goMatlist(){
 		location.href = "/community/matzip/matlist";

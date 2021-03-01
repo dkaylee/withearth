@@ -21,26 +21,65 @@
 }
 </style>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
 <script>
-	
 	/* 맛집 목록이동 */
 	function goMatlist(){
 		location.href = "/matzip/matlist";
 	}
 	/* 파일업로드 미리보기 */
-	$(document).ready(
-		    function() {
+	 $(document).ready(
+			 
+		     function() {
 		        // 태그에 onchange를 부여한다.
 		        $('#mImg').change(function() {
 		                addPreview($(this)); //preview form 추가하기
 		        });
-		    });
+		        
+		        $('#matzipForm').submit(function(){
+					
+					var photoFiles = $('#matImg');
+					
+					var files = photoFile[0],files;
+					
+					console.log(files);
+					
+					var formData = new FormData();
+					formData.append("matTitle", $('#mTitle').val()),
+					formData.append("matAddr", $('mAddr').val()),
+					formData.append("matTime", $('mTime').val()),
+					formData.append("matNum", $('mNum').val()),
+					formData.append("matCont", $('mCont').val());
+					
+					for(var i=0; i<files.length; i++){
+						formData.append("matImg", $('mImg').val());
+					}
+					
+					console.log(formData);
+
+					
+					$.ajax({
+						url : '/matzip/addmatzip',
+						type : 'POST',
+						data : formData,
+						enctype : 'multipart/form-data',
+						processData : false,
+						contentType : false,
+						cache : false ,
+						success : function (data){
+								alert("업체등록을 완료하였습니다.");
+							},
+							error :
+								alert("업체등록을 다시해주세요.")
+						});
+		    	}); 
+		   }); 
+	
+			
+			
 		 
 		    // image preview 기능 구현
 		    // input = file object[]
-		    function addPreview(input) {
+		     function addPreview(input) {
 		        if (input[0].files) {
 		            //파일 선택이 여러개였을 시의 대응
 		            for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
@@ -57,8 +96,8 @@
 		                
 		                reader.readAsDataURL(file);
 		            }
-		        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
-		    }
+		        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다. 
+		    }  
 	
 </script>
 
@@ -117,15 +156,57 @@
 					</ul>
 				</div>
 			</div>
-		</form>
+		</form>		
 	</div>
-
-	</div>
+</div>
 		
-	</section>
-	
+</section>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+	
+	
+	<script>
+		
+	/* $(document).ready(function(){	
+		$('#matzipForm').submit(function(){
+			
+			var photoFiles = $('#matImg');
+			
+			var files = photoFile[0],files;
+			
+			console.log(files);
+			
+			var formData = new FormData();
+			formData.append("matTitle", $('#mTitle').val()),
+			formData.append("matAddr", $('mAddr').val()),
+			formData.append("matTime", $('mTime').val()),
+			formData.append("matNum", $('mNum').val()),
+			formData.append("matCont", $('mCont').val());
+			
+			for(var i=0; i<files.length; i++){
+				formData.append("matImg", $('mImg').val());
+			}
+			
+			console.log(formData);
+
+			
+			$.ajax({
+				url : '/matzip/addmat',
+				type : 'POST',
+				data : formData,
+				enctype : 'multipart/form-data',
+				processData : false,
+				contentType : false,
+				cache : false ,
+				success : function (data){
+						console.log(data);
+					}
+				});
+		}); */
+		
+	
+			
+		</script>
 	
 	
 	

@@ -41,8 +41,11 @@
 	/* Scaled images look a bit better in IE now */
 }
 
-#article {
-	
+.article {
+	border: 1px solid #e6e6e6;
+	padding : 10px;
+	margin : 12px;
+
 }
 </style>
 
@@ -68,41 +71,44 @@
 	
 	<script>
 	<!-- 데이터 불러오기 -->
+	
 		var mat = [];
 
 		
 		$.ajax({
 				url : "http://localhost:8080/community/matzip/matlist/listInfo",
 				type : "GET",
-				async: false,
 				success : function(data) {
 					console.log(data);
 					mat = data.matzipList;
 					
-					$.each(mat, function(index, item){
+					
+					$.each(mat, function(index, item){	
 						var html = "";
-						html += '<div class="image fit" id="thumb">';
-						html +='<a href="/matzip/matDetailView?matIdx='+item.matIdx+'"/>"><img src="/fileupload/matzip/'+item.matImg+'"/>"/></a>';
+						html +='<article class="article">'
+						html +='<div class="image fit" id="thumb">';
+						html +='<a href="/matzip/matDetailView?matIdx='+item.matIdx+'"/>"><img src="/fileupload/matzip/'+item.matImg+'">"/></a>';
 						html +='</div>';
+						html +='<hr class="major"/>';
 						html +='<header>';
-						html +='<h3><a href="<c:url value="/matzip/matDetailView?matIdx='+item.matIdx+'"/>">'+item.matIdx+'</a></h3>';
+						html +='<h3><a href="<c:url value="/matzip/matDetailView?matIdx='+item.matIdx+'"/>">'+item.matTitle+'</a></h3>';
 						html +='<p>'+item.matCont+'</p>';
 						html +='</header>';
-						html +='<p>'+item.matAddr+'</p>';
-						html +='<p>'+item.matNum+'</p>';
-						html +='<p>'+item.matTime+'</p>';
-						html +='<div>';
+						html +='<p><i class="fas fa-map-marker-alt"></i>'+item.matAddr+'</p>';
+						html +='<p><i class="fas fa-phone-alt"></i>'+item.matNum+'</p>';
+						html +='<p><i class="fas fa-clock"></i>'+item.matTime+'</p>';
+						html +='</article>';
 						
 						$('#matzip_list').append(html);
 						
 						console.log(html);
 					});
 					
+					
 					 if(mat.totalMatzipCount>0){
 						for(var i=0; i < mat.totalPageCount; i++){
 						var html = "";
 						html += '<a href="http://localhost:8080/community/matzip/matlist/?p=>'+i+'&searchType='+param.keyword+'<a>';
-						
 						
 						}	
 					}
@@ -113,6 +119,9 @@
 					alert("데이터 못 불러옴^^");
 				}
 			});	
+
+		
+		
 		
 		// 페이지번호 클릭
 		
@@ -198,7 +207,8 @@
 				'<div>'+mat[i].matTitle+'</div>'+'<div>'+mat[i].matAddr+'</div>'+'<div>'+mat[i].matNum+'</div>';
 				
 				contentArr.push(content);
-				}
+				
+	        }
 	        
 				console.log(contentArr);
 	
@@ -294,18 +304,19 @@
 			</div>
 
 			
-				<div class="flex flex-2">
-					<article id ="matzip_list">
-						
-					</article>
+				<div class="flex flex-2" id ="matzip_list">
+				
+				
+				
 				</div>
 			
 		</div>
 		
 		<div class="inner">
 		
-		<button id="morebtn" class="button special" onclick="morelist();">더보기</button>
+		<nav id="paging"></nav>
 		
+		<!-- <button id="morebtn" class="button special" onclick="morelist();">더보기</button> -->
 		<%-- <nav class="paging">
 				<c:if test="${matlist.totalMatzipCount>0}">
 					<c:forEach begin="1" end="${matlist.totalPageCount}" var="num">

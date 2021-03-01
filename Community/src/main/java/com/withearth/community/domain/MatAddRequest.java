@@ -15,6 +15,7 @@ public class MatAddRequest {
 	private String mCont;
 	private List<MultipartFile> mImg;
 	
+	
 	public int getmIdx() {
 		return mIdx;
 	}

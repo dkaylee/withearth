@@ -26,17 +26,10 @@ public class MatzipListController {
 		
 		System.out.println("search param: "+param);
 		
-//		model.addAttribute("list", matListService.getListView());
-//		model.addAttribute("matlist", matListService.getListView(param));
-		
 		return matListService.getListView(param);
 	}
 	
-//	@RequestMapping(value = "/matzip/matlist/totalinfo")
-//	public List<MatzipVo> getListView(){
-//		
-//		return matListService.getListView();
-//	}
+
 	
 	
 }
