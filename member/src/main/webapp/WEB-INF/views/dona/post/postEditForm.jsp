@@ -8,26 +8,8 @@
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>  -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js?"></script>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+<link rel="stylesheet" href="<c:url value="/css/dona/edit.css"/>"/>
 <style>
-.title {
-	text-align: center;
-	font-size: 30px;
-	font-weight: bold;
-}
-
-.p-images {
-	float: left;
-}
-
-.notice{
-  font-size: 13px;
-  color : #D91828;
-  font-weight: bold;
-}
-
-#editForm{
- margin : 0 280px !important;
-}
 </style>
 </head>
 
@@ -83,7 +65,6 @@
 											html += '<input type="hidden" name="idx" id="idx" value="'+data.idx+'"/>';
 											html += '<input type="hidden" name="donaIdx" value="'+data.donaIdx+'">';								
 											html += '<input type="text" name="postTitle" id="postTitle" placeholder="제목" value="'+data.postTitle+'" />';
-											html += '<h4 class="notice">이미지 클릭 시 삭제 가능</h4>';
 											html += '<div class="oldImages"></div>';
 											html += '<input multiple="multiple" type="file" id="postImage">';
 											html += '</div>';
@@ -130,6 +111,7 @@
 															    html2 += '<a href="javascript:void(0);" onclick=\"deleteOldImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
 																//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" style=\"width:100px; height:100px;\" id="post-images" alt="postImages"></a>';
 																html2 += '<img style=\"width:100px; height:100px;\" id="post-images" alt="postImages"src="http://localhost:8080/dona/fileupload/post/'+item.fileName+'">';	
+																html2 += '<img src="<c:url value="/img/dona/xbtn.jpg"/>" width="15px;" id="xBtn"></a>';
 																html2 += '</div>';
 																
 																oldImage_list.push(item.fileName);
@@ -269,7 +251,8 @@
 
 							var img_html = '<div class="p-images">';
 							img_html += '<a href="javascript:void(0);" onclick=\"deleteNewImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
-							img_html += '<img src="'+e.target.result+'" data-file="'+f.name+'" style="width:100px; height:100px;"></a>';
+							img_html += '<img src="'+e.target.result+'" data-file="'+f.name+'" style="width:100px; height:100px;">';
+							img_html += '<img src="<c:url value="/img/dona/xbtn.jpg"/>" width="15px;" id="xBtn"></a>';
 							img_html += '</div>';
 
 							index++;
