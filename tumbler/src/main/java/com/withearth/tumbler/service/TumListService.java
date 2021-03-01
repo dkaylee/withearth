@@ -35,8 +35,7 @@ public class TumListService {
 			dao = template.getMapper(TumblerDao.class);
 			System.out.println("pagenumber:" + pageNumber);
 
-			int totalTpointCount = dao.selectTotalCount();
-			System.out.println("tumlistTotalcount:" + totalTpointCount);
+			
 
 			int cntPerPage = 15;
 
@@ -46,6 +45,9 @@ public class TumListService {
 			Map<String, Object> listMap = new HashMap<String, Object>();
 			listMap.put("index", startRow);
 			listMap.put("count", cntPerPage);
+			
+			int totalTpointCount = dao.selectTotalCount(listMap);
+			System.out.println("tumlistTotalcount:" + totalTpointCount);
 			
 			//listMap.put("searchParam", param);
 			

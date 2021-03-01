@@ -10,8 +10,7 @@ public class Tumbler {
 	private int tum_idx; //텀블러 idx
 	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
 	private Timestamp tum_date; // 텀블러 이용 날짜
-	private int cafe_idx; //카페 인덱스
-	private String cafe_name; 
+	private int cafe_idx; //카페 인덱스 
 	private int idx; //회원 인덱스
 	private int tum_point;// 텀블러 포인트
 	
@@ -34,12 +33,7 @@ public class Tumbler {
 	public void setCafe_idx(int cafe_idx) {
 		this.cafe_idx = cafe_idx;
 	}
-	public String getCafe_name() {
-		return cafe_name;
-	}
-	public void setCafe_name(String cafe_name) {
-		this.cafe_name = cafe_name;
-	}
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -54,8 +48,7 @@ public class Tumbler {
 	}
 	@Override
 	public String toString() {
-		return "Tumbler [tum_idx=" + tum_idx + ", tum_date=" + tum_date + ", cafe_idx=" + cafe_idx + ", cafe_name="
-				+ cafe_name + ", idx=" + idx + ", tum_point=" + tum_point + "]";
+		return "Tumbler [tum_idx=" + tum_idx + ", tum_date=" + tum_date + ", cafe_idx=" + cafe_idx + ", idx=" + idx + ", tum_point=" + tum_point + "]";
 	}
 	
 
