@@ -1,4 +1,4 @@
-package com.withearth.member.dona.controller;
+package com.withearth.member.dona.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

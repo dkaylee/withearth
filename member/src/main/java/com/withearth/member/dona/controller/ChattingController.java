@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.withearth.member.dona.domain.Message;
+import com.withearth.member.dona.service.ChatUserCheckService;
 
 @RestController
 @RequestMapping("/rest/user/post/chat")

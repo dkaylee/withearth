@@ -60,7 +60,7 @@ public class MemberMypageService {
 			//파일 저장
 			try {
 				myinfo.getCgphoto().transferTo(newFile);
-			} catch (IllegalStateException | IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}	
 			/*왜 삭제?
