@@ -81,7 +81,7 @@ public class MakeQRService {
 	        
 	        //QRCode 생성
 	        QRCodeWriter qrCodeWriter = new QRCodeWriter();  
-	        BitMatrix bitMatrix = qrCodeWriter.encode(codeurl, BarcodeFormat.QR_CODE,200, 200);    // 200,200은 width, height
+	        BitMatrix bitMatrix = qrCodeWriter.encode(codeurl, BarcodeFormat.QR_CODE,200, 200);   
 	      
 	        MatrixToImageConfig matrixToImageConfig = new MatrixToImageConfig(qrcodeColor,backgroundColor); 
 	        BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix,matrixToImageConfig); 
@@ -94,13 +94,10 @@ public class MakeQRService {
 	        //파일 경로, 파일 이름 , 파일 확장자에 맡는 파일 생성
 	        File temp =  new File(savePath+fileName+".png");  
 	        
-	        // ImageIO를 사용하여 파일쓰기 
+	       
 	        ImageIO.write(bufferedImage,"png",temp); 
 	        
-	 
-	      	
-	        //리턴은 사용자가 원하는 값을 리턴한다. 
-	        //작성자는 QRCode 파일의 이름을 넘겨주고 싶었음.
+
 	        
 	        Cafe cafe = new Cafe();
 	        cafe.setQrcode(fileName);

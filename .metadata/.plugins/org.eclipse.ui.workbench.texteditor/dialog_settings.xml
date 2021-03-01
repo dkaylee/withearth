@@ -9,20 +9,20 @@
 		<item key="selection" value="selectTotalCount"/>
 		<list key="findhistory">
 			<item value="selectTotalCount"/>
-			<item value="selectSearchMemberCount"/>
+			<item value="wrapContent"/>
+			<item value="pagination"/>
+			<item value="count"/>
 			<item value="selectTumpointList"/>
 			<item value="selectList"/>
-			<item value="page"/>
+			<item value="listView"/>
+			<item value="tumlistTotalcount"/>
 			<item value="selelctTumList"/>
+			<item value="TumblerListResult"/>
+			<item value="selectSearchMemberCount"/>
+			<item value="page"/>
 			<item value="img"/>
 			<item value="alert"/>
 			<item value="paging"/>
-			<item value="ttbody"/>
-			<item value="getTumList"/>
-			<item value="mark.png"/>
-			<item value="이용"/>
-			<item value="이용가능"/>
-			<item value="imageSrc "/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

@@ -20,25 +20,25 @@ public class TumListController {
 	
 
 
-	//포인트 내역 출력
-		@RequestMapping("/tumbler/tumlist")  
-		public String tumlist(@RequestParam(value="p",defaultValue="1") int page,
-				       Model model, HttpServletRequest request) {
-			
-		
-			TumpointView listView = tumlistService.getTumListView(page);
-		    System.out.println("listView!!!"+listView);
-	           
-			// 로그인 합친후 세션에서 회원idx를 가지고 와야함.
-			// HttpSession session = request.getSession();
-			// int idx = (int) session.getAttribute("idx");
-
-			int idx = 1;
-			//model.addAttribute("listView", tumlistService.getTumList(idx));
-			model.addAttribute("listView",tumlistService.getTumListView(page));
-
-			return "tumbler/tumlist";
-		}
+	    //포인트 내역 출력
+//		@RequestMapping("/tumbler/tumlist")  
+//		public String tumlist(@RequestParam(value="p",defaultValue="1") int page,
+//				       Model model, HttpServletRequest request) {
+//			
+//		
+//			TumpointView listView = tumlistService.getTumListView(page);
+//		    System.out.println("listView!!!"+listView);
+//	           
+//			// 로그인 합친후 세션에서 회원idx를 가지고 와야함.
+//			// HttpSession session = request.getSession();
+//			// int idx = (int) session.getAttribute("idx");
+//
+//			int idx = 1;
+//			//model.addAttribute("listView", tumlistService.getTumList(idx));
+//			model.addAttribute("listView",tumlistService.getTumListView(page));
+//
+//			return "tumbler/tumlist";
+//		}
 	
 	
 	

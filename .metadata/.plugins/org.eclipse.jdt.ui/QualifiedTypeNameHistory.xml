@@ -55,9 +55,9 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.domain.SearchParam"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Tumbler"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumpointView"/>
+<fullyQualifiedTypeName name="com.withearth.tumbler.domain.SearchParam"/>
 </qualifiedTypeNameHistroy>

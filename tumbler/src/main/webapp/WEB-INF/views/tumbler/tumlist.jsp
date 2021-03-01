@@ -80,6 +80,31 @@ overflow : hidden;
         cursor:default;
 
 }
+
+.pagination{
+  overflow : hidden;
+  float : right; 
+  list-style-type:none;
+}
+.paging{
+overflow : hidden;
+  margin-right : 550px;
+}
+.page-link{
+ border-radius: 3px 3px;
+}
+ #paging > ul {
+        list-style-type:none;
+}
+ul {
+        list-style-type:none;
+}
+ul li {
+        font-size: 1.1em;
+        display:inline-block;
+        cursor:pointer;
+        padding: 0 3px;
+}
 </style>
 
 
@@ -117,6 +142,8 @@ overflow : hidden;
 				     	<ul class="pagination"></ul>						 
 			 </div>
 			  -->
+			  
+			  
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
@@ -186,7 +213,7 @@ overflow : hidden;
 										// 페이징 처리
 										  if (data.totalTpointCount > 0) {
 											var pHtml = '<ul class="pagination"></ul>';
-											//$('.paging').append(pHtml)
+											$('.paging').append(pHtml)
 											console.log('totalTpointCount :'+ data.totalTpointCount);
 
 											for (var i = 1; i <= data.totalPageCount; i++) {

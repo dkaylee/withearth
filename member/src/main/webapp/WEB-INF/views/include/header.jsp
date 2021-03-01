@@ -8,7 +8,7 @@
 					<nav id="nav">
 						<a href="<c:url value="/"/>">Home</a>
 						<a href="#">login</a>
-						<a href="#">텀블러사용 인증</a>
+						<a href="<c:url value="/tumbler/tumlist1"/>">텀블러사용 인증</a>
 						<a href="#">도보/대중교통 이용 인증</a>
 						<a href="<c:url value="/member/dona/main"/>">나눔장</a>
 						<a href="<c:url value="/user/mypage/view"/>">마이페이지</a>
