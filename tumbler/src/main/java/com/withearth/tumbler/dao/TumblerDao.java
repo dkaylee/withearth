@@ -26,10 +26,14 @@ public interface TumblerDao {
 	int insertPoint(Point point);
 
 	// 전체 게시글 개수
+	//int selectTotalCount();
 	int selectTotalCount(Map<String, Object> listMap);
 
 	//적립 리스트(페이지 번호에 맞는)
 	List<Tumbler> selectTumpointList(Map<String, Object> listMap);
+
+	
+
 
 	
 

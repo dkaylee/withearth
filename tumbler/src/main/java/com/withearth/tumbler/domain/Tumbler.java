@@ -13,6 +13,7 @@ public class Tumbler {
 	private int cafe_idx; //카페 인덱스 
 	private int idx; //회원 인덱스
 	private int tum_point;// 텀블러 포인트
+	private String cafe_name; 
 	
 	
 	public int getTum_idx() {
@@ -46,9 +47,18 @@ public class Tumbler {
 	public void setTum_point(int tum_point) {
 		this.tum_point = tum_point;
 	}
+	
+	
+	public String getCafe_name() {
+		return cafe_name;
+	}
+	public void setCafe_name(String cafe_name) {
+		this.cafe_name = cafe_name;
+	}
 	@Override
 	public String toString() {
-		return "Tumbler [tum_idx=" + tum_idx + ", tum_date=" + tum_date + ", cafe_idx=" + cafe_idx + ", idx=" + idx + ", tum_point=" + tum_point + "]";
+		return "Tumbler [tum_idx=" + tum_idx + ", tum_date=" + tum_date + ", cafe_idx=" + cafe_idx + ", idx=" + idx
+				+ ", tum_point=" + tum_point + ", cafe_name=" + cafe_name + "]";
 	}
 	
 

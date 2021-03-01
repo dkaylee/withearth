@@ -27,15 +27,15 @@ public class TumListRestController {
 	private TumListService tumlistService;
 	
 	  //포인트 정보 가져오기
-	  @GetMapping("/{idx}")
+	  @GetMapping
 	  @CrossOrigin
-	  public List<Tumbler> tumList(@PathVariable("idx") int idx,@RequestParam(value="p",defaultValue="1") int page, Model model,  HttpServletRequest request) {
+	  public TumpointView tumList(@RequestParam(value="p",defaultValue="1") int page, Model model,  HttpServletRequest request) {
 	  
 	
 	 //model.addAttribute("listView", tumlistService.getTumList(idx));
 	  
 	  //return tumlistService.getTumListView(page);
-	  return tumlistService.getTumList(idx);
+	  return tumlistService.getTumListView(page);
 	  
 	  }
 	

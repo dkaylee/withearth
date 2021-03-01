@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="selectTumpointList"/>
+		<item key="selection" value="selectTotalCount"/>
 		<list key="findhistory">
+			<item value="selectTotalCount"/>
+			<item value="selectSearchMemberCount"/>
 			<item value="selectTumpointList"/>
 			<item value="selectList"/>
 			<item value="page"/>
@@ -21,8 +23,6 @@
 			<item value="이용"/>
 			<item value="이용가능"/>
 			<item value="imageSrc "/>
-			<item value="imp"/>
-			<item value="ell"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

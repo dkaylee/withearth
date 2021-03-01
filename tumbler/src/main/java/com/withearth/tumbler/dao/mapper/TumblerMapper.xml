@@ -62,6 +62,7 @@ select count(*) from tumbler
 
 <select id="selectTumpointList"
         resultMap="TumblerResultMap"
+        parameterType="Map"
    >
 
 <!-- select * from tumbler limit #{param1}, #{param2} -->
@@ -77,12 +78,15 @@ select count(*) from tumbler
            tumbler.cafe_idx, 
            cafe.cafe_name , 
            idx, 
-           tum_point 
+           tum_point,
+           (select count(idx)  from tumbler where tumbler.cafe_idx = cafe.cafe_idx) 
            from 
            tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx
-           where idx = #{idx} 
-           ORDER BY #{tum_idx} DESC
-           limit #{index}, #{count}
+           where idx 
+           ORDER BY tum_idx DESC
+           limit #{index}, #{count} 
+           
+          
 		
 
 </select>

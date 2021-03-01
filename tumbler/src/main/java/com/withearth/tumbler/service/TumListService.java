@@ -26,38 +26,36 @@ public class TumListService {
 	@Autowired
 	private SqlSessionTemplate template;
 
-	public TumpointView getTumListView(int pageNumber) {
+	public TumpointView getTumListView(int page) {
 
 		TumpointView listView = null;
 
 		try {
 			// 구현체 생성
 			dao = template.getMapper(TumblerDao.class);
-			System.out.println("pagenumber:" + pageNumber);
-
-			
+			System.out.println("pagenumber:" + page);
 
 			int cntPerPage = 15;
 
-			int startRow = (pageNumber - 1) * cntPerPage;
+			int startRow = (page - 1) * cntPerPage;
 			int endRow = startRow + cntPerPage - 1;
 			
-			Map<String, Object> listMap = new HashMap<String, Object>();
+		    Map<String, Object> listMap = new HashMap<String, Object>();
 			listMap.put("index", startRow);
 			listMap.put("count", cntPerPage);
+			
 			
 			int totalTpointCount = dao.selectTotalCount(listMap);
 			System.out.println("tumlistTotalcount:" + totalTpointCount);
 			
-			//listMap.put("searchParam", param);
 			
-	
-
 			List<Tumbler> tumlist = dao.selectTumpointList(listMap);
 			System.out.println("텀블러리스트!!!!!!!!!!!" + tumlist);
 
-			listView = new TumpointView(pageNumber, totalTpointCount, cntPerPage, tumlist, startRow, endRow);
+			listView = new TumpointView(page, totalTpointCount, cntPerPage, tumlist, startRow, endRow);
 
+			System.out.println("listView!!"+listView);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,10 +69,13 @@ public class TumListService {
 		
 		dao = template.getMapper(TumblerDao.class);
 		
+		list =  dao.selelctTumList(idx);
+		log.info(list);
+		
 		//list =  dao.selelctTumList(idx);
 		//log.info(list);
-		
-		return dao.selelctTumList(idx);
+		return list;
+		//return dao.selelctTumList(idx);
 	}
 
 }
