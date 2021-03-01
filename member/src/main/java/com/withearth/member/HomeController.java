@@ -39,15 +39,14 @@ public class HomeController {
 		
 		
 		// 로그인 정보 넘기기 (테스트용)
-		Member member = new Member();
-		member.setIdx(1);
-		member.setName("위드어스");
-		member.setPhoto("default.png");
-		
-
-		request.getSession().setAttribute("loginInfo", member);
-
-		
+		/*
+		 * Member member = new Member(); member.setIdx(1); member.setName("위드어스");
+		 * member.setPhoto("default.png");
+		 * 
+		 * 
+		 * request.getSession().setAttribute("loginInfo", member);
+		 * 
+		 */	
 		return "home";
 	}
 	

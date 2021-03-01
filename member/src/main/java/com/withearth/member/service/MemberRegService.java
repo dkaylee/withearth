@@ -78,13 +78,7 @@ public class MemberRegService {
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-			
-			Member member = regRequest.toMember();
-			if(newFileName != null ) {
-				member.setPhoto(newFileName);
-			}
-
-			
+				
 		}//if끝
 		
 		//데이터 저장

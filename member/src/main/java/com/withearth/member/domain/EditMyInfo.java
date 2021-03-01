@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class EditMyInfo {
 
+	private int idx;
 	private String id;
 	private String cgname;
 	private String cgpw;
@@ -12,6 +13,12 @@ public class EditMyInfo {
 	
 	
 	
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 	public String getId() {
 		return id;
 	}
@@ -46,19 +53,21 @@ public class EditMyInfo {
 	
 	public Member toMember() {
 		Member member = new Member();
+		member.setIdx(idx);
 		member.setId(id);
 		member.setName(cgname);
 		member.setPw(cgpw);
 		
 		return member;
 	}
-	
-	
 	@Override
 	public String toString() {
-		return "EditMyInfo [id=" + id + ", cgname=" + cgname + ", cgpw=" + cgpw + ", cgphoto=" + cgphoto + ", oldphoto="
-				+ oldphoto + "]";
+		return "EditMyInfo [idx=" + idx + ", id=" + id + ", cgname=" + cgname + ", cgpw=" + cgpw + ", cgphoto="
+				+ cgphoto + ", oldphoto=" + oldphoto + "]";
 	}
+	
+	
+
 
 	
 	

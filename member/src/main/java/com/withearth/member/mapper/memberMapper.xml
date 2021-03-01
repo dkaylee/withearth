@@ -136,18 +136,18 @@ select * from wuser where id= #{param1}
 <!-- 회원정보 수정 (파일) -->
 
 <update id="updatePhoto"
-		parameterType="com.withearth.member.domain.EditMyInfo">
-		update wuser set photo=${photo} where id=#{id}
+		parameterType="com.withearth.member.domain.Member">
+		update wuser set photo=#{photo} where id=#{id}
 </update>
 <!-- 회원정보 수정 (별명) -->
 <update id="updateName"
-		parameterType="com.withearth.member.domain.EditMyInfo">
-		update wuser set name=${name} where id=#{id}
+		parameterType="com.withearth.member.domain.Member">
+		update wuser set name=#{name} where idx=#{idx}
 </update>
 <!-- 회원정보 수정 (비밀번호) -->
 <update id="updatePw"
-		parameterType="com.withearth.member.domain.EditMyInfo">
-		update wuser set pw=${pw} where id=#{id}
+		parameterType="com.withearth.member.domain.Member">
+		update wuser set pw=#{pw} where id=#{id}
 </update>
 
 
