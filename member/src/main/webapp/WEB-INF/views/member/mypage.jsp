@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<input type="hidden" id="idx" name="idx"  value="${loginInfo.idx}">
 	 <label>이메일</label>
 	  <input type="email" id="id" name="id"  value="${loginInfo.id}" readonly>
 	 <label>비밀번호</label>
@@ -25,12 +26,21 @@
 
 <script>
 $(document).ready(function(){
-	var	photo = $('#photo');
-	var file1 = photo[0].files[0];
+
+	var file1 = $('#photo')[0].files[0]
 	var formData = new FormData();
-	 //회원가입 버튼 클릭시,
+	formData.append("id",$('#id').val());
+	formData.append("cgpw",$('#pw').val());
+	formData.append("cgname",$('#name').val());
+	formData.append("oldphoto",$('#oldphoto').val());
+	
+	if(typeof(file1) != 'undefined'){
+		formData.append("cgphoto",file1);
+	}
+	//정보수정 버튼 클릭시
 	 $('#btnEdit').click(function(){ 
 		
+		 
 		
 		$.ajax({
 		url: '/member/member/mypage',

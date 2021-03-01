@@ -87,7 +87,7 @@ public class MemberMypageService {
 		
 		//db입력
 		dao = template.getMapper(MemberDAO.class);
-		
+		System.out.println(member);
 		//사진변경
 		if(myinfo.getCgphoto()!= null && !myinfo.getCgphoto().isEmpty()) {
 		result = dao.updatePhoto(member);
