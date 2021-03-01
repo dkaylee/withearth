@@ -18,8 +18,8 @@ public class GoogleLoginService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	@Autowired
-	private RedisService redisService;
+	//@Autowired
+	//private RedisService redisService;
 	
 	public boolean login(
 			HttpServletRequest request,
@@ -38,7 +38,7 @@ public class GoogleLoginService {
 		if(member!=null) {
 			//현재 세션의 속성에 LoginInfo 인스턴스를 저장..?
 			request.getSession().setAttribute("loginInfo", member.toLoginInfo());
-			redisService.setUserInformation(member.toLoginInfo(), request.getSession());	
+			//redisService.setUserInformation(member.toLoginInfo(), request.getSession());	
 			loginCheck = true;
 			}
 		

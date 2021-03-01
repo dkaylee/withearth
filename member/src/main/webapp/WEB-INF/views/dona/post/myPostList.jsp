@@ -147,7 +147,7 @@ tr>th{
 							           html += '<td>'+item.postTitle+'</td>';
 							           html += '<td>'+item.category+'</td>';
 							           html += '<td>'+item.writedate+'</td>';					                               
-							           html += '<td><input type="button" value="수정" onClick="location.href=\'<c:url value="/main/post/edit?idx='+item.donaIdx+'"/>\'">';
+							           html += '<td><input type="button" value="수정" onClick="location.href=\'<c:url value="/dona/main/post/edit?idx='+item.donaIdx+'"/>\'">';
 							           html += '<input type="button" value="삭제" onclick="deletePost('+item.donaIdx+');"></td>';
 							           html += '</tr>';
 																						

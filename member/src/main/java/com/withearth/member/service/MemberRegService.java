@@ -1,7 +1,6 @@
 package com.withearth.member.service;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -13,8 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.withearth.member.Util.AES256Util;
-import com.withearth.member.Util.Sha256;
 import com.withearth.member.dao.MemberDAO;
 import com.withearth.member.domain.Member;
 import com.withearth.member.domain.MemberRegRequest;
@@ -32,13 +29,6 @@ public class MemberRegService {
 	@Autowired
 	private MailSenderService mailSenderService;
 	
-	/*
-	@Autowired
-	private Sha256 sha256;
-	
-	@Autowired
-	private AES256Util aes256Util;
-	*/
 	@Autowired
 	private BCryptPasswordEncoder cryptPasswordEncoder; 
 	
@@ -59,7 +49,7 @@ public class MemberRegService {
 	@Transactional
 	public int memberReg(MemberRegRequest regRequest, HttpServletRequest request) {
 		
-		int result = 0; //???
+		int result = 0; 
 		File newFile = null;
 		String newFileName = null;
 		
@@ -84,22 +74,14 @@ public class MemberRegService {
 			//파일 저장
 			
 			try {
-				//regRequest.getUserPhoto().transferTo(newFile);
-				FileOutputStream thumnail = new FileOutputStream(new File(saveDirPath, "s_"+newFileName));
-				
-				// 썸네일 저장 100X100
-				Thumbnailator.createThumbnail(
-						regRequest.getUserPhoto().getInputStream(), 
-						thumnail, 
-						50, 50);
-				
-				thumnail.close();
-				
-				
-				
-				
+				regRequest.getUserPhoto().transferTo(newFile);
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
+			}
+			
+			Member member = regRequest.toMember();
+			if(newFileName != null ) {
+				member.setPhoto(newFileName);
 			}
 
 			

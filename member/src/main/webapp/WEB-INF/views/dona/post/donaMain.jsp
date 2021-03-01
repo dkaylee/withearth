@@ -19,9 +19,12 @@
 	}
 	
 	#subTitle{
-	 font-weight : bold;
-	 color : #737373;
+	 color : white;
+	font-size : 23px;
+	}
 	
+	#two{
+	  height : 300px;
 	}
 	
 	.article{	
@@ -37,25 +40,26 @@
 	
 	.article-img{		
 	 float : left;
-	 width : 200px;
-	 height :200px;
+	 width : 220px;
+	 height :165px;
 	}
 	
 	.img{
+	 width : 220px;
+	 height :165px;	 
 	 margin-left : 4px;
-	 width : 230px;
-	 height :190px; 
-	 
-	 image-rendering : auto;
+	 image-rendering :-webkit-optimize-contrast;
 	 border-radius: 10px;
 	 border : 1px solid #EEE;
 	 cursor: pointer;
 	 
 	 box-shadow: 1px 1px 0 #EEE;
-   position: relative; 
-   top:2px;
+     position: relative; 
+     top:2px;
 
 	}
+	
+	
 	
 	.article-title{
 	  width : 200px;	  	 	
@@ -77,10 +81,28 @@
 	.title{
 	  font-size : 50px;
 	  font-weight: bold;	  
-	 color : #404040;
+	  color : white;
 	}	
-	.pBtn{
+ 	.pBtn{
 	  float : right;	 
+	} 
+	
+	#writeBtn{
+	 font-size: 22px;
+	 text-decoration: none;
+	 color : black;	
+	 margin-left : 5px;
+	}
+	
+	.wrap-btn{
+	 border : 1px solid #DDD;
+	 padding : 7px;
+	 overflow: hidden;
+     width : 115px;
+     border-radius: 10px;
+     float :right;
+     box-shadow: 2px 2px #EEE;
+     border-color: white;
 	}
 	
 	#updateBtn{
@@ -88,25 +110,32 @@
 	 width : 60px;
 	}
 	.searchForm {
-	 margin-left : 730px;
+	 margin-left : 770px;
 	 overflow : hidden;
 	 text-align: left;
 	}
 	
 	#searchType{
 	 width : 120px;
+	 border-color : #EEE;
 	 border-radius : 10px 0 0 10px;
 	}
 	
 	.search-unit{
-	  float : left; 
+	  float : left; 	 
+	}
+	
+	#keyword{
+	  border-color : #EEE;	
 	}
 	
 	#searchBtn{
 	  border-radius : 0 10px 10px 0;
+	  background-color: #595959;
+	  border-color: #595959; 
 	}
 	
-	.floating { 
+/* 	.floating { 
 	position: fixed;
 	right: 50%;
 	top: 280px; 
@@ -114,12 +143,7 @@
 	text-align:center; 
 	width: 120px; 
 	}
-	
- #writeFormBtn:active{
- box-shadow: 1px 1px 0 #DDD;
- position: relative; 
- top:2px;
-}
+	 */
 
 .pagination{
   overflow : hidden;
@@ -131,7 +155,9 @@
 }
 
 .page-link{
- border-radius: 3px 3px;
+ border-radius: 5px 5px;
+ background-color: #EEE;
+ border-color: #EEE;
 }
 
 .notice{
@@ -170,13 +196,16 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
        
     <section id="banner"></section>
+    
+    <section id="two" class="wrapper style1 special">
+    		<header class="align-center">
+				<div class="title">나눔장터</div><br>
+				<h3 id="subTitle"> 환경을 위해 나눔에 동참해보세요! </h3>
+			</header>
+    </section>
 			
 		<section id="three" class="wrapper special">
-				<div class="inner">
-					<header class="align-center">
-						<div class="title">나눔장터</div>
-						<h3 id="subTitle"> 환경을 위해 나눔에 동참해보세요! </h3>
-					</header>
+				<div class="inner">		
 			    <form class="searchForm" action="<c:url value="/rest/user/post/list"/>">
 			      <div class="search-unit">
 					  <select id="searchType" name="searchType">
@@ -194,8 +223,12 @@
 					  </div>
 				 </form>
 				 
-				 	<div class="flex flex-2" id="wrapContent" ></div>		
-				  				   	
+				 	<div class="flex flex-2" id="wrapContent" ></div>	
+				 	<div class="wrap-btn">
+				 	<a href="<c:url value="/dona/main/post/upload"/>" class="pBtn" id="writeBtn"> 글쓰기</a> 
+				 	<a href="<c:url value="/dona/main/post/upload"/>"><img src="<c:url value="/img/dona/write.png"/>" class="pBtn" width="27px;"></a>	
+				  	</div>			
+				  	   	
 			    <div class="paging">
 				     	<ul class="pagination"></ul>						 
 			    </div>
@@ -205,8 +238,8 @@
 	    <div class="notice"></div>		
 	    
 	    <div class="floating">	
-	      <a href="<c:url value="/member/dona/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="My"></a>
-	      <a href="<c:url value="/member/dona/main/post/upload"/>"><img src="<c:url value="/image/write1.png"/>" class="pBtn" id="writeFormBtn" width="50px;"><br></a>  	
+	      <%-- <a href="<c:url value="/dona/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="My"></a> --%>
+	     <%--  <a href="<c:url value="/dona/main/post/upload"/>"><img src="<c:url value="/img/dona/write1.png"/>" class="pBtn" id="writeFormBtn" width="50px;"><br></a>  	 --%>
       </div>	
 	</section>			
 
@@ -247,7 +280,7 @@
 			
 				  $('.notice').css('display', 'block');					  		  
 			  							
-			var html = '<h4 class="noticeMsg"><img src="<c:url value="/image/notice.png"/>" width="20px">';
+			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="20px">';
 			    html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
 			    html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
 			    html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
@@ -293,10 +326,11 @@
 				
 				$.each(list, function(index, item){
 																													
-					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
+					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 						html += '<input type="hidden" value="'+item.donaIdx+'">';
 					  html += '<div class="article-img">';
-						html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+						//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';		
+						html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';			
 						html += '</div>';
 						html += '<div class="article-content">';
 						html += '<div class="article-title">';
@@ -329,9 +363,11 @@
 		});
     }
      
-    var session = '<c:out value="${cookie.JSESSIONID.value}"/>';
-		$(document).ready(function() {	
-			
+		
+/*     
+       // 세션 어케 받지??	
+       var session = '<c:out value="${cookie.JSESSIONID.value}"/>';
+				
 			$.ajax({
 				url : 'http://192.168.0.45:8080/dona/rest/user/post/session/'+ session,
 				type : 'GET',
@@ -342,33 +378,35 @@
 				}
 				
 			})
-			
-			
-				
+ */		
+			 
+	$(document).ready(function() {	
+		
 			// 처음 리스트 로딩 시 불러올 데이터
 				$.ajax({
-					  url : 'http://192.168.0.45:8080/dona/rest/user/post/list?p=' + p,
+					  url : 'http://localhost:8080/dona/rest/user/post/list?p=' + p,
 					  type : 'GET',
 					  async : false,
 					  success : function(data){				
 						console.log(data);	
-						 						 						 
+						 						 						  
 						var list = $(data.postList);
 						console.log(list);
 						
 						$.each(list, function(index, item){
 																														
-							  var html =	'<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
+							  var html =	'<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 								html += '<input type="hidden" value="'+item.donaIdx+'">';
 							  html += '<div class="article-img">';
-								html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+								//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+								html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
 								html += '</div>';
 								html += '<div class="article-content">';
 								html += '<div class="article-title">';
 								html += item.postTitle+'</div>';
 								html += '<div class="article-heart">';							
 								html += '관심 '+item.heartCnt+'</div>';
-								html += '</div>${cookie.JSESSIONID.value}</div>'			
+								//html += '</div>${cookie.JSESSIONID.value}</div>'			
 																
 								$('#wrapContent').append(html);		 
 																																						
@@ -379,7 +417,7 @@
 								 console.log('totalPageCount :' + data.totalPageCount);
 								 							
 								for(var i=1; i <= data.totalPageCount; i++){	
-								  	var html2 = '<li class="page-item"><a class="page-link" href="<c:url value="/main/list"/>?p='+i+'">'+i+'</a></li>';
+								  	var html2 = '<li class="page-item"><a class="page-link" href="<c:url value="/dona/main/list"/>?p='+i+'">'+i+'</a></li>';
 									  	//var html2 =' [ <a href="<c:url value="/main/list"/>?p='+i+'">'+i+'</a> ] ';													
 								  	$('.pagination').append(html2);
 								}												 
@@ -409,10 +447,11 @@
 							
 							$.each(list, function(index, item){
 																																
-								  var html ='<div class="article" onClick="location.href=\'<c:url value="/main/post/detail?idx='+item.donaIdx+'"/>\'">';
+								  var html ='<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 									html += '<input type="hidden" value="'+item.donaIdx+'">';
-								  html += '<div class="article-img">';
-									html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+								    html += '<div class="article-img">';
+									//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
+									html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
 									html += '</div>';
 									html += '<div class="article-content">';
 									html += '<div class="article-title">';
@@ -448,6 +487,7 @@
 				});
 			
 			});
+
 		
    </script>	
     </body>

@@ -23,8 +23,8 @@ public class MemberLoginService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	@Autowired
-	private RedisService redisService;
+	//@Autowired
+	//private RedisService redisService;
 	
 	public boolean login(
 			HttpServletRequest request,
@@ -56,7 +56,7 @@ public class MemberLoginService {
 				if(member.getVerify()=='Y') {
 				//현재 세션의 속성에 LoginInfo 인스턴스를 저장..?
 				request.getSession().setAttribute("loginInfo", member.toLoginInfo());
-				redisService.setUserInformation(member.toLoginInfo(), request.getSession());
+				//redisService.setUserInformation(member.toLoginInfo(), request.getSession());
 				loginCheck = true;
 				//쿠키처리
 				if(chk!=null && chk.equals("on")) {
