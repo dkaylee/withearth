@@ -41,12 +41,12 @@
 	.article-img{		
 	 float : left;
 	 width : 220px;
-	 height :165px;
+	 height :195px;
 	}
 	
 	.img{
 	 width : 220px;
-	 height :165px;	 
+	 height :195px;	 
 	 margin-left : 4px;
 	 image-rendering :-webkit-optimize-contrast;
 	 border-radius: 10px;
