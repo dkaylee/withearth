@@ -1,7 +1,6 @@
 package com.withearth.member.service;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.withearth.member.dao.MemberDAO;
 import com.withearth.member.domain.EditMyInfo;
 import com.withearth.member.domain.Member;
-import com.withearth.member.domain.MemberRegRequest;
-
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Service
 public class MemberMypageService {
@@ -41,7 +37,7 @@ public class MemberMypageService {
 	
 	@Transactional
 	public int editInfo(EditMyInfo myinfo, HttpServletRequest request) {
-		
+		System.out.println("처음에 데이터가 잘 들어왔나?"+myinfo);
 		Member member = new Member();
 		
 		int result = 0;
@@ -56,12 +52,11 @@ public class MemberMypageService {
 		
 		//Photo가 있거나 비어있지 않으면??
 		if(myinfo.getCgphoto()!= null && !myinfo.getCgphoto().isEmpty()) {
-			
+
 			newFileName = myinfo.getId() + System.currentTimeMillis();	
 			newFile = new File(saveDirPath, newFileName);		
-			
-			//파일 이름 member로 보내기
-			member.setPhoto(newFileName);
+			System.out.println("사진을 수정했나?"+newFileName);
+
 			//파일 저장
 			try {
 				myinfo.getCgphoto().transferTo(newFile);
@@ -84,10 +79,15 @@ public class MemberMypageService {
 	
 		//수정할 데이터를 보낸다.
 		member = myinfo.toMember();
+		//파일 이름 member로 보내기
+		if(newFileName !=null) {
+		member.setPhoto(newFileName);
+		}
 		
 		//db입력
 		dao = template.getMapper(MemberDAO.class);
-		System.out.println(member);
+		System.out.println("db보내기 바로 직전 myinfo"+myinfo);
+		System.out.println("db보내기 바로 직전 member"+member);
 		//사진변경
 		if(myinfo.getCgphoto()!= null && !myinfo.getCgphoto().isEmpty()) {
 		result = dao.updatePhoto(member);

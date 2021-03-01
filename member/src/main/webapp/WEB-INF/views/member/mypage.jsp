@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -14,33 +14,39 @@
 	  <input type="email" id="id" name="id"  value="${loginInfo.id}" readonly>
 	 <label>비밀번호</label>
 	 <label>비밀번호는 6~20자리, 숫자 또는 특수 문자를 포함하세요</label>
-	  <input  type="password" id="pw" name="pw"  placeholder="비밀번호">
+	  <input type="password" id="pw" name="pw"  placeholder="비밀번호">
 	  <input type="password" id="pwcheck" placeholder="비밀번호 확인" name="pwcheck">
 	 <label>별명</label> 
-	  <input type="text" id="name" name="username" placeholder="별명" value="${loginInfo.name}" required>
+	  <input type="text" id="name" name="name" placeholder="${loginInfo.name}" required>
 	  <label>프로필 사진</label>
-	  <input type="text" id="oldphoto" name="odluserPhoto" value="${loginInfo.photo}" readonly>
-	  <input type="file" id="photo" name="userPhoto">
+	  <input type="text" id="oldphoto" name="oldphoto" value="${loginInfo.photo}" placeholder="${loginInfo.photo}" readonly>
+	  <input type="file" id="photo" name="photo">
 	  <input type="submit" id="btnEdit">
 </body>
 
 <script>
 $(document).ready(function(){
-
-	var file1 = $('#photo')[0].files[0]
-	var formData = new FormData();
-	formData.append("id",$('#id').val());
-	formData.append("cgpw",$('#pw').val());
-	formData.append("cgname",$('#name').val());
-	formData.append("oldphoto",$('#oldphoto').val());
-	
-	if(typeof(file1) != 'undefined'){
-		formData.append("cgphoto",file1);
-	}
 	//정보수정 버튼 클릭시
 	 $('#btnEdit').click(function(){ 
-		
 		 
+			var file1 = $('#photo')[0].files[0]
+			var formData = new FormData();
+			var name = $('#name').val();
+			formData.append("idx",$('#idx').val());
+			formData.append("id",$('#id').val());
+			formData.append("cgpw",$('#pw').val());
+			formData.append("cgname",$('#name').val());
+			formData.append("oldphoto",$('#oldphoto').val());
+
+			
+			if(typeof(file1) != 'undefined'){
+				formData.append("cgphoto",file1);
+			}
+		 
+		 
+		 
+		console.log(typeof(file1))
+		 	console.log(name);
 		
 		$.ajax({
 		url: '/member/member/mypage',
