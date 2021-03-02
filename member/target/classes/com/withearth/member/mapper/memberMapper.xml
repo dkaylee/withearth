@@ -150,6 +150,7 @@ select * from wuser where id= #{param1}
 		update wuser set pw=#{pw} where id=#{id}
 </update>
 
+<!-- 누구의 idx인가 -->
 <select id="selectLoginIdx"
 		resultMap="memberResult"> <!-- id와 매핑된다. -->
 
