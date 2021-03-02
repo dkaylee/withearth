@@ -46,7 +46,7 @@
 			</div>
 			<div class="wrap-profile">
 				<!-- 회원 idx로 회원 정보를 받아오는 ajax 필요함! -->
-				<div>
+				<div class="profileImage">
 					<img alt="프로필 사진" width="50px" height="50px" class="profile">
 				</div>
 				<div class="userInfo">
@@ -102,7 +102,7 @@
 			console.log('게시물IDX : ' + donaIdx + ', idx : ' + idx);
 
 			$.ajax({
-				url : 'http://localhost:8080/dona/rest/user/heart',
+				url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/heart',
 				type : 'GET',
 				data : 'donaIdx=' + donaIdx + '&idx=' + idx,
 				success : function(data) {
@@ -127,7 +127,7 @@
 
 		// 좋아요 페이지 기본 노출값 처리						
 		$.ajax({
-			url : 'http://localhost:8080/dona/rest/user/heart/list',
+			url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/heart/list',
 			type : 'GET',
 			data : 'donaIdx=' + donaIdx + '&idx=' + idx,
 			success : function(data) {
@@ -151,7 +151,7 @@
 
 		// 컨트롤러로 값 넘기기 (회원 게시물 데이터 받기)
 		$.ajax({
-			url : "http://localhost:8080/dona/rest/user/post/detail?idx=" + donaIdx,
+			url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail?idx=" + donaIdx,
 			type : 'GET',
 			asycn : false,
 			success : function(data) {
@@ -161,7 +161,10 @@
 				    html += '<p class="post" id="postContent">'+ data.postContent + '</p>';
 
 					$('.postDetails').append(html);
-
+					
+					var ownerIdx = data.idx;
+                    console.log(ownerIdx);
+                    
 					// 채팅으로 이동 (파라미터 넘기기)
 					var cHtml = '<input type="button" name="cBtn" id="chatBtn" value="작성자와 채팅하기">';
 					chatBtn.onclick = function() {
@@ -178,9 +181,9 @@
 					}
 				});
 
-		// 컨트롤러로 값 넘기기 (회원 게시물 이미지 데이터 받기)
+		// 컨트롤러로 값 넘기기(회원 게시물 이미지 데이터 받기)
 		$.ajax({
-			url : "http://localhost:8080/dona/rest/user/post/detail/image?idx="+ donaIdx,
+			url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail/image?idx="+ donaIdx,
 			type : 'GET',
 			success : function(data) {
 
@@ -191,7 +194,7 @@
 
 				  var html = '<div class="carousel-item active">';
 				  // html +='<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; "alt="postImages">';										
-				  html += '<img src="http://localhost:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; "alt="postImages">';
+				  html += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; "alt="postImages">';
 				  html += '</div>';
 				  $('.carousel-inner').append(html);
 				})
@@ -202,7 +205,8 @@
 					console.log(anotherImg);
 
 					var html2 = '<div class="carousel-item">';
-						html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; alt="postImages">';
+						//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; alt="postImages">';
+						html2 += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
 						html2 += '</div>'
 						$('.carousel-inner').append(html2);
 						})
@@ -212,6 +216,7 @@
 						console.log(e);
 					}
 				});
+		
 
 		// Activate Carousel
 		$("#myCarousel").carousel();
