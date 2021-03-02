@@ -36,7 +36,7 @@
 	 //기존 대화가 있다면 불러오기
 		$.ajax({
 			
-			url : 'http://localhost:8080/dona/rest/user/post/chat/check',
+			url : '/member/rest/user/post/chat/check',
 			type : 'GET',
 			data : 'donaIdx=' + donaIdx +'&rid=' + roomIdx,
 			success : function(data){
@@ -209,7 +209,7 @@
 		</div>
 		<div class="input-container">
 			<div> <input type="text" class="chatting-input" placeholder=" 메세지를 입력하세요." onKeypress="javascript:if(event.keyCode==13){pressEnter()}">
-			<img src="<c:url value="/image/send.png"/>" id="send-button" width="20px"/>
+			<img src="<c:url value="/img/dona/send.png"/>" id="send-button" width="20px"/>
 		  <input type="hidden" value="${user}" id="sessionUserid">
 			</div>
 		</div>

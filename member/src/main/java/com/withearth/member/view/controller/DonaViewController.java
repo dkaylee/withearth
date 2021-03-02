@@ -107,7 +107,7 @@ public class DonaViewController {
 			mv.addObject("rid", msg.getRoomIdx());
 		}
 			
-		mv.setViewName("post/chat/chatView");
+		mv.setViewName("dona/post/chat/chatView");
 		mv.addObject("donaIdx", donaIdx);
 		mv.addObject("uid", uid);
 		mv.addObject("to", to);

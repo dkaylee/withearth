@@ -818,10 +818,12 @@
     
 	/*******************************데이터 저장 기능********************************************/
 	function saveData(){
-		
+    	
+		var idx = ${loginInfo.idx};
+		console.log(idx);
     	
 		$.ajax({
-			url: '<c:url value="/course/loc/walkingservice"/>',
+			url: '<c:url value="/member/loc/walkingservice"/>',
 			type: 'post',
 			data: {
 				tdistance: tDistance, 	// 이동 거리
@@ -838,26 +840,29 @@
 				console.log('data',data);
 			    console.log('tdistance', tDistance)
 			    // idx+이동거리 ->   ajax -> 포인트적립으로 이동
-				$.ajax({
-					url: '<c:url value="/course/{idx}/{cIdx}"/>', // 포인트를 받을 controller 주소 입력 
+			    //로그인한 회원 idx ->
+			    //배포주소로,,
+/* 				$.ajax({
+				
+					url: 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/course/'+idx+'/'+data,
 					type: 'post',
-					data:{
-						course_Idx: data,
-						course_km: tDistance
-					
-					},
+					//data:{
+						//cIdx: data,
+						//course_km: tDistance
+					//},
 					success: function(data){
 						alert('데이터 전송을 완료했습니다.');
+						var cc= '<c:out value="${result}"/>';
+						console.log(cc);
 						console.log('pdata',data);
 					},
 					error: function(error){
 						console.log(error);
 						console.log('포인트 적립 실패');
 					}
-				}) // point-ajax
+				}); // point-ajax */
 				
 				alert('코스 저장을 성공했습니다.');
-				$('#testModal').modal("hide");
 			},
 			error: function(error){
 				console.log(error)

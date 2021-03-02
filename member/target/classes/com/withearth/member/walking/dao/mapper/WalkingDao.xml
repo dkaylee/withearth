@@ -3,12 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.withearth.walking.dao.WalkingDao">
+<mapper namespace="com.withearth.member.walking.dao.WalkingDao">
 
 	<!-- 21.02.25: table을 AWS-RDS-AIA open.walking으로 설정  -->
 
 	<!-- Course Type의 resultMap #resultMap id 주의!!!(대소문자 구분할 것) -->
-	<resultMap id="courseResult" type="com.withearth.walking.domain.Course"  >
+	<resultMap id="courseResult" type="com.withearth.member.walking.domain.Course"  >
 		<id column="course_idx" property="course_idx"/>
 		<result column="course_date" property="course_date"/>
 		<result column="loc_km" property="loc_km"/>
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</resultMap>
 	
-	<resultMap id="coursePointResult" type="com.withearth.walking.domain.Course"  >
+	<resultMap id="coursePointResult" type="com.withearth.member.walking.domain.Course"  >
 		<id column="course_idx" property="course_idx"/>
 		<result column="loc_km" property="loc_km"/>
 	</resultMap>
@@ -39,11 +39,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 1. 코스 등록 -->
 	<insert id="insertCourse"
-			parameterType="com.withearth.walking.domain.Course"
+			parameterType="com.withearth.member.walking.domain.Course"
 			useGeneratedKeys="true"
 			keyProperty="course_idx">
 		
-		insert into open.walking( loc_km, about_time, start_point, end_point, walking_time, user_idx) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time}, 1)	
+		insert into open.walking( loc_km, about_time, start_point, end_point, walking_time, user_idx) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time}, #{idx})	
 	
 	</insert>
 	
@@ -100,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 6. 검색한 회원의 수 -->
 	<select id="selectSearchCourseCount" 
-			parameterType="com.withearth.walking.domain.SearchParam"
+			parameterType="com.withearth.member.walking.domain.SearchParam"
 	        resultType="int" >
 	        
 		select count(*) from open.walking
