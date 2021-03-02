@@ -1,4 +1,4 @@
-package com.withearth.tumbler.controller;
+package com.withearth.member.view.controller;
 
 
 
@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -25,15 +24,14 @@ import com.google.zxing.client.j2se.MatrixToImageConfig;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.withearth.tumbler.dao.CafeDao;
-import com.withearth.tumbler.domain.Cafe;
-import com.withearth.tumbler.domain.CafeRequest;
-/* 
+import com.withearth.member.cafe.dao.CafeDao;
+import com.withearth.member.tumbler.domain.CafeRequest;
+
 @Controller
-public class MakeQRController3 {
-   	
+public class MakeQRController {
+  	
 	
-  private CafeDao dao;
+ private CafeDao dao;
 	  
 	 @Autowired 
 	 private SqlSessionTemplate template;
@@ -97,5 +95,4 @@ public class MakeQRController3 {
 	
 	 }
 	 
- }
-*/
+}

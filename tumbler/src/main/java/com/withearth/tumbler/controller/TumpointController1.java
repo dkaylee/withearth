@@ -21,7 +21,7 @@ public class TumpointController1 {
 	@Autowired
 	private TumListService tumlistService;
 	
-		
+	/*	
 	//포인트 적립
 //	/tumbler/qr/"+cafe_idx
 	//@GetMapping("/qr/{cafe_idx}")
@@ -41,6 +41,6 @@ public class TumpointController1 {
 		return "tumbler/saving";
 	}
 	
-
+*/
 
 }

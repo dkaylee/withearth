@@ -32,6 +32,9 @@ public interface TumblerDao {
 	//적립 리스트(페이지 번호에 맞는)
 	List<Tumbler> selectTumpointList(Map<String, Object> listMap);
 
+     //추가
+	int registerTumblerPoint(int cafeidx, int idx);
+
 	
 
 

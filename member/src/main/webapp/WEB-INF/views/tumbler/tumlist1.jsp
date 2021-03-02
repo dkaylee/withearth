@@ -258,7 +258,7 @@ section.wrapper, article.wrapper {
 
 		<div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-			<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button>
+			<button id="open" onclick="location.href='/member/tumbler/tumlist'">텀블러 이용내역</button>
 		</div>
 
 		<div class="modal hidden">

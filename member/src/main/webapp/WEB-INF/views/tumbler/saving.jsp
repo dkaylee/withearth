@@ -87,8 +87,8 @@
 			<div id="modal_btn">
 				<!-- <button id="open"onclick="location.href='#'"></button>
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
-				<a href="#" class="button special" >메인 화면</a>
-				<a href="/tumbler/tumlist" class="button special">텀블러 조회</a>
+				<a href="/member" class="button special" >메인 화면</a>
+				<a href="/member/tumbler/tumlist" class="button special">텀블러 조회</a>
 			</div>
 			</div>
 

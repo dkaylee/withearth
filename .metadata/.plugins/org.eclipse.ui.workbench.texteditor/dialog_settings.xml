@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="selectTotalCount"/>
+		<item key="selection" value="pagination"/>
 		<list key="findhistory">
-			<item value="selectTotalCount"/>
-			<item value="wrapContent"/>
 			<item value="pagination"/>
-			<item value="count"/>
-			<item value="selectTumpointList"/>
-			<item value="selectList"/>
-			<item value="listView"/>
-			<item value="tumlistTotalcount"/>
-			<item value="selelctTumList"/>
-			<item value="TumblerListResult"/>
-			<item value="selectSearchMemberCount"/>
-			<item value="page"/>
-			<item value="img"/>
+			<item value="closeOverlay"/>
+			<item value="oncli"/>
+			<item value="imcli"/>
+			<item value="ㅇ"/>
 			<item value="alert"/>
-			<item value="paging"/>
+			<item value="/member/img/cafe1.png"/>
+			<item value="point2"/>
+			<item value=".jpg"/>
+			<item value=".jsp"/>
+			<item value=".png"/>
+			<item value="img"/>
+			<item value="ㅑㅡㅎ"/>
+			<item value="jq"/>
+			<item value="selectTotalCount"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -30,8 +30,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="11"/>
-		<item key="DIALOG_Y_ORIGIN" value="549"/>
+		<item key="DIALOG_X_ORIGIN" value="1789"/>
+		<item key="DIALOG_Y_ORIGIN" value="232"/>
 		<item key="DIALOG_WIDTH" value="778"/>
 		<item key="DIALOG_HEIGHT" value="827"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
