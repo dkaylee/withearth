@@ -37,7 +37,7 @@
 	<!-- 인터셉터 등록 : login 체크 -->	
 	<interceptors>
 		<interceptor>
-			<mapping path="/useronly/**" />
+			<mapping path="" />
 			<beans:bean
 				class="com.withearth.member.intercepter.AuthCheckIntercepter" />
 		</interceptor>
