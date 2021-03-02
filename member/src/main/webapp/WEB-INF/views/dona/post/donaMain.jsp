@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="<c:url value="/css/dona/main.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=1"/>"/>
 <style>	
 </style>	
 </head>
@@ -88,6 +88,8 @@
      // 채팅 알림
      // 웹소켓을 지정한 url로 연결한다.
 		 var sock = new SockJS("<c:url value="/chat"/>");
+     
+         var loginUser = '<c:out value="${loginInfo.idx}"/>';
 					
 		 //데이터가 나한테 전달되었을 때 자동으로 실행되는 function
 		 sock.onmessage = onMessage;
@@ -102,21 +104,23 @@
 					
 			msgData = JSON.parse(data);
 			
-				  $('.notice').css('display', 'block');					  		  
-			  							
-			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="20px">';
-			    html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
-			    html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
-			    html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
-				  		    
-			    $('.notice').append(html);
+			if(msgData.to==loginUser){
 				
+			$('.notice').css('display', 'block');					  		  
+					
+			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="20px">';
+				html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
+				html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
+				html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
+					  		    
+				$('.notice').append(html);
+			}							
 		 }
 		 
 		  function noticeNone(){
 			  
 			  $('.notice').empty();
-				$('.notice').css('display', 'none');
+			  $('.notice').css('display', 'none');
 			  
 		  }
 
