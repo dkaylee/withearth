@@ -17,9 +17,9 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
-import com.withearth.member.dona.controller.ChatSaveService;
 import com.withearth.member.dona.domain.Message;
 import com.withearth.member.dona.service.ChatRoomIdCheckService;
+import com.withearth.member.dona.service.ChatSaveService;
 
 public class ChatHandler extends TextWebSocketHandler {
 		
@@ -40,7 +40,7 @@ public class ChatHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		
-		int chatMember = (int) session.getAttributes().get("user");
+		int chatMember  = (Integer)session.getAttributes().get("user");
 
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>" + chatMember);
 
@@ -55,7 +55,7 @@ public class ChatHandler extends TextWebSocketHandler {
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
-		int chatMember = (int) session.getAttributes().get("user");
+		int chatMember = (Integer) session.getAttributes().get("user");
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatMember, message.getPayload());
 		Gson gson = new Gson();
 		Message msg = gson.fromJson(message.getPayload(), Message.class);
@@ -121,7 +121,7 @@ public class ChatHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		
-		int chatMember = (int) session.getAttributes().get("user");
+		int chatMember = (Integer) session.getAttributes().get("user");
 		
 		sessionList.remove(session);
 

@@ -75,16 +75,10 @@ public class MemberRegService {
 			
 			try {
 				regRequest.getUserPhoto().transferTo(newFile);
-			} catch (IllegalStateException | IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-			Member member = regRequest.toMember();
-			if(newFileName != null ) {
-				member.setPhoto(newFileName);
-			}
-
-			
+				
 		}//if끝
 		
 		//데이터 저장
