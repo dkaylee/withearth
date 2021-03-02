@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WithEarthRecycleInfoController {
 	
-	@RequestMapping("/member/Info/recycleInfo2")
+	@RequestMapping("/member/Info/recycleInfo")
 	public String getRecycleInfo() {
-		return"/Info/recycleInfo2";
+		return"/Info/recycleInfo";
 	}
 }

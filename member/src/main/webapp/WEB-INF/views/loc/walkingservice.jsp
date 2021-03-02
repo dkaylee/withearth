@@ -37,9 +37,9 @@
 	font-weight: bolder;
 }
 
-#startBtn{margin-bottom: 1%; width: 49%;  }j
+#startBtn{margin-bottom: 1%; width: 48%;  }
 
-#arriveBtn{margin-bottom: 1%;  width: 49%;  margin-left: 1%;}
+#arriveBtn{margin-bottom: 1%;  width: 48%;  margin-left: 2%;}
 
 #InfoBtn{margin-bottom: 1%; }
 
@@ -58,7 +58,7 @@
 
 #btn_select{
 	margin-top: 3%;
-	margin-left: 3%;
+	margin-left: 2%;
 	overflow: hidden;
 	width: 22%;
 	
@@ -903,14 +903,14 @@
 			<h2 style="" id="mainInfo">걷기 인증 서비스</h2> 
 			
 			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h4 id="revresult" style="margin: 10px 30px"></h4><br>
-			<h4 id="endInfo">◇ 목적지 <br />(ex.서울시 마포구 와우산로29가길 69) </h4>
+			<h4 id="endInfo">◇ 목적지 <br />(ex.서울특별시 종로구 종로5가)</h4>
 			<input type="text"   class="text_custom" id="fullAddr" name="fullAddr"
 				value="서울특별시 종로구 종로5가"><button id="btn_select" class="button special" >설정</button> 
 			<h4 id="endAdd" style="margin: 10px 30px;"></h4>
 			
-			<button id="startBtn" class="button special" onclick="startTime()">시작 하기</button>
+			<button id="startBtn" class="button special" onclick="startTime()">시작</button>
 			<button id="arriveBtn" class="button special">도착</button><br>
-			<button id="InfoBtn" class="button special" onclick="infoModal()" >올바르게 걷는 방법</button>
+			<!-- <button id="InfoBtn" class="button special" onclick="infoModal()" >올바르게 걷는 방법</button> -->
 			
 			<br>
 			
@@ -981,7 +981,7 @@
 	</div>
 	
 	<!-- InfoModal -->
-		<div class="modal fade" id="InfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<%-- <div class="modal fade" id="InfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -1004,7 +1004,7 @@
 		      </div>
 		    </div>
 		  </div>
-		</div> <!-- InfoModal 끝 -->
+		</div> <!-- InfoModal 끝 --> --%>
 	
 	<div> <!-- footer와 본문 사이 간격 조정 -->
 		<br/>
