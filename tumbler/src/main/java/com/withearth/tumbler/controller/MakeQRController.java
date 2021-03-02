@@ -22,7 +22,7 @@ import com.withearth.tumbler.domain.CafeRequest;
 import com.withearth.tumbler.service.MakeQRService;
  
 @RestController
-@RequestMapping("/rest/tumbler/saving")
+@RequestMapping("/rest/tumbler")
 public class MakeQRController {
    	
 	

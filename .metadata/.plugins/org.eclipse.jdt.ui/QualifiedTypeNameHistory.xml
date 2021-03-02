@@ -38,7 +38,6 @@
 <fullyQualifiedTypeName name="com.sun.javafx.collections.MappingChange.Map"/>
 <fullyQualifiedTypeName name="org.springframework.ui.ModelMap"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.dao.CafeDao"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Tumbler"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumpointView"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.SearchParam"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>

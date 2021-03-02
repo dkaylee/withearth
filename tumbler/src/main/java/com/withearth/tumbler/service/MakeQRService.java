@@ -58,8 +58,6 @@ public class MakeQRService {
 	    	}  
 	    	
 	    	
-
-      
 	    	int cafe_idx = 1;
 	    	
 

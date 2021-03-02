@@ -151,13 +151,30 @@ ul li {
 
 <script>
 
+// 파라미터로 페이지 번호 받기
+	function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 	
+    var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);	
+    
+  return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+	var p = getParameterByName('p');
+    console.log(p); 
+
 
 	$(document).ready(function() {
+		
+		 
+    	
+    	 // $('#wrapContent').empty();
+		  $('.paging').empty();
 
 						$.ajax({
-									url  : 'http://localhost:8080/tumbler/tumlist/rest',
+									url  : 'http://localhost:8080/tumbler/tumlist/rest?p='+p,
 									type : 'GET',
-
+									async : false,
+									
 									success : function(data) {
 
 										console.log(data);
@@ -217,10 +234,12 @@ ul li {
 											console.log('totalTpointCount :'+ data.totalTpointCount);
 
 											for (var i = 1; i <= data.totalPageCount; i++) {
-												 var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+ i+'">'+i+ '</a></li>';
+												 var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+i+'">'+i+'</a></li>';
 												$('.pagination').append(html3);
 											}
 										}; 
+										
+									
 										
 										/* for (var num=startRow; num<=endRow; num++) {
 							                 if (num == cntPerPage) {
@@ -241,8 +260,18 @@ ul li {
 								});
 
 					});
+				
 
-	$(document).ready(function() {
 
-	});
+
+		
+
+
+		
+
+	
+		
+
+
+
 </script>

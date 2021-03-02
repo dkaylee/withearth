@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial=scale=1.0">
-<title>텀블러 인증</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<title>텀블러  매장찾기</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
 <style>
@@ -324,7 +325,7 @@ section.wrapper, article.wrapper {
     };
 	
 	/* 좌표 가져오기 */
-	//$(document).ready(function(){
+	$(document).ready(function(){
 		 var cafeinfo = $.ajax({
 				type:"GET",
 				url:"http://localhost:8080/rest/tumbler/tumlist1/map",
@@ -357,7 +358,7 @@ section.wrapper, article.wrapper {
 
 		});
 		 
-	//});
+	});
 	
 	
 

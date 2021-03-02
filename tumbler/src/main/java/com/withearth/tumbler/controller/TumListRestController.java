@@ -28,7 +28,6 @@ public class TumListRestController {
 	
 	  //포인트 정보 가져오기
 	  @GetMapping
-	  @CrossOrigin
 	  public TumpointView tumList(@RequestParam(value="p",defaultValue="1") int page, Model model,  HttpServletRequest request) {
 	  
 	

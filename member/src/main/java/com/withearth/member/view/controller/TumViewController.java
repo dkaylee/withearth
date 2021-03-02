@@ -1,5 +1,7 @@
 package com.withearth.member.view.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,11 +15,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TumViewController {
 	
+	 @RequestMapping("/tumbler/{cafe_idx}") 
+		public String makeqr(HttpServletRequest request, 
+				HttpSession session,
+				Model model,
+				  @PathVariable("cafe_idx") int cafeIdx
+				)throws IOException {
+			 
+
+	      return "tumbler/saving"; 
+	      
+		 }
+	
 
 	
 	
     //카페 리스트
-	@RequestMapping(value="/member/tumbler/tumlist1", method = RequestMethod.GET)
+	@RequestMapping(value="/tumbler/tumlist1", method = RequestMethod.GET)
 	public String cafeList(Model model,HttpServletRequest request) {
 
 		
@@ -25,30 +39,30 @@ public class TumViewController {
 	}
 	
 	 //포인트 내역 출력
-	@RequestMapping("/member/tumbler/tumlist")  
+	@RequestMapping("/tumbler/tumlist")  
 	public String tumlist(@RequestParam(value="p",defaultValue="1") int page,
 			       Model model, HttpServletRequest request) {
 		
 	
 
-		 HttpSession session = request.getSession();
-		 int idx = (int) session.getAttribute("idx");
+		// HttpSession session = request.getSession();
+		 //int idx = (int) session.getAttribute("idx");
 
-		//int idx = 1;
+		int idx = 1;
 		
 		return "tumbler/tumlist";
 	}
 	
 	//포인트 적립
-	@RequestMapping("/membertumbler/cafe_idx")
+	@RequestMapping("/tumbler/cafe_idx")
 	public String getTumList (Model model, 
 			                  HttpServletRequest request, 
 			                  @PathVariable("cafe_idx") int cafe_idx
 			                  ) {
 		
-		HttpSession session = request.getSession();
-	    int idx = (int) session.getAttribute("idx");
-		//int idx = 1; 
+		//HttpSession session = request.getSession();
+	    //int idx = (int) session.getAttribute("idx");
+		int idx = 1; 
 
 		
 		return "tumbler/saving";
