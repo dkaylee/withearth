@@ -105,7 +105,7 @@
 			
 			 //ajax로 폼데이터 전송
 		 	 $.ajax({
-				url : 'http://localhost:8080/dona/rest/user/post/upload',
+				url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/upload',
 				type : 'POST',
 				data : formData,
 				processData: false,

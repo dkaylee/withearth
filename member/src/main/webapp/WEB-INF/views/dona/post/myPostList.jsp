@@ -55,7 +55,7 @@
 		 if(delConfirm){
 			  $.ajax({
 				 
-				 url : "http://localhost:8080/dona/rest/user/post/delete?idx="+ idx,
+				 url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/delete?idx="+ idx,
 				 type : 'GET',
 				 success : function(data){					 
 					 location.reload();				 
@@ -78,7 +78,7 @@
 			var idx = getParameterByName('idx');
 			
 				$.ajax({					
-					url : "http://localhost:8080/dona/rest/user/post/mypost?idx=" + idx,
+					url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/mypost?idx=" + idx,
 					type : 'GET',
 					success : function(data) {
 

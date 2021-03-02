@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			useGeneratedKeys="true"
 			keyProperty="course_idx">
 		
-		insert into open.walking( loc_km, about_time, start_point, end_point, walking_time, user_idx) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time}, 1)	
+		insert into open.walking( loc_km, about_time, start_point, end_point, walking_time, user_idx) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time}, #{idx})	
 	
 	</insert>
 	
