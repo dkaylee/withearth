@@ -8,6 +8,7 @@ public class CourseSettingRequest {
 	private String startAdd; 	// 출발지 주소
 	private String endAdd; 		// 목적지 주소
 	private String ttime; 		// 소요 시간 -> String으로 처리, 시간계산이 필요하다면 Time으로 처리
+	private int uIdx;			// 회원 아이디
 
 	// getter/setter
 	public float getTdistance() {
@@ -50,6 +51,16 @@ public class CourseSettingRequest {
 		this.ttime = ttime;
 	}
 
+	
+	
+	public int getuIdx() {
+		return uIdx;
+	}
+
+	public void setuIdx(int uIdx) {
+		this.uIdx = uIdx;
+	}
+
 	// method 생성
 	public Course toCourse() {
 		Course course = new Course();
@@ -58,7 +69,8 @@ public class CourseSettingRequest {
 		course.setStart_point(startAdd);
 		course.setEnd_point(endAdd);
 		course.setWalking_time(ttime);
-
+		course.setUser_idx(uIdx);
+		
 		return course;
 	}
 
@@ -66,7 +78,10 @@ public class CourseSettingRequest {
 	@Override
 	public String toString() {
 		return "CourseSettingRequest [tdistance=" + tdistance + ", atime=" + atime + ", startAdd=" + startAdd
-				+ ", endAdd=" + endAdd + ", ttime=" + ttime + "]";
+				+ ", endAdd=" + endAdd + ", ttime=" + ttime + ", uIdx=" + uIdx + "]";
 	}
+
+	
+	
 
 }
