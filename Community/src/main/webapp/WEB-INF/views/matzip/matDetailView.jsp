@@ -10,7 +10,11 @@
 <title>Matzip</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
+<style>
 
+
+
+</style>
 
 
 
@@ -27,9 +31,7 @@
 		
 		
 		<div class="inner">
-		
-		
-			
+
 			<div id="matImg"></div>
 			
 			<header class="align-center">
@@ -49,7 +51,7 @@
 		</div>
 		
 		<ul class="actions">
-			<li><a href="#" class="button alt" onclick="javascript:editMatzip();">수정</a></li>
+			<li><a href="#" class="button alt" onclick="javascript:goEdit();">수정</a></li>
 			<li><a href="#" class="button alt" onclick="javascript:deleteMatzip();">삭제</a></li>
 			<li><a href="#" class="button alt" onclick="javascript:goMatlist();">목록</a></li>
 		</ul>
@@ -64,21 +66,24 @@
 	
 	
 	 $(document).ready(function(){
+		
 		getMatDetail();	
 		getUploadFiles();
+		
+
+		
 	}); 
 	
-	
-
 	/* go edit Form */
-	function editMatzip(){
+	function goEdit(){
 		var matIdx = $('#mIdx').val();
-		location.href = "/matzip/editmatForm?mIdx=${matzip.matIdx}";
+		location.href = "/community/matzip/editmatForm?matIdx=${matzip.matIdx}";
 	}
 	
 
-	/* idx-data */
+	/* get Matzip data */
 	function getMatDetail(matIdx){
+		
 		$.ajax({
 			url:"http://localhost:8080/community/matzip/matDetail?matIdx=${matzip.matIdx}",
 			type: "GET",
@@ -87,9 +92,11 @@
 				console.log(data);	
 				
 				var html = "";
-				html += '<div>'
-				html += '<img src="/fileupload/matzip/'+data.matImg+'">';
-				html += '</div>'
+				html += '<hr class="major"/>';
+				html += '<div>';
+				html += '<img src="/community/fileupload/matzip/'+data.matImg+'" style="width:60%">';
+				html += '</div>';
+				html += '<hr class="major"/>';
 				html += '<h2>'
 				html += data.matTitle
 				html += '</h2>';
@@ -106,26 +113,6 @@
 				 console.log(html);
 				$('#matDetail').append(html);
 				
-				/* if(data.matImg == ""){
-					
-					html +=  '<div>'data.matTitle'</div>';
-					html +=  '<div>'data.matAddr'</div>';
-					html +=  '<div>'data.matTime'</div>';
-					html +=  '<div>'data.matNum'</div>';
-					
-					('#matDetail').append(html);
-					
-				} else {
-					
-					html +=  '<img src="/fileupload/matzip/'+data.matImg+'">';
-					html +=  '<div>'data.matTitle'</div>';
-					html +=  '<div>'data.matAddr'</div>';
-					html +=  '<div>'data.matTime'</div>';
-					html +=  '<div>'data.matNum'</div>';
-					
-					('#matDetail').append(html);
-				} */
-
 			},
 			error : function(){
 				alert("데이터 못 불러옴^^");
@@ -134,7 +121,7 @@
 	}
 	
 	
-	
+	/* get UploadFiles */
 	function getUploadFiles(matIdx){
 		
 		var filelist= [];
@@ -170,28 +157,30 @@
 	
 
 
-function deleteMatzip(matIdx) {
-	
-	$ajax({
-		url:"/matzip/delete",
-		data: $(matIdx).serialize(),
-		dataType : "JSON",
-		cache : false,
-		async: true,
-		success : function(data){
+ 	function deleteMatzip(matIdx) {
 		
-		if(data != null ){
-			var result = data.result;
-			if(confirm('정말로 삭제하시겠습니까')&&result == "1" ) {
-				goMatlist();
+	$.ajax({
+				url:"/matzip/delete",
+				type:"POST",
+				data: $(matIdx).serialize(),
+				dataType : "JSON",
+				cache : false,
+				async: true,
+				success : function(data){
+				if(data != null ){
+					var result = data.result;
+					if(result == "1" ) {
+						alert("게시글 삭제를 성공하였습니다.");  
+						goMatlist();
+						
+						}
+					}
+				},
+				error: function(){
+					alert('삭제를 완료했습니다.');
 				}
-			}
-		},
-		error:
-			alert("삭제할 수 없습니다.")
-	});
-	
-}
+			});
+	} 
 	
 
 /* 맛집 목록이동 */
@@ -199,10 +188,7 @@ function goMatlist(){
 	location.href = "/community/matzip/matlist";
 }
 
-/* 맛집 수정페이지이동 */
-function goEdit(){
-	location.href = "/community/matzip/editmatForm";
-}
+
  
 
 </script>

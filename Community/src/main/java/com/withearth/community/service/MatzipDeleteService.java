@@ -19,8 +19,12 @@ public class MatzipDeleteService {
 		
 		int result = 0 ;
 		
+		
 		dao = template.getMapper(MatDao.class);
 		result = dao.deleteMatzipByIdx(matIdx);
+				 dao.fileDelete(matIdx);
+		
+				
 		
 		return result;
 	}

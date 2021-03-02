@@ -47,7 +47,7 @@ public class EditMatService {
 		
 		MatzipVo matzip = editReq.toMatzip();
 		
-		
+				
 		// 데이터 베이스 입력
 		dao = template.getMapper(MatDao.class);
 		
@@ -66,14 +66,13 @@ public class EditMatService {
 		
 		int matIdx = editReq.getmIdx();
 		
-		
 		if(mf.size() == 1 && mf.get(0).getOriginalFilename().equals("")) {
-			
+		
 		} else {
 			
+
 			for(int i = 0; i < mf.size(); i++) {
-				
-			
+					
 				// 웹경로
 				String uploadPath = "/fileupload/matzip/";
 				
@@ -98,7 +97,6 @@ public class EditMatService {
 				newFile = new File(saveDirPath, newFName);
 				
 				System.out.println("파일 저장 경로" + newFile);
-
 				System.out.println("orgName : "+orgFName);
 				System.out.println("newFName : "+newFName);
 				System.out.println("filesize : "+fileSize);
@@ -122,6 +120,7 @@ public class EditMatService {
 						
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
+						
 					}
 					
 					 
@@ -133,17 +132,14 @@ public class EditMatService {
 					file.setFileSize(fileSize);
 					 
 					fileList.add(file);
-					 
+					
 					 System.out.println("file file info : " + fileList); 
 					 
 					 dao = template.getMapper(MatDao.class);
-					 dao.fileUpload(file);
+					 dao.updateFile(file);
 					
 			}
 		}
-		
-		
-		
 		
 		
 		

@@ -16,73 +16,137 @@
 }
 </style>
 <script>
+
+var matIdx=${matzip.matIdx};
+
+$(document).ready(function(){        
 	
-	/* 맛집 수정 */
+	getEditMat();
+	editMatzip();
+
+	});
 	
-	var matTitle = $("#mTitle").val();
-	var matAddr = $("#mAddr").val();
-	var matTime = $("#mTime").val();
-	var matNum = $("#mNum").val();
-	var matCont = $("#mCont").val();
-	var matImg = photoFile[0],files[0];
-	
-	if(matTitle == ""){
-		alert("제목을 입력해주세요.");
-		$("#mTitle").focus();
-		return;
-	}
-	if(matAddr == ""){
-		alert("주소를 입력해주세요.");
-		$("#mAddr").focus();
-		return;
-	}
-	if(matTime == ""){
-		alert("영업시간을 입력해주세요.");
-		$("#mTime").focus();
-		return;
-	}
-	if(matNum == ""){
-		alert("연락처를 입력해주세요.");
-		$("#mNum").focus();
-		return;
-	}
-	if(matCont == ""){
-		alert("내용을 입력해주세요.");
-		$("#mCont").focus();
-		return;
-	}
-	
-	var editmsg = confirm("맛집정보를 수정하시겠습니까?");
-	
-	if(editmsg) {
-		$.ajax({
-			url : "http://localhost:8080/community/matzip/editmat?matIdx=${matzip.matIdx}",
-			data : $("#editForm").serialize(),
-			dataType:"JSON",
-			cache : false,
-			async : true,
-			type : "POST",
-			success : function(obj) {
-				console.log(obj);
-			},
-			error : function(xhr, status, error){}
-		
-		});
-	}
-	
-	function updateMatCall(obj){
-		if(obj != null){
-			var result = obj.result;
+/* 맛집 수정 */
+function editMatzip(matIdx){
 			
-			if(result == "SUCCESS"){
-				alert("맛집정보 수정을 성공하였습니다.");
-				goMatlist();
-			} else{
-				alert("게시글 수정 실패");
-				return;
+			$('#matzipForm').submit(function(){
+				
+				var photoFiles = $('#matImg');
+				
+				var files = photoFile[0],files;
+				
+				console.log(files);
+				
+				var formData = new FormData();
+				
+				formData.append("matTitle", $('#mTitle').val()),
+				formData.append("matAddr", $('#mAddr').val()),
+				formData.append("matTime", $('#mTime').val()),
+				formData.append("matNum", $('#mNum').val()),
+				formData.append("matCont", $('#mCont').val());
+				
+				for(var i=0; i<files.length; i++){
+					formData.append("matImg", $('mImg').val());
+				}
+				
+				console.log(formData);
+
+				
+				$.ajax({
+					url : '/matzip/setEdit',
+					type : 'POST',
+					data : formData,
+					enctype : 'multipart/form-data',
+					processData : false,
+					contentType : false,
+					cache : false ,
+					success : function (data){
+						var result = data.result;
+						if(result != null){		
+							if(result == "1"){
+								alert("맛집정보 수정을 성공하였습니다.");
+								goMatlist();
+							} else{
+								alert("게시글 수정 실패");
+								return;
+							}
+						}
+							
+					},
+						error :
+						alert("다시시도해주세요.")
+					});
+	    	}); 
+}	
+	
+	function getEditMat(matIdx){
+		
+		$.ajax({
+			url:'http://localhost:8080/community/matzip/getEdit?matIdx=${matzip.matIdx}',
+			type: "GET",
+			dataType: "JSON",
+			success : function(data){
+				console.log(data);
+				
+				matIdx = data.matIdx;
+				
+				var html ="";
+				
+				html += '<div class="6u 12u$(xsmall)">'
+				html +='상호명<input type="text" name="mTitle" id="mTitle" value="'+data.matTitle+'"placeholder="'+data.matTitle+'"/>'	
+				html +='</div>'
+				html +='<div class="6u 12u$(xsmall)">'
+				html +='주소<input type="text" name="mAddr" id="mAddr" value="'+data.matAddr+'" placeholder="'+data.matAddr+'"/>'
+				html +='</div>'
+				html +='<div class="6u 12u$(xsmall)">'
+				html +='시간<input type="text" name="mTime" id="mTime" value="'+data.matTime+'" placeholder="'+data.matTime+'"/>'
+				html +='</div>'
+				html +='<div class="6u 12u$(xsmall)">'
+				html +='전화번호<input type="text" name="mNum" id="mNum" value="'+data.matNum+'" placeholder="'+data.matNum+'"/>'
+				html +='</div>'
+			
+				html +='<div class="12u$">'
+				html +='소개글<textarea name="mCont" id="mCont" placeholder="'+data.matCont+'" rows="6"></textarea>'
+				html +='</div>'
+				
+				console.log(html);
+				$('#editInfo').append(html);
+				
+			},
+			error : function(){
+				alert("데이터 못 불러옴^^");
 			}
-		}
+		});
+		
 	}
+	
+
+	/* 맛집 목록이동 */
+	function goMatlist(){
+		location.href = "/community/matzip/matlist";
+	}
+	
+	// image preview 기능 구현
+    // input = file object[]
+     function addPreview(input) {
+        if (input[0].files) {
+            //파일 선택이 여러개였을 시의 대응
+            for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
+                var file = input[0].files[fileIndex];
+                var reader = new FileReader();
+ 
+                reader.onload = function (img) {
+                    //div id="preview" 내에 동적코드추가.
+                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
+                    $("#preview").append(
+                        "<img src=\"" + img.target.result + "\"\/>"
+                    );
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다. 
+    }  
 
 </script>
 
@@ -94,20 +158,21 @@
 	<section id="three" class="wrapper">
 	<div class="inner">
 			<header class="align-center">
-				<h2>맛집 정보 수정하기</h2>
+				<h2>맛집 정보 수정</h2>
+				<hr class="major"/>
 			</header>
 	
-	<!-- 글 수 폼 -->	
+	<!-- 맛집 수정 Form -->	
 	<div class="row uniform">
 		<form method="post" enctype="multipart/form-data" id="editForm">
 			<div class="row uniform">
-				<div class="6u 12u$(xsmall)">
-					상호명<input type="text" name="mTitle" id="mTitle" value="${editmat.matTitle}" placeholder="${editmat.matTitle}"/>
-					${editmat.matTitle}
+				<div class="row uniform" id="editInfo"></div>
+				
+				<%-- <div class="6u 12u$(xsmall)">
+					상호명<input type="text" name="mTitle" id="mTitle" value="${editmat.matTitle}" placeholder="${editmat.matTitle}"/>	
 				</div>
 				<div class="6u 12u$(xsmall)">
 					주소<input type="text" name="mAddr" id="mAddr" value="${editmat.matAddr}" placeholder="${editmat.matAddr}"/>
-					${editmat.matAddr}
 				</div>
 				<div class="6u 12u$(xsmall)">
 					시간<input type="text" name="mTime" id="mTime" value="${editmat.matTime}" placeholder="${editmat.matTime}"/>
@@ -119,31 +184,27 @@
 				<div class="12u$">
 					소개글<textarea name="mCont" id="mCont" placeholder="${editmat.matCont}" rows="6"></textarea>
 					<!-- 소개글<input type="text" name="mCont" id="mCont" value="" style="height: 300px;" /> -->
-				</div>
+				</div> --%>
 				
 				<!-- 파일업로 -->
 				<div class="6u$ 12u$(xsmall)" id="file-group">
-				이미지 업로드<input type="file" multiple="multiple" id="mImg" name="mImg" />
-					<a href="javaScript:" class="my_button" onclick="submitAction();">업로드</a>
+					이미지추가<input type="file" multiple="multiple" id="mImg" name="mImg" />
+				</div>
+				
 				<!-- 미리보기 -->
-				<div class="uploadResult">
-					<img id ="img"/>
+				<div class="previewBox">
+				<div id="preview"></div>
 				</div>
-					<a href="#this" onclick="filDelete()">삭제</a>
-					<a href="#this" onclick="addFile()">파일추가</a>
-				</div>
+				
 				
 				<div class="12u$">
 					<ul class="actions">
-					<li><input type="button" value="수정하기" id="editmsg" /></li>
-					<li><input type="reset" value="목록" onclick="javascript:goMatlist();" /></li>
+					<li><input type="submit" value="수정하기" /></li>
+					<li><input type="reset" value="목록" onclick="javascript:goMatlist();"/></li>
 					</ul>
 				</div>
-				<!-- <div class="3u$ 12u$(small)">
-					<input type="submit" value="등록하기"><input type="button" value="목록"><input type="button" value="글쓰기">
-				</div> -->
 			</div>
-		</form>
+		</form>		
 	</div>
 
 	</div>
@@ -152,10 +213,7 @@
 	
 	<script>
 	
-	/* 맛집 목록이동 */
-	function goMatlist(){
-		location.href = "/community/matzip/matlist";
-	}
+	
 	</script>
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	

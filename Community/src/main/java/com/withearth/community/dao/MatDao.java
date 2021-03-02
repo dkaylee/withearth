@@ -24,7 +24,7 @@ public interface MatDao {
 	// 총 맛집수 조회
 	int selectSearchMatzipCount(Map<String, Object> listMap);
 	
-	// 맛집 검색
+	// 리스트에 맞는 맛집 검색
 	List<MatzipVo> selectMatList(Map<String, Object> param);
 	
 	// 게시물 조회 - 디테일뷰 
@@ -36,6 +36,7 @@ public interface MatDao {
 	// 게시물 수정
 	int updateMatzip(MatzipVo matzip);
 	
+	
 	//------------file upload------------
 	
 	// 파일 업로드
@@ -43,24 +44,15 @@ public interface MatDao {
 	int fileUpload(FileVo file);
 	    
 	// 파일 삭제
-	int fileDelete(int fileIdx);
+	int fileDelete(int matIdx);
 	
 	// 파일 수정
-	int updateFile(Map<String, Object> map) ;
+	int updateFile(FileVo file) ;
 	
 	// 파일 조회
 	List<FileVo> selectFileList(int matIdx);
 
 	
-	List<MatzipVo> seletAddrInfo();
-
-	
-	
-	
-	
-	
-	
-
 	
 
 }

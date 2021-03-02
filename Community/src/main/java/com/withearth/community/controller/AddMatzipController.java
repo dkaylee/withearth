@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.withearth.community.domain.FileVo;
 import com.withearth.community.domain.MatAddRequest;
 
 import com.withearth.community.service.AddMatzipService;
@@ -20,15 +22,31 @@ public class AddMatzipController {
 	@Autowired
 	private AddMatzipService addMatService;
 	
+	// 게시물 등록
 	@RequestMapping(method = RequestMethod.GET)
 	public String getAddForm() {
-		
+			
 		return "/matzip/addmatForm";
 	}
 	
+//	@RequestMapping(method = RequestMethod.POST)
+//	public int addMat(
+//			MatAddRequest matRequest,
+//			MultipartHttpServletRequest mprq,
+//			Model model
+//			) {
+//		
+//		int result = addMatService.addMatzip(matRequest, mprq);
+//		
+//		System.out.println(":::::Request:::::"+ matRequest);
+//		model.addAttribute("result", result);
+//		
+//		return result;
+//	}
+	
 	@RequestMapping(method = RequestMethod.POST)
-	public String addMat(
-			@ModelAttribute("matData") MatAddRequest matRequest,
+	public int addMat(
+			MatAddRequest matRequest,
 			MultipartHttpServletRequest mprq,
 			Model model
 			) {
@@ -38,8 +56,7 @@ public class AddMatzipController {
 		System.out.println(":::::Request:::::"+ matRequest);
 		model.addAttribute("result", result);
 		
-		
-		return "/matzip/matDetailView";
+		return result;
 	}
 	
 }

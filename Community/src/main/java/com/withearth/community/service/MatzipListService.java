@@ -79,19 +79,5 @@ public class MatzipListService {
 		return list;
 	}
 	
-	public List<MatzipVo> getMapInfo(){
-		
-		List<MatzipVo> mapInfo = null;
-		
-		try {
-		dao = template.getMapper(MatDao.class);
-		
-		mapInfo = dao.seletAddrInfo();
-		
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mapInfo;
-	}
 	
 }

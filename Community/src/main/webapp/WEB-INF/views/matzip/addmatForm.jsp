@@ -26,10 +26,9 @@
 	function goMatlist(){
 		location.href = "/matzip/matlist";
 	}
-	/* 파일업로드 미리보기 */
-	 $(document).ready(
-			 
-		     function() {
+	/* 맛집추가 및 파일업로드 */
+	 $(document).ready(function() {
+		 
 		        // 태그에 onchange를 부여한다.
 		        $('#mImg').change(function() {
 		                addPreview($(this)); //preview form 추가하기
@@ -44,11 +43,12 @@
 					console.log(files);
 					
 					var formData = new FormData();
+					
 					formData.append("matTitle", $('#mTitle').val()),
-					formData.append("matAddr", $('mAddr').val()),
-					formData.append("matTime", $('mTime').val()),
-					formData.append("matNum", $('mNum').val()),
-					formData.append("matCont", $('mCont').val());
+					formData.append("matAddr", $('#mAddr').val()),
+					formData.append("matTime", $('#mTime').val()),
+					formData.append("matNum", $('#mNum').val()),
+					formData.append("matCont", $('#mCont').val());
 					
 					for(var i=0; i<files.length; i++){
 						formData.append("matImg", $('mImg').val());
@@ -61,12 +61,19 @@
 						url : '/matzip/addmatzip',
 						type : 'POST',
 						data : formData,
-						enctype : 'multipart/form-data',
 						processData : false,
 						contentType : false,
 						cache : false ,
 						success : function (data){
-								alert("업체등록을 완료하였습니다.");
+							var result = data.result;
+							if(result != null){		
+								if(result == "1"){
+									alert("업체등록을 완료하였습니다.");
+									
+									goMatlist();
+									
+									}
+								}
 							},
 							error :
 								alert("업체등록을 다시해주세요.")
@@ -75,8 +82,6 @@
 		   }); 
 	
 			
-			
-		 
 		    // image preview 기능 구현
 		    // input = file object[]
 		     function addPreview(input) {
@@ -92,6 +97,7 @@
 		                    $("#preview").append(
 		                        "<img src=\"" + img.target.result + "\"\/>"
 		                    );
+		                    
 		                };
 		                
 		                reader.readAsDataURL(file);
@@ -111,6 +117,7 @@
 	<div class="inner">
 			<header class="align-center">
 				<h2>새로운 맛집 추가</h2>
+				<hr class="major"/>
 			</header>
 	
 	<!-- 맛집추가 폼 -->	

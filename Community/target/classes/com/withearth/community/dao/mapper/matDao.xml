@@ -103,7 +103,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 파일 삭제 -->
 	<delete id="fileDelete">
-	delete from Matfile where file_idx = #{fileIdx}
+	delete from Matfile where mat_idx = #{matIdx}
 	</delete>
 	
 	<!-- 파일 찾기 -->

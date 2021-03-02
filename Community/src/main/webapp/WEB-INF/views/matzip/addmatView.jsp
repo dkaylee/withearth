@@ -14,9 +14,11 @@
 
 <body class="subpage">
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
+	
+	<section id="three" class="wrapper special">
 	<div class="row uniform">
 		<header class="align-center">
-				<h2>맛집추가완료</h2>
+		<h2>맛집 추가 완료</h2>
 		</header>
 		<hr>
 		
@@ -50,6 +52,7 @@
 			</div>
 		</form>
 	</div>
+	</section>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<script type="text/javascript"></script>
