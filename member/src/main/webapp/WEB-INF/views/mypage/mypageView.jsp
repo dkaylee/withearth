@@ -64,7 +64,7 @@
 						</div>
 						<div class="box person">
 							<div class="image round">							
-							<a href="<c:url value="/dona/main/post/mypost?idx=${loginInfo.idx}"/>">
+							<a href="<c:url value="/dona/main/post/mypost?idx=1"/>">
 							<img src="<c:url value="/img/point/mypost.png"/>" alt="mypage-pic4">
 							</a>
 							</div>

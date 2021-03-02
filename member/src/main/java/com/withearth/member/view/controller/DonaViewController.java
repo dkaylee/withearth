@@ -60,9 +60,9 @@ public class DonaViewController {
 			HttpServletRequest request,
 			Model model) {
 				
-	   HttpSession session  = request.getSession(false);
-	   session.setAttribute("idx", 3);
-	   System.out.println(session);
+	  HttpSession session  = request.getSession(false);
+	  session.setAttribute("idx", 3);
+	  System.out.println(session);
 	   
 		return "dona/post/postDetailView";
 	}
