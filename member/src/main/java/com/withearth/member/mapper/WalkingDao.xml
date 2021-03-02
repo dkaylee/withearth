@@ -47,8 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
-	<!-- <!-- 1-2. 코스 idx, loc_km 조회 -->
-	<select id="pointCourse" parameterType="map" resultMap="coursePointResult">
+	<!-- 1-2. 코스 idx, loc_km 조회 -->
+	<!-- <select id="pointCourse" parameterType="map" resultMap="coursePointResult">
 		select course_idx, loc_km from open.walking order by course_date desc limit 1
 	</select> -->
 	
