@@ -47,7 +47,7 @@
 			<div class="wrap-profile">
 				<!-- 회원 idx로 회원 정보를 받아오는 ajax 필요함! -->
 				<div class="profileImage">
-					<img alt="프로필 사진" width="50px" height="50px" class="profile">
+					
 				</div>
 				<div class="userInfo">
 					<div class="userId"></div>
@@ -58,8 +58,8 @@
 
 				<div class="post" id="heart-div">
 					<c:choose>
-						<c:when test="${idx ne null}">
-							<!-- 회원 번호가 null이 아닐 때(세션값 받아서 확인하기)-->
+						<c:when test="${loginInfo.idx ne null}">
+							<!-- 회원 번호가 null이 아닐 때-->
 							<span class="icon"> <a href='javascript: click_heart();'><img
 									width="25px" src='<c:url value="/img/dona/unlike.png" />'
 									id='like_img'></a></span>
@@ -95,7 +95,7 @@
 		// 게시물 idx
 		var donaIdx = getParameterByName('idx');
 		// 회원 idx
-		var idx = '<c:out value="${idx}"/>';
+		var idx = '<c:out value="${loginInfo.idx}"/>';
 
 		// 좋아요 클릭 시 처리
 		function click_heart() {
@@ -148,6 +148,7 @@
 			}
 
 		});
+				
 
 		// 컨트롤러로 값 넘기기 (회원 게시물 데이터 받기)
 		$.ajax({
@@ -164,6 +165,27 @@
 					
 					var ownerIdx = data.idx;
                     console.log(ownerIdx);
+                    
+                 // 작성한 회원의 프로필 정보 받아오기
+            		$.ajax({
+            			url: '/member/member/ajaxTest/test?idx='+ownerIdx,
+            			type: 'get',
+            			contentType: "application/json; charset=UTF-8",
+            			success: function(data){
+            				console.log(data);
+            				
+            				var pHtml = '<img alt="프로필 사진" src="<c:url value="/fileuplaod/member/'+data.photo+'"/>" width="50px" height="50px" class="profile">';
+            				$('.profileImage').append(pHtml);
+            				
+            				var nHtml = data.name;
+            				$('.userId').append(nHtml);
+            			},
+            			error: function(error){
+            				console.log(error);
+            			}	
+            			
+            			});
+                    
                     
 					// 채팅으로 이동 (파라미터 넘기기)
 					var cHtml = '<input type="button" name="cBtn" id="chatBtn" value="작성자와 채팅하기">';
@@ -242,8 +264,8 @@
 		$(".carousel-control-next").click(function() {
 			$("#myCarousel").carousel("next");
 		});
-	</script>
-	<script src="<c:url value="/js/bootstrap/bootstrap.bundle.js" />"></script>
+</script>
+<%-- <script src="<c:url value="/js/bootstrap/bootstrap.bundle.js" />"></script> --%>
 </body>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
