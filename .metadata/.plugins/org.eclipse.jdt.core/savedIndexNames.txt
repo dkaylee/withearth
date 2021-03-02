@@ -63,7 +63,6 @@ INDEX VERSION 1.131+C:\Users\wnfid\Documents\withearth\.metadata\.plugins\org.ec
 1655497026.index
 3138126052.index
 670528346.index
-3448632339.index
 866279528.index
 1699244706.index
 3970494247.index

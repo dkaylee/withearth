@@ -151,30 +151,28 @@ ul li {
 
 <script>
 
-// 파라미터로 페이지 번호 받기
+
+	// 파라미터로 페이지 번호 받기
 	function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 	
-    var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);	
-    
-  return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex
+				.exec(location.search);
+
+		return results === null ? "" : decodeURIComponent(results[1].replace(
+				/\+/g, " "));
+	}
 
 	var p = getParameterByName('p');
-    console.log(p); 
-
+	console.log(p);
 
 	$(document).ready(function() {
-		
-		 
-    	
-    	 // $('#wrapContent').empty();
-		  $('.paging').empty();
+
+						$('.paging').empty();
 
 						$.ajax({
-									url  : 'http://localhost:8080/tumbler/tumlist/rest?p='+p,
+									url : 'http://localhost:8080/tumbler/tumlist/rest?p='+ p,
 									type : 'GET',
 									async : false,
-									
 									success : function(data) {
 
 										console.log(data);
@@ -195,26 +193,26 @@ ul li {
 										html += '</table>';
 
 										$('#tum_list').append(html);
-										  var a = '';
-							              var cntPerPage = data.cntPerPage;
-							              var startRow = data.startRow;
-							              var endRow = data.endRow;
-							              var tumlist = data.tumlist;
-							              var totalTpointCount = data.totalTpointCount;
-							              var totalPageCount = data.totalPageCount;
-						
-
-
+										var a = '';
+										var cntPerPage = data.cntPerPage;
+										var startRow = data.startRow;
+										var endRow = data.endRow;
+										var tumlist = data.tumlist;
+										var totalTpointCount = data.totalTpointCount;
+										var totalPageCount = data.totalPageCount;
 
 										$.each(tumlist, function(index, item) {
-											 console.log("data : " + data.tumlist);
-							                 console.log(tumlist);
-							                 console.log(cntPerPage + "," + startRow + "," + endRow);
-							                 console.log("start : " + startRow);
-							                 console.log("end : " + endRow);
-							                 console.log("totalTpointCount:"+totalTpointCount);
-							                 console.log("totalPageCount:"+totalPageCount)
-					 
+											console.log("data : "
+													+ data.tumlist);
+											console.log(tumlist);
+											console.log(cntPerPage + ","
+													+ startRow + "," + endRow);
+											console.log("start : " + startRow);
+											console.log("end : " + endRow);
+											console.log("totalTpointCount:"
+													+ totalTpointCount);
+											console.log("totalPageCount:"
+													+ totalPageCount)
 
 											html2 = '<tr>';
 											html2 += '<td>' + item.tum_idx+ '</td>';
@@ -228,50 +226,37 @@ ul li {
 										});
 
 										// 페이징 처리
-										  if (data.totalTpointCount > 0) {
+										if (data.totalTpointCount > 0) {
 											var pHtml = '<ul class="pagination"></ul>';
 											$('.paging').append(pHtml)
-											console.log('totalTpointCount :'+ data.totalTpointCount);
+											console.log('totalTpointCount :'
+													+ data.totalTpointCount);
 
 											for (var i = 1; i <= data.totalPageCount; i++) {
-												 var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+i+'">'+i+'</a></li>';
+												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+ i+ '">'+ i+ '</a></li>';
 												$('.pagination').append(html3);
 											}
-										}; 
-										
-									
-										
+										}
+										;
+
 										/* for (var num=startRow; num<=endRow; num++) {
-							                 if (num == cntPerPage) {
-							                      a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-							                 } else {
-							                      a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-							                 }
-							              }
+										     if (num == cntPerPage) {
+										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
+										     } else {
+										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
+										     }
+										  }
 										
 										
 										
 										$('.ttbody').html(a);
- */
+										 */
 
-									},error : function(e) {
+									},
+									error : function(e) {
 										console.log("에러발생!! : ", e);
 									}
 								});
 
 					});
-				
-
-
-
-		
-
-
-		
-
-	
-		
-
-
-
 </script>
