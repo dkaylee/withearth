@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.withearth.member.dao.MemberDAO">
 
 <!-- 로그인할때 사용2) Member타입의 resultMap 왜써야 하는건지 모르겠어요-->
-<!-- 변수와 컬럼이름이 일치하지 않을때 사용하는 것! 그렇지만 우리는 일치하므로 쓰지 않아도 됨 -->
+<!-- 변수와 컬럼이름이 일치하지 않을때 사용하는 것! -->
 <resultMap id="memberResult"
 			type="com.withearth.member.domain.Member">
 	<id column="idx" property="idx"/>
@@ -150,5 +150,11 @@ select * from wuser where id= #{param1}
 		update wuser set pw=#{pw} where id=#{id}
 </update>
 
+<!-- 누구의 idx인가 -->
+<select id="selectLoginIdx"
+		resultMap="memberResult"> <!-- id와 매핑된다. -->
+
+select * from wuser where idx= #{idx}
+</select>
 
 </mapper>
