@@ -17,7 +17,7 @@
 		p:jdbcUrl="jdbc:mysql://openproject.cqt58ayj4ipx.ap-northeast-2.rds.amazonaws.com:3306/open?serverTimezone=UTC"
 		p:username="aia"
 		p:password="aia"></bean>
-	
+
 <!-- SqlSessionFactoryBean 등록 -->
 <!-- 이 객체가 DataSource를 참조하여 MyBatis와 Mysql 서버를 연동시켜준다-->
 <!-- 마이바티스 XML파일이 매퍼 클래스와 동일한 클래스패스에 있지 않은 경우 mapperlocations 설정 -->

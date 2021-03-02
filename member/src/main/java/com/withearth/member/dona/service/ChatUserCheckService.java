@@ -1,4 +1,4 @@
-package com.withearth.member.dona.controller;
+package com.withearth.member.dona.service;
 
 import java.util.List;
 

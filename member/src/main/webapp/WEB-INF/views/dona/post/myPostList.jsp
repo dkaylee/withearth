@@ -8,66 +8,8 @@
 <title>WithEarth</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="<c:url value="/css/dona/postlist.css"/>"/>
 <style>
-#banner {
-	margin-bottom: -100px;
-}
-   
-.article {
-	width: 500px;
-	height: 250px;
-	padding: 20px;
-	text-align: center;
-	margin-bottom: 30px;
-	border: 1px solid #EEE;
-	background-color: #EEE;
-	border-radius: 10px;
-}
-
-.article-img {
-	float: left;
-	width: 200px;
-	height: 200px;
-}
-
-.img {
-	width: 200px;
-	height: 200px;
-	border-radius: 10px;
-}
-
-.article-content {
-	float: left;
-	margin-left: 8px;
-}
-
-.article-title {
-	float: left;
-	width: 250px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	text-align: left;
-	font-size: 23px;
-}
-
-.article-heart {
-	text-align: left;
-	font-size: 15px;
-}
-
-.title {
-	font-size: 50px;
-	font-weight: bold;
-}
-
-.pBtn {
-	float: right;
-}
-
-tr>th{
-  text-align: center;
-}
 </style>
 </head>
 
