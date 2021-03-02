@@ -10,7 +10,6 @@ import com.withearth.member.domain.Member;
 @Service
 public class AjaxTestTwoService {
 	
-	@Autowired
 	private MemberDAO dao;
 	
 	@Autowired
@@ -19,6 +18,7 @@ public class AjaxTestTwoService {
 	public Member ajaxTest(int idx) {
 		dao = template.getMapper(MemberDAO.class);
 		Member member = dao.selectLoginIdx(idx);
+		System.out.println(member);
 		return  member;
 		
 	}

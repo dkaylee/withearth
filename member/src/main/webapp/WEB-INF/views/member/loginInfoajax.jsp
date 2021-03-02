@@ -28,7 +28,6 @@ $(document).ready(function(){
 					name:loginName,
 					photo:loginPhoto};
 	
-	 //회원가입 버튼 클릭시,
 	 $('#btnwhologin').click(function(){ 
 		
 		$.ajax({
@@ -49,14 +48,13 @@ $(document).ready(function(){
 	 });
 	 
 			
-	 //회원가입 버튼 클릭시,
-	 $('#btnwhologin').click(function(){ 
+	 $('#btnwhosidx').click(function(){ 
 		 var idx = 103
 		$.ajax({
 		url: '/member/member/ajaxTest/test?idx='+idx,
 		type: 'get',
 		contentType: "application/json; charset=UTF-8",
-		//data: //{"idx": 103},
+		//data: {"idx": idx},
 		dataType:'text',
 		success: function(data){
 			alert("성공");
