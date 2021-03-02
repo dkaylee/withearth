@@ -9,7 +9,7 @@
 	<!-- 데이터소스 설정 -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		p:driverClassName="com.mysql.cj.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://localhost:3306/withearth?serverTimezone=UTC"
+		p:jdbcUrl="jdbc:mysql://openproject.cjnntgivhj2o.ap-northeast-2.rds.amazonaws.com:3306/withearth?serverTimezone=UTC"
 		p:username="user" p:password="user"/>
 	
 	<!--SqlSessionFactory 설정 -->	

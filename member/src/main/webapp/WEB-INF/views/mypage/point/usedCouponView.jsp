@@ -38,13 +38,14 @@
   }
   
   var idx = getParameterByName("idx");
+  console.log(idx);
   var cIdx = getParameterByName("cIdx");
 
    $(document).ready(function(){
 	   
 	   $.ajax({
 		   
-		   url : 'http://localhost:8080/point/rest/user/coupon/use',
+		   url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/coupon/use',
 		   type : 'GET',
 		   data : 'idx='+idx+'&cIdx='+cIdx,
 		   success : function(data){
@@ -52,9 +53,9 @@
 			   var html = "";
 			   
 			   if(data==1){			   
-				   html += '<img alt="QrImage" width="40px" src="<c:url value="/images/success.png"/>"><h1 class="msg">쿠폰 사용이 완료되었습니다.</h1>';
+				   html += '<img alt="QrImage" width="40px" src="<c:url value="/img/point/success.png"/>"><h1 class="msg">쿠폰 사용이 완료되었습니다.</h1>';
 			   } else {
-				   html += '<img alt="QrImage" width="40px" src="<c:url value="/images/notice.png"/>"><p class="msg">이미 사용하신 쿠폰입니다.</p>';
+				   html += '<img alt="QrImage" width="40px" src="<c:url value="/img/point/notice.png"/>"><p class="msg">이미 사용하신 쿠폰입니다.</p>';
 			   }
 			   
 			   $('.notice').append(html);

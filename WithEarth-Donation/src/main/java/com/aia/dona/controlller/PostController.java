@@ -47,17 +47,17 @@ public class PostController {
 	@Autowired
 	private RedisService redis;
 	
-	// 세션받기?
-	@GetMapping("/session/{session}")
-	public String getSession(			
-			@PathVariable("session") String sessionid) {
-	
-		System.out.println("redis :"+sessionid);
-		//redis.getUserInformation(sessionid);
-		System.out.println(redis.getUserInformation(sessionid));		
-		return sessionid;
-	}
-	
+//	// 세션받기?
+//	@GetMapping("/session/{session}")
+//	public String getSession(			
+//			@PathVariable("session") String sessionid) {
+//	
+//		System.out.println("redis :"+sessionid);
+//		//redis.getUserInformation(sessionid);
+//		System.out.println(redis.getUserInformation(sessionid));		
+//		return sessionid;
+//	}
+//	
 	// 게시물을 업로드
 	@PostMapping("/upload")
 	@ResponseBody
