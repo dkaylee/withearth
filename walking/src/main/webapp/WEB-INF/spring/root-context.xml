@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- 데이터 베이스 설정 -->
+	<!-- dataSource 등록 -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		p:driverClassName="com.mysql.cj.jdbc.Driver"
+		p:jdbcUrl="jdbc:mysql://openproject.cspymqrfgzev.ap-northeast-2.rds.amazonaws.com/open?serverTimezone=UTC"
+		p:username="aia" p:password="aia"
+		 />
+
+	<!-- JdbcTemplate 클래스 등록 -->
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource" />
+
+	
+	<!-- sqlSessionFactory -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:mapperLocations="classpath:com/withearth/walking/dao/mapper/*.xml" />
+
+
+	<!-- sqlSessionTemplate Bean 등록 -> SqlSessionFactory를 사용해서 등록 -->
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg  ref="sqlSessionFactory" />
+	</bean>
+
+
+
+
+</beans>

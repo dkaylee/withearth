@@ -14,8 +14,8 @@ import com.withearth.member.service.KakaoLoginService;
 @RestController
 public class GoogleLoginController {
 
-	//@Autowired
-	//GoogleLoginService googleLoginService;
+	@Autowired
+	GoogleLoginService googleLoginService;
 	
 	//카카오 로그인 세션정보 저장
 	@PostMapping(value = "/member/googleLogin")
@@ -24,8 +24,8 @@ public class GoogleLoginController {
 			HttpServletResponse response, //여기서 헷갈리네
 			Model model
 			) {
-		//model.addAttribute("loginCheck", googleLoginService.login(request, response));
-		//System.out.println(googleLoginService.login(request, response));
+		model.addAttribute("loginCheck", googleLoginService.login(request, response));
+		System.out.println(googleLoginService.login(request, response));
 		System.out.println(request.getParameter("id"));
 		return "member/loginview";
 	}
