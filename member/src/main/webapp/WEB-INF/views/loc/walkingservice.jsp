@@ -842,7 +842,7 @@
 			    // idx+이동거리 ->   ajax -> 포인트적립으로 이동
 			    //로그인한 회원 idx ->
 			    //배포주소로,,
-/* 				$.ajax({
+				$.ajax({
 				
 					url: 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/course/'+idx+'/'+data,
 					type: 'post',
@@ -860,7 +860,7 @@
 						console.log(error);
 						console.log('포인트 적립 실패');
 					}
-				}); // point-ajax */
+				}); // point-ajax 
 				
 				alert('코스 저장을 성공했습니다.');
 			},

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withearth.member.walking.dao.WalkingDao">
+
+	<!-- 21.02.25: table을 AWS-RDS-AIA open.walking으로 설정  -->
+
+	<!-- Course Type의 resultMap #resultMap id 주의!!!(대소문자 구분할 것) -->
+	<resultMap id="courseResult" type="com.withearth.member.walking.domain.Course"  >
+		<id column="course_idx" property="course_idx"/>
+		<result column="course_date" property="course_date"/>
+		<result column="loc_km" property="loc_km"/>
+		<result column="about_time" property="about_time"/>
+		<result column="start_point" property="start_point"/>
+		<result column="end_point" property="end_point"/>
+		<result column="walking_time" property="walking_time"/>
+		<result column="user_idx" property="user_idx"/>
+		
+	</resultMap>
+	
+	<resultMap id="coursePointResult" type="com.withearth.member.walking.domain.Course"  >
+		<id column="course_idx" property="course_idx"/>
+		<result column="loc_km" property="loc_km"/>
+	</resultMap>
+
+
+	<!-- 코스 리스트 -->
+	<!-- <resultMap id="courseListResult" type="com.withearth.walking.domain.Course" >
+		<id column="course_idx" property="course_idx"/>
+		<result column="course_date" property="course_date"/>
+		<result column="loc_km" property="loc_km"/>
+		<result column="walking_time" property="walking_time"/>
+		<result column="start_point" property="start_point"/>
+		<result column="end_point" property="end_point"/>
+	</resultMap> -->
+	
+	
+	<!-- 1. 코스 등록 -->
+	<insert id="insertCourse"
+			parameterType="com.withearth.member.walking.domain.Course"
+			useGeneratedKeys="true"
+			keyProperty="course_idx">
+		
+		insert into open.walking( loc_km, about_time, start_point, end_point, walking_time, user_idx) values(#{loc_km}, #{about_time}, #{start_point}, #{end_point} , #{walking_time}, #{user_idx})	
+	
+	</insert>
+	
+	<!-- 1-2. 코스 idx, loc_km 조회 -->
+	<select id="pointCourse" parameterType="map" resultMap="coursePointResult">
+		select course_idx, loc_km from open.walking order by course_date desc limit 1
+	</select>
+	
+	
+	
+	<!-- 2. 전체 회원의 수 -->
+	<update id="courseCountUpdate">
+		update course_count set coursecount = coursecount+1 
+	</update>
+	
+	
+	<!-- 3. 코스의 총 개수-->
+	<select id="selectTotalCount" resultType="int">
+		select count(*) from open.walking
+	</select>
+	
+	
+	<!-- 4. 코스 리스트 v-->
+	<select id="selectCourseList" parameterType="map" resultMap="courseResult"> 
+		select * from open.walking
+		
+		<where>
+			<if test="searchParam != null">
+				<if test="searchParam.searchType == 'date'">
+					  <include refid="searchDate"/>
+				</if>
+				
+				<if test="searchParam.searchType == 'end'">
+					 <include refid="searchEnd"/>
+				</if>
+				
+				<if test="searchParam.searchType == 'both'">
+					 <include refid="searchDate"/>
+					 <include refid="searchEnd"/>
+				</if>
+			</if>
+		</where>
+		
+		limit #{index}, #{count}
+		
+	</select>
+	
+	
+	<!-- 5. Rest API - GET v -->
+	<select id="selectAllCourseList" resultMap="courseResult">
+		select * from open.walking
+	</select>
+	
+	
+	<!-- 6. 검색한 회원의 수 -->
+	<select id="selectSearchCourseCount" 
+			parameterType="com.withearth.member.walking.domain.SearchParam"
+	        resultType="int" >
+	        
+		select count(*) from open.walking
+		
+		<!-- where idx>0  -->
+		
+		<where>
+			<if test="searchParam.searchType == 'date'">
+				  <include refid="searchDate"/>
+			</if>
+			
+			<if test="searchParam.searchType == 'end'">
+				 <include refid="searchEnd"/>
+			</if>
+			
+			<if test="searchParam.searchType == 'both'">
+				 <include refid="searchDate"/>
+				 <include refid="searchEnd"/>
+			</if>
+		</where>
+	
+	</select>
+	
+	
+	<!--  저장 일자로 검색 -->
+	<!-- <sql id="searchDate">
+		or course_date like	concat('%',#{searchParam.keyword},'%')
+	</sql> -->
+	
+	<sql id="searchDate">
+		or course_date like	concat('%',#{searchParam.keyword},'%')
+	</sql>
+	
+	
+	<!-- 목적지로 검색 -->
+	<sql id="searchEnd">
+	  or end_point like	concat('%',#{searchParam.keyword},'%')
+	</sql>
+	
+	
+	<!-- 7. 코스 정보 삭제 -->
+	<delete id="deleteCourseByIdx">
+		delete from open.walking where course_idx=#{course_idx}
+	</delete>
+	
+	
+	<!-- 8. 코스 정보 조회: idx로 조회 v -->
+	<select id="selectCourseByIdx" resultMap="courseResult">
+		select * from open.walking where course_idx=#{no}
+	</select>
+	
+	
+	<!-- 9. idx, verify 조건으로 조회 -->
+	<select id="selectCourseByIdxVerify" resultType="int" >
+		select count(*) from open.walking where course_idx=#{course_idx} and verify='Y'
+	</select>
+	
+	
+
+	
+	
+	
+
+	
+	
+	
+	
+</mapper>
