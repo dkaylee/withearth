@@ -25,6 +25,7 @@
 <style>
 
 
+
 .mainPage{	
 	margin-top: 5%;
 	margin-left: 10%;
@@ -862,18 +863,18 @@
 	
     /*******************************모달창 기능********************************************/
     
-    var myModal = document.getElementById('myModal');
-	var myInput = document.getElementById('myInput');
+   /*  var myModal = document.getElementById('myModal');
+	var myInput = document.getElementById('myInput'); */
 
 	/* myModal.addEventListener('shown.bs.modal', function () {
 	  myInput.focus()
 	}) */
     
-    function infoModal(){
+    /* function infoModal(){
     	$('#InfoModal').modal('show');
-	}
+	} */
     
-	
+	// view 페이제에 login값 불러오는 ajax -> login -> 저장된 cidx 반환 idx, 거리
 	
 </script>
 

@@ -49,7 +49,7 @@ $(document).ready(function(){
 	 
 			
 	 $('#btnwhosidx').click(function(){ 
-		 var idx = 103
+		 var idx = "${loginInfo.idx}"
 		$.ajax({
 		url: '/member/member/ajaxTest/test?idx='+idx,
 		type: 'get',

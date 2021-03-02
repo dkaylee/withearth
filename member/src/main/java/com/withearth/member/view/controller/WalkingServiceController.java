@@ -26,7 +26,7 @@ public class WalkingServiceController {
 	
 	// 코스 설정 후 완료 안내 페이지
 	  
-		  @RequestMapping(value="/loc/walkingservice", method = RequestMethod.POST)
+		  @RequestMapping(value="/member/loc/walkingservice", method = RequestMethod.POST)
 		  @ResponseBody
 		  public String courseSetView( 
 				  CourseSettingRequest setRequest,
