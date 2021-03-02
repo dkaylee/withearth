@@ -7,61 +7,17 @@
 <meta charset="utf-8" />
 <title>WithEarth</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.1.0.min.js?"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js?"></script>
+<link rel="stylesheet" href="<c:url value="/css/dona/write.css"/>" />
 <style>
-.title {
-	text-align: center;
-	font-size: 35px;
-	font-weight: bold;
-	color : #737373;
-}
-
-.writeForm{
- margin : 0 280px !important;
-}
-
-#galleryIcon{
- padding-top : 8px; 
- margin-bottom : -12px;
- cursor:pointer;
- border-radius : 5px;
-}
-
-#galleryIcon:active{
- box-shadow: 1px 1px 0 #DDD;
- position: relative; 
- top:2px;
-}
-
-
-.display_none{
-  display : none;
-}
-
-.display_block{
- display : block;
-}
-
-.imageList{
-  width : 700px;
-  float : left;
-  margin-top : 15px;
-}
-
-.uploadFileBtn{
-  width : 50px;
-}
-
-
 </style>
 </head>
 
 <body id="page-top">
 
-	<%@ include file="/WEB-INF/views/include/header.jsp"%>
+<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
-	<section id="banner"></section>
+<section id="banner"></section>
  <div class="writeForm">
 	<form method="post" enctype="multipart/form-data" id="uploadForm">
 		<h3 class="title">무료나눔 글쓰기</h3>
@@ -106,7 +62,8 @@
 		</div>
 	</form>
 </div>
-	<script>
+<%-- <script src="<c:url value="/js/dona/"/>"></script> --%>
+<script>
 	
 	var image_list = [];
 	
@@ -201,14 +158,14 @@
 							var reader = new FileReader();
 							reader.onload = function(e) {
 								
-								var img_html = '<a href="javascript:void(0);" onclick=\"deleteNewImageAction('+ index + ');\" id="img_id_'+ index+ '" class="img_event" >';
-								img_html += '<img src="'+e.target.result+'" data-file="'+f.name+'" style="width:100px; height:100px;"></a>';
-
+								var img_html = '<a href="javascript:void(0);" onclick=\"deleteNewImageAction('+ index + ');\" id="img_id_'+ index+ '" class="img_event" >';								
+								img_html += '<img src="'+e.target.result+'" data-file="'+f.name+'" style="width:100px; height:100px;">';
+                                img_html += '<img src="<c:url value="/img/dona/xbtn.jpg"/>" width="15px;" id="xBtn"></a>';
 								index++;
 
 								$('.imageList').append(img_html);
-								var target = $('.imageList');
-								$('.uploadFileBtn').prepend(target);
+								//var target = $('.imageList');
+								//$('.uploadFileBtn').prepend(target);
 
 							}
 							reader.readAsDataURL(f);
