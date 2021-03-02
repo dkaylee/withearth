@@ -44,7 +44,7 @@ public class CourseSettingService {
 		}
 		
 		
-		return course.getCourse_idx(); // result -> course.getCourse_idx() -> return 의미 다시 잘 찾아보기...
+		return course.getCourse_idx(); // result -> course.getCourse_idx() 
 	}
 	
 	// point 적립을 위한 course_idx, loc_km 전달

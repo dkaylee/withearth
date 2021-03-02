@@ -830,8 +830,8 @@
 				atime: aTime, 			// 예상 시간
 				startAdd: revresult, 	// 출발지 주소
 				endAdd: newAddress,  	// 목적지 주소 -> newAddress를 전역 변수로 저장해서 값을 불러온다.
-				ttime: tTime			// 소요 시간
-				
+				ttime: tTime,			// 소요 시간
+				uIdx: idx				// 회원 idx 값
 			}, 
 			success: function(data){
 				
