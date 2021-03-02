@@ -17,25 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TumViewController {
-	
-	@Autowired
-	//private TumListService tumlistService;
-	
-//	 @RequestMapping("/tumbler/{cafe_idx}") 
-//		public String makeqr(HttpServletRequest request, 
-//				HttpSession session,
-//				Model model,
-//				  @PathVariable("cafe_idx") int cafeIdx
-//				)throws IOException {
-//			 
-//
-//	      return "tumbler/saving"; 
-//	      
-//		 }
-	
 
-	
-	
     //카페 리스트
 	@RequestMapping(value="/tumbler/tumlist1", method = RequestMethod.GET)
 	public String cafeList(Model model,HttpServletRequest request) {
@@ -60,7 +42,7 @@ public class TumViewController {
 	}
 	
 	//포인트 적립
-	@RequestMapping("/cafe_idx")
+	@RequestMapping("/tumbler/{cafe_idx}")
 	public String getTumList(Model model, HttpServletRequest request, @PathVariable("cafe_idx") int cafe_idx) {
    
 		

@@ -232,8 +232,7 @@ ul li {
 												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+ i+ '">'+ i+ '</a></li>';
 												$('.pagination').append(html3);
 											}
-										}
-										;
+										};
 
 										/* for (var num=startRow; num<=endRow; num++) {
 										     if (num == cntPerPage) {

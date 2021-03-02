@@ -60,7 +60,7 @@ public class TumViewController {
 	}
 	
 	//포인트 적립
-	@RequestMapping("tumbler/cafe_idx")
+	@RequestMapping("/tumbler/cafe_idx")
 	public String getTumList (Model model, 
 			                  HttpServletRequest request, 
 			                  @PathVariable("cafe_idx") int cafe_idx

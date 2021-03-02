@@ -17,7 +17,6 @@ import com.withearth.tumbler.service.TumpointService;
 
 @RestController
 @RequestMapping("/rest/tumbler")
-@CrossOrigin
 public class TumpointRestController {
 	@Autowired
 	private TumpointService tumpointService;
@@ -38,8 +37,8 @@ public class TumpointRestController {
 	    // int idx = (int) session.getAttribute("idx");
 		int idx = 1; 
 		int result = tumpointService.registerTumblerPoint(cafeidx, idx);
-		model.addAttribute("listView", tumlistService.getTumList(idx));
-		System.out.println("적립!!!!"+result);
+		//model.addAttribute("listView", tumlistService.getTumList(idx));
+		System.out.println("적립이요!!!!"+result);
 		
 		return tumpointService.registerTumblerPoint(cafeidx,idx);
 	}

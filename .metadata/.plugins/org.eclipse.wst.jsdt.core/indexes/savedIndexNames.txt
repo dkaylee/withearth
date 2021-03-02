@@ -1,19 +1,9 @@
 INDEX VERSION 1.4+C:\Users\wnfid\Documents\withearth\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 3975307410.index
-3110054704.index
-4294795630.index
-2216135310.index
 1387565447.index
-1319363332.index
 3108822964.index
-866279528.index
-3699963350.index
-985885654.index
-1920001439.index
-3091138406.index
-3965485590.index
-450810850.index
-2382612235.index
-9912653.index
 1837490681.index
+866279528.index
 2032948521.index
+3091138406.index
+2268462102.index

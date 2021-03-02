@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.withearth.member.domain.MemberRegRequest"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.member.service.MemberRegService"/>
-<fullyQualifiedTypeName name="com.withearth.member.domain.Member"/>
-<fullyQualifiedTypeName name="com.withearth.member.service.MemberLoginService"/>
-<fullyQualifiedTypeName name="com.withearth.member.service.MemberRegService"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.dao.MemberDAO"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.MemberRegRequest"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Member"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.service.TumpointService"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.Point"/>
 <fullyQualifiedTypeName name="lombok.extern.log4j.Log4j2"/>
@@ -21,7 +15,6 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.PageMaker"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.NewsCriteria"/>
-<fullyQualifiedTypeName name="com.withearth.tumbler.service.TumListService"/>
 <fullyQualifiedTypeName name="com.withearth.tumbler.domain.TumInfo"/>
 <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -29,7 +22,6 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
@@ -60,4 +52,12 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+<fullyQualifiedTypeName name="com.withearth.member.walking.service.CourseListService"/>
+<fullyQualifiedTypeName name="com.withearth.member.tumbler.domain.CafeRequest"/>
+<fullyQualifiedTypeName name="com.google.zxing.WriterException"/>
+<fullyQualifiedTypeName name="com.withearth.member.cafe.dao.CafeDao"/>
+<fullyQualifiedTypeName name="com.withearth.member.tumbler.domain.Cafe"/>
+<fullyQualifiedTypeName name="com.withearth.tumbler.service.TumpointService"/>
+<fullyQualifiedTypeName name="com.withearth.tumbler.service.TumListService"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
 </qualifiedTypeNameHistroy>

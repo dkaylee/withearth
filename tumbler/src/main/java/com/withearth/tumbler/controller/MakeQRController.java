@@ -36,7 +36,7 @@ public class MakeQRController {
 	 
 
 
-	 @GetMapping("/tumbler/{idx}/{cafe_idx}") 
+	 @GetMapping("/{idx}/{cafe_idx}") 
 	public String makeqr(HttpServletRequest request, 
 			HttpSession session,
 			Model model,

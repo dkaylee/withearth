@@ -20,8 +20,8 @@ public class TumpointController1 {
 	private TumpointService tumpointService;
 	@Autowired
 	private TumListService tumlistService;
-	
-	/*	
+	/*
+		
 	//포인트 적립
 //	/tumbler/qr/"+cafe_idx
 	//@GetMapping("/qr/{cafe_idx}")
@@ -36,11 +36,11 @@ public class TumpointController1 {
 		int idx = 1; 
 		int result = tumpointService.registerTumblerPoint(cafe_idx, idx);
 		model.addAttribute("listView", tumlistService.getTumList(idx));
-		System.out.println("적립!!!!"+result);
+		System.out.println("적립!!!!tumbler"+result);
 		
 		return "tumbler/saving";
 	}
-	
-*/
+	*/
+
 
 }

@@ -6,15 +6,8 @@
 <html>
 <head>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="jquery.bootpag.min.js"></script>
 <script src="/resources/js/bootstrap.js"></script>
-<script
-	src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
-
-
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
-
+<
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial=scale=1.0">
@@ -67,12 +60,14 @@
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 	<section id="main" class="wrapper">
+	
+	<h1 class="addpoint"></h1>
 
 
 
-		<div class="head_orderlist">
+ 	<div class="head_orderlist">
 			<!-- Table -->
-			<div id = "addpoint">
+			 <div id = "addpoint">
 			<div id="point">
 			 <img alt="point2" src="<c:url value="/img/point2.jpg"/>" style="width: 35%;">
 				<!-- <img src="/img/point2.png" style="width: 25%;"> -->
@@ -89,8 +84,8 @@
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
 				<a href="#" class="button special" >메인 화면</a>
 				<a href="/tumbler/tumlist" class="button special">텀블러 조회</a>
-			</div>
-			</div>
+			</div> 
+			</div> 
 
 
 
@@ -101,4 +96,69 @@
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
+<script>
+
+
+   
+function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+
+var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
+return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+//var idx = getParameterByName("idx");
+var cafe_idx = getParameterByName("cafe_idx");
+var idx = 1;
+
+$(document).ready(function(){
+	   
+	   $.ajax({
+		   
+		   url : 'http://localhost:8080/rest/tumbler/'+idx+'/'+cafe_idx,
+		   type : 'GET',
+		   data : 'idx='+idx+'cafe_idx='+cafe_idx,
+		   success : function(data){
+			   console.log(data);
+
+		   }, error : function(e){
+			   console.log(e);
+		   }
+		   	   
+	   });
+	   
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
 </html>

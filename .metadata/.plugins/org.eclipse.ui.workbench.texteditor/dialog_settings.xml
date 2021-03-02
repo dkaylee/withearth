@@ -6,8 +6,14 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="pagination"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="cafe_idx."/>
+			<item value="cafe_idx"/>
+			<item value="insertTumbler"/>
+			<item value="registerTumblerPoint"/>
+			<item value="zx"/>
+			<item value="z"/>
 			<item value="pagination"/>
 			<item value="closeOverlay"/>
 			<item value="oncli"/>
@@ -17,12 +23,6 @@
 			<item value="/member/img/cafe1.png"/>
 			<item value="point2"/>
 			<item value=".jpg"/>
-			<item value=".jsp"/>
-			<item value=".png"/>
-			<item value="img"/>
-			<item value="ㅑㅡㅎ"/>
-			<item value="jq"/>
-			<item value="selectTotalCount"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -30,8 +30,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1789"/>
-		<item key="DIALOG_Y_ORIGIN" value="232"/>
+		<item key="DIALOG_X_ORIGIN" value="891"/>
+		<item key="DIALOG_Y_ORIGIN" value="454"/>
 		<item key="DIALOG_WIDTH" value="778"/>
 		<item key="DIALOG_HEIGHT" value="827"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

@@ -41,7 +41,7 @@ public class MakeQRService {
 
 
 	 
-	public String makeqr(int idx, int cafeIdx,HttpServletRequest request, 
+	public String makeqr(int idx,int cafeIdx,HttpServletRequest request, 
 			HttpSession session,
 			Model model) throws WriterException, IOException{
 		 
@@ -57,8 +57,12 @@ public class MakeQRService {
 	       	 	file.mkdirs(); 
 	    	}  
 	    	
+	    	int cafe_idx=67;
+	    	//int cafe_idx = dao.QRcodeNum();
+	    	System.out.println("cafe_idx!!!!!!!!!"+cafe_idx);
 	    	
-	    	int cafe_idx = 1;
+	    	//http://www.localhost.com:8080/rest/tumbler/qr/1/11
+	    	//http://localhost:8080/rest/tumbler/1/67
 	    	
 
       
