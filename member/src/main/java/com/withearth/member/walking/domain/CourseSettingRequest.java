@@ -1,7 +1,5 @@
 package com.withearth.member.walking.domain;
 
-import java.sql.Time;
-
 public class CourseSettingRequest {
 
 	// beans 객체 (타입 주의 - 타입 오류 시 400 에러 발생)
