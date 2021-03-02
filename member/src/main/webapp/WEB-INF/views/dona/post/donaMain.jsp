@@ -12,184 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<style>
-	
-	#banner{
-	  margin-bottom : -200px;
-	}
-	
-	#subTitle{
-	 color : white;
-	font-size : 23px;
-	}
-	
-	#two{
-	  height : 300px;
-	}
-	
-	.article{	
-	 width : 250px;
-	 height : 320px;	 
-	 padding : 15px;
-	 
-	 text-align : center;
-	 margin-bottom : 30px;
-	/*  border : 5px solid #EEE; */
-	 border-radius: 20px;
-	}
-	
-	.article-img{		
-	 float : left;
-	 width : 220px;
-	 height :165px;
-	}
-	
-	.img{
-	 width : 220px;
-	 height :165px;	 
-	 margin-left : 4px;
-	 image-rendering :-webkit-optimize-contrast;
-	 border-radius: 10px;
-	 border : 1px solid #EEE;
-	 cursor: pointer;
-	 
-	 box-shadow: 1px 1px 0 #EEE;
-     position: relative; 
-     top:2px;
-
-	}
-	
-	
-	
-	.article-title{
-	  width : 200px;	  	 	
-	  white-space: nowrap;  
-	  overflow: hidden;
-	  text-overflow: ellipsis;
-	  font-weight : 500;
-	  text-align: left;
-	  font-size : 20px;
-	  color : #02060D;
-	}
-	
-	.article-heart{
-	text-align: left;
-	font-size : 15px;
-	font-weight : 400;
-	
-	}
-	.title{
-	  font-size : 50px;
-	  font-weight: bold;	  
-	  color : white;
-	}	
- 	.pBtn{
-	  float : right;	 
-	} 
-	
-	#writeBtn{
-	 font-size: 22px;
-	 text-decoration: none;
-	 color : black;	
-	 margin-left : 5px;
-	}
-	
-	.wrap-btn{
-	 border : 1px solid #DDD;
-	 padding : 7px;
-	 overflow: hidden;
-     width : 115px;
-     border-radius: 10px;
-     float :right;
-     box-shadow: 2px 2px #EEE;
-     border-color: white;
-	}
-	
-	#updateBtn{
-	 border-radius: 25px !important;
-	 width : 60px;
-	}
-	.searchForm {
-	 margin-left : 770px;
-	 overflow : hidden;
-	 text-align: left;
-	}
-	
-	#searchType{
-	 width : 120px;
-	 border-color : #EEE;
-	 border-radius : 10px 0 0 10px;
-	}
-	
-	.search-unit{
-	  float : left; 	 
-	}
-	
-	#keyword{
-	  border-color : #EEE;	
-	}
-	
-	#searchBtn{
-	  border-radius : 0 10px 10px 0;
-	  background-color: #595959;
-	  border-color: #595959; 
-	}
-	
-/* 	.floating { 
-	position: fixed;
-	right: 50%;
-	top: 280px; 
-	margin-right: -720px; 
-	text-align:center; 
-	width: 120px; 
-	}
-	 */
-
-.pagination{
-  overflow : hidden;
-  float : right; 
-}
-
-.paging{
-  margin-right : 550px;
-}
-
-.page-link{
- border-radius: 5px 5px;
- background-color: #EEE;
- border-color: #EEE;
-}
-
-.notice{
-  display : none; 
-  border : 5px solid #5385c1;
-  background-color : white;
-  border-radius : 20px;
-  width : 270px;
-  height : 130px;  
-  margin-left : 20px;
-  position : fixed;
-  top : 600px;
-  right : 100px;
-}
-
-.noticeBtn{
-  width : 40px !important;
-  height : 30px !important;
-  font-size : 15px !important;
-  padding-right : 50px !important;
-  padding-bottom : 45px !important;
-  text-align : center !important;
-  border-radius: 5px !important;
-  margin : 10px !important;
-  background-color:  #5385c1 !important;
- }
- 
- .noticeMsg{
-   margin-top : 30px;
-   font-size : 15px;
- }
-
+<link rel="stylesheet" href="<c:url value="/css/dona/main.css"/>"/>
+<style>	
 </style>	
 </head>
 <body id="page-top">
@@ -316,7 +140,7 @@
 		var keyword = $('#keyword').val();
 		
 		$.ajax({
-			url : 'http://localhost:8080/dona/rest/user/post/list/search',
+			url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/list/search',
 			type : 'GET',
 			data : 'p='+ i + '&searchType=' +searchType + '&keyword='+keyword,
 			success : function(data){
@@ -330,7 +154,7 @@
 						html += '<input type="hidden" value="'+item.donaIdx+'">';
 					  html += '<div class="article-img">';
 						//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';		
-						html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';			
+						html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/s_'+item.files.fileName+'">';			
 						html += '</div>';
 						html += '<div class="article-content">';
 						html += '<div class="article-title">';
@@ -384,7 +208,7 @@
 		
 			// 처음 리스트 로딩 시 불러올 데이터
 				$.ajax({
-					  url : 'http://localhost:8080/dona/rest/user/post/list?p=' + p,
+					  url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/list?p=' + p,
 					  type : 'GET',
 					  async : false,
 					  success : function(data){				
@@ -399,7 +223,7 @@
 								html += '<input type="hidden" value="'+item.donaIdx+'">';
 							  html += '<div class="article-img">';
 								//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-								html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
+								html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
 								html += '</div>';
 								html += '<div class="article-content">';
 								html += '<div class="article-title">';
@@ -437,7 +261,7 @@
 					var keyword = $('#keyword').val();
 					
 					$.ajax({
-						url : 'http://localhost:8080/dona/rest/user/post/list/search',
+						url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/list/search',
 						type : 'GET',
 						data : 'p='+ p + '&searchType=' +searchType + '&keyword='+keyword,
 						success : function(data){
@@ -451,7 +275,7 @@
 									html += '<input type="hidden" value="'+item.donaIdx+'">';
 								    html += '<div class="article-img">';
 									//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-									html += '<img alt="thumbnail" class="img" src="http://localhost:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
+									html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
 									html += '</div>';
 									html += '<div class="article-content">';
 									html += '<div class="article-title">';

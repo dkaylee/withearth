@@ -75,7 +75,7 @@ public class MemberRegService {
 			
 			try {
 				regRequest.getUserPhoto().transferTo(newFile);
-			} catch (IllegalStateException | IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 				

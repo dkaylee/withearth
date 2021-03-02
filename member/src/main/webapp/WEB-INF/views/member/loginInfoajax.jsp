@@ -11,7 +11,10 @@
 <body>
 	지금 로그인한 사람의 정보가 필요하면 다음 버튼을 누르세요
 	그러면 서버로 전송됩니다.
-	  <input type="submit" id="btnEdit">
+	  <input type="submit" id="btnwhologin">
+	  
+	url 파라미터로 idx가 넘어가면 회원정보가 나옵니다
+	  <input type="submit" id="btnwhosidx">
 </body>
 
 <script>
@@ -25,8 +28,7 @@ $(document).ready(function(){
 					name:loginName,
 					photo:loginPhoto};
 	
-	 //회원가입 버튼 클릭시,
-	 $('#btnEdit').click(function(){ 
+	 $('#btnwhologin').click(function(){ 
 		
 		$.ajax({
 		url: '/member/member/ajaxTest',
@@ -44,6 +46,33 @@ $(document).ready(function(){
 		
 		});
 	 });
+	 
+			
+	 $('#btnwhosidx').click(function(){ 
+		 var idx = "${loginInfo.idx}"
+		$.ajax({
+		url: '/member/member/ajaxTest/test?idx='+idx,
+		type: 'get',
+		contentType: "application/json; charset=UTF-8",
+		//data: {"idx": idx},
+		dataType:'text',
+		success: function(data){
+			alert("성공");
+			console.log(data);
+		},
+		error: function(error){
+			console.log("실패");
+			console.log(error);
+		}	
+		
+		});
+	 });
+	 
+	 
+	 
+	 
+	 
+	 
 });
 
 </script>

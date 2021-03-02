@@ -8,66 +8,8 @@
 <title>WithEarth</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="<c:url value="/css/dona/postlist.css"/>"/>
 <style>
-#banner {
-	margin-bottom: -100px;
-}
-   
-.article {
-	width: 500px;
-	height: 250px;
-	padding: 20px;
-	text-align: center;
-	margin-bottom: 30px;
-	border: 1px solid #EEE;
-	background-color: #EEE;
-	border-radius: 10px;
-}
-
-.article-img {
-	float: left;
-	width: 200px;
-	height: 200px;
-}
-
-.img {
-	width: 200px;
-	height: 200px;
-	border-radius: 10px;
-}
-
-.article-content {
-	float: left;
-	margin-left: 8px;
-}
-
-.article-title {
-	float: left;
-	width: 250px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	text-align: left;
-	font-size: 23px;
-}
-
-.article-heart {
-	text-align: left;
-	font-size: 15px;
-}
-
-.title {
-	font-size: 50px;
-	font-weight: bold;
-}
-
-.pBtn {
-	float: right;
-}
-
-tr>th{
-  text-align: center;
-}
 </style>
 </head>
 
@@ -113,7 +55,7 @@ tr>th{
 		 if(delConfirm){
 			  $.ajax({
 				 
-				 url : "http://localhost:8080/dona/rest/user/post/delete?idx="+ idx,
+				 url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/delete?idx="+ idx,
 				 type : 'GET',
 				 success : function(data){					 
 					 location.reload();				 
@@ -136,7 +78,7 @@ tr>th{
 			var idx = getParameterByName('idx');
 			
 				$.ajax({					
-					url : "http://localhost:8080/dona/rest/user/post/mypost?idx=" + idx,
+					url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/mypost?idx=" + idx,
 					type : 'GET',
 					success : function(data) {
 

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 <title>Walking Service</title>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxa82c096d66484d37ac10b23c15a64620"></script>
 
@@ -26,8 +26,9 @@
 
 
 .mainPage{	
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-top: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 #mainInfo{
@@ -36,49 +37,68 @@
 	font-weight: bolder;
 }
 
-#startBtn{float: left; margin-top: 4%; margin-left: 5%;}
+#startBtn{margin-bottom: 1%; width: 48%;  }
 
-#arriveBtn{float: left; margin-top: 4%; margin-left: 1%;}
+#arriveBtn{margin-bottom: 1%;  width: 48%;  margin-left: 2%;}
 
-#InfoBtn{float: right; margin-top: 2%; margin-right: 5%;}
+#InfoBtn{margin-bottom: 1%; }
 
 #startInfo{
 	clear:left;
-	margin: 20px;
+	margin: 0 20px;
 	font-weight: bolder;
  }
  
  #endInfo{
- 	margin: 20px;
+ 	margin: 0 20px;
  	font-weight: bolder;
  }
 
-#fullAddr{float: left; margin: 0;}
+#fullAddr{margin-top: 3%; margin-left: 0%; width: 75%; float: left; overfloat: hidden;}
 
 #btn_select{
-	margin-top: 2%;
-	float: left;
+	margin-top: 3%;
+	margin-left: 2%;
+	overflow: hidden;
+	width: 22%;
+	
 }
 
-#endAdd{clear: left;}
+#endAdd{margin-bottom: 10%;}
 
 #clock{
+	margin-top: 10%;
 	font-size: larger;
-	float: left;
-	margin-left: 20px;
+	text-align: center;
+	width: 100%;
 }
 
 #restart{
-	float: left;
-	margin-left: 20px;
+	margin-bottom: 1%;
+	width: 48%;
 	display: none;
 }
 
 #stopTimer{
-	float: left;
-	margin-left: 20px;
-	margin-top: 0;
+	margin-bottom: 1%;
+	width: 49%;
 	display: none;
+	 margin-left: 1%;
+}
+
+#walkingResult{
+	display: none;
+}
+
+#saveBtn{
+	display: none;
+	margin-bottom: 1%;
+	width: 47%; margin-left: 1%;
+}
+
+#modalChk{
+	margin-bottom: 1%;
+	width: 47%; margin-left: 1%;
 }
 
 </style>
@@ -89,13 +109,13 @@
 	//jQuery.noConflict(); -> 부트스트랩 모달 충돌 방지
 	
 
-	var now_lat = $('#nowLat');
-	var now_lon = $('#nowLon');
-	var new_lat = $('#newLat');
-	new_lat = 37.57081522;
-	var new_lon = $('#newLon');
-	new_lon = 127.00160213;
-	var newAddress=''; // 전역 변수로 사용
+	var now_lat = $('#nowLat'); 	// 현재 위치 위도
+	var now_lon = $('#nowLon'); 	// 현재 위치 경도
+	var new_lat = $('#newLat'); 	// 목적지 위치 위도
+	var new_lon = $('#newLon'); 	// 목적지 위치 경도
+	new_lat = 37.57081522;			// 목적지 위도 기본값
+	new_lon = 127.00160213;			// 목적지 경도 기본값
+	var newAddress=''; 				// 목적지 주소
 	
 	$(document).ready(function() {
 		// Geolocation API에 액세스할 수 있는지를 확인
@@ -103,16 +123,19 @@
 		if (navigator.geolocation) {
 		//위치 정보를 얻기
 			navigator.geolocation.getCurrentPosition(function(pos) {
-				$('#latitude').html(pos.coords.latitude); // 위도 ex)37
-				$('#longitude').html(pos.coords.longitude); // 경도 ex)126
+				$('#latitude').html(pos.coords.latitude); 		// 위도 ex)37.xxx -> ssl 사용 -> ssl 등록(aws)
+				$('#longitude').html(pos.coords.longitude); 	// 경도 ex)126.xxx
 				now_lat = pos.coords.latitude;
 				now_lon = pos.coords.longitude;
+				
 				// initTmap()에 pos.coords.latitude, pos.coords.longitude 값을 전달
 				console.log("현재 경도" + now_lon);
 				console.log("현재 위도" + now_lat);
+				
 				// 경로 function으로 현재 위경도, 목적지 위경도 전송
 				initTmap(new_lat, new_lon, now_lat, now_lon);
-				// 현재 위경도 값을 좌표->주소로 변경하는 function으로 전송
+				
+				// 현재 위경도 값을 좌표 -> 주소로 변경하는 function으로 전송
 				reverseGeo(now_lon, now_lat);
 			});
 		} else {
@@ -124,6 +147,7 @@
 		var map, marker1;
 		
 		$('#btn_select').click(	function() {
+			
 			// 목적지 초기화 
 			newAddress='';
 			
@@ -159,7 +183,8 @@
 						var lon, lat;
 						var resultCoordinate = resultInfo.coordinate[0];
 						if (resultCoordinate.lon.length > 0) {
-							// 구주소
+							
+							
 							lon = resultCoordinate.lon;
 							lat = resultCoordinate.lat;
 							
@@ -171,8 +196,8 @@
 							var new_lon = lon;
 	
 	
-							initTmap(new_lat,new_lon,now_lat,now_lon);
-							arrChk(new_lat,new_lon,now_lat,now_lon);
+							initTmap(new_lat,new_lon,now_lat,now_lon);		// 보행자 경로 안내 지도 function
+							arrChk(new_lat,new_lon,now_lat,now_lon);		// 도착버튼 function
 						} else {
 							// 신주소
 							lon = resultCoordinate.newLon;
@@ -283,9 +308,7 @@
 								// 검색 결과 표출
 								if (lonEntr > 0) {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(중심점) : "+ lat+ ", "
-																+ lon+ "</br>위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
-									var text = "검색 결과(새주소) : "+ newAddress+ "\n "
+									var text = "검색 결과(새주소) "+" \n "+ newAddress+ "\n "
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
@@ -293,8 +316,7 @@
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-									/* var text = "검색결과(새주소) : "+ newAddress+ ",\n 응답코드:"+ newMatchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br> 위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
-									var text = "검색 결과(새주소) : "+ newAddress
+									var text = "검색 결과(새주소): "+" \n " + newAddress
 									console.log('newaddress'+newAddress);
 									$("#endAdd").html(text);
 									// modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
@@ -364,9 +386,7 @@
 								var new_lo;
 								if (lonEntr > 0) {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
-									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"+ "</br>"	+ "위경도좌표(중심점) : "
-																+ lat+ ", "+ lon+ "</br>"+ "위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; */
-									var text = "검색 결과(지번주소) : "+ address;
+									var text = "검색 결과(지번주소) \n"+"\n"+ address;
 									console.log('address'+address);
 									newAddress = address;	// newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
@@ -376,9 +396,7 @@
 		
 								} else {
 									var docs = "<a style='color:orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>";
-									/* var text = "검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드 내역은 "+ docs+ " 에서 확인)"
-												+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다."; */
-									var text = "검색 결과(지번주소) : "+ address;
+									var text = "검색 결과(지번주소)"+" \n "+ address;
 									console.log('address'+address);
 									newAddress = address; // newAddress에 값을  저장해서 데이터 전송
 									$("#endAdd").html(text);
@@ -488,10 +506,10 @@
 	var resultdrawArr = [];
 	var tDistance, aTime;
 	function initTmap(newlat, newlon, nowlat, nowlon) {
-		console.log(newlat);
-		console.log(newlon);
-		console.log(nowlat);
-		console.log(nowlon);
+		console.log('목적지 위도: '+newlat);
+		console.log('목적지 경도: '+newlon);
+		console.log('출발지(현재위치) 위도:'+nowlat);
+		console.log('출발지(현재위치) 경도: '+nowlon);
 		// 21.02.07 추가
 		$('#map_div').html('');
 		// 1. 지도 띄우기
@@ -534,24 +552,24 @@
 				startY : nowlat, // 위도
 				angel : 1,
 				speed : 60,
-				endX : newlon, // 경도
-				endY : newlat, // 위도
-				reqCoordType : "WGS84GEO", // 출발지, 경유지, 목적지 좌표게 유형  / WGS84GEO(기본값) - 경위도
-				resCoordType : "EPSG3857", // 받고자 하는 응답 좌표계 유형 / WGS84GEO(기본값) - 경위도
-				startName : "출발지", // %EC%B6%9C%EB%B0%9C
-				endName : "목적지" // %EB%B3%B8%EC%82%AC
+				endX : newlon, 	// 경도
+				endY : newlat, 	// 위도
+				reqCoordType : "WGS84GEO", 	// 출발지, 경유지, 목적지 좌표계 유형  - WGS84GEO(기본값) - 경위도
+				resCoordType : "EPSG3857", 	// 지구 위의 위치를 나타내는 좌표 타입  - Google Mercator
+				startName : "출발지", 		// %EC%B6%9C%EB%B0%9C
+				endName : "목적지" 			// %EB%B3%B8%EC%82%AC
 			},
 			success : function(response) {
 			var resultData = response.features;
 			//결과 출력
 			tDistance =  ((resultData[0].properties.totalDistance) / 1000).toFixed(1) ;
+			console.log('test: ' + tDistance);
 			aTime =  ((resultData[0].properties.totalTime) / 60).toFixed(0) ;
 			$("#result").text("총 "+tDistance+ " km," + " 약 : "+aTime+ " 분");
 			$("#tDistance").html(tDistance);
 			$("#aTime").html(aTime);
 			// modal에 사용될 id // modal 전용 id를 만들어서 사용 -> 데이터 값 뒤에 text 추가 
 			$("#modalDistance").html(tDistance+ "km");
-			//$("#modalTime").html(tTime+"분");
 			
 			//기존 그려진 라인 & 마커가 있다면 초기화
 			if (resultdrawArr.length > 0) {
@@ -629,8 +647,11 @@
 								+ "message:" + request.responseText + "\n"
 								+ "error:" + error);
 					}
+					
 				});
+		
 	} // 경로 설정 기능
+	
 	function addComma(num) {
 		var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		return num.toString().replace(regexp, ',');
@@ -660,7 +681,9 @@
 	var distance;
 	var confirm_test = null;
 	function arrChk(nowlat, nowlon, arrlat, arrlon){
+		
 		$("#arriveBtn").click(function(){ 
+			
 			console.log('도착1');
 			// 3. 직선거리 계산  API 사용요청
 			$.ajax({
@@ -693,12 +716,14 @@
 					
 					if(distance <= 100){ // 거리가 약 반경 100m 내의 있을 경우
 						stop();
-					
+						
 						confirm_test = confirm("목적지 부근입니다. 서비스를 종료하시겠습니까?");
 						if(confirm_test==true){
 							//$('#testBtn').click(function(e){
 								//e.preventDefault();
-								$('#testModal').modal("show");
+								/* $('#testModal').modal('show'); */
+								$('#walkingResult').show();
+								$('#saveBtn').show();
 							//});
 							
 							console.log('목적지 도착');
@@ -790,39 +815,77 @@
     	$('#modalTime').html(modalwTime);
     	
     } // 타임워치 -끝-
-	
-	
+    
 	/*******************************데이터 저장 기능********************************************/
 	function saveData(){
+    	
+		var idx = ${loginInfo.idx};
+		console.log(idx);
+    	
 		$.ajax({
-			url: 'http://localhost:8080/walking/course/loc/walkingservice',
+			url: '<c:url value="/member/loc/walkingservice"/>',
 			type: 'post',
 			data: {
 				tdistance: tDistance, 	// 이동 거리
 				atime: aTime, 			// 예상 시간
 				startAdd: revresult, 	// 출발지 주소
 				endAdd: newAddress,  	// 목적지 주소 -> newAddress를 전역 변수로 저장해서 값을 불러온다.
-				ttime: tTime			// 소요 시간
-				
+				ttime: tTime,			// 소요 시간
+				uIdx: idx				// 회원 idx 값
 			}, 
 			success: function(data){
+				
+				
+				//반환되는 데이터:idx
+				console.log('data',data);
+			    console.log('tdistance', tDistance)
+			    // idx+이동거리 ->   ajax -> 포인트적립으로 이동
+			    //로그인한 회원 idx ->
+			    //배포주소로,,
+				$.ajax({
+				
+					url: 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/course/'+idx+'/'+data,
+					type: 'post',
+					//data:{
+						//cIdx: data,
+						//course_km: tDistance
+					//},
+					success: function(data){
+						alert('데이터 전송을 완료했습니다.');
+						var cc= '<c:out value="${result}"/>';
+						console.log(cc);
+						console.log('pdata',data);
+					},
+					error: function(error){
+						console.log(error);
+						console.log('포인트 적립 실패');
+					}
+				}); // point-ajax 
+				
 				alert('코스 저장을 성공했습니다.');
-				$('#testModal').modal("hide");
 			},
 			error: function(error){
 				console.log(error)
 				console.log('저장 실패');
 			}
 			
-		});
+		}); // saveData ajax
 	} // saveData
 	
-	// Modal 닫기
+	
 	
 	
     /*******************************모달창 기능********************************************/
+    
+    var myModal = document.getElementById('myModal');
+	var myInput = document.getElementById('myInput');
+
+	/* myModal.addEventListener('shown.bs.modal', function () {
+	  myInput.focus()
+	}) */
+    
     function infoModal(){
-    	$('#InfoModal').modal("show");
+    	$('#InfoModal').modal('show');
 	}
     
 	
@@ -834,7 +897,7 @@
 <body>
 		<%@ include file="/WEB-INF/views/include/header.jsp"%>
 		
-		<%-- <%@ include file="/WEB-INF/views/include/nav.jsp"%> --%>
+		<%@ include file="/WEB-INF/views/include/course_nav.jsp" %>
 		
 		
 		
@@ -843,14 +906,16 @@
 			
 			<!--  -->
 			<h2 style="" id="mainInfo">걷기 인증 서비스</h2> 
-			<button id="startBtn" onclick="startTime()">시작 하기</button>
-			<button id="arriveBtn">도착</button><br>
-			<button id="InfoBtn" onclick="infoModal()" >올바르게 걷는 방법</button>
-			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h3 id="revresult" style="margin: 20px 40px"></h3><br>
-			<h4 id="endInfo">◇ 목적지 (ex.서울시 마포구 와우산로29가길 69) </h4>
-			<input type="text" style="width:300px; margin: 30px; padding: 10px"  class="text_custom" id="fullAddr" name="fullAddr"
-				value="서울특별시 종로구 종로5가">
-			<button id="btn_select">설정 하기</button> <h3 id="endAdd" style="margin: 20px 30px font-weight: bolder;"></h3>
+			
+			<h4 id="startInfo">◇ 출발지(현재 위치)</h4> <h4 id="revresult" style="margin: 10px 30px"></h4><br>
+			<h4 id="endInfo">◇ 목적지 <br />(ex.서울특별시 종로구 종로5가)</h4>
+			<input type="text"   class="text_custom" id="fullAddr" name="fullAddr"
+				value="서울특별시 종로구 종로5가"><button id="btn_select" class="button special" >설정</button> 
+			<h4 id="endAdd" style="margin: 10px 30px;"></h4>
+			
+			<button id="startBtn" class="button special" onclick="startTime()">시작</button>
+			<button id="arriveBtn" class="button special">도착</button><br>
+			<!-- <button id="InfoBtn" class="button special" onclick="infoModal()" >올바르게 걷는 방법</button> -->
 			
 			<br>
 			
@@ -859,14 +924,22 @@
 			<!-- 타임워치  -->
 			<h3 id="clock" class="contents"></h3>
 			<!-- 타임워치 정지 버튼 -->
-			<button id="restart" onclick="startTime();">다시 시작</button>
-			<button id="stopTimer" onclick="stop();">일시 정지</button>
+			<button id="restart" class="button special" onclick="startTime();">다시 시작</button>
+			<button id="stopTimer" class="button special" onclick="stop();">일시 정지</button>
+			
+			<!-- 도보 결과 출력 -->
+			<div id="walkingResult">
+				<h4 >출발지 </h4><h3 id="modalrevresult" ></h3><br>
+				<h4 >목적지 </h4><h3 id="modalEnd" ></h3><br>
+				<h4 >이동 거리 </h4><h3 id="modalDistance" > </h3><br>
+				<h4 >소요 시간 </h4><h3 id="modalTime"  ></h3>
+			</div>
+			<button class="button special" id="saveBtn" type="button" onclick="saveData()">저장</button>
 			
 			<!-- 예상 이동 거리, 도보 시간  출력-->
 			<h3 id="result" style="float: right"></h3>
 			
-			<!-- 경로 지도 -->
-			<br>
+			<!-- 경로 지도 -->			
 			<div id="map_wrap"  class="map_wrap3">
 				<div id="map_div" style="width: 600px" ></div>
 			</div>
@@ -880,8 +953,8 @@
 
 	<!-- Modal content -->
 	<!-- <button id="testBtn" class="btn">모달 테스트</button> -->
-  <!-- 회원가입 확인 Modal-->
-	<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- 완주 확인 Modal-->
+	 <!-- <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -890,7 +963,7 @@
 						<span aria-hidden="true">X</span>
 					</button>
 				</div>
-				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
+				<div class="modal-body"> modal id 값을 따로 만들어서 조회
 					출발지<br><h3 id="modalrevresult"></h3>
 					목적지<br><h3 id="modalEnd"></h3>
 					이동 거리<br><h3 id="modalDistance"> </h3>
@@ -898,73 +971,55 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button class="btn" id="saveBtn" type="button" onclick="saveData()">저장</button>
-					<button class="btn" type="button" data-dismiss="modal">확인</button>
+					<button class="button special" id="saveBtn" type="button" onclick="saveData()">저장</button>
+					<button class="button special" type="button" data-dismiss="modal" id="modalChk">확인</button>
 				</div>
 			</div>
 		</div>
 		
-	</div>
-	
-	
-	
-	
-	<!-- 21.02.22: footer 추가 시 modal하고 충돌 발생 -->
-	
-	
-	<footer id="footer">
-
-			<footer>
-				<div class="inner">
-					<div class="flex">
-						<div class="copyright">
-							&copy; <a href="#">EarthWith</a>.
-						</div>
-						<ul class="icons">
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-							<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
-							<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
-						</ul>
-					</div>
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			
-			<script src="<c:url value="/js/skel.min.js"/>"></script>
-			<script src="<c:url value="/js/util.js"/>"></script>
-			<script src="<c:url value="/js/main.js"/>"></script>
-
+	</div>  -->
 	
 	<!-- 올바른 걷기 자세 안내 Modal-->
  
-	<div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">올바르게 걷는 방법</h2>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">X</span>
-					</button>
-				</div>
-				<div class="modal-body"> <!-- modal id 값을 따로 만들어서 조회 -->
-					<h3 style="font-weight: bolder;">운동 순서</h3>
+	
+		
+	</div>
+	
+	<!-- InfoModal -->
+		<%-- <div class="modal fade" id="InfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h2 class="modal-title" id="exampleModalLabel">종이류, 종이팩</h2>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <h3 style="font-weight: bolder;">운동 순서</h3>
 					<h4>1. 배에 힘을 주고 등을 곧게 편다. 발을 내딛으면서 바깥쪽이 먼저 바닥에 닿도록 해야 몸이 받는 충격을 최대한 흡수할 수 있다.</h4>
 					<h4>2. 발바닥이 마지막으로 지면에 닿는 순간 가볍게 바닥을 밀어 힘들이지 않고 속도를 낸다. 체중은 발뒤꿈치 바깥쪽을 시작으로 발 가장자리에서 엄지발가락 쪽으로 이동시킨다.</h4>
 					<h4>3. 몸의 중심이 앞으로 이동했으면 다른 쪽 발을 내딛을 수 있도록 발뒤꿈치를 들어준다. 팔은 자연스럽게 앞뒤로 흔들고 팔의 움직임과 함께 어깨를 자연스럽게 좌우로 돌린다.</h4>
-					<img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 500px;">
+					<img alt="walkingInfo1" src="<c:url value="/img/walkingInfo.png"/>" style="width: 100%;">
 					
 					<h6>출처: [네이버 지식백과] 걷기 [walking] (유산소운동 바로 알기, 최대혁, 국민체육진흥공단 체육과학연구원)</h6>
-					
-				</div>
-				<div class="modal-footer">
-					<button class="btn" type="button" data-dismiss="modal">확인</button>
-				</div>
-			</div>
-		</div>
-		
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="button special" data-dismiss="modal">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div> <!-- InfoModal 끝 --> --%>
+	
+	<div> <!-- footer와 본문 사이 간격 조정 -->
+		<br/>
 	</div>
+	
+	
+	
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+
+	
+	
 </body>
 </html>
