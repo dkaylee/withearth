@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withearth.tumbler.dao.CafeDao">
+
+
+	<!--DB와 이름 맞추기 -->
+	<resultMap id="CafeResultMap"
+		type="com.withearth.tumbler.domain.Cafe">
+
+		<id property="cafe_idx" column="cafe_idx" />
+		<result property="idx" column="idx" />
+		<result property="cafe_name" column="cafe_name" />
+		<result property="location" column="location" />
+		<result property="cafe_lon" column="cafe_lon" />
+		<result property="cafe_lat" column="cafe_lat" />
+		<result property="qrcode" column="qrcode" />
+
+	</resultMap>
+
+	<resultMap id="CafeListMap"
+		type="com.withearth.tumbler.domain.Cafe">
+		<id property="cafe_idx" column="cafe_idx" />
+		<result property="cafe_name" column="cafe_name" />
+		<result property="location" column="location" />
+		<result property="cafe_lon" column="cafe_lon" />
+		<result property="cafe_lat" column="cafe_lat" />
+	</resultMap>
+	
+	<resultMap id="CafeInfoMap"
+		type="com.withearth.tumbler.domain.CafeRequest">
+		<id property="cafe_idx" column="cafe_idx" />
+		<result property="cafe_name" column="cafe_name" />
+		<result property="location" column="location" />
+		<result property="cafe_lat" column="cafe_lat" />
+		<result property="cafe_lon" column="cafe_lon" />
+		
+	</resultMap>
+
+	<!-- 로그인 -->
+	<select id="selectTumLogin" resultMap="CafeListMap">
+		select * from member where
+		id=#{id} and pw=#{pw}
+	</select>
+
+	<!-- 포인트 지급 -->
+	<update id="addTumpoint">
+
+		update tumbler
+		set tum_point = tum_point + 100
+		where
+		(select * from user where id=#{id} and pw=#{pw} )
+
+	</update>
+
+	<!--매장 조회 -->
+	<select id="selectCafeList" resultMap="CafeResultMap">
+
+		select * from cafe
+
+	</select>
+
+
+	<!--매장 위도 경도 -->
+	<select id="selectLaglng" resultMap="CafeInfoMap">
+		select cafe_idx ,cafe_lat, cafe_lon, cafe_name ,location
+		from cafe
+
+		<!-- select cafe_lat, cafe_lon, cafe_name ,location from cafe where cafe_idx 
+			Like #{cafe_idx} -->
+
+
+	</select>
+
+
+	<!-- 큐알 코드 저장 -->
+	<insert id="insertQRcode"
+		parameterType="com.withearth.tumbler.domain.Cafe"
+		useGeneratedKeys="true" keyProperty="idx">
+		<!--  insert into cafe (cafe_idx,qrcode)
+		values ( #{cafe_idx},#{qrcode}) -->
+		
+		<!-- update withearth.cafe set (qrcode) = #{qrcode} where (cafe_idx) = ${cafe_idx}; -->
+	</insert>
+
+
+	<!-- 카페 전체 리스트 -->
+
+
+
+	<!-- (cafe_idx, cafe_name, location, qrcode, idx) values(#{cafe_idx}, #{cafe_name}, 
+		#{location}, #{qrcode}, #{idx}) -->
+
+    <select id="QRcodeNum" resultType="int">
+
+    select ifnull(max(cafe_idx)+1,0) from withearth.coupon
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
