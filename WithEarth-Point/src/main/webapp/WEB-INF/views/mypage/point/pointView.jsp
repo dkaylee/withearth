@@ -284,10 +284,13 @@ a.btn-layerClose {
 	<script>
 	
 	// 포인트 선물 교환 -> 포인트 소멸 -> 교환권 생성
+	
+	var idx = 1;
+	
 	function usePoint(){
 		
 	$.ajax({
-		 url : 'http://localhost:8080/point/rest/user/point/use/'+ 1 + '/' + 200,
+		 url : '/point/rest/user/point/use/'+ idx + '/' + 200,
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -317,7 +320,7 @@ a.btn-layerClose {
 	  	  	 	  
 	  // ajax로 현재 보유 보인트 출력
 	  $.ajax({
-			 url : 'http://localhost:8080/point/rest/user/point/list/1',
+			 url : '/point/rest/user/point/list/' + idx,
 			 type : 'GET',
 			 success : function(data){
 				 //console.log(data);
@@ -359,7 +362,7 @@ a.btn-layerClose {
 		  table3.css('display','none');
 			  			 			  			  		  			  		 	
 	  $.ajax({
-		 url : 'http://localhost:8080/point/rest/user/point/list/1',
+		 url : '/point/rest/user/point/list/' + idx,
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -416,7 +419,7 @@ a.btn-layerClose {
 		  table3.css('display','none');
 		  		 	
 		  $.ajax({
-			 url : 'http://localhost:8080/point/rest/user/coupon/list/1',
+			 url : '/point/rest/user/coupon/list/1',
 			 type : 'GET',
 			 success : function(data){
 				 console.log(data);

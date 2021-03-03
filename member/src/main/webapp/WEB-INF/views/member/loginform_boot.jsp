@@ -28,7 +28,7 @@
 <div class="first_container">
 <div class="second_container">
 	<div class="main_img">
-	<img src="<c:url value="/img/earth.jpg"/>" class="rounded mx-auto d-block" alt="지구" >
+	<img src="<c:url value="/img/withearthlogo2.png"/>" class="rounded mx-auto d-block" alt="지구" >
 	</div>
 	<div class="mb-3">
 	  <input type="email" class="form-control" id="userid" placeholder="이메일 주소" name="userid" value="${cookie.uid.value}">
@@ -130,7 +130,8 @@ $(document).ready(function(){
 									cache: false,
 									success: function(data){
 										alert("로그인 되었습니다.");
-										location.href="/member"; 
+										//location.href="/member"; 
+										location.href='<c:url value="/"/>';
 										console.log(data);
 									},
 									error: function(error){
@@ -201,7 +202,7 @@ $(document).ready(function(){
 						data: {id:email},
 						success: function(data){
 							alert("로그인 되었습니다.");
-							location.href="/member"; 
+							location.href='<c:url value="/"/>';
 							console.log(data);
 						}
 						});
@@ -283,7 +284,7 @@ function onSignIn() {
 				data: {id:g_email},
 				success: function(data){
 					alert("로그인 되었습니다.");
-					location.href="/member"; 
+					location.href='<c:url value="/"/>';
 					console.log(data);
 				}
 				});
@@ -301,7 +302,7 @@ function onSignIn() {
 				success : function(check) {
 					console.log("성공");
 					alert("가입이 완료되었습니다.")
-					location.href="/member";
+					location.href='<c:url value="/"/>';
 					
 				},
 				error: function(error){
@@ -352,7 +353,7 @@ function onSignIn() {
 						data: {id:n_email},
 						success: function(data){
 							alert("로그인 되었습니다.");
-							location.href="/member"; 
+							location.href='<c:url value="/"/>';
 							console.log(data);
 						}
 						});
@@ -369,9 +370,8 @@ function onSignIn() {
 						contentType:'application/json;charset=utf-8',
 						success : function(check) {
 							console.log("성공");
-							alert("가입이 완료되었습니다.")
-							location.href="/member";
-							
+							alert("가입이 완료되었습니다.");
+							location.href='<c:url value="/"/>';
 						},
 						error: function(error){
 							console.log("실패");

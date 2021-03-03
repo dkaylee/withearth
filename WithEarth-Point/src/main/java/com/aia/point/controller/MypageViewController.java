@@ -1,10 +1,12 @@
 package com.aia.point.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@CrossOrigin(origins = "*")
 public class MypageViewController {
 	
 	@RequestMapping("/user/mypage/view")
