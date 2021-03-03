@@ -102,7 +102,7 @@
 			console.log('게시물IDX : ' + donaIdx + ', idx : ' + idx);
 
 			$.ajax({
-				url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/heart',
+				url : 'https://www.withearthdona.tk/dona/rest/user/heart',
 				type : 'GET',
 				data : 'donaIdx=' + donaIdx + '&idx=' + idx,
 				success : function(data) {
@@ -127,7 +127,7 @@
 
 		// 좋아요 페이지 기본 노출값 처리						
 		$.ajax({
-			url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/heart/list',
+			url : 'https://www.withearthdona.tk/dona/rest/user/heart/list',
 			type : 'GET',
 			data : 'donaIdx=' + donaIdx + '&idx=' + idx,
 			success : function(data) {
@@ -152,7 +152,7 @@
 
 		// 컨트롤러로 값 넘기기 (회원 게시물 데이터 받기)
 		$.ajax({
-			url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail?idx=" + donaIdx,
+			url : "https://www.withearthdona.tk/dona/rest/user/post/detail?idx=" + donaIdx,
 			type : 'GET',
 			asycn : false,
 			success : function(data) {
@@ -168,7 +168,7 @@
                     
                  // 작성한 회원의 프로필 정보 받아오기
             		$.ajax({
-            			url: '/member/member/ajaxTest/test?idx='+ownerIdx,
+            			url: '<c:url value="/member/ajaxTest/test?idx='+ownerIdx+'"/>',
             			type: 'get',
             			contentType: "application/json; charset=UTF-8",
             			success: function(data){
@@ -205,7 +205,7 @@
 
 		// 컨트롤러로 값 넘기기(회원 게시물 이미지 데이터 받기)
 		$.ajax({
-			url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail/image?idx="+ donaIdx,
+			url : "https://www.withearthdona.tk/dona/rest/user/post/detail/image?idx="+ donaIdx,
 			type : 'GET',
 			success : function(data) {
 
@@ -216,7 +216,7 @@
 
 				  var html = '<div class="carousel-item active">';
 				  // html +='<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; "alt="postImages">';										
-				  html += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; "alt="postImages">';
+				  html += '<img src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; "alt="postImages">';
 				  html += '</div>';
 				  $('.carousel-inner').append(html);
 				})
@@ -228,7 +228,7 @@
 
 					var html2 = '<div class="carousel-item">';
 						//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; alt="postImages">';
-						html2 += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
+						html2 += '<img src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
 						html2 += '</div>'
 						$('.carousel-inner').append(html2);
 						})
