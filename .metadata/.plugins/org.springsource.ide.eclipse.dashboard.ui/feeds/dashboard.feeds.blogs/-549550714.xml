@@ -18,7 +18,7 @@
     <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! I&amp;rsquo;ve finally managed to get my &lt;a href="https://joshlong.com/feed.html"&gt;joshlong.com/feed.html&lt;/a&gt; page working again so if you&amp;rsquo;re curious about what I&amp;rsquo;m doing, check this feed out. &lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ve got a really great roundup this week, so let&amp;rsquo;s get into it.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://www.amazon.com/Spring-Boot-Running-Building-Applications-ebook/dp/B08W2QRQGQ/ref=mp_s_a_1_3?dchild=1&amp;keywords=spring+boot+up+and+running&amp;qid=1614279138&amp;sr=8-3"&gt;Check out our very own Mark Heckler��s new book ��Spring Boot Up and Running��!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.amazon.com/Spring-Boot-Running-Building-Applications-ebook/dp/B08W2QRQGQ/ref=mp_s_a_1_3?dchild=1&amp;keywords=spring+boot+up+and+running&amp;qid=1614279138&amp;sr=8-3"&gt;Check out our very own Mark Heckler’s new book “Spring Boot Up and Running”!&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://spring.io/blog/2021/02/25/a-bootiful-podcast-spring-legend-greg-turnquist-on-spring-data-rest-hateoas-ci-and-so-much-more"&gt;A Bootiful Podcast: Spring legend Greg Turnquist on Spring Data REST, HATEOAS, CI, and so much more.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Check out this first new installment of &lt;em&gt;Spring Tips&lt;/em&gt; in which I revisit &lt;a href="https://spring.io/blog/2021/02/23/spring-tips-spring-cloud-gateway-redux"&gt;Spring Cloud Gateway&lt;/a&gt;. This episode features a long, detailed look at all things Spring Cloud Gateway and features interviews with Spring Cloud cofounder and Spring Cloud Gateway creator Spencer Gibb and an interview with Spring Cloud Gateway for Kubernetes lead Chris Sterling.&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://twitter.com/dbbaskette/status/1364684787785596940?s=12"&gt;Congrats to Jacques Chester on his new book KNative in Action&lt;/a&gt;&lt;/li&gt;
@@ -99,14 +99,14 @@ Artem&lt;/p&gt;
     <content type="html">&lt;p&gt;Hi, Spring fans! In this installment of Spring Tips, I revisit Spring Cloud Gateway. &lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/puIJ1Mn9_LE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;p&gt;Here&amp;rsquo;s what&amp;rsquo;s inside: &lt;/p&gt;&lt;h2&gt;&lt;a href="#intro" class="anchor" name="intro"&gt;&lt;/a&gt;Intro&lt;/h2&gt;
-&lt;p&gt;11:12? Have your cake and Eat it too with an API Gateway&lt;/p&gt;&lt;h2&gt;&lt;a href="#basics" class="anchor" name="basics"&gt;&lt;/a&gt;Basics&lt;/h2&gt;
-&lt;p&gt;00:11:37? Get to Know Your New Gateway&lt;br/&gt;00:21:18? The Observable Gateway&lt;br/&gt;00:22:39? Meet The Supporting Characters&lt;br/&gt;00:24:30? Reactive Data For The Demo&lt;br/&gt;00:28:10? A Reactive WebSocket Endpoint&lt;br/&gt;00:31:00? Reactive HTTP Endpoint&lt;/p&gt;&lt;h2&gt;&lt;a href="#behind-the-source-with-spring-cloud-co-founder-lead-and-spring-cloud-gateway-creator-spencer-gibb" class="anchor" name="behind-the-source-with-spring-cloud-co-founder-lead-and-spring-cloud-gateway-creator-spencer-gibb"&gt;&lt;/a&gt;Behind the Source with Spring Cloud co-founder, lead, and Spring Cloud Gateway creator Spencer Gibb&lt;/h2&gt;
-&lt;p&gt;00:33:00? Spencer Gibb&lt;/p&gt;&lt;h2&gt;&lt;a href="#service-discovery" class="anchor" name="service-discovery"&gt;&lt;/a&gt;Service Discovery&lt;/h2&gt;
-&lt;p&gt;37:59? Introducing Spring Cloud Netflix Eureka&lt;br/&gt;40:49? Integrating Service Discovery into our Gateway&lt;br/&gt;43:01? Load Balanced URIs&lt;br/&gt;45:49? Route Events&lt;/p&gt;&lt;h2&gt;&lt;a href="#configuration" class="anchor" name="configuration"&gt;&lt;/a&gt;Configuration&lt;/h2&gt;
-&lt;p&gt;48:19? A Route By Any Other Name&lt;br/&gt;53:10? Yet another markup language (YAML)&lt;br/&gt;55:55? Using the Spring Cloud Config Server&lt;br/&gt;01:02? Reloading Configuration with the /refresh Actuator &lt;/p&gt;&lt;h2&gt;&lt;a href="#reliability" class="anchor" name="reliability"&gt;&lt;/a&gt;Reliability&lt;/h2&gt;
-&lt;p&gt;01:09:02? Protect Your Microservices&lt;br/&gt;01:10:43? If At First You Don&amp;rsquo;t Succeed, &lt;code&gt;Retry()&lt;/code&gt;&lt;br/&gt;01:18:00? Circuit Breakers&lt;br/&gt;01:22:35? Rate Limiters &lt;/p&gt;&lt;h2&gt;&lt;a href="#behind-the-source-with-spring-cloud-gateway-for-kubernetes-lead-chris-sterling" class="anchor" name="behind-the-source-with-spring-cloud-gateway-for-kubernetes-lead-chris-sterling"&gt;&lt;/a&gt;Behind The Source with Spring Cloud Gateway For Kubernetes Lead Chris Sterling&lt;/h2&gt;
-&lt;p&gt;01:35:38? Chris Sterling &lt;/p&gt;&lt;h2&gt;&lt;a href="#the-final-word" class="anchor" name="the-final-word"&gt;&lt;/a&gt;The Final Word&lt;/h2&gt;
-&lt;p&gt;01:38:32? This Tutorial Is Done, But The&lt;br/&gt;journey To Production Continues&lt;/p&gt;
+&lt;p&gt;11:12​ Have your cake and Eat it too with an API Gateway&lt;/p&gt;&lt;h2&gt;&lt;a href="#basics" class="anchor" name="basics"&gt;&lt;/a&gt;Basics&lt;/h2&gt;
+&lt;p&gt;00:11:37​ Get to Know Your New Gateway&lt;br/&gt;00:21:18​ The Observable Gateway&lt;br/&gt;00:22:39​ Meet The Supporting Characters&lt;br/&gt;00:24:30​ Reactive Data For The Demo&lt;br/&gt;00:28:10​ A Reactive WebSocket Endpoint&lt;br/&gt;00:31:00​ Reactive HTTP Endpoint&lt;/p&gt;&lt;h2&gt;&lt;a href="#behind-the-source-with-spring-cloud-co-founder-lead-and-spring-cloud-gateway-creator-spencer-gibb" class="anchor" name="behind-the-source-with-spring-cloud-co-founder-lead-and-spring-cloud-gateway-creator-spencer-gibb"&gt;&lt;/a&gt;Behind the Source with Spring Cloud co-founder, lead, and Spring Cloud Gateway creator Spencer Gibb&lt;/h2&gt;
+&lt;p&gt;00:33:00​ Spencer Gibb&lt;/p&gt;&lt;h2&gt;&lt;a href="#service-discovery" class="anchor" name="service-discovery"&gt;&lt;/a&gt;Service Discovery&lt;/h2&gt;
+&lt;p&gt;37:59​ Introducing Spring Cloud Netflix Eureka&lt;br/&gt;40:49​ Integrating Service Discovery into our Gateway&lt;br/&gt;43:01​ Load Balanced URIs&lt;br/&gt;45:49​ Route Events&lt;/p&gt;&lt;h2&gt;&lt;a href="#configuration" class="anchor" name="configuration"&gt;&lt;/a&gt;Configuration&lt;/h2&gt;
+&lt;p&gt;48:19​ A Route By Any Other Name&lt;br/&gt;53:10​ Yet another markup language (YAML)&lt;br/&gt;55:55​ Using the Spring Cloud Config Server&lt;br/&gt;01:02​ Reloading Configuration with the /refresh Actuator &lt;/p&gt;&lt;h2&gt;&lt;a href="#reliability" class="anchor" name="reliability"&gt;&lt;/a&gt;Reliability&lt;/h2&gt;
+&lt;p&gt;01:09:02​ Protect Your Microservices&lt;br/&gt;01:10:43​ If At First You Don&amp;rsquo;t Succeed, &lt;code&gt;Retry()&lt;/code&gt;&lt;br/&gt;01:18:00​ Circuit Breakers&lt;br/&gt;01:22:35​ Rate Limiters &lt;/p&gt;&lt;h2&gt;&lt;a href="#behind-the-source-with-spring-cloud-gateway-for-kubernetes-lead-chris-sterling" class="anchor" name="behind-the-source-with-spring-cloud-gateway-for-kubernetes-lead-chris-sterling"&gt;&lt;/a&gt;Behind The Source with Spring Cloud Gateway For Kubernetes Lead Chris Sterling&lt;/h2&gt;
+&lt;p&gt;01:35:38​ Chris Sterling &lt;/p&gt;&lt;h2&gt;&lt;a href="#the-final-word" class="anchor" name="the-final-word"&gt;&lt;/a&gt;The Final Word&lt;/h2&gt;
+&lt;p&gt;01:38:32​ This Tutorial Is Done, But The&lt;br/&gt;journey To Production Continues&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
   <entry>
@@ -148,11 +148,11 @@ Artem&lt;/p&gt;
     <link rel="alternate" href="https://spring.io/blog/2021/02/19/spring-initializr-0-10-0-available-now" />
     <category term="releases" label="Releases" />
     <author>
-      <name>St?phane Nicoll</name>
+      <name>Stéphane Nicoll</name>
     </author>
     <id>tag:spring.io,2021-02-19:4372</id>
     <updated>2021-02-19T15:58:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I��m happy to announce that Spring Initializr 0.10.0 has been released and is now available from Maven Central.&lt;/p&gt;
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I’m happy to announce that Spring Initializr 0.10.0 has been released and is now available from Maven Central.&lt;/p&gt;
 &lt;p&gt;This release includes &lt;a href="https://github.com/spring-io/initializr/releases/tag/v0.10.0"&gt;27 fixes, improvements and dependency upgrades&lt;/a&gt;.&lt;br/&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
 &lt;p&gt;For full &lt;a href="https://github.com/spring-io/initializr/wiki/Spring-Initializr-0.10-Release-Notes#upgrading-from-initializr-09"&gt;upgrade instructions&lt;/a&gt; and &lt;a href="https://github.com/spring-io/initializr/wiki/Spring-Initializr-0.10-Release-Notes#new-and-noteworthy"&gt;new and noteworthy&lt;/a&gt; features please see the &lt;a href="https://github.com/spring-io/initializr/wiki/Spring-Initializr-0.10-Release-Notes"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/spring-io/initializr"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/initializr/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/initializr/docs/0.10.0/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-initializr"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-io/initializr"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
@@ -284,7 +284,7 @@ Artem&lt;/p&gt;
     </author>
     <id>tag:spring.io,2021-02-18:4365</id>
     <updated>2021-02-18T09:24:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team, I��m pleased to announce Spring Data service releases 2020.0 SR5, Neumann SR7, Moore SR13 and the 4th Milestone of the upcoming 2021.0 iteration.&lt;/p&gt;
+    <content type="html">&lt;p&gt;On behalf of the team, I’m pleased to announce Spring Data service releases 2020.0 SR5, Neumann SR7, Moore SR13 and the 4th Milestone of the upcoming 2021.0 iteration.&lt;/p&gt;
 &lt;p&gt;The attentive reader might have noticed that 2021.0 M3 and 2020.0 SR4 have been hiding out of sight. Well, a tiny glitch made us redo those releases right away for an upgrade without surprises.&lt;/p&gt;
 &lt;p&gt;For your convenience Spring Boot will pick up the artifacts with its upcoming releases.&lt;/p&gt;&lt;h2&gt;&lt;a href="#2021-0-m4" class="anchor" name="2021-0-m4"&gt;&lt;/a&gt;2021.0 M4&lt;/h2&gt;
 &lt;ul&gt;
@@ -418,7 +418,7 @@ Artem&lt;/p&gt;
     <link rel="alternate" href="https://spring.io/blog/2021/02/16/spring-framework-5-3-4-and-5-2-13-available-now" />
     <category term="releases" label="Releases" />
     <author>
-      <name>St?phane Nicoll</name>
+      <name>Stéphane Nicoll</name>
     </author>
     <id>tag:spring.io,2021-02-16:4362</id>
     <updated>2021-02-16T12:07:00Z</updated>
