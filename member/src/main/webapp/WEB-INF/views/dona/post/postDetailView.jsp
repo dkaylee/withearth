@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="<c:url value="/css/dona/detail.css"/>" />
 <style>
 </style>
-
 </head>
 
 <body id="page-top">
