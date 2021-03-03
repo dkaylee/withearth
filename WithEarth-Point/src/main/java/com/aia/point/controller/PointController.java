@@ -22,7 +22,7 @@ import com.aia.point.service.PointUsingService;
 
 @RestController
 @RequestMapping("/rest/user/point")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class PointController {
 
 	@Autowired

@@ -109,3 +109,9 @@ buildNumber.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,maven
 *.log
+Servers2/.project
+Servers/.project
+.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
+.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
+.metadata/.plugins/org.eclipse.wst.server.core/publish/publish0.dat
+WithEarth-Donation/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
