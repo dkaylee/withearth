@@ -847,10 +847,10 @@
 				console.log('cidx', data);
  				$.ajax({
 
-				$.ajax({
+				
 
 				
-					url: 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/course?idx='+idx+'&cIdx='+data+'&distance='+tDistance,
+					url: 'https://www.withearthdona.tk/point/rest/user/point/course?idx='+idx+'&cIdx='+data+'&distance='+tDistance,
 					type: 'get',
 					//data:{
 						//cIdx: data,
