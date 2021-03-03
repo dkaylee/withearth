@@ -28,7 +28,7 @@
 <div class="first_container">
 <div class="second_container">
 	<div class="main_img">
-	<img src="<c:url value="/img/earth.jpg"/>" class="rounded mx-auto d-block" alt="지구" >
+	<img src="<c:url value="/img/withearthlogo2.png"/>" class="rounded mx-auto d-block" alt="지구" >
 	</div>
 	<div class="mb-3">
 	  <input type="email" class="form-control" id="userid" placeholder="이메일 주소" name="userid" value="${cookie.uid.value}">
@@ -130,7 +130,8 @@ $(document).ready(function(){
 									cache: false,
 									success: function(data){
 										alert("로그인 되었습니다.");
-										location.href="/member"; 
+										//location.href="/member"; 
+										location.href='<c:url value="/member"/>',
 										console.log(data);
 									},
 									error: function(error){
