@@ -40,7 +40,7 @@
 		  <input type="text" id="oldphoto" name="oldphoto" value="${loginInfo.photo}" placeholder="${loginInfo.photo}" readonly>
 		  <input type="file" id="photo" name="photo"><br>
 		  <input type="submit" id="btnEdit" value="수정">
-		  <input type="submit" id="leave" value="회원탈퇴">
+		  <!-- <input type="submit" id="leave" value="회원탈퇴"> -->
 	  </div>
 	 </div>
 	 <div id="footer1">
