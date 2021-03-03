@@ -15,37 +15,39 @@
 <link rel="stylesheet" href="<c:url value="/css/mypage.css"/>" />
 <title>Insert title here</title>
 </head>
-<body>
-
-	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	
-	<section id="banner"></section>
-
-	<section id="three" class="wrapper special">
-		<div class="inner">
-
-			<div id="myCarousel" class="carousel slide" data-bs-interval="false">
-
-				<div class="carousel-inner"></div>
-	
+<style>
+</style>
+    </head>
+    
+    <body id="page-top">
+      
+       <%@ include file="/WEB-INF/views/include/header.jsp"%>
+       
+		<section id="one" class="wrapper">	
+		</section>	
 	<div id="div1">
+		<div id="div2">
+		<h2>회원정보 수정</h2>
 		<input type="hidden" id="idx" name="idx"  value="${loginInfo.idx}">
 		 <label>이메일</label>
 		  <input type="email" id="id" name="id"  value="${loginInfo.id}" readonly>
 		 <label>비밀번호</label>
-		 <label>비밀번호는 6~20자리, 숫자 또는 특수 문자를 포함하세요</label>
 		  <input type="password" id="pw" name="pw"  placeholder="비밀번호">
 		  <input type="password" id="pwcheck" placeholder="비밀번호 확인" name="pwcheck">
 		 <label>별명</label> 
 		  <input type="text" id="name" name="name" placeholder="${loginInfo.name}" required>
 		  <label>프로필 사진</label>
 		  <input type="text" id="oldphoto" name="oldphoto" value="${loginInfo.photo}" placeholder="${loginInfo.photo}" readonly>
-		  <input type="file" id="photo" name="photo">
-		  <input type="submit" id="btnEdit">
+		  <input type="file" id="photo" name="photo"><br>
+		  <input type="submit" id="btnEdit" value="수정">
+		  <input type="submit" id="leave" value="회원탈퇴">
 	  </div>
+	 </div>
+	 <div id="footer1">
+	 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
+	 </div>
 </body>
-
-<script>
+		<script>
 $(document).ready(function(){
 	//정보수정 버튼 클릭시
 	 $('#btnEdit').click(function(){ 
@@ -59,14 +61,6 @@ $(document).ready(function(){
 			 alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
 			 return false;
 		 } else {
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
 		 
 			var file1 = $('#photo')[0].files[0]
 			var formData = new FormData();
