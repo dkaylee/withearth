@@ -170,7 +170,7 @@ ul li {
 						$('.paging').empty();
 
 						$.ajax({
-									url : 'http://localhost:8080/tumbler/tumlist/rest?p='+ p,
+									url : 'https://www.withearthtum.tk/test1/tumbler/tumlist/rest?p='+ p,
 									type : 'GET',
 									async : false,
 									success : function(data) {
@@ -202,17 +202,13 @@ ul li {
 										var totalPageCount = data.totalPageCount;
 
 										$.each(tumlist, function(index, item) {
-											console.log("data : "
-													+ data.tumlist);
+											console.log("data : "+ data.tumlist);
 											console.log(tumlist);
-											console.log(cntPerPage + ","
-													+ startRow + "," + endRow);
+											console.log(cntPerPage + ","+ startRow + "," + endRow);
 											console.log("start : " + startRow);
 											console.log("end : " + endRow);
-											console.log("totalTpointCount:"
-													+ totalTpointCount);
-											console.log("totalPageCount:"
-													+ totalPageCount)
+											console.log("totalTpointCount:"+ totalTpointCount);
+											console.log("totalPageCount:"+ totalPageCount)
 
 											html2 = '<tr>';
 											html2 += '<td>' + item.tum_idx+ '</td>';

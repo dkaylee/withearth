@@ -259,7 +259,7 @@ section.wrapper, article.wrapper {
 
 		<div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-			<button id="open" onclick="location.href='http://ec2-3-35-16-20.ap-northeast-2.compute.amazonaws.com:8080/tum2/tumbler/tumlist'">텀블러 이용내역</button>
+			<button id="open" onclick="location.href='https://www.withearthtum.tk/test1/tumbler/tumlist'">텀블러 이용내역</button>
 		</div>
 
 		<div class="modal hidden">
@@ -329,7 +329,7 @@ section.wrapper, article.wrapper {
 	$(document).ready(function(){
 		 var cafeinfo = $.ajax({
 				type:"GET",
-				url:"http://localhost:8080/rest/tumbler/tumlist1/map",
+				url:"https://www.withearthtum.tk/test1/rest/tumbler/tumlist1/map",
 				data:{
 				cafe_name:"${cafe.cafe_name}",
 				cafe_lat:"${cafe.cafe_lat}",

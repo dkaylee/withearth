@@ -115,7 +115,7 @@ $(document).ready(function(){
 	   
 	   $.ajax({
 		   
-		   url : 'http://localhost:8080/rest/tumbler/'+idx+'/'+cafe_idx,
+		   url : 'https://www.withearthtum.tk/rest/tumbler/'+idx+'/'+cafe_idx,
 		   type : 'GET',
 		   data : 'idx='+idx+'cafe_idx='+cafe_idx,
 		   success : function(data){

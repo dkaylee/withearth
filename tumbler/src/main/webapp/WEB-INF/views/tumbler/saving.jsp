@@ -82,8 +82,8 @@
 			<div id="modal_btn">
 				<!-- <button id="open"onclick="location.href='#'"></button>
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
-				<a href="http://ec2-3-35-16-20.ap-northeast-2.compute.amazonaws.com:8080/" class="button special" >메인 화면</a>
-				<a href="/tumbler/tumlist" class="button special">텀블러 조회</a>
+				<a href="#" class="button special" >메인 화면</a>
+				<a href="/member/tumbler/tumlist" class="button special">텀블러 조회</a>
 			</div> 
 			</div> 
 
@@ -99,6 +99,7 @@
 <script>
 
 
+// 경로에서 파라미터 받기
    
 function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 
@@ -114,7 +115,7 @@ $(document).ready(function(){
 	   
 	   $.ajax({
 		   
-		   url : 'http://localhost:8080/rest/tumbler/'+idx+'/'+cafe_idx,
+		   url : 'https://www.withearthtum.tk/test1/rest/tumbler/'+idx+'/'+cafe_idx,
 		   type : 'GET',
 		   data : 'idx='+idx+'cafe_idx='+cafe_idx,
 		   success : function(data){

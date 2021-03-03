@@ -12,16 +12,8 @@
 						<c:if test="${loginInfo eq null}">
           					<a href="<c:url value="/member/login"/>">LOGIN</a></c:if>
         				<c:if test="${loginInfo ne null}">          
-
           				<a class="nav-link" href="<c:url value="/member/logout"/>">LOGOUT</a></c:if>
 
-						<a href="<c:url value="/tumbler/tumlist1"/>">텀블러사용 인증</a>
-						<a href="<c:url value="/member/loc/walkingservice"/>">도보 인증 서비스</a>
-
-						<a href="<c:url value="/member/dona/main"/>">나눔장</a>
-
-          					<a class="nav-link" href="<c:url value="/member/logout"/>">LOGOUT</a>
-						</c:if>
 						<a href="#">텀블러 사용 인증</a>
 						<a href="<c:url value="/member/loc/walkingservice"/>">도보 인증 서비스</a>
 						<a href="<c:url value="/member/dona/main"/>">나눔장터</a>
