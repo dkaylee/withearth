@@ -186,7 +186,7 @@ h3{
 	//  deleteCourse function이 없으면 삭제 기능이 실행이 안됨. 
 		function deleteCourse(course_idx) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
-				location.href = '<c:url value="/loc/coursedelete?course_idx="/>' + course_idx;
+				location.href = '<c:url value="/member/loc/coursedelete?course_idx="/>' + course_idx;
 			} // /op/member/delete?idx
 		}
 	
