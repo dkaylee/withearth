@@ -292,6 +292,13 @@
 			<version>2.8.6</version>
 		</dependency>
 		
+		<!-- 큐알이미지.zxing/javase -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		
 		
 	</dependencies>
     <build>

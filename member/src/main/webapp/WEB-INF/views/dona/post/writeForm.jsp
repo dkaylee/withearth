@@ -24,7 +24,7 @@
 		<br>
 		<div class="row uniform">
 			<div class="6u 12u$(xsmall)">
-				<input type="hidden" name="idx" id="idx" value="${loginInfo.idx}" /> 
+				<input type="hidden" name="idx" id="idx" value="${cookie.JSESSIONID.value}" /> 
 				<input type="text" name="postTitle" id="postTitle" placeholder="제목" /> 		
 				<div class="imageList"></div>		
 				<div class="uploadFileBtn" onclick="document.all.file.click()">
@@ -55,7 +55,7 @@
 			<!-- Break -->
 			<div class="12u$">
 				<ul class="actions">
-					<li><input type="button" value="업로드" onclick="javascript:actionForm(); history.go(-1); " /></li> 
+					<li><input type="button" value="업로드" onclick="javascript:actionForm(); history.go(-1);" /></li>
 					<li><input type="reset" onClick="window.location.reload()" value="취소" class="alt" /></li>
 				</ul>
 			</div>
@@ -105,7 +105,7 @@
 			
 			 //ajax로 폼데이터 전송
 		 	 $.ajax({
-				url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/upload',
+				url : 'https://www.withearthdona.tk/dona/rest/user/post/upload',
 				type : 'POST',
 				data : formData,
 				processData: false,

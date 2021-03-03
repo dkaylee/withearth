@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.withearth.member.domain.MemberLoginInfo;
 
 @RestController
-public class AjaxTestController {
+public class AjaxTestController {		
 
 	@PostMapping(value="/member/ajaxTest")
 	public int memberReg(@RequestBody MemberLoginInfo memberInfo,

@@ -283,12 +283,16 @@ a.btn-layerClose {
 					
 	<script>
 	
-	// 포인트 선물교환 메서드-> 포인트 소멸 -> 교환권 생성
+	var idx = '<c:out value="${loginInfo.idx}"/>';
+	console.log(idx);
+	
+	// 포인트 선물 교환 -> 포인트 소멸 -> 교환권 생성
 	function usePoint(){
 		
+<<<<<<< HEAD
 	// 보유포인트 점검 -> 부족할 시 리턴
 	$.ajax({
-		url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/list/' + ${loginInfo.idx},
+		url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
 		type : 'GET',
 		success : function(data){
 			var sum = $(data).last();
@@ -305,7 +309,11 @@ a.btn-layerClose {
     });
     // 포인트 사용처리
 	$.ajax({
-		 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/use/'+ ${loginInfo.idx} + '/' + 200,
+		 url : 'https://www.withearthdona.tk/point/rest/user/point/use/'+ ${loginInfo.idx} + '/' + 200,
+=======
+	$.ajax({
+		 url : 'http://localhost:8080/point/rest/user/point/use/'+ idx + '/' + 200,
+>>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -315,7 +323,7 @@ a.btn-layerClose {
 		 }
 	});
 		
-	};
+	}
 	
 	
   $(document).ready(function(){
@@ -335,7 +343,11 @@ a.btn-layerClose {
 	  	  	 	  
 	  // ajax로 현재 보유 보인트 출력
 	  $.ajax({
-			 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/list/' + ${loginInfo.idx},
+<<<<<<< HEAD
+			 url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
+=======
+			 url : 'http://localhost:8080/point/rest/user/point/list/' + idx,
+>>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 			 type : 'GET',
 			 success : function(data){
 				 //console.log(data);
@@ -343,35 +355,17 @@ a.btn-layerClose {
 						
 					var sum = $(data).last();
 					console.log(sum);
-					  // 합계가 0일 때 -> 현재 보유 포인트 0
-					  if(sum.length==0){
-					   var html = '<div class="nowPoint">';							   
-		               html+= ' 0 p</div>';
-		               $('#nowP').append(html);
-		               }	
-					  // 합계가 0일 때 -> 교환 가능 포인트 0					  
-					  if(sum.length==0){
-					   var html2 = '<h4 class="showPoint">';							   
-			           html2 += ' 0 p</h4>';
-			           $('.wrapList').append(html2);
-			          }			
-					  					  					  
+					
 					$.each(sum, function(index, item){
-						
-						var totalSum = item.pointsum;
-						
 						// 포인트 조회 메인에 노출
 						var html = '<div class="nowPoint">';
 					    html+= item.pointsum;
-	                    html+= ' p</div>';	   
-	                  
+	                    html+= ' p</div>';	                    
 	                    $('#nowP').append(html);	
 	                   
 	                    // 포인트 선물 교환 시 노출
 	                   var html2 = '<h4 class="showPoint">'+item.pointsum+' p</h4>'; 
 	                    $('.wrapList').append(html2);
-	                    
-	                    
 					})
 									
 			 },
@@ -395,7 +389,11 @@ a.btn-layerClose {
 		  table3.css('display','none');
 			  			 			  			  		  			  		 	
 	  $.ajax({
-		 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/list/' + ${loginInfo.idx},
+<<<<<<< HEAD
+		 url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
+=======
+		 url : 'http://localhost:8080/point/rest/user/point/list/' + idx,
+>>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -450,9 +448,13 @@ a.btn-layerClose {
 		  table1.css('display','none');
 		  var table3 = $('#wrapTable3');
 		  table3.css('display','none');
-		  
+		  		 	
 		  $.ajax({
-			 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/coupon/list/' + ${loginInfo.idx},
+<<<<<<< HEAD
+			 url : 'https://www.withearthdona.tk/point/rest/user/coupon/list/' + ${loginInfo.idx},
+=======
+			 url : 'http://localhost:8080/point/rest/user/coupon/list/' + idx,
+>>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 			 type : 'GET',
 			 success : function(data){
 				 console.log(data);
@@ -478,7 +480,11 @@ a.btn-layerClose {
 					var html = '<tr>';
 	                    html+= '<td> '+(index+1) +'</td>';
 	                   // html+= '<td><img alt="QrImage" width="100px" src="<c:url value="/resources/coupon/'+item.couponQr+'png"/>"></td>';
-	                   html+= '<td><img alt="QrImage" width="100px" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/resources/coupon/'+item.couponQr+'png"></td>';
+<<<<<<< HEAD
+	                   html+= '<td><img alt="QrImage" width="100px" src="https://www.withearthdona.tk/point/resources/coupon/'+item.couponQr+'png"></td>';
+=======
+	                   html+= '<td><img alt="QrImage" width="100px" src="http://localhost:8080/point/resources/coupon/'+item.couponQr+'png"></td>';
+>>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 	                    html+= '<td> '+ item.couponHistory+'</td>';
 	                    html+= '<td>'+item.historyDate+'</td>';
 	                     if(item.availability=="Y"){

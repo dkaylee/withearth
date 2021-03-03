@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.withearth.member.domain.MemberRegRequest;
 import com.withearth.member.service.MemberRegService;
@@ -22,7 +21,7 @@ public class MemberRegRestController {
 	
 	@PostMapping
 	public int memberReg(@ModelAttribute("regData") MemberRegRequest regRequest,
-			HttpServletRequest request, Model model,MultipartFile[] upload){
+			HttpServletRequest request, Model model){
 		return regService.memberReg(regRequest,request);
 	}
 	

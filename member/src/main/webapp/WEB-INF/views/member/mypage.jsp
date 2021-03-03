@@ -5,14 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-<link rel="stylesheet" href="<c:url value="/css/mypage.css"/>" />
 <title>Insert title here</title>
 </head>
 <style>
@@ -46,12 +39,15 @@
 	 <div id="footer1">
 	 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	 </div>
+
+
 </body>
 		<script>
 $(document).ready(function(){
 	//정보수정 버튼 클릭시
 	 $('#btnEdit').click(function(){ 
 		 
+
 		 var pwCheck = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/; //6~20미만 최소 1개의 숫자 혹은 특수문자 포함
 	
 		if ($('#pw').val().length>0 && pwCheck.test($('#pw').val())!=true){
@@ -90,7 +86,7 @@ $(document).ready(function(){
 		contentType: false,
 		cache: false,
 		success: function(data){
-			alert("수정이 완료됐습니다.");
+			alert("성공");
 			console.log(data);
 		},
 		error: function(error){
@@ -99,8 +95,8 @@ $(document).ready(function(){
 		}	
 		
 		});
-	}
-	 });
+	 }
+	});
 });
 
 </script>

@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=1"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/dona/main.css"/>"/>
 <style>	
 </style>	
 </head>
@@ -88,8 +88,6 @@
      // 채팅 알림
      // 웹소켓을 지정한 url로 연결한다.
 		 var sock = new SockJS("<c:url value="/chat"/>");
-     
-         var loginUser = '<c:out value="${loginInfo.idx}"/>';
 					
 		 //데이터가 나한테 전달되었을 때 자동으로 실행되는 function
 		 sock.onmessage = onMessage;
@@ -104,23 +102,21 @@
 					
 			msgData = JSON.parse(data);
 			
-			if(msgData.to==loginUser){
-				
-			$('.notice').css('display', 'block');					  		  
-					
+				  $('.notice').css('display', 'block');					  		  
+			  							
 			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="20px">';
-				html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
-				html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
-				html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
-					  		    
-				$('.notice').append(html);
-			}							
+			    html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
+			    html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
+			    html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
+				  		    
+			    $('.notice').append(html);
+				
 		 }
 		 
 		  function noticeNone(){
 			  
 			  $('.notice').empty();
-			  $('.notice').css('display', 'none');
+				$('.notice').css('display', 'none');
 			  
 		  }
 
@@ -144,7 +140,7 @@
 		var keyword = $('#keyword').val();
 		
 		$.ajax({
-			url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/list/search',
+			url : 'https://www.withearthdona.tk/dona/rest/user/post/list/search',
 			type : 'GET',
 			data : 'p='+ i + '&searchType=' +searchType + '&keyword='+keyword,
 			success : function(data){
@@ -158,7 +154,7 @@
 						html += '<input type="hidden" value="'+item.donaIdx+'">';
 					  html += '<div class="article-img">';
 						//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';		
-						html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/s_'+item.files.fileName+'">';			
+						html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';			
 						html += '</div>';
 						html += '<div class="article-content">';
 						html += '<div class="article-title">';
@@ -212,7 +208,7 @@
 		
 			// 처음 리스트 로딩 시 불러올 데이터
 				$.ajax({
-					  url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/list?p=' + p,
+					  url : 'https://www.withearthdona.tk/dona/rest/user/post/list?p=' + p,
 					  type : 'GET',
 					  async : false,
 					  success : function(data){				
@@ -227,7 +223,7 @@
 								html += '<input type="hidden" value="'+item.donaIdx+'">';
 							  html += '<div class="article-img">';
 								//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-								html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
+								html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';	
 								html += '</div>';
 								html += '<div class="article-content">';
 								html += '<div class="article-title">';
@@ -265,7 +261,7 @@
 					var keyword = $('#keyword').val();
 					
 					$.ajax({
-						url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/list/search',
+						url : 'https://www.withearthdona.tk/dona/rest/user/post/list/search',
 						type : 'GET',
 						data : 'p='+ p + '&searchType=' +searchType + '&keyword='+keyword,
 						success : function(data){
@@ -279,7 +275,7 @@
 									html += '<input type="hidden" value="'+item.donaIdx+'">';
 								    html += '<div class="article-img">';
 									//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-									html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/s_'+item.files.fileName+'">';	
+									html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';	
 									html += '</div>';
 									html += '<div class="article-content">';
 									html += '<div class="article-title">';
