@@ -220,7 +220,7 @@ $(document).ready(function(){
 							success : function(check) {
 								console.log("성공");
 								alert("가입이 완료되었습니다.")
-								//location.href="/member";
+								location.href='<c:url value="/"/>';
 								
 							},
 							error: function(error){
