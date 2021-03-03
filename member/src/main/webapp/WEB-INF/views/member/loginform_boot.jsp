@@ -131,7 +131,7 @@ $(document).ready(function(){
 									success: function(data){
 										alert("로그인 되었습니다.");
 										//location.href="/member"; 
-										location.href='<c:url value="/"/>';
+										location.href='<c:url value="/member"/>',
 										console.log(data);
 									},
 									error: function(error){
@@ -202,7 +202,7 @@ $(document).ready(function(){
 						data: {id:email},
 						success: function(data){
 							alert("로그인 되었습니다.");
-							location.href='<c:url value="/"/>';
+							location.href="/member"; 
 							console.log(data);
 						}
 						});
@@ -284,7 +284,7 @@ function onSignIn() {
 				data: {id:g_email},
 				success: function(data){
 					alert("로그인 되었습니다.");
-					location.href='<c:url value="/"/>';
+					location.href="/member"; 
 					console.log(data);
 				}
 				});
@@ -302,7 +302,7 @@ function onSignIn() {
 				success : function(check) {
 					console.log("성공");
 					alert("가입이 완료되었습니다.")
-					location.href='<c:url value="/"/>';
+					location.href="/member";
 					
 				},
 				error: function(error){
@@ -353,7 +353,7 @@ function onSignIn() {
 						data: {id:n_email},
 						success: function(data){
 							alert("로그인 되었습니다.");
-							location.href='<c:url value="/"/>';
+							location.href="/member"; 
 							console.log(data);
 						}
 						});
@@ -370,8 +370,9 @@ function onSignIn() {
 						contentType:'application/json;charset=utf-8',
 						success : function(check) {
 							console.log("성공");
-							alert("가입이 완료되었습니다.");
-							location.href='<c:url value="/"/>';
+							alert("가입이 완료되었습니다.")
+							location.href="/member";
+							
 						},
 						error: function(error){
 							console.log("실패");
