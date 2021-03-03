@@ -5,68 +5,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-<link rel="stylesheet" href="<c:url value="/css/mypage.css"/>" />
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	
-	<section id="banner"></section>
-
-	<section id="three" class="wrapper special">
-		<div class="inner">
-
-			<div id="myCarousel" class="carousel slide" data-bs-interval="false">
-
-				<div class="carousel-inner"></div>
-	
-	<div id="div1">
-		<input type="hidden" id="idx" name="idx"  value="${loginInfo.idx}">
-		 <label>이메일</label>
-		  <input type="email" id="id" name="id"  value="${loginInfo.id}" readonly>
-		 <label>비밀번호</label>
-		 <label>비밀번호는 6~20자리, 숫자 또는 특수 문자를 포함하세요</label>
-		  <input type="password" id="pw" name="pw"  placeholder="비밀번호">
-		  <input type="password" id="pwcheck" placeholder="비밀번호 확인" name="pwcheck">
-		 <label>별명</label> 
-		  <input type="text" id="name" name="name" placeholder="${loginInfo.name}" required>
-		  <label>프로필 사진</label>
-		  <input type="text" id="oldphoto" name="oldphoto" value="${loginInfo.photo}" placeholder="${loginInfo.photo}" readonly>
-		  <input type="file" id="photo" name="photo">
-		  <input type="submit" id="btnEdit">
-	  </div>
+	<input type="hidden" id="idx" name="idx"  value="${loginInfo.idx}">
+	 <label>이메일</label>
+	  <input type="email" id="id" name="id"  value="${loginInfo.id}" readonly>
+	 <label>비밀번호</label>
+	 <label>비밀번호는 6~20자리, 숫자 또는 특수 문자를 포함하세요</label>
+	  <input type="password" id="pw" name="pw"  placeholder="비밀번호">
+	  <input type="password" id="pwcheck" placeholder="비밀번호 확인" name="pwcheck">
+	 <label>별명</label> 
+	  <input type="text" id="name" name="name" placeholder="${loginInfo.name}" required>
+	  <label>프로필 사진</label>
+	  <input type="text" id="oldphoto" name="oldphoto" value="${loginInfo.photo}" placeholder="${loginInfo.photo}" readonly>
+	  <input type="file" id="photo" name="photo">
+	  <input type="submit" id="btnEdit">
 </body>
 
 <script>
 $(document).ready(function(){
 	//정보수정 버튼 클릭시
 	 $('#btnEdit').click(function(){ 
-		 
-		 var pwCheck = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/; //6~20미만 최소 1개의 숫자 혹은 특수문자 포함
-	
-		 if (pwCheck.test($('#pw').val())!=true){
-			 alert("비밀번호는 6~20자, 최소 1개의 숫자 혹은 특수문자를 포함해야합니다. ");
-			 return false;
-		 } else if ($('#pw').val()!=$('#pwcheck').val()){
-			 alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
-			 return false;
-		 } else {
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
 		 
 			var file1 = $('#photo')[0].files[0]
 			var formData = new FormData();
@@ -96,7 +57,7 @@ $(document).ready(function(){
 		contentType: false,
 		cache: false,
 		success: function(data){
-			alert("수정이 완료됐습니다.");
+			alert("성공");
 			console.log(data);
 		},
 		error: function(error){
@@ -105,7 +66,6 @@ $(document).ready(function(){
 		}	
 		
 		});
-	}
 	 });
 });
 

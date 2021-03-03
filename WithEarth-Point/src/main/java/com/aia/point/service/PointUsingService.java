@@ -63,9 +63,9 @@ public class PointUsingService {
 		
 		// 저장될 idx값 가져오기
 		int cIdx = cdao.getNextCouponIdx();
-        System.out.println(cIdx);
+
 		// 링크로 할 url
-		String url = "http://ec2-3-35-4-198.ap-northeast-2.compute.amazonaws.com:8080/member/coupon/qr/use?idx="+idx+"&cIdx="+ cIdx;
+		String url = "http://localhost:8080/point/coupon/qr/use?idx="+idx+"&cIdx="+ cIdx;
 		// 링크 생성값
 		String codeUrl = new String(url.getBytes("utf-8"), "ISO-8859-1");
 
