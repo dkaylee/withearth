@@ -37,7 +37,9 @@
 	<!-- 인터셉터 등록 : login 체크 -->	
 	<interceptors>
 		<interceptor>
-			<mapping path="" />
+			<mapping path="/member/loc/walkingservice" />
+			<mapping path="/member/dona/main" />
+			<mapping path="/user/mypage/view" />
 			<beans:bean
 				class="com.withearth.member.intercepter.AuthCheckIntercepter" />
 		</interceptor>
