@@ -842,19 +842,28 @@
 			    // idx+이동거리 ->   ajax -> 포인트적립으로 이동
 			    //로그인한 회원 idx ->
 			    //배포주소로,,
-				$.ajax({
+
+			    console.log('uidx', idx);
+				console.log('cidx', data);
+ 				$.ajax({
+
 				
-					url: 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/course/'+idx+'/'+data,
-					type: 'post',
+
+				
+					url: 'https://www.withearthdona.tk/point/rest/user/point/course?idx='+idx+'&cIdx='+data+'&distance='+tDistance,
+					type: 'get',
 					//data:{
 						//cIdx: data,
 						//course_km: tDistance
 					//},
+					
 					success: function(data){
 						alert('데이터 전송을 완료했습니다.');
 						var cc= '<c:out value="${result}"/>';
 						console.log(cc);
 						console.log('pdata',data);
+						console.log('uidx', idx);
+						console.log('cidx', data);
 					},
 					error: function(error){
 						console.log(error);
