@@ -51,6 +51,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- <select id="pointCourse" parameterType="map" resultMap="coursePointResult">
 		select course_idx, loc_km from open.walking order by course_date desc limit 1
 	</select> -->
+<select id="pointCourse" parameterType="map" resultMap="coursePointResult">
+		select course_idx, loc_km from open.walking order by course_date desc limit 1
+	</select>
+
 	
 	
 	

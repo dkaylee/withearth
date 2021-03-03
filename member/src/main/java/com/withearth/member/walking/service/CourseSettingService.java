@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.withearth.member.walking.dao.WalkingDao;
 import com.withearth.member.walking.domain.Course;
@@ -20,7 +21,7 @@ public class CourseSettingService {
 	
 	
 	// 데이터베이스 저장
-	//@Transactional
+	@Transactional
 	public int courseSet(CourseSettingRequest setRequest, HttpServletRequest request) {
 		int result = 0;
 		int point = 0;
@@ -34,10 +35,9 @@ public class CourseSettingService {
 			
 			//course_count -> courseCount +1 update
 			//dao.courseCountUpdate();
-			
 			// 코스 DB insert
 			result = dao.insertCourse(course); 
-			
+
 			System.out.println("course"+course);
 		} catch(Exception e) {
 			e.printStackTrace();
