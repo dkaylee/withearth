@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +40,7 @@
 		  <input type="text" id="oldphoto" name="oldphoto" value="${loginInfo.photo}" placeholder="${loginInfo.photo}" readonly>
 		  <input type="file" id="photo" name="photo"><br>
 		  <input type="submit" id="btnEdit" value="수정">
-		  <!-- <input type="submit" id="leave" value="회원탈퇴"> -->
+		  <input type="submit" id="leave" value="회원탈퇴">
 	  </div>
 	 </div>
 	 <div id="footer1">
@@ -101,6 +101,28 @@ $(document).ready(function(){
 		});
 	}
 	 });
+	
+/* 	 $('#leave').click(function(){ 
+		 var idx = ${loginInfo.idx}
+		 $.ajax({
+				url:'leave',
+				data: {idx:idx},
+				success: function(data){
+				if(data=='Y'){
+					alert("탈퇴가 완료되었습니다.");	
+				}
+				},
+				
+				error: function(error){
+					console.log("실패");
+					console.log(error);
+				
+				}
+		 });
+	 }); */
+	
+	
+	
 });
 
 </script>

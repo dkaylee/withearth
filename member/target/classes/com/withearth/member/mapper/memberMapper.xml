@@ -157,4 +157,9 @@ select * from wuser where id= #{param1}
 select * from wuser where idx= #{idx}
 </select>
 
+<!-- 회원정보 수정 (비밀번호) -->
+<!-- <update id="updatePw"
+		parameterType="com.withearth.member.domain.Member">
+		update wuser set verify='D' where idx=#{idx}
+</update> -->
 </mapper>
