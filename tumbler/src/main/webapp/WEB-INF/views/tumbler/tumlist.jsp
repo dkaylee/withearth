@@ -129,19 +129,19 @@ ul li {
 
 
 		
-      <div class="paging">
+      <%-- <div class="paging">
 				<c:if test="${listView.totalTpointCount>0}">
 					<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
 				    [<a href="<c:url value="/tumbler/tumlist"/>?p=${num}"
 							class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 
 				  </c:forEach>
 				</c:if>
-			 </div>
+			 </div> --%>
 			 
-			<!--  <div class="paging">
+			 <div class="paging">
 				     	<ul class="pagination"></ul>						 
 			 </div>
-			  -->
+			  
 			  
 			  
 
@@ -202,13 +202,17 @@ ul li {
 										var totalPageCount = data.totalPageCount;
 
 										$.each(tumlist, function(index, item) {
-											console.log("data : "+ data.tumlist);
+											console.log("data : "
+													+ data.tumlist);
 											console.log(tumlist);
-											console.log(cntPerPage + ","+ startRow + "," + endRow);
+											console.log(cntPerPage + ","
+													+ startRow + "," + endRow);
 											console.log("start : " + startRow);
 											console.log("end : " + endRow);
-											console.log("totalTpointCount:"+ totalTpointCount);
-											console.log("totalPageCount:"+ totalPageCount)
+											console.log("totalTpointCount:"
+													+ totalTpointCount);
+											console.log("totalPageCount:"
+													+ totalPageCount)
 
 											html2 = '<tr>';
 											html2 += '<td>' + item.tum_idx+ '</td>';
@@ -232,7 +236,8 @@ ul li {
 												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+ i+ '">'+ i+ '</a></li>';
 												$('.pagination').append(html3);
 											}
-										};
+										}
+										;
 
 										/* for (var num=startRow; num<=endRow; num++) {
 										     if (num == cntPerPage) {

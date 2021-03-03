@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial=scale=1.0">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src = "path / to / vanilla.js"> </script>
 <title>텀블러  매장찾기</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
@@ -258,7 +259,7 @@ section.wrapper, article.wrapper {
 
 		<div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-			<button id="open" onclick="location.href='/member/tumbler/tumlist'">텀블러 이용내역</button>
+			<button id="open" onclick="location.href='http://localhost:8080/tumbler/tumlist'">텀블러 이용내역</button>
 		</div>
 
 		<div class="modal hidden">

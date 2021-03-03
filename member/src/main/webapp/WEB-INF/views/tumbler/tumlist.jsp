@@ -129,19 +129,19 @@ ul li {
 
 
 		
-      <div class="paging">
+      <%-- <div class="paging">
 				<c:if test="${listView.totalTpointCount>0}">
 					<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
 				    [<a href="<c:url value="/tumbler/tumlist"/>?p=${num}"
 							class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 
 				  </c:forEach>
 				</c:if>
-			 </div>
+			 </div> --%>
 			 
-			<!--  <div class="paging">
+			 <div class="paging">
 				     	<ul class="pagination"></ul>						 
 			 </div>
-			  -->
+			  
 			  
 			  
 
