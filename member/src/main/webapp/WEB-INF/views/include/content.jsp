@@ -12,7 +12,8 @@
 					<h3>
 						텀블러 사용 인증하기<br />
 					</h3>
-				</header>
+				</header>				
+				<img src="<c:url value="/img/main/usetum.jpg"/>" width="300px;">
 				<p>지정된 카페에서 텀블러 사용 인증 후 포인트를 적립받는 서비스입니다.</p>
 				<footer>
 					<a href="#" class="button special">More</a>
@@ -28,7 +29,7 @@
 				<p>목적지 설정 후 도보로 목적지까지 이동하면 포인트를 적립받는 서비스입니다.</p>
 				<footer>
 
-					<a href="<c:url value="/course/loc/walkingservice"/>"
+					<a href="<c:url value="/member/loc/walkingservice"/>"
 						class="button special">More</a>
 				</footer>
 			</article>
@@ -41,7 +42,7 @@
 				</header>
 				<p>사용하지 않는 물건 또는 음식들을 서로 공유하고 포인트를 적립받는 서비스입니다.</p>
 				<footer>
-					<a href="#" class="button special">More</a>
+					<a href="<c:url value="/member/dona/main"/>" class="button special">More</a>
 				</footer>
 			</article>
 

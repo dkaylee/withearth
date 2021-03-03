@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aia.point.domain.Point;
@@ -52,13 +53,14 @@ public class PointController {
 	}
 	
 	// 회원idx, 코스idx를 받아서 포인트 저장
-	@GetMapping("/course/{idx}/{cIdx}")
+	@GetMapping("/course")
 	public String saveCoursePoint(
-			@PathVariable("idx") int idx,
-			@PathVariable("cIdx") int cIdx
+			@RequestParam("idx") int idx,
+			@RequestParam("cIdx") int cIdx,
+			@RequestParam("distance") float distance
 			) {
 		 //System.out.println(saveService.userCoursePoint(curPoint));
-		return saveService.userCoursePoint(idx, cIdx)==0?"N":"Y";
+		return saveService.userCoursePoint(idx, cIdx, distance)==0?"N":"Y";
 	}
 	
 	
