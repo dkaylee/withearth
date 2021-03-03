@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.withearth.member.dao.MemberDAO;
 import com.withearth.member.domain.Member;
@@ -57,22 +55,18 @@ public class MemberRegService {
 		
 		//userPhoto가 있거나 비어있지 않으면????
 		if(regRequest.getUserPhoto()!= null && !regRequest.getUserPhoto().isEmpty()) {
-			
 			//웹 경로
 			String uploadPath = "/fileupload/member";
-		
 			//실제 경로
 				//session=서버에 저장되어있는 정보
 				//request에서 session 정보를 받아와서, 
 				//이 코드 자체가 실제 경로를 가져옴
 			String saveDirPath = request.getSession().getServletContext().getRealPath(uploadPath);
+	
 			
-			//확장자
-			String fname = regRequest.getUserPhoto().getOriginalFilename();
-			String ftype = fname.substring(fname.lastIndexOf("."));
 			//새로운 파일 이름
 			//아이디 + 현재시간이 파일이름이 됨
-			newFileName = regRequest.getUserid() +System.currentTimeMillis()+ftype; //여기 확장자 추가
+			newFileName = regRequest.getUserid() +System.currentTimeMillis();
 			
 			//실제경로에 newFileName이라는 이름으로 파일이 하나 생김
 			newFile = new File(saveDirPath,newFileName);
