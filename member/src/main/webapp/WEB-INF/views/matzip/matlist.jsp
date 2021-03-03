@@ -192,8 +192,6 @@ display:inline-block;
 			}
 			
 		} */
-		
-		var contentArr = [];
 
 		function getMarkers(latitude, longitude) {
 
@@ -207,9 +205,9 @@ display:inline-block;
 			// 지도를 생성합니다    
 			var map = new kakao.maps.Map(mapContainer, mapOption);
 
-			//var contentArr = [];
+			var contentArr = [];
 
-			/* // contnets 배열에 저장
+			// contnets 배열에 저장
 			for (var i = 0; i < mat.length; i++) {
 
 			var content = '<div>' + mat[i].matTitle + '</div>' + '<div>'
@@ -218,7 +216,7 @@ display:inline-block;
 
 				contentArr.push(content);
 
-			} */
+			}
 
 			console.log(contentArr);
 
@@ -234,22 +232,10 @@ display:inline-block;
 							// 정상적으로 검색이 완료됐으면 
 							if (status === kakao.maps.services.Status.OK) {
 
-								var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
+								var coords = new kakao.maps.LatLng(result[0].y,
+										result[0].x);
 
-								console.log('coords:::'+coords);
-								
-								// contnets 배열에 저장
-								for (var i = 0; i < mat.length; i++) {
-
-									var content =  mat[i].matTitle
-													+ mat[i].matAddr
-													+ mat[i].matNum
-													+ coords;
-
-									contentArr.push(content);
-								}
-								
-								console.log('contents:::::'+contentArr);
+								console.log(coords);
 
 								// 결과값으로 받은 위치를 마커로 표시합니다
 								var marker = new kakao.maps.Marker({
@@ -259,7 +245,7 @@ display:inline-block;
 
 								// 마커에 표시할 인포윈도우를 생성합니다 
 								var infowindow = new kakao.maps.InfoWindow({
-								 	content: contentArr[i] // 인포윈도우에 표시할 내용
+								/* content: contentArr[i] */// 인포윈도우에 표시할 내용
 								});
 
 								// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다

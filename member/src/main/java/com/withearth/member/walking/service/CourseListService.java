@@ -74,7 +74,7 @@ public class CourseListService {
 
 			list = dao.selectAllCourseList();
 			System.out.println(list);
-			log.info(list);
+			//log.info(list);
 
 
 		} catch (Exception e) {

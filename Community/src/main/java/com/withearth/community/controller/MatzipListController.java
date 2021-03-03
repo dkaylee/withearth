@@ -20,7 +20,6 @@ public class MatzipListController {
 	@RequestMapping(value = "/matzip/matlist/listInfo")
 	public MatListView getMatList(
 			Model model,
-			@PathVariable("pageNumber") int pageNumber,
 			SearchParam param) {
 		
 		System.out.println("search param: "+param);

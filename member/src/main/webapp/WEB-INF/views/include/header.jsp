@@ -12,7 +12,7 @@
 						<a href="<c:url value="/member/loc/walkingservice"/>">도보 인증 서비스</a>
 						<a href="<c:url value="/member/dona/main"/>">나눔장</a>
 						<a href="<c:url value="/user/mypage/view"/>">마이페이지</a>
-						<a href="<c:url value="/comm/matlist"/>">커뮤니티</a>						
+						<a href="<c:url value="/matzip/matlist?p=1"/>">커뮤니티</a>						
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>

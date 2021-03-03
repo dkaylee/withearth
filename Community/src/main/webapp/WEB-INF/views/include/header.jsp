@@ -13,7 +13,7 @@
 						<a href="#">Walking</a>
 						<a href="#">Point</a>
 						<a href="#">Donation</a>
-						<a href="<c:url value="/matzip/matlist"/>">Community</a>
+						<a href="<c:url value="/matzip/matlist?p=1"/>">Community</a>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
