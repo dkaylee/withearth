@@ -28,10 +28,8 @@ public class DonaViewController {
 	
 	@RequestMapping("/dona/main/list")
 	public String goListForm(
-			@RequestParam(value="p", defaultValue ="1") int p,
-			HttpSession session
+			@RequestParam(value="p", defaultValue ="1") int p
 			) {
-		session.setAttribute("user", 1);
 		
 		return "dona/post/donaMain";
 	}
@@ -58,11 +56,7 @@ public class DonaViewController {
 	public String goDetailView(
 			@RequestParam("idx") int donaIdx,
 			HttpServletRequest request,
-			Model model) {
-				
-	   HttpSession session  = request.getSession(false);
-	   session.setAttribute("idx", 3);
-	   System.out.println(session);
+			Model model) {				
 	   
 		return "dona/post/postDetailView";
 	}
@@ -107,7 +101,7 @@ public class DonaViewController {
 			mv.addObject("rid", msg.getRoomIdx());
 		}
 			
-		mv.setViewName("post/chat/chatView");
+		mv.setViewName("dona/post/chat/chatView");
 		mv.addObject("donaIdx", donaIdx);
 		mv.addObject("uid", uid);
 		mv.addObject("to", to);

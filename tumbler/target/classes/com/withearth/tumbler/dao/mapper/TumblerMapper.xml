@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withearth.tumbler.dao.TumblerDao">
+
+	<!--DB와 이름 맞추기 -->
+	<resultMap type="com.withearth.tumbler.domain.Tumbler"
+		id="TumblerResultMap">
+
+		<id property="tum_idx" column="tum_idx" />
+		<result property="tum_date" column="tum_date" />
+		<result property="cafe_idx" column="cafe_idx" />
+		<result property="idx" column="idx" />
+
+	</resultMap>
+	
+	 	<resultMap type="com.withearth.tumbler.domain.Tumbler"
+		id="TumblerListResult">
+
+		<id property="tum_idx" column="tum_idx" />
+		<result property="tum_date" column="tum_date" />
+		<result property="cafe_name" column="cafe_name" />
+		<result property="idx" column="idx" />
+
+	</resultMap>  
+	
+	
+	
+	
+	<select id="selelctTumList" parameterType="int" resultType="com.withearth.tumbler.domain.Tumbler">
+		select 
+		   tum_idx, tum_date, tumbler.cafe_idx, cafe.cafe_name , idx, tum_point 
+		from 
+		    tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx 
+		where idx = #{idx} ORDER BY #{tum_idx} DESC
+		
+	</select>
+	
+	<insert id="insertTumbler" parameterType="com.withearth.tumbler.domain.Tumbler"
+		useGeneratedKeys="true"
+		keyProperty="tum_idx">
+		INSERT INTO tumbler(tum_date, cafe_idx, idx, tum_point)
+		VALUES (sysdate(), #{cafe_idx}, #{idx}, #{tum_point})
+	</insert>
+
+	<insert id="insertPoint" parameterType="com.withearth.tumbler.domain.Point"
+	useGeneratedKeys="true"
+	keyProperty="point">
+		INSERT INTO point(saving_point, saving_system, saving_date, idx, tum_idx, course_idx)
+		VALUES (#{saving_point}, #{saving_system}, sysdate(), #{idx}, #{tum_idx}, #{course_idx})
+	</insert>
+
+
+<!-- 포인트 적립  수 -->
+<select id="selectTotalCount" resultType="int">
+
+select count(*) from tumbler
+
+</select>
+
+<select id="selectTumpointList"
+        resultMap="TumblerResultMap"
+        parameterType="Map"
+   >
+
+<!-- select * from tumbler limit #{param1}, #{param2} -->
+<!--      select 
+		   tum_idx, tum_date, tumbler.cafe_idx, cafe.cafe_name , idx, tum_point 
+		from 
+		    tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx 
+		limit #{param1}, #{param2} -->
+		
+		select 
+           tum_idx, 
+           tum_date, 
+           tumbler.cafe_idx, 
+           cafe.cafe_name , 
+           idx, 
+           tum_point,
+           (select count(*)  from tumbler,cafe where tumbler.cafe_idx = cafe.cafe_idx) 
+           from 
+           tumbler left outer join cafe on tumbler.cafe_idx = cafe.cafe_idx
+           where idx 
+           ORDER BY tum_idx DESC
+           limit #{startRow}, #{cntPerPage} 
+           
+          
+		
+
+</select>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
