@@ -63,6 +63,5 @@ public interface MemberDAO {
 //로그인
 	Member selectLoginIdx(int idx);	
 	
-// 회원 탈퇴 시키기
-	int leaveUser(int idx);	
+	
 }
