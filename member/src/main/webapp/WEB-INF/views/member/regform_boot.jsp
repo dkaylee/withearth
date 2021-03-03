@@ -154,6 +154,7 @@
 						msg.addClass('font_blue');
 						$('#btnReg').attr("disabled", false);
 					} else {
+						///
 						msg.html('이미 사용중인 아이디 입니다.');
 						msg.removeClass('font_blue');
 						msg.addClass('font_red');
