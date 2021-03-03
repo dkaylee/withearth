@@ -110,3 +110,4 @@ buildNumber.properties
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,maven
 *.log
 Servers2/.project
+Servers/.project
