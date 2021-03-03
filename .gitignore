@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-/.metadata/
+
 member/.settings/org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs
-=======
+
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java,maven
 
@@ -118,4 +117,4 @@ Servers/.project
 .metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
 .metadata/.plugins/org.eclipse.wst.server.core/publish/publish0.dat
 WithEarth-Donation/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
->>>>>>> 635e741ef38f0419c1888f89927a259034cd09df
+
