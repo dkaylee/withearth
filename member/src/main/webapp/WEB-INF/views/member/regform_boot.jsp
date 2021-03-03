@@ -92,7 +92,7 @@
 			var formData = new FormData();
 			formData.append("userid",$('#id').val());
 			formData.append("userpw",$('#pw').val());
-			formData.append("username",$('#name').val());
+			formData.append("username",encodeURIComponent($('#name').val()));
 			
 			if(typeof(file1) != 'undefined'){
 			formData.append("userPhoto",file1);	

@@ -3,6 +3,8 @@ package com.withearth.member.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -92,6 +94,16 @@ public class MemberRegService {
 		String beforepw = regRequest.getUserpw();
 		String afterpw = cryptPasswordEncoder.encode(beforepw);
 		regRequest.setUserpw(afterpw);
+		
+		String dename = null;
+		dename=regRequest.getUsername();
+		try {
+			dename=URLDecoder.decode(dename, "UTF-8" );
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		regRequest.setUsername(dename);
+		
 		
 		Member member = regRequest.toMember();
 	

@@ -54,12 +54,12 @@ $(document).ready(function(){
 		 
 		 var pwCheck = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/; //6~20미만 최소 1개의 숫자 혹은 특수문자 포함
 	
-		 if (pwCheck.test($('#pw').val())!=true){
-			 alert("비밀번호는 6~20자, 최소 1개의 숫자 혹은 특수문자를 포함해야합니다. ");
-			 return false;
-		 } else if ($('#pw').val()!=$('#pwcheck').val()){
-			 alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
-			 return false;
+		if ($('#pw').val().length>0 && pwCheck.test($('#pw').val())!=true){
+				 alert("비밀번호는 6~20자, 최소 1개의 숫자 혹은 특수문자를 포함해야합니다. ");
+				 return false;
+			 } else if ($('#pw').val()!=$('#pwcheck').val()){
+				 alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+				 return false;
 		 } else {
 		 
 			var file1 = $('#photo')[0].files[0]
@@ -68,7 +68,7 @@ $(document).ready(function(){
 			formData.append("idx",$('#idx').val());
 			formData.append("id",$('#id').val());
 			formData.append("cgpw",$('#pw').val());
-			formData.append("cgname",$('#name').val());
+			formData.append("cgname",encodeURIComponent($('#name').val()));
 			formData.append("oldphoto",$('#oldphoto').val());
 
 			
