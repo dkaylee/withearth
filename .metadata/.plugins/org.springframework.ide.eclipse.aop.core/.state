@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<aop-reference-model>
-<aop-project name="WithEarth-Point"/>
-<aop-project name="WithEarth-Donation"/>
-<aop-project name="member"/>
-<aop-project name="walking"/>
-</aop-reference-model>

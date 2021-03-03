@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\USER\Documents\GitHub\withearth\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3110054704.index
-\member\src\main\java
