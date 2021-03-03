@@ -288,7 +288,7 @@ a.btn-layerClose {
 		
 	// 보유포인트 점검 -> 부족할 시 리턴
 	$.ajax({
-		url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/list/' + ${loginInfo.idx},
+		url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
 		type : 'GET',
 		success : function(data){
 			var sum = $(data).last();
@@ -305,7 +305,7 @@ a.btn-layerClose {
     });
     // 포인트 사용처리
 	$.ajax({
-		 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/use/'+ ${loginInfo.idx} + '/' + 200,
+		 url : 'https://www.withearthdona.tk/point/rest/user/point/use/'+ ${loginInfo.idx} + '/' + 200,
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -335,7 +335,7 @@ a.btn-layerClose {
 	  	  	 	  
 	  // ajax로 현재 보유 보인트 출력
 	  $.ajax({
-			 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/list/' + ${loginInfo.idx},
+			 url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
 			 type : 'GET',
 			 success : function(data){
 				 //console.log(data);
@@ -395,7 +395,7 @@ a.btn-layerClose {
 		  table3.css('display','none');
 			  			 			  			  		  			  		 	
 	  $.ajax({
-		 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/point/list/' + ${loginInfo.idx},
+		 url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -452,7 +452,7 @@ a.btn-layerClose {
 		  table3.css('display','none');
 		  
 		  $.ajax({
-			 url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/rest/user/coupon/list/' + ${loginInfo.idx},
+			 url : 'https://www.withearthdona.tk/point/rest/user/coupon/list/' + ${loginInfo.idx},
 			 type : 'GET',
 			 success : function(data){
 				 console.log(data);
@@ -478,7 +478,7 @@ a.btn-layerClose {
 					var html = '<tr>';
 	                    html+= '<td> '+(index+1) +'</td>';
 	                   // html+= '<td><img alt="QrImage" width="100px" src="<c:url value="/resources/coupon/'+item.couponQr+'png"/>"></td>';
-	                   html+= '<td><img alt="QrImage" width="100px" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/point/resources/coupon/'+item.couponQr+'png"></td>';
+	                   html+= '<td><img alt="QrImage" width="100px" src="https://www.withearthdona.tk/point/resources/coupon/'+item.couponQr+'png"></td>';
 	                    html+= '<td> '+ item.couponHistory+'</td>';
 	                    html+= '<td>'+item.historyDate+'</td>';
 	                     if(item.availability=="Y"){
