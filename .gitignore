@@ -121,3 +121,8 @@ Servers/.project
 .metadata/.plugins/org.eclipse.wst.server.core/publish/publish0.dat
 WithEarth-Donation/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
 
+WithEarth-Point/.settings/org.eclipse.wst.common.component
+WithEarth-Donation/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+WithEarth-Point/.settings/org.eclipse.wst.common.component
+WithEarth-Point/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+WithEarth-Point/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
