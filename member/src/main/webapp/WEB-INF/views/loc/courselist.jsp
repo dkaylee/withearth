@@ -163,7 +163,7 @@ h3{
 						<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
 							<li class="page-item"  ${listView.pageNumber eq num ? 'active' : '' }>
 								<a class="page-link" 
-								href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}
+								href="<c:url value="/member/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}
 								</a>
 							</li>
 						</c:forEach>
