@@ -886,7 +886,7 @@
 	
     /*******************************모달창 기능********************************************/
     
-    var myModal = document.getElementById('myModal');
+   /*  var myModal = document.getElementById('myModal');
 	var myInput = document.getElementById('myInput');
 
 	/* myModal.addEventListener('shown.bs.modal', function () {
@@ -895,7 +895,7 @@
     
     function infoModal(){
     	$('#InfoModal').modal('show');
-	}
+	} */
     
 	
 	
