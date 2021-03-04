@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withearth.community.service.EditMatService;
@@ -11,7 +12,13 @@ import com.withearth.community.service.EditMatService;
 
 @Controller
 public class MatViewController {
-		
+	
+	// 게시물 등록
+	@RequestMapping(value="/matzip/addmatForm")
+	public String getAddForm() {
+			
+		return "/matzip/addmatForm";
+	}
 	
 	// 맛집 리스트
 	@RequestMapping(value = "/matzip/matlist")

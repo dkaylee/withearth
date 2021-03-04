@@ -80,7 +80,7 @@
 				
 			},
 			error : function(){
-				alert("파일 못불러옴^^");
+				alert("오류가 발생했습니다.");
 			}
 		});	
 	}
@@ -114,7 +114,7 @@
 	
 			},
 			error : function(data){
-				alert("파일 못불러옴^^");
+				alert("오류가 발생했습니다");
 	
 			}
 		});
@@ -125,19 +125,16 @@
  	function deleteMatzip() {
 		
 	$.ajax({
-				url:"/matzip/delete?matIdx="+matIdx,
-				type:"POST",
-				data: $(matIdx).serialize(),
-				cache : false,
-				success : function(data){
-				
-				if(data != null ){
-					var result = data.result;
+				url:"http://localhost:8080/community/matzip/deleteMat?matIdx="+matIdx,
+				type:"GET",
+//				cache : false,
+				success : function(result){	
+					console.log(result);
+					
 					if(result == "1" ) {
 						alert("게시글 삭제를 성공하였습니다.");  
 						goMatlist();
 						}
-					}
 				},
 				error: function(){
 					alert('삭제를 실패했습니다.');

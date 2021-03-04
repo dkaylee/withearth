@@ -21,91 +21,7 @@
 }
 </style>
 
-<script>
-	/* 맛집 목록이동 */
-	function goMatlist(){
-		location.href = "/matzip/matlist";
-	}
-	/* 맛집추가 및 파일업로드 */
-	 $(document).ready(function() {
-		 
-		        // 태그에 onchange를 부여한다.
-		        $('#mImg').change(function() {
-		                addPreview($(this)); //preview form 추가하기
-		        });
-		        
-		        $('#matzipForm').submit(function(){
-					
-					var photoFiles = $('#matImg');
-					
-					var files = photoFile[0],files;
-					
-					console.log(files);
-					
-					var formData = new FormData();
-					
-					formData.append("matTitle", $('#mTitle').val()),
-					formData.append("matAddr", $('#mAddr').val()),
-					formData.append("matTime", $('#mTime').val()),
-					formData.append("matNum", $('#mNum').val()),
-					formData.append("matCont", $('#mCont').val());
-					
-					for(var i=0; i<files.length; i++){
-						formData.append("matImg", $('mImg').val());
-					}
-					
-					console.log(formData);
 
-					
-					$.ajax({
-						url : '/matzip/addmatzip',
-						type : 'POST',
-						data : formData,
-						processData : false,
-						contentType : false,
-						cache : false ,
-						success : function (data){
-							var result = data.result;
-							if(result != null){		
-								if(result == "1"){
-									alert("업체등록을 완료하였습니다.");
-									
-									goMatlist();
-									
-									}
-								}
-							},
-							error :
-								alert("업체등록을 다시해주세요.")
-					});
-		    	}); 
-		   }); 
-	
-			
-		    // image preview 기능 구현
-		    // input = file object[]
-		     function addPreview(input) {
-		        if (input[0].files) {
-		            //파일 선택이 여러개였을 시의 대응
-		            for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
-		                var file = input[0].files[fileIndex];
-		                var reader = new FileReader();
-		 
-		                reader.onload = function (img) {
-		                    //div id="preview" 내에 동적코드추가.
-		                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
-		                    $("#preview").append(
-		                        "<img src=\"" + img.target.result + "\"\/>"
-		                    );
-		                    
-		                };
-		                
-		                reader.readAsDataURL(file);
-		            }
-		        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다. 
-		    }  
-	
-</script>
 
 
 
@@ -158,7 +74,7 @@
 				
 				<div class="12u$">
 					<ul class="actions">
-					<li><input type="submit" value="등록하기" /></li>
+					<li><input type="submit" class="addbtn" value="등록하기" /></li>
 					<li><input type="reset" value="목록" onclick="javascript:goMatlist();"/></li>
 					</ul>
 				</div>
@@ -166,6 +82,88 @@
 		</form>		
 	</div>
 </div>
+
+<script>
+	/* 맛집 목록이동 */
+	function goMatlist(){
+		location.href = "http://localhost:8080/community/matzip/matlist?p=1";
+	}
+	/* 맛집추가 및 파일업로드 */
+	 $(document).ready(function() {
+		 
+		        // 태그에 onchange를 부여한다.
+		        $('#mImg').change(function() {
+		                addPreview($(this)); //preview form 추가하기
+		        });
+		        
+		        $('.addbtn').click(function(){
+					
+					var photoFiles = $('#mImg');
+					
+					var files = photoFiles[0].files;
+					
+					console.log(files);
+					
+					var formData = new FormData();
+				
+					formData.append("mTitle", $('#mTitle').val());
+					formData.append("mAddr", $('#mAddr').val());
+					formData.append("mTime", $('#mTime').val());
+					formData.append("mNum", $('#mNum').val());
+					formData.append("mCont", $('#mCont').val());
+					
+					for(var i=0; i<photoFiles.length; i++){
+						formData.append("mImg",  files);
+					}
+					
+					console.log(formData);
+
+					$.ajax({
+						url : '/matzip/addmatzip',
+						type : 'POST',
+						data : formData,
+						enctype : 'multipart/form-data',
+						processData : false,
+						contentType : false,
+						cache : false,
+						success : function (result){
+						console.log(result);
+								if(result == "1"){
+									alert("업체등록을 완료하였습니다.");
+									goMatlist();
+								}
+							},
+							error :
+								alert("업체등록을 다시해주세요.")
+					});
+		    	}); 
+		   }); 
+	
+			
+		    // image preview 기능 구현
+		    // input = file object[]
+		     function addPreview(input) {
+		        if (input[0].files) {
+		            //파일 선택이 여러개였을 시의 대응
+		            for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
+		                var file = input[0].files[fileIndex];
+		                var reader = new FileReader();
+		 
+		                reader.onload = function (img) {
+		                    //div id="preview" 내에 동적코드추가.
+		                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
+		                    $("#preview").append(
+		                        "<img src=\"" + img.target.result + "\"\/>"
+		                    );
+		                    
+		                };
+		                
+		                reader.readAsDataURL(file);
+		            }
+		        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다. 
+		    }  
+	
+</script>
 		
 </section>
 
@@ -214,8 +212,6 @@
 	
 			
 		</script>
-	
-	
 	
 </body>
 </html>

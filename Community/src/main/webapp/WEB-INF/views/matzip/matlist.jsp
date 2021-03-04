@@ -65,7 +65,7 @@ display:inline-block;
 	
 	<!-- 카카오 api -->
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004&libraries=services">
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0baf561a9ecada2b271b32f3304dc3eb&libraries=services">
 	</script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004">
@@ -219,7 +219,7 @@ display:inline-block;
 				contentArr.push(content);
 
 			} */
-
+			
 			console.log(contentArr);
 
 			for (var i = 0; i < mat.length; i++) {
@@ -228,8 +228,7 @@ display:inline-block;
 				var geocoder = new kakao.maps.services.Geocoder();
 
 				// 주소로 좌표를 검색합니다
-				geocoder.addressSearch(mat[i].matAddr,
-						function(result, status) {
+				geocoder.addressSearch(mat[i].matAddr, function(result, status) {
 
 							// 정상적으로 검색이 완료됐으면 
 							if (status === kakao.maps.services.Status.OK) {
@@ -245,7 +244,7 @@ display:inline-block;
 													+ mat[i].matAddr
 													+ mat[i].matNum
 													+ coords;
-
+									
 									contentArr.push(content);
 								}
 								
@@ -281,7 +280,6 @@ display:inline-block;
 			}
 			getLocation();
 		}
-
 		getLocation();
 
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 

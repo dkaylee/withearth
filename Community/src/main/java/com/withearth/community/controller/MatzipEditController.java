@@ -3,6 +3,8 @@ package com.withearth.community.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,13 +15,14 @@ import com.withearth.community.domain.MatEditRequest;
 import com.withearth.community.domain.MatzipVo;
 import com.withearth.community.service.EditMatService;
 
+@RequestMapping(value="/matzip")
 @RestController
 public class MatzipEditController {
 	
 	@Autowired
 	private EditMatService editMatService;
 	
-	@RequestMapping(value="/matzip/getEdit", method = RequestMethod.GET)
+	@GetMapping(value="/getEdit")
 	public MatzipVo matEditForm(
 			@RequestParam("matIdx") int matIdx
 			) {
@@ -27,7 +30,8 @@ public class MatzipEditController {
 		return editMatService.getEditMatzip(matIdx);
 	}
 	
-	@RequestMapping(value="/matzip/setEdit", method=RequestMethod.POST)
+	
+	@PostMapping(value="/setEdit")
 	public int matEdit(
 			MatEditRequest editReq,
 			MultipartHttpServletRequest mprq,
@@ -40,5 +44,30 @@ public class MatzipEditController {
 		
 		return result;
 	}
+	
+	
+//	@RequestMapping(value="/matzip/getEdit", method = RequestMethod.GET)
+//	public MatzipVo matEditForm(
+//			@RequestParam("matIdx") int matIdx
+//			) {
+//		
+//		return editMatService.getEditMatzip(matIdx);
+//	}
+	
+	
+	
+//	@RequestMapping(value="/matzip/setEdit", method=RequestMethod.POST)
+//	public int matEdit(
+//			MatEditRequest editReq,
+//			MultipartHttpServletRequest mprq,
+//			Model model
+//			) {
+//		
+//		int result = editMatService.editMatzip(editReq, mprq);
+//		
+//		System.out.println("Result"+editReq);		
+//		
+//		return result;
+//	}
 	
 }
