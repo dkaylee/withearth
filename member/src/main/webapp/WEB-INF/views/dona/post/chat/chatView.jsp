@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="<c:url value="/css/dona/chat/style.css?ver=1"/>" />
+<link rel="stylesheet" href="<c:url value="/css/dona/chat/style.css?ver=2"/>" />
 <meta charset="UTF-8">
 <title>With Earth</title>
 <script
@@ -41,8 +41,25 @@
 			data : 'donaIdx=' + donaIdx +'&rid=' + roomIdx,
 			success : function(data){
 				// 대화 상대 출력
-				var headHtml = '<h3 class="targetUser">대화상대 : '+to+'</h3>';
-				$('.user-container').append(headHtml);
+			        $.ajax({
+            			url: '/member/member/ajaxTest/test?idx='+to,
+            			type: 'get',
+            			contentType: "application/json; charset=UTF-8",
+            			success: function(data){
+            				console.log(data);
+            				
+            				var pHtml = '<img alt="프로필 사진" src="<c:url value="/fileuplaod/member/'+data.photo+'"/>" width="50px" height="50px" class="profile">';
+            				$('.profileImage').append(pHtml);
+            				          
+            				var headHtml = '<h3 class="targetUser">'
+            				    headHtml += data.name +'</h3>';
+            				$('.user-container').append(headHtml);
+            			},
+            			error: function(error){
+            				console.log(error);
+            			}	
+            			
+            			});
 				// 이전 대화 내용 출력											
 			$.each(data, function(index, item){ 
 				// 자신이 보낸 대화
@@ -50,7 +67,7 @@
 			  
 				var printHTML = "<div class='well text_right'>";
 				printHTML += "<div class='alert alert-info'>";
-				printHTML += "<strong>"+item.chatWritetime+"[" + item.userIdx + "]<span class=\"right-text\">"+item.chatMessage+"</span></strong><br><br>";
+				printHTML += "<strong>"+item.chatWritetime+"<span class=\"right-text\">"+item.chatMessage+"</span></strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";				
 				
@@ -59,7 +76,7 @@
 			} else {
 				var printHTML = "<div class='well text_left'>";
 				printHTML += "<div class='alert alert-warning'>";
-				printHTML += "<strong><span class=\"left-text\">"+item.chatMessage+"</span>"+item.chatWritetime+"["+ item.userIdx+"]</strong><br><br>";
+				printHTML += "<strong><span class=\"left-text\">"+item.chatMessage+"</span>"+item.chatWritetime+"</strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";
 							
@@ -164,7 +181,7 @@
 			  
 				var printHTML = "<div class='well text_right'>";
 				printHTML += "<div class='alert alert-info'>";
-				printHTML += "<strong>"+msgData.chatWritetime+"[" + msgData.userIdx + "]<span class=\"right-text\">"+msgData.chatMessage+"</span></strong><br><br>";
+				printHTML += "<strong>"+msgData.chatWritetime+"<span class=\"right-text\">"+msgData.chatMessage+"</span></strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";
 				
@@ -174,7 +191,7 @@
 			
 				var printHTML = "<div class='well text_left'>";
 				printHTML += "<div class='alert alert-warning'>";
-				printHTML += "<strong><span class=\"left-text\">"+msgData.chatMessage+"</span>"+msgData.chatWritetime+"["+ msgData.userIdx+"]</strong><br><br>";
+				printHTML += "<strong><span class=\"left-text\">"+msgData.chatMessage+"</span>"+msgData.chatWritetime+"</strong><br><br>";
 				printHTML += "</div>";
 				printHTML += "</div>";
 								

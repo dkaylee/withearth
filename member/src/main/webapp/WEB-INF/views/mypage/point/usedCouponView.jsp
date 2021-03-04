@@ -43,18 +43,12 @@
    $(document).ready(function(){
 	   
 	   $.ajax({
-		   
-<<<<<<< HEAD
 		   url : 'https://www.withearthdona.tkamazonaws.com:8080/point/rest/user/coupon/use',
-=======
-		   url : 'http://localhost:8080/point/rest/user/coupon/use',
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 		   type : 'GET',
 		   data : 'idx='+idx+'&cIdx='+cIdx,
 		   success : function(data){
 			   console.log(data);
-			   var html = "";
-			   
+			   var html = "";			
 			   if(data==1){			   
 				   html += '<img alt="QrImage" width="40px" src="<c:url value="/images/success.png"/>"><h1 class="msg">쿠폰 사용이 완료되었습니다.</h1>';
 			   } else {
