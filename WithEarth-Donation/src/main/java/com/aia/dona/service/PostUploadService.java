@@ -48,6 +48,12 @@ public class PostUploadService {
 		
         System.out.println(saveDirPath);
         
+     // 파일 경로가 없으면 생성하기
+     		File file = new File(saveDirPath);
+     		if (!file.exists()) {
+     			file.mkdirs();
+     		}
+        
 		String fileName = "";
 
 		String newFileName = "";

@@ -46,6 +46,7 @@ public class MemberLoginService {
 		boolean pwMatch = cryptPasswordEncoder.matches(pw, dbpw);
 		
 		member = null;
+		
 		if (pwMatch) {
 		
 			member = dao.selectLogin(id);
