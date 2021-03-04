@@ -62,7 +62,6 @@
 		</div>
 	</form>
 </div>
-<%-- <script src="<c:url value="/js/dona/"/>"></script> --%>
 <script>
 	
 	var image_list = [];

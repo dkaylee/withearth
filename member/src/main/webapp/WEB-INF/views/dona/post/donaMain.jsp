@@ -12,7 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="<c:url value="/css/dona/main.css"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=2"/>"/>
+<link href="<c:url value="/css/main.css?ver=1"/>" rel="stylesheet">
 <style>	
 </style>	
 </head>
@@ -62,8 +63,6 @@
 	    <div class="notice"></div>		
 	    
 	    <div class="floating">	
-	      <%-- <a href="<c:url value="/dona/main/post/mypost?idx=1"/>"><input type="button" class="pBtn" id="updateBtn" value="My"></a> --%>
-	     <%--  <a href="<c:url value="/dona/main/post/upload"/>"><img src="<c:url value="/img/dona/write1.png"/>" class="pBtn" id="writeFormBtn" width="50px;"><br></a>  	 --%>
       </div>	
 	</section>			
 
@@ -102,15 +101,18 @@
 					
 			msgData = JSON.parse(data);
 			
-				  $('.notice').css('display', 'block');					  		  
-			  							
-			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="20px">';
-			    html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
-			    html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
-			    html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
-				  		    
-			    $('.notice').append(html);
+			if(msgData.to==loginUser){
 				
+			$('.notice').css('display', 'block');					  		  
+					
+			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="28px">';
+				html += msgData.userIdx+'님으로부터 <br> 메세지가 도착했습니다!</h4>';
+				html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
+				html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
+					  		    
+				$('.notice').append(html);
+			}	
+			
 		 }
 		 
 		  function noticeNone(){
@@ -119,7 +121,7 @@
 				$('.notice').css('display', 'none');
 			  
 		  }
-
+    
 		// 채팅룸으로 이동 (새 창 띄워줌)						
 	  function goChatRoom(){
 		child2 = window.open('<c:url value="/post/chat?donaIdx='+msgData.donaIdx+'&uid='+msgData.to+'&to='+msgData.userIdx+'&rid='+msgData.roomIdx+'"/>',"child2","width=330,height=600");
@@ -153,7 +155,6 @@
 					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 						html += '<input type="hidden" value="'+item.donaIdx+'">';
 					  html += '<div class="article-img">';
-						//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';		
 						html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';			
 						html += '</div>';
 						html += '<div class="article-content">';
@@ -175,8 +176,6 @@
 						 
 						 console.log('totalPageCount :' + data.totalPageCount);
 						for(var i=1; i <= data.totalPageCount; i++){				
-							//var html2 =' [ <a href="<c:url value="/main/list/search"/>?p='+i+'&searchType='+searchType+'&keyword='+keyword+'">'+i+'</a> ] ';				
-							//var html2 =' [ <a href="javascript:void(0);" onclick="javascript:goPage('+i+');">'+i+'</a> ] ';				
 								var html2 = '<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="javascript:goPage('+i+');">'+i+'</a></li>';							
 								$('.pagination').append(html2);
 						}					
@@ -187,22 +186,6 @@
 		});
     }
      
-		
-/*     
-       // 세션 어케 받지??	
-       var session = '<c:out value="${cookie.JSESSIONID.value}"/>';
-				
-			$.ajax({
-				url : 'http://192.168.0.45:8080/dona/rest/user/post/session/'+ session,
-				type : 'GET',
-				success : function(data){
-					console.log(data);
-				},error : function(e){
-					console.log(e);
-				}
-				
-			})
- */		
 			 
 	$(document).ready(function() {	
 		
@@ -242,7 +225,6 @@
 								 							
 								for(var i=1; i <= data.totalPageCount; i++){	
 								  	var html2 = '<li class="page-item"><a class="page-link" href="<c:url value="/dona/main/list"/>?p='+i+'">'+i+'</a></li>';
-									  	//var html2 =' [ <a href="<c:url value="/main/list"/>?p='+i+'">'+i+'</a> ] ';													
 								  	$('.pagination').append(html2);
 								}												 
 							 };								 																							    	
@@ -274,7 +256,6 @@
 								  var html ='<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 									html += '<input type="hidden" value="'+item.donaIdx+'">';
 								    html += '<div class="article-img">';
-									//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
 									html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';	
 									html += '</div>';
 									html += '<div class="article-content">';
@@ -296,8 +277,6 @@
 									 $('.paging').append(pHtml);
 									 
 									for(var i=1; i <= data.totalPageCount; i++){				
-										//var html2 =' [ <a href="<c:url value="/main/list/search"/>?p='+i+'&searchType='+searchType+'&keyword='+keyword+'">'+i+'</a> ] ';				
-									  //var html2 =' [ <a href="javascript:void(0);" onclick="javascript:goPage('+i+');">'+i+'</a> ] ';																				   
 										var html2 = '<li class="page-item"><a class="page-link" href="javascript:void(0);" onclick="javascript:goPage('+i+');">'+i+'</a></li>';							
 									   console.log(html2);
 										 $('.pagination').append(html2);
@@ -308,11 +287,9 @@
 						}
 					});
 					
-				});
-			
-			});
-
-		
+				});		
+	});
+	
    </script>	
     </body>
     	

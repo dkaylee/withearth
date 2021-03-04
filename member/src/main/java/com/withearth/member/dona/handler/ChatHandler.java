@@ -41,7 +41,7 @@ public class ChatHandler extends TextWebSocketHandler {
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		
 		int chatMember  = (Integer)session.getAttributes().get("user");
-
+        
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>" + chatMember);
 
 		sessionList.add(session);

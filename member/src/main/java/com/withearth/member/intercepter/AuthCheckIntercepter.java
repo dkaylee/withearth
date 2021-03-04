@@ -22,6 +22,7 @@ public class AuthCheckIntercepter extends HandlerInterceptorAdapter{
 		}
 		
 		response.sendRedirect("https://www.withearth.tk/member/member/login");
+
 		return false;
 		//다음 -> servlet-context
 	}
