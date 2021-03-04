@@ -289,7 +289,6 @@ a.btn-layerClose {
 	// 포인트 선물 교환 -> 포인트 소멸 -> 교환권 생성
 	function usePoint(){
 		
-<<<<<<< HEAD
 	// 보유포인트 점검 -> 부족할 시 리턴
 	$.ajax({
 		url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
@@ -310,10 +309,6 @@ a.btn-layerClose {
     // 포인트 사용처리
 	$.ajax({
 		 url : 'https://www.withearthdona.tk/point/rest/user/point/use/'+ ${loginInfo.idx} + '/' + 200,
-=======
-	$.ajax({
-		 url : 'http://localhost:8080/point/rest/user/point/use/'+ idx + '/' + 200,
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -343,11 +338,7 @@ a.btn-layerClose {
 	  	  	 	  
 	  // ajax로 현재 보유 보인트 출력
 	  $.ajax({
-<<<<<<< HEAD
 			 url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
-=======
-			 url : 'http://localhost:8080/point/rest/user/point/list/' + idx,
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 			 type : 'GET',
 			 success : function(data){
 				 //console.log(data);
@@ -389,11 +380,7 @@ a.btn-layerClose {
 		  table3.css('display','none');
 			  			 			  			  		  			  		 	
 	  $.ajax({
-<<<<<<< HEAD
 		 url : 'https://www.withearthdona.tk/point/rest/user/point/list/' + ${loginInfo.idx},
-=======
-		 url : 'http://localhost:8080/point/rest/user/point/list/' + idx,
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 		 type : 'GET',
 		 success : function(data){
 			 console.log(data);
@@ -450,11 +437,7 @@ a.btn-layerClose {
 		  table3.css('display','none');
 		  		 	
 		  $.ajax({
-<<<<<<< HEAD
 			 url : 'https://www.withearthdona.tk/point/rest/user/coupon/list/' + ${loginInfo.idx},
-=======
-			 url : 'http://localhost:8080/point/rest/user/coupon/list/' + idx,
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 			 type : 'GET',
 			 success : function(data){
 				 console.log(data);
@@ -480,11 +463,7 @@ a.btn-layerClose {
 					var html = '<tr>';
 	                    html+= '<td> '+(index+1) +'</td>';
 	                   // html+= '<td><img alt="QrImage" width="100px" src="<c:url value="/resources/coupon/'+item.couponQr+'png"/>"></td>';
-<<<<<<< HEAD
-	                   html+= '<td><img alt="QrImage" width="100px" src="https://www.withearthdona.tk/point/resources/coupon/'+item.couponQr+'png"></td>';
-=======
-	                   html+= '<td><img alt="QrImage" width="100px" src="http://localhost:8080/point/resources/coupon/'+item.couponQr+'png"></td>';
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
+	                    html+= '<td><img alt="QrImage" width="100px" src="https://www.withearthdona.tk/point/resources/coupon/'+item.couponQr+'png"></td>';
 	                    html+= '<td> '+ item.couponHistory+'</td>';
 	                    html+= '<td>'+item.historyDate+'</td>';
 	                     if(item.availability=="Y"){

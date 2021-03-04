@@ -2770,7 +2770,7 @@ color
 			transition: color 0.2s ease-in-out;
 			display: inline-block;
 			padding: 0 0.75em;
-			color: inherit;
+			color: #80A2BF;
 			text-decoration: none;
 			font-size: 1.2em;
 		}
@@ -2780,7 +2780,7 @@ color
 			}
 			
 			#header #nav a:hover{
-				color: #5385c1;
+				color: #304F8C;
 			}
 			
 			.subpage #header .logo:hover{

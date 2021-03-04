@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="<c:url value="/css/dona/chat/style.css?ver=1"/>" />
+<link rel="stylesheet" href="<c:url value="/css/dona/chat/style.css?ver=2"/>" />
 <meta charset="UTF-8">
 <title>With Earth</title>
 <script

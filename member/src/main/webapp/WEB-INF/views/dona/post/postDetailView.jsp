@@ -160,7 +160,6 @@
 				    html += '<p class="post" id="postContent">'+ data.postContent + '</p>';
 
 					$('.postDetails').append(html);
-<<<<<<< HEAD
 					
 					var ownerIdx = data.idx;
                     console.log(ownerIdx);
@@ -178,17 +177,12 @@
             				
             				var nHtml = data.name;
             				$('.userId').append(nHtml);
-            			},
-            			error: function(error){
+            				
+            			},error: function(error){
             				console.log(error);
             			}	
             			
             			});
-                    
-                    
-=======
-
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 					// 채팅으로 이동 (파라미터 넘기기)
 					var cHtml = '<input type="button" name="cBtn" id="chatBtn" value="작성자와 채팅하기">';
 					chatBtn.onclick = function() {
@@ -197,7 +191,6 @@
 
 					child1 = window.open("<c:url value='/post/chat?donaIdx="+ donaIdx + "&uid=" + idx + "&to="+ data.idx + "&rid=" + roomIdx+ "'/>", "child1","width=330,height=600");					
 					};
-
 					$('#chatBtn').append(cHtml);
 					},
 					error : function(e) {
@@ -229,12 +222,8 @@
 					console.log(anotherImg);
 
 					var html2 = '<div class="carousel-item">';
-<<<<<<< HEAD
-						//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; alt="postImages">';
 						html2 += '<img src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
-=======
 						html2 += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
->>>>>>> parent of 5e2b7b6 (Merge branch 'main' into JuRyang)
 						html2 += '</div>'
 						$('.carousel-inner').append(html2);
 						})
