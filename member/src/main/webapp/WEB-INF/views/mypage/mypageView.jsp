@@ -42,7 +42,7 @@
             </div>
 					</header>
 					<div class="flex flex-4">
-						<div class="box person">
+						<div class="box person" onclick="location.href='<c:url value='/member/mypage'/>'">
 							<div class="image round">
 							<img src="<c:url value="/img/point/profile.png"/>" alt="mypage-pic1">
 							</div>
