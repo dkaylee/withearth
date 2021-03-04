@@ -3,6 +3,9 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java,maven
 
 ### Eclipse ###
+target/
+.settings/
+servers/
 server/
 .metadata
 bin/
