@@ -79,6 +79,22 @@
 	</insert>
 	
 	
+	<update id="updateMatzip" 
+	parameterType="com.withearth.community.domain.MatzipVo">
+	
+			UPDATE	Matzip
+			set mat_title=#{matTitle},
+				  mat_addr=#{matAddr},
+				  mat_Time=#{matTime},
+				  mat_Num=#{matNum},
+				  mat_Cont=#{matImg}
+			where mat_Idx=#{matIdx}
+	
+	</update>
+	
+	
+	
+	
 	<!-- 파일 업로드 -->
 	<insert id="fileUpload" parameterType="com.withearth.community.domain.FileVo"
 	useGeneratedKeys="true" keyProperty="fileIdx">
@@ -110,14 +126,13 @@
 		org_name = #{orgFName}, 
 		new_name = #{newFName}, 
 		file_size = #{fileSize}, 
-		mat_idx = ${matIdx}
 		where file_Idx = #{fileIdx}
 	</update>
 	
 	
 	<!--  맛집 수 업데이트 -->
 	<update id="matUpdateCnt">
-		update matzip_cnt set matzipCnt = matzipCnt + 1 
+		update Matzip_cnt set matzipCnt = matzipCnt + 1 
 	</update>
 	
 	<!-- 총 맛집 수 -->

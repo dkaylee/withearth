@@ -131,7 +131,8 @@
 						
 						if(result == "1" ) {
 							alert("게시글 삭제 했습니다.");  
-							goMatlist();
+								// deleteFiles();	
+								goMatlist();
 							}
 					},
 					error: function(){
@@ -139,6 +140,21 @@
 					}
 				});
 		} 
+	
+	
+/* 파일삭제 */
+function deleteFiles(){
+	$.ajax({
+		url:"http://localhost:8080/community/matzip/deleteFiles?matIdx="+matIdx,
+		cache : false,
+		success : function(result2){	
+			console.log(result2);	
+		},
+		error: function(){
+			alert('파일 삭제를 실패했습니다.');
+		}
+	});
+}	
 	
 
 /* 맛집 목록이동 */

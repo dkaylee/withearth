@@ -38,7 +38,7 @@
 	
 	<!-- 맛집추가 폼 -->	
 	<div class="row uniform">
-		<form id="matzipForm" method="post" enctype="multipart/form-data">
+		<form method="post" enctype="multipart/form-data">
 			<div class="row uniform">
 				<div class="6u 12u$(xsmall)">
 					상호명<input type="text" name="mTitle" id="mTitle" value=""/>
@@ -88,6 +88,7 @@
 	function goMatlist(){
 		location.href = "http://localhost:8080/community/matzip/matlist?p=1";
 	}
+	
 	/* 맛집추가 및 파일업로드 */
 	 $(document).ready(function() {
 		 
@@ -100,26 +101,25 @@
 					
 					var photoFiles = $('#mImg');
 					
+					var formData = new FormData();
+					
 					var files = photoFiles[0].files;
 					
-					console.log(files);
-					
-					var formData = new FormData();
-				
-					formData.append("mTitle", $('#mTitle').val());
-					formData.append("mAddr", $('#mAddr').val());
-					formData.append("mTime", $('#mTime').val());
-					formData.append("mNum", $('#mNum').val());
-					formData.append("mCont", $('#mCont').val());
-					
 					for(var i=0; i<photoFiles.length; i++){
-						formData.append("mImg",  files);
+						formData.append("mImg",  files[i]);
 					}
 					
+					formData.append("mTitle", $("#mTitle").val());
+					formData.append("mAddr", $("#mAddr").val());
+					formData.append("mTime", $("#mTime").val());
+					formData.append("mNum", $("#mNum").val());
+					formData.append("mCont", $("#mCont").val()); 
+					
+					console.log(files);
 					console.log(formData);
 
 					$.ajax({
-						url : '/matzip/addmatzip',
+						url : 'http://localhost:8080/community/matzip/addmatzip',
 						type : 'POST',
 						data : formData,
 						enctype : 'multipart/form-data',
@@ -128,7 +128,8 @@
 						cache : false,
 						success : function (result){
 						console.log(result);
-								if(result == "1"){
+						
+							if(result == "1"){
 									alert("업체등록을 완료하였습니다.");
 									goMatlist();
 								}

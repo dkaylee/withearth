@@ -126,8 +126,7 @@
 		
 	$.ajax({
 				url:"http://localhost:8080/community/matzip/deleteMat?matIdx="+matIdx,
-				type:"GET",
-//				cache : false,
+				type:"POST",
 				success : function(result){	
 					console.log(result);
 					

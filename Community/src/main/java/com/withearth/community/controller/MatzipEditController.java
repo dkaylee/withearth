@@ -15,14 +15,14 @@ import com.withearth.community.domain.MatEditRequest;
 import com.withearth.community.domain.MatzipVo;
 import com.withearth.community.service.EditMatService;
 
-@RequestMapping(value="/matzip")
+
 @RestController
 public class MatzipEditController {
 	
 	@Autowired
 	private EditMatService editMatService;
 	
-	@GetMapping(value="/getEdit")
+	@GetMapping(value="/matzip/getEdit")
 	public MatzipVo matEditForm(
 			@RequestParam("matIdx") int matIdx
 			) {
@@ -31,19 +31,24 @@ public class MatzipEditController {
 	}
 	
 	
-	@PostMapping(value="/setEdit")
+	@PostMapping(value="/matzip/setEdit")
 	public int matEdit(
+			int matIdx,
 			MatEditRequest editReq,
 			MultipartHttpServletRequest mprq,
 			Model model
 			) {
 		
-		int result = editMatService.editMatzip(editReq, mprq);
+		int result = editMatService.editMatzip(matIdx, editReq, mprq);
 		
 		System.out.println("Result"+editReq);		
 		
 		return result;
+		
 	}
+	
+	
+	
 	
 	
 //	@RequestMapping(value="/matzip/getEdit", method = RequestMethod.GET)

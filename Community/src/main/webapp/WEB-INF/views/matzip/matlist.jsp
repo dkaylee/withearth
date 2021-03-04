@@ -65,7 +65,7 @@ display:inline-block;
 	
 	<!-- 카카오 api -->
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0baf561a9ecada2b271b32f3304dc3eb&libraries=services">
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004&libraries=services">
 	</script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004">
@@ -96,7 +96,7 @@ display:inline-block;
 	$('#paging').empty();
 	
 			$.ajax({
-				url : "http://localhost:8080/community/matzip/matlist/listInfo?p="+p,
+				url : "http://localhost:8080//community/matzip/matlist/listInfo?p="+p,
 				type : "GET",
 				success : function(data) {
 					console.log(data);
@@ -147,7 +147,7 @@ display:inline-block;
 					}
 		         },
 				error : function(){
-					alert("데이터 못 불러옴^^");
+					alert("오류가 발생했습니다.");
 				}
 					
 			});	
@@ -254,11 +254,13 @@ display:inline-block;
 								var marker = new kakao.maps.Marker({
 									map : map,
 									position : coords
+									
 								});
 
 								// 마커에 표시할 인포윈도우를 생성합니다 
 								var infowindow = new kakao.maps.InfoWindow({
-								 	content: contentArr[i] // 인포윈도우에 표시할 내용
+								 	content: contentArr[i]// 인포윈도우에 표시할 내용
+								 	
 								});
 
 								// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
@@ -280,6 +282,7 @@ display:inline-block;
 			}
 			getLocation();
 		}
+
 		getLocation();
 
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 

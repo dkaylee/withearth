@@ -17,7 +17,7 @@ import com.withearth.community.domain.MatAddRequest;
 
 import com.withearth.community.service.AddMatzipService;
 
-@CrossOrigin
+
 @RestController
 public class AddMatzipController {
 

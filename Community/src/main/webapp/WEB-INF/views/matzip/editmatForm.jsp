@@ -107,11 +107,14 @@ $(document).ready(function(){
 		
 		var photoFiles = $('#mImg');
 		
+		var formData = new FormData();
+		
 		var files = photoFile[0].files;
 		
-		console.log(files);
 		
-		var formData = new FormData($('#editForm')[0]);
+		for(var i=0; i<files.length; i++){
+			formData.append("mImg", $('#mImg')[i].files);
+		}
 		
 		formData.append("mTitle", $('#mTitle').val()),
 		formData.append("mAddr", $('#mAddr').val()),
@@ -119,15 +122,14 @@ $(document).ready(function(){
 		formData.append("mNum", $('#mNum').val()),
 		formData.append("mCont", $('#mCont').val());
 		
-		for(var i=0; i<files.length; i++){
-			formData.append("mImg", $('#mImg')[0].files);
-		}
+		console.log(files);
+		
 		
 		console.log(formData);
 
 		
 		$.ajax({
-			url : 'http://localhost:8080/community/matzip/',
+			url : 'http://localhost:8080/community/matzip/setEdit'+matIdx,
 			type : 'POST',
 			data : formData,
 			enctype : 'multipart/form-data',
@@ -135,9 +137,9 @@ $(document).ready(function(){
 			contentType : false,
 			cache : false ,
 			success : function (result){
+			console.log('data result::'+result);
 				
-				console.log('data result::'+result);
-				if(result != 0){
+				if(result == 1){
 					
 					alert("게시물 수정이 완료되었습니다.");
 					location.href="/matDetailView?matIdx="+matIdx;
@@ -155,7 +157,7 @@ $(document).ready(function(){
 	function getEditMat(){
 		
 		$.ajax({
-			url:'https://www.withearthcomm.tk/community/matzip/getEdit?matIdx='+matIdx,
+			url:'http://localhost:8080/community/matzip/getEdit?matIdx='+matIdx,
 			type: "GET",
 			dataType: "JSON",
 			success : function(data){

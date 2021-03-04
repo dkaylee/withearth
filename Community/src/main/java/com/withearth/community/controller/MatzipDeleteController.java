@@ -24,5 +24,13 @@ public class MatzipDeleteController {
 		return deleteService.deleteMatzip(matIdx);
 	}
 	
+	@RequestMapping(value = "/matzip/deleteFiles", method=RequestMethod.POST)
+	public int deleteFiles(
+			@RequestParam("matIdx") int matIdx) {
+
+		return deleteService.deleteFiles(matIdx);
+	}
+
+	
 	
 }

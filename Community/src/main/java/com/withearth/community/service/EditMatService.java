@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -40,13 +41,13 @@ public class EditMatService {
 	
 	@Transactional
 	public int editMatzip(
+			@RequestParam("matIdx") int matIdx,
 			MatEditRequest editReq,
 			MultipartHttpServletRequest mprq) {
 		
 		int result = 0;
 		
 		MatzipVo matzip = editReq.toMatzip();
-		
 				
 		// 데이터 베이스 입력
 		dao = template.getMapper(MatDao.class);
@@ -64,7 +65,7 @@ public class EditMatService {
 		// 업로드 파일 리스트를 담을 비어있는 리스트
 		List<FileVo> fileList = new ArrayList<>();
 		
-		int matIdx = editReq.getmIdx();
+		matIdx = editReq.getmIdx();
 		
 		if(mf.size() == 1 && mf.get(0).getOriginalFilename().equals("")) {
 		
