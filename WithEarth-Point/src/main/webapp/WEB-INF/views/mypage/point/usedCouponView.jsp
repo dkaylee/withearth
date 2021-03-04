@@ -44,7 +44,7 @@
 	   
 	   $.ajax({
 		   
-		   url : '/point/rest/user/coupon/use',
+		   url : 'http://localhost:8080/point/rest/user/coupon/use',
 		   type : 'GET',
 		   data : 'idx='+idx+'&cIdx='+cIdx,
 		   success : function(data){

@@ -92,7 +92,7 @@
 			var formData = new FormData();
 			formData.append("userid",$('#id').val());
 			formData.append("userpw",$('#pw').val());
-			formData.append("username",$('#name').val());
+			formData.append("username",encodeURIComponent($('#name').val()));
 			
 			if(typeof(file1) != 'undefined'){
 			formData.append("userPhoto",file1);	
@@ -108,7 +108,7 @@
 			cache: false,
 			success: function(data){
 				alert("회원가입이 완료되었습니다.");
-				location.href="/member"; 
+				location.href='<c:url value="/"/>';
 				console.log(data);
 			},
 			error: function(error){
@@ -154,7 +154,6 @@
 						msg.addClass('font_blue');
 						$('#btnReg').attr("disabled", false);
 					} else {
-						///
 						msg.html('이미 사용중인 아이디 입니다.');
 						msg.removeClass('font_blue');
 						msg.addClass('font_red');
