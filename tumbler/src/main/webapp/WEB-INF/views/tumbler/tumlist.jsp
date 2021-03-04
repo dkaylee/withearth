@@ -165,12 +165,13 @@ ul li {
 	var p = getParameterByName('p');
 	console.log(p);
 
-	$(document).ready(function() {
+	$(document).ready(function() {http://localhost:8080/withearth/tumbler/tumlist1
 
 						$('.paging').empty();
 
 						$.ajax({
-									url : 'https://www.withearthtum.tk/test1/tumbler/tumlist/rest?p='+ p,
+									/* url : 'https://www.withearthtum.tk/test1/tumbler/tumlist/rest?p='+ p, */
+									url : 'https://www.withearthtum.tk/test3/tumbler/tumlist/rest?p='+ p, 		
 									type : 'GET',
 									async : false,
 									success : function(data) {

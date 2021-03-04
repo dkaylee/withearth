@@ -7,8 +7,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial=scale=1.0">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src = "path / to / vanilla.js"> </script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script>
+<script src = "path/to/vanilla.js"> </script>
+
+
 <title>텀블러  매장찾기</title>
+
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
 <style>
@@ -259,7 +263,8 @@ section.wrapper, article.wrapper {
 
 		<div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-			<button id="open" onclick="location.href='<c:url value="/tumbler/tumlist"/>'">텀블러 이용내역</button>
+			<!-- <button id="open" onclick="location.href='https://www.withearthtum.tk/test1/tumbler/tumlist'">텀블러 이용내역</button> -->
+			<button id="open" onclick="location.href='https://www.withearthtum.tk/test4/tumbler/tumlist'">텀블러 이용내역</button>
 		</div>
 
 		<div class="modal hidden">
@@ -315,8 +320,7 @@ section.wrapper, article.wrapper {
 		</div>
 	</div>
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf&libraries=services"></script>
-
+	
 	<script>
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -329,7 +333,8 @@ section.wrapper, article.wrapper {
 	$(document).ready(function(){
 		 var cafeinfo = $.ajax({
 				type:"GET",
-				url:"http://localhost:8080/rest/tumbler/tumlist1/map",
+				/* url:"https://www.withearthtum.tk/test1/rest/tumbler/tumlist1/map", */
+				url:"https://www.withearthtum.tk/test4/rest/tumbler/tumlist1/map",
 				data:{
 				cafe_name:"${cafe.cafe_name}",
 				cafe_lat:"${cafe.cafe_lat}",
@@ -384,9 +389,9 @@ section.wrapper, article.wrapper {
 					   	            '        </div>' + 
 					   	            '        <div class="body">' + 
 					   	            '            <div class="img">' +
-					   	            '                <img alt="point2" src="/img/cafe1.png"/>"  width="73" height="70">' +
+					   	            '                <img alt="point2" src="<c:url value="/img/cafe1.jpg"/>" width="73" height="70">' +
 					   	            '           </div>' + 
-					   	         
+					   	       
 					   	            '            <div class="desc">' + 
 					   	            '                <div class="ellipsis">'+
 					   	            '             <p class="adrr">'+ positions[i].location+'</p>' +
@@ -409,7 +414,7 @@ section.wrapper, article.wrapper {
 				   		//console.log(namearr);
 				   		
 				   		//d이미지 마커
-			   		 var CimageSrc = '/img/mark.png', // 마커이미지의 주소입니다    
+			   		 var CimageSrc = '<c:url value="/img/mark.png"/>', // 마커이미지의 주소입니다    
 		                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
 		                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		                
@@ -491,131 +496,6 @@ section.wrapper, article.wrapper {
 			 //.done(successFunction);
 			//cafeinfo.error(errorFunction);
 			
-		/* 	
-			//마커 생성
-			var cafemarkers = [];
-			//카페 좌표 배열
-			var cafelatlon = [];
-			//카페 이름 배열
-			var namearr=[];
-			//카페 주소 배열
-			var cafeAdd=[];
-			//카페 좌표
-			var  latlng;
-			//커스텀오버레이
-			var cafeOverlay =[]; */
-			
-/* 			cafeinfo.done(function (positions){
-				
-		   	 for (i = 0; i < positions.length; i++) {
-		   		
-		   			//var content = positions[i].cafe_name;
-		   			 var content = '<div class="wrap">' + 
-			   	            '    <div class="info">' + 
-			   	            '        <div class="title">' + 
-			   	                         positions[i].cafe_name    + 
-			   	            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-			   	            '        </div>' + 
-			   	            '        <div class="body">' + 
-			   	            '            <div class="img">' +
-			   	            '                <img alt="point2" src="<c:url value="/img/cafe1.png"/>"  width="73" height="70">' +
-			   	            '           </div>' + 
-			   	         
-			   	            '            <div class="desc">' + 
-			   	            '                <div class="ellipsis">'+
-			   	            '             <p class="adrr">'+ positions[i].location+'</p>' +
-			   	         '             <p class="adrr"> 평일 운영시간:07:00~22:00</p>' +
-			   	            '                   </div>' + 
-			   	          
-			   	            '        </div>' + 
-			   	            '    </div>' +    
-			   	            '</div>'; 
-			        var latlng = new kakao.maps.LatLng(positions[i].cafe_lat,positions[i].cafe_lon);
-			        //var addr = positions[i].location;
-			        //console.log(addr);
-		   		    //console.log(title);
-		   			//console.log(latlng);
-		   			
-		   			cafelatlon.push(latlng);
-		   			namearr.push(content);
-		   			//cafeAdd.push(addr);
-		   			
-		   		//console.log(namearr);
-		   		
-		   		//d이미지 마커
-	   		 var CimageSrc = '/img/mark.png', // 마커이미지의 주소입니다    
-                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-                
-             // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-            var CmarkerImage = new kakao.maps.MarkerImage(CimageSrc, imageSize, imageOption),
-		   		
-
-		   			
-		   		// 마커를 생성합니다
-			   	  marker = new kakao.maps.Marker({
-			   	    	 map: map, // 마커를 표시할 지도
-			   	         position: latlng, // 마커의 위치 
-			   	         image: CmarkerImage, // 마커이미지 설정 
-			   	         clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-			   	        
-        
-			   	        });
-		   		
-			   	 cafemarkers.push(marker);
-			   	 
-			   	 
-			   	var overlay = null;
-			    var latlng = new kakao.maps.LatLng(positions[i].cafe_lat,positions[i].cafe_lon);
-			   	// 커스텀오버레이 생성 : 장소에 대한 설명을 표시합니다
-		             overlay = new kakao.maps.CustomOverlay({
-		            	 map: map, // 마커를 표시할 지도	
-		            	 position: latlng,
-			    	     content: content,
-			    	     //xAnchor: 0.9,
-			    	    
-			    	    
-			        });
-			   	
-		           // console.log(marker.getPosition());
-			   	
-		             kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, content));
-
-			   	 
-			   	 
-		            cafeOverlay.push(overlay);
-		            
-		            overlay.setMap(null);
-		           
-		          
-		            
-		            function makeClickListener(map, marker, content) {
-						return function() {
-							overlay.setPosition(marker.getPosition());
-							overlay.setContent(content)
-							overlay.setMap(map);
-						};
-					}
-		         
-		            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-						overlay.setMap(null);
-					});
-		            
-		         // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
-					overlay.setMap(null);
-					
-
-		 
-		    }
-
-			  function errorFunction(request,status,error){
-				console.log("오류확인");
-				console.log(error);
-			}  
-		 
-		});//cafeinfo.done(function (positions) */
-
-	
 
 
 	//지도를 생성합니다    
@@ -665,9 +545,9 @@ section.wrapper, article.wrapper {
 		}
  	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 		function displayMarker(locPosition, iwContent ) {
-			  
+			
 			//d이미지 마커
-	   		 var imageSrc = '/img/mark1.png', // 마커이미지의 주소입니다    
+	   		 var imageSrc = '<c:url value="/img/mark1.jpg"/>', // 마커이미지의 주소입니다    
                  imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
                  imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                 
