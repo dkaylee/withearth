@@ -130,7 +130,8 @@ $(document).ready(function(){
 									cache: false,
 									success: function(data){
 										alert("로그인 되었습니다.");
-										location.href="<c:url value='/'/>"; 										console.log(data);
+										location.href="<c:url value='/'/>"; 										
+										console.log(data);
 									},
 									error: function(error){
 										console.log("실패");
@@ -192,7 +193,7 @@ $(document).ready(function(){
 				data: {id:email},
 				success : function(data){
 					if(data=='Y'){
-						console.log("이미 존재하는 회원이므로 세션등록")
+						console.log("이미 존재하는 회원이므로 세션등록");
 						//세션 로그인 url			
 						$.ajax({
 						url: '/member/member/kakaoLogin',
@@ -277,7 +278,7 @@ function onSignIn() {
 				console.log("이미 존재하는 회원이므로 세션등록")
 				//세션 로그인 url			
 				$.ajax({
-				url: '/member/member/googleLogin',
+				url: 'googleLogin',
 				type: 'post',
 				data: {id:g_email},
 				success: function(data){
@@ -319,7 +320,7 @@ function onSignIn() {
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "m2atJuSTPKnWvaMTDlAu",
-			callbackUrl: "http://localhost:8080/member/member/callback",
+			callbackUrl: "https://www.withearth.tk/member/member/callback",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 3, height: 45} /* 로그인 버튼의 타입을 지정 */
 		}
