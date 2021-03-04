@@ -155,13 +155,13 @@ ul li {
 	var p = getParameterByName('p');
 	console.log(p);
 
-	$(document).ready(function() {http://localhost:8080/withearth/tumbler/tumlist1
+	$(document).ready(function() {
 
 						$('.paging').empty();
 
 						$.ajax({
 									/* url : 'https://www.withearthtum.tk/test1/tumbler/tumlist/rest?p='+ p, */
-									url : 'https://www.withearthtum.tk/test4/tumbler/tumlist/rest?p='+ p, 		
+									url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?p='+ p, 		
 									type : 'GET',
 									async : false,
 									success : function(data) {
@@ -223,9 +223,21 @@ ul li {
 												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+ i+ '">'+ i+ '</a></li>';
 												$('.pagination').append(html3);
 											}
-										};
+										}
+										;
 
-
+										/* for (var num=startRow; num<=endRow; num++) {
+										     if (num == cntPerPage) {
+										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
+										     } else {
+										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
+										     }
+										  }
+										
+										
+										
+										$('.ttbody').html(a);
+										 */
 
 									},
 									error : function(e) {

@@ -261,8 +261,8 @@ section.wrapper, article.wrapper {
 
 		<div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-			<!-- <button id="open" onclick="location.href='https://www.withearthtum.tk/test1/tumbler/tumlist'">텀블러 이용내역</button> -->
-			<button id="open" onclick="location.href='https://www.withearthtum.tk/test3/tumbler/tumlist'">텀블러 이용내역</button>
+		   <!--  <button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button>  -->
+			<button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button> 
 		</div>
 
 		<div class="modal hidden">
@@ -291,8 +291,8 @@ section.wrapper, article.wrapper {
 
 		</div>
 	</div>
-    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d711f4cb14f91e2b88ff621ff44cbed3"></script> -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d711f4cb14f91e2b88ff621ff44cbed3"></script> 
+	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script> -->
 	<script>
 	
  	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -333,7 +333,7 @@ section.wrapper, article.wrapper {
 		function displayMarker(locPosition, iwContent ) {
 			
 			//d이미지 마커
-	   		 var imageSrc = '<c:url value="/img/mark1.jpg"/>', // 마커이미지의 주소입니다    
+	   		 var imageSrc = '<c:url value="/img/mark1.png"/>', // 마커이미지의 주소입니다    
                  imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
                  imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                 
@@ -374,7 +374,7 @@ section.wrapper, article.wrapper {
 		 var cafeinfo = $.ajax({
 				type:"GET",
 				/* url:"https://www.withearthtum.tk/test1/rest/tumbler/tumlist1/map", */
-				url:"https://www.withearthtum.tk/test3/rest/tumbler/tumlist1/map",
+				url:"https://www.withearthtum.tk/test8/rest/tumbler/tumlist1/map",
 				data:{
 				cafe_name:"${cafe.cafe_name}",
 				cafe_lat:"${cafe.cafe_lat}",
@@ -429,13 +429,14 @@ section.wrapper, article.wrapper {
 					   	            '        </div>' + 
 					   	            '        <div class="body">' + 
 					   	            '            <div class="img">' +
-					   	            '                <img alt="point2" src="<c:url value="/img/cafe1.jpg"/>" width="73" height="70">' +
+					   	            '                <img alt="cafe" src="<c:url value="/img/cafe1.jpg"/>" style="width:73; height:70;">' +
+					   	            /* '                <img alt="point2" src="<c:url value="/img/cafe1.jpg"/>" style= "width:73; height:70";>' + */
 					   	            '           </div>' + 
 					   	       
 					   	            '            <div class="desc">' + 
 					   	            '                <div class="ellipsis">'+
 					   	            '             <p class="adrr">'+ positions[i].location+'</p>' +
-					   	         '             <p class="adrr"> 평일 운영시간:07:00~22:00</p>' +
+					   	            '             <p class="adrr"> 평일 운영시간:07:00~22:00</p>' +
 					   	            '                   </div>' + 
 					   	          
 					   	            '        </div>' + 
@@ -553,7 +554,7 @@ section.wrapper, article.wrapper {
 	//searchPlaces();
 	 
 	//주소-좌표 변환 객체를 생성합니다
-	var geocoder = new kakao.maps.services.Geocoder();
+	//var geocoder = new kakao.maps.services.Geocoder();
 
 	//지도에 표시될 마크
 	var markers = [];

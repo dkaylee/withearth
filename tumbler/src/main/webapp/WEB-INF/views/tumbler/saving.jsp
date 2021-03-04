@@ -82,8 +82,8 @@
 			<div id="modal_btn">
 				<!-- <button id="open"onclick="location.href='#'"></button>
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
-				<a href="#" class="button special" >메인 화면</a>
-				<a href="/member/tumbler/tumlist" class="button special">텀블러 조회</a>
+				<a href="<c:url value="#"/>" class="button special" >메인 화면</a>
+				<a href="<c:url value="/tumbler/tumlist"/>" class="button special">텀블러 조회</a>
 			</div> 
 			</div> 
 
@@ -107,17 +107,70 @@ var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(locat
 return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-//var idx = getParameterByName("idx");
-var cafe_idx = getParameterByName("cafe_idx");
-var idx = 1;
 
-$(document).ready(function(){
+
+
+
+
+//var idx = getParameterByName("idx");
+var cafe_idx = getParameterByName("cafeidx");
+//var idx = 1;
+console.log(cafe_idx);
+
+
+   /*  var idx = ${loginInfo.idx}; */
+	var idx = 1;
+	console.log(idx);
+	
+	/* var tumpoint = '<c:out value="${tumbler}"/>'; */
 	   
 	   $.ajax({
 		   
-		   url : 'https://www.withearthtum.tk/rest/tumbler/'+idx+'/'+cafe_idx,
+		   url : 'https://www.withearthtum.tk/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,
 		   type : 'GET',
-		   data : 'idx='+idx+'cafe_idx='+cafe_idx,
+		   success : function(data){
+			   console.log(data);
+			   console.log(tumpoint);
+			   
+			   $ajax({
+				   
+				   url: 'https://www.withearthdona.tk/point/rest/user/point?tum='+idx+'&tIdx='+tIdx,
+				   type: 'GET',
+				   
+				   success: function(data){
+						alert('데이터 전송을 완료했습니다.');
+						
+						console.log('data',data);
+						
+					},
+					error: function(error){
+						
+						console.log(error);
+						console.log('포인트 적립 실패');
+					}
+				   	   
+				   
+			   });
+			   
+			  
+
+		   }, error : function(e){
+			   console.log(e);
+		   }
+		   	   
+	   });
+	   
+
+
+
+/*
+    $(document).ready(function(){
+	   
+	   $.ajax({
+		   
+		   url : 'https://www.withearthtum.tk/test7/rest/tumbler/'+cafe_idx,
+		   type : 'GET',
+		   data : 'cafe_idx='+cafe_idx,
 		   success : function(data){
 			   console.log(data);
 
@@ -128,7 +181,10 @@ $(document).ready(function(){
 	   });
 	   
 });
-
+ 
+ 
+ 
+ */
 
 
 

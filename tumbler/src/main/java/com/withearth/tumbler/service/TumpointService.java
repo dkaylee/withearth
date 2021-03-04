@@ -1,8 +1,13 @@
 package com.withearth.tumbler.service;
 
+import java.awt.image.MultiPixelPackedSampleModel;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelExtensionsKt;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.withearth.tumbler.dao.TumblerDao;
 import com.withearth.tumbler.domain.Point;
@@ -19,7 +24,7 @@ public class TumpointService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public int registerTumblerPoint(int cafeidx, int idx){
+	public int registerTumblerPoint(int cafeidx, int idx, Model model){
 		Tumbler tumbler = new Tumbler();
 		tumbler.setCafe_idx(cafeidx);
 		tumbler.setIdx(idx);
@@ -27,6 +32,8 @@ public class TumpointService {
 		dao = template.getMapper(TumblerDao.class);
 		int result =  dao.insertTumbler(tumbler);
 		log.info("result1: " + result+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		
+		//model.addAttribute("tumbler", tumbler);
 		
 		Point point = new Point();
 		point.setIdx(idx);
@@ -36,6 +43,7 @@ public class TumpointService {
 		result =  dao.insertPoint(point);
 		log.info("result2: " + result+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		
-		return result;
+		
+		return tumbler.getTum_idx();
 	}
 }

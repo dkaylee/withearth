@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial=scale=1.0">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script>
-<script src = "path/to/vanilla.js"> </script>
 
 
 <title>텀블러  매장찾기</title>
@@ -263,8 +261,8 @@ section.wrapper, article.wrapper {
 
 		<div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-			<!-- <button id="open" onclick="location.href='https://www.withearthtum.tk/test1/tumbler/tumlist'">텀블러 이용내역</button> -->
-			<button id="open" onclick="location.href='https://www.withearthtum.tk/test4/tumbler/tumlist'">텀블러 이용내역</button>
+		   <!--  <button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button>  -->
+			<button id="open" onclick="location.href='http://localhost:8080/withearth/tumbler/tumlist'">텀블러 이용내역</button> 
 		</div>
 
 		<div class="modal hidden">
@@ -275,32 +273,6 @@ section.wrapper, article.wrapper {
 
 				<button id=maodel_btnx>X</button>
 			</div>
-		
-
-
-
-
-
-		<!-- 		<div class="store_wrap">
-
-			<div class="search">
-
-				<form>
-					<select name="searchType">
-						<option value="id">매장명</option>
-						<option value="name">주소</option>
-					</select> <input type="text" name="keyword"> <input type="submit"
-						value="검색">
-				</form>
-			</div>
-			<div class="result_list">
-			<ui id="placesList">
-			<li></li>
-			<li></li>
-			<li></li>
-			</ui>
-			</div>
-		</div> -->
 
 
 </div>
@@ -319,22 +291,90 @@ section.wrapper, article.wrapper {
 
 		</div>
 	</div>
-
-	
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d711f4cb14f91e2b88ff621ff44cbed3"></script> 
+	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script> -->
 	<script>
 	
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+ 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
-    };
-	
+    }; 
+ 	
+ 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+ // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+	if (navigator.geolocation) {
+
+		// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+		navigator.geolocation.getCurrentPosition(function(position) {
+
+			var lat = position.coords.latitude, // 위도
+			    lon = position.coords.longitude; // 경도
+
+			var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+			iwContent  = '<div style="padding:5px;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
+
+			// 마커와 인포윈도우를 표시합니다
+			displayMarker(locPosition, iwContent );
+
+		});
+
+	} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+		var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
+
+		displayMarker(locPosition, iwContent );
+
+	}
+
+ // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+ 	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+		function displayMarker(locPosition, iwContent ) {
+			
+			//d이미지 마커
+	   		 var imageSrc = '<c:url value="/img/mark1.png"/>', // 마커이미지의 주소입니다    
+                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+                
+             // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+
+			// 마커를 생성합니다
+			 marker = new kakao.maps.Marker({
+				map : map,
+				position : locPosition,
+				image: markerImage // 마커이미지 설정 
+			});
+
+			var iwContent = iwContent , // 인포윈도우에 표시할 내용
+			iwRemoveable = true;
+
+			// 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+				zIndex:1,
+				content : iwContent,
+				removable : iwRemoveable
+			});
+			
+     
+     // 인포윈도우를 마커위에 표시합니다 
+     infowindow.open(map, marker);
+     
+     // 지도 중심좌표를 접속위치로 변경합니다
+     map.setCenter(locPosition);      
+ }    
+ 	
+ 	
+ 	
+
+
 	/* 좌표 가져오기 */
 	$(document).ready(function(){
 		 var cafeinfo = $.ajax({
 				type:"GET",
 				/* url:"https://www.withearthtum.tk/test1/rest/tumbler/tumlist1/map", */
-				url:"https://www.withearthtum.tk/test4/rest/tumbler/tumlist1/map",
+				url:"https://www.withearthtum.tk/test8/rest/tumbler/tumlist1/map",
 				data:{
 				cafe_name:"${cafe.cafe_name}",
 				cafe_lat:"${cafe.cafe_lat}",
@@ -389,7 +429,8 @@ section.wrapper, article.wrapper {
 					   	            '        </div>' + 
 					   	            '        <div class="body">' + 
 					   	            '            <div class="img">' +
-					   	            '                <img alt="point2" src="<c:url value="/img/cafe1.jpg"/>" width="73" height="70">' +
+					   	            '                <img src="<c:url value="/img/cafe1.jpg"/>" width="73" height="70">' +
+					   	            /* '                <img alt="point2" src="<c:url value="/img/cafe1.jpg"/>" style= "width:73; height:70";>' + */
 					   	            '           </div>' + 
 					   	       
 					   	            '            <div class="desc">' + 
@@ -502,7 +543,7 @@ section.wrapper, article.wrapper {
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 	
 	//장소 검색 객체를 생성합니다
-	var ps = new kakao.maps.services.Places();  
+	//var ps = new kakao.maps.services.Places();  
 
 	// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
@@ -513,12 +554,13 @@ section.wrapper, article.wrapper {
 	//searchPlaces();
 	 
 	//주소-좌표 변환 객체를 생성합니다
-	var geocoder = new kakao.maps.services.Geocoder();
+	//var geocoder = new kakao.maps.services.Geocoder();
 
 	//지도에 표시될 마크
 	var markers = [];
-
-
+	
+	
+/* 
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 		if (navigator.geolocation) {
 
@@ -569,7 +611,7 @@ section.wrapper, article.wrapper {
 				zIndex:1,
 				content : iwContent,
 				removable : iwRemoveable
-			});
+			}); */
 			
 			
 
@@ -601,7 +643,7 @@ section.wrapper, article.wrapper {
 		
 			
 
-		}   
+	
     
 	
 		/*모달창  */
