@@ -101,6 +101,7 @@
 							
 							$.ajax({
 										url : "https://www.withearthdona.tk/dona/rest/user/post/detail/image?idx="+ donaIdx,
+
 										type : 'GET',
 										success : function(data) {																					
 
@@ -111,6 +112,7 @@
 															    html2 += '<a href="javascript:void(0);" onclick=\"deleteOldImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
 																//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" style=\"width:100px; height:100px;\" id="post-images" alt="postImages"></a>';
 																html2 += '<img style=\"width:100px; height:100px;\" id="post-images" alt="postImages"src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'">';	
+
 																html2 += '<img src="<c:url value="/img/dona/xbtn.jpg"/>" width="15px;" id="xBtn"></a>';
 																html2 += '</div>';
 																

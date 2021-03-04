@@ -2,6 +2,8 @@ package com.withearth.member.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -76,8 +78,18 @@ public class MemberMypageService {
 			String afterpw = cryptPasswordEncoder.encode(beforepw);
 			myinfo.setCgpw(afterpw);
 		}
-	
+		String dename=null;
 		//수정할 데이터를 보낸다.
+		if(myinfo.getCgname()!= null && !myinfo.getCgname().isEmpty()) {
+		dename=myinfo.getCgname();
+		try {
+			dename=URLDecoder.decode(dename, "UTF-8" );
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		}
+		myinfo.setCgname(dename);
+		
 		member = myinfo.toMember();
 		//파일 이름 member로 보내기
 		if(newFileName !=null) {
