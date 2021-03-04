@@ -90,8 +90,6 @@
      // 채팅 알림
      // 웹소켓을 지정한 url로 연결한다.
 		 var sock = new SockJS("<c:url value="/chat"/>");
-     
-         var loginUser = '<c:out value="${loginInfo.idx}"/>';
 					
 		 //데이터가 나한테 전달되었을 때 자동으로 실행되는 function
 		 sock.onmessage = onMessage;
@@ -117,12 +115,11 @@
 					  		    
 				$('.notice').append(html);
 			}							
-		 }
 		 
 		  function noticeNone(){
 			  
 			  $('.notice').empty();
-			  $('.notice').css('display', 'none');
+				$('.notice').css('display', 'none');
 			  
 		  }
 

@@ -16,7 +16,7 @@ import com.aia.point.service.UsingCouponService;
 
 @RestController
 @RequestMapping("/rest/user/coupon")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class CouponController {
 	
 	@Autowired
@@ -34,7 +34,6 @@ public class CouponController {
 	}
 	
 	@GetMapping("/list/{idx}")
-	@CrossOrigin
 	public List<Coupon> getCouponList(
 			@PathVariable("idx") int idx) {
 		
