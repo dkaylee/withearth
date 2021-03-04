@@ -31,9 +31,6 @@ public class TumListRestController {
 	  public TumpointView tumList(@RequestParam(value="p",defaultValue="1") int page, Model model,  HttpServletRequest request) {
 	  
 	
-	 //model.addAttribute("listView", tumlistService.getTumList(idx));
-	  
-	  //return tumlistService.getTumListView(page);
 	  return tumlistService.getTumListView(page);
 	  
 	  }

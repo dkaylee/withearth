@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.withearth.tumbler.domain.TumInfoRequest;
 import com.withearth.tumbler.service.TumListService;
 import com.withearth.tumbler.service.TumpointService;
 
 
 @RestController
-@RequestMapping("/rest/tumbler")
+@RequestMapping("/rest")
 public class TumpointRestController {
 	@Autowired
 	private TumpointService tumpointService;
 	@Autowired
 	private TumListService tumlistService;
 	
-		
+	
 	//포인트 적립
 //	/tumbler/qr/"+cafe_idx
 	//@GetMapping("/tumbler/{cafe_idx}")
@@ -46,7 +47,28 @@ public class TumpointRestController {
 		
 		return tumpointService.registerTumblerPoint(cafeidx,idx,model);
 	}
-	
+
+	/*
+	@GetMapping("/tumbler/point")
+	public int getTumList (Model model, 
+			                  HttpServletRequest request,
+			                  TumInfoRequest trequest,
+			                  @RequestParam("idx") int idx,
+			                  @RequestParam("cafeidx") int cafeidx
+		   
+			                  
+			                  ) {
+		// 로그인 합친후 세션에서 회원idx를 가지고 와야함.
+		// HttpSession session = request.getSession();
+	    // int idx = (int) session.getAttribute("idx");
+		//int idx = 1; 
+		int result = tumpointService.tumSet(trequest, request, idx);
+		model.addAttribute("result", result);
+		System.out.println("적립이요!!!!"+result);
+		
+		return tumpointService.tumSet(trequest, request, idx);
+	}
+	*/
 
 
 }

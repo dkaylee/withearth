@@ -57,7 +57,7 @@ public class MakeQRService {
 	       	 	file.mkdirs(); 
 	    	}  
 	    	
-	    	int cafe_idx=68;
+	    	int cafe_idx=66;
 	    	//int cafe_idx = dao.QRcodeNum();
 	    	System.out.println("cafe_idx!!!!!!!!!"+cafe_idx);
 	    	

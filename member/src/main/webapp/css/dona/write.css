@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+.title {
+	text-align: center;
+	font-size: 35px;
+	font-weight: bold;
+	color : #737373;
+}
+
+.writeForm{
+ margin : 0 280px !important;
+}
+
+#galleryIcon{
+ padding-top : 8px; 
+ margin-bottom : -12px;
+ cursor:pointer;
+ border-radius : 5px;
+}
+
+#galleryIcon:active{
+ box-shadow: 1px 1px 0 #DDD;
+ position: relative; 
+ top:2px;
+}
+
+
+.display_none{
+  display : none;
+}
+
+.display_block{
+ display : block;
+}
+
+.imageList{
+  width : 700px;
+  float : left;
+  margin-top : 15px;
+}
+
+.uploadFileBtn{
+  width : 50px;
+}
+
+#xBtn{
+  margin-bottom : 85px;
+}

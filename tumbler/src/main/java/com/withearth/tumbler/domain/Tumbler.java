@@ -61,6 +61,7 @@ public class Tumbler {
 				+ ", tum_point=" + tum_point + ", cafe_name=" + cafe_name + "]";
 	}
 	
+	
 
 	
 	
