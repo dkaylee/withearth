@@ -16,7 +16,7 @@
           				<a class="nav-link" href="<c:url value="/member/logout"/>">LOGOUT</a></c:if>
 						<a href="<c:url value="/tumbler/tumlist1"/>">텀블러사용 인증</a>
 						<a href="<c:url value="/member/loc/walkingservice"/>">도보 인증 서비스</a>       			
-						<a href="<c:url value="/member/dona/main"/>">나눔장터</a>
+						<a href="<c:url value="/member/dona/main?idx=${loginInfo.idx}"/>">나눔장터</a>
 						<a href="<c:url value="/user/mypage/view"/>">마이페이지</a>
 						<a href="<c:url value="/comm/matlist"/>">커뮤니티</a>						
 					</nav>

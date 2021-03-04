@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=1"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=2"/>"/>
 <style>	
 </style>	
 </head>
@@ -82,7 +82,9 @@
   }
     
     var p = getParameterByName('p');
+    //var idx = getParameterByName('idx');
     console.log(p); 
+    //console.log(idx); 
     
  
      // 채팅 알림
@@ -108,8 +110,8 @@
 				
 			$('.notice').css('display', 'block');					  		  
 					
-			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="20px">';
-				html += msgData.userIdx+'님으로부터의 메세지가 도착했습니다!</h4>';
+			var html = '<h4 class="noticeMsg"><img src="<c:url value="/img/dona/notice.png"/>" width="28px">';
+				html += msgData.userIdx+'님으로부터 <br> 메세지가 도착했습니다!</h4>';
 				html += '<input type="button" onclick="window.location.reload()" class="noticeBtn" id="laterBtn" value="나중에">';
 				html += '<input type="button" onclick="goChatRoom(); noticeNone();" class="noticeBtn" value="보기">';				    			 
 					  		    

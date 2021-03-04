@@ -22,7 +22,7 @@ public class AuthCheckIntercepter extends HandlerInterceptorAdapter{
 		}
 		
 		//response.sendRedirect(request.getContentType()+"/member/login");
-		response.sendRedirect("http://localhost:8080/member/member/login");
+		response.sendRedirect("/member/member/login");
 		
 		return false;
 		//다음 -> servlet-context
