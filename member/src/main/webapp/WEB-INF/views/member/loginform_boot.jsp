@@ -28,7 +28,7 @@
 <div class="first_container">
 <div class="second_container">
 	<div class="main_img">
-	<img src="<c:url value="/img/withearthlogo2.png"/>" class="rounded mx-auto d-block" alt="지구" >
+	<img src="<c:url value="/img/withearthlogo2.png"/>" class="rounded mx-auto d-block" alt="로고" >
 	</div>
 	<div class="mb-3">
 	  <input type="email" class="form-control" id="userid" placeholder="이메일 주소" name="userid" value="${cookie.uid.value}">
@@ -130,8 +130,7 @@ $(document).ready(function(){
 									cache: false,
 									success: function(data){
 										alert("로그인 되었습니다.");
-										//location.href="/member"; 
-										location.href='<c:url value="/"/>';
+										location.href="<c:url value='/'/>"; 										
 										console.log(data);
 									},
 									error: function(error){
@@ -194,7 +193,7 @@ $(document).ready(function(){
 				data: {id:email},
 				success : function(data){
 					if(data=='Y'){
-						console.log("이미 존재하는 회원이므로 세션등록")
+						console.log("이미 존재하는 회원이므로 세션등록");
 						//세션 로그인 url			
 						$.ajax({
 						url: '/member/member/kakaoLogin',
@@ -202,7 +201,7 @@ $(document).ready(function(){
 						data: {id:email},
 						success: function(data){
 							alert("로그인 되었습니다.");
-							location.href='<c:url value="/"/>';
+							location.href="<c:url value='/'/>"; 
 							console.log(data);
 						}
 						});
@@ -221,7 +220,7 @@ $(document).ready(function(){
 							success : function(check) {
 								console.log("성공");
 								alert("가입이 완료되었습니다.")
-								//location.href="/member";
+								location.href='<c:url value="/"/>';
 								
 							},
 							error: function(error){
@@ -279,12 +278,12 @@ function onSignIn() {
 				console.log("이미 존재하는 회원이므로 세션등록")
 				//세션 로그인 url			
 				$.ajax({
-				url: '/member/member/googleLogin',
+				url: 'googleLogin',
 				type: 'post',
 				data: {id:g_email},
 				success: function(data){
 					alert("로그인 되었습니다.");
-					location.href='<c:url value="/"/>';
+					location.href="<c:url value='/'/>"; 
 					console.log(data);
 				}
 				});
@@ -302,8 +301,7 @@ function onSignIn() {
 				success : function(check) {
 					console.log("성공");
 					alert("가입이 완료되었습니다.")
-					location.href='<c:url value="/"/>';
-					
+					location.href="<c:url value='/'/>"; 					
 				},
 				error: function(error){
 					console.log("실패");
@@ -322,7 +320,7 @@ function onSignIn() {
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "m2atJuSTPKnWvaMTDlAu",
-			callbackUrl: "http://localhost:8080/member/member/callback",
+			callbackUrl: "https://www.withearth.tk/member/member/callback",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 3, height: 45} /* 로그인 버튼의 타입을 지정 */
 		}
@@ -353,7 +351,7 @@ function onSignIn() {
 						data: {id:n_email},
 						success: function(data){
 							alert("로그인 되었습니다.");
-							location.href='<c:url value="/"/>';
+							location.href="<c:url value='/'/>"; 
 							console.log(data);
 						}
 						});
@@ -370,8 +368,8 @@ function onSignIn() {
 						contentType:'application/json;charset=utf-8',
 						success : function(check) {
 							console.log("성공");
-							alert("가입이 완료되었습니다.");
-							location.href='<c:url value="/"/>';
+							alert("가입이 완료되었습니다.")
+							location.href="<c:url value='/'/>"; 							
 						},
 						error: function(error){
 							console.log("실패");

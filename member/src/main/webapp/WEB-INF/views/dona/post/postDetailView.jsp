@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="<c:url value="/css/dona/detail.css"/>" />
 <style>
 </style>
-
 </head>
 
 <body id="page-top">
@@ -46,8 +45,8 @@
 			</div>
 			<div class="wrap-profile">
 				<!-- 회원 idx로 회원 정보를 받아오는 ajax 필요함! -->
-				<div class="profileImage">
-					
+				<div>
+					<img alt="프로필 사진" width="50px" height="50px" class="profile">
 				</div>
 				<div class="userInfo">
 					<div class="userId"></div>
@@ -58,8 +57,8 @@
 
 				<div class="post" id="heart-div">
 					<c:choose>
-						<c:when test="${loginInfo.idx ne null}">
-							<!-- 회원 번호가 null이 아닐 때-->
+						<c:when test="${idx ne null}">
+							<!-- 회원 번호가 null이 아닐 때(세션값 받아서 확인하기)-->
 							<span class="icon"> <a href='javascript: click_heart();'><img
 									width="25px" src='<c:url value="/img/dona/unlike.png" />'
 									id='like_img'></a></span>
@@ -95,14 +94,14 @@
 		// 게시물 idx
 		var donaIdx = getParameterByName('idx');
 		// 회원 idx
-		var idx = '<c:out value="${loginInfo.idx}"/>';
+		var idx = '<c:out value="${idx}"/>';
 
 		// 좋아요 클릭 시 처리
 		function click_heart() {
 			console.log('게시물IDX : ' + donaIdx + ', idx : ' + idx);
 
 			$.ajax({
-				url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/heart',
+				url : 'https://www.withearthdona.tk/dona/rest/user/heart',
 				type : 'GET',
 				data : 'donaIdx=' + donaIdx + '&idx=' + idx,
 				success : function(data) {
@@ -127,7 +126,7 @@
 
 		// 좋아요 페이지 기본 노출값 처리						
 		$.ajax({
-			url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/heart/list',
+			url : 'https://www.withearthdona.tk/dona/rest/user/heart/list',
 			type : 'GET',
 			data : 'donaIdx=' + donaIdx + '&idx=' + idx,
 			success : function(data) {
@@ -148,11 +147,10 @@
 			}
 
 		});
-				
 
 		// 컨트롤러로 값 넘기기 (회원 게시물 데이터 받기)
 		$.ajax({
-			url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail?idx=" + donaIdx,
+			url : "https://www.withearthdona.tk/dona/rest/user/post/detail?idx=" + donaIdx,
 			type : 'GET',
 			asycn : false,
 			success : function(data) {
@@ -168,7 +166,7 @@
                     
                  // 작성한 회원의 프로필 정보 받아오기
             		$.ajax({
-            			url: '/member/member/ajaxTest/test?idx='+ownerIdx,
+            			url: '<c:url value="/member/ajaxTest/test?idx='+ownerIdx+'"/>',
             			type: 'get',
             			contentType: "application/json; charset=UTF-8",
             			success: function(data){
@@ -179,14 +177,12 @@
             				
             				var nHtml = data.name;
             				$('.userId').append(nHtml);
-            			},
-            			error: function(error){
+            				
+            			},error: function(error){
             				console.log(error);
             			}	
             			
             			});
-                    
-                    
 					// 채팅으로 이동 (파라미터 넘기기)
 					var cHtml = '<input type="button" name="cBtn" id="chatBtn" value="작성자와 채팅하기">';
 					chatBtn.onclick = function() {
@@ -195,7 +191,6 @@
 
 					child1 = window.open("<c:url value='/post/chat?donaIdx="+ donaIdx + "&uid=" + idx + "&to="+ data.idx + "&rid=" + roomIdx+ "'/>", "child1","width=330,height=600");					
 					};
-
 					$('#chatBtn').append(cHtml);
 					},
 					error : function(e) {
@@ -203,9 +198,9 @@
 					}
 				});
 
-		// 컨트롤러로 값 넘기기(회원 게시물 이미지 데이터 받기)
+		// 컨트롤러로 값 넘기기 (회원 게시물 이미지 데이터 받기)
 		$.ajax({
-			url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail/image?idx="+ donaIdx,
+			url : "https://www.withearthdona.tk/dona/rest/user/post/detail/image?idx="+ donaIdx,
 			type : 'GET',
 			success : function(data) {
 
@@ -216,7 +211,7 @@
 
 				  var html = '<div class="carousel-item active">';
 				  // html +='<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; "alt="postImages">';										
-				  html += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; "alt="postImages">';
+				  html += '<img src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; "alt="postImages">';
 				  html += '</div>';
 				  $('.carousel-inner').append(html);
 				})
@@ -227,7 +222,7 @@
 					console.log(anotherImg);
 
 					var html2 = '<div class="carousel-item">';
-						//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; alt="postImages">';
+						html2 += '<img src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
 						html2 += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
 						html2 += '</div>'
 						$('.carousel-inner').append(html2);
@@ -238,7 +233,6 @@
 						console.log(e);
 					}
 				});
-		
 
 		// Activate Carousel
 		$("#myCarousel").carousel();
@@ -264,8 +258,8 @@
 		$(".carousel-control-next").click(function() {
 			$("#myCarousel").carousel("next");
 		});
-</script>
-<%-- <script src="<c:url value="/js/bootstrap/bootstrap.bundle.js" />"></script> --%>
+	</script>
+	<script src="<c:url value="/js/bootstrap/bootstrap.bundle.js" />"></script>
 </body>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

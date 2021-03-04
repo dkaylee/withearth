@@ -9,10 +9,12 @@
 			<!-- 메인: 바로가기 서비스 -> 텀블러 인증 서비스 안내 및 이동 -->
 			<article>
 				<header>
+				<img src="<c:url value="/img/main/tumbler.png"/>" width="200px;" style="text-align: center;">
 					<h3>
 						텀블러 사용 인증하기<br />
 					</h3>
-				</header>
+				</header>				
+				
 				<p>지정된 카페에서 텀블러 사용 인증 후 포인트를 적립받는 서비스입니다.</p>
 				<footer>
 					<a href="#" class="button special">More</a>
@@ -21,6 +23,7 @@
 			<!-- 메인: 바로가기 서비스 -> 걷기 인증 서비스 안내 및 이동 -->
 			<article>
 				<header>
+				<img src="<c:url value="/img/main/walk.png"/>" width="200px;" style="text-align: center;"><br>
 					<h3>
 						도보 인증 서비스<br />
 					</h3>
@@ -28,20 +31,21 @@
 				<p>목적지 설정 후 도보로 목적지까지 이동하면 포인트를 적립받는 서비스입니다.</p>
 				<footer>
 
-					<a href="<c:url value="/course/loc/walkingservice"/>"
+					<a href="<c:url value="/member/loc/walkingservice"/>"
 						class="button special">More</a>
 				</footer>
 			</article>
 			<!-- 메인: 바로가기 서비스 -> 기부하기 안내 및 이동 -->
 			<article>
 				<header>
+				<img src="<c:url value="/img/main/heart.png"/>" width="200px;" style="text-align: center;">
 					<h3>
 						기부하기<br />
 					</h3>
 				</header>
 				<p>사용하지 않는 물건 또는 음식들을 서로 공유하고 포인트를 적립받는 서비스입니다.</p>
 				<footer>
-					<a href="#" class="button special">More</a>
+					<a href="<c:url value="/member/dona/main"/>" class="button special">More</a>
 				</footer>
 			</article>
 
@@ -114,6 +118,7 @@
 					<!-- <img src="https://cdn.pixabay.com/photo/2014/04/02/10/56/recycling-304974_960_720.png" alt="Pic 01" /> -->
 				</div>
 				<header>
+				<%-- <img src="<c:url value="/img/main/recycle.png"/>" width="250px;" style="text-align: center;"> --%>
 					<h3>분리배출 한 눈에 보기</h3>
 				</header>
 				<p>분리배출에 필요한 4가지, 종류별로 분리배출을 하는 방법을 확인할 수있습니다.</p>
@@ -123,9 +128,10 @@
 			</article>
 			<article>
 				<div class="image fit">
-					<!-- <img src="images/pic02.jpg" alt="Pic 02" /> -->
+					
 				</div>
 				<header>
+					<%-- <img src="<c:url value="/img/main/MinistryofEnvironment.jpg"/>"  style="text-align: center;"> --%>
 					<h3>환경부로 더 많은 소식 보러가기</h3>
 				</header>
 				<p>2021년 달라진 제도, 그림자료, 보도/설명 등 다양한 환경 관련 소식을 볼 수 있습니다.</p>

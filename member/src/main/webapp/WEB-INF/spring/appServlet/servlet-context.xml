@@ -40,6 +40,7 @@
 			<mapping path="/member/loc/walkingservice" />
 			<mapping path="/member/dona/main" />
 			<mapping path="/user/mypage/view" />
+			<mapping path="/tumbler/tumlist1" />
 			<beans:bean
 				class="com.withearth.member.intercepter.AuthCheckIntercepter" />
 		</interceptor>

@@ -34,9 +34,9 @@ public class PointSaveService { // 포인트를 저장하는 서비스
 	}
 	
 
-	public int userCoursePoint(int idx, int cIdx) {
-
-		int coursePoint = 100;
+	public int userCoursePoint(int idx, int cIdx, float distance) {
+        System.out.println("거리 : "+distance);
+		float coursePoint =  distance * 100;
 
 		dao = template.getMapper(PointDao.class);
 		
@@ -45,9 +45,9 @@ public class PointSaveService { // 포인트를 저장하는 서비스
 		Point point = new Point();
 		point.setIdx(idx);
 		point.setCourse_idx(cIdx);
-		point.setSaving_point(coursePoint);
+		point.setSaving_point((int)coursePoint);
 		point.setSaving_system("도보 인증");
-		point.setPointsum(sum + coursePoint);
+		point.setPointsum(sum + (int)coursePoint);
 		
 		return dao.addCoursePoint(point);
 	}

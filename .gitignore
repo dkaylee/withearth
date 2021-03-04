@@ -1,7 +1,20 @@
+
+member/.settings/org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs
+
+
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java,maven
 
 ### Eclipse ###
+
+
+
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse,java,maven
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java,maven
+### Eclipse ###
+
+
+
 target/
 .settings/
 servers/
@@ -116,4 +129,22 @@ Servers/.project
 .metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
 .metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
 .metadata/.plugins/org.eclipse.wst.server.core/publish/publish0.dat
+
 WithEarth-Donation/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
+
+
+WithEarth-Donation/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
+member/target/classes/com/withearth/member/intercepter/AuthCheckIntercepter.class
+member/target/m2e-wtp/web-resources/META-INF/maven/com.withearth/member/pom.properties
+
+WithEarth-Point/.settings/org.eclipse.wst.common.component
+WithEarth-Donation/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+WithEarth-Point/.settings/org.eclipse.wst.common.component
+WithEarth-Point/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+WithEarth-Point/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
+member/.settings/org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs
+member/.settings/org.eclipse.wst.ws.service.policy.prefs
+
+WithEarth-Point/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties
+
+WithEarth-Point/target/m2e-wtp/web-resources/META-INF/maven/com.aia/dona/pom.properties

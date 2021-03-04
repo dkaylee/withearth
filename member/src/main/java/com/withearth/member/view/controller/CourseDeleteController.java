@@ -14,7 +14,7 @@ public class CourseDeleteController {
 	@Autowired
 	private CourseDeleteService deleteService;
 	
-	@RequestMapping("/loc/coursedelete")
+	@RequestMapping("/member/loc/coursedelete")
 	public String deleteCourse(
 			@RequestParam("course_idx") int course_idx,
 			Model model

@@ -57,7 +57,7 @@
 
 							$.ajax({
 
-										url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail?idx="+ donaIdx,
+										url : "https://www.withearthdona.tk/dona/rest/user/post/detail?idx="+ donaIdx,
 										type : 'GET',
 										success : function(data) {
 
@@ -100,7 +100,8 @@
 												
 							
 							$.ajax({
-										url : "http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/detail/image?idx="+ donaIdx,
+										url : "https://www.withearthdona.tk/dona/rest/user/post/detail/image?idx="+ donaIdx,
+
 										type : 'GET',
 										success : function(data) {																					
 
@@ -110,7 +111,8 @@
 																//html2 += '<input type="hidden" name="oldPostImage" id="oldPostImage" value="'+item.fileName+'">';
 															    html2 += '<a href="javascript:void(0);" onclick=\"deleteOldImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
 																//html2 += '<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" style=\"width:100px; height:100px;\" id="post-images" alt="postImages"></a>';
-																html2 += '<img style=\"width:100px; height:100px;\" id="post-images" alt="postImages"src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'">';	
+																html2 += '<img style=\"width:100px; height:100px;\" id="post-images" alt="postImages"src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'">';	
+
 																html2 += '<img src="<c:url value="/img/dona/xbtn.jpg"/>" width="15px;" id="xBtn"></a>';
 																html2 += '</div>';
 																
@@ -195,7 +197,7 @@
 			}
 			 //ajax로 폼데이터 전송
 		 	 $.ajax({
-				url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/rest/user/post/edit',
+				url : 'https://www.withearthdona.tk/dona/rest/user/post/edit',
 				type : 'POST',
 				data : formData,
 				processData: false,

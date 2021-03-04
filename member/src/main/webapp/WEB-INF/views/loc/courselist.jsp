@@ -163,7 +163,7 @@ h3{
 						<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
 							<li class="page-item"  ${listView.pageNumber eq num ? 'active' : '' }>
 								<a class="page-link" 
-								href="<c:url value="/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}
+								href="<c:url value="/member/loc/courselist"/>?p=${num}&searchType=${param.searchType}&keyword=${param.keyword}" >${num}
 								</a>
 							</li>
 						</c:forEach>
@@ -186,7 +186,7 @@ h3{
 	//  deleteCourse function이 없으면 삭제 기능이 실행이 안됨. 
 		function deleteCourse(course_idx) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
-				location.href = '<c:url value="/loc/coursedelete?course_idx="/>' + course_idx;
+				location.href = '<c:url value="/member/loc/coursedelete?course_idx="/>' + course_idx;
 			} // /op/member/delete?idx
 		}
 	
