@@ -680,9 +680,26 @@
 	/*******************************목적지 도착 기능********************************************/
 	var distance;
 	var confirm_test = null;
-	function arrChk(nowlat, nowlon, arrlat, arrlon){
+	var end_lat;
+	var end_lon;
+	function arrChk( arrlat, arrlon){
 		
 		$("#arriveBtn").click(function(){ 
+			
+			 if (navigator.geolocation) {
+				//위치 정보를 얻기
+					navigator.geolocation.getCurrentPosition(function(pos) {
+						$('#endlatitude').html(pos.coords.latitude); 		// 위도 ex)37.xxx -> ssl 사용 -> ssl 등록(aws)
+						$('#endlongitude').html(pos.coords.longitude); 	// 경도 ex)126.xxx
+						end_lat = pos.coords.latitude;
+						end_lon = pos.coords.longitude;
+						
+						console.log("arriveBtn 도착 경도" + end_lon);
+						console.log("arriveBtn 도착 위도" + end_lat);
+					});
+				} else {
+					alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
+				} 
 			
 			console.log('도착1');
 			// 3. 직선거리 계산  API 사용요청
@@ -692,10 +709,10 @@
 						async : false,
 						data : {
 							appKey : "l7xxa82c096d66484d37ac10b23c15a64620",
-							startX : nowlon,
-							startY : nowlat,
-							endX : arrlon,
-							endY : arrlat,
+							startX : arrlon,
+							startY : arrlat,
+							endX : end_lon,
+							endY : end_lat,
 							reqCoordType : "WGS84GEO"
 						},
 						success : function(response) {
@@ -893,9 +910,9 @@
 	  myInput.focus()
 	}) */
     
-    function infoModal(){
+    /* function infoModal(){
     	$('#InfoModal').modal('show');
-	} */
+	}  */
     
 	
 	
