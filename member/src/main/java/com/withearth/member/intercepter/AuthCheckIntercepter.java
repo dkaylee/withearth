@@ -21,7 +21,7 @@ public class AuthCheckIntercepter extends HandlerInterceptorAdapter{
 			return true;
 		}
 		
-		response.sendRedirect(request.getContentType()+"/member/login");
+		response.sendRedirect("www.withearthtest.tk/member2/member/login");
 		return false;
 		//다음 -> servlet-context
 	}
