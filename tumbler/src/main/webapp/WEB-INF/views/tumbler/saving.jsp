@@ -69,7 +69,7 @@
 			<!-- Table -->
 			 <div id = "addpoint">
 			<div id="point">
-			 <img alt="point2" src="<c:url value="/img/point2.jpg"/>" style="width: 35%;">
+			 <img alt="point2" src="<c:url value="/img/tum/point2.jpg"/>" style="width: 35%;">
 				<!-- <img src="/img/point2.png" style="width: 25%;"> -->
 			</div>
 

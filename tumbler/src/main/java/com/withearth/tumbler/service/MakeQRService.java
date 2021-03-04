@@ -71,7 +71,7 @@ public class MakeQRService {
 	    	//String url = "http://localhost:8080/tumbler/"+cafe_idx;
 	    	//String url = "http://localhost:8080/tumbler/qr/"+cafe_idx;
 	        //String url = "http://192.168.0.1:8080/tumbler/"+cafe_idx;
-	        String url = "http://localhost:8080/withearth/tumbler/point/"+idx+"/"+cafe_idx;
+	        String url = "http://localhost:8080/withearth/tumbler/point?idx="+idx+"&cafe_idx"+cafe_idx;
 	       //String url = "http://192.168.219.106:8080/qr/"+cafe_idx;
       
 	        //링크 생성값

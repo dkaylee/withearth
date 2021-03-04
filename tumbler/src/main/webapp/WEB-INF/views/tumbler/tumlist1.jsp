@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial=scale=1.0">
+
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 
@@ -245,6 +246,8 @@ section.wrapper, article.wrapper {
     font-family: "Raleway", Arial, Helvetica, sans-serif;
    
 }
+
+
 </style>
 
 
@@ -259,9 +262,9 @@ section.wrapper, article.wrapper {
 	<section id="main" class="wrapper">
 
 
-		<div id="modal_btn">
+		 <div id="modal_btn">
 			<button id="open">텀블러 인증하기</button>
-		   <!--  <button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button>  -->
+		    <button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button> 
 			<button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button> 
 		</div>
 
@@ -272,7 +275,22 @@ section.wrapper, article.wrapper {
 				<div class="modal_text">QR코드를 스캔해주세요!</div>
 
 				<button id=maodel_btnx>X</button>
-			</div>
+			</div> 
+			
+			  
+ 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+ 
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>                                                               
+        <p>Some text in the Modal..</p>
+      </div>
+ 
+    </div>
+			
+			
 
 
 </div>
@@ -429,7 +447,7 @@ section.wrapper, article.wrapper {
 					   	            '        </div>' + 
 					   	            '        <div class="body">' + 
 					   	            '            <div class="img">' +
-					   	            '                <img alt="cafe" src="<c:url value="/img/cafe1.jpg"/>" style="width:73; height:70;">' +
+					   	            '                 <img src="<c:url value="/img/tum/cafe1.png"/>" width="73" height="70">' +
 					   	            /* '                <img alt="point2" src="<c:url value="/img/cafe1.jpg"/>" style= "width:73; height:70";>' + */
 					   	            '           </div>' + 
 					   	       
@@ -455,7 +473,7 @@ section.wrapper, article.wrapper {
 				   		//console.log(namearr);
 				   		
 				   		//d이미지 마커
-			   		 var CimageSrc = '<c:url value="/img/mark.png"/>', // 마커이미지의 주소입니다    
+			   		 var CimageSrc = '<c:url value="/img/tum/mark.png"/>', // 마커이미지의 주소입니다    
 		                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
 		                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		                
@@ -549,76 +567,10 @@ section.wrapper, article.wrapper {
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 
-
-	//키워드로 장소를 검색합니다
-	//searchPlaces();
-	 
-	//주소-좌표 변환 객체를 생성합니다
-	//var geocoder = new kakao.maps.services.Geocoder();
-
 	//지도에 표시될 마크
 	var markers = [];
 	
-	
-/* 
-// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
 
-			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
-			navigator.geolocation.getCurrentPosition(function(position) {
-
-				var lat = position.coords.latitude, // 위도
-				    lon = position.coords.longitude; // 경도
-
-				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-				iwContent  = '<div style="padding:5px;">내 위치</div>'; // 인포윈도우에 표시될 내용입니다
-
-				// 마커와 인포윈도우를 표시합니다
-				displayMarker(locPosition, iwContent );
-
-			});
-
-		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-			var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = 'geolocation을 사용할수 없어요..'
-
-			displayMarker(locPosition, iwContent );
-
-		}
- 	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-		function displayMarker(locPosition, iwContent ) {
-			
-			//d이미지 마커
-	   		 var imageSrc = '<c:url value="/img/mark1.jpg"/>', // 마커이미지의 주소입니다    
-                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-                
-             // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-
-			// 마커를 생성합니다
-			 marker = new kakao.maps.Marker({
-				map : map,
-				position : locPosition,
-				image: markerImage // 마커이미지 설정 
-			});
-
-			var iwContent = iwContent , // 인포윈도우에 표시할 내용
-			iwRemoveable = true;
-
-			// 인포윈도우를 생성합니다
-			var infowindow = new kakao.maps.InfoWindow({
-				zIndex:1,
-				content : iwContent,
-				removable : iwRemoveable
-			}); */
-			
-			
-
-	
-			// 인포윈도우를 마커위에 표시합니다 
-			infowindow.open(map, marker);
-			//infowindow.setContent(content);
 
 			// 지도 중심좌표를 접속위치로 변경합니다
 			map.setCenter(locPosition);		
@@ -662,11 +614,8 @@ section.wrapper, article.wrapper {
 		}
 		//클릭 이벤트
 		openButton.addEventListener("click", openModal);
-		closeButton.addEventListener("click", closeModal);
-	
-	
-	
-
+		closeButton.addEventListener("click", closeModal); 
+		
 
 
 	</script>

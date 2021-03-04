@@ -226,18 +226,7 @@ ul li {
 										}
 										;
 
-										/* for (var num=startRow; num<=endRow; num++) {
-										     if (num == cntPerPage) {
-										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-										     } else {
-										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-										     }
-										  }
 										
-										
-										
-										$('.ttbody').html(a);
-										 */
 
 									},
 									error : function(e) {

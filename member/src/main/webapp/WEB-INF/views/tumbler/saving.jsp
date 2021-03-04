@@ -69,7 +69,7 @@
 			<!-- Table -->
 			 <div id = "addpoint">
 			<div id="point">
-			 <img alt="point2" src="<c:url value="/img/point2.jpg"/>" style="width: 35%;">
+			 <img alt="point2" src="<c:url value="/img/tum/point2.jpg"/>" style="width: 35%;">
 				<!-- <img src="/img/point2.png" style="width: 25%;"> -->
 			</div>
 
@@ -82,8 +82,8 @@
 			<div id="modal_btn">
 				<!-- <button id="open"onclick="location.href='#'"></button>
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
-				<a href="<c:url value="/"/>" class="button special" >메인 화면</a>
-				<a href="<c:url value=""/>" class="button special">텀블러 조회</a>
+				<a href="<c:url value="#"/>" class="button special" >메인 화면</a>
+				<a href="<c:url value="/tumbler/tumlist"/>" class="button special">텀블러 조회</a>
 			</div> 
 			</div> 
 
@@ -126,7 +126,7 @@ console.log(cafe_idx);
 	   
 	   $.ajax({
 		   
-		   url : 'http://localhost:8080/withearth/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,
+		   url : 'https://www.withearthtum.tk/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,
 		   type : 'GET',
 		   success : function(data){
 			   console.log(data);
@@ -134,7 +134,7 @@ console.log(cafe_idx);
 			   
 			   $ajax({
 				   
-				   url: 'https://www.withearthdona.tk/point/rest/user/point/tum/'+idx+'/'+tIdx,
+				   url: 'https://www.withearthdona.tk/point/rest/user/point?tum='+idx+'&tIdx='+tIdx,
 				   type: 'GET',
 				   
 				   success: function(data){
