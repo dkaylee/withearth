@@ -56,12 +56,12 @@
 						  </div>													
 							<h3><a href="<c:url value="/user/point/view"/>">포인트 조회</a></h3>
 						</div>
-						<div class="box person">
+				<%-- 		<div class="box person">
 							<div class="image round">
 							<img src="<c:url value="/img/point/myactivity.png"/>" alt="mypage-pic3">
 							</div>
 							<h3><a>활동 현황 조회</a></h3>
-						</div>
+						</div> --%>
 						<div class="box person">
 							<div class="image round">							
 							<a href="<c:url value="/dona/main/post/mypost?idx=${loginInfo.idx}"/>">
