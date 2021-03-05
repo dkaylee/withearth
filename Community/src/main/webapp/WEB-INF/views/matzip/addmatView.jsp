@@ -43,7 +43,7 @@
 	
 	/* go edit Form */
 	function goEdit(){
-		location.href = "http://localhost8080/community/matzip/editmatForm?matIdx="+matIdx;
+		location.href = "https://www.withearthcomm.tk/community/matzip/editmatForm?matIdx="+matIdx;
 	}
 	
 
@@ -51,7 +51,7 @@
 	function getMatDetail(){
 		
 		$.ajax({
-			url:"http://localhost8080/community/matzip/matDetail?matIdx="+matIdx,
+			url:"https://www.withearthcomm.tk/community/matzip/addView?matIdx="+matIdx,
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
@@ -92,7 +92,7 @@
 		var filelist= [];
 		
 		$.ajax({
-			url:"http://localhost8080.tk/community/matzip/filelist?matIdx="+matIdx,
+			url:"https://www.withearthcomm.tk/community/matzip/filelist?matIdx="+matIdx,
 			type: "GET",
 			success : function(data) {
 				console.log(data);
@@ -125,7 +125,7 @@
  	function deleteMatzip() {
 		
 	$.ajax({
-				url:"http://localhost8080/community/matzip/deleteMat?matIdx="+matIdx,
+				url:"https://www.withearthcomm.tk/community/matzip/deleteMat?matIdx="+matIdx,
 				type:"POST",
 				success : function(result){	
 					console.log(result);

@@ -123,7 +123,7 @@ float:left;
 					console.log(formData);
 
 					$.ajax({
-						url : 'http://localhost8080/community/matzip/addmatzip',
+						url : 'https://www.withearthcomm.tk/community/matzip/addmatzip',
 						type : 'POST',
 						data : formData,
 						enctype : 'multipart/form-data',
@@ -132,14 +132,14 @@ float:left;
 						cache : false,
 						success : function (result){
 						console.log(result);
-						
 							if(result == "1"){
 									alert("업체등록을 완료하였습니다.");
 									goMatlist();
 								}
 							},
-							error :
-								alert("업체등록을 다시해주세요.")
+							error : function(){
+								alert("업체등록을 다시해주세요.");
+							}
 					});
 		    	}); 
 		   }); 

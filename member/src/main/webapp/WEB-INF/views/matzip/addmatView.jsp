@@ -17,6 +17,7 @@
 
 <body class="subpage">
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <script>
 	
@@ -43,7 +44,7 @@
 	
 	/* go edit Form */
 	function goEdit(){
-		location.href = "/community/matzip/editmatForm?matIdx="+matIdx;
+		location.href = "member/matzip/editmatForm?matIdx="+matIdx;
 	}
 	
 
@@ -51,7 +52,7 @@
 	function getMatDetail(){
 		
 		$.ajax({
-			url:"http://localhost:8080/community/matzip/matDetail?matIdx="+matIdx,
+			url:"https://www.withearthcomm.tk/community/matzip/matDetail?matIdx="+matIdx,
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
@@ -92,7 +93,7 @@
 		var filelist= [];
 		
 		$.ajax({
-			url:"http://localhost:8080/community/matzip/filelist?matIdx="+matIdx,
+			url:"https://www.withearthcomm.tk/community/matzip/filelist?matIdx="+matIdx,
 			type: "GET",
 			success : function(data) {
 				console.log(data);
@@ -125,7 +126,7 @@
  	function deleteMatzip() {
 		
 	$.ajax({
-				url:"http://localhost:8080/community/matzip/deleteMat?matIdx="+matIdx,
+				url:"https://www.withearthcomm.tk/community/matzip/deleteMat?matIdx="+matIdx,
 				type:"POST",
 				success : function(result){	
 					console.log(result);
@@ -144,7 +145,7 @@
 
 /* 맛집 목록이동 */
 function goMatlist(){
-	location.href = "/community/matzip/matlist?p=1";
+	location.href = "/member/matzip/matlist?p=1";
 }
 
 

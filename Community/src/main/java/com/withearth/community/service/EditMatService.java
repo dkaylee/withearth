@@ -41,7 +41,6 @@ public class EditMatService {
 	
 	@Transactional
 	public int editMatzip(
-			@RequestParam("matIdx") int matIdx,
 			MatEditRequest editReq,
 			MultipartHttpServletRequest mprq) {
 		
@@ -65,7 +64,6 @@ public class EditMatService {
 		// 업로드 파일 리스트를 담을 비어있는 리스트
 		List<FileVo> fileList = new ArrayList<>();
 		
-		matIdx = editReq.getmIdx();
 		
 		if(mf.size() == 1 && mf.get(0).getOriginalFilename().equals("")) {
 		
@@ -127,7 +125,6 @@ public class EditMatService {
 					 
 					FileVo file = new FileVo();
 					
-					file.setMatIdx(matIdx);
 					file.setOrgFName(orgFName);
 					file.setNewFName(newFName);
 					file.setFileSize(fileSize);

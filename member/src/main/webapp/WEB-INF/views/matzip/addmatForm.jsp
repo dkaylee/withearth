@@ -9,15 +9,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <style>
 .3u$ 12u$(small){
 	flaot: left;
 }
-
-#previewBox {
+img{
+	margin: 20px;
+	width: 200px;
+}
+.previewBox {
 	width: 900px;
-	height: 350px;
+	height: 300px;
+	overflow: auto;
+}
+#preview{
+float:left;
 }
 </style>
 
@@ -84,10 +92,7 @@
 </div>
 
 <script>
-	/* 맛집 목록이동 */
-	function goMatlist(){
-		location.href = "http://localhost:8080/community/matzip/matlist?p=1";
-	}
+	
 	
 	/* 맛집추가 및 파일업로드 */
 	 $(document).ready(function() {
@@ -119,7 +124,7 @@
 					console.log(formData);
 
 					$.ajax({
-						url : 'http://localhost:8080/community/matzip/addmatzip',
+						url : 'https://www.withearthcomm.tk/community/matzip/addmatzip',
 						type : 'POST',
 						data : formData,
 						enctype : 'multipart/form-data',
@@ -128,14 +133,15 @@
 						cache : false,
 						success : function (result){
 						console.log(result);
-						
+				
 							if(result == "1"){
 									alert("업체등록을 완료하였습니다.");
-									goMatlist();
+									goAddView();
 								}
 							},
-							error :
-								alert("업체등록을 다시해주세요.")
+							error : function(){
+								alert("업체등록을 다시해주세요.");
+							}
 					});
 		    	}); 
 		   }); 
@@ -152,67 +158,31 @@
 		 
 		                reader.onload = function (img) {
 		                    //div id="preview" 내에 동적코드추가.
-		                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
-		                    $("#preview").append(
-		                        "<img src=\"" + img.target.result + "\"\/>"
-		                    );
+		                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명
+		                    $("#preview").append( "<img src=\"" + img.target.result + "\"\/>" );
 		                    
 		                };
 		                
 		                reader.readAsDataURL(file);
 		            }
-		        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다. 
+		        } else alert('invalid file input');
 		    }  
+		    
+		     /* 맛집 목록이동 */
+		     function goMatlist(){
+		     	location.href = "/member/matzip/matlist?p=1";
+		     }
+		     
+		     /* 맛집 목록이동 */
+		     function goAddView(){
+		     	location.href = "/member/matzip/addmatView?matIdx"+matIdx;
+		     }
 	
 </script>
 		
 </section>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-	
-	
-	<script>
-		
-	/* $(document).ready(function(){	
-		$('#matzipForm').submit(function(){
-			
-			var photoFiles = $('#matImg');
-			
-			var files = photoFile[0],files;
-			
-			console.log(files);
-			
-			var formData = new FormData();
-			formData.append("matTitle", $('#mTitle').val()),
-			formData.append("matAddr", $('mAddr').val()),
-			formData.append("matTime", $('mTime').val()),
-			formData.append("matNum", $('mNum').val()),
-			formData.append("matCont", $('mCont').val());
-			
-			for(var i=0; i<files.length; i++){
-				formData.append("matImg", $('mImg').val());
-			}
-			
-			console.log(formData);
-
-			
-			$.ajax({
-				url : '/matzip/addmat',
-				type : 'POST',
-				data : formData,
-				enctype : 'multipart/form-data',
-				processData : false,
-				contentType : false,
-				cache : false ,
-				success : function (data){
-						console.log(data);
-					}
-				});
-		}); */
-		
-	
-			
-		</script>
 	
 </body>
 </html>

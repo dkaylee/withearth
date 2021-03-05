@@ -65,10 +65,10 @@ display:inline-block;
 	
 	<!-- 카카오 api -->
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004&libraries=services">
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0baf561a9ecada2b271b32f3304dc3eb&libraries=services">
 	</script>
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004">
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0baf561a9ecada2b271b32f3304dc3eb">
 	</script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	

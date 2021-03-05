@@ -1,8 +1,7 @@
-package com.withearth.community.controller;
+package com.withearth.member.view.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 
 @Controller
@@ -16,11 +15,11 @@ public class MatViewController {
 	}
 	
 	// 게시물 완료
-	@RequestMapping(value="/matzip/addmatView")
-	public String getAddView() {
-			
-		return "/matzip/addmatView";
-	}
+		@RequestMapping(value="/matzip/addmatView")
+		public String getAddView() {
+				
+			return "/matzip/addmatView";
+		}
 	
 	// 맛집 리스트
 	@RequestMapping(value = "/matzip/matlist")

@@ -18,14 +18,23 @@ img{
 	display:block; 
     margin:auto;
 }
+
+#preview img{
+	margin: 20px;
+	width: 200px;
+}
+.previewBox {
+	width: 900px;
+	height: 300px;
+	overflow: auto;
+}
+#preview{
+float:left;
+}
 </style>
 
 
 </head>
-
-
-
-
 
 <!--  맛집정보 수정 view-->
 
@@ -76,7 +85,7 @@ img{
 				<div class="12u$">
 					<ul class="actions">
 					<li><input type="submit" value="수정하기" class="editbtn"/></li>
-					<li><input type="reset" value="목록" onclick="javascript:goMatlist();"/></li>
+					<li><a href="<c:url value="/matzip/matlist?p=1"/>" class="button alt">목록</a></li>
 					</ul>
 				</div>
 			</div>
@@ -97,11 +106,38 @@ var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(locat
 var matIdx = getParameterByName('matIdx'); 
 
 
+//image preview 기능 구현
+// input = file object[]
+ function addPreview(input) {
+    if (input[0].files) {
+        //파일 선택이 여러개였을 시의 대응
+        for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
+            var file = input[0].files[fileIndex];
+            var reader = new FileReader();
+
+            reader.onload = function (img) {
+                //div id="preview" 내에 동적코드추가.
+                //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
+                $("#preview").append(
+                    "<img src=\"" + img.target.result + "\"\/>"
+                );
+            };
+            
+            reader.readAsDataURL(file);
+        }
+    } else alert('invalid file input');
+}  
+
+ // 태그에 onchange를 부여한다.
+ $('#mImg').change(function() {
+         addPreview($(this)); //preview form 추가하기
+ });
+
+
 $(document).ready(function(){        
 	
 	getEditMat();
 
-	
 	$('.editbtn').click(function(){
 		
 		var photoFiles = $('#mImg');
@@ -122,13 +158,11 @@ $(document).ready(function(){
 		formData.append("mCont", $('#mCont').val());
 		
 		console.log(files);
-		
-		
 		console.log(formData);
 
 		
 		$.ajax({
-			url : 'http://localhost8080/community/matzip/setEdit'+matIdx,
+			url : 'https://www.withearthcomm.tk/community/matzip/setEdit'+matIdx,
 			type : 'POST',
 			data : formData,
 			enctype : 'multipart/form-data',
@@ -145,8 +179,9 @@ $(document).ready(function(){
 					
 				}	
 			},
-				error :
-				alert("다시시도해주세요.")
+				error : function(){
+				alert("다시시도해주세요.");
+				}
 			});
 	}); 
 	
@@ -156,7 +191,7 @@ $(document).ready(function(){
 	function getEditMat(){
 		
 		$.ajax({
-			url:'http://localhost:8080/community/matzip/getEdit?matIdx='+matIdx,
+			url:'https://www.withearthcomm.tk/community/matzip/getEdit?matIdx='+matIdx,
 			type: "GET",
 			dataType: "JSON",
 			success : function(data){
@@ -189,6 +224,7 @@ $(document).ready(function(){
 				console.log(html);
 				$('#editInfo').append(html);
 				
+				
 			},
 			error : function(){
 				alert("오류가 발생했습니다");
@@ -202,30 +238,6 @@ $(document).ready(function(){
 	function goMatlist(){
 		location.href = "community/matzip/matlist?p=1";
 	}
-	
-	// image preview 기능 구현
-    // input = file object[]
-     function addPreview(input) {
-        if (input[0].files) {
-            //파일 선택이 여러개였을 시의 대응
-            for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
-                var file = input[0].files[fileIndex];
-                var reader = new FileReader();
- 
-                reader.onload = function (img) {
-                    //div id="preview" 내에 동적코드추가.
-                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
-                    $("#preview").append(
-                        "<img src=\"" + img.target.result + "\"\/>"
-                    );
-                };
-                
-                reader.readAsDataURL(file);
-            }
-        } else alert('invalid file input');
-    }  
-
-	
 
 });
 	

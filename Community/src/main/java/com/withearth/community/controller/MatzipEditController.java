@@ -3,6 +3,7 @@ package com.withearth.community.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ import com.withearth.community.domain.MatEditRequest;
 import com.withearth.community.domain.MatzipVo;
 import com.withearth.community.service.EditMatService;
 
-
+@CrossOrigin
 @RestController
 public class MatzipEditController {
 	
@@ -33,13 +34,12 @@ public class MatzipEditController {
 	
 	@PostMapping(value="/matzip/setEdit")
 	public int matEdit(
-			int matIdx,
 			MatEditRequest editReq,
 			MultipartHttpServletRequest mprq,
 			Model model
 			) {
 		
-		int result = editMatService.editMatzip(matIdx, editReq, mprq);
+		int result = editMatService.editMatzip(editReq, mprq);
 		
 		System.out.println("Result"+editReq);		
 		

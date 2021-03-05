@@ -38,8 +38,7 @@ public class AddMatzipService {
 	public int addMatzip(
 			MatAddRequest matRequest,
 			MultipartHttpServletRequest mprq) {
-		
-		
+
 		
 		int result = 0;
 		
@@ -64,7 +63,6 @@ public class AddMatzipService {
 		
 		String newFName = null;
 		
-
 		// 넘어온 파일을 리스트로 저장
 		List<MultipartFile> mf = mprq.getFiles("mImg");
 		
