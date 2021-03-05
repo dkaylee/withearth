@@ -13,11 +13,11 @@ public interface WalkingDao {
 	// 1-2. 포인트 전달을 위한 idx, 이동 거리 불러오기
 	//List<Course> pointCourse();
 	
-	// 2. 전체 회원의 수
+	// 2. 전체 코스의 수
 	int courseCountUpdate();
 
 	// 3. 코스의 총 개수
-	int selectTotalCount();
+	int selectTotalCount(int idx);
 
 	// 4. 코스 리스트(페이지 번호에 맞는 코스 리스트 구하기)
 	//List<Course> selectCourseList(int startRow, int cntPerPage);
@@ -27,7 +27,7 @@ public interface WalkingDao {
 	List<Course> selectAllCourseList();
 
 	// 6. 검색한 코스의 수
-	int selectSearchCourseCount(Map<String, Object> listMap);
+	int selectSearchCourseCount(Map<String, Object> listMap, int idx);
 
 	// 7. 코스 정보 삭제
 	int deleteCourseByIdx(int course_idx);

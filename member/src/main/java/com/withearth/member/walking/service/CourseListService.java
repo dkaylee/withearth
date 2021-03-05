@@ -50,8 +50,8 @@ public class CourseListService {
 			listMap.put("searchParam", param);
 			listMap.put("idx", idx);
 
-			// int totalCourseCount = dao.selectTotalCount();
-			int totalCourseCount = dao.selectSearchCourseCount(listMap);
+			// 
+			int totalCourseCount = dao.selectSearchCourseCount(listMap, idx);
 			System.out.println("courseTotalCount : " + totalCourseCount);
 
 			
@@ -89,10 +89,11 @@ public class CourseListService {
 		return list;
 	}
 
-	public int getCourseTotalCount() {
-		
+	
+
+	public Object getCourseTotalCount(int idx) {
 		dao = template.getMapper(WalkingDao.class);
-		return dao.selectTotalCount();
+		return dao.selectTotalCount(idx);
 	}
 	
 	

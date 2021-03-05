@@ -6,5 +6,5 @@ select course_idx, loc_km from open.walking order by course_date desc limit 1;
 
 select * from open.walking where user_idx=1 ;
 
-select count(*) from open.walking where user_idx=2;
+select count(*) from open.walking where user_idx=1;
 ;
