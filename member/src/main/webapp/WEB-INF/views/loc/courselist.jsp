@@ -144,14 +144,11 @@ h3{
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.courseDate}"
 										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
-								
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
 								<td>${course.loc_km} km</td>
 								<%-- <td>${course.about_time} 분</td> --%>
 								<td>${course.walking_time}</td>
-								
-								<%--<td><a href="<c:url value="/course/edit?idx=${course.course_idx}"/>">수정</a> --%> 
 							    <td><a href="javascript:deleteCourse(${course.course_idx});">삭제</a></td>
 							</tr>
 					</c:forEach>
@@ -183,6 +180,9 @@ h3{
 
 
 	<script>
+	
+	var idx = {loginInfo.idx};
+	
 	//  deleteCourse function이 없으면 삭제 기능이 실행이 안됨. 
 		function deleteCourse(course_idx) {
 			if (confirm('정말로 삭제하시겠습니까?')) {

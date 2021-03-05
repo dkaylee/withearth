@@ -89,7 +89,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					 <include refid="searchEnd"/>
 				</if>
 			</if>
+			
+			
 		</where>
+		
+		and where user_idx=${idx} 
 		
 		limit #{index}, #{count}
 		

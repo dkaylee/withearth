@@ -15,6 +15,13 @@ public class LoginInfo implements Serializable{ //serializable을 implements해�
 		this.name= name;
 		this.photo=photo;
 	}
+	
+
+
+	public LoginInfo() {
+		
+	}
+
 
 
 	public int getIdx() {

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withearth.member.walking.domain.SearchParam;
 import com.withearth.member.walking.service.CourseListService;
@@ -16,12 +18,13 @@ public class CourseListController {
 	
 	@GetMapping(value="/member/loc/courselist")
 	public String courseList(
+			@RequestParam("idx") int idx,
 			SearchParam param,
 			Model model) {
 		
 		System.out.println(param);
 		
-		model.addAttribute("listView", listService.getListView(param));
+		model.addAttribute("listView", listService.getListView(param, idx));
 		model.addAttribute("courseCnt", listService.getCourseTotalCount());
 		
 		return "/loc/courselist";

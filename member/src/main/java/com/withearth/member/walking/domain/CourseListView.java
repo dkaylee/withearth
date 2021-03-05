@@ -12,6 +12,7 @@ public class CourseListView {
 	private int endRow;					//
 	private int totalPageCount;			// 전체 페이지의 개수
 	
+	
 	// 생성자 생성
 	public CourseListView(int pageNumber, int totalCourseCount, int cntPerPage, List<Course> courseList, int startRow,
 			int endRow) {
