@@ -47,8 +47,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
-	<!-- 1-2 최근 저장 내역의 코스 리스트 및 이동 거리 출력 -->
-	<select id="pointCourse" parameterType="map" resultMap="coursePointResult">
+	<!-- 1-2. 코스 idx, loc_km 조회 -->
+	<!-- <select id="pointCourse" parameterType="map" resultMap="coursePointResult">
+		select course_idx, loc_km from open.walking order by course_date desc limit 1
+	</select> -->
+<select id="pointCourse" parameterType="map" resultMap="coursePointResult">
 		select course_idx, loc_km from open.walking order by course_date desc limit 1
 	</select>
 
@@ -64,10 +67,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 3. 코스의 총 개수-->
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from open.walking
-		
-		<where>
-			user_idx=${idx} 
-		</where>
 	</select>
 	
 	
@@ -90,14 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					 <include refid="searchEnd"/>
 				</if>
 			</if>
-			
-			
-			and user_idx=${idx} 
-			
-			
 		</where>
-		
-		
 		
 		limit #{index}, #{count}
 		
@@ -112,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 6. 검색한 회원의 수 -->
 	<select id="selectSearchCourseCount" 
-			parameterType="map"
+			parameterType="com.withearth.member.walking.domain.SearchParam"
 	        resultType="int" >
 	        
 		select count(*) from open.walking
@@ -132,15 +124,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				 <include refid="searchDate"/>
 				 <include refid="searchEnd"/>
 			</if>
-			
-			and user_idx=${idx}
-			
 		</where>
 	
 	</select>
 	
 	
 	<!--  저장 일자로 검색 -->
+	<!-- <sql id="searchDate">
+		or course_date like	concat('%',#{searchParam.keyword},'%')
+	</sql> -->
+	
 	<sql id="searchDate">
 		or course_date like	concat('%',#{searchParam.keyword},'%')
 	</sql>

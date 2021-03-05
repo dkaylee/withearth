@@ -143,13 +143,13 @@ h3{
 								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.courseDate}"
-										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
+										pattern="yyyy-MM-dd" /></td>
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
 								<td>${course.loc_km} km</td>
 								<%-- <td>${course.about_time} 분</td> --%>
 								<td>${course.walking_time}</td>
-							    <td><a href="javascript:deleteCourse(${course.course_idx});">삭제</a></td>
+							    <td><a href="javascript:deleteCourse(${course.course_idx}); "  >삭제</a></td>
 							</tr>
 					</c:forEach>
 
@@ -183,13 +183,13 @@ h3{
 	
 	var idx = ${loginInfo.idx};
 	console.log('courselist: ', idx);
-	//console.log('courselist, loginInfo: ', loginInfo);
 	
 	//  deleteCourse function이 없으면 삭제 기능이 실행이 안됨. 
 		function deleteCourse(course_idx) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
 				location.href = '<c:url value="/member/loc/coursedelete?course_idx="/>' + course_idx;
-			} // /op/member/delete?idx
+				
+			} 
 		}
 	
 

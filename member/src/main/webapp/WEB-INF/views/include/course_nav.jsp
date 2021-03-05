@@ -53,7 +53,7 @@ a:visited{
 		<button id="moveBtn" class="button special" onclick="location.href='<c:url value="/member/loc/walkingInfo"/>'">	
 			서비스 안내
 		</button>
-		<button id="moveBtn" class="button special" onclick="location.href='<c:url value="/member/loc/courselist?idx=${loginInfo.idx}"/>'">
+		<button id="moveBtn" class="button special" onclick="location.href='<c:url value="/member/loc/courselist"/>'">
 			나의 코스
 		</button>
 		

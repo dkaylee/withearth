@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.withearth.member.domain.LoginInfo;
 import com.withearth.member.walking.dao.WalkingDao;
 import com.withearth.member.walking.domain.Course;
 import com.withearth.member.walking.domain.CourseListView;
@@ -26,11 +25,9 @@ public class CourseListService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public CourseListView getListView(SearchParam param, int idx) {
+	public CourseListView getListView(SearchParam param) {
 		
 		CourseListView listView = null;
-		
-		System.out.println("listidx: "+ idx);
 		
 		try {
 			
@@ -48,13 +45,11 @@ public class CourseListService {
 			listMap.put("index", startRow);
 			listMap.put("count", cntPerPage);
 			listMap.put("searchParam", param);
-			listMap.put("idx", idx);
 
-			// 
+			// int totalCourseCount = dao.selectTotalCount();
 			int totalCourseCount = dao.selectSearchCourseCount(listMap);
 			System.out.println("courseTotalCount : " + totalCourseCount);
 
-			
 			List<Course> courseList = dao.selectCourseList(listMap);
 			System.out.println(courseList);
 
@@ -89,11 +84,10 @@ public class CourseListService {
 		return list;
 	}
 
-	
-
-	public Object getCourseTotalCount(int idx) {
+	public int getCourseTotalCount() {
+		
 		dao = template.getMapper(WalkingDao.class);
-		return dao.selectTotalCount(idx);
+		return dao.selectTotalCount();
 	}
 	
 	
