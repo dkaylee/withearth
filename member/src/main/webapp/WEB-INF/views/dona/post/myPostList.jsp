@@ -26,6 +26,7 @@
 			</header>
 
 			<div class="table-wrapper">
+			<h2>나눔장터</h2>
 			<table>
 				<thead>
 					<tr>
@@ -41,6 +42,27 @@
 				</tbody>
 			</table>
 			</div>
+			
+			<div class="table-wrapper">
+			<h2>커뮤니티</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>제목</th>
+						<th>카테고리</th>
+						<th>작성일자</th>	
+						<th></th>				
+					</tr>
+				</thead>
+				<tbody class="tBodyM">
+				
+				</tbody>
+			</table>
+			</div>
+			
+			
+			
 		</div>
 	</section>
 
@@ -65,6 +87,33 @@
 			 });		
 		 }		
 	};
+	
+	
+function deleteMatzip(idx) {
+		
+		$.ajax({
+					url:"https://www.withearthcomm.tk/community/matzip/deleteMpost?Idx="+Idx,
+					type:"POST",
+					cache : false,
+					success : function(result3){	
+						console.log(result3);
+						
+						if(result == "1" ) {
+							alert("게시글 삭제 했습니다.");  
+								// deleteFiles();	
+							 location.reload();	
+							}
+					},
+					error: function(){
+						alert('삭제를 실패했습니다.');
+					}
+				});
+		} 
+	
+	
+	
+	
+	
 
 	
 		$(document).ready(function() {
@@ -103,7 +152,37 @@
 
 				});
 				
-														
+				
+				
+				$.ajax({					
+					url : "https://www.withearthcomm.tk/community/matzip/mypost?idx=" + idx,
+					type : 'GET',
+					success : function(data) {
+						console.log(data);
+						console.log(data.idx);
+						console.log(data.matTitle);
+
+						$.each(data, function(index, item) {
+													
+							       var html = '<tr>';	
+							           html += '<td>'+(index+1)+'</td>';
+							           html += '<td>'+item.matTitle+'</td>';
+							           html += '<td>'+item.matCont+'</td>';
+							           html += '<td>'+item.matDate+'</td>';					                               
+							           html += '<td><input type="button" value="수정" onClick="location.href=\'<c:url value="/member/matzip/editmatForm?matIdx='+item.matIdx+'"/>\'">';
+							           html += '<input type="button" value="삭제" onclick="deleteMatzip('+item.matIdx+');"></td>';
+							           html += '</tr>';
+																						
+						        	$('.tBodyM').append(html);						        
+					  	
+						})
+					},
+					error : function(e) {
+						console.log("에러 발생 : " + e);
+					}
+
+				});
+													
 		});
 		
 

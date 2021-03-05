@@ -14,6 +14,13 @@ public class MatViewController {
 		return "/matzip/addmatForm";
 	}
 	
+	// 게시물 완료
+		@RequestMapping(value="/matzip/addmatView")
+		public String getAddView() {
+				
+			return "/matzip/addmatView";
+		}
+	
 	// 맛집 리스트
 	@RequestMapping(value = "/matzip/matlist")
 	public String getMatList() {
