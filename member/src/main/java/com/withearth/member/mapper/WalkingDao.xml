@@ -112,7 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 6. 검색한 회원의 수 -->
 	<select id="selectSearchCourseCount" 
-			parameterType="com.withearth.member.walking.domain.SearchParam"
+			parameterType="map"
 	        resultType="int" >
 	        
 		select count(*) from open.walking
@@ -133,7 +133,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				 <include refid="searchEnd"/>
 			</if>
 			
-			and user_idx={idx}
+			and user_idx=${idx}
+			
 		</where>
 	
 	</select>

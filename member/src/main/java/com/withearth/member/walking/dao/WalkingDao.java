@@ -27,7 +27,7 @@ public interface WalkingDao {
 	List<Course> selectAllCourseList();
 
 	// 6. 검색한 코스의 수
-	int selectSearchCourseCount(Map<String, Object> listMap, int idx);
+	int selectSearchCourseCount(Map<String, Object> listMap);
 
 	// 7. 코스 정보 삭제
 	int deleteCourseByIdx(int course_idx);
@@ -43,6 +43,8 @@ public interface WalkingDao {
 
 	// 9. idx, verify 조건으로 조회
 	int selectCourseByIdxVerify(int course_index);
+
+	
 
 	// 인증처리 verify = 'Y'
 	//int updateCourseVerify(int idx, String code);

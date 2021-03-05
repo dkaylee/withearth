@@ -181,7 +181,9 @@ h3{
 
 	<script>
 	
-	var idx = {loginInfo.idx};
+	var idx = ${loginInfo.idx};
+	console.log('courselist: ', idx);
+	//console.log('courselist, loginInfo: ', loginInfo);
 	
 	//  deleteCourse function이 없으면 삭제 기능이 실행이 안됨. 
 		function deleteCourse(course_idx) {

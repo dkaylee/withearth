@@ -30,7 +30,7 @@ public class CourseListService {
 		
 		CourseListView listView = null;
 		
-		System.out.println("listidx"+ idx);
+		System.out.println("listidx: "+ idx);
 		
 		try {
 			
@@ -51,7 +51,7 @@ public class CourseListService {
 			listMap.put("idx", idx);
 
 			// 
-			int totalCourseCount = dao.selectSearchCourseCount(listMap, idx);
+			int totalCourseCount = dao.selectSearchCourseCount(listMap);
 			System.out.println("courseTotalCount : " + totalCourseCount);
 
 			
