@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.withearth.member.dao.MemberDAO;
+import com.withearth.member.domain.LoginInfo;
 import com.withearth.member.domain.Member;
 
 @Service
@@ -37,7 +38,9 @@ public class KakaoLoginService {
 		//member가 null이 아닐 경우,
 		if(member!=null) {
 			//현재 세션의 속성에 LoginInfo 인스턴스를 저장..?
+			LoginInfo logininfo = null;
 			request.getSession().setAttribute("loginInfo", member.toLoginInfo());
+			System.out.println(logininfo);
 			//redisService.setUserInformation(member.toLoginInfo(), request.getSession());
 			loginCheck = true;
 			}

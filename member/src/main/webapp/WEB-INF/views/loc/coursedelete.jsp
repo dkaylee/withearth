@@ -6,7 +6,7 @@
 <c:if test="${result eq 1}">
 <script>
 	alert("코스 정보가 삭제되었습니다.");
-	location.href = '<c:url value="/member/loc/courselist"/>';	
+	location.href = '<c:url value="/loc/courselist"/>';	
 	
 </script>
 </c:if>

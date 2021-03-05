@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="<c:url value="/css/dona/chat/style.css?ver=1"/>" />
+<link rel="stylesheet" href="<c:url value="/css/dona/chat/style.css?ver=2"/>" />
 <meta charset="UTF-8">
 <title>With Earth</title>
 <script
@@ -40,9 +40,8 @@
 			type : 'GET',
 			data : 'donaIdx=' + donaIdx +'&rid=' + roomIdx,
 			success : function(data){
-				// 대화 상대 출력				
-	
-            		$.ajax({
+				// 대화 상대 출력
+			        $.ajax({
             			url: '/member/member/ajaxTest/test?idx='+to,
             			type: 'get',
             			contentType: "application/json; charset=UTF-8",
@@ -61,7 +60,6 @@
             			}	
             			
             			});
-															
 				// 이전 대화 내용 출력											
 			$.each(data, function(index, item){ 
 				// 자신이 보낸 대화

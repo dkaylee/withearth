@@ -43,9 +43,7 @@
      top:2px;
 
 	}
-	
-	
-	
+			
 	.article-title{
 	  width : 200px;	  	 	
 	  white-space: nowrap;  
@@ -69,25 +67,29 @@
 	  color : white;
 	}	
  	.pBtn{
-	  float : right;	 
+	  float : right;
+	  background-color: #D9D9D9;	 
 	} 
 	
 	#writeBtn{
-	 font-size: 22px;
+	 font-size: 20px;
+	 font-weight : bold;
 	 text-decoration: none;
 	 color : black;	
 	 margin-left : 5px;
+
 	}
 	
 	.wrap-btn{
 	 border : 1px solid #DDD;
 	 padding : 7px;
 	 overflow: hidden;
-     width : 115px;
+     width : 110px;
      border-radius: 10px;
      float :right;
      box-shadow: 2px 2px #EEE;
-     border-color: white;
+     border-color: #D9D9D9;
+     background-color: #D9D9D9;     
 	}
 	
 	#updateBtn{
@@ -155,7 +157,7 @@
   margin-left : 20px;
   position : fixed;
   top : 600px;
-  right : 70px;
+  right : 100px;
 }
 
 .noticeBtn{
