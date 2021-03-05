@@ -130,6 +130,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url : 'https://www.withearthcomm.tk/community/matzip/setEdit'+matIdx,
+
 			type : 'POST',
 			data : formData,
 			enctype : 'multipart/form-data',
@@ -158,6 +159,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url:'https://www.withearthcomm.tk/community/matzip/getEdit?matIdx='+matIdx,
+
 			type: "GET",
 			dataType: "JSON",
 			success : function(data){

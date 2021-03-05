@@ -52,6 +52,7 @@
 		
 		$.ajax({
 			url:"https://www.withearthcomm.tk/community/matzip/matDetail?matIdx="+matIdx,
+
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
@@ -93,6 +94,7 @@
 		
 		$.ajax({
 			url:"https://www.withearthcomm.tk/community/matzip/filelist?matIdx="+matIdx,
+
 			type: "GET",
 			success : function(data) {
 				console.log(data);
@@ -124,6 +126,7 @@
 		
 		$.ajax({
 					url:"https://www.withearthcomm.tk/community/matzip/deleteMat?matIdx="+matIdx,
+
 					type:"POST",
 					cache : false,
 					success : function(result){	
@@ -146,6 +149,7 @@
 function deleteFiles(){
 	$.ajax({
 		url:"https://www.withearthcomm.tk/community/matzip/deleteFiles?matIdx="+matIdx,
+
 		cache : false,
 		success : function(result2){	
 			console.log(result2);	

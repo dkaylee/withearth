@@ -43,7 +43,9 @@
 	
 	/* go edit Form */
 	function goEdit(){
+
 		location.href = "https://www.withearthcomm.tk/community/matzip/editmatForm?matIdx="+matIdx;
+
 	}
 	
 
@@ -51,7 +53,9 @@
 	function getMatDetail(){
 		
 		$.ajax({
+
 			url:"https://www.withearthcomm.tk//community/matzip/matDetail?matIdx="+matIdx,
+
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
@@ -93,6 +97,7 @@
 		
 		$.ajax({
 			url:"https://www.withearthcomm.tk/community/matzip/filelist?matIdx="+matIdx,
+
 			type: "GET",
 			success : function(data) {
 				console.log(data);
@@ -125,7 +130,9 @@
  	function deleteMatzip() {
 		
 	$.ajax({
+
 				url:"https://www.withearthcomm.tk/community/matzip/deleteMat?matIdx="+matIdx,
+
 				type:"POST",
 				success : function(result){	
 					console.log(result);

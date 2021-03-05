@@ -87,6 +87,7 @@
 	/* 맛집 목록이동 */
 	function goMatlist(){
 		location.href = "https://www.withearthcomm.tk/community/matzip/matlist?p=1";
+
 	}
 	
 	/* 맛집추가 및 파일업로드 */
@@ -119,7 +120,9 @@
 					console.log(formData);
 
 					$.ajax({
+
 						url : 'https://www.withearthcomm.tk/community/matzip/addmatzip',
+
 						type : 'POST',
 						data : formData,
 						enctype : 'multipart/form-data',
