@@ -40,7 +40,7 @@ public class PostListService {
 		
 		System.out.println("pageNumber :" + page);
 
-		int cntPerPage = 8;
+		int cntPerPage = 12;
 
 		int startRow = (page - 1) * cntPerPage;
 		int endRow = startRow + cntPerPage - 1;
@@ -74,7 +74,7 @@ public class PostListService {
 			
 			System.out.println("pageNumber :" + page);
 
-			int cntPerPage = 8;
+			int cntPerPage = 12;
 
 			int startRow = (page - 1) * cntPerPage;
 			int endRow = startRow + cntPerPage - 1;
