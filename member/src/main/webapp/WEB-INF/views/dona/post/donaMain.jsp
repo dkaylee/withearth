@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=3"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=4"/>"/>
 <link href="<c:url value="/css/main.css?ver=1"/>" rel="stylesheet">
 <style>	
 </style>	
@@ -33,19 +33,19 @@
 				<div class="inner">		
 			    <form class="searchForm" action="<c:url value="/rest/user/post/list"/>">
 			      <div class="search-unit">
+			      	  <div class="search-unit">
+					    <input type="button" id="searchBtn" value="검색">
+					  </div>
+					    <div class="search-unit">
+					    <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력해주세요."> 
+					  </div>
 					  <select id="searchType" name="searchType">
 					    <option value="">검색타입  ⌵ </option>
 						  <option value="idx">아이디</option>
 						  <option value="postTitle">제목</option>
 						  <option value="both">아이디+제목</option>
 					  </select>
-				  	</div>
-					  <div class="search-unit">
-					    <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력해주세요."> 
-					  </div>
-					  <div class="search-unit">
-					    <input type="button" id="searchBtn" value="검색">
-					  </div>
+				  	</div>								
 				 </form>
 				 
 				 	<div class="flex flex-2" id="wrapContent" ></div>	
