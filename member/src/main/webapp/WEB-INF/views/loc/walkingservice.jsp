@@ -891,7 +891,7 @@
 				alert('코스 저장을 성공했습니다.');
 			},
 			error: function(error){
-				console.log(error)
+				console.log(error);
 				console.log('저장 실패');
 			}
 			

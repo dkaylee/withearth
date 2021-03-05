@@ -17,7 +17,7 @@ public interface WalkingDao {
 	int courseCountUpdate();
 
 	// 3. 코스의 총 개수
-	int selectTotalCount();
+	int selectTotalCount(int idx);
 
 	// 4. 코스 리스트(페이지 번호에 맞는 코스 리스트 구하기)
 	//List<Course> selectCourseList(int startRow, int cntPerPage);
