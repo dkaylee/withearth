@@ -31,7 +31,7 @@
 	 width : 230px;
 	 height :195px;	 
 	 margin-left : 4px;
-	 image-rendering :-webkit-optimize-contrast;
+	 image-rendering : auto;
 	 border-radius: 10px;
 	 border : 1px solid #EEE;
 	 cursor: pointer;
