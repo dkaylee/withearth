@@ -172,7 +172,7 @@
             			success: function(data){
             				console.log(data);
             				
-            				var pHtml = '<img alt="프로필 사진" src="<c:url value="/fileuplaod/member/'+data.photo+'"/>" width="50px" height="50px" class="profile">';
+            				var pHtml = '<img alt="프로필 사진" src="<c:url value="/fileupload/member/'+data.photo+'"/>" width="50px" height="50px" class="profile">';
             				
             				$('.profileImage').append(pHtml);           		
             				
