@@ -79,7 +79,6 @@ display:inline-block;
 	<!-- 데이터 불러오기 -->
 	
 
-
 	// 파라미터로 페이지 번호 받기
 	function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 	

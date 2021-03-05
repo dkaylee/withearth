@@ -19,6 +19,7 @@ public class MatzipDeleteController {
 	@Autowired
 	private MatzipDeleteService deleteService;
 	
+	// 게시글에서 삭제
 	@RequestMapping(value = "/matzip/deleteMat", method=RequestMethod.POST)
 	public int deleteMatzip(
 			@RequestParam("matIdx") int matIdx) {
@@ -26,6 +27,15 @@ public class MatzipDeleteController {
 		return deleteService.deleteMatzip(matIdx);
 	}
 	
+	// 회원이 삭제
+	@RequestMapping(value = "/matzip/deleteMpost", method=RequestMethod.POST)
+	public int deleteMatpost(
+			@RequestParam("Idx") int Idx) {
+
+		return deleteService.deleteMatpost(Idx);
+	}
+	
+	// 파일 삭제
 	@RequestMapping(value = "/matzip/deleteFiles", method=RequestMethod.POST)
 	public int deleteFiles(
 			@RequestParam("matIdx") int matIdx) {

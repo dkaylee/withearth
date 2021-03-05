@@ -37,6 +37,13 @@ public class MatzipDetailController {
 		return detailService.getFileList(matIdx);
 	}
 	
+	@GetMapping("/matzip/mypost")
+	public List<MatzipVo> getMypost(
+			@RequestParam("idx") int idx
+			) {
+			
+		return detailService.getMypost(idx);
+	}
 
 	
 	

@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class MatEditRequest {
 	
+	
 	private int mIdx;
 	private String mTitle;
 	private String mAddr;

@@ -35,6 +35,11 @@ public interface MatDao {
 	// 게시물 수정
 	int updateMatzip(MatzipVo matzip);
 	
+	// 회원이쓴 게시물 조회
+	List<MatzipVo> selectMatPostByIdx(int idx);
+	
+	// 회원이쓴 게시물 삭제
+	int deleteMatpostByIdx(int idx);
 	
 	//------------file upload------------
 	
@@ -51,7 +56,7 @@ public interface MatDao {
 	// 파일 조회
 	List<FileVo> selectFileList(int matIdx);
 
-	
-	
+
+
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class MatAddRequest {
 	
+	private int idx;
 	private int mIdx;
 	private String mTitle;
 	private String mAddr;
@@ -15,7 +16,12 @@ public class MatAddRequest {
 	private String mCont;
 	private List<MultipartFile> mImg;
 	
-	
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 	public int getmIdx() {
 		return mIdx;
 	}
@@ -65,6 +71,7 @@ public class MatAddRequest {
 		
 		MatzipVo matzip = new MatzipVo();
 		
+		matzip.setIdx(idx);
 		matzip.setMatTitle(mTitle);
 		matzip.setMatAddr(mAddr);
 		matzip.setMatTime(mTime);
@@ -74,11 +81,15 @@ public class MatAddRequest {
 		return matzip;
 	}
 	
+	
+	
 	@Override
 	public String toString() {
-		return "MatAddRequest [mIdx=" + mIdx + ", mTitle=" + mTitle + ", mAddr=" + mAddr + ", mTime="
+		return "MatAddRequest [idx=" + idx + ", mIdx=" + mIdx + ", mTitle=" + mTitle + ", mAddr=" + mAddr + ", mTime="
 				+ mTime + ", mNum=" + mNum + ", mCont=" + mCont + ", mImg=" + mImg + "]";
 	}
+	
+	
 	
 	
 	

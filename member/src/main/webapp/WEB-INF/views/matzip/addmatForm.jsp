@@ -42,6 +42,7 @@ float:left;
 			<header class="align-center">
 				<h2>새로운 맛집 추가</h2>
 				<hr class="major"/>
+				<P>${loginInfo.name} 님이 맛집을 등록중입니다. </P>
 			</header>
 	
 	<!-- 맛집추가 폼 -->	
@@ -69,6 +70,10 @@ float:left;
 					<!-- 소개글<input type="text" name="mCont" id="mCont" value="" style="height: 300px;" /> -->
 				</div>
 				
+				
+				<input type="text" value="${loginInfo.idx}" style="visibility: hidden;" name="idx" id="idx"/>
+				
+				
 				<!-- 파일업로 -->
 				<div class="6u$ 12u$(xsmall)" id="file-group">
 					이미지추가<input type="file" multiple="multiple" id="mImg" name="mImg" />
@@ -78,6 +83,7 @@ float:left;
 				<div class="previewBox">
 				<div id="preview"></div>
 				</div>
+				
 				
 				
 				<div class="12u$">
@@ -92,6 +98,10 @@ float:left;
 </div>
 
 <script>
+
+	// 회원 idx 받기
+	var idx =${loginInfo.idx}
+	console.log(idx);
 	
 	
 	/* 맛집추가 및 파일업로드 */
@@ -114,6 +124,7 @@ float:left;
 						formData.append("mImg",  files[i]);
 					}
 					
+					formData.append("idx", $("#idx").val());
 					formData.append("mTitle", $("#mTitle").val());
 					formData.append("mAddr", $("#mAddr").val());
 					formData.append("mTime", $("#mTime").val());

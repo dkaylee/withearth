@@ -20,7 +20,7 @@ public class DetailViewService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	
+	// 맛집 조회
 	public MatzipVo getMatzip(int matIdx) {
 		
 		dao = template.getMapper(MatDao.class);
@@ -28,12 +28,21 @@ public class DetailViewService {
 		return dao.selectMatByIdx(matIdx);
 	}
 	
-
+	// 파일 조회
 	public List<FileVo> getFileList(int matIdx) {
 		
 		dao = template.getMapper(MatDao.class);
 		
 		return dao.selectFileList(matIdx);
+	}
+	
+	// 내가쓴글 조회
+	public List<MatzipVo> getMypost(int idx) {
+		
+		dao = template.getMapper(MatDao.class);
+		System.out.println(dao.selectMatPostByIdx(idx));
+		
+		return dao.selectMatPostByIdx(idx);
 	}
 	
 	

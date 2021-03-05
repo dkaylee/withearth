@@ -56,6 +56,7 @@
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
+				console.log(data.idx);
 				
 				var html = "";
 				html += '<h2>'
@@ -184,9 +185,13 @@ function goMatlist(){
 			</header>
 		</div>
 		
+		 
+		
 		<ul class="actions">
+		<c:if test="${loginInfo.idx==data.idx}">
 			<li><a href="#" class="button alt" onclick="javascript:goEdit();">수정</a></li>
 			<li><a href="#" class="button alt" onclick="javascript:deleteMatzip();">삭제</a></li>
+		</c:if>
 			<li><a href="#" class="button alt" onclick="javascript:goMatlist();">목록</a></li>
 		</ul>
 		
