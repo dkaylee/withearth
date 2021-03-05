@@ -30,7 +30,7 @@
 	}
 	
 	.img{
-	 width : 220px;
+	 width : 230px;
 	 height :195px;	 
 	 margin-left : 4px;
 	 image-rendering :-webkit-optimize-contrast;
@@ -97,7 +97,7 @@
 	 width : 60px;
 	}
 	.searchForm {
-	 margin-left : 770px;
+	 margin-left : 750px;
 	 overflow : hidden;
 	 text-align: left;
 	}
