@@ -312,7 +312,7 @@
 											var firstImg = $(data).first();
 																				 											
 											$.each(firstImg, function(index,item) {
-                            console.log(firstImg);
+                                            console.log(firstImg);
                             
 												var html = '<div class="carousel-item active">'; 
 													  html +='<img src="<c:url value="/fileupload/post/'+item.fileName+'"/>" id="postImages" style="height : 500px; "alt="postImages">';										
@@ -336,39 +336,25 @@
 											console.log(e);
 										}
 									});
-							
+					
+
+						 // Activate Carousel
+						  $("#myCarousel").carousel();
+						  $("#myCarousel").carousel({interval : false});
+											    
+						  // Enable Carousel Controls
+						  $(".carousel-control-prev").click(function(){
+						    $("#myCarousel").carousel("prev");
+						  });
+						  $(".carousel-control-next").click(function(){
+						    $("#myCarousel").carousel("next");
+						  });	
+
 			
-															
-							 // Activate Carousel
-							  $("#myCarousel").carousel();
-							  $("#myCarousel").carousel({interval : false});
-								
-							    
-							  // Enable Carousel Indicators
-							  $(".item1").click(function(){
-							    $("#myCarousel").carousel(0);
-							  });
-							  $(".item2").click(function(){
-							    $("#myCarousel").carousel(1);
-							  });
-							  $(".item3").click(function(){
-							    $("#myCarousel").carousel(2);
-							  });
-							    
-							  // Enable Carousel Controls
-							  $(".carousel-control-prev").click(function(){
-							    $("#myCarousel").carousel("prev");
-							  });
-							  $(".carousel-control-next").click(function(){
-							    $("#myCarousel").carousel("next");
-							  });	
-							 
-			
-							
+					
 		
 		
 	</script>
-	<script src="<c:url value="/js/bootstrap/bootstrap.bundle.js" />"></script>
 </body>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

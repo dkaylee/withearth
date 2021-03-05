@@ -224,7 +224,6 @@
 
 					var html2 = '<div class="carousel-item">';
 						html2 += '<img src="https://www.withearthdona.tk/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
-						html2 += '<img src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com:8080/dona/fileupload/post/'+item.fileName+'" id="postImages" style="height : 500px; alt="postImages">';
 						html2 += '</div>'
 						$('.carousel-inner').append(html2);
 						})
@@ -260,7 +259,7 @@
 			$("#myCarousel").carousel("next");
 		});
 	</script>
-	<script src="<c:url value="/js/bootstrap/bootstrap.bundle.js" />"></script>
+	<%-- <script src="<c:url value="/js/bootstrap/bootstrap.bundle.js" />"></script> --%>
 </body>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
