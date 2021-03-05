@@ -684,23 +684,23 @@
 	var end_lon;
 	function arrChk( arrlat, arrlon){
 		
-		 if (navigator.geolocation) {
-				//위치 정보를 얻기
-					navigator.geolocation.getCurrentPosition(function(pos) {
-						$('#endlatitude').html(pos.coords.latitude); 		// 위도 ex)37.xxx -> ssl 사용 -> ssl 등록(aws)
-						$('#endlongitude').html(pos.coords.longitude); 		// 경도 ex)126.xxx
-						end_lat = pos.coords.latitude;
-						end_lon = pos.coords.longitude;
-						
-						console.log("arriveBtn 도착 경도" + end_lon);
-						console.log("arriveBtn 도착 위도" + end_lat);
-					});
-				} else {
-					alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
-				} 
+		
 		
 		$("#arriveBtn").click(function(){ 
-			
+			 if (navigator.geolocation) {
+					//위치 정보를 얻기
+						navigator.geolocation.getCurrentPosition(function(pos) {
+							$('#endlatitude').html(pos.coords.latitude); 		// 위도 ex)37.xxx -> ssl 사용 -> ssl 등록(aws)
+							$('#endlongitude').html(pos.coords.longitude); 		// 경도 ex)126.xxx
+							end_lat = pos.coords.latitude;
+							end_lon = pos.coords.longitude;
+							
+							console.log("arriveBtn 도착 경도" + end_lon);
+							console.log("arriveBtn 도착 위도" + end_lat);
+						});
+					} else {
+						alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
+					} 
 			
 			
 			// 3. 직선거리 계산  API 사용요청
@@ -735,7 +735,7 @@
 					if(distance <= 100){ // 거리가 약 반경 100m 내의 있을 경우
 						stop();
 						
-						confirm_test = confirm("결과를 출력하시겠습니까?");
+						confirm_test = confirm("서비스 종료. 결과를 출력하시겠습니까?");
 						if(confirm_test==true){
 							//$('#testBtn').click(function(e){
 								//e.preventDefault();
@@ -752,7 +752,7 @@
 						
 					// 모달
 					} else{
-						alert('서비스를 종료합니다. 도착 버튼을 다시 눌러 결과를 확인해주세요.');
+						alert('도착 확인. 서비스 종료를 위해 도착 버튼을 한번 더 눌러주세요.');
 					}
 		 }); 
 	} // arriveBtn
