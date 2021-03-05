@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: wnfid
 Build-Jdk: 1.8.0_271
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: dkaylee
+Build-Jdk: 1.8.0_261
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> main
