@@ -55,7 +55,7 @@
 			<!-- Break -->
 			<div class="12u$">
 				<ul class="actions">
-					<li><input type="button" value="업로드" onclick="javascript:actionForm(); history.go(-1);" /></li> 
+					<li><input type="button" value="업로드" onclick="javascript:actionForm();" /></li> <!-- -->
 					<li><input type="reset" onClick="window.location.reload()" value="취소" class="alt" /></li>
 				</ul>
 			</div>
@@ -111,8 +111,8 @@
 				contentType: false,
 				success : function(data){
 					
-					console.log(data);
-		 	   	//window.location.href="http://localhost:8080/dona/main/list";
+				console.log(data);
+		 	   	 window.location.href='<c:url value="/dona/main/list"/>';
 					
 				},error: function(e){
 					console.log(e);
