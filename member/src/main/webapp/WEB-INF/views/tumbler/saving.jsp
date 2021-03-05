@@ -101,74 +101,87 @@
 
 // 경로에서 파라미터 받기
    
-function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-
-var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
-return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-
-
-
+     function getParameterByName(name){
+	     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+         var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
+               return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
+     }
+           
+  
 
 
-//var idx = getParameterByName("idx");
-var cafe_idx = getParameterByName("cafeidx");
-//var idx = 1;
-console.log(cafe_idx);
 
 
-  var idx = ${loginInfo.idx};
-	//var idx = 1;
-	console.log(idx);
-	
-	/* var tumpoint = '<c:out value="${tumbler}"/>'; */
+
+
+     //var idx = getParameterByName("idx");
+     var cafe_idx = getParameterByName("cafeidx");
+     //var idx = 1;
+     console.log(cafe_idx);
+
+
+         var idx = ${loginInfo.idx};  
+     	//var idx = 1;
+     	console.log(idx);
+     	
+     	/* var tumpoint = '<c:out value="${tumbler}"/>'; */
+	 	   
+    	 	    $.ajax({
+
+    			    /* url : 'http://localhost:8080/withearth/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx, */ 	
+    			   url : 'https://www.withearthtum.tk/test8/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,  
+    	 		   type : 'GET',
+    	 		   success : function(data){
+    	 			   console.log("tumidx:"+data);
+    	 			   console.log("idx"+idx);
+    	 			   
+    	 			   
+    	 			   $ajax({
+    	 				   
+    	 				   url: 'https://www.withearthdona.tk/point/rest/user/point?tum='+idx+'&tIdx='+tIdx,
+    	 				   type: 'GET',
+    	 				   
+    	 				   success: function(data){
+    	 						alert('데이터 전송을 완료했습니다.');
+    	 						
+    	 						console.log('data',data);
+    	 						
+    	 					},
+    	 					error: function(error){
+    	 						
+    	 						console.log(error);
+    	 						console.log('포인트 적립 실패');
+    	 					}
+    	 				   	   
+    	 				   
+    	 			   });  //pointajax
+    	 			   
+    	 			  
+
+    	 		   }, error : function(e){
+    	 			   console.log(e);
+    	 		   }
+    	 		   	   
+    	 	   }); //ajax
+    	 
+
+
+
+
+
+
+
+
+	   
+
+
+
+
+  /*   $(document).ready(function(){
 	   
 	   $.ajax({
 		   
-		   url : 'https://www.withearthtum.tk/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,
-		   type : 'GET',
-		   success : function(data){
-			   console.log(data);
-			   console.log(tumpoint);
-			   
-			   $ajax({
-				   
-				   url: 'https://www.withearthdona.tk/point/rest/user/point?tum='+idx+'&tIdx='+tIdx,
-				   type: 'GET',
-				   
-				   success: function(data){
-						alert('데이터 전송을 완료했습니다.');
-						
-						console.log('data',data);
-						
-					},
-					error: function(error){
-						
-						console.log(error);
-						console.log('포인트 적립 실패');
-					}
-				   	   
-				   
-			   });
-			   
-			  
-
-		   }, error : function(e){
-			   console.log(e);
-		   }
-		   	   
-	   });
-	   
-
-
-
-/*
-    $(document).ready(function(){
-	   
-	   $.ajax({
-		   
-		   url : 'https://www.withearthtum.tk/test7/rest/tumbler/'+cafe_idx,
+		   url : 'http://localhost:8080/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,
 		   type : 'GET',
 		   data : 'cafe_idx='+cafe_idx,
 		   success : function(data){
@@ -178,13 +191,13 @@ console.log(cafe_idx);
 			   console.log(e);
 		   }
 		   	   
-	   });
+	   }); */
 	   
-});
+
  
  
  
- */
+ 
 
 
 

@@ -263,8 +263,9 @@ section.wrapper, article.wrapper {
 
 
 		 <div id="modal_btn">
-			<button id="open">텀블러 인증하기</button>
-		    <button id="open" onclick="location.href='https://www.withearth.tk/member/tumbler/tumlist'">텀블러 이용내역</button> 
+			<button id="open"onclick="javascript:btn('QR코드를 스캔해주세요!' )">텀블러 인증하기</button>
+		   <!--  <button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button>  -->
+		   <button id="open" onclick="location.href='<c:url value="/tumbler/tumlist?idx=${loginInfo.idx}"/>'">텀블러 이용내역</button>
 			
 		</div>
 
@@ -279,16 +280,7 @@ section.wrapper, article.wrapper {
 			
 			  
  
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
- 
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>                                                               
-        <p>Some text in the Modal..</p>
-      </div>
- 
-    </div>
+
 			
 			
 
@@ -309,8 +301,8 @@ section.wrapper, article.wrapper {
 
 		</div>
 	</div>
-   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ef7b04066afd13bd5b988efc16035494"></script> 
-	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script> -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8882344283f7784e065bd3b03e443561"></script> 
+	<!--  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script>  -->
 	<script>
 	
  	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -391,8 +383,8 @@ section.wrapper, article.wrapper {
 	$(document).ready(function(){
 		 var cafeinfo = $.ajax({
 				type:"GET",
-				/* url:"https://www.withearthtum.tk/test1/rest/tumbler/tumlist1/map", */
-				url:"https://www.withearthtum.tk/test8/rest/tumbler/tumlist1/map",
+			   /*  url:"http://localhost:8080/withearth/rest/tumbler/tumlist1/map",  */
+			    url:"https://www.withearthtum.tk/test8/rest/tumbler/tumlist1/map", 
 				data:{
 				cafe_name:"${cafe.cafe_name}",
 				cafe_lat:"${cafe.cafe_lat}",
@@ -616,8 +608,11 @@ section.wrapper, article.wrapper {
 		openButton.addEventListener("click", openModal);
 		closeButton.addEventListener("click", closeModal); 
 		
+		 function btn(sample){ 
+			alert(sample); 
+			} 
 
-
+		
 	</script>
 
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

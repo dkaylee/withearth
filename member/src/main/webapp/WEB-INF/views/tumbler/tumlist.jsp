@@ -152,24 +152,27 @@ ul li {
 				/\+/g, " "));
 	}
 
-
-
+	var p = getParameterByName('p');
+	console.log(p);
+	
+	 /* var idx = ${loginInfo.idx}; 
+		//var idx = 1;
+	console.log(idx);
+ */
 	$(document).ready(function() {
+		
+	    var idx = ${loginInfo.idx}; 
+		console.log(idx); 
+		/* var idx = 1;
+		console.log(idx); */
 
 						$('.paging').empty();
 
-						$.ajax({
-							
-							var p = getParameterByName('p');
-							console.log(p);
-							//var idx = getParameterByName("idx");
-							var idx = getParameterByName("idx");
-							//var idx = 1;
-							//console.log(cafe_idx);
-							
-							
-									/* url : 'https://www.withearthtum.tk/test1/tumbler/tumlist/rest?p='+ p, */
-									url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p,    									type : 'GET',
+						$.ajax({    
+									
+									 url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p, 	  
+									/*  url : 'http://localhost:8080/withearth/tumbler/tumlist/rest?idx='+idx+'&p='+p,  */ 
+									type : 'GET',
 									async : false,
 									success : function(data) {
 
