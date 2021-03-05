@@ -179,47 +179,47 @@
 		<div class="mySlides fade">
 			<div class="numbertext">1 / 6</div>
 			<img
-				src="<c:url value="/img/main/cat1.jpg"/>"
+				src="<c:url value="/img/main/banner1.jpg"/>"
 				style="width: 100%">
 			<div class="text">withEarth</div>
 		</div>
 
 		<div class="mySlides fade">
 			<div class="numbertext">2 / 6</div>
-			<img
-				src="<c:url value="/img/main/cat2.jpg"/>"
-				style="width: 100%">
+			<a href="<c:url value="/tumbler/tumlist1"/>"><img
+				src="<c:url value="/img/main/banner2.jpg"/>"
+				style="width: 100%"></a>
 			<div class="text">withEarth</div>
 		</div>
 
 		<div class="mySlides fade">
 			<div class="numbertext">3 / 6</div>
-			<img
-				src="<c:url value="/img/main/cat3.jpg"/>"
-				style="width: 100%">
+			<a href="<c:url value="/member/loc/walkingservice"/>"><img
+				src="<c:url value="/img/main/banner3.jpg"/>"
+				style="width: 100%"></a>
 			<div class="text">withEarth</div>
 		</div>
 
 		<div class="mySlides fade">
 			<div class="numbertext">4 / 6</div>
-			<img
-				src="<c:url value="/img/main/cat4.jpg"/>"
-				style="width: 100%">
+			<a href="<c:url value="/member/dona/main?idx=${loginInfo.idx}"/>"><img
+				src="<c:url value="/img/main/banner4.jpg"/>"
+				style="width: 100%"></a>
 			<div class="text">withEarth</div>
 		</div>
 
 		<div class="mySlides fade">
 			<div class="numbertext">5 / 6</div>
-			<img
-				src="<c:url value="/img/main/cat5.jpg"/>"
-				style="width: 100%">
+			<a href="<c:url value="/comm/matlist"/>"><img
+				src="<c:url value="/img/main/banner5.jpg"/>"
+				style="width: 100%"></a>
 			<div class="text">withEarth</div>
 		</div>
 
 		<div class="mySlides fade">
 			<div class="numbertext">6 / 6</div>
 			<img
-				src="<c:url value="/img/main/cat6.jpg"/>"
+				src="<c:url value="/img/main/banner6.jpg"/>"
 				style="width: 100%">
 			<div class="text">withEarth</div>
 		</div>
