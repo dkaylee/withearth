@@ -11,15 +11,13 @@
 	#two{
 	  height : 300px;
 	}
-	
+
 	.article{	
 	 width : 250px;
 	 height : 320px;	 
 	 padding : 15px;
-	 
-	 text-align : center;
 	 margin-bottom : 30px;
-	/*  border : 5px solid #EEE; */
+	 float : left !important;
 	 border-radius: 20px;
 	}
 	
@@ -30,10 +28,10 @@
 	}
 	
 	.img{
-	 width : 220px;
+	 width : 230px;
 	 height :195px;	 
 	 margin-left : 4px;
-	 image-rendering :-webkit-optimize-contrast;
+	 image-rendering : auto;
 	 border-radius: 10px;
 	 border : 1px solid #EEE;
 	 cursor: pointer;
@@ -97,9 +95,9 @@
 	 width : 60px;
 	}
 	.searchForm {
-	 margin-left : 770px;
 	 overflow : hidden;
 	 text-align: left;
+	 clear: both;
 	}
 	
 	#searchType{
@@ -109,7 +107,7 @@
 	}
 	
 	.search-unit{
-	  float : left; 	 
+	  float : right; 	 
 	}
 	
 	#keyword{
@@ -145,6 +143,7 @@
  border-radius: 5px 5px;
  background-color: #EEE;
  border-color: #EEE;
+ text-decoration: none;
 }
 
 .notice{

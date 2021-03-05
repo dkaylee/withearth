@@ -16,7 +16,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <title>WithEarth</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-<link rel="stylesheet" href="<c:url value="/css/dona/detail.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/dona/detail.css?ver=1"/>" />
 <style>
 </style>
 </head>
@@ -45,8 +45,8 @@
 			</div>
 			<div class="wrap-profile">
 				<!-- 회원 idx로 회원 정보를 받아오는 ajax 필요함! -->
-				<div>
-					<img alt="프로필 사진" width="50px" height="50px" class="profile">
+				<div class="profileImage">
+				
 				</div>
 				<div class="userInfo">
 					<div class="userId"></div>
@@ -172,8 +172,9 @@
             			success: function(data){
             				console.log(data);
             				
-            				var pHtml = '<img alt="프로필 사진" src="<c:url value="/fileuplaod/member/'+data.photo+'"/>" width="50px" height="50px" class="profile">';
-            				$('.profileImage').append(pHtml);
+            				var pHtml = '<img alt="프로필 사진" src="<c:url value="/fileupload/member/'+data.photo+'"/>" width="50px" height="50px" class="profile">';
+            				
+            				$('.profileImage').append(pHtml);           		
             				
             				var nHtml = data.name;
             				$('.userId').append(nHtml);

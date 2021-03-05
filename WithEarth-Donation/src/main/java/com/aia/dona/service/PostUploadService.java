@@ -38,16 +38,24 @@ public class PostUploadService {
 			System.out.println(files[i]);
 		}
 
-		//File newFile = null;
-			
-		// 시스템 저장경로
-		String path = "/fileupload/post";
-		
-		// 웹 경로
-		String saveDirPath = request.getSession().getServletContext().getRealPath(path);
+		String root = request.getSession().getServletContext().getRealPath("fileupload");
+
+		String saveDirPath = root + "/post";
+
+//		// 시스템 저장경로
+//		String path = "/fileupload/post";
+//		
+//		// 웹 경로
+//		String saveDirPath = request.getSession().getServletContext().getRealPath(path);
 		
         System.out.println(saveDirPath);
         
+    	// 파일 경로가 없으면 생성하기
+		File file = new File(saveDirPath);
+		if (!file.exists()) {
+			file.mkdirs();
+		}
+               
 		String fileName = "";
 
 		String newFileName = "";
