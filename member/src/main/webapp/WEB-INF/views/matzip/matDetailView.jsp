@@ -10,6 +10,7 @@
 <title>Matzip</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 
+
 <style>
 </style>
 
@@ -17,10 +18,11 @@
 
 <body class="subpage">
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <script>
 	
-	//var matIdx=${matzip.matIdx};
+	
 	
 	// 파라미터로 페이지 번호 받기
  	function getParameterByName(name) {
@@ -37,13 +39,12 @@
 		
 		getMatDetail();	
 		getUploadFiles();
-		
 
 	}); 
 	
 	/* go edit Form */
 	function goEdit(){
-		location.href = "/community/matzip/editmatForm?matIdx="+matIdx;
+		location.href = "/member/matzip/editmatForm?matIdx="+matIdx;
 	}
 	
 
@@ -52,20 +53,20 @@
 		
 		$.ajax({
 			url:"https://www.withearthcomm.tk/community/matzip/matDetail?matIdx="+matIdx,
-
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
+				console.log(data.idx);
 				
 				var html = "";
+				html += '<h2>'
+				html += data.matTitle
+				html += '</h2>';
 				html += '<hr class="major"/>';
 				html += '<div>';
 				html += '<img src="/community/fileupload/matzip/'+data.matImg+'" style="width:60%">';
 				html += '</div>';
 				html += '<hr class="major"/>';
-				html += '<h2>'
-				html += data.matTitle
-				html += '</h2>';
 				html += '<div>'
 				html += data.matAddr
 				html += '</div>';
@@ -94,7 +95,6 @@
 		
 		$.ajax({
 			url:"https://www.withearthcomm.tk/community/matzip/filelist?matIdx="+matIdx,
-
 			type: "GET",
 			success : function(data) {
 				console.log(data);
@@ -102,7 +102,7 @@
 				
 				for(var i=0; i<data.length; i++){
 				files +='<div>'
-				files +='<img src="/community/fileupload/matzip/'+data[i].newFName+'" style="width:350px;">';
+				files +='<img src="/member/fileupload/matzip/'+data[i].newFName+'" style="width:60%">';
 				files +='</div>'
 				filelist.push(files);			
 				}
@@ -126,7 +126,6 @@
 		
 		$.ajax({
 					url:"https://www.withearthcomm.tk/community/matzip/deleteMat?matIdx="+matIdx,
-
 					type:"POST",
 					cache : false,
 					success : function(result){	
@@ -149,7 +148,6 @@
 function deleteFiles(){
 	$.ajax({
 		url:"https://www.withearthcomm.tk/community/matzip/deleteFiles?matIdx="+matIdx,
-
 		cache : false,
 		success : function(result2){	
 			console.log(result2);	
@@ -163,7 +161,7 @@ function deleteFiles(){
 
 /* 맛집 목록이동 */
 function goMatlist(){
-	location.href = "/community/matzip/matlist?p=1";
+	location.href = "/member/matzip/matlist?p=1";
 }
 
 
@@ -187,9 +185,13 @@ function goMatlist(){
 			</header>
 		</div>
 		
+		 
+		
 		<ul class="actions">
+		<c:if test="${loginInfo.idx==data.idx}">
 			<li><a href="#" class="button alt" onclick="javascript:goEdit();">수정</a></li>
 			<li><a href="#" class="button alt" onclick="javascript:deleteMatzip();">삭제</a></li>
+		</c:if>
 			<li><a href="#" class="button alt" onclick="javascript:goMatlist();">목록</a></li>
 		</ul>
 		

@@ -155,17 +155,9 @@ ul li {
 	var p = getParameterByName('p');
 	console.log(p);
 	
-	//var idx = ${tumlist.idx}; 
-	//var idx = ${listView.idx}; 
-	//var idx = ${listView}; 
-	//var idx =1;
-	//var idx = '<c:out value="${listView.idx}"/>';
-	
 
 
-
-       // var idx =100;
-	$(document).ready(function() {
+    
 		
 	     
 		 
@@ -177,14 +169,15 @@ ul li {
 		
 		var idx = ${loginInfo.idx};  
 	    console.log(idx); 
+	    
+	    $(document).ready(function() {
 	
 
 						$('.paging').empty();
 
 						$.ajax({    
 									
-									url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p, 	  
-									/* url : 'http://localhost:8080/withearth/tumbler/tumlist/rest?idx='+idx+'&p='+p,   */
+									url :'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p,
 									type : 'GET',
 									async : false,
 									success : function(data) {
@@ -254,6 +247,8 @@ ul li {
 										console.log("에러발생!! : ", e);
 									}
 								});
+						
+	    });
 
-					});
+					
 </script>

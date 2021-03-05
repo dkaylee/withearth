@@ -7,7 +7,7 @@
 <head>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="/resources/js/bootstrap.js"></script>
-<
+
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial=scale=1.0">
@@ -82,8 +82,10 @@
 			<div id="modal_btn">
 				<!-- <button id="open"onclick="location.href='#'"></button>
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
+
 				<a href="https://www.withearth.tk/member/" class="button special" >메인 화면</a>
 				<a href="<c:url value="/tumbler/tumlist?idx=${loginInfo.idx}"/>" class="button special">텀블러 조회</a>
+
 			</div> 
 			</div> 
 
@@ -116,33 +118,33 @@
 
      //var idx = getParameterByName("idx");
      var cafe_idx = getParameterByName("cafeidx");
-     //var idx = 1;
      console.log(cafe_idx);
 
 
+
          var idx = ${loginInfo.idx};  
-     	//var idx = 1;
      	console.log(idx);
-     	
-     	/* var tumpoint = '<c:out value="${tumbler}"/>'; */
-	 	   
+  
     	 	    $.ajax({
 
-    			    /* url : 'http://localhost:8080/withearth/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx, */ 	
-    			   url : 'https://www.withearthtum.tk/test8/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,  
+    			     /* url : 'http://localhost:8080/withearth/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,  */ 	
+    			  url : 'https://www.withearthtum.tk/test8/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,  
+
     	 		   type : 'GET',
     	 		   success : function(data){
     	 			   console.log("tumidx:"+data);
     	 			   console.log("idx"+idx);
     	 			   
     	 			   
-    	 			   $ajax({
+
+    	 			   $.ajax({
     	 				   
-    	 				   url: 'https://www.withearthdona.tk/point/rest/user/point?tum='+idx+'&tIdx='+tIdx,
+    	 				   url: 'https://www.withearthdona.tk/point/rest/user/point/tum/'+idx+'/'+data,
+
     	 				   type: 'GET',
     	 				   
     	 				   success: function(data){
-    	 						alert('데이터 전송을 완료했습니다.');
+    	 						//alert('데이터 전송을 완료했습니다.');
     	 						
     	 						console.log('data',data);
     	 						
@@ -175,24 +177,6 @@
 	   
 
 
-
-
-  /*   $(document).ready(function(){
-	   
-	   $.ajax({
-		   
-		   url : 'http://localhost:8080/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,
-		   type : 'GET',
-		   data : 'cafe_idx='+cafe_idx,
-		   success : function(data){
-			   console.log(data);
-
-		   }, error : function(e){
-			   console.log(e);
-		   }
-		   	   
-	   }); */
-	   
 
  
  
