@@ -129,7 +129,8 @@ $(document).ready(function(){
 
 		
 		$.ajax({
-			url : 'http://localhost:8080/community/matzip/setEdit'+matIdx,
+			url : 'https://www.withearthcomm.tk/community/matzip/setEdit'+matIdx,
+
 			type : 'POST',
 			data : formData,
 			enctype : 'multipart/form-data',
@@ -157,7 +158,8 @@ $(document).ready(function(){
 	function getEditMat(){
 		
 		$.ajax({
-			url:'http://localhost:8080/community/matzip/getEdit?matIdx='+matIdx,
+			url:'https://www.withearthcomm.tk/community/matzip/getEdit?matIdx='+matIdx,
+
 			type: "GET",
 			dataType: "JSON",
 			success : function(data){

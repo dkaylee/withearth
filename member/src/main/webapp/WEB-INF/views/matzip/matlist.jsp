@@ -65,10 +65,12 @@ display:inline-block;
 	
 	<!-- 카카오 api -->
 	<script type="text/javascript"
+
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004&libraries=services">
 	</script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97c778ca3a2efa48c4c3af1ce102d004">
+
 	</script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	
@@ -96,7 +98,8 @@ display:inline-block;
 	$('#paging').empty();
 	
 			$.ajax({
-				url : "http://localhost:8080//community/matzip/matlist/listInfo?p="+p,
+				url : "https://www.withearthcomm.tk/community/matzip/matlist/listInfo?p="+p,
+
 				type : "GET",
 				success : function(data) {
 					console.log(data);
@@ -141,7 +144,8 @@ display:inline-block;
 					if(data.totalMatzipCount > 0){
 						for(var i = 1; i <= data.totalPageCount; i++){
 							var html = "";
-							html += '<a href="http://localhost:8080/community/matzip/matlist?p='+i+'" class="pagebtn">'+i+'</a>';
+							html += '<a href="https://www.withearthcomm.tk/community/matzip/matlist?p='+i+'" class="pagebtn">'+i+'</a>';
+
 							$('#paging').append(html);
 						}	
 					}
@@ -151,6 +155,7 @@ display:inline-block;
 				}
 					
 			});	
+
 		/* '&searchType='+data.searchType+'&keyword='+data.keyword+ */
 
 		/* 맛집지도 */

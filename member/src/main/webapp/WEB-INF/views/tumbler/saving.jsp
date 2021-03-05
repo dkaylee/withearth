@@ -69,7 +69,7 @@
 			<!-- Table -->
 			 <div id = "addpoint">
 			<div id="point">
-			 <img alt="point2" src="<c:url value="/img/point2.jpg"/>" style="width: 35%;">
+			 <img alt="point2" src="<c:url value="/img/tum/point2.jpg"/>" style="width: 35%;">
 				<!-- <img src="/img/point2.png" style="width: 25%;"> -->
 			</div>
 
@@ -82,8 +82,8 @@
 			<div id="modal_btn">
 				<!-- <button id="open"onclick="location.href='#'"></button>
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
-				<a href="#" class="button special" >메인 화면</a>
-				<a href="/member/tumbler/tumlist" class="button special">텀블러 조회</a>
+				<a href="<c:url value="#"/>" class="button special" >메인 화면</a>
+				<a href="<c:url value="/tumbler/tumlist"/>" class="button special">텀블러 조회</a>
 			</div> 
 			</div> 
 
@@ -101,23 +101,89 @@
 
 // 경로에서 파라미터 받기
    
-function getParameterByName(name) {name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+     function getParameterByName(name){
+	     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+         var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
+               return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
+     }
+           
+  
 
-var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(location.search);
-return results === null ? "": decodeURIComponent(results[1].replace(/\+/g, " "));
-}
 
-//var idx = getParameterByName("idx");
-var cafe_idx = getParameterByName("cafe_idx");
-var idx = 1;
 
-$(document).ready(function(){
+
+
+
+     //var idx = getParameterByName("idx");
+     var cafe_idx = getParameterByName("cafeidx");
+     //var idx = 1;
+     console.log(cafe_idx);
+
+
+         var idx = ${loginInfo.idx};  
+     	//var idx = 1;
+     	console.log(idx);
+     	
+     	/* var tumpoint = '<c:out value="${tumbler}"/>'; */
+	 	   
+    	 	    $.ajax({
+
+    			    /* url : 'http://localhost:8080/withearth/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx, */ 	
+    			   url : 'https://www.withearthtum.tk/test8/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,  
+    	 		   type : 'GET',
+    	 		   success : function(data){
+    	 			   console.log("tumidx:"+data);
+    	 			   console.log("idx"+idx);
+    	 			   
+    	 			   
+    	 			   $ajax({
+    	 				   
+    	 				   url: 'https://www.withearthdona.tk/point/rest/user/point?tum='+idx+'&tIdx='+tIdx,
+    	 				   type: 'GET',
+    	 				   
+    	 				   success: function(data){
+    	 						alert('데이터 전송을 완료했습니다.');
+    	 						
+    	 						console.log('data',data);
+    	 						
+    	 					},
+    	 					error: function(error){
+    	 						
+    	 						console.log(error);
+    	 						console.log('포인트 적립 실패');
+    	 					}
+    	 				   	   
+    	 				   
+    	 			   });  //pointajax
+    	 			   
+    	 			  
+
+    	 		   }, error : function(e){
+    	 			   console.log(e);
+    	 		   }
+    	 		   	   
+    	 	   }); //ajax
+    	 
+
+
+
+
+
+
+
+
+	   
+
+
+
+
+  /*   $(document).ready(function(){
 	   
 	   $.ajax({
 		   
-		   url : 'http://localhost:8080/rest/tumbler/'+idx+'/'+cafe_idx,
+		   url : 'http://localhost:8080/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,
 		   type : 'GET',
-		   data : 'idx='+idx+'cafe_idx='+cafe_idx,
+		   data : 'cafe_idx='+cafe_idx,
 		   success : function(data){
 			   console.log(data);
 
@@ -125,10 +191,13 @@ $(document).ready(function(){
 			   console.log(e);
 		   }
 		   	   
-	   });
+	   }); */
 	   
-});
 
+ 
+ 
+ 
+ 
 
 
 

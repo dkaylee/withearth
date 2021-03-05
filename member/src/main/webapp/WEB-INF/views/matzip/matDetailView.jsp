@@ -51,7 +51,8 @@
 	function getMatDetail(){
 		
 		$.ajax({
-			url:"http://localhost:8080/community/matzip/matDetail?matIdx="+matIdx,
+			url:"https://www.withearthcomm.tk/community/matzip/matDetail?matIdx="+matIdx,
+
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
@@ -92,7 +93,8 @@
 		var filelist= [];
 		
 		$.ajax({
-			url:"http://localhost:8080/community/matzip/filelist?matIdx="+matIdx,
+			url:"https://www.withearthcomm.tk/community/matzip/filelist?matIdx="+matIdx,
+
 			type: "GET",
 			success : function(data) {
 				console.log(data);
@@ -123,7 +125,8 @@
 	function deleteMatzip() {
 		
 		$.ajax({
-					url:"http://localhost:8080/community/matzip/deleteMat?matIdx="+matIdx,
+					url:"https://www.withearthcomm.tk/community/matzip/deleteMat?matIdx="+matIdx,
+
 					type:"POST",
 					cache : false,
 					success : function(result){	
@@ -145,7 +148,8 @@
 /* 파일삭제 */
 function deleteFiles(){
 	$.ajax({
-		url:"http://localhost:8080/community/matzip/deleteFiles?matIdx="+matIdx,
+		url:"https://www.withearthcomm.tk/community/matzip/deleteFiles?matIdx="+matIdx,
+
 		cache : false,
 		success : function(result2){	
 			console.log(result2);	

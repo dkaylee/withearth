@@ -35,7 +35,12 @@
 		  <input type="text" id="name" name="name" placeholder="${loginInfo.name}" required>
 		  <label>프로필 사진</label>
 		  <input type="text" id="oldphoto" name="oldphoto" value="${loginInfo.photo}" placeholder="${loginInfo.photo}" readonly>
-		  <input type="file" id="photo" name="photo"><br>
+		  <!-- <input type="file" id="photo" name="photo"><br> -->
+		  <form id="form1" runat="server">
+			<input type='file' id="photo" name="photo" onchange="readURL(this);" />
+			<img id="blah" src="#" alt="your image" style="width:100px; height:100px" />
+		</form>
+
 		  <input type="submit" id="btnEdit" value="수정">
 		  <!-- <input type="submit" id="leave" value="회원탈퇴"> -->
 	  </div>
@@ -46,7 +51,26 @@
 
 
 </body>
-		<script>
+<script>
+	function readURL(input) {
+	 if (input.files && input.files[0]) {
+		  var reader = new FileReader();
+		  reader.onload = function (e) {
+		   $('#blah').attr('src', e.target.result);  
+		  }
+		  
+		  reader.readAsDataURL(input.files[0]);
+	  }
+	}
+	
+	$("#imgInput").change(function(){
+	   readURL(this);
+	});
+	
+</script>
+
+
+<script>
 $(document).ready(function(){
 	//정보수정 버튼 클릭시
 	 $('#btnEdit').click(function(){ 
