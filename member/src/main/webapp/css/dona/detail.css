@@ -39,6 +39,7 @@
 .profile{
   float : left; 
   margin-left : 200px;
+  border-radius: 25px;
 }
 
 .userInfo{

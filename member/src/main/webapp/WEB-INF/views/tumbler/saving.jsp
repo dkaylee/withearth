@@ -82,8 +82,10 @@
 			<div id="modal_btn">
 				<!-- <button id="open"onclick="location.href='#'"></button>
 				<button id="open" onclick="location.href='/tumbler/tumlist'">텀블러 이용내역</button> -->
+
 				<a href="https://www.withearth.tk/member/" class="button special" >메인 화면</a>
 				<a href="<c:url value="/tumbler/tumlist?idx=${loginInfo.idx}"/>" class="button special">텀블러 조회</a>
+
 			</div> 
 			</div> 
 
@@ -120,25 +122,31 @@
      console.log(cafe_idx);
 
 
-         //var idx = ${loginInfo.idx};  
-     	var idx = 1;
+
+         var idx = ${loginInfo.idx};  
+     	//var idx = 1;
+
      	console.log(idx);
      	
      	/* var tumpoint = '<c:out value="${tumbler}"/>'; */
 	 	   
     	 	    $.ajax({
 
+
     			     url : 'http://localhost:8080/withearth/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,  	
     			  /*  url : 'https://www.withearthtum.tk/test8/rest/tumbler/point?idx='+idx+'&cafeidx='+cafe_idx,   */
+
     	 		   type : 'GET',
     	 		   success : function(data){
     	 			   console.log("tumidx:"+data);
     	 			   console.log("idx"+idx);
     	 			   
     	 			   
+
     	 			   $.ajax({
     	 				   
     	 				   url: 'https://www.withearthdona.tk/point/rest/user/point/tum/'+idx+'/'+data,
+
     	 				   type: 'GET',
     	 				   
     	 				   success: function(data){

@@ -57,6 +57,7 @@ public class MemberRegService {
 		
 		//userPhoto가 있거나 비어있지 않으면????
 		if(regRequest.getUserPhoto()!= null && !regRequest.getUserPhoto().isEmpty()) {
+		
 			//웹 경로
 			String uploadPath = "/fileupload/member";
 			//실제 경로
@@ -65,10 +66,19 @@ public class MemberRegService {
 				//이 코드 자체가 실제 경로를 가져옴
 			String saveDirPath = request.getSession().getServletContext().getRealPath(uploadPath);
 	
+			// 파일 경로가 없으면 생성하기
+			File file = new File(saveDirPath);
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			
+			//확장자
+			String fname = regRequest.getUserPhoto().getOriginalFilename();
+			String ftype = fname.substring(fname.lastIndexOf("."));
 			
 			//새로운 파일 이름
 			//아이디 + 현재시간이 파일이름이 됨
-			newFileName = regRequest.getUserid() +System.currentTimeMillis();
+			newFileName = regRequest.getUserid() +System.currentTimeMillis()+ftype; //여기 확장자 추가
 			
 			//실제경로에 newFileName이라는 이름으로 파일이 하나 생김
 			newFile = new File(saveDirPath,newFileName);

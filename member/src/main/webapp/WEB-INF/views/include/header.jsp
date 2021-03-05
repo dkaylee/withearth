@@ -20,7 +20,8 @@
 						<a href="<c:url value="/member/dona/main?idx=${loginInfo.idx}"/>">나눔장터</a>
 
 						<a href="<c:url value="/user/mypage/view"/>">마이페이지</a>
-						<a href="<c:url value="/comm/matlist?p=1"/>">커뮤니티</a>						
+						<a href="<c:url value="/matzip/matlist?p=1"/>">커뮤니티</a>						
+
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
