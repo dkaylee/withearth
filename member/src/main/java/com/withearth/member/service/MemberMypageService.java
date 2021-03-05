@@ -55,6 +55,13 @@ public class MemberMypageService {
 		//Photo가 있거나 비어있지 않으면??
 		if(myinfo.getCgphoto()!= null && !myinfo.getCgphoto().isEmpty()) {
 
+			
+			// 파일 경로가 없으면 생성하기
+			File file = new File(saveDirPath);
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			
 			//확장자
 			String fname = myinfo.getCgphoto().getOriginalFilename();
 			String ftype = fname.substring(fname.lastIndexOf("."));
@@ -64,6 +71,7 @@ public class MemberMypageService {
 			newFile = new File(saveDirPath, newFileName);		
 			System.out.println("사진을 수정했나?"+newFileName);
 
+			
 			//파일 저장
 			try {
 				myinfo.getCgphoto().transferTo(newFile);
