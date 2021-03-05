@@ -43,9 +43,9 @@
 						기부하기<br />
 					</h3>
 				</header>
-				<p>사용하지 않는 물건 또는 음식들을 서로 공유하고 포인트를 적립받는 서비스입니다.</p>
+				<p>사용하지 않는 물건 또는 음식들을 서로 공유하는 나눔서비스입니다.</p>
 				<footer>
-					<a href="<c:url value="/member/dona/main"/>" class="button special">More</a>
+					<a href="<c:url value="/member/dona/main/${loginInfo.idx}"/>" class="button special">More</a>
 				</footer>
 			</article>
 
