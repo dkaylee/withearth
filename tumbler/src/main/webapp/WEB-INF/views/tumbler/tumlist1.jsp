@@ -264,7 +264,8 @@ section.wrapper, article.wrapper {
 
 		 <div id="modal_btn">
 			<button id="open"onclick="javascript:btn('QR코드를 스캔해주세요!' )">텀블러 인증하기</button>
-		    <button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button> 
+		   <!--  <button id="open" onclick="location.href='https://www.withearthtum.tk/test8/tumbler/tumlist'">텀블러 이용내역</button>  -->
+		   <button id="open" onclick="location.href='<c:url value="/tumbler/tumlist?idx=${loginInfo.idx}"/>'">텀블러 이용내역</button>
 			
 		</div>
 
@@ -300,8 +301,8 @@ section.wrapper, article.wrapper {
 
 		</div>
 	</div>
-   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ef7b04066afd13bd5b988efc16035494=services"></script>
-	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script> -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8882344283f7784e065bd3b03e443561"></script> 
+    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1a0e7ca127ec3e8873006a2df2202abf"></script>   -->
 	<script>
 	
  	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -342,7 +343,7 @@ section.wrapper, article.wrapper {
 		function displayMarker(locPosition, iwContent ) {
 			
 			//d이미지 마커
-	   		 var imageSrc = '<c:url value="/img/mark1.png"/>', // 마커이미지의 주소입니다    
+	   		 var imageSrc = '<c:url value="/img/tum/mark1.png"/>', // 마커이미지의 주소입니다    
                  imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
                  imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                 

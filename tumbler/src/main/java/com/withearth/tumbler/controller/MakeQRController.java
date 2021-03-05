@@ -41,13 +41,13 @@ public class MakeQRController {
 			HttpSession session,
 			Model model,
 			@PathVariable("idx") int idx,
-		    @PathVariable("cafe_idx") int cafeIdx,
+		    @PathVariable("cafe_idx") int cafeidx,
 			CafeRequest cafeRequest)throws IOException, 
 	        WriterException {
 		 
 		 	
 
-      return makeqrService.makeqr(idx,cafeIdx,request, session,model); 
+      return makeqrService.makeqr(idx,cafeidx,request, session,model); 
       
 	 }
 	 

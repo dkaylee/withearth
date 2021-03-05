@@ -28,10 +28,11 @@ public class TumListRestController {
 	
 	  //포인트 정보 가져오기
 	  @GetMapping
-	  public TumpointView tumList(@RequestParam(value="p",defaultValue="1") int page, Model model,  HttpServletRequest request) {
+	  public TumpointView tumList(@RequestParam("idx") int idx,
+			                      @RequestParam(value="p",defaultValue="1") int page, Model model,  HttpServletRequest request) {
 	  
 	
-	  return tumlistService.getTumListView(page);
+	  return tumlistService.getTumListView(page, idx);
 	  
 	  }
 	

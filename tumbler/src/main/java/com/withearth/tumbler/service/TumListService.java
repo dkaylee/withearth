@@ -26,7 +26,7 @@ public class TumListService {
 	@Autowired
 	private SqlSessionTemplate template;
 
-	public TumpointView getTumListView(int page) {
+	public TumpointView getTumListView(int page, int idx) {
 
 		TumpointView listView = null;
 
@@ -43,14 +43,15 @@ public class TumListService {
 			Map<String, Object> listMap = new HashMap<String, Object>();
 			listMap.put("startRow", startRow);
 			listMap.put("cntPerPage", cntPerPage);
+			listMap.put("idx", idx);
 
 			int totalTpointCount = dao.selectTotalCount(listMap);
-			System.out.println("tumlistTotalcount:" + totalTpointCount);
+			System.out.println("totalTpointCount:" + totalTpointCount);
 
 			List<Tumbler> tumlist = dao.selectTumpointList(listMap);
 			System.out.println("텀블러리스트!!!!!!!!!!!" + tumlist);
 
-			listView = new TumpointView(page, totalTpointCount, cntPerPage, tumlist, startRow, endRow);
+			listView = new TumpointView(page, idx, totalTpointCount, cntPerPage, tumlist, startRow, endRow);
 
 			System.out.println("listView!!" + listView);
 

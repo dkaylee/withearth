@@ -127,16 +127,6 @@ ul li {
 		    
 			</div>
 
-
-		
-      <%-- <div class="paging">
-				<c:if test="${listView.totalTpointCount>0}">
-					<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
-				    [<a href="<c:url value="/tumbler/tumlist"/>?p=${num}"
-							class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 
-				  </c:forEach>
-				</c:if>
-			 </div> --%>
 			 
 			 <div class="paging">
 				     	<ul class="pagination"></ul>						 
@@ -164,20 +154,43 @@ ul li {
 
 	var p = getParameterByName('p');
 	console.log(p);
+	
+	//var idx = ${tumlist.idx}; 
+	//var idx = ${listView.idx}; 
+	//var idx = ${listView}; 
+	//var idx =1;
+	//var idx = '<c:out value="${listView.idx}"/>';
+	
 
+
+
+      var idx =1;
 	$(document).ready(function() {
+		
+	     
+		 
+		//var idx = ${tumlist.idx}; 
+		//var idx = "${tumlist}"; 
+		//var idx = "${listView.idx}"; 
+		//var idx = '<c:out value="${listView.idx}"/>'; 
+		//console.log(idx); 
+		
+		var idx = ${loginInfo.idx};  
+	    console.log(idx); 
+	
 
 						$('.paging').empty();
 
-						$.ajax({
-									url : 'http://localhost:8080/tumbler/tumlist/rest?p='+ p,
+						$.ajax({    
+									
+									/* url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p,  */	  
+									url : 'http://localhost:8080/withearth/tumbler/tumlist/rest?idx='+idx+'&p='+p,  
 									type : 'GET',
 									async : false,
 									success : function(data) {
-
 										console.log(data);
 										//alert(JSON.stringify(data));
-										console.log(data.cafe_name);
+										console.log(data.idx);
 
 										var html = '<table>';
 										html += '<thead>';
@@ -202,17 +215,13 @@ ul li {
 										var totalPageCount = data.totalPageCount;
 
 										$.each(tumlist, function(index, item) {
-											console.log("data : "
-													+ data.tumlist);
+											console.log("idx : "+ idx);
 											console.log(tumlist);
-											console.log(cntPerPage + ","
-													+ startRow + "," + endRow);
+											console.log(cntPerPage + ","+ startRow + "," + endRow);
 											console.log("start : " + startRow);
 											console.log("end : " + endRow);
-											console.log("totalTpointCount:"
-													+ totalTpointCount);
-											console.log("totalPageCount:"
-													+ totalPageCount)
+											console.log("totalTpointCount:"+ totalTpointCount);
+											console.log("totalPageCount:"+ totalPageCount)
 
 											html2 = '<tr>';
 											html2 += '<td>' + item.tum_idx+ '</td>';
@@ -229,28 +238,16 @@ ul li {
 										if (data.totalTpointCount > 0) {
 											var pHtml = '<ul class="pagination"></ul>';
 											$('.paging').append(pHtml)
-											console.log('totalTpointCount :'
-													+ data.totalTpointCount);
+											console.log('totalTpointCount :'+ data.totalTpointCount);
 
 											for (var i = 1; i <= data.totalPageCount; i++) {
-												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+ i+ '">'+ i+ '</a></li>';
+												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?idx='+idx+'&p='+ i+ '">'+ i+ '</a></li>';
 												$('.pagination').append(html3);
 											}
 										}
 										;
 
-										/* for (var num=startRow; num<=endRow; num++) {
-										     if (num == cntPerPage) {
-										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-										     } else {
-										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-										     }
-										  }
 										
-										
-										
-										$('.ttbody').html(a);
-										 */
 
 									},
 									error : function(e) {

@@ -11,9 +11,10 @@ public class TumpointView {
 	private int startRow;
 	private int endRow;
 	private int totalPageCount; //전체 페이지 수 
+	private int idx; //회원 인덱스
 	
 	
-	public TumpointView(int pageNumber, int totalTpointCount, int cntPerPage, List<Tumbler> tumlist, int startPow,
+	public TumpointView(int pageNumber, int totalTpointCount, int cntPerPage, int idx, List<Tumbler> tumlist, int startPow,
 			int endRow) {
 		
 		this.pageNumber = pageNumber;
@@ -23,6 +24,7 @@ public class TumpointView {
 		this.startRow = startPow;
 		this.endRow = endRow;
 		this.totalPageCount = totalPageCount;
+		this.idx = idx;
 		calTotalPageCount();
 	}
 	

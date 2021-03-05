@@ -32,11 +32,12 @@ public class TumViewController {
 	 //포인트 내역 출력
 	@RequestMapping("/tumbler/tumlist")  
 	public String tumlist(@RequestParam(value="p",defaultValue="1") int page,
-			                  @RequestParam("idx") int idx,
-			                		  HttpServletRequest request) {
+			              @RequestParam("idx") int idx,
+			               HttpServletRequest request) {
 		
 		 HttpSession session = request.getSession();
 		// int idx = (int) session.getAttribute("idx");
+		 //session.setAttribute("user", idx);
 
 		//int idx = 1;
 		
@@ -55,8 +56,8 @@ public class TumViewController {
 			                  ) {
 		
 		// 로그인 합친후 세션에서 회원idx를 가지고 와야함.
-        // HttpSession session = request.getSession();
-        // int idx = (int) session.getAttribute("idx");
+        HttpSession session = request.getSession();
+         //int idx = (int) session.getAttribute("idx");
 		
 		//int idx = 1;
 		//int result = tumpointService.registerTumblerPoint(cafe_idx, idx);
