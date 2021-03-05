@@ -155,30 +155,42 @@ ul li {
 	var p = getParameterByName('p');
 	console.log(p);
 	
-	 /* var idx = ${loginInfo.idx}; 
-		//var idx = 1;
-	console.log(idx);
- */
+	//var idx = ${tumlist.idx}; 
+	//var idx = ${listView.idx}; 
+	//var idx = ${listView}; 
+	//var idx =1;
+	//var idx = '<c:out value="${listView.idx}"/>';
+	
+
+
+
+       // var idx =100;
 	$(document).ready(function() {
 		
-	    var idx = ${loginInfo.idx}; 
-		console.log(idx); 
-		/* var idx = 1;
-		console.log(idx); */
+	     
+		 
+		//var idx = ${tumlist.idx}; 
+		//var idx = "${tumlist}"; 
+		//var idx = "${listView.idx}"; 
+		//var idx = '<c:out value="${listView.idx}"/>'; 
+		//console.log(idx); 
+		
+		var idx = ${loginInfo.idx};  
+	    console.log(idx); 
+	
 
 						$('.paging').empty();
 
 						$.ajax({    
 									
-									 url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p, 	  
-									/*  url : 'http://localhost:8080/withearth/tumbler/tumlist/rest?idx='+idx+'&p='+p,  */ 
+									url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p, 	  
+									/* url : 'http://localhost:8080/withearth/tumbler/tumlist/rest?idx='+idx+'&p='+p,   */
 									type : 'GET',
 									async : false,
 									success : function(data) {
-
 										console.log(data);
 										//alert(JSON.stringify(data));
-										console.log(data.cafe_name);
+										console.log(data.idx);
 
 										var html = '<table>';
 										html += '<thead>';
@@ -203,7 +215,7 @@ ul li {
 										var totalPageCount = data.totalPageCount;
 
 										$.each(tumlist, function(index, item) {
-											console.log("data : "+ data.tumlist);
+											console.log("idx : "+ idx);
 											console.log(tumlist);
 											console.log(cntPerPage + ","+ startRow + "," + endRow);
 											console.log("start : " + startRow);
@@ -226,11 +238,10 @@ ul li {
 										if (data.totalTpointCount > 0) {
 											var pHtml = '<ul class="pagination"></ul>';
 											$('.paging').append(pHtml)
-											console.log('totalTpointCount :'
-													+ data.totalTpointCount);
+											console.log('totalTpointCount :'+ data.totalTpointCount);
 
 											for (var i = 1; i <= data.totalPageCount; i++) {
-												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p='+ i+ '">'+ i+ '</a></li>';
+												var html3 = '<li class="page-item"><a class="page-link" href="<c:url value="/tumbler/tumlist"/>?idx='+idx+'&p='+ i+ '">'+ i+ '</a></li>';
 												$('.pagination').append(html3);
 											}
 										}
