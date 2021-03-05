@@ -55,7 +55,12 @@ public class MemberMypageService {
 		//Photo가 있거나 비어있지 않으면??
 		if(myinfo.getCgphoto()!= null && !myinfo.getCgphoto().isEmpty()) {
 
-			newFileName = myinfo.getId() + System.currentTimeMillis();	
+			//확장자
+			String fname = myinfo.getCgphoto().getOriginalFilename();
+			String ftype = fname.substring(fname.lastIndexOf("."));
+			
+			
+			newFileName = myinfo.getId() + System.currentTimeMillis()+ftype;	
 			newFile = new File(saveDirPath, newFileName);		
 			System.out.println("사진을 수정했나?"+newFileName);
 

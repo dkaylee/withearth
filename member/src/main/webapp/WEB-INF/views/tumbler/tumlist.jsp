@@ -127,16 +127,6 @@ ul li {
 		    
 			</div>
 
-
-		
-      <%-- <div class="paging">
-				<c:if test="${listView.totalTpointCount>0}">
-					<c:forEach begin="1" end="${listView.totalPageCount}" var="num">
-				    [<a href="<c:url value="/tumbler/tumlist"/>?p=${num}"
-							class="${listView.pageNumber eq num ? 'nowpage' : ''}">${num}</a> ] 
-				  </c:forEach>
-				</c:if>
-			 </div> --%>
 			 
 			 <div class="paging">
 				     	<ul class="pagination"></ul>						 
@@ -164,13 +154,24 @@ ul li {
 
 	var p = getParameterByName('p');
 	console.log(p);
-
+	
+	 /* var idx = ${loginInfo.idx}; 
+		//var idx = 1;
+	console.log(idx);
+ */
 	$(document).ready(function() {
+		
+	    var idx = ${loginInfo.idx}; 
+		console.log(idx); 
+		/* var idx = 1;
+		console.log(idx); */
 
 						$('.paging').empty();
 
-						$.ajax({
-									url : 'http://localhost:8080/tumbler/tumlist/rest?p='+ p,
+						$.ajax({    
+									
+									 url : 'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p, 	  
+									/*  url : 'http://localhost:8080/withearth/tumbler/tumlist/rest?idx='+idx+'&p='+p,  */ 
 									type : 'GET',
 									async : false,
 									success : function(data) {
@@ -202,17 +203,13 @@ ul li {
 										var totalPageCount = data.totalPageCount;
 
 										$.each(tumlist, function(index, item) {
-											console.log("data : "
-													+ data.tumlist);
+											console.log("data : "+ data.tumlist);
 											console.log(tumlist);
-											console.log(cntPerPage + ","
-													+ startRow + "," + endRow);
+											console.log(cntPerPage + ","+ startRow + "," + endRow);
 											console.log("start : " + startRow);
 											console.log("end : " + endRow);
-											console.log("totalTpointCount:"
-													+ totalTpointCount);
-											console.log("totalPageCount:"
-													+ totalPageCount)
+											console.log("totalTpointCount:"+ totalTpointCount);
+											console.log("totalPageCount:"+ totalPageCount)
 
 											html2 = '<tr>';
 											html2 += '<td>' + item.tum_idx+ '</td>';
@@ -239,18 +236,7 @@ ul li {
 										}
 										;
 
-										/* for (var num=startRow; num<=endRow; num++) {
-										     if (num == cntPerPage) {
-										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-										     } else {
-										          a += '<a class="page-link" href="<c:url value="/tumbler/tumlist"/>?p=' + num + '); return false;" class="page-btn">' + num + '</a>';
-										     }
-										  }
 										
-										
-										
-										$('.ttbody').html(a);
-										 */
 
 									},
 									error : function(e) {
