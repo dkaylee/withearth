@@ -43,7 +43,7 @@
 	
 	/* go edit Form */
 	function goEdit(){
-		location.href = "http://localhost8080/community/matzip/editmatForm?matIdx="+matIdx;
+		location.href = "/community/matzip/editmatForm?matIdx="+matIdx;
 	}
 	
 
@@ -51,7 +51,7 @@
 	function getMatDetail(){
 		
 		$.ajax({
-			url:"http://localhost8080/community/matzip/matDetail?matIdx="+matIdx,
+			url:"http://localhost:8080/community/matzip/matDetail?matIdx="+matIdx,
 			type: "GET",
 			success : function(data) {
 				console.log(data);	
@@ -92,19 +92,17 @@
 		var filelist= [];
 		
 		$.ajax({
-			url:"http://localhost8080.tk/community/matzip/filelist?matIdx="+matIdx,
+			url:"http://localhost:8080/community/matzip/filelist?matIdx="+matIdx,
 			type: "GET",
 			success : function(data) {
 				console.log(data);
-
 				var files = "";
 				
 				for(var i=0; i<data.length; i++){
-				
-				files +='<img src="/fileupload/matzip/'+data[i].newFName+'">';
-				
-				filelist.push(files);
-				
+				files +='<div>'
+				files +='<img src="/community/fileupload/matzip/'+data[i].newFName+'" style="width:350px;">';
+				files +='</div>'
+				filelist.push(files);			
 				}
 				
 				$('#matImg').append(files);
@@ -114,7 +112,7 @@
 	
 			},
 			error : function(data){
-				alert("오류가 발생했습니다");
+				alert("파일 못불러옴^^");
 	
 			}
 		});
@@ -122,24 +120,41 @@
 	
 
 
- 	function deleteMatzip() {
+	function deleteMatzip() {
 		
+		$.ajax({
+					url:"http://localhost:8080/community/matzip/deleteMat?matIdx="+matIdx,
+					type:"POST",
+					cache : false,
+					success : function(result){	
+						console.log(result);
+						
+						if(result == "1" ) {
+							alert("게시글 삭제 했습니다.");  
+								// deleteFiles();	
+								goMatlist();
+							}
+					},
+					error: function(){
+						alert('삭제를 실패했습니다.');
+					}
+				});
+		} 
+	
+	
+/* 파일삭제 */
+function deleteFiles(){
 	$.ajax({
-				url:"http://localhost8080/community/matzip/deleteMat?matIdx="+matIdx,
-				type:"POST",
-				success : function(result){	
-					console.log(result);
-					
-					if(result == "1" ) {
-						alert("게시글 삭제를 성공하였습니다.");  
-						goMatlist();
-						}
-				},
-				error: function(){
-					alert('삭제를 실패했습니다.');
-				}
-			});
-	} 
+		url:"http://localhost:8080/community/matzip/deleteFiles?matIdx="+matIdx,
+		cache : false,
+		success : function(result2){	
+			console.log(result2);	
+		},
+		error: function(){
+			alert('파일 삭제를 실패했습니다.');
+		}
+	});
+}	
 	
 
 /* 맛집 목록이동 */
@@ -159,8 +174,6 @@ function goMatlist(){
 		
 		
 		<div class="inner">
-		
-		<h3>새로운 맛집 추가 완료!</h3>
 
 			<div id="matImg"></div>
 			

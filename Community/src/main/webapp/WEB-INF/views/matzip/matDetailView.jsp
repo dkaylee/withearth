@@ -57,14 +57,14 @@
 				console.log(data);	
 				
 				var html = "";
+				html += '<h2>'
+				html += data.matTitle
+				html += '</h2>';
 				html += '<hr class="major"/>';
 				html += '<div>';
 				html += '<img src="/community/fileupload/matzip/'+data.matImg+'" style="width:60%">';
 				html += '</div>';
 				html += '<hr class="major"/>';
-				html += '<h2>'
-				html += data.matTitle
-				html += '</h2>';
 				html += '<div>'
 				html += data.matAddr
 				html += '</div>';
@@ -100,7 +100,7 @@
 				
 				for(var i=0; i<data.length; i++){
 				files +='<div>'
-				files +='<img src="/community/fileupload/matzip/'+data[i].newFName+'" style="width:350px;">';
+				files +='<img src="/community/fileupload/matzip/'+data[i].newFName+'" style="width:60%">';
 				files +='</div>'
 				filelist.push(files);			
 				}

@@ -96,7 +96,7 @@ display:inline-block;
 	$('#paging').empty();
 	
 			$.ajax({
-				url : "http://localhost:8080/community/matzip/matlist/listInfo?p="+p,
+				url : "http://localhost:8080//community/matzip/matlist/listInfo?p="+p,
 				type : "GET",
 				success : function(data) {
 					console.log(data);
@@ -118,11 +118,11 @@ display:inline-block;
 						var html = "";
 						html +='<article class="article">'
 						html +='<div class="image fit" id="thumb">';
-						html +='<a href="<c:url value="/matzip/matDetailView?matIdx='+item.matIdx+'"/>"><img src="/community/fileupload/matzip/'+item.matImg+'"></a>';
+						html +='<a href="/community/matzip/matDetailView?matIdx='+item.matIdx+'"><img src="/community/fileupload/matzip/'+item.matImg+'"></a>';
 						html +='</div>';
 						html +='<hr class="major"/>';
 						html +='<header>';
-						html +='<h3><a href="<c:url value="/matzip/matDetailView?matIdx='+item.matIdx+'"/>">'+item.matTitle+'</a></h3>';
+						html +='<h3><a href="/community/matzip/matDetailView?matIdx='+item.matIdx+'">'+item.matTitle+'</a></h3>';
 						html +='<p>'+item.matCont+'</p>';
 						html +='</header>';
 						html +='<p><i class="fas fa-map-marker-alt"></i>'+item.matAddr+'</p>';
@@ -141,8 +141,7 @@ display:inline-block;
 					if(data.totalMatzipCount > 0){
 						for(var i = 1; i <= data.totalPageCount; i++){
 							var html = "";
-							/* html += '<a href="https://www.withearthcomm.tk/community/matzip/matlist?p='+i+'" class="pagebtn">'+i+'</a>'; */
-							 html += '<a href="<c:url value="/matzip/matlist?p="/>'+i+'" class="button alt">'+i+'</a>'
+							html += '<a href="http://localhost:8080/community/matzip/matlist?p='+i+'" class="pagebtn">'+i+'</a>';
 							$('#paging').append(html);
 						}	
 					}
@@ -152,25 +151,6 @@ display:inline-block;
 				}
 					
 			});	
-			
-			$(".searchBtn").on("click", function(){
-				var chk = $('.search').val();
-				if(chk==null){
-					alert("검색어를 입력해주세요!");
-					return false;
-				}
-				
-				
-				$.ajax({
-					url : ""
-				})
-				
-			});
-			
-			
-		
-			
-			
 		/* '&searchType='+data.searchType+'&keyword='+data.keyword+ */
 
 		/* 맛집지도 */
@@ -201,7 +181,17 @@ display:inline-block;
 			}
 		}
 
-		
+		/* function getPositions(content, latlng){
+			
+			for (var i=0; i<mat.length; i++){
+				
+				var content = '<div>'+mat[i].matTitle+'</div>'+
+							  '<div>'+mat[i].matAddr+'</div>'+
+							  '<div>'+mat[i].matNum+'</div>';			
+				
+			}
+			
+		} */
 		
 		var contentArr = [];
 
@@ -216,11 +206,19 @@ display:inline-block;
 
 			// 지도를 생성합니다    
 			var map = new kakao.maps.Map(mapContainer, mapOption);
-			
-			var imageSrc = "/community/fileupload/icon/carrot2.png", // 마커이미지의 주소입니다    
-		    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-		    imageOption = {offset: new kakao.maps.Point(27, 69)};
 
+			//var contentArr = [];
+
+			/* // contnets 배열에 저장
+			for (var i = 0; i < mat.length; i++) {
+
+			var content = '<div>' + mat[i].matTitle + '</div>' + '<div>'
+						+ mat[i].matAddr + '</div>' + '<div>' + mat[i].matNum
+						+ '</div>';
+
+				contentArr.push(content);
+
+			} */
 			
 			console.log(contentArr);
 
@@ -240,31 +238,22 @@ display:inline-block;
 								console.log('coords:::'+coords);
 								
 								// contnets 배열에 저장
-								/* for (var i = 0; i < mat.length; i++) {
+								for (var i = 0; i < mat.length; i++) {
 
 									var content =  mat[i].matTitle
 													+ mat[i].matAddr
 													+ mat[i].matNum
-													+ coords; */
-								var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-								 markerPosition = new kakao.maps.LatLng(coords); // 마커가 표시될 위치입니다
-													
-													
-								$.each(mat, function(index, item){			
-									var content = item.matTitle
-														+ item.matAddr
-														+ coords;				
-
+													+ coords;
+									
 									contentArr.push(content);
-								});
+								}
 								
 								console.log('contents:::::'+contentArr);
 
 								// 결과값으로 받은 위치를 마커로 표시합니다
 								var marker = new kakao.maps.Marker({
 									map : map,
-									position : coords,
-									image: markerImage
+									position : coords
 									
 								});
 
@@ -309,9 +298,6 @@ display:inline-block;
 				infowindow.close();
 			};
 		}
-		
-		
-		
 	</script>
 	
 
@@ -343,7 +329,7 @@ display:inline-block;
 					
 
 					<div class="searchPart"><input type="text" name="keyword" placeholder="검색어를 입력하세요" class="search"></div>
-					<div class="searchPart"><button type="submit" class="searchBtn" value="검색">Search</button></div>
+					<div class="searchPart"><button type="submit" value="검색">Search</button></div>
 					</form>
 			</div>
 

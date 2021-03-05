@@ -96,6 +96,7 @@ var regex = new RegExp("[\\?&]" + name+ "=([^&#]*)"), results = regex.exec(locat
 
 var matIdx = getParameterByName('matIdx'); 
 
+var url = "'http://localhost:8080/setEdit";
 
 $(document).ready(function(){        
 	
@@ -128,7 +129,7 @@ $(document).ready(function(){
 
 		
 		$.ajax({
-			url : 'http://localhost8080/community/matzip/setEdit'+matIdx,
+			url : 'http://localhost:8080/community/matzip/setEdit'+matIdx,
 			type : 'POST',
 			data : formData,
 			enctype : 'multipart/form-data',
@@ -200,7 +201,7 @@ $(document).ready(function(){
 
 	/* 맛집 목록이동 */
 	function goMatlist(){
-		location.href = "community/matzip/matlist?p=1";
+		location.href = "/community/matzip/matlist?p=1";
 	}
 	
 	// image preview 기능 구현
