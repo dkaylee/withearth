@@ -12,7 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=2"/>"/>
+<link rel="stylesheet" href="<c:url value="/css/dona/main.css?ver=3"/>"/>
 <link href="<c:url value="/css/main.css?ver=1"/>" rel="stylesheet">
 <style>	
 </style>	
