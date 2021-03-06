@@ -14,10 +14,10 @@ public class CourseDeleteService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public int deleteCourse(int course_idx) {
+	public int deleteCourse(int course_idx, int idx) {
 		dao = template.getMapper(WalkingDao.class);
 		
-		return dao.deleteCourseByIdx(course_idx);
+		return dao.deleteCourseByIdx(course_idx, idx);
 				
 	}
 	

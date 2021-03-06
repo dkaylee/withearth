@@ -30,7 +30,7 @@ public interface WalkingDao {
 	int selectSearchCourseCount(Map<String, Object> listMap);
 
 	// 7. 코스 정보 삭제
-	int deleteCourseByIdx(int course_idx);
+	int deleteCourseByIdx(int course_idx, int idx);
 
 	// 8. 코스 정보 조회 : idx로 조회
 	Course selectCourseByIdx(int course_idx);

@@ -155,7 +155,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 7. 코스 정보 삭제 -->
 	<delete id="deleteCourseByIdx">
-		delete from open.walking where course_idx=#{course_idx}
+		delete from open.walking where course_idx=#{course_idx} and user_idx=#{idx}
 	</delete>
 	
 	

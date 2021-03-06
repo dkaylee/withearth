@@ -150,6 +150,7 @@ h3{
 								<%-- <td>${course.about_time} 분</td> --%>
 								<td>${course.walking_time}</td>
 							    <td><a href="javascript:deleteCourse(${course.course_idx});" >삭제</a></td>
+							   
 							</tr>
 					</c:forEach>
 
@@ -182,6 +183,7 @@ h3{
 	<script>
 	
 	var idx = ${loginInfo.idx};
+	console.log('list idx: '+ idx);
 	/* $.ajax({
 		url:'<c:url value="/member/loc/courselist"/>',
 		type:'get',
@@ -197,9 +199,11 @@ h3{
 	
 	
 	//  deleteCourse function이 없으면 삭제 기능이 실행이 안됨. 
-		function deleteCourse(course_idx) {
+		function deleteCourse(course_idx, idx) {
+		 
 			if (confirm('정말로 삭제하시겠습니까?')) {
-				location.href = '<c:url value="/member/loc/coursedelete?course_idx="/>' + course_idx;
+				location.href ='<c:url value="/member/loc/coursedelete?course_idx='+course_idx+'&idx='+idx+'"/>' 
+				
 				
 			} 
 		}

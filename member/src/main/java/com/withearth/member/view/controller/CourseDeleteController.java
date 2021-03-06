@@ -17,11 +17,12 @@ public class CourseDeleteController {
 	@RequestMapping("/member/loc/coursedelete")
 	public String deleteCourse(
 			@RequestParam("course_idx") int course_idx,
+			@RequestParam("idx") int idx,
 			Model model
 			) {
 		
 		// 결과 -> 0또는 1
-		model.addAttribute("result", deleteService.deleteCourse(course_idx));
+		model.addAttribute("result", deleteService.deleteCourse(course_idx, idx));
 		
 		return "/loc/coursedelete";
 		
