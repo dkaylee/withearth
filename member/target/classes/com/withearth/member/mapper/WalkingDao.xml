@@ -67,6 +67,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 3. 코스의 총 개수-->
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from open.walking
+		<where>
+			user_idx=#{idx}
+		</where>
+		
 	</select>
 	
 	
@@ -75,6 +79,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from open.walking
 		
 		<where>
+			
+			
 			<if test="searchParam != null">
 				<if test="searchParam.searchType == 'date'">
 					  <include refid="searchDate"/>
@@ -89,6 +95,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					 <include refid="searchEnd"/>
 				</if>
 			</if>
+			
+			and user_idx=#{idx}
 		</where>
 		
 		limit #{index}, #{count}

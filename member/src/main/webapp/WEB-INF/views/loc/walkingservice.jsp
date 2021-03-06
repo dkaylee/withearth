@@ -23,26 +23,19 @@
 <%@ include file="/WEB-INF/views/include/basicset.jsp" %>
 
 <style>
-
-
 .mainPage{	
 	margin-top: 5%;
 	margin-left: 10%;
 	margin-right: 10%;
 }
-
 #mainInfo{
 	float: left;
 	margin:50px 0;
 	font-weight: bolder;
 }
-
 #startBtn{margin-bottom: 1%; width: 48%;  }
-
 #arriveBtn{margin-bottom: 1%;  width: 48%;  margin-left: 2%;}
-
 #InfoBtn{margin-bottom: 1%; }
-
 #startInfo{
 	clear:left;
 	margin: 0 20px;
@@ -53,9 +46,7 @@
  	margin: 0 20px;
  	font-weight: bolder;
  }
-
 #fullAddr{margin-top: 3%; margin-left: 0%; width: 75%; float: left; overfloat: hidden;}
-
 #btn_select{
 	margin-top: 3%;
 	margin-left: 2%;
@@ -63,44 +54,36 @@
 	width: 22%;
 	
 }
-
 #endAdd{margin-bottom: 10%;}
-
 #clock{
 	margin-top: 10%;
 	font-size: larger;
 	text-align: center;
 	width: 100%;
 }
-
 #restart{
 	margin-bottom: 1%;
 	width: 48%;
 	display: none;
 }
-
 #stopTimer{
 	margin-bottom: 1%;
 	width: 49%;
 	display: none;
 	 margin-left: 1%;
 }
-
 #walkingResult{
 	display: none;
 }
-
 #saveBtn{
 	display: none;
 	margin-bottom: 1%;
 	width: 47%; margin-left: 1%;
 }
-
 #modalChk{
 	margin-bottom: 1%;
 	width: 47%; margin-left: 1%;
 }
-
 </style>
 
 
@@ -108,7 +91,6 @@
 	
 	//jQuery.noConflict(); -> 부트스트랩 모달 충돌 방지
 	
-
 	var now_lat = $('#nowLat'); 	// 현재 위치 위도
 	var now_lon = $('#nowLon'); 	// 현재 위치 경도
 	var new_lat = $('#newLat'); 	// 목적지 위치 위도
@@ -684,24 +666,25 @@
 	var end_lon;
 	function arrChk( arrlat, arrlon){
 		
+		
+		
 		$("#arriveBtn").click(function(){ 
-			
 			 if (navigator.geolocation) {
-				//위치 정보를 얻기
-					navigator.geolocation.getCurrentPosition(function(pos) {
-						$('#endlatitude').html(pos.coords.latitude); 		// 위도 ex)37.xxx -> ssl 사용 -> ssl 등록(aws)
-						$('#endlongitude').html(pos.coords.longitude); 	// 경도 ex)126.xxx
-						end_lat = pos.coords.latitude;
-						end_lon = pos.coords.longitude;
-						
-						console.log("arriveBtn 도착 경도" + end_lon);
-						console.log("arriveBtn 도착 위도" + end_lat);
-					});
-				} else {
-					alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
-				} 
+					//위치 정보를 얻기
+						navigator.geolocation.getCurrentPosition(function(pos) {
+							$('#endlatitude').html(pos.coords.latitude); 		// 위도 ex)37.xxx -> ssl 사용 -> ssl 등록(aws)
+							$('#endlongitude').html(pos.coords.longitude); 		// 경도 ex)126.xxx
+							end_lat = pos.coords.latitude;
+							end_lon = pos.coords.longitude;
+							
+							console.log("arriveBtn 도착 경도" + end_lon);
+							console.log("arriveBtn 도착 위도" + end_lat);
+						});
+					} else {
+						alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
+					} 
 			
-			console.log('도착1');
+			
 			// 3. 직선거리 계산  API 사용요청
 			$.ajax({
 						method : "GET",
@@ -734,7 +717,7 @@
 					if(distance <= 100){ // 거리가 약 반경 100m 내의 있을 경우
 						stop();
 						
-						confirm_test = confirm("목적지 부근입니다. 서비스를 종료하시겠습니까?");
+						confirm_test = confirm("서비스 종료. 결과를 출력하시겠습니까?");
 						if(confirm_test==true){
 							//$('#testBtn').click(function(e){
 								//e.preventDefault();
@@ -751,7 +734,7 @@
 						
 					// 모달
 					} else{
-						alert('목적지에 도착하지 않았습니다. 위치를 다시 한번 확인해주세요.');
+						alert('도착 확인. 서비스 종료를 위해 도착 버튼을 한번 더 눌러주세요.');
 					}
 		 }); 
 	} // arriveBtn
@@ -859,13 +842,10 @@
 			    // idx+이동거리 ->   ajax -> 포인트적립으로 이동
 			    //로그인한 회원 idx ->
 			    //배포주소로,,
-
 			    console.log('uidx', idx);
 				console.log('cidx', data);
  				$.ajax({
-
 				
-
 				
 					url: 'https://www.withearthdona.tk/point/rest/user/point/course?idx='+idx+'&cIdx='+data+'&distance='+tDistance,
 					type: 'get',
@@ -891,7 +871,7 @@
 				alert('코스 저장을 성공했습니다.');
 			},
 			error: function(error){
-				console.log(error)
+				console.log(error);
 				console.log('저장 실패');
 			}
 			
@@ -905,7 +885,6 @@
     
    /*  var myModal = document.getElementById('myModal');
 	var myInput = document.getElementById('myInput');
-
 	/* myModal.addEventListener('shown.bs.modal', function () {
 	  myInput.focus()
 	}) */

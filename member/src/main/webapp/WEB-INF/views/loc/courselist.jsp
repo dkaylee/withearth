@@ -9,19 +9,16 @@
 <title>코스 리스트</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
 <style>
-
 .container{	
 	margin-top: 5%;
 	margin-left: 15%;
 	margin-right: 15%;	
 }
-
 td{
 	border-bottom: 1px solid #DDD;
 	text-align: center;
 	padding: 10px 0;
 } 
-
 th{
 	border-bottom: 1px solid #DDD;
 	text-align: center;
@@ -41,59 +38,48 @@ div.searchBox {
 	
 	vertical-align: middle;
 }
-
 /* 검색 타입 */
 #searchType{ 
 	width: 100%;
 	margin-bottom: 2%;
 	float: left;
 }
-
 /* 검색 키워드 */
 #keyword{
 	width: 75%;
 	
 	float: left;
 }
-
 #searchBtn{width: 23%;float: left; overflow: hidden; margin-left: 1%;}
-
 #totalCourseCount{
 	float: right;
 }
-
 h3{
 	margin: 0;
 	float: left;
 }
-
 #nav{
 	margin-left: 50%;
 }
-
 #nav>li{
 	list-style: none;
 	float:left;
 	text-align: center;
 }
-
 #nav>li>a{
 	text-decoration: none;
 	font-size: 1.5em;
 	color: #d4e0ef;
 }
-
 #nav>li>a:hover{
 	
 	font-size: 1.5em;
 	color: #5385c1;
 	
 }
-
 .contents{
 	margin-top: 10%;
 }
-
 </style>
 </head>
 <body>
@@ -143,16 +129,13 @@ h3{
 								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.courseDate}"
-										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
-								
+										pattern="yyyy-MM-dd" /></td>
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>
 								<td>${course.loc_km} km</td>
 								<%-- <td>${course.about_time} 분</td> --%>
 								<td>${course.walking_time}</td>
-								
-								<%--<td><a href="<c:url value="/course/edit?idx=${course.course_idx}"/>">수정</a> --%> 
-							    <td><a href="javascript:deleteCourse(${course.course_idx});">삭제</a></td>
+							    <td><a href="javascript:deleteCourse(${course.course_idx});" >삭제</a></td>
 							</tr>
 					</c:forEach>
 
@@ -183,14 +166,30 @@ h3{
 
 
 	<script>
+	
+	var idx = ${loginInfo.idx};
+	/* $.ajax({
+		url:'<c:url value="/member/loc/courselist"/>',
+		type:'get',
+		data:{
+			idx: idx
+			
+		}, success: function(data){
+			console.log('idx 조회 성공');
+		}, error: function(error){
+			console.log(error);
+		}
+	}); */
+	
+	
 	//  deleteCourse function이 없으면 삭제 기능이 실행이 안됨. 
 		function deleteCourse(course_idx) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
 				location.href = '<c:url value="/member/loc/coursedelete?course_idx="/>' + course_idx;
-			} // /op/member/delete?idx
+				
+			} 
 		}
 	
-
 		
 	</script>
 
