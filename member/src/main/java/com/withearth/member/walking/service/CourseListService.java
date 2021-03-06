@@ -25,7 +25,9 @@ public class CourseListService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public CourseListView getListView(SearchParam param) {
+	public CourseListView getListView(SearchParam param, int idx) {
+		
+		System.out.println("service list: " + idx);
 		
 		CourseListView listView = null;
 		
@@ -45,6 +47,7 @@ public class CourseListService {
 			listMap.put("index", startRow);
 			listMap.put("count", cntPerPage);
 			listMap.put("searchParam", param);
+			listMap.put("idx", idx);
 
 			// int totalCourseCount = dao.selectTotalCount();
 			int totalCourseCount = dao.selectSearchCourseCount(listMap);
@@ -84,10 +87,10 @@ public class CourseListService {
 		return list;
 	}
 
-	public int getCourseTotalCount() {
+	public int getCourseTotalCount(int idx) {
 		
 		dao = template.getMapper(WalkingDao.class);
-		return dao.selectTotalCount();
+		return dao.selectTotalCount(idx);
 	}
 	
 	
