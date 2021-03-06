@@ -66,7 +66,7 @@
 											html += '<input type="hidden" name="donaIdx" value="'+data.donaIdx+'">';								
 											html += '<input type="text" name="postTitle" id="postTitle" placeholder="제목" value="'+data.postTitle+'" />';
 											html += '<div class="oldImages"></div>';
-											html += '<input multiple="multiple" type="file" id="postImage">';
+											html += '<input multiple="multiple" type="file" id="postImage" name="file">';
 											html += '</div>';
 
 											html += '<div class="6u 12u$(xsmall)">';
@@ -139,7 +139,8 @@
 	
 	var image_list = []; // 새롭게 추가,삭제한 파일들의 배열
 	
-		
+	
+				
   // 뷰에서 선택한 이미지를 삭제 (추가한 이미지)
 	function deleteNewImageAction(index) {
 		console.log('테스트 4');
@@ -215,62 +216,42 @@
 				
 	};
 	
+    $(document).on("change", '#postImage', function(e){
+    	
+    	var files = e.target.files;
+		//console.log(files);
+
+		var filesArr = Array.prototype.slice.call(files);
+
+		filesArr.forEach(function(f) {
+					if (!f.type.match("image.*")) {
+						alert('이미지 파일만 가능합니다.')
+						return;
+					}
+
+					image_list.push(f);
+         
+					var reader = new FileReader();
+					reader.onload = function(e) {
+
+						var index = 0;
+
+						var img_html = '<div class="p-images">';
+						img_html += '<a href="javascript:void(0);" onclick=\"deleteNewImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
+						img_html += '<img src="'+e.target.result+'" data-file="'+f.name+'" style="width:100px; height:100px;">';
+						img_html += '<img src="<c:url value="/img/dona/xbtn.jpg"/>" width="15px;" id="xBtn"></a>';
+						img_html += '</div>';
+
+						index++;
+
+						$('.oldImages').append(img_html);
+
+					}
+					reader.readAsDataURL(f);
+											
+				});   	
+    });
 	
-	window.onload = function() {		
-		console.log('테스트 5');
-				
-		$(document).ready(function() {
-			console.log('테스트 6');
-			
-			// 이미지 추가 시 메서드 호출
-			$('#postImage').on("change", handleImgFileSelect);
-			
-		});	
-		
-					
-		// 이미지 추가 시 미리보기 기능
-
-		function handleImgFileSelect(e) {
-			console.log('테스트 7');
-
-			var files = e.target.files;
-			//console.log(files);
-
-			var filesArr = Array.prototype.slice.call(files);
-
-			filesArr.forEach(function(f) {
-						if (!f.type.match("image.*")) {
-							alert('이미지 파일만 가능합니다.')
-							return;
-						}
-
-						image_list.push(f);
-             
-						var reader = new FileReader();
-						reader.onload = function(e) {
-
-							var index = 0;
-
-							var img_html = '<div class="p-images">';
-							img_html += '<a href="javascript:void(0);" onclick=\"deleteNewImageAction('+ index+ ');\" id="img_id_'+ index+ '" class="img_event" >';
-							img_html += '<img src="'+e.target.result+'" data-file="'+f.name+'" style="width:100px; height:100px;">';
-							img_html += '<img src="<c:url value="/img/dona/xbtn.jpg"/>" width="15px;" id="xBtn"></a>';
-							img_html += '</div>';
-
-							index++;
-
-							$('.oldImages').append(img_html);
-
-						}
-						reader.readAsDataURL(f);
-												
-					});
-					
-		};		
-	
-						
-
-	};
 </script>
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
