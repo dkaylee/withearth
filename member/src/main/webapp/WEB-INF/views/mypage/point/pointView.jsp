@@ -247,7 +247,7 @@ a.btn-layerClose {
 				<div class="table-wrapper" id="wrapTable3">		
 								
 				  <div class="presentList">  
-			    <div class="ableList">2월의 교환 가능 Gift</div>
+			    <div class="ableList">3월의 교환 가능 Gift</div>
 			    <div class="wrapList">교환 가능 포인트</div>		    
 			    </div>	
 			    <a><img src="<c:url value="/img/point/tumblr.png"/>" alt="Pic 01"/></a>
