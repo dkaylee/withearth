@@ -94,7 +94,7 @@
 		// 게시물 idx
 		var donaIdx = getParameterByName('idx');
 		// 회원 idx
-		var idx = '<c:out value="${user}"/>';
+		var idx = '<c:out value="${loginInfo.idx}"/>';
 
 		// 좋아요 클릭 시 처리
 		function click_heart() {
