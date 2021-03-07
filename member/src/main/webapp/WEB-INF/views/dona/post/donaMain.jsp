@@ -140,7 +140,8 @@
 		
 		var searchType = $('#searchType').val();
 		var keyword = $('#keyword').val();
-		
+		  
+	 
 		$.ajax({
 			url : 'https://www.withearthdona.tk/dona/rest/user/post/list/search',
 			type : 'GET',
@@ -154,7 +155,7 @@
 																													
 					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 						html += '<input type="hidden" value="'+item.donaIdx+'">';
-					  html += '<div class="article-img">';
+					    html += '<div class="article-img">';
 						html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';			
 						html += '</div>';
 						html += '<div class="article-content">';
@@ -241,6 +242,7 @@
 					
 					var searchType = $('#searchType').val();
 					var keyword = $('#keyword').val();
+					console.log(searchType + ':' + keyword);
 					
 					$.ajax({
 						url : 'https://www.withearthdona.tk/dona/rest/user/post/list/search',

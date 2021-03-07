@@ -281,6 +281,7 @@
 		
 		var searchType = $('#searchType').val();
 		var keyword = $('#keyword').val();
+	    console.log(searchType +':' + keyword);
 		
 		$.ajax({
 			url : 'http://localhost:8080/dona/rest/user/post/list/search',

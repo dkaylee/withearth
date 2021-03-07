@@ -65,7 +65,7 @@ public class PointUsingService {
 		int cIdx = cdao.getNextCouponIdx();
 
 		// 링크로 할 url
-		String url = "http://localhost:8080/point/coupon/qr/use?idx="+idx+"&cIdx="+ cIdx;
+		String url = "https://www.withearth.tk/member/coupon/qr/use?idx="+idx+"&cIdx="+ cIdx;
 		// 링크 생성값
 		String codeUrl = new String(url.getBytes("utf-8"), "ISO-8859-1");
 

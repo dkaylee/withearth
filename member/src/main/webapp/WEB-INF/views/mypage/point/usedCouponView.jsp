@@ -43,7 +43,7 @@
    $(document).ready(function(){
 	   
 	   $.ajax({
-		   url : 'https://www.withearthdona.tkamazonaws.com:8080/point/rest/user/coupon/use',
+		   url : 'https://www.withearthdona.tk/point/rest/user/coupon/use',
 		   type : 'GET',
 		   data : 'idx='+idx+'&cIdx='+cIdx,
 		   success : function(data){
