@@ -143,7 +143,7 @@ h3{
 								<%-- <td>${course.course_idx}</td> --%> <!-- 카운팅으로 처리 forEach..? -->
 								<td>${i}</td>
 								<td><fmt:formatDate value="${course.courseDate}"
-										pattern="yyyy-MM-dd  HH:mm:ss" /></td>
+										pattern="yyyy-MM-dd " /></td>
 								
 								<td>${course.start_point}</td>
 								<td>${course.end_point}</td>

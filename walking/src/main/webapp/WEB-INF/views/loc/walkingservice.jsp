@@ -901,7 +901,7 @@
 			
 			<button id="startBtn" class="button special" onclick="startTime()">시작 하기</button>
 			<button id="arriveBtn" class="button special">도착</button><br>
-			<button id="InfoBtn" class="button special" onclick="infoModal()" >올바르게 걷는 방법</button>
+			<!-- <button id="InfoBtn" class="button special" onclick="infoModal()" >올바르게 걷는 방법</button> -->
 			
 			<br>
 			
