@@ -25,9 +25,7 @@ public class DonaViewController {
 		public String gotodona(
 				@RequestParam("idx") int idx,
 				HttpSession session) {
-		
-		session.setAttribute("user", idx);
-		
+				
 			return "dona/post/donaMain";
 		}
 	
@@ -36,7 +34,6 @@ public class DonaViewController {
 			@RequestParam(value="p", defaultValue ="1") int p,
 			HttpSession session
 			) {
-		//session.setAttribute("user", 1);		
 		return "dona/post/donaMain";
 	}
 	
@@ -64,10 +61,6 @@ public class DonaViewController {
 			HttpServletRequest request,
 			Model model) {
 				
-//	   HttpSession session  = request.getSession(false);
-//	   session.setAttribute("idx", 3);
-//	   System.out.println(session);
-	   
 		return "dona/post/postDetailView";
 	}
 		
