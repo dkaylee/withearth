@@ -61,9 +61,10 @@ public class PointUsingService {
 			file.mkdirs();
 		}
 		
+		
 		// 저장될 idx값 가져오기
 		int cIdx = cdao.getNextCouponIdx();
-
+		
 		// 링크로 할 url
 		String url = "https://www.withearth.tk/member/coupon/qr/use?idx="+idx+"&cIdx="+ cIdx;
 		// 링크 생성값
