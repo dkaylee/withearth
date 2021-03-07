@@ -94,7 +94,7 @@
 		 sock.onmessage = onMessage;
 
 		 //데이터를 끊고싶을때 실행하는 메소드
-			sock.onclose = onClose;
+		 //	sock.onclose = onClose;
 				
 		 // 대화를 요청한 상대에게서 받은 메시지				
 		 function onMessage(evt) { 

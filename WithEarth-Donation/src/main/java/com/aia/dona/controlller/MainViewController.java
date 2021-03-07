@@ -25,7 +25,7 @@ public class MainViewController {
 			@RequestParam(value="p", defaultValue ="1") int p,
 			HttpSession session
 			) {
-		session.setAttribute("user", 1);
+		//session.setAttribute("user", 1);
 		
 		return "post/donaMain";
 	}
@@ -54,9 +54,9 @@ public class MainViewController {
 			HttpServletRequest request,
 			Model model) {
 				
-	   HttpSession session  = request.getSession(false);
-	   session.setAttribute("idx", 3);
-	   System.out.println(session);
+//	   HttpSession session  = request.getSession(false);
+//	   session.setAttribute("idx", 3);
+//	   System.out.println(session);
 	   
 		return "post/postDetailView";
 	}

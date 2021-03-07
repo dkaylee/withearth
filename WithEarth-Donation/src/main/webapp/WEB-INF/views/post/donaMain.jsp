@@ -227,6 +227,8 @@
     var p = getParameterByName('p');
     console.log(p); 
     
+    var loginUser = '<c:out value="${loginInfo.idx}"/>';
+    
  
      // 채팅 알림
      // 웹소켓을 지정한 url로 연결한다.
