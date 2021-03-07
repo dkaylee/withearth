@@ -177,10 +177,11 @@ button {
 	all: unset;
 	background-color: #5385c1;
 	color: white;
-	padding: 50px 150px;
+	padding: 50px 100px;
 	border-radius: 6px;
 	cursor: pointer;
-	margin: 50px 10px;
+	margin: 25px 10px;
+	font-weight:900;
 }
 
 .modal {

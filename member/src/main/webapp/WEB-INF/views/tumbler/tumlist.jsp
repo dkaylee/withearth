@@ -177,7 +177,7 @@ ul li {
 
 						$.ajax({    
 									
-									url :'https://www.withearthtum.tk/test8/tumbler/tumlist/rest?idx='+idx+'&p='+p,
+							        url :'https://www.withearthtum.tk/test8/rest/tumbler/tumlist/?idx='+idx+'&p='+p,
 									type : 'GET',
 									async : false,
 									success : function(data) {
@@ -217,7 +217,7 @@ ul li {
 											console.log("totalPageCount:"+ totalPageCount)
 
 											html2 = '<tr>';
-											html2 += '<td>' +(index+1)+ '</td>';
+											html2 += '<td>' + item.tum_idx+ '</td>';
 											html2 += '<td>' + item.tum_date+ '</td>';
 											html2 += '<td>' + item.cafe_name+ '</td>';
 											html2 += '<td>' + item.tum_point+ '</td>';

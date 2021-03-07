@@ -114,7 +114,7 @@ $(document).ready(function(){
 		contentType: false,
 		cache: false,
 		success: function(data){
-			alert("성공");
+			alert("회원정보가 수정됐습니다.");
 			console.log(data);
 		},
 		error: function(error){
