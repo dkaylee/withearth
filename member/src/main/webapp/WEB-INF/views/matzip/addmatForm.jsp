@@ -20,7 +20,7 @@ img{
 	width: 200px;
 }
 .previewBox {
-	width: 900px;
+	width: 100%;
 	height: 300px;
 	overflow: auto;
 }
@@ -37,7 +37,8 @@ float:left;
 
 <body class="subpage">
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	<section id="three" class="wrapper">
+	
+<section id="three" class="wrapper">
 	<div class="inner">
 			<header class="align-center">
 				<h2>새로운 맛집 추가</h2>
@@ -46,6 +47,7 @@ float:left;
 			</header>
 	
 	<!-- 맛집추가 폼 -->	
+	
 	<div class="row uniform">
 		<form method="post" enctype="multipart/form-data">
 			<div class="row uniform">
@@ -147,7 +149,7 @@ float:left;
 				
 							if(result == "1"){
 									alert("업체등록을 완료하였습니다.");
-									goAddView();
+									goAddView(matIdx);
 								}
 							},
 							error : function(){
@@ -185,7 +187,7 @@ float:left;
 		     }
 		     
 		     /* 맛집 목록이동 */
-		     function goAddView(){
+		     function goAddView(matIdx){
 		     	location.href = "/member/matzip/addmatView?matIdx"+matIdx;
 		     }
 	

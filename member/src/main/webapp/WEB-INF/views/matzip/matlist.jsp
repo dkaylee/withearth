@@ -117,7 +117,7 @@ display:inline-block;
 						var html = "";
 						html +='<article class="article">'
 						html +='<div class="image fit" id="thumb">';
-						html +='<a href="<c:url value="/matzip/matDetailView?matIdx='+item.matIdx+'"/>"><img src="/member/fileupload/matzip/'+item.matImg+'"></a>';
+						html +='<a href="<c:url value="/matzip/matDetailView?matIdx='+item.matIdx+'"/>"><img src="https://www.withearthcomm.tk/community/fileupload/matzip/'+item.matImg+'"></a>';
 						html +='</div>';
 						html +='<hr class="major"/>';
 						html +='<header>';

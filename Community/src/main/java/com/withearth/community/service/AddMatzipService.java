@@ -79,7 +79,7 @@ public class AddMatzipService {
 				
 			
 				// 웹경로
-				String uploadPath = "/fileupload/matzip/";
+				String uploadPath ="/fileupload/matzip/";
 				
 				// 시스템 실제 경로
 				String saveDirPath = mprq.getSession().getServletContext().getRealPath(uploadPath);
@@ -97,6 +97,12 @@ public class AddMatzipService {
 				
 				// 파일 사이즈
 				long fileSize = mf.get(i).getSize();
+				
+				// 03/06/21 추가
+//				newFile = new File(saveDirPath, newFName);
+//				if(!newFile.isDirectory()) {
+//					newFile.mkdir();
+//				}
 				
 				// 저장될 파일 경로
 				newFile = new File(saveDirPath, newFName);

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.withearth.community.domain.FileVo;
 import com.withearth.community.domain.MatzipVo;
+import com.withearth.community.domain.StarRateRequest;
 
 public interface MatDao {
 	
@@ -20,7 +21,7 @@ public interface MatDao {
 	// 맛집 수 업데이트
 	int matUpdateCnt();
 	
-	// 총 맛집수 조회
+	// 검색한 회원의 수
 	int selectSearchMatzipCount(Map<String, Object> listMap);
 	
 	// 리스트에 맞는 맛집 검색
@@ -55,6 +56,14 @@ public interface MatDao {
 	
 	// 파일 조회
 	List<FileVo> selectFileList(int matIdx);
+
+	//----------star Review--------------
+	
+	// 리뷰 insert
+	int insertReview(StarRateRequest starRequest);
+
+	List<StarRateRequest> selectReview(int matIdx);
+
 
 
 

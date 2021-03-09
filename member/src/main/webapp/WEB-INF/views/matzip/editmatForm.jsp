@@ -25,7 +25,7 @@ img{
 	width: 200px;
 }
 .previewBox {
-	width: 900px;
+	width: 100%;
 	height: 300px;
 	overflow: auto;
 }

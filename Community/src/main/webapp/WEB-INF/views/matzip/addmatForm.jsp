@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <style>
 .3u$ 12u$(small){
@@ -19,7 +20,7 @@ img{
 	width: 200px;
 }
 .previewBox {
-	width: 900px;
+	width: 100%;
 	height: 300px;
 	overflow: auto;
 }
@@ -36,14 +37,17 @@ float:left;
 
 <body class="subpage">
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
-	<section id="three" class="wrapper">
+	
+<section id="three" class="wrapper">
 	<div class="inner">
 			<header class="align-center">
 				<h2>새로운 맛집 추가</h2>
 				<hr class="major"/>
+				<P>${loginInfo.name} 님이 맛집을 등록중입니다. </P>
 			</header>
 	
 	<!-- 맛집추가 폼 -->	
+	
 	<div class="row uniform">
 		<form method="post" enctype="multipart/form-data">
 			<div class="row uniform">
@@ -68,6 +72,10 @@ float:left;
 					<!-- 소개글<input type="text" name="mCont" id="mCont" value="" style="height: 300px;" /> -->
 				</div>
 				
+				
+				<input type="text" value="${loginInfo.idx}" style="visibility: hidden;" name="idx" id="idx"/>
+				
+				
 				<!-- 파일업로 -->
 				<div class="6u$ 12u$(xsmall)" id="file-group">
 					이미지추가<input type="file" multiple="multiple" id="mImg" name="mImg" />
@@ -77,6 +85,7 @@ float:left;
 				<div class="previewBox">
 				<div id="preview"></div>
 				</div>
+				
 				
 				
 				<div class="12u$">
@@ -91,6 +100,10 @@ float:left;
 </div>
 
 <script>
+
+	// 회원 idx 받기
+/* 	var idx =${loginInfo.idx}
+	console.log(idx); */
 	
 	
 	/* 맛집추가 및 파일업로드 */
@@ -113,6 +126,7 @@ float:left;
 						formData.append("mImg",  files[i]);
 					}
 					
+					formData.append("idx", $("#idx").val());
 					formData.append("mTitle", $("#mTitle").val());
 					formData.append("mAddr", $("#mAddr").val());
 					formData.append("mTime", $("#mTime").val());
@@ -132,9 +146,10 @@ float:left;
 						cache : false,
 						success : function (result){
 						console.log(result);
+				
 							if(result == "1"){
 									alert("업체등록을 완료하였습니다.");
-									goMatlist();
+									goAddView(matIdx);
 								}
 							},
 							error : function(){
@@ -163,12 +178,17 @@ float:left;
 		                
 		                reader.readAsDataURL(file);
 		            }
-		        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다. 
+		        } else alert('invalid file input');
 		    }  
 		    
 		     /* 맛집 목록이동 */
 		     function goMatlist(){
-		     	location.href = "/community/matzip/matlist?p=1";
+		     	location.href = "/member/matzip/matlist?p=1";
+		     }
+		     
+		     /* 맛집 목록이동 */
+		     function goAddView(matIdx){
+		     	location.href = "/member/matzip/addmatView?matIdx"+matIdx;
 		     }
 	
 </script>

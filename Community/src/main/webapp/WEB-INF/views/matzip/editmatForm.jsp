@@ -24,7 +24,7 @@ img{
 	width: 200px;
 }
 .previewBox {
-	width: 900px;
+	width: 100%;
 	height: 300px;
 	overflow: auto;
 }
@@ -138,6 +138,7 @@ $(document).ready(function(){
 	
 	getEditMat();
 
+	
 	$('.editbtn').click(function(){
 		
 		var photoFiles = $('#mImg');
@@ -146,16 +147,19 @@ $(document).ready(function(){
 		
 		var files = photoFile[0].files;
 		
-		
-		for(var i=0; i<files.length; i++){
-			formData.append("mImg", $('#mImg')[i].files);
+		if(files != null){
+			for(var i=0; i<files.length; i++){
+				formData.append("mImg", $('#mImg')[i].files);
+			}
 		}
 		
-		formData.append("mTitle", $('#mTitle').val()),
+		
+ 		formData.append("mTitle", $('#mTitle').val()),
 		formData.append("mAddr", $('#mAddr').val()),
 		formData.append("mTime", $('#mTime').val()),
 		formData.append("mNum", $('#mNum').val()),
-		formData.append("mCont", $('#mCont').val());
+		formData.append("mCont", $('#mCont').val()); 
+	
 		
 		console.log(files);
 		console.log(formData);
@@ -241,7 +245,37 @@ $(document).ready(function(){
 
 });
 	
+/* get UploadFiles */
+function getUploadFiles(){
 	
+	var filelist= [];
+	
+	$.ajax({
+		url:"https://www.withearthcomm.tk/community/matzip/filelist?matIdx="+matIdx,
+		type: "GET",
+		success : function(data) {
+			console.log(data);
+			var files = "";
+			
+			for(var i=0; i<data.length; i++){
+			files +='<div>'
+			files +='<img src="https://www.withearthcomm.tk/community/fileupload/matzip/'+data[i].newFName+'" style="width:60%">';
+			files +='</div>'
+			filelist.push(files);			
+			}
+			
+			$('#matImg').append(files);
+			
+			console.log(matImg);
+			console.log(filelist);
+
+		},
+		error : function(data){
+			alert("파일 못불러옴^^");
+
+		}
+	});
+}
 </script>
 	
 	

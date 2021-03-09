@@ -64,7 +64,7 @@ public class MatzipListService {
 	
 	}
 	
-	public List<MatzipVo> getListView(){
+	public List<MatzipVo> getListView(int matIdx){
 		
 		List<MatzipVo> list = null;
 		

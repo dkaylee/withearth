@@ -41,6 +41,15 @@
 		<result column="mat_idx" property="matIdx" />
 	</resultMap>
 	
+	<!-- 리뷰리스트 -->
+	<resultMap id="reviewlist" type="com.withearth.community.domain.StarRateRequest">
+	<id column="star_idx" property="sIdx"/>
+		<result column="idx" property="idx" />
+		<result column="mat_idx" property="matIdx" />
+		<result column="star_star" property="star" />
+		<result column="star_cont" property="starCont" />
+		<result column="star_date" property="starDate" />
+	</resultMap>
 	
 	<!-- 전체 맛집리스트 출력 -->
 	<select id="selectAllMatList"
@@ -234,8 +243,26 @@
 	</delete>
 	
 	
+	<!-- 별점 리뷰 -->
 	
+	<insert id="insertReview"
+	parameterType="com.withearth.community.domain.StarRateRequest"
+	useGeneratedKeys="true"
+	keyProperty="sIdx"
+	>
 	
+	INSERT INTO Matstar
+	
+	(star_idx, idx, mat_idx, star_star, star_cont)
+	VALUES
+	(#{sIdx}, #{idx}, #{matIdx}, #{star}, #{sCont})
+	
+	</insert>
+	
+	<!-- 리뷰 찾기 -->
+	<select id="selectReview" resultMap="filelist">
+		select * from Matstar where mat_idx = #{matIdx}
+	</select>
 	
 	
 
