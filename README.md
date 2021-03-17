@@ -13,7 +13,7 @@
 
 # 1. 기술 스택
 
-<p align="center"><img width="664" alt="33" src="https://user-images.githubusercontent.com/71997976/111419783-6acc8b00-872d-11eb-916f-88df026135a2.PNG"></
+<p align="center"><img width="664" alt="33" src="https://user-images.githubusercontent.com/71997976/111419783-6acc8b00-872d-11eb-916f-88df026135a2.PNG">
 
 * 웹 표준
   * HTML5
