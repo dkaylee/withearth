@@ -2,7 +2,7 @@
 북극곰 지키기
 
 [계획서 및 일정표](https://docs.google.com/spreadsheets/d/1fNIBv-oUIvZeVhuANIY_o--szHTX4OPn/edit#gid=2057609518)
-# [시연 영상>>](https://youtu.be/aCLqBQu-1W8)
+# [시연 영상](https://youtu.be/aCLqBQu-1W8)
 
 # :star: 나비효과 팀원 소개 및 담당
  * :penguin:[양선경](https://github.com/ohMySunset): 나눔게시판&마이페이지
