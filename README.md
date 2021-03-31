@@ -44,18 +44,7 @@
 
 <p align="center"><img width="618" alt="22" src="https://user-images.githubusercontent.com/71997976/111417490-538b9e80-8729-11eb-95ee-a902e1ffd32a.PNG"></p>
 # 3. 주요 기능
-![슬라이드16](https://user-images.githubusercontent.com/71997987/113083992-2b676980-9218-11eb-841c-2630a3864577.PNG)
-![슬라이드17](https://user-images.githubusercontent.com/71997987/113083994-2c000000-9218-11eb-8146-e2b625c4694a.PNG)
-![슬라이드18](https://user-images.githubusercontent.com/71997987/113083997-2c989680-9218-11eb-93cf-e06d2b68af22.PNG)
-![슬라이드19](https://user-images.githubusercontent.com/71997987/113083999-2d312d00-9218-11eb-9dd3-
-![슬라이드20](https://user-images.githubusercontent.com/71997987/113084000-2d312d00-9218-11eb-9517-dfc04191cc62.PNG)
-![슬라이드21](https://user-images.githubusercontent.com/71997987/113084002-2dc9c380-9218-11eb-8186-5bdfe2b2d6ad.PNG)
-![슬라이드22](https://user-images.githubusercontent.com/71997987/113084003-2dc9c380-9218-11eb-939e-e894a0e0fd67.PNG)
-![슬라이드23](https://user-images.githubusercontent.com/71997987/113084007-2e625a00-9218-11eb-8e47-86d649c29cc6.PNG)
-![슬라이드24](https://user-images.githubusercontent.com/71997987/113084008-2e625a00-9218-11eb-96a0-4d49486be78b.PNG)
-c37b75e47cdb.PNG)
-![슬라이드25](https://user-images.githubusercontent.com/71997987/113084010-2efaf080-9218-11eb-816d-efae02c433b1.PNG)
-![슬라이드26](https://user-images.githubusercontent.com/71997987/113084013-2efaf080-9218-11eb-913a-c23df0839038.PNG)
-![슬라이드27](https://user-images.githubusercontent.com/71997987/113084014-2f938700-9218-11eb-9bad-2a0494d00e9c.PNG)
-![슬라이드28](https://user-images.githubusercontent.com/71997987/113084016-2f938700-9218-11eb-9ded-36f7b8f35ce6.PNG)
+
+![슬라이드16](https://user-images.githubusercontent.com/71997987/113084226-8c8f3d00-9218-11eb-8883-c83f627094d7.PNG)
+
 
