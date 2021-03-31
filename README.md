@@ -43,8 +43,20 @@
 # 2. 프로젝트 구조
 
 <p align="center"><img width="618" alt="22" src="https://user-images.githubusercontent.com/71997976/111417490-538b9e80-8729-11eb-95ee-a902e1ffd32a.PNG"></p>
-# 3. 주요 기능
 
-![슬라이드16](https://user-images.githubusercontent.com/71997987/113084226-8c8f3d00-9218-11eb-8883-c83f627094d7.PNG)
+# 3. 주요 기능
+![슬라이드16](https://user-images.githubusercontent.com/71997987/113084252-9c0e8600-9218-11eb-9bc8-5b3b96e9f82e.PNG)
+![슬라이드17](https://user-images.githubusercontent.com/71997987/113084253-9d3fb300-9218-11eb-8b57-a083722c9d39.PNG)
+![슬라이드18](https://user-images.githubusercontent.com/71997987/113084256-9d3fb300-9218-11eb-800f-10fdffd162e2.PNG)
+![슬라이드19](https://user-images.githubusercontent.com/71997987/113084258-9dd84980-9218-11eb-9f8e-42c67a76d364.PNG)
+![슬라이드20](https://user-images.githubusercontent.com/71997987/113084259-9dd84980-9218-11eb-924e-0650358284f8.PNG)
+![슬라이드21](https://user-images.githubusercontent.com/71997987/113084267-a16bd080-9218-11eb-954b-cb74a985e3dd.PNG)
+![슬라이드22](https://user-images.githubusercontent.com/71997987/113084270-a2046700-9218-11eb-81c6-cec3fd603463.PNG)
+![슬라이드23](https://user-images.githubusercontent.com/71997987/113084271-a2046700-9218-11eb-937d-098212eea422.PNG)
+![슬라이드24](https://user-images.githubusercontent.com/71997987/113084274-a29cfd80-9218-11eb-83dc-f9a6a86e97b9.PNG)
+![슬라이드25](https://user-images.githubusercontent.com/71997987/113084275-a29cfd80-9218-11eb-94dc-1b437a361f1a.PNG)
+![슬라이드26](https://user-images.githubusercontent.com/71997987/113084285-a597ee00-9218-11eb-986e-4f46ecbb0e09.PNG)
+![슬라이드27](https://user-images.githubusercontent.com/71997987/113084286-a6308480-9218-11eb-864f-637e5e160f10.PNG)
+![슬라이드28](https://user-images.githubusercontent.com/71997987/113084287-a6308480-9218-11eb-8421-012a4848ea71.PNG)
 
 
