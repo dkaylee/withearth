@@ -33,6 +33,7 @@
   * 카카오 맵 Api
   * 지오로케이션 Api
   * zxing api
+  * 카카오/구글/네이버 로그인 API
 
 * RESTful Api 구조
   * 서버 <--> 클라이언트 통신을 위한 REST 인터페이스 구현
