@@ -44,8 +44,8 @@
 # 2. 프로젝트 구조
 
 <p align="center"><img width="618" alt="22" src="https://user-images.githubusercontent.com/71997976/111417490-538b9e80-8729-11eb-95ee-a902e1ffd32a.PNG"></p>
-![슬라이드12](https://user-images.githubusercontent.com/71997987/114337478-1bdb0f80-9b8c-11eb-9f68-dc73e8bab01c.JPG)
-![슬라이드13](https://user-images.githubusercontent.com/71997987/114337490-23021d80-9b8c-11eb-8293-4885e9e33fc9.JPG)
+![슬라이드12](https://user-images.githubusercontent.com/71997987/114337596-580e7000-9b8c-11eb-9a15-29136b126436.JPG)
+
 
 # 3. 로그인/회원가입
 ![슬라이드16](https://user-images.githubusercontent.com/71997987/114337432-0d8cf380-9b8c-11eb-8ff5-3bfac6850b3a.JPG)
