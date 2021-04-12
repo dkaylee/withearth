@@ -48,13 +48,14 @@
 # 3. 로그인/회원가입
 ![슬라이드16](https://user-images.githubusercontent.com/71997987/114337127-80499f00-9b8b-11eb-9dfe-d537afc71048.JPG)
 ![슬라이드17](https://user-images.githubusercontent.com/71997987/114337129-817acc00-9b8b-11eb-9f4e-91331e07de15.JPG)
+![슬라이드24](https://user-images.githubusercontent.com/71997987/114337139-83dd2600-9b8b-11eb-8ca1-f90687fdfefd.JPG)
 ![슬라이드18](https://user-images.githubusercontent.com/71997987/114337130-82136280-9b8b-11eb-9825-39d9ed0983a1.JPG)
 ![슬라이드19](https://user-images.githubusercontent.com/71997987/114337132-82136280-9b8b-11eb-8af4-81950a07567a.JPG)
 ![슬라이드20](https://user-images.githubusercontent.com/71997987/114337134-82abf900-9b8b-11eb-8c71-a68bbf07b630.JPG)
 ![슬라이드21](https://user-images.githubusercontent.com/71997987/114337135-82abf900-9b8b-11eb-8eb6-b3d9c6537db8.JPG)
 ![슬라이드22](https://user-images.githubusercontent.com/71997987/114337136-83448f80-9b8b-11eb-8fad-0de0f1b9d515.JPG)
 ![슬라이드23](https://user-images.githubusercontent.com/71997987/114337138-83448f80-9b8b-11eb-9e90-1d5333aa4f00.JPG)
-![슬라이드24](https://user-images.githubusercontent.com/71997987/114337139-83dd2600-9b8b-11eb-8ca1-f90687fdfefd.JPG)
+
 ![슬라이드35](https://user-images.githubusercontent.com/71997987/114337146-86d81680-9b8b-11eb-80bf-5df9621dc084.JPG)
 
 
