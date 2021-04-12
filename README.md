@@ -44,6 +44,7 @@
 # 2. 프로젝트 구조
 
 <p align="center"><img width="618" alt="22" src="https://user-images.githubusercontent.com/71997976/111417490-538b9e80-8729-11eb-95ee-a902e1ffd32a.PNG"></p>
+
 ![슬라이드12](https://user-images.githubusercontent.com/71997987/114337596-580e7000-9b8c-11eb-9a15-29136b126436.JPG)
 
 
