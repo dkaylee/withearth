@@ -18,7 +18,7 @@
 
 <!-- 구글 로그인 -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
- <meta name="google-signin-client_id" content="1062510835529-vrqcivq464jhn25nhdghd3ij957430it.apps.googleusercontent.com">
+ <meta name="google-signin-client_id" content="1062510835529-simuk8jl5l9putr99lf4282vbrbg8qs0.apps.googleusercontent.com">
 <!-- 네이버 로그인 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <!-- css -->
@@ -48,13 +48,6 @@
 </div>
 </div>
 </body>
-
-
-
-
-
-
-
 
 
 <script>
@@ -263,11 +256,12 @@ function onSignIn() {
 	
 	if (auth2.isSignedIn.get()) {
 		var profile = auth2.currentUser.get().getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        //console.log("ID: " + profile.getId()); // Don't send this directly to your server!
         var g_name = profile.getName();
  		var g_img =profile.getImageUrl();
         var g_email = profile.getEmail();
 		var googleinfo = {g_name:g_name, g_img:g_img, g_email:g_email};
+		console.log(g_name);
 	}	
 	
 	$.ajax({
@@ -320,7 +314,7 @@ function onSignIn() {
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "m2atJuSTPKnWvaMTDlAu",
-			callbackUrl: "https://www.withearth.tk/member/member/callback",
+			callbackUrl: "http://localhost:8080/member/member/callback",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 3, height: 45} /* 로그인 버튼의 타입을 지정 */
 		}
