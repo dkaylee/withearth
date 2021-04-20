@@ -1,5 +1,8 @@
 package com.withearth.member.dao;
+
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.withearth.member.domain.ListVO;
 import com.withearth.member.domain.Member;
@@ -84,7 +87,7 @@ public interface MemberDAO {
 	void deleteList(int idx);
 	
 	//게시물 목록+페이징
-	List<ListVO> listPage(int displayPost, int postNum);
+	List<ListVO> listPage(@Param("displayPost") int displayPost, @Param("postNum")int postNum);
 	
 	
 }

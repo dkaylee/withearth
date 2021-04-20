@@ -30,15 +30,15 @@
   <textarea class="form-control" aria-label="With textarea" id="contents" name="contents" readonly="readonly">${view.contents}</textarea>
 </div>
 </form>
-<button type="button" class="btn btn-light" onClick="location.href='/board/list'">뒤로가기</button>
-<button type="button" class="btn btn-light" onClick="location.href='/board/modify?bno=${view.idx}'">수정</button>
+<button type="button" class="btn btn-light" onClick="location.href='/member/board/listPage?num=1'">뒤로가기</button>
+<button type="button" class="btn btn-light" onClick="location.href='/member/board/modify?bno=${view.idx}'">수정</button>
 <button type="button" class="btn btn-light" onClick="subcheck()">삭제</button>
 
 </body>
 <script>
 function subcheck(){
 	if(confirm("정말 삭제하시겠습니까?")==true){
-		location.href='/board/delete?bno=${view.idx}'
+		location.href='/member/board/delete?bno=${view.idx}'
 	} else {
 		return ;
 	}

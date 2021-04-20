@@ -10,7 +10,7 @@ import com.withearth.member.community.service.WriteService;
 import com.withearth.member.domain.WriteDTO;
 
 @Controller
-	@RequestMapping("/write")
+	@RequestMapping("board/write")
 	public class WriteController {
 
 		@Autowired
@@ -18,7 +18,7 @@ import com.withearth.member.domain.WriteDTO;
 		
 		@GetMapping
 		public String writeView() {
-			return "write";
+			return "community/write";
 		}
 		
 		@PostMapping
@@ -28,6 +28,6 @@ import com.withearth.member.domain.WriteDTO;
 			System.out.println("완료");
 			System.out.println(result);
 			
-			return "redirect:board/listPage?num=1";
+			return "redirect:/board/listPage?num=1";
 		}
 	}

@@ -23,32 +23,64 @@
 		<section id="one" class="wrapper">	
 		</section>
 			<h1>게시판</h1>
-				<table class="table table-striped">
-				<thead>
-					<tr>
-					<th>글번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일자</th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<c:forEach items="${list}" var="lst">
-					<tr>
-					<td>${lst.idx}</td>
-					<td>
-					<a href="/board/view?bno=${lst.idx}">${lst.title}</a>
-					</td>
-					<td>${lst.writer}</td>
-					<td>${lst.inserttime}</td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			
-				</table>
-			
-			<button type="button" class="btn btn-light" onclick="location.href='http://localhost:8080/write'">글쓰기</button>
+	<table class="table table-striped">
+	<thead>
+	<tr>
+	<th>글번호</th>
+	<th>제목</th>
+	<th>작성자</th>
+	<th>작성일자</th>
+	</tr>
+	</thead>
+	<tbody>
+	<c:forEach items="${list}" var="lst">
+	<tr>
+	<td>${lst.idx}</td>
+	<td>
+	<a href="/member/board/view?bno=${lst.idx}">${lst.title}</a>
+	</td>
+	<td>${lst.writer}</td>
+	<td>${lst.inserttime}</td>
+	</tr>
+	</c:forEach>
+	</tbody>
+	</table>
+	<div>
+		<c:if test="${page.prev}">
+			<span>
+				[<a href="/member/board/listPage?num=${page.startPageNum-1}">이전</a>]	
+			</span>
+		</c:if>
+		
+		<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+		<span>
+			<c:if test="${select!=num}">
+			<a href="/member/board/listPage?num=${num}">${num}</a>
+			</c:if>
+			<c:if test="${select == num}">
+			<b>${num}</b>
+			</c:if>
+		</span>		
+		</c:forEach>
+
+		<c:if test="${page.next}">
+			<span>
+				[<a href="/member/board/listPage?num=${page.endPageNum+1}">다음</a>]	
+			</span>
+		</c:if>
+
+	</div>
+	
+	<!--ver1-->
+<!-- 	<c:forEach begin="1" end="${pageNum}" var="num">
+		<span>
+			<a href="/board/listPage?num=${num}">${num}</a>
+		</span>		
+		</c:forEach>
+-->	
+	
+<button type="button" class="btn btn-light" onclick="location.href='http://localhost:8080/member/board/write'">글쓰기</button>
+
 	 <div id="footer1">
 	 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	 </div>

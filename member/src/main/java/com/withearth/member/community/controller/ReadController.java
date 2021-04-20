@@ -62,7 +62,7 @@ public class ReadController {
 		@GetMapping(value="/delete")
 		public String deleteList(@RequestParam("bno")int idx){
 			boardS.delete(idx);
-			return "redirect:/board/list";
+			return "redirect:/board/listPage?num=1";
 		}
 		
 		//게시물 목록+페이지
@@ -124,6 +124,10 @@ public class ReadController {
 			*/
 			//현재페이지가 눈에 띄게
 			model.addAttribute("select",num);
+			
+			System.out.println("controller가 작동 중");
+			
+			
 			
 		return "community/community";
 		}

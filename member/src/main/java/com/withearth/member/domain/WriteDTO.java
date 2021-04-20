@@ -4,7 +4,6 @@ public class WriteDTO {
 
 	private int idx;
 	private String username;
-	private String password;
 	private String subject;
 	private String contents;
 	
@@ -20,12 +19,6 @@ public class WriteDTO {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getSubject() {
 		return subject;
@@ -43,7 +36,7 @@ public class WriteDTO {
 	
 	@Override
 	public String toString() {
-		return "WriteDTO [username=" + username + ", password=" + password + ", subject=" + subject + ", contents="
+		return "WriteDTO [username=" + username + ", subject=" + subject + ", contents="
 				+ contents + "]";
 	}
 	
