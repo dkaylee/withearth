@@ -1,20 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>조회</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<%@ include file="/WEB-INF/views/include/basicset.jsp"%>
+<link rel="stylesheet" href="<c:url value="/css/mycomm.css"/>" />
+<title>Insert title here</title>
 </head>
 <body>
-
+   <!-- <body id="page-top"> -->
+      
+       <%@ include file="/WEB-INF/views/include/header.jsp"%>
+       <section id="one" class="wrapper">	
+		</section>
+       
 <form method="post" enctype="multipart/form-data" name="submitok">
 <div class="input-group mb-3">
   <span class="input-group-text">아이디</span>
+  <input type="hidden" class="form-control "aria-label="Username" id="useridx" name="useridx" value='${view.useridx}' readonly="readonly">
   <input type="text" class="form-control "aria-label="Username" id="username" name="username" value='${view.writer}' readonly="readonly">
   <span class="input-group-text">글번호</span>
   <input type="text" class="form-control" aria-label="bno" id="bno" name="bno" value='${view.idx}' readonly="readonly">
@@ -31,18 +42,42 @@
 </div>
 </form>
 <button type="button" class="btn btn-light" onClick="location.href='/member/board/listPage?num=1'">뒤로가기</button>
-<button type="button" class="btn btn-light" onClick="location.href='/member/board/modify?bno=${view.idx}'">수정</button>
+<button type="button" class="btn btn-light" onClick="editcheck()">수정</button>
 <button type="button" class="btn btn-light" onClick="subcheck()">삭제</button>
+
+
+	 <div id="footer1">
+	 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
+	 </div>
 
 </body>
 <script>
 function subcheck(){
+	var yourid = ${view.useridx};
+	var myid = ${loginInfo.idx};
+	if(yourid==myid){
 	if(confirm("정말 삭제하시겠습니까?")==true){
 		location.href='/member/board/delete?bno=${view.idx}'
 	} else {
 		return ;
 	}
+	} else {
+		alert("본인이 작성한 글만 삭제할 수 있습니다.")
+	}
 	
 }
+
+function editcheck(){
+	var yourid = ${view.useridx};
+	var myid = ${loginInfo.idx};
+	if(yourid==myid){
+		location.href='/member/board/modify?bno=${view.idx}'
+	} else {
+		alert("본인이 작성한 글만 수정할 수 있습니다.")
+	}
+	
+}
+
+
 </script>
 </html>

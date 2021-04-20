@@ -12,7 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <%@ include file="/WEB-INF/views/include/basicset.jsp"%>
-<link rel="stylesheet" href="<c:url value="/css/mypage.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/mycomm.css"/>" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,28 +22,34 @@
        
 		<section id="one" class="wrapper">	
 		</section>
-			<h1>게시판</h1>
-	<table class="table table-striped">
-	<thead>
-	<tr>
-	<th>글번호</th>
-	<th>제목</th>
-	<th>작성자</th>
-	<th>작성일자</th>
-	</tr>
-	</thead>
-	<tbody>
-	<c:forEach items="${list}" var="lst">
-	<tr>
-	<td>${lst.idx}</td>
-	<td>
-	<a href="/member/board/view?bno=${lst.idx}">${lst.title}</a>
-	</td>
-	<td>${lst.writer}</td>
-	<td>${lst.inserttime}</td>
-	</tr>
-	</c:forEach>
-	</tbody>
+	<div id="two">	
+			<h2>know-how</h2>
+	<div id="bt">
+<button type="button" id="write" class="btn btn-light" onclick="location.href='http://localhost:8080/member/board/write'">글쓰기</button>			
+	</div>
+	<div id="tbwrap">
+	<table>
+		<thead>
+		<tr text-align=center>
+		<th width="90">글번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>작성일자</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<c:forEach items="${list}" var="lst">
+		<tr>
+		<td>${lst.idx}</td>
+		<td>
+		<a href="/member/board/view?bno=${lst.idx}">${lst.title}</a>
+		</td>
+		<td>${lst.writer}</td>
+		<td>${lst.inserttime}</td>
+		</tr>
+		</c:forEach>
+		</tbody>
 	</table>
 	<div>
 		<c:if test="${page.prev}">
@@ -68,7 +74,7 @@
 				[<a href="/member/board/listPage?num=${page.endPageNum+1}">다음</a>]	
 			</span>
 		</c:if>
-
+		</div>
 	</div>
 	
 	<!--ver1-->
@@ -79,8 +85,7 @@
 		</c:forEach>
 -->	
 	
-<button type="button" class="btn btn-light" onclick="location.href='http://localhost:8080/member/board/write'">글쓰기</button>
-
+</div>
 	 <div id="footer1">
 	 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	 </div>

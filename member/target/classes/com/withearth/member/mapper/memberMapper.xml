@@ -168,8 +168,8 @@ select * from wuser where idx= #{idx}
 		useGeneratedKeys="true"
 		keyProperty="idx"
 		>
-	INSERT INTO tboard (title,contents,writer) 
-	VALUES (#{subject},#{contents},#{username})
+	INSERT INTO tboard (title,contents,writer,useridx) 
+	VALUES (#{subject},#{contents},#{username},#{useridx})
 
 </insert>
 
@@ -187,7 +187,7 @@ select * from wuser where idx= #{idx}
 
 <!-- 게시물 조회 -->
 <select id="getDetailedView" resultType="com.withearth.member.domain.ListVO">
-	SELECT IDX,TITLE,CONTENTS,INSERTTIME,VIEWCNT,WRITER
+	SELECT IDX,TITLE,CONTENTS,INSERTTIME,VIEWCNT,WRITER,useridx
 	FROM tboard
 	Where idx = #{idx}
 </select>

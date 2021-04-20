@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#banner {
+	height: 260px;
+}
+
+#two{
+	text-align: center;
+	clear: both;
+	position:relative;
+}
+#bt{
+	text-align: right;
+}
+
+table,thead ,th, td {
+  text-align: center;
+}

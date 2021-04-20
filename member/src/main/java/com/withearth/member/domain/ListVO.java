@@ -10,9 +10,9 @@ public class ListVO {
 	private String contents;
 	private Date inserttime;
 	private int viewcnt;
-	private String password;
 	private String writer;
 	private String delete_yn;
+	private int useridx;
 	
 
 	public String getWriter() {
@@ -57,13 +57,13 @@ public class ListVO {
 	public void setViewcnt(int viewcnt) {
 		this.viewcnt = viewcnt;
 	}
-	public String getPassword() {
-		return password;
+	public int getUseridx() {
+		return useridx;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUseridx(int useridx) {
+		this.useridx = useridx;
 	}
-	
+
 	
 	
 }

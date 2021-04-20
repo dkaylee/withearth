@@ -6,7 +6,7 @@ public class WriteDTO {
 	private String username;
 	private String subject;
 	private String contents;
-	
+	private int useridx;
 	
 	public int getIdx() {
 		return idx;
@@ -34,11 +34,18 @@ public class WriteDTO {
 	}
 	
 	
+	public int getUseridx() {
+		return useridx;
+	}
+	public void setUseridx(int useridx) {
+		this.useridx = useridx;
+	}
 	@Override
 	public String toString() {
-		return "WriteDTO [username=" + username + ", subject=" + subject + ", contents="
-				+ contents + "]";
+		return "WriteDTO [idx=" + idx + ", username=" + username + ", subject=" + subject + ", contents=" + contents
+				+ ", useridx=" + useridx + "]";
 	}
+
 	
 	
 }
