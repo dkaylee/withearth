@@ -14,5 +14,41 @@
 }
 
 table,thead ,th, td {
-  text-align: center;
+  text-align: center !important;
+}
+
+#write {
+	width: 80px;
+	height: 40px;
+	margin: 10px;
+}
+button {
+	width: 80px;
+	height: 40px;
+}
+
+table { table-layout:fixed; }
+
+#debt{
+	text-align: center;
+	margin:10px;
+}
+
+#wrbt{
+	text-align: center;
+	margin:10px;
+}
+
+a{
+	text-decoration-line: none;
+	color: black;
+}
+h2{
+	margin:30px;
+	font-size: 50px;
+	font-weight: 500;
+    color: #5385c1;
+}
+#wrap{
+	padding: 100px;
 }

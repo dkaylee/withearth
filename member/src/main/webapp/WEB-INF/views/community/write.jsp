@@ -15,18 +15,15 @@
 <link rel="stylesheet" href="<c:url value="/css/mycomm.css"/>" />
 <title>Insert title here</title>
 </head>
-<body>
+<body class="subpage">
    <!-- <body id="page-top"> -->
       
        <%@ include file="/WEB-INF/views/include/header.jsp"%>
-       
-		<section id="one" class="wrapper">	
-		</section>
-
+		<div id="wrap">
 			<form method="post" enctype="multipart/form-data" name="submitok">
 			<div class="input-group mb-3">
-			  <span class="input-group-text">아이디</span>
-			  <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="username" name="username" value="${loginInfo.name}">
+			  <span class="input-group-text">작성자</span>
+			  <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="username" name="username" value="${loginInfo.name}" readonly="readonly">
 			  <input type="hidden" class="form-control" placeholder="Username" aria-label="Username" id="useridx" name="useridx" value="${loginInfo.idx}">
 			</div>
 			<div class="input-group mb-3">
@@ -38,9 +35,10 @@
 			  <textarea class="form-control" aria-label="With textarea" id="contents" name="contents"></textarea>
 			</div>
 			</form>
-			<button type="submit" class="btn btn-light" id="submit" onclick="subcheck()">제출</button>
-			<button type="button" class="btn btn-light">초기화</button>
-			
+			<div id="wrbt">
+			<button type="submit" class="btn btn-secondary" id="submit" onclick="subcheck()">제출</button>
+			</div>
+			</div>
 	 <div id="footer1">
 	 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	 </div>

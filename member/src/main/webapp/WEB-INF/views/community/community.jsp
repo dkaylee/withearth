@@ -15,23 +15,27 @@
 <link rel="stylesheet" href="<c:url value="/css/mycomm.css"/>" />
 <title>Insert title here</title>
 </head>
-<body>
+<body class="subpage">
    <!-- <body id="page-top"> -->
       
        <%@ include file="/WEB-INF/views/include/header.jsp"%>
        
-		<section id="one" class="wrapper">	
-		</section>
 	<div id="two">	
 			<h2>know-how</h2>
 	<div id="bt">
-<button type="button" id="write" class="btn btn-light" onclick="location.href='http://localhost:8080/member/board/write'">글쓰기</button>			
+<button type="button" id="write" class="btn btn-secondary" onclick="location.href='http://localhost:8080/member/board/write'">글쓰기</button>			
 	</div>
 	<div id="tbwrap">
-	<table>
+	<table id="maintb">
+		<colgroup>
+			<col style="width:14%;">
+			<col style="width:68%;">
+			<col style="width:14%;">
+			<col style="width:14%;">
+		</colgroup>
 		<thead>
-		<tr text-align=center>
-		<th width="90">글번호</th>
+		<tr>
+		<th>글번호</th>
 		<th>제목</th>
 		<th>작성자</th>
 		<th>작성일자</th>
@@ -54,7 +58,7 @@
 	<div>
 		<c:if test="${page.prev}">
 			<span>
-				[<a href="/member/board/listPage?num=${page.startPageNum-1}">이전</a>]	
+				<a href="/member/board/listPage?num=${page.startPageNum-1}">◁</a>
 			</span>
 		</c:if>
 		
@@ -71,7 +75,7 @@
 
 		<c:if test="${page.next}">
 			<span>
-				[<a href="/member/board/listPage?num=${page.endPageNum+1}">다음</a>]	
+				<a href="/member/board/listPage?num=${page.endPageNum+1}">▷</a>	
 			</span>
 		</c:if>
 		</div>

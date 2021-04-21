@@ -15,37 +15,42 @@
 <link rel="stylesheet" href="<c:url value="/css/mycomm.css"/>" />
 <title>Insert title here</title>
 </head>
-<body>
+<body class="subpage">
    <!-- <body id="page-top"> -->
       
        <%@ include file="/WEB-INF/views/include/header.jsp"%>
-       <section id="one" class="wrapper">	
-		</section>
-       
+		<div id="wrap">
+		<table class="table">
+		<colgroup>
+		<col style="width:70%;">
+		<col style="width:15%;">
+		<col style="width:15%;">
+		</colgroup>
+		<tr class="table">
+			<td class="table">${view.title}</td>
+			<td class="table" width="150">글쓴이 : ${view.writer} </td>
+			<td class="table" width="150">글번호 : ${view.idx}</td>
+		</tr>	
+		<tr class="table">
+			<td colspan="3" class="table">${view.contents}</td>
+		</tr>	
+		</table>
+ <!--그저 데이터 보내기 위해 존재할 뿐 -->      
 <form method="post" enctype="multipart/form-data" name="submitok">
-<div class="input-group mb-3">
-  <span class="input-group-text">아이디</span>
-  <input type="hidden" class="form-control "aria-label="Username" id="useridx" name="useridx" value='${view.useridx}' readonly="readonly">
-  <input type="text" class="form-control "aria-label="Username" id="username" name="username" value='${view.writer}' readonly="readonly">
-  <span class="input-group-text">글번호</span>
-  <input type="text" class="form-control" aria-label="bno" id="bno" name="bno" value='${view.idx}' readonly="readonly">
-  <span class="input-group-text">작성일자</span>
-  <input type="text" class="form-control" aria-label="date" id="date" name="date" value='${view.inserttime}' readonly="readonly">
-</div>
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">제목</span>
-  <input type="text" class="form-control"  aria-label="subject" aria-describedby="basic-addon1" id="subject" name="subject" value='${view.title}' readonly="readonly">
-</div>
-<div class="input-group">
-  <span class="input-group-text">내용</span>
-  <textarea class="form-control" aria-label="With textarea" id="contents" name="contents" readonly="readonly">${view.contents}</textarea>
-</div>
+  <input type="hidden" id="useridx" name="useridx" value='${view.useridx}' readonly="readonly">
+  <input type="hidden" id="username" name="username" value='${view.writer}' readonly="readonly">
+  <input type="hidden" id="bno" name="bno" value='${view.idx}' readonly="readonly">
+  <input type="hidden" id="date" name="date" value='${view.inserttime}' readonly="readonly">
+  <input type="hidden" aria-describedby="basic-addon1" id="subject" name="subject" value='${view.title}' readonly="readonly">
+  <textarea style= display:none id="contents" name="contents" readonly="readonly">${view.contents}</textarea>
 </form>
-<button type="button" class="btn btn-light" onClick="location.href='/member/board/listPage?num=1'">뒤로가기</button>
-<button type="button" class="btn btn-light" onClick="editcheck()">수정</button>
-<button type="button" class="btn btn-light" onClick="subcheck()">삭제</button>
-
-
+	<div id="two">	
+<div id="debt">
+<button type="button" class="btn btn-secondary" onClick="editcheck()">수정</button>
+<button type="button" class="btn btn-secondary" onClick="subcheck()">삭제</button>
+</div>
+</div>
+	</div>
 	 <div id="footer1">
 	 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	 </div>
