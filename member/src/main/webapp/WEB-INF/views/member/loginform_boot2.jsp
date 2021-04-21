@@ -18,7 +18,7 @@
 
 <!-- 구글 로그인 -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
- <meta name="google-signin-client_id" content="1062510835529-simuk8jl5l9putr99lf4282vbrbg8qs0.apps.googleusercontent.com">
+ <meta name="google-signin-client_id" content="1062510835529-vrqcivq464jhn25nhdghd3ij957430it.apps.googleusercontent.com">
 <!-- 네이버 로그인 -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <!-- css -->
@@ -48,6 +48,13 @@
 </div>
 </div>
 </body>
+
+
+
+
+
+
+
 
 
 <script>
@@ -256,12 +263,11 @@ function onSignIn() {
 	
 	if (auth2.isSignedIn.get()) {
 		var profile = auth2.currentUser.get().getBasicProfile();
-        //console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
         var g_name = profile.getName();
  		var g_img =profile.getImageUrl();
         var g_email = profile.getEmail();
 		var googleinfo = {g_name:g_name, g_img:g_img, g_email:g_email};
-		console.log(g_name);
 	}	
 	
 	$.ajax({
@@ -309,14 +315,14 @@ function onSignIn() {
  </script>
 
 <!-- 네이버 로그인 -->
+<!-- 네이버 로그인 -->
 <script type="text/javascript">
-
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "m2atJuSTPKnWvaMTDlAu",
 			callbackUrl: "http://localhost:8080/member/member/callback",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
-			loginButton: {color: "green", type: 3, height: 45} /* 로그인 버튼의 타입을 지정 */
+			loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
 		}
 	);
 	
@@ -329,6 +335,12 @@ function onSignIn() {
 			var n_email = naverLogin.user.getEmail();
 			var n_name = naverLogin.user.getNickName();
 			var n_img = naverLogin.user.getProfileImage();
+			
+		/* 	if(typeof(n_profileImage) != 'undefined'){
+				var n_img = naverLogin.user.getProfileImage();
+			} else {
+				var n_img = "2.jpg"
+			} */
 			
 			var naverinfo = {n_name:n_name, n_img:n_img, n_email:n_email};
 			//가입
@@ -345,7 +357,7 @@ function onSignIn() {
 						data: {id:n_email},
 						success: function(data){
 							alert("로그인 되었습니다.");
-							location.href="<c:url value='/'/>"; 
+							location.href="/member"; 
 							console.log(data);
 						}
 						});
@@ -363,7 +375,8 @@ function onSignIn() {
 						success : function(check) {
 							console.log("성공");
 							alert("가입이 완료되었습니다.")
-							location.href="<c:url value='/'/>"; 							
+							location.href="/member";
+							
 						},
 						error: function(error){
 							console.log("실패");
@@ -378,7 +391,6 @@ function onSignIn() {
 		} else {
 			console.log("AccessToken이 올바르지 않습니다.");
 		}
-
 	});
 });
 

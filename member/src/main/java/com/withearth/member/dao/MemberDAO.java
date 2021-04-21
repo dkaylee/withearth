@@ -1,7 +1,13 @@
 package com.withearth.member.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.withearth.member.domain.ListVO;
 import com.withearth.member.domain.Member;
 import com.withearth.member.domain.TemporaryPw;
+import com.withearth.member.domain.WriteDTO;
 
 public interface MemberDAO {
 //회원가입
@@ -62,6 +68,26 @@ public interface MemberDAO {
 	
 //로그인
 	Member selectLoginIdx(int idx);	
+
+	
+//커뮤니티 게시판 관련
+	int insertWrite(WriteDTO dto);
+	
+	List<ListVO> printList();
+	
+	int getBoardListCnt(); 
+	
+	//게시물상세조회
+	ListVO getDetailedView(int idx);
+	
+	//게시물 수정
+	void modify(ListVO vo);
+	
+	//게시물 삭제
+	void deleteList(int idx);
+	
+	//게시물 목록+페이징
+	List<ListVO> listPage(@Param("displayPost") int displayPost, @Param("postNum")int postNum);
 	
 	
 }

@@ -92,9 +92,6 @@
 					
 		 //데이터가 나한테 전달되었을 때 자동으로 실행되는 function
 		 sock.onmessage = onMessage;
-
-		 //데이터를 끊고싶을때 실행하는 메소드
-			sock.onclose = onClose;
 				
 		 // 대화를 요청한 상대에게서 받은 메시지				
 		 function onMessage(evt) { 
@@ -128,12 +125,15 @@
 	  function goChatRoom(){
 		child2 = window.open('<c:url value="/post/chat?donaIdx='+msgData.donaIdx+'&uid='+msgData.to+'&to='+msgData.userIdx+'&rid='+msgData.roomIdx+'"/>',"child2","width=330,height=600");
 		}	
+		
+	  //데이터를 끊고싶을때 실행하는 메소드
+		sock.onclose = onClose;
 			
 		// 연결 종료
-		function onClose(evt) {
+	 function onClose(evt) {
 		console.log(evt);		
 		}
-			
+		
 		// 검색 시 페이지 번호를 받아서 이동하는 메서드		
     function goPage(i){
     	

@@ -157,4 +157,62 @@ select * from wuser where id= #{param1}
 select * from wuser where idx= #{idx}
 </select>
 
+
+
+
+<!-- 게시판 기능 -->
+
+<!-- 글 등록 -->
+<insert id="insertWrite"
+		parameterType="com.withearth.member.domain.WriteDTO"
+		useGeneratedKeys="true"
+		keyProperty="idx"
+		>
+	INSERT INTO tboard (title,contents,writer,useridx) 
+	VALUES (#{subject},#{contents},#{username},#{useridx})
+
+</insert>
+
+<select id="printList" resultType="com.withearth.member.domain.ListVO">
+	SELECT IDX,TITLE,CONTENTS,INSERTTIME,VIEWCNT,WRITER
+	FROM tboard
+	ORDER BY IDX desc 
+	limit 10
+</select>
+
+<!-- 전체 글 개수 가져오기 -->
+ <select id="getBoardListCnt" resultType="int">
+	SELECT count(*) as listCnt FROM tboard
+</select>
+
+<!-- 게시물 조회 -->
+<select id="getDetailedView" resultType="com.withearth.member.domain.ListVO">
+	SELECT IDX,TITLE,CONTENTS,INSERTTIME,VIEWCNT,WRITER,useridx
+	FROM tboard
+	Where idx = #{idx}
+</select>
+
+<update id="modify" parameterType="com.withearth.member.domain.ListVO">
+	UPDATE tboard
+	SET title=#{title},
+		contents=#{contents},
+		writer=#{writer}
+	WHERE idx=#{idx}
+	
+</update>
+
+<delete id="deleteList" parameterType="int">
+	DELETE
+	FROM tboard
+	WHERE idx=#{idx}
+</delete>
+
+<!--게시물 목록+페이징-->
+<select id="listPage" parameterType="hashMap" resultType="com.withearth.member.domain.ListVO">
+	SELECT IDX,TITLE,CONTENTS,INSERTTIME,VIEWCNT,WRITER
+	FROM tboard
+	ORDER BY idx desc
+	limit #{displayPost}, #{postNum}
+</select>
+
 </mapper>

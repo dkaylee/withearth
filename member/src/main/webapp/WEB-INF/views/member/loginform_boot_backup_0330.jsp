@@ -255,7 +255,7 @@ function onSignIn() {
 	var auth2 = gapi.auth2.getAuthInstance();
 	
 	if (auth2.isSignedIn.get()) {
-		var profile = auth2.currentUser.get().getBasicProfile();
+		//var profile = auth2.currentUser.get().getBasicProfile();
         //console.log("ID: " + profile.getId()); // Don't send this directly to your server!
         var g_name = profile.getName();
  		var g_img =profile.getImageUrl();
@@ -263,7 +263,7 @@ function onSignIn() {
 		var googleinfo = {g_name:g_name, g_img:g_img, g_email:g_email};
 		console.log(g_name);
 	}	
-	
+
 	$.ajax({
 		url: 'googleidcheck',
 		data: {id:g_email},
@@ -305,6 +305,8 @@ function onSignIn() {
       		}
 		}
 	});
+	
+	
 }
  </script>
 
