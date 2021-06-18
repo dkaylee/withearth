@@ -145,7 +145,7 @@
 		  
 	 
 		$.ajax({
-			url : 'https://www.withearthdona.tk/dona/rest/user/post/list/search',
+			url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com/dona/rest/user/post/list/search',
 			type : 'GET',
 			data : 'p='+ i + '&searchType=' +searchType + '&keyword='+keyword,
 			success : function(data){
@@ -158,12 +158,12 @@
 					  var html =	'<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 						html += '<input type="hidden" value="'+item.donaIdx+'">';
 					    html += '<div class="article-img">';
-						html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';			
+						html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com/dona/fileupload/post/s_'+item.files.fileName+'">';			
 						html += '</div>';
 						html += '<div class="article-content">';
 						html += '<div class="article-title">';
 						html += item.postTitle+'</div>';
-						html += '<div class="article-heart">';							
+						html += '<div class="article-heart">';							z
 						html += '관심 '+item.heartCnt+'</div>';
 						html += '</div></div>'			
 														
@@ -194,7 +194,7 @@
 		
 			// 처음 리스트 로딩 시 불러올 데이터
 				$.ajax({
-					  url : 'https://www.withearthdona.tk/dona/rest/user/post/list?p=' + p,
+					  url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com/dona/rest/user/post/list?p=' + p,
 					  type : 'GET',
 					  async : false,
 					  success : function(data){				
@@ -209,7 +209,7 @@
 								html += '<input type="hidden" value="'+item.donaIdx+'">';
 							  html += '<div class="article-img">';
 								//html += '<img alt="thumbnail" class="img" src="<c:url value="/fileupload/post/s_'+item.files.fileName+'"/>">';	
-								html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';	
+								html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com/dona/fileupload/post/s_'+item.files.fileName+'">';	
 								html += '</div>';
 								html += '<div class="article-content">';
 								html += '<div class="article-title">';
@@ -247,7 +247,7 @@
 					console.log(searchType + ':' + keyword);
 					
 					$.ajax({
-						url : 'https://www.withearthdona.tk/dona/rest/user/post/list/search',
+						url : 'http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com/dona/rest/user/post/list/search',
 						type : 'GET',
 						data : 'p='+ p + '&searchType=' +searchType + '&keyword='+keyword,
 						success : function(data){
@@ -260,7 +260,7 @@
 								  var html ='<div class="article" onClick="location.href=\'<c:url value="/dona/main/post/detail?idx='+item.donaIdx+'"/>\'">';
 									html += '<input type="hidden" value="'+item.donaIdx+'">';
 								    html += '<div class="article-img">';
-									html += '<img alt="thumbnail" class="img" src="https://www.withearthdona.tk/dona/fileupload/post/s_'+item.files.fileName+'">';	
+									html += '<img alt="thumbnail" class="img" src="http://ec2-13-125-219-44.ap-northeast-2.compute.amazonaws.com/dona/fileupload/post/s_'+item.files.fileName+'">';	
 									html += '</div>';
 									html += '<div class="article-content">';
 									html += '<div class="article-title">';
